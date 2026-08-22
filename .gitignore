@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.env
+.env.*
+!.env.example
+.pytest_cache/
+.ruff_cache/
+.bugbunny-cache/
+.bugbunny-run.lock
+benchmark-run/
+runs/

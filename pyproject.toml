@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bugbunny"
+version = "0.6.1"
+description = "Fast, lossless, reproducible LLM code review for CodeReviewBench"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "BugBunny contributors"}]
+dependencies = [
+  "httpx==0.28.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<10",
+  "pytest-asyncio>=0.25,<2",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+bugbunny = "bugbunny.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+bugbunny = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["E501"]
