@@ -39,7 +39,7 @@ def _artifact(*, findings=None) -> dict:
         target = right_ranges if finding.get("side", "RIGHT") == "RIGHT" else left_ranges
         target.setdefault(finding["path"], []).append([finding.get("line", 0)] * 2)
     return {
-        "schema_version": "bugbunny-review-v1",
+        "schema_version": "bugbunny-review-v2",
         "tool": "bugbunny",
         "tool_version": "0.3.0",
         "status": "completed",

@@ -184,6 +184,57 @@ async def test_two_round_loop_reads_only_immutable_head_and_returns_calls_and_me
 
 
 @pytest.mark.asyncio
+async def test_hypotheses_direct_evidence_actions_without_leaking_content_into_trace() -> None:
+    linked = _action("read", path="src/core.py", start=1, end=2)
+    linked["hypothesis_id"] = "nullable_helper"
+    gateway = FakeGateway(
+        [
+            {
+                "hypotheses": [
+                    {
+                        "id": "nullable_helper",
+                        "statement": "helper may return a nullable value",
+                        "evidence_needed": "the helper return contract",
+                        "status": "open",
+                    }
+                ],
+                "requests": [linked],
+                "done": False,
+            },
+            {
+                "hypotheses": [
+                    {
+                        "id": "nullable_helper",
+                        "statement": "helper may return a nullable value",
+                        "evidence_needed": "the helper return contract",
+                        "status": "rejected",
+                    }
+                ],
+                "requests": [],
+                "done": True,
+            },
+        ]
+    )
+    snapshot = FakeSnapshot()
+    result = await explore_repository_context(
+        config=Config(),
+        model="openai/test-model",
+        gateway=gateway,
+        snapshot=snapshot,
+        batch_patch="+ return helper(value)",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    assert "SELECTOR HYPOTHESIS STATE" in gateway.requests[1]["prompt"]
+    assert result.trace["hypotheses_returned"] == 2
+    assert result.trace["hypotheses_rejected_final"] == 1
+    assert result.trace["hypothesis_linked_actions"] == 1
+    assert "nullable_helper" not in json.dumps(result.trace)
+
+
+@pytest.mark.asyncio
 async def test_invalid_actions_fail_closed_while_valid_actions_are_deduplicated() -> None:
     valid = _action("read", path="src/core.py", start=1, end=1)
     gateway = FakeGateway(
@@ -363,7 +414,7 @@ async def test_file_and_character_budgets_are_hard_and_deterministic() -> None:
         (_action("search", query="target"), RuntimeError(), "search_failed"),
     ],
 )
-async def test_infrastructure_action_failures_fail_selection_coverage(
+async def test_optional_action_failures_are_audited_without_failing_selection_coverage(
     action: dict[str, Any],
     failure: BaseException,
     expected_code: str,
@@ -389,9 +440,11 @@ async def test_infrastructure_action_failures_fail_selection_coverage(
         file_inventory=tuple(FakeSnapshot().files),
     )
 
-    assert result.failed is True
+    assert result.failed is False
     assert result.context == "safe seed"
     assert len(result.calls) == 1
+    assert result.trace["actions_failed"] == 1
+    assert result.trace["actions_executed"] == 0
     assert result.trace["round_limit_hit"] is False
     assert result.diagnostics == ({"stage": "context_action", "code": expected_code},)
 
@@ -1005,17 +1058,11 @@ def test_prompt_and_schema_contracts_are_versioned_stable_and_strict(
     schema = exploration_action_schema(3)
     assert schema["properties"]["requests"]["maxItems"] == 64
     action_schema = schema["properties"]["requests"]["items"]
-    assert action_schema["additionalProperties"] is False
-    assert set(action_schema["required"]) == {
-        "action",
-        "path",
-        "query",
-        "start_line",
-        "end_line",
-    }
+    assert action_schema["additionalProperties"] is True
+    assert "required" not in action_schema
     prompt_hash = exploration_prompt_sha256()
-    assert EXPLORATION_PROMPT_VERSION == "bugbunny-context-selection-v6"
-    assert EXPLORATION_SCHEMA_VERSION == "bugbunny-context-actions-v5"
+    assert EXPLORATION_PROMPT_VERSION == "bugbunny-context-selection-v7"
+    assert EXPLORATION_SCHEMA_VERSION == "bugbunny-context-actions-v6"
     assert len(prompt_hash) == 64
     monkeypatch.setattr(
         exploration_module,
@@ -1029,4 +1076,8 @@ def test_prompt_and_schema_contracts_are_versioned_stable_and_strict(
 
 
 def test_repository_index_does_not_truncate_when_the_complete_index_fits() -> None:
-    assert exploration_module._render_index(("README.md",), 64) == ("README.md", False)
+    assert exploration_module._render_index(("README.md",), 64) == (
+        "README.md",
+        False,
+        "complete_path_inventory_v1",
+    )

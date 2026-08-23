@@ -263,6 +263,18 @@ def validate_findings(
                 )
             )
             continue
+        if not finding.root_cause or not finding.failure_mode:
+            rejected.append(
+                RejectedFinding(
+                    finding,
+                    "validation",
+                    "root_cause and failure_mode are required",
+                )
+            )
+            continue
+        if finding.fix_scope not in {"local", "repeated_pattern", "systemic"}:
+            rejected.append(RejectedFinding(finding, "validation", "unknown fix_scope"))
+            continue
         if not finding.evidence:
             rejected.append(
                 RejectedFinding(finding, "validation", "nonempty verbatim evidence is required")
@@ -367,7 +379,7 @@ def apply_verifier_decisions(
 
     kept: list[Finding] = []
     rejected: list[RejectedFinding] = []
-    canonical_kept: set[int] = set()
+    canonical_keep_verdicts: set[int] = set()
     for index, finding in enumerate(findings):
         decision = by_index[index]
         verdict = str(decision.get("decision", "drop")).lower()
@@ -375,6 +387,7 @@ def apply_verifier_decisions(
         reason = str(decision.get("reason", "")).strip() or "no verifier reason"
         finding.verifier_confidence = confidence
         finding.verifier_reason = reason
+        finding.verifier_family_key = str(decision.get("family_key", "")).strip() or None
 
         if verdict == "merge":
             canonical = decision.get("canonical_index")
@@ -389,6 +402,7 @@ def apply_verifier_decisions(
         if verdict != "keep":
             rejected.append(RejectedFinding(finding, "verifier", reason))
             continue
+        canonical_keep_verdicts.add(index)
         if confidence < min_confidence:
             rejected.append(
                 RejectedFinding(
@@ -398,15 +412,16 @@ def apply_verifier_decisions(
                 )
             )
             continue
-        canonical_kept.add(index)
         kept.append(finding)
 
-    # A merge target must itself survive; otherwise the duplicate has no
-    # publishable canonical issue and the strict response is inconsistent.
+    # A merge target must have a keep verdict. It need not survive the calibrated
+    # confidence threshold: in that case both the canonical and its duplicate
+    # are correctly filtered, rather than turning a valid low-confidence batch
+    # into a protocol failure.
     for index, decision in by_index.items():
         if str(decision.get("decision", "")).lower() == "merge":
             canonical = int(decision["canonical_index"])
-            if canonical not in canonical_kept:
+            if canonical not in canonical_keep_verdicts:
                 raise ValueError(
                     f"finding {index} merges into non-kept canonical finding {canonical}"
                 )

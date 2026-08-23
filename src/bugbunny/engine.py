@@ -16,6 +16,7 @@ from bugbunny.exploration import (
     exploration_schema_sha256,
     explore_repository_context,
 )
+from bugbunny.families import consolidate_semantic_duplicates
 from bugbunny.gateway import GatewayError, ModelGateway
 from bugbunny.models import (
     CallRecord,
@@ -39,10 +40,11 @@ from bugbunny.prompts import (
 from bugbunny.report import render_markdown
 from bugbunny.repository import GitRepositoryCache, RepositorySnapshot
 from bugbunny.schemas import (
-    GENERATION_SCHEMA,
+    GENERATION_TRANSPORT_SCHEMA,
     VERIFIER_MAX_BATCH,
     VERIFIER_SCHEMA,
-    findings_from_payload,
+    PayloadValidationError,
+    findings_from_payload_tolerant,
     validate_verifier_payload,
 )
 from bugbunny.util import (
@@ -250,7 +252,8 @@ def _verification_batches(
         trial = [*current, finding]
         candidate_payload_too_large = len(verifier_candidate_payload(trial)) > max_chars
         prompt_too_large = (
-            max_prompt_chars is not None
+            len(trial) <= max_items
+            and max_prompt_chars is not None
             and len(build_verifier_prompt(trial, "", "", max_batch_size=max_items))
             > max_prompt_chars - 4_096
         )
@@ -284,6 +287,7 @@ def _fit_generation_prompt(
     pr_title: str,
     pr_body: str,
     allowed_categories: Sequence[str],
+    review_policy: str,
 ) -> tuple[str, _GenerationBatch, bool]:
     """Fit exact rendered generation input, clipping context before patch bytes."""
 
@@ -295,6 +299,7 @@ def _fit_generation_prompt(
             pr_body=pr_body,
             chunk_id=batch.batch_id,
             allowed_categories=allowed_categories,
+            review_policy=review_policy,
         )
 
     prompt = render(batch.context)
@@ -903,6 +908,7 @@ class ReviewEngine:
         bundle: Any = None
         calls: list[CallRecord] = []
         raw_findings: list[Finding] = []
+        validated_findings: list[Finding] = []
         rejected: list[RejectedFinding] = []
         findings: list[Finding] = []
         diagnostics: list[dict[str, Any]] = []
@@ -1041,6 +1047,7 @@ class ReviewEngine:
                         pr_title=pr.title,
                         pr_body=pr.body,
                         allowed_categories=self.config.include_categories,
+                        review_policy=self.config.review_policy,
                     )
                 except Exception as exc:
                     return (
@@ -1098,7 +1105,7 @@ class ReviewEngine:
                         model=self.config.model,
                         stage="generation",
                         schema_name="bugbunny_findings",
-                        schema=GENERATION_SCHEMA,
+                        schema=GENERATION_TRANSPORT_SCHEMA,
                         chunk_id=final_batch.batch_id,
                         reasoning_effort=self.config.reasoning_effort,
                         max_output_tokens=self.config.max_output_tokens,
@@ -1126,10 +1133,19 @@ class ReviewEngine:
                     )
                 batch_calls.append(result.call)
                 try:
-                    proposed = findings_from_payload(
+                    proposed, invalid_finding_count = findings_from_payload_tolerant(
                         result.payload,
                         chunk_id=final_batch.batch_id,
                     )
+                    if invalid_finding_count:
+                        selected_diagnostics = (
+                            *selected_diagnostics,
+                            {
+                                "stage": "generation_payload",
+                                "code": "invalid_findings_quarantined",
+                                "count": str(invalid_finding_count),
+                            },
+                        )
                     for finding in proposed:
                         _assign_source_chunk(
                             finding,
@@ -1269,6 +1285,7 @@ class ReviewEngine:
                 head_sha=pr.head_sha,
             )
             rejected.extend(validation_rejections)
+            validated_findings = validated
 
             verifier_model = self.config.verifier_model
             if verifier_model == "same":
@@ -1284,6 +1301,7 @@ class ReviewEngine:
                     max_prompt_chars=self.config.verifier_input_char_budget,
                 )
                 for offset, batch in verifier_batches:
+                    semantic_retry_errors: list[str] = []
                     try:
                         verifier_limit = self.config.verifier_input_char_budget
                         if verifier_limit is None:
@@ -1375,20 +1393,47 @@ class ReviewEngine:
                                 ),
                             }
                         )
-                        result = await self.gateway.complete_json(
-                            prompt,
-                            model=verifier_model,
-                            stage="verification",
-                            schema_name="bugbunny_verification",
-                            schema=VERIFIER_SCHEMA,
-                            chunk_id=f"candidates-{offset}-{offset + len(batch) - 1}",
-                            reasoning_effort=self.config.verifier_reasoning_effort,
-                            max_output_tokens=self.config.verifier_max_output_tokens,
-                        )
-                        calls.append(result.call)
-                        decisions = validate_verifier_payload(
-                            result.payload, candidate_count=len(batch)
-                        )
+                        decisions: list[dict[str, Any]] | None = None
+                        semantic_attempt_prompt = prompt
+                        for semantic_attempt in range(
+                            self.config.verification_semantic_retries + 1
+                        ):
+                            result = await self.gateway.complete_json(
+                                semantic_attempt_prompt,
+                                model=verifier_model,
+                                stage="verification",
+                                schema_name="bugbunny_verification",
+                                schema=VERIFIER_SCHEMA,
+                                chunk_id=f"candidates-{offset}-{offset + len(batch) - 1}",
+                                reasoning_effort=self.config.verifier_reasoning_effort,
+                                max_output_tokens=self.config.verifier_max_output_tokens,
+                            )
+                            calls.append(result.call)
+                            try:
+                                decisions = validate_verifier_payload(
+                                    result.payload, candidate_count=len(batch)
+                                )
+                            except PayloadValidationError as exc:
+                                semantic_error = _safe_error(exc)
+                                calls[-1] = replace(result.call, error=semantic_error)
+                                semantic_retry_errors.append(semantic_error)
+                                if semantic_attempt < self.config.verification_semantic_retries:
+                                    semantic_attempt_prompt = (
+                                        prompt
+                                        + "\n\nVerifier retry notice\n"
+                                        + "The previous response was rejected by the semantic "
+                                        + "contract: "
+                                        + semantic_error
+                                        + ". Regenerate the complete decisions array and correct "
+                                        + "that relationship; do not omit any candidate."
+                                    )
+                                    continue
+                                raise
+                            break
+                        if decisions is None:
+                            raise ReviewEngineError(
+                                "verifier semantic retry loop did not resolve"
+                            )
                         kept, dropped = apply_verifier_decisions(
                             batch,
                             {"decisions": decisions},
@@ -1402,6 +1447,16 @@ class ReviewEngine:
                         error = _safe_error(exc)
                         verifier_failed = True
                     else:
+                        if semantic_retry_errors:
+                            diagnostics.append(
+                                {
+                                    "stage": "verification_semantic_retry",
+                                    "candidate_offset": offset,
+                                    "retry_count": len(semantic_retry_errors),
+                                    "recovered": True,
+                                    "errors": semantic_retry_errors,
+                                }
+                            )
                         verified.extend(kept)
                         rejected.extend(dropped)
                         continue
@@ -1412,6 +1467,10 @@ class ReviewEngine:
                             "candidate_offset": offset,
                             "error": error,
                             "failure_policy": "fail_closed",
+                            "semantic_attempt_count": len(semantic_retry_errors),
+                            "semantic_retry_count": max(
+                                0, len(semantic_retry_errors) - 1
+                            ),
                         }
                     )
                     rejected.extend(
@@ -1435,7 +1494,11 @@ class ReviewEngine:
                         for item in remaining
                     )
                     break
-                findings = [] if verifier_failed else verified
+                if verifier_failed:
+                    findings = []
+                else:
+                    findings, semantic_duplicates = consolidate_semantic_duplicates(verified)
+                    rejected.extend(semantic_duplicates)
                 fatal = verifier_failed
             else:
                 findings = validated
@@ -1709,7 +1772,7 @@ class ReviewEngine:
         context_summary["provider_reported_prompt_usage_by_stage"] = _call_token_summary(calls)
         context_summary["pr_metadata"] = generation_metadata_provenance(pr.title, pr.body)
         return ReviewArtifact(
-            schema_version="bugbunny-review-v1",
+            schema_version="bugbunny-review-v2",
             tool="bugbunny",
             tool_version=__version__,
             run_id=run_id,
@@ -1742,6 +1805,7 @@ class ReviewEngine:
             context=context_summary,
             calls=calls,
             raw_findings=raw_findings,
+            validated_findings=validated_findings,
             rejected_findings=rejected,
             findings=findings,
             diagnostics=diagnostics,

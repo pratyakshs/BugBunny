@@ -124,7 +124,9 @@ fixtures. BugBunny pre-resolves each selected PR once, records its URL/base/head
 snapshot in an immutable `job_plan.json`, and gives that snapshot to every
 model. Resume reads the frozen plan instead of re-resolving moving PR refs.
 Pinning one `--verifier-model` across the sweep avoids changing two model roles
-at once.
+at once. Freeze that verifier's threshold with `bugbunny calibrate` on the
+external corpus before opening the canonical dataset; never choose it from the
+50 benchmark cases.
 
 Scheduling has distinct limits so network, Git, review, and model work do not
 serialize each other:
@@ -165,8 +167,10 @@ Context mode is not a third review profile. Keep the fixture set, generation
 model, `fast`/`balanced` profile, verifier, judge, reasoning effort, and
 concurrency policy fixed while varying only context acquisition. The default
 `curated` mode uses generous deterministic bounds; `agentic` lets the review
-model select additional evidence through bounded, read-only pageable-list,
-read, and pageable literal-search actions. The agentic file cap covers distinct
+model maintain tentative evidence hypotheses and select additional evidence
+through bounded, read-only pageable-list, read, and pageable literal-search
+actions. Large repositories expose a hierarchical directory summary rather
+than an alphabetical path prefix. The agentic file cap covers distinct
 additional files; the curated seed population is logged separately.
 
 For model sweeps, declare each route's verified input capacity rather than
@@ -249,27 +253,34 @@ issues. That is necessary for heterogeneous third-party review formats, but it
 is lossy for BugBunny: its final artifact already contains one grounded,
 structured issue per causal site.
 
-Export final findings directly:
+Export the grounded generator stream, the calibrated balanced stream, and the
+optional repeated-pattern family presentation from the same immutable run:
 
 ```bash
 bugbunny benchmark export \
   --benchmark-data /path/to/code-review-benchmark/offline/results/benchmark_data.json \
   --run-dir runs/codex-luna \
   --judge-model openai/gpt-5.2 \
-  --output-dir /tmp/bugbunny-results
+  --output-dir /tmp/bugbunny-results \
+  --finding-stage generator \
+  --finding-stage balanced \
+  --finding-stage family
 ```
 
 For each review model, the exporter:
 
 - creates a deterministic tool ID such as
-  `bugbunny-codex-gpt-5-6-luna-{config-hash}`, keeping model, harness,
-  profile, verifier, prompt, and runtime configurations distinct;
-- inserts final findings as review comments in a copy of
+  `bugbunny-balanced-codex-gpt-5-6-luna-{config-hash}`, keeping model, harness,
+  candidate stage, policy, verifier, prompt, and runtime configurations distinct;
+- inserts the selected finding stage as review comments in a copy of
   `benchmark_data.json`;
 - writes the same findings directly to
   `{judge_model}/candidates.json`, bypassing Step 2;
-- writes singleton groups to `{judge_model}/dedup_groups.json`, because the
-  harness has already performed exact-root-cause deduplication;
+- writes singleton groups to `{judge_model}/dedup_groups.json`; the `family`
+  stage has already grouped compatible verifier family labels while preserving
+  every member ID/location in its sidecar;
+- writes a model/stage-qualified candidate-audit sidecar with finding IDs,
+  categories, locations, verifier confidence, family membership, and text hash;
 - records canonical artifact-value hashes, golden hashes, and exact hashes of
   all three emitted Step 3 files in a model-qualified
   `bugbunny-{tool-model}_export_manifest.json` and
@@ -293,6 +304,7 @@ The output directory is shaped like CodeReviewBench's `offline/results/`:
   openai_gpt-5.2/
     candidates.json
     dedup_groups.json
+    bugbunny-{stage-tool-model}_candidate_audit.json
     bugbunny-{tool-model}_export_manifest.json
     bugbunny_export_index.json
 ```
@@ -323,7 +335,16 @@ per-PR request-batch barrier. Comparison results are still reduced in the
 benchmark's original order, preserving its TP/FP/FN behavior. The runner writes
 an atomic checkpoint after every completed review/tool pair and resumes all
 error-free records. Its JSON summary reports aggregate precision, recall, F1,
-review count, and judge errors for each tool.
+review count, and judge errors for each tool. `evaluations.json` also retains
+every pair decision, confidence, reasoning, attempt count, and safe retry trace.
+
+Run `bugbunny benchmark analyze` afterward to produce a bound JSON/Markdown
+audit. It reports pipeline counts; prompt/evidence pressure separately from
+agentic discovery caps and hierarchical-index summarization; exact context
+utilization and retries; category counts; pull-request bootstrap intervals;
+paired model deltas; and threshold curves reconstructed from the already judged
+generator stream. It neither changes the benchmark reduction nor makes
+additional judge calls.
 
 The judge model is independent of both BugBunny's generation model and optional
 verifier; record all three roles when comparing results. The output remains the

@@ -57,6 +57,9 @@ async def test_evaluate_review_preserves_pair_order_and_dedup_metrics() -> None:
     assert result["recall"] == pytest.approx(1 / 2)
     assert result["false_positives"] == [{"candidate": "unrelated"}]
     assert result["true_positives"][0]["golden_comment"] == "Issue A"
+    assert len(result["pair_matches"]) == 6
+    assert result["pair_matches"][0]["golden_index"] == 0
+    assert result["pair_matches"][0]["candidate_index"] == 0
 
 
 @pytest.mark.asyncio

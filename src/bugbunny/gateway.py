@@ -110,6 +110,26 @@ class ResponseFormatError(ValueError):
     """The model response is not valid JSON for the requested schema."""
 
 
+class _BackendFailure(RuntimeError):
+    """Internal retry-aware failure boundary; rendered safely by the caller."""
+
+    def __init__(
+        self,
+        error: BaseException,
+        attempt_count: int,
+        retry_errors: Sequence[str],
+        *,
+        backend: _BackendResult | None = None,
+        response_sha256: str | None = None,
+    ):
+        super().__init__(str(error))
+        self.error = error
+        self.attempt_count = attempt_count
+        self.retry_errors = tuple(retry_errors)
+        self.backend = backend
+        self.response_sha256 = response_sha256
+
+
 def _dotenv_value(path: Path, name: str) -> str | None:
     """Read one value from a dotenv file without executing shell syntax."""
 
@@ -271,6 +291,8 @@ class _BackendResult:
     output_tokens: int | None = None
     cached_input_tokens: int | None = None
     cost_usd: float | None = None
+    attempt_count: int = 1
+    retry_errors: tuple[str, ...] = ()
 
 
 def _reject_json_constant(value: str) -> None:
@@ -806,8 +828,9 @@ class ModelGateway:
                     api_key=api_key,
                     max_output_tokens=effective_max_output_tokens,
                 )
-            _validate_json_schema(backend.payload, schema)
         except Exception as exc:
+            if backend is None and isinstance(exc, _BackendFailure):
+                backend = exc.backend
             safe = _safe_error(
                 exc,
                 (
@@ -828,10 +851,18 @@ class ModelGateway:
                 output_tokens=backend.output_tokens if backend else None,
                 cached_input_tokens=backend.cached_input_tokens if backend else None,
                 cost_usd=backend.cost_usd if backend else None,
-                response_sha256=(_optional_canonical_sha256(backend.payload) if backend else None),
+                response_sha256=(
+                    exc.response_sha256
+                    if isinstance(exc, _BackendFailure) and exc.response_sha256 is not None
+                    else _optional_canonical_sha256(backend.payload)
+                    if backend
+                    else None
+                ),
                 request_sha256=request_sha256,
                 schema_sha256=schema_sha256,
                 error=safe,
+                attempt_count=int(getattr(exc, "attempt_count", 1)),
+                retry_errors=tuple(getattr(exc, "retry_errors", ())),
             )
             raise GatewayError(safe, call) from exc
         finally:
@@ -852,6 +883,8 @@ class ModelGateway:
             response_sha256=_canonical_sha256(backend.payload),
             request_sha256=request_sha256,
             schema_sha256=schema_sha256,
+            attempt_count=backend.attempt_count,
+            retry_errors=backend.retry_errors,
         )
         return GatewayResult(payload=backend.payload, call=call)
 
@@ -891,37 +924,106 @@ class ModelGateway:
         else:
             request["temperature"] = self.config.temperature
 
-        response = await self._post_martian(request, api_key=api_key)
-        if response.status_code >= 400:
-            error = _martian_http_error(response)
-            if _structured_output_unsupported(error):
-                fallback_request = dict(request)
-                fallback_request.pop("response_format", None)
-                response = await self._post_martian(fallback_request, api_key=api_key)
-            if response.status_code >= 400:
-                raise _martian_http_error(response)
+        active_request = request
+        total_attempts = 0
+        retry_errors: list[str] = []
+        total_input_tokens: int | None = None
+        total_output_tokens: int | None = None
+        total_cached_tokens: int | None = None
+        total_cost: float | None = None
 
-        response_data = extract_json_object(response.content)
-        payload = _martian_payload(response_data)
-        input_tokens, output_tokens, cached_tokens = _usage(response_data)
-        resolved_model = _member(response_data, "model")
-        if not isinstance(resolved_model, str) or not resolved_model:
-            resolved_model = model
-        return _BackendResult(
-            payload=payload,
-            resolved_model=resolved_model,
-            input_tokens=input_tokens,
-            output_tokens=output_tokens,
-            cached_input_tokens=cached_tokens,
-            cost_usd=_response_cost(response_data),
-        )
+        def add_integer(total: int | None, value: int | None) -> int | None:
+            return (total or 0) + value if value is not None else total
+
+        def add_float(total: float | None, value: float | None) -> float | None:
+            return (total or 0.0) + value if value is not None else total
+
+        for structured_attempt in range(self.config.max_retries + 1):
+            response, attempt_count, transport_errors = await self._post_martian(
+                active_request, api_key=api_key
+            )
+            total_attempts += attempt_count
+            retry_errors.extend(transport_errors)
+            if response.status_code >= 400:
+                error = _martian_http_error(response)
+                if _structured_output_unsupported(error):
+                    fallback_request = dict(active_request)
+                    fallback_request.pop("response_format", None)
+                    fallback, fallback_attempts, fallback_errors = await self._post_martian(
+                        fallback_request, api_key=api_key
+                    )
+                    active_request = fallback_request
+                    response = fallback
+                    total_attempts += fallback_attempts
+                    retry_errors.extend(fallback_errors)
+                if response.status_code >= 400:
+                    failure = _martian_http_error(response)
+                    raise _BackendFailure(
+                        failure, total_attempts, retry_errors
+                    ) from failure
+
+            response_data: dict[str, Any] | None = None
+            candidate: _BackendResult | None = None
+            try:
+                response_data = extract_json_object(response.content)
+                input_tokens, output_tokens, cached_tokens = _usage(response_data)
+                total_input_tokens = add_integer(total_input_tokens, input_tokens)
+                total_output_tokens = add_integer(total_output_tokens, output_tokens)
+                total_cached_tokens = add_integer(total_cached_tokens, cached_tokens)
+                total_cost = add_float(total_cost, _response_cost(response_data))
+                resolved_model = _member(response_data, "model")
+                if not isinstance(resolved_model, str) or not resolved_model:
+                    resolved_model = model
+                payload = _martian_payload(response_data)
+                candidate = _BackendResult(
+                    payload=payload,
+                    resolved_model=resolved_model,
+                    input_tokens=total_input_tokens,
+                    output_tokens=total_output_tokens,
+                    cached_input_tokens=total_cached_tokens,
+                    cost_usd=total_cost,
+                    attempt_count=total_attempts,
+                    retry_errors=tuple(retry_errors),
+                )
+                _validate_json_schema(candidate.payload, schema)
+            except ResponseFormatError as exc:
+                safe_error = _safe_error(exc, (api_key, self.config.api_key))
+                retry_errors.append(safe_error)
+                if structured_attempt < self.config.max_retries:
+                    continue
+                failure_backend = candidate
+                if failure_backend is None and response_data is not None:
+                    resolved = _member(response_data, "model")
+                    failure_backend = _BackendResult(
+                        payload={},
+                        resolved_model=(
+                            resolved if isinstance(resolved, str) and resolved else model
+                        ),
+                        input_tokens=total_input_tokens,
+                        output_tokens=total_output_tokens,
+                        cached_input_tokens=total_cached_tokens,
+                        cost_usd=total_cost,
+                        attempt_count=total_attempts,
+                        retry_errors=tuple(retry_errors),
+                    )
+                raise _BackendFailure(
+                    exc,
+                    total_attempts,
+                    retry_errors,
+                    backend=failure_backend,
+                    response_sha256=hashlib.sha256(response.content).hexdigest(),
+                ) from exc
+            assert candidate is not None
+            return candidate
+
+        raise AssertionError("structured-output retry loop did not resolve")
 
     async def _post_martian(
         self,
         request: Mapping[str, Any],
         *,
         api_key: str,
-    ) -> httpx.Response:
+    ) -> tuple[httpx.Response, int, tuple[str, ...]]:
         endpoint = f"{self.config.effective_api_base().rstrip('/')}/chat/completions"
         headers = {
             "Authorization": f"Bearer {api_key}",
@@ -929,22 +1031,27 @@ class ModelGateway:
             "User-Agent": f"BugBunny/{__version__}",
         }
         last_error: BaseException | None = None
+        retry_errors: list[str] = []
         for attempt in range(self.config.max_retries + 1):
             try:
                 response = await self._client().post(endpoint, headers=headers, json=dict(request))
             except httpx.TransportError as exc:
                 last_error = exc
+                retry_errors.append(
+                    _safe_error(exc, (api_key, self.config.api_key, self.config.api_base))
+                )
                 if attempt >= self.config.max_retries:
-                    raise
+                    raise _BackendFailure(exc, attempt + 1, retry_errors) from exc
                 await asyncio.sleep(min(2**attempt, 8))
                 continue
             if response.status_code not in {408, 409, 425, 429, 500, 502, 503, 504}:
-                return response
+                return response, attempt + 1, tuple(retry_errors)
             if attempt >= self.config.max_retries:
-                return response
+                return response, attempt + 1, tuple(retry_errors)
+            retry_errors.append(f"HTTP {response.status_code}")
             await asyncio.sleep(_martian_retry_delay(response, attempt))
         assert last_error is not None
-        raise last_error
+        raise _BackendFailure(last_error, self.config.max_retries + 1, retry_errors)
 
     async def _complete_codex(
         self,
@@ -957,18 +1064,32 @@ class ModelGateway:
     ) -> _BackendResult:
         combined_prompt = f"{system_prompt.rstrip()}\n\n{prompt}" if system_prompt else prompt
         last_error: BaseException | None = None
-        for _attempt in range(self.config.max_retries + 1):
+        retry_errors: list[str] = []
+        for attempt in range(self.config.max_retries + 1):
             try:
-                return await self._codex_attempt(
+                result = await self._codex_attempt(
                     combined_prompt,
                     model=model,
                     schema=schema,
                     reasoning_effort=reasoning_effort,
                 )
+                _validate_json_schema(result.payload, schema)
             except (OSError, TimeoutError, ResponseFormatError, RuntimeError) as exc:
                 last_error = exc
+                retry_errors.append(_safe_error(exc, ()))
+            else:
+                return _BackendResult(
+                    payload=result.payload,
+                    resolved_model=result.resolved_model,
+                    input_tokens=result.input_tokens,
+                    output_tokens=result.output_tokens,
+                    cached_input_tokens=result.cached_input_tokens,
+                    cost_usd=result.cost_usd,
+                    attempt_count=attempt + 1,
+                    retry_errors=tuple(retry_errors),
+                )
         assert last_error is not None
-        raise last_error
+        raise _BackendFailure(last_error, self.config.max_retries + 1, retry_errors) from last_error
 
     async def _codex_attempt(
         self,

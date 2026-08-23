@@ -93,6 +93,9 @@ def _artifact(
                 "category": "bug",
                 "confidence": 0.96,
                 "evidence": "catch (_) {}",
+                "root_cause": "The added catch block discards every exception.",
+                "failure_mode": "The caller observes success after the operation fails.",
+                "fix_scope": "local",
                 "trigger": "The operation throws.",
                 "impact": "The error is swallowed.",
                 "suggested_fix": "Propagate the error.",
@@ -111,6 +114,9 @@ def _artifact(
                 "category": "concurrency",
                 "confidence": 0.98,
                 "evidence": "items.forEach(async ...)",
+                "root_cause": "forEach discards the async callback promise.",
+                "failure_mode": "The operation completes before its work finishes.",
+                "fix_scope": "local",
                 "trigger": "The callback suspends.",
                 "impact": "The promise is not awaited.",
                 "suggested_fix": "Await Promise.all.",
@@ -118,7 +124,7 @@ def _artifact(
             },
         ]
     return {
-        "schema_version": "bugbunny-review-v1",
+        "schema_version": "bugbunny-review-v2",
         "tool": "bugbunny",
         "tool_version": __version__,
         "status": "completed",
@@ -153,6 +159,7 @@ def _artifact(
             "dataset_golden_sha256": dataset.manifest.golden_sha256,
         },
         "findings": findings,
+        "validated_findings": findings,
     }
 
 
@@ -378,6 +385,53 @@ def test_clean_artifact_still_exports_an_empty_review_for_recall_accounting(
     assert review["review_comments"] == []
     assert candidates[GOLDEN_ONE][tool_id] == []
     assert dedup[GOLDEN_ONE][tool_id] == []
+
+
+def test_export_tracks_have_distinct_identities_and_family_track_preserves_locations(
+    tmp_path: Path,
+) -> None:
+    benchmark_path = tmp_path / "benchmark_data.json"
+    _write_benchmark(benchmark_path)
+    artifact = _artifact(benchmark_path)
+    for finding in artifact["findings"]:
+        finding["category"] = "bug"
+        finding["root_cause"] = "A repeated nullable lookup is dereferenced."
+        finding["failure_mode"] = "A missing record raises during the request."
+        finding["verifier_confidence"] = 0.93
+        finding["verifier_family_key"] = "nullable_lookup"
+    artifact["validated_findings"] = [dict(item) for item in artifact["findings"]]
+    results = tmp_path / "results"
+
+    generator = export_codereviewbench_results(
+        benchmark_path,
+        {GOLDEN_ONE: artifact},
+        output_dir=results,
+        judge_model="judge/model",
+        finding_stage="generator",
+    )
+    balanced = export_codereviewbench_results(
+        benchmark_path,
+        {GOLDEN_ONE: artifact},
+        output_dir=results,
+        judge_model="judge/model",
+        finding_stage="balanced",
+    )
+    family = export_codereviewbench_results(
+        benchmark_path,
+        {GOLDEN_ONE: artifact},
+        output_dir=results,
+        judge_model="judge/model",
+        finding_stage="family",
+    )
+
+    assert len({generator.tool_id, balanced.tool_id, family.tool_id}) == 3
+    assert generator.candidate_count == balanced.candidate_count == 2
+    assert family.candidate_count == 1
+    candidates = json.loads(family.candidates_path.read_text())
+    family_text = candidates[GOLDEN_ONE][family.tool_id][0]["text"]
+    assert "Related locations:" in family_text
+    audit = json.loads(family.candidate_audit_path.read_text())
+    assert len(audit["cases"][GOLDEN_ONE][0]["family_member_ids"]) == 2
 
 
 def test_export_rejects_stale_or_non_fixture_artifact_provenance(tmp_path: Path) -> None:

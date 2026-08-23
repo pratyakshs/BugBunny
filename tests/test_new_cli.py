@@ -64,7 +64,7 @@ class _Artifact:
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "schema_version": "bugbunny-review-v1",
+            "schema_version": "bugbunny-review-v2",
             "status": self.status,
             "run_id": self.run_id,
             "config": {"model": self.model},
@@ -113,6 +113,7 @@ def test_config_defaults_and_does_not_serialize_credentials() -> None:
     gateway_config = cli._gateway_config(balanced)
 
     assert review_config.verifier_model == "same"
+    assert review_config.verification_semantic_retries == 2
     assert "do-not-persist" not in json.dumps(review_config.to_dict())
     assert gateway_config.resolved_api_key() == "do-not-persist"
 
@@ -120,6 +121,16 @@ def test_config_defaults_and_does_not_serialize_credentials() -> None:
         ["review-pr", "https://github.com/o/r/pull/1", "--profile", "fast"]
     )
     assert cli._review_config(fast).verifier_model is None
+
+    no_semantic_retry = cli.build_parser().parse_args(
+        [
+            "review-pr",
+            "https://github.com/o/r/pull/1",
+            "--verification-semantic-retries",
+            "0",
+        ]
+    )
+    assert cli._review_config(no_semantic_retry).verification_semantic_retries == 0
 
 
 def test_fast_profile_rejects_explicit_verifier() -> None:
@@ -304,7 +315,7 @@ def test_resume_requires_exact_dataset_snapshot_config_and_prompt_identity(
     )
     path = tmp_path / "review.json"
     payload = {
-        "schema_version": "bugbunny-review-v1",
+        "schema_version": "bugbunny-review-v2",
         "tool_version": __version__,
         "status": "completed",
         "config": config.to_dict(),
@@ -395,7 +406,7 @@ def test_run_dir_export_requires_complete_checksum_bound_population(tmp_path: Pa
         "verification": None,
     }
     artifact = {
-        "schema_version": "bugbunny-review-v1",
+        "schema_version": "bugbunny-review-v2",
         "status": "completed",
         "config": config,
         "runtime": runtime,

@@ -17,6 +17,7 @@ Category = Literal[
     "speculative",
 ]
 ReviewProfile = Literal["fast", "balanced"]
+ReviewPolicyName = Literal["production", "codereviewbench"]
 ContextMode = Literal["curated", "agentic"]
 ReviewSide = Literal["RIGHT", "LEFT"]
 
@@ -61,6 +62,9 @@ class ReviewConfig:
     model: str = "openai/gpt-5.6-luna"
     verifier_model: str | None = "same"
     profile: ReviewProfile = "balanced"
+    review_policy: ReviewPolicyName = "production"
+    review_policy_version: str = "bugbunny-production-policy-v1"
+    review_policy_sha256: str = ""
     reasoning_effort: str = "low"
     verifier_reasoning_effort: str = "low"
     context_mode: ContextMode = "curated"
@@ -88,10 +92,13 @@ class ReviewConfig:
     llm_concurrency: int = 4
     verification_batch_size: int = 20
     verification_batch_chars: int = 48_000
+    verification_semantic_retries: int = 2
     timeout_seconds: int = 300
     max_output_tokens: int = 32_768
     verifier_max_output_tokens: int = 32_768
     min_verifier_confidence: float = 0.78
+    operating_point_id: str | None = None
+    operating_point_sha256: str | None = None
     include_categories: tuple[str, ...] = (
         "bug",
         "security",
@@ -101,13 +108,20 @@ class ReviewConfig:
         "performance",
         "test_gap",
         "doc_defect",
-        "style",
-        "speculative",
     )
 
     def validate(self) -> None:
         if self.profile not in {"fast", "balanced"}:
             raise ValueError("profile must be 'fast' or 'balanced'")
+        from bugbunny.policy import get_review_policy
+
+        policy = get_review_policy(self.review_policy)
+        if self.review_policy_version != policy.version:
+            raise ValueError("review_policy_version does not match the selected policy")
+        if self.review_policy_sha256 and self.review_policy_sha256 != policy.sha256:
+            raise ValueError("review_policy_sha256 does not match the selected policy")
+        if not set(self.include_categories) <= set(policy.categories):
+            raise ValueError("include_categories exceed the selected review policy")
         if self.context_mode not in {"curated", "agentic"}:
             raise ValueError("context_mode must be 'curated' or 'agentic'")
         if self.context_budget_source not in {"fixed", "declared_window"}:
@@ -172,6 +186,8 @@ class ReviewConfig:
             value = getattr(self, name)
             if value is not None and value <= 0:
                 raise ValueError(f"{name} must be positive when provided")
+        if not 0 <= self.verification_semantic_retries <= 5:
+            raise ValueError("verification_semantic_retries must be between 0 and 5")
         if self.context_requests_per_round > 32:
             raise ValueError("context_requests_per_round cannot exceed 32")
         if self.context_selection_rounds > 8:
@@ -244,11 +260,15 @@ class Finding:
     impact: str
     suggested_fix: str
     chunk_id: str
+    root_cause: str = ""
+    failure_mode: str = ""
+    fix_scope: str = "local"
     side: ReviewSide = "RIGHT"
     finding_id: str = ""
     fingerprint: str = ""
     verifier_confidence: float | None = None
     verifier_reason: str | None = None
+    verifier_family_key: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -269,6 +289,9 @@ class Finding:
             impact=str(value.get("impact", "")).strip(),
             suggested_fix=str(value.get("suggested_fix", "")).strip(),
             chunk_id=chunk_id or str(value.get("chunk_id", "")),
+            root_cause=str(value.get("root_cause", "")).strip(),
+            failure_mode=str(value.get("failure_mode", "")).strip(),
+            fix_scope=str(value.get("fix_scope", "local")).strip().lower(),
             side=str(value.get("side", "RIGHT")).upper(),  # type: ignore[arg-type]
         )
 
@@ -303,6 +326,8 @@ class CallRecord:
     request_sha256: str | None = None
     schema_sha256: str | None = None
     error: str | None = None
+    attempt_count: int = 1
+    retry_errors: tuple[str, ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -349,6 +374,7 @@ class ReviewArtifact:
     context: dict[str, Any]
     calls: list[CallRecord] = field(default_factory=list)
     raw_findings: list[Finding] = field(default_factory=list)
+    validated_findings: list[Finding] = field(default_factory=list)
     rejected_findings: list[RejectedFinding] = field(default_factory=list)
     findings: list[Finding] = field(default_factory=list)
     diagnostics: list[dict[str, Any]] = field(default_factory=list)
@@ -372,6 +398,7 @@ class ReviewArtifact:
             "context": self.context,
             "calls": [item.to_dict() for item in self.calls],
             "raw_findings": [item.to_dict() for item in self.raw_findings],
+            "validated_findings": [item.to_dict() for item in self.validated_findings],
             "rejected_findings": [item.to_dict() for item in self.rejected_findings],
             "findings": [item.to_dict() for item in self.findings],
             "diagnostics": self.diagnostics,

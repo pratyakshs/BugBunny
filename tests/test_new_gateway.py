@@ -212,6 +212,69 @@ async def test_martian_retries_transient_statuses():
 
     assert attempts == 2
     assert result.payload == {"findings": []}
+    assert result.call.attempt_count == 2
+    assert result.call.retry_errors == ("HTTP 429",)
+
+
+@pytest.mark.asyncio
+async def test_martian_retries_locally_schema_invalid_success_response():
+    attempts = 0
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        content = '{"wrong":[]}' if attempts == 1 else '{"findings":[]}'
+        return httpx.Response(200, json=_response(content))
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        result = await ModelGateway(
+            GatewayConfig(api_key="test-key", max_retries=1), http_client=client
+        ).complete_json(
+            "review",
+            model="openai/gpt-test",
+            stage="generation",
+            schema_name="findings",
+            schema=SCHEMA,
+        )
+
+    assert attempts == 2
+    assert result.payload == {"findings": []}
+    assert result.call.attempt_count == 2
+    assert result.call.input_tokens == 62
+    assert result.call.output_tokens == 14
+    assert result.call.cached_input_tokens == 22
+    assert result.call.cost_usd == 0.0025
+    assert result.call.retry_errors == ("ResponseFormatError: $.findings is required",)
+
+
+@pytest.mark.asyncio
+async def test_martian_retries_unparseable_json_success_response():
+    attempts = 0
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        content = "not json" if attempts == 1 else '{"findings":[]}'
+        return httpx.Response(200, json=_response(content))
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        result = await ModelGateway(
+            GatewayConfig(api_key="test-key", max_retries=1), http_client=client
+        ).complete_json(
+            "review",
+            model="openai/gpt-test",
+            stage="generation",
+            schema_name="findings",
+            schema=SCHEMA,
+        )
+
+    assert attempts == 2
+    assert result.call.attempt_count == 2
+    assert result.call.input_tokens == 62
+    assert result.call.output_tokens == 14
+    assert result.call.cached_input_tokens == 22
+    assert len(result.call.retry_errors) == 1
+    assert "could not parse model JSON" in result.call.retry_errors[0]
 
 
 @pytest.mark.asyncio

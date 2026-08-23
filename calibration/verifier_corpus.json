@@ -1,0 +1,171 @@
+{
+  "schema_version": "bugbunny-verifier-calibration-corpus-v1",
+  "description": "Constructed code-review candidates used only to calibrate the verifier confidence threshold.",
+  "provenance": {
+    "contains_codereviewbench": false,
+    "construction": "Manually authored synthetic patches and contracts; no benchmark pull request, golden comment, or model output was used.",
+    "labeling": "Each label follows directly from the supplied patch and context. Negative cases are intentionally plausible but contradicted by explicit evidence."
+  },
+  "cases": [
+    {
+      "case_id": "positive-off-by-one-array",
+      "valid_candidate": true,
+      "rationale": "The loop reads items[length], which is outside the array.",
+      "patch": "@@ -8,1 +8,1 @@\n- for (let i = 0; i < items.length; i++) {\n+ for (let i = 0; i <= items.length; i++) {",
+      "context": "items is a normal JavaScript array. processItem dereferences its argument.",
+      "finding": {"title":"Loop reads one element past the array","path":"src/process.ts","side":"RIGHT","line":8,"end_line":8,"severity":"high","category":"bug","confidence":0.92,"evidence":"for (let i = 0; i <= items.length; i++) {","root_cause":"The loop condition permits i to equal items.length.","failure_mode":"processItem receives undefined on the final iteration.","fix_scope":"local","trigger":"The array is iterated to completion.","impact":"The final call dereferences undefined and throws.","suggested_fix":"Restore the strict less-than condition."}
+    },
+    {
+      "case_id": "positive-inverted-authorization",
+      "valid_candidate": true,
+      "rationale": "The changed branch permits requests exactly when permission is absent.",
+      "patch": "@@ -21,1 +21,1 @@\n- if (user.canEdit(project)) return update(project);\n+ if (!user.canEdit(project)) return update(project);",
+      "context": "canEdit returns true only for project editors. update mutates the project immediately.",
+      "finding": {"title":"Authorization condition is inverted","path":"api/project.js","side":"RIGHT","line":21,"end_line":21,"severity":"critical","category":"security","confidence":0.97,"evidence":"if (!user.canEdit(project)) return update(project);","root_cause":"Negating canEdit reverses the authorization gate.","failure_mode":"Unauthorized users enter the mutation path.","fix_scope":"local","trigger":"A non-editor calls the endpoint.","impact":"The caller can modify a project without permission.","suggested_fix":"Remove the negation and reject non-editors."}
+    },
+    {
+      "case_id": "positive-unawaited-batch",
+      "valid_candidate": true,
+      "rationale": "forEach does not await async callback promises.",
+      "patch": "@@ -14,1 +14,1 @@\n- await Promise.all(rows.map(save));\n+ rows.forEach(async row => save(row));",
+      "context": "save returns a Promise and may reject. The enclosing function returns immediately after this line.",
+      "finding": {"title":"Async saves are not awaited","path":"src/import.ts","side":"RIGHT","line":14,"end_line":14,"severity":"high","category":"concurrency","confidence":0.94,"evidence":"rows.forEach(async row => save(row));","root_cause":"forEach discards the promises returned by its callback.","failure_mode":"The import returns before saves finish and rejections are unobserved.","fix_scope":"local","trigger":"At least one row requires asynchronous persistence.","impact":"Callers observe premature success or unhandled rejection.","suggested_fix":"Await Promise.all(rows.map(save))."}
+    },
+    {
+      "case_id": "positive-cross-tenant-cache-key",
+      "valid_candidate": true,
+      "rationale": "The new cache key no longer separates tenants.",
+      "patch": "@@ -32,1 +32,1 @@\n- key = f\"{tenant_id}:{user_id}\"\n+ key = str(user_id)",
+      "context": "User numeric IDs are unique only within a tenant. The cache is shared across all tenants.",
+      "finding": {"title":"Cache key can return another tenant's user","path":"service/users.py","side":"RIGHT","line":32,"end_line":32,"severity":"critical","category":"data","confidence":0.96,"evidence":"key = str(user_id)","root_cause":"The shared cache key omits tenant_id.","failure_mode":"Equal per-tenant user IDs collide in one cache entry.","fix_scope":"local","trigger":"Two tenants request users with the same numeric ID.","impact":"One tenant may receive another tenant's user data.","suggested_fix":"Include tenant_id in the cache key."}
+    },
+    {
+      "case_id": "positive-unbounded-retry",
+      "valid_candidate": true,
+      "rationale": "The retry path recurses without a counter or terminal condition.",
+      "patch": "@@ -40,2 +40,2 @@\n  except TemporaryError:\n+     return fetch_record(record_id)",
+      "context": "TemporaryError can persist indefinitely. fetch_record has no implicit retry limit.",
+      "finding": {"title":"Persistent failures recurse until stack exhaustion","path":"client.py","side":"RIGHT","line":41,"end_line":41,"severity":"high","category":"bug","confidence":0.9,"evidence":"return fetch_record(record_id)","root_cause":"The exception handler recursively retries with no attempt bound.","failure_mode":"A persistent outage grows the call stack until it fails.","fix_scope":"local","trigger":"The service repeatedly raises TemporaryError.","impact":"The worker eventually crashes instead of returning a bounded failure.","suggested_fix":"Use a bounded iterative retry policy with backoff."}
+    },
+    {
+      "case_id": "positive-nullable-lookup",
+      "valid_candidate": true,
+      "rationale": "find may return undefined and the change dereferences it.",
+      "patch": "@@ -17,1 +17,1 @@\n- return match?.email ?? null;\n+ return match.email;",
+      "context": "Array.find returns undefined when the address is absent. Missing users are a supported input.",
+      "finding": {"title":"Missing user is dereferenced","path":"src/users.ts","side":"RIGHT","line":17,"end_line":17,"severity":"high","category":"bug","confidence":0.93,"evidence":"return match.email;","root_cause":"The change removes the null-safe access from a nullable lookup.","failure_mode":"Reading email from undefined throws.","fix_scope":"local","trigger":"No user matches the requested address.","impact":"A supported miss becomes a server error.","suggested_fix":"Retain optional access and the null fallback."}
+    },
+    {
+      "case_id": "positive-path-traversal",
+      "valid_candidate": true,
+      "rationale": "An untrusted relative name is joined directly below the upload root.",
+      "patch": "@@ -55,1 +55,1 @@\n- target = safe_child(UPLOAD_ROOT, request.name)\n+ target = os.path.join(UPLOAD_ROOT, request.name)",
+      "context": "request.name is client-controlled and may contain ../. safe_child previously rejected escapes.",
+      "finding": {"title":"Upload name can escape the storage root","path":"uploads.py","side":"RIGHT","line":55,"end_line":55,"severity":"critical","category":"security","confidence":0.98,"evidence":"target = os.path.join(UPLOAD_ROOT, request.name)","root_cause":"os.path.join does not constrain an untrusted relative path to its base.","failure_mode":"Traversal segments resolve outside UPLOAD_ROOT.","fix_scope":"local","trigger":"A client supplies a name containing parent-directory segments.","impact":"The upload can overwrite files outside its allowed directory.","suggested_fix":"Resolve and verify containment or retain safe_child."}
+    },
+    {
+      "case_id": "positive-stalled-pagination",
+      "valid_candidate": true,
+      "rationale": "The loop condition is driven by cursor, but cursor is no longer advanced.",
+      "patch": "@@ -27,1 +27,1 @@\n- cursor = page.next_cursor\n+ log.debug(\"page complete\")",
+      "context": "The surrounding loop is while cursor is not None and fetches using cursor. A non-final page returns a non-null next_cursor.",
+      "finding": {"title":"Pagination repeats the same page forever","path":"sync.go","side":"RIGHT","line":27,"end_line":27,"severity":"high","category":"bug","confidence":0.91,"evidence":"log.debug(\"page complete\")","root_cause":"The changed loop no longer assigns page.next_cursor to cursor.","failure_mode":"The next iteration fetches the same non-final page.","fix_scope":"local","trigger":"The remote result contains more than one page.","impact":"Synchronization loops indefinitely and duplicates work.","suggested_fix":"Advance cursor from page.next_cursor before the next iteration."}
+    },
+    {
+      "case_id": "positive-wrong-duration-unit",
+      "valid_candidate": true,
+      "rationale": "Milliseconds must be divided by 1000, not 100.",
+      "patch": "@@ -9,1 +9,1 @@\n- seconds = elapsed_ms / 1000.0\n+ seconds = elapsed_ms / 100.0",
+      "context": "elapsed_ms is measured in milliseconds. seconds is sent to a seconds-based timeout API.",
+      "finding": {"title":"Timeout is ten times too long","path":"timeout.py","side":"RIGHT","line":9,"end_line":9,"severity":"medium","category":"bug","confidence":0.95,"evidence":"seconds = elapsed_ms / 100.0","root_cause":"The millisecond-to-second conversion uses the wrong divisor.","failure_mode":"The timeout API receives ten times the intended duration.","fix_scope":"local","trigger":"Any nonzero timeout is converted.","impact":"Failed operations remain blocked much longer than configured.","suggested_fix":"Divide elapsed_ms by 1000.0."}
+    },
+    {
+      "case_id": "positive-commit-before-validation",
+      "valid_candidate": true,
+      "rationale": "The transaction commits before the new validation can reject the record.",
+      "patch": "@@ -63,2 +63,2 @@\n+ tx.commit()\n+ validate_account(account)",
+      "context": "validate_account raises ValidationError for malformed accounts. commit makes writes durable.",
+      "finding": {"title":"Invalid account is committed before validation","path":"account.rb","side":"RIGHT","line":63,"end_line":63,"severity":"high","category":"data","confidence":0.93,"evidence":"tx.commit()","root_cause":"The transaction is committed before the validation that can fail.","failure_mode":"A later ValidationError cannot roll back the durable write.","fix_scope":"local","trigger":"The account violates a validation rule.","impact":"Invalid data remains stored even though the operation reports failure.","suggested_fix":"Validate before committing the transaction."}
+    },
+    {
+      "case_id": "negative-null-fallback-present",
+      "valid_candidate": false,
+      "rationale": "The expression explicitly supplies a fallback for a missing lookup.",
+      "patch": "@@ -11,1 +11,1 @@\n- return profile.name\n+ return profile?.name ?? \"anonymous\"",
+      "context": "profile may be undefined. Optional chaining and nullish coalescing are supported by the runtime.",
+      "finding": {"title":"Missing profile is dereferenced","path":"ui/name.ts","side":"RIGHT","line":11,"end_line":11,"severity":"high","category":"bug","confidence":0.75,"evidence":"return profile?.name ?? \"anonymous\"","root_cause":"The changed expression reads name from an undefined profile.","failure_mode":"A missing profile throws during rendering.","fix_scope":"local","trigger":"profile is undefined.","impact":"The page fails instead of showing an anonymous label.","suggested_fix":"Use optional chaining with a fallback."}
+    },
+    {
+      "case_id": "negative-bigint-overflow",
+      "valid_candidate": false,
+      "rationale": "The calculation is performed with arbitrary-precision BigInt values.",
+      "patch": "@@ -20,1 +20,1 @@\n- const total = count * price;\n+ const total = BigInt(count) * BigInt(price);",
+      "context": "Both downstream serialization and storage accept BigInt without narrowing to Number.",
+      "finding": {"title":"Large totals overflow integer precision","path":"billing.ts","side":"RIGHT","line":20,"end_line":20,"severity":"high","category":"data","confidence":0.72,"evidence":"const total = BigInt(count) * BigInt(price);","root_cause":"The multiplication uses fixed-width integer arithmetic.","failure_mode":"Large products wrap or lose precision.","fix_scope":"local","trigger":"count and price produce a value above the safe integer range.","impact":"The customer is charged an incorrect total.","suggested_fix":"Use arbitrary-precision integer arithmetic."}
+    },
+    {
+      "case_id": "negative-lock-protects-update",
+      "valid_candidate": false,
+      "rationale": "The newly introduced update is inside the same lock used by every reader and writer.",
+      "patch": "@@ -31,1 +31,2 @@\n  with self._lock:\n+     self.balance += amount",
+      "context": "_lock is a non-reentrant mutex. All balance reads and writes in the class acquire _lock.",
+      "finding": {"title":"Concurrent deposits can lose updates","path":"wallet.py","side":"RIGHT","line":32,"end_line":32,"severity":"high","category":"concurrency","confidence":0.7,"evidence":"self.balance += amount","root_cause":"The read-modify-write executes without synchronization.","failure_mode":"Two threads overwrite one another's balance increments.","fix_scope":"local","trigger":"Two deposits execute concurrently.","impact":"One deposit disappears from the balance.","suggested_fix":"Guard the update with the wallet lock."}
+    },
+    {
+      "case_id": "negative-parameterized-query",
+      "valid_candidate": false,
+      "rationale": "The user value is passed as a bound parameter rather than SQL text.",
+      "patch": "@@ -18,1 +18,1 @@\n- db.execute(f\"SELECT * FROM users WHERE name='{name}'\")\n+ db.execute(\"SELECT * FROM users WHERE name=?\", (name,))",
+      "context": "The database driver implements ? placeholders as bound parameters.",
+      "finding": {"title":"User name enables SQL injection","path":"users.py","side":"RIGHT","line":18,"end_line":18,"severity":"critical","category":"security","confidence":0.78,"evidence":"db.execute(\"SELECT * FROM users WHERE name=?\", (name,))","root_cause":"Untrusted name is concatenated into SQL syntax.","failure_mode":"SQL metacharacters alter the query.","fix_scope":"local","trigger":"A caller supplies a crafted name.","impact":"The caller can read or modify arbitrary database data.","suggested_fix":"Use a bound query parameter."}
+    },
+    {
+      "case_id": "negative-context-manager-closes",
+      "valid_candidate": false,
+      "rationale": "Python's with statement closes the file on every exit path.",
+      "patch": "@@ -7,1 +7,2 @@\n+ with open(path, \"rb\") as stream:\n+     return parse(stream)",
+      "context": "parse consumes the stream synchronously before returning. Standard file context-manager semantics apply.",
+      "finding": {"title":"File descriptor leaks after parsing","path":"loader.py","side":"RIGHT","line":7,"end_line":7,"severity":"medium","category":"performance","confidence":0.68,"evidence":"with open(path, \"rb\") as stream:","root_cause":"The opened stream is never closed.","failure_mode":"Each request leaves one descriptor allocated.","fix_scope":"local","trigger":"Many files are parsed.","impact":"The process eventually exhausts file descriptors.","suggested_fix":"Close the stream in a finally block or context manager."}
+    },
+    {
+      "case_id": "negative-cursor-advances",
+      "valid_candidate": false,
+      "rationale": "The cursor is explicitly advanced on every non-final iteration.",
+      "patch": "@@ -44,1 +44,2 @@\n+ items.extend(page.items)\n+ cursor = page.next_cursor",
+      "context": "The loop exits when cursor becomes null. next_cursor differs from the current cursor for non-final pages.",
+      "finding": {"title":"Pagination fetches the same page forever","path":"fetcher.py","side":"RIGHT","line":45,"end_line":45,"severity":"high","category":"bug","confidence":0.71,"evidence":"cursor = page.next_cursor","root_cause":"The loop never advances its pagination cursor.","failure_mode":"Every iteration requests the same page.","fix_scope":"local","trigger":"The result contains multiple pages.","impact":"The worker loops indefinitely.","suggested_fix":"Assign page.next_cursor to cursor."}
+    },
+    {
+      "case_id": "negative-explicit-utc",
+      "valid_candidate": false,
+      "rationale": "The timestamp is parsed with a required Z suffix and normalized as UTC.",
+      "patch": "@@ -12,1 +12,1 @@\n- dt = parse_local(value)\n+ dt = datetime.fromisoformat(value.replace(\"Z\", \"+00:00\"))",
+      "context": "The API schema requires value to end in Z. fromisoformat retains the +00:00 timezone.",
+      "finding": {"title":"Timestamp is interpreted in the server timezone","path":"dates.py","side":"RIGHT","line":12,"end_line":12,"severity":"medium","category":"bug","confidence":0.69,"evidence":"dt = datetime.fromisoformat(value.replace(\"Z\", \"+00:00\"))","root_cause":"The parser creates a naive local datetime.","failure_mode":"UTC values shift according to server timezone.","fix_scope":"local","trigger":"The server does not run in UTC.","impact":"Scheduled events occur at the wrong instant.","suggested_fix":"Parse the Z suffix as explicit UTC."}
+    },
+    {
+      "case_id": "negative-upstream-type-contract",
+      "valid_candidate": false,
+      "rationale": "The only caller and static type guarantee a nonnegative integer.",
+      "patch": "@@ -22,1 +22,1 @@\n- repeat(max(0, count))\n+ repeat(count)",
+      "context": "count has type NonNegativeInt, whose constructor rejects negative values. This function is private and its only caller passes that type.",
+      "finding": {"title":"Negative count reaches repeat","path":"render.kt","side":"RIGHT","line":22,"end_line":22,"severity":"medium","category":"bug","confidence":0.64,"evidence":"repeat(count)","root_cause":"The change removes validation for negative counts.","failure_mode":"repeat throws for a negative argument.","fix_scope":"local","trigger":"A caller supplies a negative count.","impact":"Rendering crashes.","suggested_fix":"Clamp count to zero before calling repeat."}
+    },
+    {
+      "case_id": "negative-error-propagated",
+      "valid_candidate": false,
+      "rationale": "The catch adds context and then explicitly rethrows the same error.",
+      "patch": "@@ -30,2 +30,3 @@\n+ catch (err) {\n+   logger.error({err}, \"sync failed\"); throw err;\n+ }",
+      "context": "The caller handles the propagated rejection. logger.error does not alter err.",
+      "finding": {"title":"Synchronization errors are swallowed","path":"sync.js","side":"RIGHT","line":31,"end_line":31,"severity":"high","category":"bug","confidence":0.73,"evidence":"logger.error({err}, \"sync failed\"); throw err;","root_cause":"The catch block logs but does not propagate the error.","failure_mode":"The function resolves successfully after a failed sync.","fix_scope":"local","trigger":"Synchronization throws.","impact":"Callers proceed as if stale data were synchronized.","suggested_fix":"Rethrow the caught error after logging."}
+    },
+    {
+      "case_id": "negative-eager-prefetch",
+      "valid_candidate": false,
+      "rationale": "The relation is eagerly loaded in the query before the loop.",
+      "patch": "@@ -50,1 +50,2 @@\n+ orders = Order.objects.select_related(\"customer\").all()\n+ return [order.customer.name for order in orders]",
+      "context": "Django select_related joins the customer table in the initial query. Accessing order.customer performs no additional query.",
+      "finding": {"title":"Customer access causes an N+1 query","path":"orders.py","side":"RIGHT","line":51,"end_line":51,"severity":"medium","category":"performance","confidence":0.76,"evidence":"return [order.customer.name for order in orders]","root_cause":"Each loop iteration lazily fetches its customer.","failure_mode":"Listing N orders issues N additional queries.","fix_scope":"local","trigger":"The list contains many orders.","impact":"Request latency grows linearly with database round trips.","suggested_fix":"Eager-load customer before iterating."}
+    }
+  ]
+}

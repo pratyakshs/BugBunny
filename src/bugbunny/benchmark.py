@@ -16,14 +16,16 @@ from collections.abc import Iterable, Mapping
 from copy import deepcopy
 from dataclasses import asdict, dataclass, is_dataclass
 from pathlib import Path, PurePosixPath
-from typing import Any
+from typing import Any, Literal
 
 from bugbunny import __version__
+from bugbunny.families import group_finding_families
 from bugbunny.schemas import CATEGORIES, SEVERITIES
 from bugbunny.util import atomic_write_json, canonical_json, sha256_bytes, sha256_text
 from bugbunny.validation import artifact_location_is_commentable
 
 STANDARD_CASE_COUNT = 50
+FindingStage = Literal["generator", "balanced", "family"]
 _PR_URL = re.compile(r"^https://github\.com/([^/]+)/([^/]+)/pull/(\d+)(?:[/?#].*)?$")
 _TOOL_COMPONENT = re.compile(r"[^a-z0-9]+")
 
@@ -88,7 +90,9 @@ class CodeReviewBenchExport:
     candidates_path: Path
     dedup_groups_path: Path
     manifest_path: Path
+    candidate_audit_path: Path
     tool_id: str
+    finding_stage: FindingStage
     review_count: int
     candidate_count: int
     input_benchmark_sha256: str
@@ -376,7 +380,7 @@ def _normalize_artifacts(
     normalized: dict[str, dict[str, Any]] = {}
     for supplied_key, raw in values:
         artifact = _artifact_mapping(raw)
-        if artifact.get("schema_version") != "bugbunny-review-v1":
+        if artifact.get("schema_version") != "bugbunny-review-v2":
             raise ValueError("only native BugBunny ReviewArtifacts can be exported")
         if artifact.get("tool") != "bugbunny" or artifact.get("tool_version") != __version__:
             raise ValueError("artifact tool identity/version does not match this BugBunny build")
@@ -493,13 +497,18 @@ def _render_candidate_text(finding: Mapping[str, Any]) -> str:
     ):
         if value:
             sections.append(f"{label}: {value}" if label else value)
+    related = finding.get("related_locations")
+    if isinstance(related, list) and related:
+        sections.append("Related locations: " + ", ".join(str(value) for value in related))
     return "\n\n".join(sections)
 
 
-def _direct_outputs(
+def _direct_outputs_for_findings(
     artifact: Mapping[str, Any],
-) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    raw_findings = artifact.get("findings", [])
+    raw_findings: list[Any],
+    *,
+    source: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     ordered = sorted(
         (dict(value) for value in raw_findings if isinstance(value, Mapping)),
         key=_finding_sort_key,
@@ -511,6 +520,7 @@ def _direct_outputs(
     )
     comments: list[dict[str, Any]] = []
     candidates: list[dict[str, Any]] = []
+    audit: list[dict[str, Any]] = []
     seen: set[tuple[str, str | None, int | None, str]] = set()
     diff = artifact.get("diff")
     for index, finding in enumerate(ordered):
@@ -559,6 +569,9 @@ def _direct_outputs(
         for field in (
             "title",
             "body",
+            "root_cause",
+            "failure_mode",
+            "fix_scope",
             "trigger",
             "impact",
             "evidence",
@@ -585,8 +598,69 @@ def _direct_outputs(
             raise ValueError(f"final finding {index} duplicates another final finding")
         seen.add(identity)
         comments.append({"path": path, "line": line, "body": text, "created_at": completed_at})
-        candidates.append({"text": text, "path": path, "line": line, "source": "direct"})
-    return comments, candidates
+        candidates.append({"text": text, "path": path, "line": line, "source": source})
+        family_members = finding.get("family_member_ids")
+        audit.append(
+            {
+                "candidate_index": index,
+                "finding_id": finding_id,
+                "fingerprint": fingerprint,
+                "source": source,
+                "path": path,
+                "side": side,
+                "line": line,
+                "end_line": end_line,
+                "category": finding.get("category"),
+                "severity": finding.get("severity"),
+                "generator_confidence": confidence,
+                "verifier_confidence": finding.get("verifier_confidence"),
+                "verifier_family_key": finding.get("verifier_family_key"),
+                "family_member_ids": (
+                    list(family_members)
+                    if isinstance(family_members, list)
+                    else [finding_id]
+                ),
+                "candidate_sha256": sha256_text(text),
+            }
+        )
+    return comments, candidates, audit
+
+
+def _direct_outputs(
+    artifact: Mapping[str, Any],
+    *,
+    finding_stage: FindingStage,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    if finding_stage == "generator":
+        raw = artifact.get("validated_findings")
+        if not isinstance(raw, list):
+            raise ValueError("generator export requires a validated_findings array")
+        return _direct_outputs_for_findings(artifact, raw, source="generator-validated")
+
+    raw = artifact.get("findings")
+    if not isinstance(raw, list):
+        raise ValueError("balanced export requires a findings array")
+    if finding_stage == "balanced":
+        return _direct_outputs_for_findings(artifact, raw, source="balanced-verified")
+    if finding_stage != "family":
+        raise ValueError(f"unknown finding stage: {finding_stage}")
+
+    # Validate every atomic member before presenting a family representative.
+    _direct_outputs_for_findings(artifact, raw, source="balanced-verified")
+    family_findings: list[dict[str, Any]] = []
+    for family in group_finding_families(
+        value for value in raw if isinstance(value, Mapping)
+    ):
+        primary = dict(family.primary)
+        primary["related_locations"] = [
+            f"{member.get('path')}:{member.get('line')} ({member.get('side', 'RIGHT')})"
+            for member in family.members[1:]
+        ]
+        primary["family_member_ids"] = [
+            str(member.get("finding_id") or "") for member in family.members
+        ]
+        family_findings.append(primary)
+    return _direct_outputs_for_findings(artifact, family_findings, source="verified-family")
 
 
 def _read_optional_object(path: Path) -> dict[str, Any]:
@@ -776,6 +850,24 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
     artifact_hashes = manifest.get("artifact_canonical_sha256")
     if not isinstance(artifact_hashes, Mapping) or set(artifact_hashes) != review_urls:
         raise ValueError("export artifact population does not match the Step 3 files")
+    audit_name = manifest.get("candidate_audit_file")
+    if not isinstance(audit_name, str) or PurePosixPath(audit_name).name != audit_name:
+        raise ValueError("export manifest has an invalid candidate audit path")
+    audit_path = path.parent / audit_name
+    if not audit_path.is_file() or sha256_bytes(audit_path.read_bytes()) != manifest.get(
+        "candidate_audit_sha256"
+    ):
+        raise ValueError("candidate audit sidecar does not match the export manifest")
+    audit = _read_optional_object(audit_path)
+    if (
+        audit.get("schema_version") != "bugbunny-candidate-audit-v1"
+        or audit.get("tool_id") != tool_id
+        or not isinstance(audit.get("cases"), Mapping)
+        or set(audit["cases"]) != review_urls
+        or sum(len(value) for value in audit["cases"].values() if isinstance(value, list))
+        != candidate_count
+    ):
+        raise ValueError("candidate audit sidecar population is inconsistent")
 
     return {
         "ok": True,
@@ -784,6 +876,7 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
         "tool_id": tool_id,
         "review_count": len(review_urls),
         "candidate_count": candidate_count,
+        "candidate_audit_sha256": manifest["candidate_audit_sha256"],
         "output_files_sha256": actual_hashes,
     }
 
@@ -797,6 +890,7 @@ def export_codereviewbench_results(
     tool: str = "bugbunny",
     review_model: str | None = None,
     expected_case_count: int | None = None,
+    finding_stage: FindingStage = "balanced",
 ) -> CodeReviewBenchExport:
     """Export final findings directly into CodeReviewBench's expected schemas.
 
@@ -807,6 +901,8 @@ def export_codereviewbench_results(
     replaced for each supplied case.
     """
 
+    if finding_stage not in {"generator", "balanced", "family"}:
+        raise ValueError("finding_stage must be generator, balanced, or family")
     source, raw, source_data = _load_json_object(base_benchmark_data_path)
     if expected_case_count is not None and len(source_data) != expected_case_count:
         raise ValueError(
@@ -854,6 +950,7 @@ def export_codereviewbench_results(
                     )
                 },
                 "runtime": artifact.get("runtime"),
+                "finding_stage": finding_stage,
             }
         )
         for artifact in normalized.values()
@@ -861,7 +958,7 @@ def export_codereviewbench_results(
     if len(projections) != 1:
         raise ValueError("all artifacts in one export must share one evaluation configuration")
     evaluation_fingerprint = sha256_text(next(iter(projections)))
-    tool_id = tool_model_id(tool, review_model, evaluation_fingerprint)
+    tool_id = tool_model_id(f"{tool}-{finding_stage}", review_model, evaluation_fingerprint)
 
     results_root = Path(output_dir).expanduser().resolve()
     judge_dir = results_root / sanitize_model_name(judge_model)
@@ -869,6 +966,7 @@ def export_codereviewbench_results(
     candidates_output = judge_dir / "candidates.json"
     dedup_output = judge_dir / "dedup_groups.json"
     manifest_output = judge_dir / f"{tool_id}_export_manifest.json"
+    candidate_audit_output = judge_dir / f"{tool_id}_candidate_audit.json"
 
     benchmark_data: dict[str, Any] = deepcopy(source_data)
     if benchmark_output.is_file():
@@ -915,6 +1013,7 @@ def export_codereviewbench_results(
             per_case.pop(tool_id, None)
     candidate_count = 0
     artifact_hashes: dict[str, str] = {}
+    candidate_audit: dict[str, list[dict[str, Any]]] = {}
     for golden_url, artifact in sorted(normalized.items()):
         entry = benchmark_data[golden_url]
         if not isinstance(entry, dict):
@@ -923,8 +1022,11 @@ def export_codereviewbench_results(
         _fixture_owner, fixture_repo_name, _fixture_number = _validate_pr_url(
             fixture_url, label="fixture URL"
         )
-        comments, direct_candidates = _direct_outputs(artifact)
+        comments, direct_candidates, case_audit = _direct_outputs(
+            artifact, finding_stage=finding_stage
+        )
         candidate_count += len(direct_candidates)
+        candidate_audit[golden_url] = case_audit
         artifact_hashes[golden_url] = hashlib.sha256(
             canonical_json(artifact).encode("utf-8")
         ).hexdigest()
@@ -960,6 +1062,16 @@ def export_codereviewbench_results(
     atomic_write_json(benchmark_output, benchmark_data)
     atomic_write_json(candidates_output, candidates)
     atomic_write_json(dedup_output, dedup_groups)
+    atomic_write_json(
+        candidate_audit_output,
+        {
+            "schema_version": "bugbunny-candidate-audit-v1",
+            "tool_id": tool_id,
+            "review_model": review_model,
+            "finding_stage": finding_stage,
+            "cases": candidate_audit,
+        },
+    )
     output_files_sha256 = _hash_export_outputs(_export_output_paths(results_root, judge_dir.name))
     _refresh_prior_export_manifests(
         judge_dir,
@@ -971,6 +1083,7 @@ def export_codereviewbench_results(
         "tool": tool,
         "tool_id": tool_id,
         "review_model": review_model,
+        "finding_stage": finding_stage,
         "evaluation_fingerprint": evaluation_fingerprint,
         "judge_model": judge_model,
         "judge_model_directory": sanitize_model_name(judge_model),
@@ -981,10 +1094,14 @@ def export_codereviewbench_results(
         "review_count": len(normalized),
         "candidate_count": candidate_count,
         "candidate_extraction_bypassed": True,
-        "deduplication": "singleton-final-findings",
+        "deduplication": (
+            "verified-causal-families" if finding_stage == "family" else "singleton-findings"
+        ),
         # Export accepts in-memory mappings as well as files, so this hashes the
         # canonical JSON value. Run manifests separately bind exact file bytes.
         "artifact_canonical_sha256": dict(sorted(artifact_hashes.items())),
+        "candidate_audit_file": candidate_audit_output.name,
+        "candidate_audit_sha256": sha256_bytes(candidate_audit_output.read_bytes()),
         "output_files_sha256": output_files_sha256,
     }
     # This is the commit point for the three already-atomically-replaced judge
@@ -996,7 +1113,9 @@ def export_codereviewbench_results(
         candidates_path=candidates_output,
         dedup_groups_path=dedup_output,
         manifest_path=manifest_output,
+        candidate_audit_path=candidate_audit_output,
         tool_id=tool_id,
+        finding_stage=finding_stage,
         review_count=len(normalized),
         candidate_count=candidate_count,
         input_benchmark_sha256=input_benchmark_sha256,
@@ -1015,6 +1134,7 @@ __all__ = [
     "CodeReviewBenchDataset",
     "CodeReviewBenchExport",
     "CodeReviewBenchManifest",
+    "FindingStage",
     "artifact_model_directory",
     "case_id_for_url",
     "dedicated_fixture_tool",

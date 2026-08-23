@@ -18,6 +18,9 @@ def finding(**overrides) -> Finding:
         "category": "concurrency",
         "confidence": 0.92,
         "evidence": "items.forEach(async (item) => {",
+        "root_cause": "forEach discards the promise returned by its async callback.",
+        "failure_mode": "The caller can finish before cleanup completes.",
+        "fix_scope": "local",
         "trigger": "The array has at least one item and the callback rejects or outlives the caller.",
         "impact": "Cleanup may return early or surface an unhandled rejection.",
         "suggested_fix": "Use Promise.all(items.map(...)).",
@@ -178,6 +181,7 @@ def test_verifier_is_complete_and_fail_closed() -> None:
                         "confidence": 0.9,
                         "reason": "proved",
                         "canonical_index": None,
+                        "family_key": "async_callback_promise",
                     }
                 ]
             },
@@ -197,6 +201,7 @@ def test_verifier_filters_and_merges() -> None:
                     "confidence": 0.91,
                     "reason": "proved",
                     "canonical_index": None,
+                    "family_key": "async_callback_promise",
                 },
                 {
                     "candidate_index": 1,
@@ -204,6 +209,7 @@ def test_verifier_filters_and_merges() -> None:
                     "confidence": 0.9,
                     "reason": "same root cause",
                     "canonical_index": 0,
+                    "family_key": "async_callback_promise",
                 },
             ]
         },
@@ -211,3 +217,33 @@ def test_verifier_filters_and_merges() -> None:
     )
     assert kept == [findings[0]]
     assert rejected[0].stage == "verifier_merge"
+
+
+def test_merge_into_keep_below_operating_point_filters_without_failing_batch() -> None:
+    findings = [finding(), finding(title="Duplicate wording")]
+    kept, rejected = apply_verifier_decisions(
+        findings,
+        {
+            "decisions": [
+                {
+                    "candidate_index": 0,
+                    "decision": "keep",
+                    "confidence": 0.90,
+                    "reason": "plausible but below the frozen threshold",
+                    "canonical_index": None,
+                    "family_key": "async_callback_promise",
+                },
+                {
+                    "candidate_index": 1,
+                    "decision": "merge",
+                    "confidence": 0.95,
+                    "reason": "same cause and site",
+                    "canonical_index": 0,
+                    "family_key": "async_callback_promise",
+                },
+            ]
+        },
+        min_confidence=0.92,
+    )
+    assert kept == []
+    assert {item.stage for item in rejected} == {"verifier_confidence", "verifier_merge"}

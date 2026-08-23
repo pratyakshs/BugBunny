@@ -13,8 +13,10 @@ from bugbunny.prompts import (
 )
 from bugbunny.schemas import (
     GENERATION_SCHEMA,
+    GENERATION_TRANSPORT_SCHEMA,
     PayloadValidationError,
     findings_from_payload,
+    findings_from_payload_tolerant,
     validate_verifier_payload,
 )
 
@@ -30,6 +32,9 @@ def _wire_finding(**overrides):
         "category": "bug",
         "confidence": 0.93,
         "evidence": "result = account.name",
+        "root_cause": "The changed code dereferences a nullable lookup result.",
+        "failure_mode": "A missing account causes an AttributeError.",
+        "fix_scope": "local",
         "trigger": "The account lookup returns None.",
         "impact": "The request raises AttributeError instead of returning 404.",
         "suggested_fix": "Handle a missing account before reading name.",
@@ -46,11 +51,17 @@ def test_generation_schema_has_no_finding_cap_and_requires_grounding_fields():
         "path",
         "line",
         "evidence",
+        "root_cause",
+        "failure_mode",
+        "fix_scope",
         "trigger",
         "impact",
         "suggested_fix",
     } <= required
     assert findings["items"]["additionalProperties"] is False
+    assert GENERATION_TRANSPORT_SCHEMA["properties"]["findings"]["items"] == {
+        "type": "object"
+    }
 
 
 def test_generation_prompt_marks_code_untrusted_and_demands_all_atomic_defects():
@@ -115,6 +126,37 @@ def test_generation_payload_preserves_trigger_impact_and_atomic_finding():
 
 
 @pytest.mark.parametrize(
+    ("alias", "canonical"),
+    [
+        ("Correctness", "bug"),
+        ("race-condition", "concurrency"),
+        ("Backward Compatibility", "api"),
+        ("test coverage", "test_gap"),
+        ("Documentation", "doc_defect"),
+        ("code-quality", "style"),
+    ],
+)
+def test_generation_payload_normalizes_documented_category_aliases(alias, canonical):
+    finding = findings_from_payload(
+        {"findings": [_wire_finding(category=alias)]}, chunk_id="chunk-1"
+    )[0]
+
+    assert finding.category == canonical
+
+
+def test_generation_payload_quarantines_only_the_malformed_sibling():
+    valid = _wire_finding(title="Valid proposal")
+    malformed = _wire_finding(title="Malformed proposal", category="unknown-domain")
+
+    findings, invalid_count = findings_from_payload_tolerant(
+        {"findings": [valid, malformed]}, chunk_id="chunk-1"
+    )
+
+    assert [finding.title for finding in findings] == ["Valid proposal"]
+    assert invalid_count == 1
+
+
+@pytest.mark.parametrize(
     "change",
     [
         {"evidence": ""},
@@ -156,6 +198,7 @@ def test_verifier_payload_requires_complete_independent_decisions_and_safe_merge
                 "confidence": 0.91,
                 "reason": "It is the same causal site and fix as candidate 0.",
                 "canonical_index": 0,
+                "family_key": "nullable_account_dereference",
             },
             {
                 "candidate_index": 0,
@@ -163,6 +206,7 @@ def test_verifier_payload_requires_complete_independent_decisions_and_safe_merge
                 "confidence": 0.97,
                 "reason": "The added dereference is reachable with None.",
                 "canonical_index": None,
+                "family_key": "nullable_account_dereference",
             },
         ]
     }
@@ -181,6 +225,7 @@ def test_verifier_payload_requires_complete_independent_decisions_and_safe_merge
                 "confidence": 0.9,
                 "reason": "self merge",
                 "canonical_index": 0,
+                "family_key": "self_merge",
             }
         ]
     }
@@ -195,6 +240,7 @@ def test_verifier_payload_requires_complete_independent_decisions_and_safe_merge
                 "confidence": 0.9,
                 "reason": "The claimed path is unreachable.",
                 "canonical_index": None,
+                "family_key": "unreachable_path",
             },
             {
                 "candidate_index": 1,
@@ -202,6 +248,7 @@ def test_verifier_payload_requires_complete_independent_decisions_and_safe_merge
                 "confidence": 0.9,
                 "reason": "Claims the same site.",
                 "canonical_index": 0,
+                "family_key": "unreachable_path",
             },
         ]
     }

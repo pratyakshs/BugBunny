@@ -11,7 +11,7 @@ immutable cached checkout --> unified diff --> lossless annotated chunks
     |                                             |
     +-- generous curated repository evidence -----+
     |                                             |
-    +-- optional bounded model-directed selection-+
+    +-- optional hypothesis-driven selection -----+
                                                   |
                                       parallel generation calls
                                                   |
@@ -19,11 +19,15 @@ immutable cached checkout --> unified diff --> lossless annotated chunks
                                                   |
                              deterministic path/line/evidence gates
                                                   |
+                              persisted validated candidate stream
+                                                  |
                                   optional batched verifier
+                                                  |
+                             same-site semantic duplicate gate
                                                   |
                          final findings + complete audit artifact
                                                   |
-                           local export or explicit publisher
+                    generator / balanced / family exports
 ```
 
 ## Invariants
@@ -39,15 +43,16 @@ immutable cached checkout --> unified diff --> lossless annotated chunks
    grounded in the merge-base snapshot.
 5. **Atomic issues.** One finding describes one root cause. Summary prose is not
    re-extracted into candidates.
-6. **Observable filtering.** Raw and rejected findings are retained alongside
-   final findings.
+6. **Observable filtering.** Raw, deterministically validated, rejected, and
+   final findings are retained as distinct streams.
 7. **Separated effects.** Review and verifier models are separate settings. A
    model sweep can pin or disable verification. Context mode is a separate
    setting from both `fast`/`balanced` review profiles.
 8. **Comparable sweeps.** Fixture base/head refs are resolved once before any
    model runs. Multi-model export requires the same cases and exact diff hashes.
 9. **No early finding cap.** Generation and evaluation artifacts retain all
-   validated findings. Publication limits, if configured, are presentation only.
+   validated findings. Causal-family grouping is a transparent export-only
+   presentation and retains every atomic member ID/location.
 10. **Side effects are explicit.** Review creation and publication are separate
    operations; the model never receives a write token.
 
@@ -69,7 +74,11 @@ cases do not repeat repository preparation.
 The evaluation runner applies the CodeReviewBench matching prompt to all
 golden/candidate pairs through one bounded Martian queue. Pair results are
 reduced in their original deterministic order, while completed review/tool
-records are atomically checkpointed as soon as they finish.
+records are atomically checkpointed as soon as they finish. Pair-level matches,
+confidence, retries, and safe errors are retained without changing reduction.
+Post-hoc analysis resamples pull requests for paired confidence intervals and
+reconstructs verifier-threshold curves from the judged generator track; it
+makes no new judge calls and cannot change the frozen operating point.
 
 ## Profiles
 
@@ -78,8 +87,20 @@ model sweeps. Generator confidence is retained as telemetry but does not filter
 models with incomparable confidence calibration.
 
 `balanced` adds one keep/drop/merge verifier pass over bounded candidate batches.
-The verifier model and threshold are frozen in the artifact. A verifier failure
-fails closed for final publication while preserving the earlier streams.
+The verifier model and externally calibrated operating point are frozen in the
+artifact. Calibration uses a versioned constructed corpus that explicitly
+excludes benchmark cases and binds the model, reasoning setting, prompt, schema,
+observations, and objective. Structurally valid responses that violate dynamic
+decision relationships receive a small, configured number of semantic retries;
+every attempt and safe failure reason is retained. Exhaustion or any other
+verifier failure fails closed for final publication while preserving the earlier
+streams.
+
+The shared model gateway applies its bounded retry policy to transport errors,
+retryable HTTP statuses, JSON extraction, and local response-schema validation.
+Attempt count, safe errors, and aggregate token/cost telemetry therefore include
+malformed successful HTTP responses instead of misclassifying them as one-shot
+coverage failures.
 
 ## Context acquisition
 
@@ -91,8 +112,15 @@ characters and 120,000 context characters per generation batch, with up to
 36,000 curated characters used as the seed when model-directed selection is
 enabled.
 
+In `agentic` mode, failure of the selector model call or its root protocol fails
+the affected coverage explicitly. Individual reads, searches, and listings are
+optional evidence requests: one failed action is counted and audited while the
+review continues with deterministic seed context and any successful actions.
+
 `agentic` is orthogonal to the review profile. Before a generation batch, the
-same review model makes two structured context-selection rounds by default;
+same review model makes two structured context-selection rounds by default and
+maintains tentative evidence hypotheses. Hypotheses may be open, resolved, or
+rejected, guide actions only, and are never supplied as final findings.
 `--context-selection-rounds` can raise this to eight for a deliberate
 capability study. Its portable JSON protocol exposes only three declarative
 actions:
@@ -104,7 +132,11 @@ actions:
 - `search` performs bounded, literal (non-regex), offset-pageable Git search
   against that commit.
 
-The engine validates paths and action schemas, deduplicates requests, enforces
+For a large inventory, the first view is a hierarchical root/subtree count
+summary rather than an alphabetical path prefix. Exact paths remain discoverable
+through `list`, so repository size does not create a hidden first-N ceiling.
+
+The engine validates paths and action semantics, deduplicates requests, enforces
 per-round, per-file, blob-byte, line, character, hit, and total-context limits,
 and passes the selected evidence to generation and verification. Repository
 content is always delimited as untrusted data. There is no general tool

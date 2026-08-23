@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import re
 from collections.abc import Mapping, Sequence
 from typing import Any
 
@@ -19,6 +20,39 @@ CATEGORIES = (
     "style",
     "speculative",
 )
+CATEGORY_ALIASES = {
+    "correctness": "bug",
+    "functional": "bug",
+    "logic": "bug",
+    "logic_error": "bug",
+    "reliability": "bug",
+    "auth": "security",
+    "authentication": "security",
+    "authorization": "security",
+    "privacy": "security",
+    "race": "concurrency",
+    "race_condition": "concurrency",
+    "database": "data",
+    "data_integrity": "data",
+    "persistence": "data",
+    "backward_compatibility": "api",
+    "compatibility": "api",
+    "interface": "api",
+    "efficiency": "performance",
+    "resource_usage": "performance",
+    "test": "test_gap",
+    "tests": "test_gap",
+    "testing": "test_gap",
+    "test_coverage": "test_gap",
+    "docs": "doc_defect",
+    "documentation": "doc_defect",
+    "code_quality": "style",
+    "maintainability": "style",
+    "naming": "style",
+    "readability": "style",
+    "hypothetical": "speculative",
+    "risk": "speculative",
+}
 VERIFIER_DECISIONS = ("keep", "drop", "merge")
 VERIFIER_MAX_BATCH = 32
 MAX_FINDING_TITLE_CHARS = 300
@@ -53,6 +87,9 @@ GENERATION_SCHEMA: dict[str, Any] = {
                     "trigger",
                     "impact",
                     "suggested_fix",
+                    "root_cause",
+                    "failure_mode",
+                    "fix_scope",
                 ],
                 "properties": {
                     "title": {
@@ -95,8 +132,39 @@ GENERATION_SCHEMA: dict[str, Any] = {
                         "minLength": 1,
                         "maxLength": MAX_FINDING_EXPLANATION_CHARS,
                     },
+                    "root_cause": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": MAX_FINDING_EXPLANATION_CHARS,
+                    },
+                    "failure_mode": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": MAX_FINDING_EXPLANATION_CHARS,
+                    },
+                    "fix_scope": {
+                        "type": "string",
+                        "enum": ["local", "repeated_pattern", "systemic"],
+                    },
                 },
             },
+        }
+    },
+}
+
+# The transport boundary intentionally validates only the response envelope.
+# Individual findings are normalized and validated independently below. This
+# prevents one malformed proposal from discarding valid sibling proposals,
+# while the persisted Finding contract remains fully strict and canonical.
+GENERATION_TRANSPORT_SCHEMA: dict[str, Any] = {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["findings"],
+    "properties": {
+        "findings": {
+            "type": "array",
+            "items": {"type": "object"},
         }
     },
 }
@@ -120,6 +188,7 @@ VERIFIER_SCHEMA: dict[str, Any] = {
                     "confidence",
                     "reason",
                     "canonical_index",
+                    "family_key",
                 ],
                 "properties": {
                     "candidate_index": {"type": "integer", "minimum": 0},
@@ -136,6 +205,12 @@ VERIFIER_SCHEMA: dict[str, Any] = {
                     "canonical_index": {
                         "type": ["integer", "null"],
                         "minimum": 0,
+                    },
+                    "family_key": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 160,
+                        "pattern": "^[a-z0-9_]+$",
                     },
                 },
             },
@@ -193,6 +268,22 @@ def _confidence(value: Any, *, label: str) -> float:
     return result
 
 
+def _family_key(value: Any, *, label: str) -> str:
+    result = _text(value, label=label)
+    if len(result) > 160 or re.fullmatch(r"[a-z0-9_]+", result) is None:
+        raise PayloadValidationError(f"{label} must be lowercase snake_case")
+    return result
+
+
+def _category(value: Any, *, label: str) -> str:
+    raw = _text(value, label=label).lower()
+    normalized = re.sub(r"[^a-z0-9]+", "_", raw).strip("_")
+    result = CATEGORY_ALIASES.get(normalized, normalized)
+    if result not in CATEGORIES:
+        raise PayloadValidationError(f"{label} is not an allowed value")
+    return result
+
+
 def findings_from_payload(
     payload: Any,
     *,
@@ -224,6 +315,9 @@ def findings_from_payload(
         "trigger",
         "impact",
         "suggested_fix",
+        "root_cause",
+        "failure_mode",
+        "fix_scope",
     }
     result: list[Finding] = []
     for index, raw in enumerate(raw_findings):
@@ -236,11 +330,14 @@ def findings_from_payload(
         severity = _text(item["severity"], label=f"findings[{index}].severity")
         if severity not in SEVERITIES:
             raise PayloadValidationError(f"findings[{index}].severity is not an allowed value")
-        category = _text(item["category"], label=f"findings[{index}].category")
-        if category not in CATEGORIES:
-            raise PayloadValidationError(f"findings[{index}].category is not an allowed value")
+        category = _category(item["category"], label=f"findings[{index}].category")
         trigger = _text(item["trigger"], label=f"findings[{index}].trigger")
         impact = _text(item["impact"], label=f"findings[{index}].impact")
+        fix_scope = _text(item["fix_scope"], label=f"findings[{index}].fix_scope")
+        if fix_scope not in {"local", "repeated_pattern", "systemic"}:
+            raise PayloadValidationError(
+                f"findings[{index}].fix_scope is not an allowed value"
+            )
         result.append(
             Finding(
                 title=_text(item["title"], label=f"findings[{index}].title"),
@@ -259,10 +356,47 @@ def findings_from_payload(
                     item["suggested_fix"],
                     label=f"findings[{index}].suggested_fix",
                 ),
+                root_cause=_text(
+                    item["root_cause"],
+                    label=f"findings[{index}].root_cause",
+                ),
+                failure_mode=_text(
+                    item["failure_mode"],
+                    label=f"findings[{index}].failure_mode",
+                ),
+                fix_scope=fix_scope,
                 chunk_id=chunk_id,
             )
         )
     return result
+
+
+def findings_from_payload_tolerant(
+    payload: Any,
+    *,
+    chunk_id: str,
+) -> tuple[list[Finding], int]:
+    """Keep valid findings while quarantining malformed sibling objects.
+
+    The envelope remains fail-closed. Only item-level failures are isolated,
+    and only the rejection count is returned so invalid model content cannot
+    leak into artifacts or logs.
+    """
+
+    root = _object(payload, label="generation payload")
+    _exact_keys(root, {"findings"}, label="generation payload")
+    raw_findings = root["findings"]
+    if not isinstance(raw_findings, list):
+        raise PayloadValidationError("generation payload.findings must be an array")
+
+    result: list[Finding] = []
+    invalid_count = 0
+    for raw in raw_findings:
+        try:
+            result.extend(findings_from_payload({"findings": [raw]}, chunk_id=chunk_id))
+        except PayloadValidationError:
+            invalid_count += 1
+    return result, invalid_count
 
 
 def validate_verifier_payload(
@@ -290,6 +424,7 @@ def validate_verifier_payload(
         "confidence",
         "reason",
         "canonical_index",
+        "family_key",
     }
     normalized: list[dict[str, Any]] = []
     seen: set[int] = set()
@@ -333,6 +468,9 @@ def validate_verifier_payload(
                 ),
                 "reason": _text(item["reason"], label=f"decisions[{position}].reason"),
                 "canonical_index": canonical,
+                "family_key": _family_key(
+                    item["family_key"], label=f"decisions[{position}].family_key"
+                ),
             }
         )
     if seen != set(range(candidate_count)):

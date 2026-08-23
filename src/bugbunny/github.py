@@ -419,7 +419,7 @@ class GitHubReviewPublisher:
 
     @staticmethod
     def _validate_target(pr: PRInfo, artifact: Mapping[str, Any]) -> list[dict[str, Any]]:
-        if artifact.get("schema_version") != "bugbunny-review-v1":
+        if artifact.get("schema_version") != "bugbunny-review-v2":
             raise ValueError("only a native BugBunny review artifact can be published")
         if artifact.get("tool") != "bugbunny" or not artifact.get("tool_version"):
             raise ValueError("review artifact lacks BugBunny tool identity")

@@ -1,0 +1,265 @@
+"""External verifier calibration with a sealed, non-benchmark corpus."""
+
+from __future__ import annotations
+
+import asyncio
+import json
+import math
+from collections.abc import Mapping
+from pathlib import Path
+from typing import Any
+
+from bugbunny.gateway import GatewayError, ModelGateway
+from bugbunny.prompts import (
+    VERIFIER_PROMPT_VERSION,
+    build_verifier_prompt,
+    verifier_prompt_sha256,
+)
+from bugbunny.schemas import VERIFIER_SCHEMA, findings_from_payload, validate_verifier_payload
+from bugbunny.util import atomic_write_json, canonical_json, sha256_bytes, sha256_text, utc_now
+
+
+class CalibrationError(ValueError):
+    """A calibration corpus, run, or frozen operating point is invalid."""
+
+
+def _load_object(path: Path) -> tuple[bytes, dict[str, Any]]:
+    raw = path.expanduser().resolve().read_bytes()
+    try:
+        value = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise CalibrationError(f"invalid calibration JSON: {path}") from exc
+    if not isinstance(value, dict):
+        raise CalibrationError("calibration JSON must contain an object")
+    return raw, value
+
+
+def load_calibration_corpus(path: Path) -> tuple[dict[str, Any], str]:
+    raw, value = _load_object(path)
+    if value.get("schema_version") != "bugbunny-verifier-calibration-corpus-v1":
+        raise CalibrationError("unsupported verifier calibration corpus")
+    provenance = value.get("provenance")
+    if not isinstance(provenance, Mapping) or provenance.get("contains_codereviewbench") is not False:
+        raise CalibrationError("corpus must attest that it excludes CodeReviewBench cases")
+    cases = value.get("cases")
+    if not isinstance(cases, list) or len(cases) < 20:
+        raise CalibrationError("calibration corpus must contain at least 20 cases")
+    seen: set[str] = set()
+    labels: set[bool] = set()
+    for index, case in enumerate(cases):
+        if not isinstance(case, Mapping):
+            raise CalibrationError(f"calibration case {index} is not an object")
+        case_id = case.get("case_id")
+        label = case.get("valid_candidate")
+        if not isinstance(case_id, str) or not case_id or case_id in seen:
+            raise CalibrationError(f"calibration case {index} has an invalid/duplicate ID")
+        if not isinstance(label, bool):
+            raise CalibrationError(f"calibration case {case_id} has no boolean label")
+        if not all(isinstance(case.get(field), str) for field in ("patch", "context", "rationale")):
+            raise CalibrationError(f"calibration case {case_id} lacks evidence or rationale")
+        finding_payload = case.get("finding")
+        if not isinstance(finding_payload, Mapping):
+            raise CalibrationError(f"calibration case {case_id} has no finding")
+        findings_from_payload({"findings": [dict(finding_payload)]}, chunk_id=case_id)
+        seen.add(case_id)
+        labels.add(label)
+    if labels != {False, True}:
+        raise CalibrationError("calibration corpus must contain positive and negative labels")
+    return value, sha256_bytes(raw)
+
+
+def select_operating_point(
+    observations: list[Mapping[str, Any]],
+    *,
+    minimum_precision: float = 0.80,
+) -> dict[str, Any]:
+    """Select the conservative edge of the best precision-constrained plateau."""
+
+    if not 0 <= minimum_precision <= 1:
+        raise CalibrationError("minimum_precision must be between 0 and 1")
+    if not observations:
+        raise CalibrationError("cannot calibrate without observations")
+    candidates = {0.0, 1.0}
+    for item in observations:
+        confidence = item.get("confidence")
+        if isinstance(confidence, (int, float)) and math.isfinite(float(confidence)):
+            candidates.add(round(float(confidence), 6))
+    rows: list[dict[str, Any]] = []
+    for threshold in sorted(candidates):
+        tp = fp = fn = 0
+        for item in observations:
+            expected = item.get("valid_candidate") is True
+            predicted = (
+                item.get("decision") == "keep"
+                and float(item.get("confidence") or 0.0) >= threshold
+            )
+            tp += int(expected and predicted)
+            fp += int(not expected and predicted)
+            fn += int(expected and not predicted)
+        precision = tp / (tp + fp) if tp + fp else 1.0
+        recall = tp / (tp + fn) if tp + fn else 0.0
+        f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+        rows.append(
+            {
+                "threshold": threshold,
+                "tp": tp,
+                "fp": fp,
+                "fn": fn,
+                "precision": precision,
+                "recall": recall,
+                "f1": f1,
+            }
+        )
+    eligible = [row for row in rows if row["precision"] >= minimum_precision]
+    if not eligible:
+        raise CalibrationError("no threshold satisfies the required calibration precision")
+    # Recall is the first-order objective under a precision floor. F1 breaks
+    # ties; the highest threshold on an identical observed plateau is the
+    # conservative choice for unseen, lower-confidence candidates.
+    selected = max(eligible, key=lambda row: (row["recall"], row["f1"], row["threshold"]))
+    return {
+        "objective": "maximize_recall_subject_to_precision_floor_then_f1",
+        "minimum_precision": minimum_precision,
+        "selected": selected,
+        "curve": rows,
+    }
+
+
+async def calibrate_verifier(
+    *,
+    corpus_path: Path,
+    output_path: Path,
+    gateway: ModelGateway,
+    verifier_model: str,
+    reasoning_effort: str,
+    max_output_tokens: int,
+    concurrency: int = 8,
+    minimum_precision: float = 0.80,
+) -> dict[str, Any]:
+    """Run the pinned verifier once per external case and freeze its threshold."""
+
+    corpus, corpus_sha256 = load_calibration_corpus(corpus_path)
+    if concurrency <= 0:
+        raise CalibrationError("calibration concurrency must be positive")
+    semaphore = asyncio.Semaphore(concurrency)
+
+    async def evaluate(case: Mapping[str, Any]) -> dict[str, Any]:
+        case_id = str(case["case_id"])
+        finding = findings_from_payload(
+            {"findings": [dict(case["finding"])]}, chunk_id=case_id
+        )[0]
+        prompt = build_verifier_prompt(
+            [finding],
+            str(case["patch"]),
+            str(case["context"]),
+            max_batch_size=1,
+        )
+        try:
+            async with semaphore:
+                result = await gateway.complete_json(
+                    prompt,
+                    model=verifier_model,
+                    stage="calibration_verification",
+                    schema_name="bugbunny_verification",
+                    schema=VERIFIER_SCHEMA,
+                    chunk_id=case_id,
+                    reasoning_effort=reasoning_effort,
+                    max_output_tokens=max_output_tokens,
+                )
+        except GatewayError as exc:
+            raise CalibrationError(f"verifier calibration failed for {case_id}: {exc}") from exc
+        decision = validate_verifier_payload(result.payload, candidate_count=1)[0]
+        return {
+            "case_id": case_id,
+            "valid_candidate": bool(case["valid_candidate"]),
+            "decision": decision["decision"],
+            "confidence": decision["confidence"],
+            "reason": decision["reason"],
+            "family_key": decision["family_key"],
+            "call": result.call.to_dict(),
+        }
+
+    observations = list(await asyncio.gather(*(evaluate(case) for case in corpus["cases"])))
+    observations.sort(key=lambda item: item["case_id"])
+    selection = select_operating_point(observations, minimum_precision=minimum_precision)
+    observation_sha256 = sha256_text(canonical_json(observations))
+    identity = sha256_text(
+        canonical_json(
+            {
+                "corpus_sha256": corpus_sha256,
+                "verifier_model": verifier_model,
+                "reasoning_effort": reasoning_effort,
+                "verifier_prompt_sha256": verifier_prompt_sha256(),
+                "observation_sha256": observation_sha256,
+                "selection": selection["selected"],
+            }
+        )
+    )
+    operating_point = {
+        "schema_version": "bugbunny-verifier-operating-point-v1",
+        "created_at": utc_now(),
+        "operating_point_id": f"bugbunny-op-{identity[:16]}",
+        "verifier_model": verifier_model,
+        "reasoning_effort": reasoning_effort,
+        "verifier_prompt_version": VERIFIER_PROMPT_VERSION,
+        "verifier_prompt_sha256": verifier_prompt_sha256(),
+        "verifier_schema_sha256": sha256_text(canonical_json(VERIFIER_SCHEMA)),
+        "corpus": {
+            "path": corpus_path.name,
+            "sha256": corpus_sha256,
+            "case_count": len(observations),
+            "contains_codereviewbench": False,
+        },
+        "observation_sha256": observation_sha256,
+        "observations": observations,
+        "selection": selection,
+        "threshold": selection["selected"]["threshold"],
+    }
+    atomic_write_json(output_path, operating_point)
+    return operating_point
+
+
+def load_operating_point(path: Path) -> tuple[dict[str, Any], str]:
+    raw, value = _load_object(path)
+    if value.get("schema_version") != "bugbunny-verifier-operating-point-v1":
+        raise CalibrationError("unsupported verifier operating point")
+    required_strings = (
+        "operating_point_id",
+        "verifier_model",
+        "reasoning_effort",
+        "verifier_prompt_version",
+        "verifier_prompt_sha256",
+        "observation_sha256",
+    )
+    if any(not isinstance(value.get(field), str) or not value[field] for field in required_strings):
+        raise CalibrationError("operating point is missing required identity fields")
+    threshold = value.get("threshold")
+    if (
+        not isinstance(threshold, (int, float))
+        or isinstance(threshold, bool)
+        or not math.isfinite(float(threshold))
+        or not 0 <= float(threshold) <= 1
+    ):
+        raise CalibrationError("operating point threshold is outside [0,1]")
+    corpus = value.get("corpus")
+    if not isinstance(corpus, Mapping) or corpus.get("contains_codereviewbench") is not False:
+        raise CalibrationError("operating point is not bound to an external corpus")
+    observations = value.get("observations")
+    if not isinstance(observations, list) or sha256_text(canonical_json(observations)) != value.get(
+        "observation_sha256"
+    ):
+        raise CalibrationError("operating point observations do not match their hash")
+    if value["verifier_prompt_sha256"] != verifier_prompt_sha256():
+        raise CalibrationError("operating point was produced with a different verifier prompt")
+    if value.get("verifier_schema_sha256") != sha256_text(canonical_json(VERIFIER_SCHEMA)):
+        raise CalibrationError("operating point was produced with a different verifier schema")
+    return value, sha256_bytes(raw)
+
+
+__all__ = [
+    "CalibrationError",
+    "calibrate_verifier",
+    "load_calibration_corpus",
+    "load_operating_point",
+    "select_operating_point",
+]

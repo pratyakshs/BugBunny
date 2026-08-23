@@ -134,6 +134,9 @@ def _finding_payload(
         "category": "bug",
         "confidence": confidence,
         "evidence": evidence,
+        "root_cause": "The changed assignment violates the required invariant.",
+        "failure_mode": "The affected path returns an incorrect value.",
+        "fix_scope": "local",
         "trigger": "The changed assignment is reached.",
         "impact": "The resulting value is incorrect.",
         "suggested_fix": "Restore the intended assignment.",
@@ -169,6 +172,7 @@ def test_exact_generation_prompt_budget_clips_context_before_patch() -> None:
         pr_title="\x01" * 500,
         pr_body="\x01" * 4_000,
         allowed_categories=("bug",),
+        review_policy="codereviewbench",
     )
 
     assert clipped is True
@@ -559,6 +563,34 @@ async def test_objective_validation_rejection_is_audited_without_losing_coverage
 
 
 @pytest.mark.asyncio
+async def test_malformed_generation_sibling_is_quarantined_without_losing_coverage(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_context(monkeypatch)
+    config = _fast_config()
+    chunk = parse_unified_diff(TWO_FINDING_DIFF).chunk(config.max_chunk_chars).chunks[0]
+    valid = _finding_payload("app.py", 1, "new_a = 1", title="Valid finding")
+    malformed = dict(valid, title="Malformed finding", category="unknown-domain")
+    gateway = FakeGateway(
+        generation={chunk.chunk_id: {"findings": [valid, malformed]}}
+    )
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+
+    artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
+
+    assert artifact.status == "completed"
+    assert artifact.coverage.complete is True
+    assert [finding.title for finding in artifact.raw_findings] == ["Valid finding"]
+    diagnostic = next(
+        item
+        for item in artifact.diagnostics
+        if item.get("code") == "invalid_findings_quarantined"
+    )
+    assert diagnostic["stage"] == "generation_payload"
+    assert diagnostic["count"] == "1"
+
+
+@pytest.mark.asyncio
 async def test_excluded_file_cannot_reenter_through_a_hallucinated_finding(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -670,6 +702,7 @@ async def test_verifier_keeps_and_drops_individual_candidates(
                     "confidence": 0.96,
                     "reason": "The changed assignment demonstrably causes the issue.",
                     "canonical_index": None,
+                    "family_key": "assignment_invariant",
                 },
                 {
                     "candidate_index": 1,
@@ -677,6 +710,7 @@ async def test_verifier_keeps_and_drops_individual_candidates(
                     "confidence": 0.93,
                     "reason": "The stated behavior does not follow from the patch.",
                     "canonical_index": None,
+                    "family_key": "assignment_invariant",
                 },
             ]
         },
@@ -739,6 +773,7 @@ async def test_agentic_context_is_selected_then_reused_by_generation_and_verifie
                     "confidence": 0.99,
                     "reason": "The dependency contract confirms the changed value is invalid.",
                     "canonical_index": None,
+                    "family_key": "dependency_contract",
                 }
             ]
         },
@@ -891,12 +926,57 @@ async def test_agentic_selector_failure_marks_coverage_failed_without_generation
 
 
 @pytest.mark.asyncio
+async def test_optional_agentic_search_failure_keeps_seed_and_reviews_full_diff(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_context(monkeypatch)
+    config = _fast_config(
+        context_mode="agentic",
+        context_selection_rounds=1,
+        max_context_chars=4_000,
+        initial_context_chars=1_000,
+    )
+
+    class SearchFailingSnapshot(FakeSnapshot):
+        def git_grep(self, pattern: str, **kwargs: Any) -> tuple[Any, ...]:
+            raise RuntimeError("optional search unavailable")
+
+    gateway = FakeGateway(
+        selection=[
+            {
+                "requests": [
+                    {
+                        "action": "search",
+                        "path": "",
+                        "query": "new_a",
+                        "start_line": None,
+                        "end_line": None,
+                    }
+                ],
+                "done": True,
+            }
+        ],
+        generation={"*": {"findings": []}},
+    )
+    snapshot = SearchFailingSnapshot(
+        TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"}
+    )
+
+    artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
+
+    assert artifact.status == "completed"
+    assert artifact.coverage.complete is True
+    assert [call["stage"] for call in gateway.calls] == ["context_selection", "generation"]
+    assert any(item.get("code") == "search_failed" for item in artifact.diagnostics)
+
+
+@pytest.mark.asyncio
 async def test_verifier_batches_are_bounded_by_serialized_candidate_size(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     _patch_context(monkeypatch)
     config = _balanced_config(
-        verification_batch_chars=700,
+        verification_batch_chars=900,
         verifier_context_window_tokens=64_000,
         verifier_input_char_budget=54_272,
     )
@@ -918,6 +998,7 @@ async def test_verifier_batches_are_bounded_by_serialized_candidate_size(
                     "confidence": 0.99,
                     "reason": "grounded",
                     "canonical_index": None,
+                    "family_key": "assignment_invariant",
                 }
             ]
         },
@@ -995,6 +1076,181 @@ def test_verifier_batch_char_bound_uses_exact_wrapped_payload_and_rejects_single
         )
 
 
+def test_verifier_batches_split_before_rendering_capacity_plus_one() -> None:
+    finding = Finding.from_dict(
+        _finding_payload("app.py", 1, "new_a = 1", title="Candidate"),
+        chunk_id="chunk",
+    )
+
+    batches = engine_module._verification_batches(
+        [finding] * 21,
+        max_items=20,
+        max_chars=1_000_000,
+        max_prompt_chars=1_000_000,
+    )
+
+    assert [(offset, len(batch)) for offset, batch in batches] == [(0, 20), (20, 1)]
+
+
+@pytest.mark.asyncio
+async def test_twenty_one_candidates_are_verified_in_two_batches(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_context(monkeypatch)
+    config = _balanced_config(verification_batch_size=20)
+    chunk = parse_unified_diff(TWO_FINDING_DIFF).chunk(config.max_chunk_chars).chunks[0]
+    candidates = [
+        _finding_payload(
+            "app.py",
+            1 if index % 2 == 0 else 2,
+            "new_a = 1" if index % 2 == 0 else "new_b = 1",
+            title=f"Candidate {index}",
+        )
+        for index in range(21)
+    ]
+
+    class BatchAwareGateway(FakeGateway):
+        verification_calls = 0
+
+        async def complete_json(self, prompt: str, **kwargs: Any) -> GatewayResult:
+            if kwargs["stage"] == "generation":
+                return await super().complete_json(prompt, **kwargs)
+            count = 20 if self.verification_calls == 0 else 1
+            self.verification_calls += 1
+            return GatewayResult(
+                payload={
+                    "decisions": [
+                        {
+                            "candidate_index": index,
+                            "decision": "keep",
+                            "confidence": 0.99,
+                            "reason": "The changed assignment is present.",
+                            "canonical_index": None,
+                            "family_key": f"assignment_{self.verification_calls}_{index}",
+                        }
+                        for index in range(count)
+                    ]
+                },
+                call=_call("verification", str(kwargs.get("chunk_id"))),
+            )
+
+    gateway = BatchAwareGateway(generation={chunk.chunk_id: {"findings": candidates}})
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+
+    artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
+
+    assert artifact.status == "completed"
+    assert artifact.coverage.complete is True
+    assert len(artifact.validated_findings) == 21
+    assert gateway.verification_calls == 2
+
+
+@pytest.mark.asyncio
+async def test_semantically_invalid_verifier_response_is_retried_and_audited(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_context(monkeypatch)
+    config = _balanced_config(verification_semantic_retries=2)
+    chunk = parse_unified_diff(TWO_FINDING_DIFF).chunk(config.max_chunk_chars).chunks[0]
+
+    class RepairingGateway(FakeGateway):
+        verification_calls = 0
+
+        async def complete_json(self, prompt: str, **kwargs: Any) -> GatewayResult:
+            if kwargs["stage"] == "generation":
+                return await super().complete_json(prompt, **kwargs)
+            self.verification_calls += 1
+            invalid = self.verification_calls == 1
+            return GatewayResult(
+                payload={
+                    "decisions": [
+                        {
+                            "candidate_index": 0,
+                            "decision": "merge" if invalid else "keep",
+                            "confidence": 0.99,
+                            "reason": "The assignment is present.",
+                            "canonical_index": 0 if invalid else None,
+                            "family_key": "assignment_invariant",
+                        }
+                    ]
+                },
+                call=_call("verification", str(kwargs.get("chunk_id"))),
+            )
+
+    gateway = RepairingGateway(
+        generation={
+            chunk.chunk_id: {
+                "findings": [
+                    _finding_payload("app.py", 1, "new_a = 1", title="Valid candidate")
+                ]
+            }
+        }
+    )
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+
+    artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
+
+    assert artifact.status == "completed"
+    assert gateway.verification_calls == 2
+    verification_calls = [call for call in artifact.calls if call.stage == "verification"]
+    assert len(verification_calls) == 2
+    assert verification_calls[0].error is not None
+    assert verification_calls[1].error is None
+    retry = next(
+        item
+        for item in artifact.diagnostics
+        if item.get("stage") == "verification_semantic_retry"
+    )
+    assert retry["retry_count"] == 1
+    assert retry["recovered"] is True
+
+
+@pytest.mark.asyncio
+async def test_exhausted_semantic_verifier_retries_remain_fail_closed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_context(monkeypatch)
+    config = _balanced_config(verification_semantic_retries=1)
+    chunk = parse_unified_diff(TWO_FINDING_DIFF).chunk(config.max_chunk_chars).chunks[0]
+    invalid_decision = {
+        "decisions": [
+            {
+                "candidate_index": 0,
+                "decision": "merge",
+                "confidence": 0.99,
+                "reason": "Invalid self-merge.",
+                "canonical_index": 0,
+                "family_key": "assignment_invariant",
+            }
+        ]
+    }
+    gateway = FakeGateway(
+        generation={
+            chunk.chunk_id: {
+                "findings": [
+                    _finding_payload("app.py", 1, "new_a = 1", title="Candidate")
+                ]
+            }
+        },
+        verification=invalid_decision,
+    )
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+
+    artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
+
+    assert artifact.status == "failed"
+    assert artifact.findings == []
+    verification_calls = [call for call in artifact.calls if call.stage == "verification"]
+    assert len(verification_calls) == 2
+    assert all(call.error is not None for call in verification_calls)
+    failure = next(
+        item for item in artifact.diagnostics if item.get("stage") == "verification"
+    )
+    assert failure["semantic_attempt_count"] == 2
+    assert failure["semantic_retry_count"] == 1
+    assert failure["failure_policy"] == "fail_closed"
+
+
 def test_runtime_provenance_records_requested_and_parameter_send_policy() -> None:
     gateway = ModelGateway(GatewayConfig(api_key="test-key"))
     runtime = engine_module.review_runtime_provenance(
@@ -1065,6 +1321,7 @@ async def test_late_verifier_failure_accounts_for_candidates_kept_earlier(
                                 "confidence": 0.99,
                                 "reason": "grounded",
                                 "canonical_index": None,
+                                "family_key": "assignment_invariant",
                             }
                         ]
                     },
@@ -1149,7 +1406,7 @@ async def test_artifact_writer_persists_native_json_and_markdown(
     assert returned_json == json_path.resolve()
     assert returned_markdown == markdown_path.resolve()
     payload = json.loads(json_path.read_text(encoding="utf-8"))
-    assert payload["schema_version"] == "bugbunny-review-v1"
+    assert payload["schema_version"] == "bugbunny-review-v2"
     assert payload["status"] == "completed"
     assert payload["findings"][0]["title"] == "Persisted finding"
     markdown = markdown_path.read_text(encoding="utf-8")

@@ -23,7 +23,7 @@ See [architecture](docs/architecture.md) for the pipeline invariants and
   review and model-call limits.
 - Deterministic gates check path, changed side/line, cited base-or-head evidence, category, and
   exact duplicates before a finding can be final.
-- Raw proposals, rejected proposals, final findings, exclusions, exact refs,
+- Raw proposals, deterministic candidates, rejected proposals, final findings, exclusions, exact refs,
   diff hash, model calls, token usage, latency, and available cost are preserved
   in one JSON artifact. There is no early finding cap.
 - API-backed models route directly through the Martian Gateway, making provider
@@ -99,9 +99,46 @@ and [model catalog](https://docs.withmartian.com/api-reference/models).
 
 `balanced` is the default. It generates atomic candidates in parallel, applies
 deterministic grounding gates, then asks the configured verifier to keep, drop,
-or merge candidates in batches. The verifier defaults to `same`; pin a separate
+or merge candidates in batches. A conservative same-site semantic pass removes
+paraphrases that crossed verifier-batch boundaries without collapsing independent
+occurrences. The verifier defaults to `same`; pin a separate
 model with `--verifier-model PROVIDER/MODEL`, or disable it with
 `--verifier-model none`.
+
+Verifier confidence must be calibrated outside the benchmark. BugBunny ships a
+versioned, manually labeled synthetic corpus that explicitly contains no
+CodeReviewBench cases. Run the pinned verifier once, freeze its operating point,
+and pass that immutable file to every compared model:
+
+```bash
+bugbunny calibrate \
+  --corpus calibration/verifier_corpus.json \
+  --output calibration/opus-operating-point.json \
+  --verifier-model anthropic/claude-opus-4-5
+
+bugbunny benchmark run \
+  --benchmark-data /path/to/benchmark_data.json \
+  --model openai/gpt-5.6-luna \
+  --verifier-model anthropic/claude-opus-4-5 \
+  --operating-point calibration/opus-operating-point.json
+```
+
+The operating point binds the corpus bytes, labels, verifier responses, model,
+reasoning setting, prompt, schema, objective, and threshold. A run rejects a
+file produced by a different verifier contract. A manual
+`--min-verifier-confidence` remains available for diagnosis, but should not be
+tuned on the canonical 50 cases.
+
+## Review policies
+
+Execution profile and review scope are independent. `review-pr` defaults to the
+versioned `production` policy: behaviorally meaningful correctness, security,
+data, concurrency, API, performance, test-behavior, and material documentation
+defects. `benchmark run` defaults to the versioned `codereviewbench` policy,
+whose broader scope also admits concrete benchmark style, maintainability,
+compatibility, and uncertainty findings. Every prompt and artifact records the
+selected policy version and hash, preventing a model sweep from silently
+comparing different targets.
 
 `fast` makes only the generation calls and retains everything that passes the
 objective location/evidence gates. Generator self-confidence is recorded but is
@@ -138,11 +175,15 @@ Use either `fast` or `balanced` with either context mode:
   hypotheses. The generous fixed defaults allow 72,000 patch characters and
   120,000 context characters per generation batch.
 - `--context-mode agentic` starts from a curated seed, then lets the same review
-  model request additional context. The fixed default seed is up to 36,000
+  model maintain falsifiable evidence hypotheses and request additional context.
+  Hypotheses guide discovery only; they are never treated as final findings.
+  The fixed default seed is up to 36,000
   characters; declared-window runs automatically leave a substantial share for
   selected evidence, including at a 32K window. The
   selector can only page through immutable inventory paths, read bounded line
-  ranges, and page through bounded literal searches. It cannot run project
+  ranges, and page through bounded literal searches. Large repositories begin
+  with a hierarchical directory/count summary instead of an alphabetically
+  clipped file prefix, and `list` can discover remaining subtrees. It cannot run project
   code, issue shell commands, make network calls, or write to the repository.
 
 All bounds are explicit CLI options, including `--max-chunk-chars`,
@@ -269,15 +310,18 @@ resolution permits 16 requests. Larger prepared diffs enter the review queue
 first. The optional balanced verifier remains sequential within each review.
 `--concurrency` is retained as a deprecated alias for `--active-reviews`.
 
-Export final atomic findings directly to the files consumed by the official
-judge:
+Export one or more explicitly named candidate tracks directly to the files
+consumed by the official judge:
 
 ```bash
 bugbunny benchmark export \
   --benchmark-data /path/to/code-review-benchmark/offline/results/benchmark_data.json \
   --run-dir runs/sweep-01 \
   --judge-model openai/gpt-5.2 \
-  --output-dir /tmp/bugbunny-results
+  --output-dir /tmp/bugbunny-results \
+  --finding-stage generator \
+  --finding-stage balanced \
+  --finding-stage family
 ```
 
 The export writes:
@@ -288,14 +332,19 @@ The export writes:
   openai_gpt-5.2/
     candidates.json
     dedup_groups.json
-    bugbunny-{model-and-config-id}_export_manifest.json
+    bugbunny-{stage-model-and-config-id}_candidate_audit.json
+    bugbunny-{stage-model-and-config-id}_export_manifest.json
     bugbunny_export_index.json
 ```
 
-BugBunny intentionally bypasses Step 2's prose re-extraction: each final
-finding is already one structured candidate. It emits singleton dedup groups so
-distinct causal sites stay distinct, and includes the location in candidate text
-because the official judge compares text. The exporter accepts only current,
+`generator` measures every deterministically grounded proposal, `balanced`
+measures the frozen verifier operating point, and `family` presents repeated
+causal patterns once while retaining every atomic member ID and location in its
+audit sidecar. These tracks isolate generation capability, precision filtering,
+and presentation effects without rerunning the review model. BugBunny bypasses
+Step 2's prose re-extraction because each finding is already structured and
+includes the location in candidate text because the official judge compares
+text. The exporter accepts only current,
 completed, fully covered fixture artifacts whose dataset and per-case golden
 hashes match. For multi-model exports it also requires identical case sets and
 identical golden URL, fixture URL, base, head, and diff hash for every case.
@@ -326,7 +375,35 @@ bugbunny benchmark judge \
 The judge keeps the benchmark prompt and metric reduction unchanged, sends all
 selected tools through one bounded Martian request queue, atomically
 checkpoints each completed review to `evaluations.json`, and prints aggregate
-precision, recall, and F1. A rerun resumes error-free records automatically.
+precision, recall, and F1. It also retains every golden/candidate pair decision,
+confidence, retry count, and safe retry reason for audit. A rerun resumes
+error-free records automatically.
+
+Balanced reviews also retry a structurally valid verifier response when its
+dynamic decision relationships are invalid (for example, a merge that points
+forward). The default is two retries, configurable with
+`--verification-semantic-retries N`; exhaustion remains fail-closed and every
+attempt is audited.
+
+Gateway retries cover malformed JSON and local schema violations as well as
+retryable transport/HTTP failures. Their attempt count, safe error trace, and
+aggregate token/cost telemetry are stored in the review artifact.
+
+After judging, produce JSON and Markdown diagnostics with pull-request-level
+bootstrap intervals, paired model deltas, pipeline attrition, category counts,
+context pressure, retries, and threshold curves reconstructed from the fixed
+generator pair matrix:
+
+```bash
+bugbunny benchmark analyze \
+  --run-dir runs/sweep-01 \
+  --results-dir /tmp/bugbunny-results \
+  --judge-model openai/gpt-5.2
+```
+
+The analyzer never changes scores or makes new model calls. Threshold curves
+are diagnostic only; the reported operating point remains the externally frozen
+one used during the run.
 
 See [CodeReviewBench integration](docs/codereviewbench.md) for the fixture
 layout, reuse decision, exact judge workflow, and why publishing requires
@@ -345,9 +422,10 @@ Every case records:
   pagination metrics; verifier preallocation and final-fit omissions; and
   provider-reported input tokens when available;
 - requested/resolved model, secret-free transport/runtime configuration, stage,
-  chunk, latency, tokens, available cost, request/schema/response hashes, and
-  errors for every call;
-- all raw, deterministically rejected, verifier-rejected, and final findings;
+  chunk, latency, tokens, available cost, attempt/retry provenance,
+  request/schema/response hashes, and errors for every call;
+- all raw, deterministically validated, verifier-rejected, family-labeled, and
+  final findings;
 - run status (`completed`, `partial`, or `failed`) and benchmark join metadata.
 
 This keeps coverage loss, generation failure, grounding rejection, verifier

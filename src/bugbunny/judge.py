@@ -170,6 +170,7 @@ class MartianJudge:
             ],
             "temperature": 0.0,
         }
+        retry_errors: list[str] = []
         for attempt in range(self.config.max_attempts):
             try:
                 async with self._semaphore:
@@ -206,24 +207,45 @@ class MartianJudge:
                 result = json.loads(content)
                 if not isinstance(result, dict):
                     raise ValueError("judge result must be a JSON object")
+                result["attempt_count"] = attempt + 1
+                result["retry_errors"] = retry_errors
                 return result
-            except (TimeoutError, httpx.TimeoutException):
+            except (TimeoutError, httpx.TimeoutException) as exc:
+                retry_errors.append(self._safe_error(exc))
                 if attempt == self.config.max_attempts - 1:
-                    return {"error": (f"Timed out after {self.config.call_timeout_seconds:g}s")}
+                    return {
+                        "error": (f"Timed out after {self.config.call_timeout_seconds:g}s"),
+                        "attempt_count": attempt + 1,
+                        "retry_errors": retry_errors,
+                    }
                 await asyncio.sleep(2**attempt)
-            except json.JSONDecodeError:
+            except json.JSONDecodeError as exc:
+                retry_errors.append(self._safe_error(exc))
                 if attempt == self.config.max_attempts - 1:
-                    return {"error": "JSON parse failed"}
+                    return {
+                        "error": "JSON parse failed",
+                        "attempt_count": attempt + 1,
+                        "retry_errors": retry_errors,
+                    }
                 await asyncio.sleep(1)
             except Exception as exc:
+                retry_errors.append(self._safe_error(exc))
                 if attempt == self.config.max_attempts - 1:
-                    return {"error": self._safe_error(exc)}
+                    return {
+                        "error": self._safe_error(exc),
+                        "attempt_count": attempt + 1,
+                        "retry_errors": retry_errors,
+                    }
                 lowered = str(exc).lower()
                 if "429" in lowered or "rate" in lowered or "too many" in lowered:
                     await asyncio.sleep(min(10 * (3**attempt), 120))
                 else:
                     await asyncio.sleep(2**attempt)
-        return {"error": "Max retries exceeded"}
+        return {
+            "error": "Max retries exceeded",
+            "attempt_count": self.config.max_attempts,
+            "retry_errors": retry_errors,
+        }
 
     async def match_comment(self, golden_comment: str, candidate: str) -> dict[str, Any]:
         return await self.call_llm(
@@ -296,6 +318,7 @@ async def evaluate_review(
                 for comment in golden_comments
             ],
             "errors": [],
+            "pair_matches": [],
             "total_candidates": 0,
             "total_golden": len(golden_comments),
             "tp": 0,
@@ -308,14 +331,16 @@ async def evaluate_review(
 
     tasks = []
     task_meta: list[dict[str, Any]] = []
-    for golden in golden_comments:
-        for candidate in candidates:
+    for golden_index, golden in enumerate(golden_comments):
+        for candidate_index, candidate in enumerate(candidates):
             tasks.append(judge.match_comment(golden["comment"], candidate))
             task_meta.append(
                 {
                     "golden": golden["comment"],
+                    "golden_index": golden_index,
                     "golden_severity": golden.get("severity"),
                     "candidate": candidate,
+                    "candidate_index": candidate_index,
                 }
             )
     results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -333,13 +358,35 @@ async def evaluate_review(
     candidate_matched = dict.fromkeys(candidates, False)
     sibling_map = _build_sibling_map(candidates, dedup_groups)
     errors = []
+    pair_matches: list[dict[str, Any]] = []
     for index, result in enumerate(results):
         metadata = task_meta[index]
         golden = metadata["golden"]
         candidate = metadata["candidate"]
         if isinstance(result, BaseException):
             errors.append({"golden": golden, "candidate": candidate, "error": str(result)})
+            pair_matches.append(
+                {
+                    **metadata,
+                    "match": False,
+                    "confidence": 0.0,
+                    "error": f"{type(result).__name__}: {result}",
+                    "attempt_count": None,
+                    "retry_errors": [],
+                }
+            )
             continue
+        pair_matches.append(
+            {
+                **metadata,
+                "match": bool(result.get("match")),
+                "confidence": result.get("confidence", 0),
+                "reasoning": result.get("reasoning"),
+                "error": result.get("error"),
+                "attempt_count": result.get("attempt_count", 1),
+                "retry_errors": result.get("retry_errors", []),
+            }
+        )
         if result.get("error"):
             errors.append({"golden": golden, "candidate": candidate, "error": result["error"]})
             continue
@@ -387,6 +434,7 @@ async def evaluate_review(
         "false_positives": false_positives,
         "false_negatives": false_negatives,
         "errors": errors,
+        "pair_matches": pair_matches,
         "total_candidates": total_candidates,
         "total_golden": total_golden,
         "tp": true_positive_count,

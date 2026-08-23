@@ -39,7 +39,12 @@ class CliError(RuntimeError):
     """A concise, safe-to-display CLI error."""
 
 
-def _add_model_options(parser: argparse.ArgumentParser, *, repeatable: bool = False) -> None:
+def _add_model_options(
+    parser: argparse.ArgumentParser,
+    *,
+    repeatable: bool = False,
+    default_policy: str = "production",
+) -> None:
     parser.add_argument(
         "--model",
         action="append" if repeatable else "store",
@@ -56,6 +61,12 @@ def _add_model_options(parser: argparse.ArgumentParser, *, repeatable: bool = Fa
         choices=("fast", "balanced"),
         default="balanced",
         help="fast uses generation plus deterministic gates; balanced adds a verifier",
+    )
+    parser.add_argument(
+        "--review-policy",
+        choices=("production", "codereviewbench"),
+        default=default_policy,
+        help=f"versioned finding-scope policy (default: {default_policy})",
     )
     parser.add_argument(
         "--verifier-model",
@@ -155,6 +166,28 @@ def _add_model_options(parser: argparse.ArgumentParser, *, repeatable: bool = Fa
     parser.add_argument("--verification-batch-size", type=_positive_int, default=None, metavar="N")
     parser.add_argument("--verification-batch-chars", type=_positive_int, default=None, metavar="N")
     parser.add_argument(
+        "--verification-semantic-retries",
+        type=_nonnegative_int,
+        default=None,
+        metavar="N",
+        help="retry a structurally valid but semantically invalid verifier response (default: 2)",
+    )
+    operating_point = parser.add_mutually_exclusive_group()
+    operating_point.add_argument(
+        "--operating-point",
+        type=Path,
+        default=None,
+        metavar="JSON",
+        help="frozen verifier operating point produced by 'bugbunny calibrate'",
+    )
+    operating_point.add_argument(
+        "--min-verifier-confidence",
+        type=float,
+        default=None,
+        metavar="P",
+        help="manual verifier threshold in [0,1] (not recommended for benchmark runs)",
+    )
+    parser.add_argument(
         "--max-output-tokens",
         type=_positive_int,
         default=32_768,
@@ -218,6 +251,22 @@ def build_parser() -> argparse.ArgumentParser:
         help="also report whether NAME is set (values are never printed)",
     )
 
+    calibrate = subparsers.add_parser(
+        "calibrate", help="freeze a verifier threshold on an external labeled corpus"
+    )
+    calibrate.add_argument("--corpus", type=Path, required=True)
+    calibrate.add_argument("--output", type=Path, required=True)
+    calibrate.add_argument(
+        "--verifier-model", default="anthropic/claude-opus-4-5", metavar="PROVIDER/MODEL"
+    )
+    calibrate.add_argument(
+        "--reasoning-effort", choices=("low", "medium", "high"), default="low"
+    )
+    calibrate.add_argument("--concurrency", type=_positive_int, default=8)
+    calibrate.add_argument("--minimum-precision", type=float, default=0.80)
+    calibrate.add_argument("--max-output-tokens", type=_positive_int, default=4_096)
+    _add_auth_options(calibrate)
+
     review = subparsers.add_parser("review-pr", help="review one GitHub pull request locally")
     review.add_argument("url", help="https://github.com/OWNER/REPO/pull/NUMBER")
     _add_model_options(review)
@@ -245,7 +294,7 @@ def build_parser() -> argparse.ArgumentParser:
         metavar="TOOL|auto",
         help="fixture tool slug to require, or auto for deterministic selection",
     )
-    _add_model_options(run, repeatable=True)
+    _add_model_options(run, repeatable=True, default_policy="codereviewbench")
     _add_auth_options(run)
     run.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE_DIR)
     run.add_argument(
@@ -311,6 +360,16 @@ def build_parser() -> argparse.ArgumentParser:
     artifact_source.add_argument("--run-dir", type=Path)
     export.add_argument("--judge-model", required=True)
     export.add_argument("--output-dir", type=Path, required=True)
+    export.add_argument(
+        "--finding-stage",
+        action="append",
+        choices=("generator", "balanced", "family"),
+        default=None,
+        help=(
+            "candidate track to export; repeat for multiple tracks "
+            "(default: balanced)"
+        ),
+    )
 
     verify_export = benchmark_commands.add_parser(
         "verify-export", help="verify a committed CodeReviewBench export bundle"
@@ -347,6 +406,16 @@ def build_parser() -> argparse.ArgumentParser:
     judge_credential.add_argument("--api-key-env", default=None, metavar="NAME")
     judge_auth.add_argument("--env-file", type=Path, default=Path(".env"), metavar="PATH")
     judge_auth.add_argument("--api-base", default=None, metavar="URL")
+
+    analyze = benchmark_commands.add_parser(
+        "analyze", help="audit completed runs, tracks, thresholds, and uncertainty"
+    )
+    analyze.add_argument("--run-dir", type=Path, required=True)
+    analyze.add_argument("--results-dir", type=Path, required=True)
+    analyze.add_argument("--judge-model", required=True)
+    analyze.add_argument("--output-json", type=Path, default=None)
+    analyze.add_argument("--bootstrap-samples", type=_positive_int, default=2_000)
+    analyze.add_argument("--bootstrap-seed", type=int, default=17_042)
 
     publish = subparsers.add_parser(
         "publish", help="explicitly publish a completed artifact as one GitHub review"
@@ -387,6 +456,13 @@ def _positive_int(value: str) -> int:
     number = int(value)
     if number <= 0:
         raise argparse.ArgumentTypeError("must be a positive integer")
+    return number
+
+
+def _nonnegative_int(value: str) -> int:
+    number = int(value)
+    if number < 0:
+        raise argparse.ArgumentTypeError("must be a non-negative integer")
     return number
 
 
@@ -515,6 +591,8 @@ def _resolved_context_config(
 
 
 def _review_config(args: argparse.Namespace, *, model: str | None = None) -> ReviewConfig:
+    from bugbunny.policy import get_review_policy
+
     selected_model = model or getattr(args, "model", None) or DEFAULT_MODEL
     verifier = getattr(args, "verifier_model", None)
     profile = str(args.profile)
@@ -524,6 +602,30 @@ def _review_config(args: argparse.Namespace, *, model: str | None = None) -> Rev
         verifier = None
     if profile == "fast" and verifier is not None:
         raise CliError("--profile fast cannot be combined with a verifier model")
+    policy = get_review_policy(str(args.review_policy))
+    threshold = ReviewConfig().min_verifier_confidence
+    operating_point_id = None
+    operating_point_sha256 = None
+    operating_point_path = getattr(args, "operating_point", None)
+    if operating_point_path is not None:
+        from bugbunny.calibration import load_operating_point
+
+        operating_point, operating_point_sha256 = load_operating_point(operating_point_path)
+        if verifier in {None, "none"}:
+            raise CliError("--operating-point requires an enabled verifier")
+        expected_verifier = selected_model if verifier == "same" else verifier
+        if operating_point["verifier_model"] != expected_verifier:
+            raise CliError("operating point verifier_model does not match --verifier-model")
+        if operating_point["reasoning_effort"] != args.verifier_reasoning_effort:
+            raise CliError(
+                "operating point reasoning_effort does not match --verifier-reasoning-effort"
+            )
+        threshold = float(operating_point["threshold"])
+        operating_point_id = str(operating_point["operating_point_id"])
+    elif getattr(args, "min_verifier_confidence", None) is not None:
+        threshold = float(args.min_verifier_confidence)
+        if not 0 <= threshold <= 1:
+            raise CliError("--min-verifier-confidence must be between 0 and 1")
     context_config = _resolved_context_config(args, model=selected_model)
     review_window = context_config["context_window_tokens"]
     verifier_window = getattr(args, "verifier_context_window_tokens", None)
@@ -560,6 +662,9 @@ def _review_config(args: argparse.Namespace, *, model: str | None = None) -> Rev
         model=selected_model,
         verifier_model=verifier,
         profile=profile,  # type: ignore[arg-type]
+        review_policy=policy.name,
+        review_policy_version=policy.version,
+        review_policy_sha256=policy.sha256,
         reasoning_effort=args.reasoning_effort,
         verifier_reasoning_effort=args.verifier_reasoning_effort,
         llm_concurrency=args.llm_concurrency,
@@ -569,10 +674,19 @@ def _review_config(args: argparse.Namespace, *, model: str | None = None) -> Rev
         verification_batch_chars=(
             args.verification_batch_chars or ReviewConfig().verification_batch_chars
         ),
+        verification_semantic_retries=(
+            args.verification_semantic_retries
+            if args.verification_semantic_retries is not None
+            else ReviewConfig().verification_semantic_retries
+        ),
         timeout_seconds=args.timeout,
         verifier_context_window_tokens=verifier_window,
         verifier_input_char_budget=verifier_input_char_budget,
         verifier_max_output_tokens=verifier_max_output_tokens,
+        min_verifier_confidence=threshold,
+        operating_point_id=operating_point_id,
+        operating_point_sha256=operating_point_sha256,
+        include_categories=policy.categories,  # type: ignore[arg-type]
         **context_config,
     )
     config.validate()
@@ -874,7 +988,7 @@ def _completed_artifact(
         return bool(
             isinstance(value, Mapping)
             and value.get("status") == "completed"
-            and value.get("schema_version") == "bugbunny-review-v1"
+            and value.get("schema_version") == "bugbunny-review-v2"
             and value.get("tool_version") == __version__
             and isinstance(value.get("config"), Mapping)
             and dict(value["config"]) == config.to_dict()
@@ -1623,28 +1737,37 @@ def _benchmark_export(args: argparse.Namespace) -> int:
     output_root = args.output_dir.expanduser().resolve()
     exports: list[dict[str, Any]] = []
     export_results_by_model: list[Any] = []
+    finding_stages = tuple(dict.fromkeys(args.finding_stage or ["balanced"]))
     for model, model_artifacts in sorted(by_model.items()):
-        result = export_results(
-            args.benchmark_data,
-            model_artifacts,
-            output_dir=args.output_dir,
-            judge_model=args.judge_model,
-            review_model=model,
-            expected_case_count=50,
-        )
-        export_results_by_model.append(result)
-        exports.append(
-            {
-                "model": model,
-                "tool_id": result.tool_id,
-                "reviews": result.review_count,
-                "candidates": result.candidate_count,
-                "benchmark_data": str(result.benchmark_data_path.relative_to(output_root)),
-                "candidates_path": str(result.candidates_path.relative_to(output_root)),
-                "dedup_groups_path": str(result.dedup_groups_path.relative_to(output_root)),
-                "manifest": str(result.manifest_path.relative_to(output_root)),
-            }
-        )
+        for finding_stage in finding_stages:
+            result = export_results(
+                args.benchmark_data,
+                model_artifacts,
+                output_dir=args.output_dir,
+                judge_model=args.judge_model,
+                review_model=model,
+                expected_case_count=50,
+                finding_stage=finding_stage,
+            )
+            export_results_by_model.append(result)
+            exports.append(
+                {
+                    "model": model,
+                    "finding_stage": finding_stage,
+                    "tool_id": result.tool_id,
+                    "reviews": result.review_count,
+                    "candidates": result.candidate_count,
+                    "benchmark_data": str(result.benchmark_data_path.relative_to(output_root)),
+                    "candidates_path": str(result.candidates_path.relative_to(output_root)),
+                    "dedup_groups_path": str(result.dedup_groups_path.relative_to(output_root)),
+                    "manifest": str(result.manifest_path.relative_to(output_root)),
+                    "candidate_audit": (
+                        str(result.candidate_audit_path.relative_to(output_root))
+                        if getattr(result, "candidate_audit_path", None) is not None
+                        else None
+                    ),
+                }
+            )
     # Individual model exporters share the same physical judge inputs. The last
     # export refreshes every prior manifest to this final bundle; bind those
     # final manifest bytes in the index instead of retaining an earlier return
@@ -1665,7 +1788,7 @@ def _benchmark_export(args: argparse.Namespace) -> int:
     atomic_write_json(
         index_path,
         {
-            "schema_version": "bugbunny-codereviewbench-export-index-v1",
+            "schema_version": "bugbunny-codereviewbench-export-index-v2",
             "created_at": utc_now(),
             "judge_model": args.judge_model,
             "output_files_sha256": final_output_hashes,
@@ -1680,6 +1803,34 @@ def _benchmark_verify_export(args: argparse.Namespace) -> int:
     from bugbunny.benchmark import verify_codereviewbench_export_manifest
 
     _print_json(verify_codereviewbench_export_manifest(args.manifest))
+    return 0
+
+
+async def _calibrate(args: argparse.Namespace) -> int:
+    from bugbunny.calibration import calibrate_verifier
+
+    if not 0 <= args.minimum_precision <= 1:
+        raise CliError("--minimum-precision must be between 0 and 1")
+    gateway_config = _gateway_config(args, max_output_tokens=args.max_output_tokens)
+    async with ModelGateway(gateway_config, max_concurrency=args.concurrency) as gateway:
+        result = await calibrate_verifier(
+            corpus_path=args.corpus,
+            output_path=args.output,
+            gateway=gateway,
+            verifier_model=args.verifier_model,
+            reasoning_effort=args.reasoning_effort,
+            max_output_tokens=args.max_output_tokens,
+            concurrency=args.concurrency,
+            minimum_precision=args.minimum_precision,
+        )
+    _print_json(
+        {
+            "operating_point": str(args.output.expanduser().resolve()),
+            "operating_point_id": result["operating_point_id"],
+            "threshold": result["threshold"],
+            "selection": result["selection"]["selected"],
+        }
+    )
     return 0
 
 
@@ -1717,6 +1868,31 @@ async def _benchmark_judge(args: argparse.Namespace) -> int:
     return 1 if report["timed_out"] or errors else 0
 
 
+def _benchmark_analyze(args: argparse.Namespace) -> int:
+    from bugbunny.analysis import analyze_evaluation, render_analysis_markdown
+    from bugbunny.benchmark import sanitize_model_name
+    from bugbunny.util import atomic_write_text
+
+    judge_dir = args.results_dir.expanduser().resolve() / sanitize_model_name(args.judge_model)
+    output_json = (
+        args.output_json.expanduser().resolve()
+        if args.output_json is not None
+        else judge_dir / "bugbunny_evaluation_audit.json"
+    )
+    report = analyze_evaluation(
+        run_dir=args.run_dir,
+        results_dir=args.results_dir,
+        judge_model=args.judge_model,
+        output_json=output_json,
+        bootstrap_samples=args.bootstrap_samples,
+        bootstrap_seed=args.bootstrap_seed,
+    )
+    markdown_path = output_json.with_suffix(".md")
+    atomic_write_text(markdown_path, render_analysis_markdown(report))
+    _print_json({"audit_json": str(output_json), "audit_markdown": str(markdown_path)})
+    return 0
+
+
 def _publish(args: argparse.Namespace) -> int:
     if not (args.confirm_publish or args.yes):
         raise CliError("publishing writes to GitHub; pass --confirm-publish or --yes")
@@ -1745,6 +1921,8 @@ async def async_main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.command == "doctor":
         return _doctor(args)
+    if args.command == "calibrate":
+        return await _calibrate(args)
     if args.command == "review-pr":
         return await _review_pr(args)
     if args.command == "benchmark" and args.benchmark_command == "run":
@@ -1755,6 +1933,8 @@ async def async_main(argv: Sequence[str] | None = None) -> int:
         return _benchmark_verify_export(args)
     if args.command == "benchmark" and args.benchmark_command == "judge":
         return await _benchmark_judge(args)
+    if args.command == "benchmark" and args.benchmark_command == "analyze":
+        return _benchmark_analyze(args)
     if args.command == "publish":
         return _publish(args)
     raise CliError("unsupported command")
