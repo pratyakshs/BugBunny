@@ -1,0 +1,1461 @@
+{
+  "bootstrap": {
+    "samples": 5000,
+    "seed": 17042,
+    "unit": "pull_request"
+  },
+  "created_at": "2026-08-23T23:34:09.800014Z",
+  "golden_category_counts": {
+    "bugbunny-balanced-openai-gpt-5-6-luna-f888fd9190a6": {
+      "api": {
+        "fn": 9,
+        "tp": 4
+      },
+      "bug": {
+        "fn": 64,
+        "tp": 30
+      },
+      "concurrency": {
+        "fn": 10,
+        "tp": 4
+      },
+      "data": {
+        "fn": 5,
+        "tp": 2
+      },
+      "doc_defect": {
+        "fn": 7,
+        "tp": 2
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 8,
+        "tp": 3
+      },
+      "speculative": {
+        "fn": 4,
+        "tp": 1
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-balanced-openai-gpt-5-6-sol-082977991f23": {
+      "api": {
+        "fn": 7,
+        "tp": 6
+      },
+      "bug": {
+        "fn": 41,
+        "tp": 53
+      },
+      "concurrency": {
+        "fn": 9,
+        "tp": 5
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 5,
+        "tp": 4
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 8,
+        "tp": 3
+      },
+      "speculative": {
+        "fn": 2,
+        "tp": 3
+      },
+      "style": {
+        "fn": 5,
+        "tp": 5
+      },
+      "test_gap": {
+        "fn": 3,
+        "tp": 1
+      }
+    },
+    "bugbunny-balanced-openai-gpt-5-6-terra-f296986013dc": {
+      "api": {
+        "fn": 5,
+        "tp": 8
+      },
+      "bug": {
+        "fn": 64,
+        "tp": 30
+      },
+      "concurrency": {
+        "fn": 9,
+        "tp": 5
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 7,
+        "tp": 2
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 8,
+        "tp": 3
+      },
+      "speculative": {
+        "fn": 3,
+        "tp": 2
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-family-openai-gpt-5-6-luna-1ff47539eb59": {
+      "api": {
+        "fn": 9,
+        "tp": 4
+      },
+      "bug": {
+        "fn": 64,
+        "tp": 30
+      },
+      "concurrency": {
+        "fn": 10,
+        "tp": 4
+      },
+      "data": {
+        "fn": 5,
+        "tp": 2
+      },
+      "doc_defect": {
+        "fn": 7,
+        "tp": 2
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 9,
+        "tp": 2
+      },
+      "speculative": {
+        "fn": 4,
+        "tp": 1
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-family-openai-gpt-5-6-sol-451e4c3a4caa": {
+      "api": {
+        "fn": 7,
+        "tp": 6
+      },
+      "bug": {
+        "fn": 41,
+        "tp": 53
+      },
+      "concurrency": {
+        "fn": 9,
+        "tp": 5
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 5,
+        "tp": 4
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 8,
+        "tp": 3
+      },
+      "speculative": {
+        "fn": 2,
+        "tp": 3
+      },
+      "style": {
+        "fn": 5,
+        "tp": 5
+      },
+      "test_gap": {
+        "fn": 3,
+        "tp": 1
+      }
+    },
+    "bugbunny-family-openai-gpt-5-6-terra-d7aaaf15affb": {
+      "api": {
+        "fn": 5,
+        "tp": 8
+      },
+      "bug": {
+        "fn": 64,
+        "tp": 30
+      },
+      "concurrency": {
+        "fn": 9,
+        "tp": 5
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 7,
+        "tp": 2
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 8,
+        "tp": 3
+      },
+      "speculative": {
+        "fn": 3,
+        "tp": 2
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-generator-openai-gpt-5-6-luna-0efff476a85d": {
+      "api": {
+        "fn": 4,
+        "tp": 9
+      },
+      "bug": {
+        "fn": 47,
+        "tp": 47
+      },
+      "concurrency": {
+        "fn": 4,
+        "tp": 10
+      },
+      "data": {
+        "fn": 3,
+        "tp": 4
+      },
+      "doc_defect": {
+        "fn": 4,
+        "tp": 5
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 8,
+        "tp": 3
+      },
+      "speculative": {
+        "fn": 2,
+        "tp": 3
+      },
+      "style": {
+        "fn": 5,
+        "tp": 5
+      },
+      "test_gap": {
+        "fn": 1,
+        "tp": 3
+      }
+    },
+    "bugbunny-generator-openai-gpt-5-6-sol-f0d905277d32": {
+      "api": {
+        "fn": 3,
+        "tp": 10
+      },
+      "bug": {
+        "fn": 27,
+        "tp": 67
+      },
+      "concurrency": {
+        "fn": 1,
+        "tp": 13
+      },
+      "data": {
+        "fn": 3,
+        "tp": 4
+      },
+      "doc_defect": {
+        "fn": 4,
+        "tp": 5
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 6,
+        "tp": 5
+      },
+      "speculative": {
+        "fn": 1,
+        "tp": 4
+      },
+      "style": {
+        "fn": 4,
+        "tp": 6
+      },
+      "test_gap": {
+        "fn": 1,
+        "tp": 3
+      }
+    },
+    "bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3": {
+      "api": {
+        "fn": 4,
+        "tp": 9
+      },
+      "bug": {
+        "fn": 43,
+        "tp": 51
+      },
+      "concurrency": {
+        "fn": 4,
+        "tp": 10
+      },
+      "data": {
+        "fn": 4,
+        "tp": 3
+      },
+      "doc_defect": {
+        "fn": 4,
+        "tp": 5
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 5,
+        "tp": 6
+      },
+      "speculative": {
+        "fn": 2,
+        "tp": 3
+      },
+      "style": {
+        "fn": 8,
+        "tp": 2
+      },
+      "test_gap": {
+        "fn": 3,
+        "tp": 1
+      }
+    }
+  },
+  "inputs": {
+    "evaluations": "/Users/praty/Documents/Codex/2026-08-20/review-this-paper-x20-based-on-2/work/bugbunny-eval-v070-calibrated-2026-08-23-v7-results/anthropic_claude-opus-4-5/evaluations.json",
+    "evaluations_sha256": "7b7184c2207af70f449806fac8c50781dafb205236aaaf3e4a7c61dac2dd5e33",
+    "export_index": "/Users/praty/Documents/Codex/2026-08-20/review-this-paper-x20-based-on-2/work/bugbunny-eval-v070-calibrated-2026-08-23-v7-results/anthropic_claude-opus-4-5/bugbunny_export_index.json",
+    "export_index_sha256": "15ab2636004066f60ce278f7cd3dca8a57bf9dcf5806c59b6a2335d04242e4f9",
+    "judge_model": "anthropic/claude-opus-4-5",
+    "run_manifest": "/Users/praty/Documents/Codex/2026-08-20/review-this-paper-x20-based-on-2/work/bugbunny-eval-v070-calibrated-2026-08-23-v7/run_manifest.json",
+    "run_manifest_sha256": "1d3b1f57e159ddccd3305449592bc49f9597e5ef8c0d53df002e11f15ee45e80"
+  },
+  "interpretation_limits": [
+    "CodeReviewBench golden comments may be incomplete, so false positives are benchmark-relative.",
+    "Threshold curves reuse the fixed judge pair matrix; they do not make additional judge calls.",
+    "Confidence intervals resample pull requests and do not model judge-model uncertainty.",
+    "Hierarchical repository-index summarization is reported separately from prompt and discovery bounds because the full inventory remains pageable."
+  ],
+  "paired_model_comparisons": {
+    "bugbunny-balanced-openai-gpt-5-6-luna-f888fd9190a6__minus__bugbunny-balanced-openai-gpt-5-6-sol-082977991f23": {
+      "case_count": 50,
+      "f1_delta": -0.1492050754802146,
+      "f1_delta_95_ci": [
+        -0.23939878224176614,
+        -0.0665015670414613
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.0
+    },
+    "bugbunny-balanced-openai-gpt-5-6-luna-f888fd9190a6__minus__bugbunny-balanced-openai-gpt-5-6-terra-f296986013dc": {
+      "case_count": 50,
+      "f1_delta": -0.023264137437365717,
+      "f1_delta_95_ci": [
+        -0.11933733498923986,
+        0.07090180882003085
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.3182
+    },
+    "bugbunny-balanced-openai-gpt-5-6-sol-082977991f23__minus__bugbunny-balanced-openai-gpt-5-6-terra-f296986013dc": {
+      "case_count": 50,
+      "f1_delta": 0.1259409380428489,
+      "f1_delta_95_ci": [
+        0.05155066340714192,
+        0.20314094217731657
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.9998
+    },
+    "bugbunny-family-openai-gpt-5-6-luna-1ff47539eb59__minus__bugbunny-family-openai-gpt-5-6-sol-451e4c3a4caa": {
+      "case_count": 50,
+      "f1_delta": -0.1570790912282462,
+      "f1_delta_95_ci": [
+        -0.24134054194196755,
+        -0.07746647284786676
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.0
+    },
+    "bugbunny-family-openai-gpt-5-6-luna-1ff47539eb59__minus__bugbunny-family-openai-gpt-5-6-terra-d7aaaf15affb": {
+      "case_count": 50,
+      "f1_delta": -0.03113815318539731,
+      "f1_delta_95_ci": [
+        -0.12268476106147932,
+        0.058575970495845175
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.2588
+    },
+    "bugbunny-family-openai-gpt-5-6-sol-451e4c3a4caa__minus__bugbunny-family-openai-gpt-5-6-terra-d7aaaf15affb": {
+      "case_count": 50,
+      "f1_delta": 0.1259409380428489,
+      "f1_delta_95_ci": [
+        0.05155066340714192,
+        0.20314094217731657
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.9998
+    },
+    "bugbunny-generator-openai-gpt-5-6-luna-0efff476a85d__minus__bugbunny-generator-openai-gpt-5-6-sol-f0d905277d32": {
+      "case_count": 50,
+      "f1_delta": 0.03922138703729966,
+      "f1_delta_95_ci": [
+        -0.008990844257499249,
+        0.08612382601219075
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 0.9472
+    },
+    "bugbunny-generator-openai-gpt-5-6-luna-0efff476a85d__minus__bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3": {
+      "case_count": 50,
+      "f1_delta": -0.019304812834224527,
+      "f1_delta_95_ci": [
+        -0.06283608529319314,
+        0.025523231687200137
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 0.1938
+    },
+    "bugbunny-generator-openai-gpt-5-6-sol-f0d905277d32__minus__bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3": {
+      "case_count": 50,
+      "f1_delta": -0.05852619987152419,
+      "f1_delta_95_ci": [
+        -0.10876664575294705,
+        -0.009984156805122154
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 0.0114
+    }
+  },
+  "schema_version": "bugbunny-evaluation-audit-v2",
+  "stage_counts": {
+    "openai/gpt-5.6-luna": {
+      "context_files_max": 104,
+      "context_files_mean": 66,
+      "discovery_bound_hits_by_reason": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 1,
+        "list_pagination_unresolved": 6,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 21,
+        "round_limit_hit": 39,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 37,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "generation_budget_utilization_max": 0.1694308286528475,
+      "generation_budget_utilization_mean": 0.10217772496946789,
+      "generation_input_tokens_mean": 50753.16,
+      "model_call_retries": 0,
+      "raw_findings": 274,
+      "rejections_by_stage": {
+        "validation": 8,
+        "verifier": 103,
+        "verifier_confidence": 71,
+        "verifier_merge": 11
+      },
+      "reviews": 50,
+      "reviews_hitting_discovery_bound": 47,
+      "reviews_hitting_prompt_or_evidence_bound": 3,
+      "reviews_with_hierarchical_index_summary": 47,
+      "validated_findings": 266,
+      "verified_findings": 81,
+      "verifier_budget_utilization_max": 0.6407598568065909,
+      "verifier_budget_utilization_mean": 0.44808693360141233,
+      "verifier_input_tokens_mean": 47897.52
+    },
+    "openai/gpt-5.6-sol": {
+      "context_files_max": 102,
+      "context_files_mean": 70.04,
+      "discovery_bound_hits_by_reason": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 1,
+        "file_limit_hit": 4,
+        "list_pagination_unresolved": 11,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 3,
+        "round_limit_hit": 3,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 26,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "generation_budget_utilization_max": 0.1682409868240325,
+      "generation_budget_utilization_mean": 0.10454625489423812,
+      "generation_input_tokens_mean": 51678.28,
+      "model_call_retries": 2,
+      "raw_findings": 476,
+      "rejections_by_stage": {
+        "validation": 5,
+        "verifier": 129,
+        "verifier_confidence": 185,
+        "verifier_merge": 18
+      },
+      "reviews": 50,
+      "reviews_hitting_discovery_bound": 33,
+      "reviews_hitting_prompt_or_evidence_bound": 7,
+      "reviews_with_hierarchical_index_summary": 47,
+      "validated_findings": 471,
+      "verified_findings": 139,
+      "verifier_budget_utilization_max": 0.7217965378579835,
+      "verifier_budget_utilization_mean": 0.5079518928991762,
+      "verifier_input_tokens_mean": 57241.32
+    },
+    "openai/gpt-5.6-terra": {
+      "context_files_max": 107,
+      "context_files_mean": 61.08,
+      "discovery_bound_hits_by_reason": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 1,
+        "file_limit_hit": 1,
+        "list_pagination_unresolved": 4,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 32,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 24,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "generation_budget_utilization_max": 0.1419569009171215,
+      "generation_budget_utilization_mean": 0.08289710764179638,
+      "generation_input_tokens_mean": 44706.16,
+      "model_call_retries": 0,
+      "raw_findings": 256,
+      "rejections_by_stage": {
+        "validation": 7,
+        "verifier": 78,
+        "verifier_confidence": 79,
+        "verifier_merge": 6
+      },
+      "reviews": 50,
+      "reviews_hitting_discovery_bound": 42,
+      "reviews_hitting_prompt_or_evidence_bound": 0,
+      "reviews_with_hierarchical_index_summary": 47,
+      "validated_findings": 249,
+      "verified_findings": 86,
+      "verifier_budget_utilization_max": 0.6449342879560612,
+      "verifier_budget_utilization_mean": 0.38101222293056103,
+      "verifier_input_tokens_mean": 40750.66
+    }
+  },
+  "threshold_curves_from_generator_judgments": {
+    "openai/gpt-5.6-luna": [
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.0,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.05,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.1,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.15,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.2,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.25,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.3,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.35,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.4,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.45,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.5,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.55,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.6,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.65,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.7,
+        "tp": 73
+      },
+      {
+        "f1": 0.459119496855346,
+        "fn": 100,
+        "fp": 72,
+        "precision": 0.503448275862069,
+        "recall": 0.42196531791907516,
+        "threshold": 0.75,
+        "tp": 73
+      },
+      {
+        "f1": 0.4536741214057508,
+        "fn": 102,
+        "fp": 69,
+        "precision": 0.5071428571428571,
+        "recall": 0.41040462427745666,
+        "threshold": 0.8,
+        "tp": 71
+      },
+      {
+        "f1": 0.4610389610389611,
+        "fn": 102,
+        "fp": 64,
+        "precision": 0.5259259259259259,
+        "recall": 0.41040462427745666,
+        "threshold": 0.85,
+        "tp": 71
+      },
+      {
+        "f1": 0.43122676579925645,
+        "fn": 115,
+        "fp": 38,
+        "precision": 0.6041666666666666,
+        "recall": 0.3352601156069364,
+        "threshold": 0.9,
+        "tp": 58
+      },
+      {
+        "f1": 0.3904382470119522,
+        "fn": 124,
+        "fp": 29,
+        "precision": 0.6282051282051282,
+        "recall": 0.2832369942196532,
+        "threshold": 0.92,
+        "tp": 49
+      },
+      {
+        "f1": 0.2672811059907834,
+        "fn": 144,
+        "fp": 15,
+        "precision": 0.6590909090909091,
+        "recall": 0.1676300578034682,
+        "threshold": 0.95,
+        "tp": 29
+      },
+      {
+        "f1": 0.0,
+        "fn": 173,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 1.0,
+        "tp": 0
+      }
+    ],
+    "openai/gpt-5.6-sol": [
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.0,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.05,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.1,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.15,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.2,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.25,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.3,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.35,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.4,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.45,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.5,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.55,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.6,
+        "tp": 115
+      },
+      {
+        "f1": 0.4655870445344129,
+        "fn": 58,
+        "fp": 206,
+        "precision": 0.3582554517133956,
+        "recall": 0.6647398843930635,
+        "threshold": 0.65,
+        "tp": 115
+      },
+      {
+        "f1": 0.467479674796748,
+        "fn": 58,
+        "fp": 204,
+        "precision": 0.3605015673981191,
+        "recall": 0.6647398843930635,
+        "threshold": 0.7,
+        "tp": 115
+      },
+      {
+        "f1": 0.47131147540983603,
+        "fn": 58,
+        "fp": 200,
+        "precision": 0.36507936507936506,
+        "recall": 0.6647398843930635,
+        "threshold": 0.75,
+        "tp": 115
+      },
+      {
+        "f1": 0.46764091858037576,
+        "fn": 61,
+        "fp": 194,
+        "precision": 0.3660130718954248,
+        "recall": 0.6473988439306358,
+        "threshold": 0.8,
+        "tp": 112
+      },
+      {
+        "f1": 0.488888888888889,
+        "fn": 63,
+        "fp": 167,
+        "precision": 0.3971119133574007,
+        "recall": 0.6358381502890174,
+        "threshold": 0.85,
+        "tp": 110
+      },
+      {
+        "f1": 0.5295774647887325,
+        "fn": 79,
+        "fp": 88,
+        "precision": 0.5164835164835165,
+        "recall": 0.5433526011560693,
+        "threshold": 0.9,
+        "tp": 94
+      },
+      {
+        "f1": 0.5384615384615384,
+        "fn": 89,
+        "fp": 55,
+        "precision": 0.60431654676259,
+        "recall": 0.48554913294797686,
+        "threshold": 0.92,
+        "tp": 84
+      },
+      {
+        "f1": 0.38842975206611574,
+        "fn": 126,
+        "fp": 22,
+        "precision": 0.6811594202898551,
+        "recall": 0.27167630057803466,
+        "threshold": 0.95,
+        "tp": 47
+      },
+      {
+        "f1": 0.0,
+        "fn": 173,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 1.0,
+        "tp": 0
+      }
+    ],
+    "openai/gpt-5.6-terra": [
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.0,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.05,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.1,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.15,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.2,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.25,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.3,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.35,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.4,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.45,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.5,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.55,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.6,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.65,
+        "tp": 75
+      },
+      {
+        "f1": 0.44776119402985076,
+        "fn": 98,
+        "fp": 87,
+        "precision": 0.46296296296296297,
+        "recall": 0.43352601156069365,
+        "threshold": 0.7,
+        "tp": 75
+      },
+      {
+        "f1": 0.4444444444444445,
+        "fn": 99,
+        "fp": 86,
+        "precision": 0.4625,
+        "recall": 0.4277456647398844,
+        "threshold": 0.75,
+        "tp": 74
+      },
+      {
+        "f1": 0.44984802431610943,
+        "fn": 99,
+        "fp": 82,
+        "precision": 0.47435897435897434,
+        "recall": 0.4277456647398844,
+        "threshold": 0.8,
+        "tp": 74
+      },
+      {
+        "f1": 0.46540880503144655,
+        "fn": 99,
+        "fp": 71,
+        "precision": 0.5103448275862069,
+        "recall": 0.4277456647398844,
+        "threshold": 0.85,
+        "tp": 74
+      },
+      {
+        "f1": 0.4404332129963899,
+        "fn": 112,
+        "fp": 43,
+        "precision": 0.5865384615384616,
+        "recall": 0.35260115606936415,
+        "threshold": 0.9,
+        "tp": 61
+      },
+      {
+        "f1": 0.41538461538461535,
+        "fn": 119,
+        "fp": 33,
+        "precision": 0.6206896551724138,
+        "recall": 0.31213872832369943,
+        "threshold": 0.92,
+        "tp": 54
+      },
+      {
+        "f1": 0.26976744186046514,
+        "fn": 144,
+        "fp": 13,
+        "precision": 0.6904761904761905,
+        "recall": 0.1676300578034682,
+        "threshold": 0.95,
+        "tp": 29
+      },
+      {
+        "f1": 0.0,
+        "fn": 173,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 1.0,
+        "tp": 0
+      }
+    ]
+  },
+  "tracks": {
+    "bugbunny-balanced-openai-gpt-5-6-luna-f888fd9190a6": {
+      "finding_stage": "balanced",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.30041845493562236,
+            0.46216344586068514
+          ],
+          "precision": [
+            0.4911869517543859,
+            0.7176470588235294
+          ],
+          "recall": [
+            0.21110441767068275,
+            0.355830820422169
+          ]
+        },
+        "exported_candidates": 81,
+        "f1": 0.38582677165354334,
+        "fn": 124,
+        "fp": 32,
+        "precision": 0.6049382716049383,
+        "recall": 0.2832369942196532,
+        "reviews": 50,
+        "tp": 49
+      },
+      "model": "openai/gpt-5.6-luna"
+    },
+    "bugbunny-balanced-openai-gpt-5-6-sol-082977991f23": {
+      "finding_stage": "balanced",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.47222222222222227,
+            0.5964937200956938
+          ],
+          "precision": [
+            0.520826198630137,
+            0.6776859504132231
+          ],
+          "recall": [
+            0.4166666666666667,
+            0.5533995847835378
+          ]
+        },
+        "exported_candidates": 139,
+        "f1": 0.535031847133758,
+        "fn": 89,
+        "fp": 57,
+        "precision": 0.5957446808510638,
+        "recall": 0.48554913294797686,
+        "reviews": 50,
+        "tp": 84
+      },
+      "model": "openai/gpt-5.6-sol"
+    },
+    "bugbunny-balanced-openai-gpt-5-6-terra-f296986013dc": {
+      "finding_stage": "balanced",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.3257575757575758,
+            0.48818897637795267
+          ],
+          "precision": [
+            0.48935592044403325,
+            0.6915098199672666
+          ],
+          "recall": [
+            0.23755932143363084,
+            0.3895367713681667
+          ]
+        },
+        "exported_candidates": 86,
+        "f1": 0.40909090909090906,
+        "fn": 119,
+        "fp": 37,
+        "precision": 0.5934065934065934,
+        "recall": 0.31213872832369943,
+        "reviews": 50,
+        "tp": 54
+      },
+      "model": "openai/gpt-5.6-terra"
+    },
+    "bugbunny-family-openai-gpt-5-6-luna-1ff47539eb59": {
+      "finding_stage": "family",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.2965634980988593,
+            0.45518306483823706
+          ],
+          "precision": [
+            0.48148148148148145,
+            0.7058823529411765
+          ],
+          "recall": [
+            0.20731549349172249,
+            0.3496932515337423
+          ]
+        },
+        "exported_candidates": 79,
+        "f1": 0.37795275590551175,
+        "fn": 125,
+        "fp": 33,
+        "precision": 0.5925925925925926,
+        "recall": 0.2774566473988439,
+        "reviews": 50,
+        "tp": 48
+      },
+      "model": "openai/gpt-5.6-luna"
+    },
+    "bugbunny-family-openai-gpt-5-6-sol-451e4c3a4caa": {
+      "finding_stage": "family",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.47222222222222227,
+            0.5964937200956938
+          ],
+          "precision": [
+            0.520826198630137,
+            0.6776859504132231
+          ],
+          "recall": [
+            0.4166666666666667,
+            0.5533995847835378
+          ]
+        },
+        "exported_candidates": 138,
+        "f1": 0.535031847133758,
+        "fn": 89,
+        "fp": 57,
+        "precision": 0.5957446808510638,
+        "recall": 0.48554913294797686,
+        "reviews": 50,
+        "tp": 84
+      },
+      "model": "openai/gpt-5.6-sol"
+    },
+    "bugbunny-family-openai-gpt-5-6-terra-d7aaaf15affb": {
+      "finding_stage": "family",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.3257575757575758,
+            0.48818897637795267
+          ],
+          "precision": [
+            0.48935592044403325,
+            0.6915098199672666
+          ],
+          "recall": [
+            0.23755932143363084,
+            0.3895367713681667
+          ]
+        },
+        "exported_candidates": 86,
+        "f1": 0.40909090909090906,
+        "fn": 119,
+        "fp": 37,
+        "precision": 0.5934065934065934,
+        "recall": 0.31213872832369943,
+        "reviews": 50,
+        "tp": 54
+      },
+      "model": "openai/gpt-5.6-terra"
+    },
+    "bugbunny-generator-openai-gpt-5-6-luna-0efff476a85d": {
+      "finding_stage": "generator",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.35134976897271974,
+            0.47516529030618715
+          ],
+          "precision": [
+            0.28469685949554513,
+            0.3977272727272727
+          ],
+          "recall": [
+            0.44808316256830605,
+            0.6035502958579881
+          ]
+        },
+        "exported_candidates": 266,
+        "f1": 0.41363636363636364,
+        "fn": 82,
+        "fp": 176,
+        "precision": 0.3408239700374532,
+        "recall": 0.5260115606936416,
+        "reviews": 50,
+        "tp": 91
+      },
+      "model": "openai/gpt-5.6-luna"
+    },
+    "bugbunny-generator-openai-gpt-5-6-sol-f0d905277d32": {
+      "finding_stage": "generator",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.32830634395901614,
+            0.4223669660297019
+          ],
+          "precision": [
+            0.22109481082259066,
+            0.29504504504504503
+          ],
+          "recall": [
+            0.6125,
+            0.771743897787948
+          ]
+        },
+        "exported_candidates": 471,
+        "f1": 0.374414976599064,
+        "fn": 53,
+        "fp": 348,
+        "precision": 0.2564102564102564,
+        "recall": 0.6936416184971098,
+        "reviews": 50,
+        "tp": 120
+      },
+      "model": "openai/gpt-5.6-sol"
+    },
+    "bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3": {
+      "finding_stage": "generator",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.3695639622452053,
+            0.49763033175355453
+          ],
+          "precision": [
+            0.3052190379163714,
+            0.43023255813953487
+          ],
+          "recall": [
+            0.4540112116073111,
+            0.6118465990796663
+          ]
+        },
+        "exported_candidates": 249,
+        "f1": 0.43294117647058816,
+        "fn": 81,
+        "fp": 160,
+        "precision": 0.36507936507936506,
+        "recall": 0.5317919075144508,
+        "reviews": 50,
+        "tp": 92
+      },
+      "model": "openai/gpt-5.6-terra"
+    }
+  }
+}

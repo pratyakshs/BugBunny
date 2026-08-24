@@ -1,0 +1,3541 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "2e05534b3b476b1c6eeb4c89359fb29b00750773a70fa3af153a84dbebe7bea5",
+    "golden_url": "https://github.com/keycloak/keycloak/pull/37038",
+    "review_url": "https://github.com/code-review-benchmark/keycloak__keycloak__augment__PR37038__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 40476,
+      "chunk_id": "b0000-e1504d424344",
+      "cost_usd": 0.00370572,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 40479,
+      "latency_ms": 19633,
+      "output_tokens": 2413,
+      "request_sha256": "1da0b93475f5c9e37ccc10f091493d54b57c6fd7aa11cafc7b9fa1555d2e2ad7",
+      "requested_model": "openai/gpt-5.6-luna",
+      "resolved_model": "openai/gpt-5.6-luna",
+      "response_sha256": "cfd98b9f0dd4b72418bfee370a1aa81e13b1afc64d8efec5029923327958a04d",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-e1504d424344",
+      "cost_usd": 0.0218042,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 58595,
+      "latency_ms": 46997,
+      "output_tokens": 5963,
+      "request_sha256": "27ba7ac7a968621f7bba9310c94bf131c4d768b7e3c12c526e317410b3d91d02",
+      "requested_model": "openai/gpt-5.6-luna",
+      "resolved_model": "openai/gpt-5.6-luna",
+      "response_sha256": "99864aed332a6f0f609ea8d1bacc56f086ad865bc8c1c98e973dc43cb84788fe",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-e1504d424344",
+      "cost_usd": 0.03171795,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 69258,
+      "latency_ms": 101429,
+      "output_tokens": 12003,
+      "request_sha256": "7dc6bffd0717bc72efc2fc9c04965364ff02cd9bdf16da6b2945fb97f9552b1c",
+      "requested_model": "openai/gpt-5.6-luna",
+      "resolved_model": "openai/gpt-5.6-luna",
+      "response_sha256": "38254430b519c5fb0ecc05233263d897028805610cde40131471a713ec1df5a8",
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "candidates-0-3",
+      "cost_usd": 0.3609725,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 55396,
+      "latency_ms": 14740,
+      "output_tokens": 590,
+      "request_sha256": "d877042495729f012450df4e1a63169de8fbdb6f3c98867fbb129a111f4bb241",
+      "requested_model": "anthropic/claude-opus-4-5",
+      "resolved_model": "anthropic/claude-opus-4-5",
+      "response_sha256": "c93b736305012e70cd6423b2fea07b365062f9fd87a6f976871a53be72d71502",
+      "retry_errors": [],
+      "schema_sha256": "4f0c55f0b3b361fe2e31f7433e4f531d14d9dff4c97f0ccc17814ccd9ba1a5a1",
+      "stage": "verification"
+    }
+  ],
+  "completed_at": "2026-08-23T19:56:43.314490Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 1050000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 2026272,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 805708,
+    "max_context_chars": 1208564,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 32768,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "openai/gpt-5.6-luna",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 1050000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 2026272,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 805708,
+      "max_context_chars_per_generation_call": 1208564,
+      "max_output_tokens_per_call": 32768,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.13088342859790628,
+      "largest_verifier_input_char_budget_utilization": 0.5510157169478227,
+      "selection_batches_encountering_page_caps": 1,
+      "selection_batches_encountering_request_caps": 1,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 1,
+        "round_limit_hit": 1,
+        "search_hit_limit_hit": 1,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 1,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 79,
+      "verifier_generation_context_files_available": 79
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      ".github/ISSUE_TEMPLATE/config.yml",
+      ".github/scripts/run-ipa-tests.sh",
+      ".github/workflows/ci.yml",
+      "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+      "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+      "common/src/main/java/org/keycloak/common/Profile.java",
+      "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+      "core/src/main/java/org/keycloak/AuthorizationContext.java",
+      "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+      "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+      "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+      "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+      "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+      "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+      "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+      "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+      "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+      "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+      "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+      "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+      "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+      "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+      "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+      "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+      "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+      "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+      "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+      "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+      "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+      "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+      "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+      "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+      "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+      "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+      "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+      "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+      "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+      "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+      "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+      "test-framework/README.md",
+      "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+      "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+      "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+      "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+      "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+    ],
+    "generation_batches": {
+      "b0000-e1504d424344": {
+        "chunk_ids": [
+          "f0000:c0000-54e2707b6ca7",
+          "f0001:c0000-7da71829b4e6",
+          "f0002:c0000-fec9bcb68712",
+          "f0003:c0000-eee570ef927f",
+          "f0004:c0000-7023449d6090",
+          "f0005:c0000-dc1a294df756",
+          "f0006:c0000-2b6973b29459",
+          "f0007:c0000-a1b3aabac7ce",
+          "f0008:c0000-7c18df76202b",
+          "f0009:c0000-65c1dabc3097",
+          "f0010:c0000-7dbb9b7016bb",
+          "f0011:c0000-2eb3f3cdcd98",
+          "f0012:c0000-261132f60a34",
+          "f0013:c0000-e39a8b5b4108",
+          "f0014:c0000-f49538a94235",
+          "f0015:c0000-4ea4093de6c6",
+          "f0016:c0000-3f78a1bf50dd",
+          "f0017:c0000-279ce3369c2b",
+          "f0018:c0000-f8881898b3d9"
+        ],
+        "context_budget_chars": 1208564,
+        "context_budget_utilization": 0.13088342859790628,
+        "context_chars": 158181,
+        "context_files_available_before_generation_prompt_fit": [
+          ".github/ISSUE_TEMPLATE/config.yml",
+          ".github/scripts/run-ipa-tests.sh",
+          ".github/workflows/ci.yml",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+          "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+          "common/src/main/java/org/keycloak/common/Profile.java",
+          "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+          "core/src/main/java/org/keycloak/AuthorizationContext.java",
+          "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+          "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+          "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+          "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+          "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+          "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+          "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+          "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+          "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+          "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+          "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+          "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+          "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+          "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+          "test-framework/README.md",
+          "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+        ],
+        "context_files_exposed_to_model": [
+          ".github/ISSUE_TEMPLATE/config.yml",
+          ".github/scripts/run-ipa-tests.sh",
+          ".github/workflows/ci.yml",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+          "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+          "common/src/main/java/org/keycloak/common/Profile.java",
+          "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+          "core/src/main/java/org/keycloak/AuthorizationContext.java",
+          "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+          "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+          "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+          "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+          "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+          "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+          "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+          "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+          "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+          "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+          "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+          "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+          "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+          "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+          "test-framework/README.md",
+          "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "396e4ac2ae1d4c9102599c898c2e217fd7395479300b7379f2c9b0d4422ac724",
+        "context_truncated": true,
+        "context_utf8_bytes": 158345,
+        "estimated_context_tokens": 39546,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 2026272,
+        "generation_input_char_budget_utilization": 0.14146471944536568,
+        "generation_prompt_chars": 286646,
+        "generation_prompt_utf8_bytes": 286820,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 79
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 19,
+    "packets": {
+      "f0000:c0000-54e2707b6ca7": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1712,
+        "prompt_sha256": "d9324a3acaeb0a9eeadf0cbd5fadb16842809549b4968ac678720457b67adf99",
+        "symbols": [
+          "groups",
+          "getGroupIdsWithViewPermission",
+          "isEmpty"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0001:c0000-7da71829b4e6": {
+        "callers": 4,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1641,
+        "prompt_sha256": "0fc920f56fc753fbe111f99ca7d01d12d4e09aaa91a6a51831e4c99f9aa6ab91",
+        "symbols": [
+          "ResourceType",
+          "resolveClient",
+          "resolveGroup"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0002:c0000-fec9bcb68712": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1012,
+        "prompt_sha256": "1c0103a5a114f391686a5455cada8b0f3eccb85d60f81ac207a32864337e2aa3",
+        "symbols": [],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0003:c0000-eee570ef927f": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 1709,
+        "prompt_sha256": "17bc4e163bb8c3c30f1b528b2013e5bd4c5622a39eec594e729caa891f9895ad",
+        "symbols": [
+          "filter",
+          "groups",
+          "GroupModel"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0004:c0000-7023449d6090": {
+        "callers": 3,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1684,
+        "prompt_sha256": "34421714fac7a471d8d69858e3553bc34ec52623bcb5f2a9451a63c1be28cda5",
+        "symbols": [
+          "groups",
+          "searchGroupsByAttributes",
+          "filter"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0005:c0000-dc1a294df756": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1686,
+        "prompt_sha256": "d975ffa7b82a55825a35da06674b65b2def4bb48675f6e556bbb2c906d463f61",
+        "symbols": [
+          "users",
+          "getUsersCount",
+          "trim"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0006:c0000-2b6973b29459": {
+        "callers": 4,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 1663,
+        "prompt_sha256": "d2541350c29e2434d21dfad5b10d9e654841d51547f234c3d56b38530c2708f2",
+        "symbols": [
+          "isFeatureEnabled",
+          "register",
+          "ProviderEventListener"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0007:c0000-a1b3aabac7ce": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1664,
+        "prompt_sha256": "25ec9c0b317549d56de759a1da52d8b639a7a2aa4767da4aaef8cf1bff321a18",
+        "symbols": [
+          "canList",
+          "canManage",
+          "canView"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0008:c0000-7c18df76202b": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1716,
+        "prompt_sha256": "3a2fbfc4ec6a2761aa2b543e5cc310b8e4f5a15754f9efc565940104ef9fd2e5",
+        "symbols": [
+          "hasOneAdminRole",
+          "canView",
+          "getGroupIdsWithViewPermission"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0009:c0000-65c1dabc3097": {
+        "callers": 5,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1678,
+        "prompt_sha256": "42d51e988b595287bcbe02567c2b00ffbfcfb233152ee3d89c5126eb68a37b90",
+        "symbols": [
+          "GroupPermissionsV2",
+          "canView",
+          "hasOneAdminRole"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0010:c0000-7dbb9b7016bb": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1692,
+        "prompt_sha256": "ca440493a2522c81f2c289021356f02a2122949a05177d4278dcae1d45e9267a",
+        "symbols": [
+          "groups",
+          "GroupPermissionsV2",
+          "Override"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0011:c0000-2eb3f3cdcd98": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 1715,
+        "prompt_sha256": "a84b994405a17d4dbc937d6f9904c02a9e9f45b13a5d71772caaa2a72e471f9f",
+        "symbols": [
+          "hasOneAdminRole",
+          "checkAdminRoles",
+          "AdminRoles"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0012:c0000-261132f60a34": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1756,
+        "prompt_sha256": "fde44ab6adfd7363ff8391ccbbc4e40f1dcac41d7c4de17fa035203796c172af",
+        "symbols": [
+          "canManage",
+          "canQuery",
+          "canView"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0013:c0000-e39a8b5b4108": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1703,
+        "prompt_sha256": "244528f89a054eba174d847f8d04178e2455e2c7713d1b87ed3f5a129c35de83",
+        "symbols": [
+          "hasOneAdminRole",
+          "canView",
+          "evaluateHierarchy"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0014:c0000-f49538a94235": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1700,
+        "prompt_sha256": "63eda777ab537b2cb4ef9ad51b1b391e7dc7afe8b96023142512a519b14fb3a3",
+        "symbols": [
+          "hasOneAdminRole",
+          "hasPermission",
+          "canViewByGroup"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0015:c0000-4ea4093de6c6": {
+        "callers": 3,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 1755,
+        "prompt_sha256": "0b2b2de74bac0304c81bd1b0789bbe6d94af01a906a56daf7e5a2a9a79a6f0a9",
+        "symbols": [
+          "ApiUtil",
+          "assertEquals",
+          "getStatus"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0016:c0000-3f78a1bf50dd": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1740,
+        "prompt_sha256": "2831c4773aef37a04b9d0cffe61c066a6dfe46a5c3d0b458d8a5f78f59e19d9b",
+        "symbols": [
+          "GroupResourceTypeEvaluationTest",
+          "KeycloakIntegrationTest",
+          "InjectUser"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0017:c0000-279ce3369c2b": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1735,
+        "prompt_sha256": "76b9e0033a09c9f37c03e76762f91af27058d36b4da99a1f8f1e0fbdbf65991e",
+        "symbols": [
+          "clientRoles",
+          "Constants",
+          "REALM_MANAGEMENT_CLIENT_ID"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0018:c0000-f8881898b3d9": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 1262,
+        "prompt_sha256": "6400590235f7a47e411b94c742d56b05142c3bbe264a4c5622b20953c05dff32",
+        "symbols": [],
+        "tests": 1,
+        "truncated": true,
+        "usages": 0
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 188,
+        "serialized_chars": 204,
+        "serialized_limit_chars": 6000,
+        "sha256": "e6dfe2d54f446ec13e3002a4eb0d4f5e51fa8147975fbb9ac962b765d98e7ebb",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 70,
+        "serialized_chars": 72,
+        "serialized_limit_chars": 1000,
+        "sha256": "aee78994ecde488c7905df1cc24c3fb8c85d0d57cfa4952138e8cafd8be9a3a6",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 31223,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 99074
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 69258
+      },
+      "verification": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 55396
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-e1504d424344": {
+          "action_counts": {
+            "list": 0,
+            "read": 15,
+            "search": 11
+          },
+          "actions_executed": 26,
+          "actions_failed": 0,
+          "additional_context_files_selected": 48,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "common/src/main/java/org/keycloak/common/Profile.java",
+            "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+            "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+            "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+            "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+            "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+            "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+            "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+            "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+            "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+            "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+            "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+            "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+            "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+          ],
+          "context_files_exposed_to_model": [
+            "common/src/main/java/org/keycloak/common/Profile.java",
+            "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+            "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+            "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+            "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+            "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+            "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+            "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+            "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+            "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+            "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+            "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+            "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+            "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+            "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 39546,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 158181,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 2026272,
+          "generation_input_char_budget_utilization": 0.14146471944536568,
+          "generation_prompt_chars": 286646,
+          "generation_prompt_utf8_bytes": 286820,
+          "hypotheses_final": 10,
+          "hypotheses_open_final": 10,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 0,
+          "hypotheses_returned": 18,
+          "hypothesis_linked_actions": 26,
+          "largest_selector_input_char_budget_utilization": 0.11924262882771908,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 2021,
+          "repository_files": 10290,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 10290,
+          "repository_index_chars": 4632,
+          "repository_index_chars_by_round": [
+            4632,
+            4632
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 1158,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": true,
+          "request_limit_hit": true,
+          "requests_accepted": 26,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 5,
+          "requests_returned": 31,
+          "round_limit": 2,
+          "round_limit_hit": true,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": true,
+          "search_hits": 104,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 1,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 33743,
+          "seed_context_chars_original": 33743,
+          "seed_context_truncated": false,
+          "selected_context_chars": 124436,
+          "selection_done": false,
+          "selector_input_char_budget": 2026272,
+          "selector_input_chars_by_round": [
+            166106,
+            241618
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 48
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 227,
+      "callers": 61,
+      "changed_context_files_exposed_to_model": [
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+        "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+        "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+        "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 19,
+      "context_chars": 31223,
+      "context_files_exposed_to_model": [
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/scripts/run-ipa-tests.sh",
+        ".github/workflows/ci.yml",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+        "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+        "common/src/main/java/org/keycloak/common/Profile.java",
+        "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+        "core/src/main/java/org/keycloak/AuthorizationContext.java",
+        "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+        "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+        "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+        "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+        "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+        "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+        "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+        "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+        "test-framework/README.md",
+        "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java"
+      ],
+      "context_utf8_bytes": 31381,
+      "cross_file_context_files_exposed_to_model": [
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/scripts/run-ipa-tests.sh",
+        ".github/workflows/ci.yml",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+        "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+        "common/src/main/java/org/keycloak/common/Profile.java",
+        "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+        "core/src/main/java/org/keycloak/AuthorizationContext.java",
+        "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+        "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+        "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+        "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+        "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+        "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "test-framework/README.md",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java"
+      ],
+      "definitions": 2,
+      "estimated_context_tokens": 7810,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 139,
+      "evidence_rows_clipped_during_render": 23,
+      "evidence_rows_omitted_due_to_render_budget": 60,
+      "evidence_rows_rendered": 79,
+      "hypotheses": 0,
+      "imports": 26,
+      "largest_prompt_budget": 1763,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 33,
+        "max_symbols_per_chunk": 6,
+        "prompt_render_budget": 17
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 60,
+        "source_read_budget": 0,
+        "symbol_config_limit": 474,
+        "symbol_search_budget": 227
+      },
+      "packet_metrics": {
+        "f0000:c0000-54e2707b6ca7": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 428,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java"
+          ],
+          "evidence_rows_available_to_render": 9,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 5,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1763,
+          "prompt_budget_utilization": 0.9710720363017583,
+          "prompt_chars": 1712,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1720,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 20,
+          "symbol_candidates_discovered": 20,
+          "symbol_candidates_extracted": 20,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 17
+        },
+        "f0001:c0000-7da71829b4e6": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 411,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java"
+          ],
+          "evidence_rows_available_to_render": 8,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 4,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1763,
+          "prompt_budget_utilization": 0.9307997731140102,
+          "prompt_chars": 1641,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1649,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 58,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 34,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0002:c0000-fec9bcb68712": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 253,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java"
+          ],
+          "evidence_rows_available_to_render": 1,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 1,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.5743473325766175,
+          "prompt_chars": 1012,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 1014,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0003:c0000-eee570ef927f": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/workflows/ci.yml",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java"
+          ],
+          "context_files_exposed_to_model_count": 5,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/workflows/ci.yml",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 4,
+          "estimated_context_tokens": 428,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/workflows/ci.yml",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java"
+          ],
+          "evidence_rows_available_to_render": 9,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 4,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9699205448354143,
+          "prompt_chars": 1709,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1719,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 5
+        },
+        "f0004:c0000-7023449d6090": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 421,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java"
+          ],
+          "evidence_rows_available_to_render": 9,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 5,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9557321225879682,
+          "prompt_chars": 1684,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1692,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 11,
+          "symbol_candidates_discovered": 11,
+          "symbol_candidates_extracted": 11,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 8
+        },
+        "f0005:c0000-dc1a294df756": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/scripts/run-ipa-tests.sh",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+            "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+            "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/scripts/run-ipa-tests.sh",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+            "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+            "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 422,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/scripts/run-ipa-tests.sh",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+            "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+            "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9568671963677639,
+          "prompt_chars": 1686,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1696,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 24,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0006:c0000-2b6973b29459": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "common/src/main/java/org/keycloak/common/Profile.java",
+            "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "common/src/main/java/org/keycloak/common/Profile.java",
+            "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 416,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "common/src/main/java/org/keycloak/common/Profile.java",
+            "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java"
+          ],
+          "evidence_rows_available_to_render": 11,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 7,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9438138479001135,
+          "prompt_chars": 1663,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1671,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 13,
+          "symbol_candidates_discovered": 13,
+          "symbol_candidates_extracted": 13,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 10
+        },
+        "f0007:c0000-a1b3aabac7ce": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 416,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9443813847900113,
+          "prompt_chars": 1664,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1672,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 53,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 29,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0008:c0000-7c18df76202b": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 429,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9738933030646992,
+          "prompt_chars": 1716,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1724,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 26,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 2,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0009:c0000-65c1dabc3097": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 420,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java"
+          ],
+          "evidence_rows_available_to_render": 9,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 5,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9523269012485811,
+          "prompt_chars": 1678,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1686,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 161,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 137,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0010:c0000-7dbb9b7016bb": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/config.yml",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/config.yml",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 423,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/config.yml",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java"
+          ],
+          "evidence_rows_available_to_render": 8,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.960272417707151,
+          "prompt_chars": 1692,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1702,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0011:c0000-2eb3f3cdcd98": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 429,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java"
+          ],
+          "evidence_rows_available_to_render": 9,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 5,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9733257661748014,
+          "prompt_chars": 1715,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1723,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 6,
+          "symbol_candidates_discovered": 6,
+          "symbol_candidates_extracted": 6,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 3
+        },
+        "f0012:c0000-261132f60a34": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 439,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.996594778660613,
+          "prompt_chars": 1756,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1764,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 59,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 35,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0013:c0000-e39a8b5b4108": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 426,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9665153234960272,
+          "prompt_chars": 1703,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1711,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 12,
+          "symbol_candidates_discovered": 12,
+          "symbol_candidates_extracted": 12,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 9
+        },
+        "f0014:c0000-f49538a94235": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "core/src/main/java/org/keycloak/AuthorizationContext.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "core/src/main/java/org/keycloak/AuthorizationContext.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 425,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "core/src/main/java/org/keycloak/AuthorizationContext.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java"
+          ],
+          "evidence_rows_available_to_render": 6,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9648127128263337,
+          "prompt_chars": 1700,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1708,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 14,
+          "symbol_candidates_discovered": 14,
+          "symbol_candidates_extracted": 14,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 11
+        },
+        "f0015:c0000-4ea4093de6c6": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+            "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+            "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+            "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 439,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+            "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+            "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java"
+          ],
+          "evidence_rows_available_to_render": 8,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9960272417707151,
+          "prompt_chars": 1755,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1765,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 11,
+          "symbol_candidates_discovered": 11,
+          "symbol_candidates_extracted": 11,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 8
+        },
+        "f0016:c0000-3f78a1bf50dd": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "test-framework/README.md",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "test-framework/README.md"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 435,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "test-framework/README.md",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java"
+          ],
+          "evidence_rows_available_to_render": 8,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9875141884222475,
+          "prompt_chars": 1740,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1754,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 261,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 237,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0017:c0000-279ce3369c2b": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 434,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.9846765039727582,
+          "prompt_chars": 1735,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1745,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 6,
+          "symbol_candidates_discovered": 6,
+          "symbol_candidates_extracted": 6,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 3
+        },
+        "f0018:c0000-f8881898b3d9": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 316,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 1762,
+          "prompt_budget_utilization": 0.7162315550510783,
+          "prompt_chars": 1262,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 1266,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 416,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 416,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        }
+      },
+      "packets_hitting_symbol_config_limit": 6,
+      "packets_hitting_symbol_render_budget_limit": 17,
+      "prompt_budget_chars": 33480,
+      "prompt_budget_utilization": 0.9325866188769415,
+      "prompt_truncated_packets": 18,
+      "smallest_prompt_budget": 1762,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 19,
+      "symbol_candidates_after_config_limit": 278,
+      "symbol_candidates_discovered": 752,
+      "symbol_candidates_omitted_by_config_limit": 474,
+      "symbol_searches_skipped_due_to_budget": 227,
+      "symbols": 51,
+      "tests": 7,
+      "tree_files": 10290,
+      "truncated_packets": 19,
+      "unchanged_context_files_exposed_to_model": [
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/scripts/run-ipa-tests.sh",
+        ".github/workflows/ci.yml",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+        "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+        "common/src/main/java/org/keycloak/common/Profile.java",
+        "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+        "core/src/main/java/org/keycloak/AuthorizationContext.java",
+        "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+        "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+        "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+        "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+        "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+        "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+        "test-framework/README.md",
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java"
+      ],
+      "unique_changed_context_files_exposed_to_model": 19,
+      "unique_context_files_exposed_to_model": 46,
+      "unique_cross_file_context_files_exposed_to_model": 30,
+      "unique_unchanged_context_files_exposed_to_model": 27,
+      "usages": 43,
+      "whole_repo_grep_cache_hits": 15,
+      "whole_repo_grep_calls": 36,
+      "whole_repo_grep_calls_returning_configured_limit": 33
+    },
+    "unique_changed_context_files_exposed_to_model": 19,
+    "unique_effective_context_files_exposed_to_model": 79,
+    "unique_unchanged_context_files_exposed_to_model": 60,
+    "verification_batches": [
+      {
+        "candidate_count": 4,
+        "candidate_offset": 0,
+        "candidate_payload_chars": 6670,
+        "context_budget_chars": 189957,
+        "context_budget_clipped": false,
+        "context_chars": 164420,
+        "context_chars_available": 164420,
+        "context_chars_before_prompt_fit": 164420,
+        "context_chars_omitted_by_evidence_budget": 0,
+        "context_chars_omitted_by_prompt_fit": 0,
+        "context_chars_rendered": 164420,
+        "context_clipped_to_any_budget": false,
+        "context_clipped_to_prompt_budget": false,
+        "evidence_budget_clipped": false,
+        "evidence_clipped_to_any_budget": false,
+        "generation_context_blocks_available": 1,
+        "generation_context_blocks_rendered": 1,
+        "generation_context_chars_available": 158230,
+        "generation_context_chars_omitted": 0,
+        "generation_context_chars_rendered": 158230,
+        "generation_context_files_after_prompt_fit": [
+          ".github/ISSUE_TEMPLATE/config.yml",
+          ".github/scripts/run-ipa-tests.sh",
+          ".github/workflows/ci.yml",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+          "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+          "common/src/main/java/org/keycloak/common/Profile.java",
+          "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+          "core/src/main/java/org/keycloak/AuthorizationContext.java",
+          "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+          "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+          "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+          "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+          "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+          "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+          "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+          "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+          "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+          "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+          "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+          "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+          "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+          "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+          "test-framework/README.md",
+          "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+        ],
+        "generation_context_files_available": [
+          ".github/ISSUE_TEMPLATE/config.yml",
+          ".github/scripts/run-ipa-tests.sh",
+          ".github/workflows/ci.yml",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+          "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+          "common/src/main/java/org/keycloak/common/Profile.java",
+          "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+          "core/src/main/java/org/keycloak/AuthorizationContext.java",
+          "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+          "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+          "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+          "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+          "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+          "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+          "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+          "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+          "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+          "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+          "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+          "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+          "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+          "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+          "test-framework/README.md",
+          "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+        ],
+        "generation_context_files_omitted": [],
+        "generation_context_files_rendered": [
+          ".github/ISSUE_TEMPLATE/config.yml",
+          ".github/scripts/run-ipa-tests.sh",
+          ".github/workflows/ci.yml",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/DefaultSamlDeployment.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapper.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+          "adapters/saml/core/src/test/java/org/keycloak/adapters/saml/PropertiesBasedRoleMapperTest.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/group/GroupPolicyProviderFactory.java",
+          "common/src/main/java/org/keycloak/common/Profile.java",
+          "common/src/main/java/org/keycloak/common/util/MultiSiteUtils.java",
+          "core/src/main/java/org/keycloak/AuthorizationContext.java",
+          "core/src/main/java/org/keycloak/representations/idm/GroupRepresentation.java",
+          "docs/documentation/server_development/topics/user-storage/registration-query.adoc",
+          "federation/ipatuura/src/main/java/org/keycloak/ipatuura_user_spi/IpatuuraUserStorageProvider.java",
+          "js/apps/admin-ui/src/utils/useIsFeatureEnabled.ts",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/InfinispanNotificationsManager.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanClusterProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/cluster/infinispan/remote/RemoteInfinispanNotificationManager.java",
+          "model/infinispan/src/main/java/org/keycloak/connections/infinispan/DefaultInfinispanConnectionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/crl/infinispan/InfinispanCacheCrlProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/keys/infinispan/InfinispanCachePublicKeyProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanCacheRealmProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/InfinispanUserCacheProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/RealmCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/UserCacheSession.java",
+          "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/authorization/InfinispanCacheStoreFactoryProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanAuthenticationSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserLoginFailureProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProvider.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/PersistentUserSessionProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaClientProviderFactory.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaRealmProvider.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/JpaUserProvider.java",
+          "model/storage-private/src/main/java/org/keycloak/exportimport/util/ExportUtils.java",
+          "model/storage-private/src/main/java/org/keycloak/migration/migrators/MigrateTo1_4_0.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/UserStorageManager.java",
+          "model/storage-private/src/main/java/org/keycloak/storage/datastore/DefaultExportImportManager.java",
+          "model/storage-services/src/main/java/org/keycloak/exportimport/util/MultipleStepsExportProvider.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/AvailableRoleMappingResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java",
+          "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/UIRealmsResource.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+          "server-spi-private/src/main/java/org/keycloak/authorization/AuthorizationProvider.java",
+          "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java",
+          "server-spi-private/src/main/java/org/keycloak/userprofile/DefaultAttributes.java",
+          "services/src/main/java/org/keycloak/authorization/admin/PolicyService.java",
+          "services/src/main/java/org/keycloak/services/DefaultKeycloakSessionFactory.java",
+          "services/src/main/java/org/keycloak/services/managers/RealmManager.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/ClientsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java",
+          "services/src/main/java/org/keycloak/utils/GroupUtils.java",
+          "test-framework/README.md",
+          "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/KeycloakAdminPermissionsServerConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java",
+          "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/authz/admin/permissions/ExportImportTestWithFGAPV2Enabled.java"
+        ],
+        "input_char_budget": 326272,
+        "input_char_budget_utilization": 0.5510157169478227,
+        "patch_blocks_available": 4,
+        "patch_blocks_rendered": 4,
+        "patch_budget_chars": 126637,
+        "patch_budget_clipped": false,
+        "patch_chars": 6187,
+        "patch_chars_available": 6187,
+        "patch_chars_omitted_by_evidence_budget": 0,
+        "patch_chars_rendered": 6187,
+        "prompt_chars": 179781,
+        "prompt_utf8_bytes": 179945,
+        "source_blocks_available": 4,
+        "source_blocks_rendered": 4,
+        "source_context_chars_available": 6188,
+        "source_context_chars_omitted": 0,
+        "source_context_chars_rendered": 6188,
+        "source_files_after_prompt_fit": [
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java"
+        ],
+        "source_files_available": [
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java"
+        ],
+        "source_files_omitted": [],
+        "source_files_rendered": [
+          "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java"
+        ]
+      }
+    ],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": true,
+    "completed_hunks": [
+      "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java:135:135:h000",
+      "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java:24:24:h000",
+      "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java:152:169:h001",
+      "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java:164:164:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java:165:165:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java:195:194:h001",
+      "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java:38:38:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java:91:90:h001",
+      "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java:62:62:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java:387:386:h001",
+      "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java:414:413:h002",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java:62:62:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java:7:7:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java:44:44:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java:138:137:h001",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java:264:263:h002",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java:0:1:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java:15:15:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java:44:45:h001",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java:290:290:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java:7:7:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java:168:168:h000",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java:226:222:h001",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java:265:261:h002",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java:576:572:h003",
+      "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java:36:36:h000",
+      "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java:1:1:h000",
+      "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java:0:1:h000",
+      "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java:22:22:h000",
+      "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java:23:23:h000"
+    ],
+    "coverage_ratio": 1.0,
+    "eligible_files": 19,
+    "eligible_hunks": 30,
+    "excluded_files": [],
+    "failed_hunks": [],
+    "total_files": 19,
+    "total_hunks": 30
+  },
+  "diagnostics": [],
+  "diff": {
+    "additions": 831,
+    "bytes": 90127,
+    "chunk_plan_complete": true,
+    "chunks": 19,
+    "commentable_ranges": {
+      "LEFT": {
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java": [
+          [
+            147,
+            152
+          ],
+          [
+            155,
+            156
+          ]
+        ],
+        "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java": [
+          [
+            53,
+            54
+          ],
+          [
+            57,
+            57
+          ],
+          [
+            60,
+            62
+          ],
+          [
+            67,
+            67
+          ],
+          [
+            73,
+            73
+          ],
+          [
+            89,
+            89
+          ],
+          [
+            91,
+            94
+          ]
+        ],
+        "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java": [
+          [
+            176,
+            179
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java": [
+          [
+            177,
+            177
+          ],
+          [
+            180,
+            180
+          ],
+          [
+            207,
+            207
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java": [
+          [
+            50,
+            50
+          ],
+          [
+            103,
+            103
+          ],
+          [
+            113,
+            115
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java": [
+          [
+            74,
+            74
+          ],
+          [
+            399,
+            399
+          ],
+          [
+            426,
+            426
+          ],
+          [
+            431,
+            431
+          ],
+          [
+            449,
+            454
+          ],
+          [
+            457,
+            458
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java": [
+          [
+            74,
+            77
+          ],
+          [
+            97,
+            98
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java": [
+          [
+            49,
+            50
+          ],
+          [
+            56,
+            56
+          ],
+          [
+            58,
+            58
+          ],
+          [
+            65,
+            65
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java": [
+          [
+            56,
+            58
+          ],
+          [
+            76,
+            76
+          ],
+          [
+            150,
+            150
+          ],
+          [
+            276,
+            276
+          ],
+          [
+            287,
+            287
+          ],
+          [
+            298,
+            315
+          ],
+          [
+            340,
+            340
+          ],
+          [
+            356,
+            356
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java": [],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java": [],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java": [
+          [
+            302,
+            302
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java": [
+          [
+            45,
+            45
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java": [
+          [
+            180,
+            183
+          ],
+          [
+            238,
+            238
+          ],
+          [
+            277,
+            277
+          ],
+          [
+            302,
+            302
+          ],
+          [
+            588,
+            589
+          ],
+          [
+            593,
+            597
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java": [
+          [
+            48,
+            48
+          ],
+          [
+            52,
+            58
+          ],
+          [
+            63,
+            63
+          ],
+          [
+            67,
+            73
+          ],
+          [
+            90,
+            90
+          ],
+          [
+            94,
+            94
+          ],
+          [
+            99,
+            99
+          ],
+          [
+            103,
+            103
+          ]
+        ],
+        "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java": [
+          [
+            9,
+            13
+          ]
+        ],
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java": [],
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java": [
+          [
+            34,
+            34
+          ]
+        ],
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java": [
+          [
+            35,
+            35
+          ]
+        ]
+      },
+      "RIGHT": {
+        "rest/admin-ui-ext/src/main/java/org/keycloak/admin/ui/rest/BruteForceUsersResource.java": [
+          [
+            147,
+            149
+          ],
+          [
+            152,
+            152
+          ]
+        ],
+        "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java": [
+          [
+            36,
+            36
+          ],
+          [
+            54,
+            54
+          ],
+          [
+            56,
+            57
+          ],
+          [
+            59,
+            59
+          ],
+          [
+            62,
+            63
+          ],
+          [
+            68,
+            77
+          ],
+          [
+            79,
+            80
+          ],
+          [
+            85,
+            89
+          ],
+          [
+            105,
+            105
+          ],
+          [
+            107,
+            111
+          ],
+          [
+            181,
+            187
+          ]
+        ],
+        "server-spi-private/src/main/java/org/keycloak/models/utils/ModelToRepresentation.java": [],
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupResource.java": [
+          [
+            179,
+            179
+          ],
+          [
+            206,
+            206
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/GroupsResource.java": [
+          [
+            102,
+            102
+          ],
+          [
+            112,
+            113
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/UsersResource.java": [
+          [
+            398,
+            398
+          ],
+          [
+            425,
+            425
+          ],
+          [
+            430,
+            430
+          ],
+          [
+            448,
+            450
+          ],
+          [
+            453,
+            453
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java": [
+          [
+            74,
+            77
+          ],
+          [
+            97,
+            98
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java": [
+          [
+            19,
+            20
+          ],
+          [
+            31,
+            38
+          ],
+          [
+            41,
+            43
+          ],
+          [
+            46,
+            50
+          ],
+          [
+            53,
+            55
+          ],
+          [
+            58,
+            64
+          ],
+          [
+            67,
+            69
+          ],
+          [
+            72,
+            77
+          ],
+          [
+            80,
+            82
+          ],
+          [
+            85,
+            91
+          ],
+          [
+            94,
+            96
+          ],
+          [
+            99,
+            101
+          ],
+          [
+            104,
+            108
+          ],
+          [
+            111,
+            116
+          ],
+          [
+            118,
+            124
+          ],
+          [
+            126,
+            129
+          ],
+          [
+            132,
+            134
+          ],
+          [
+            137,
+            139
+          ],
+          [
+            142,
+            147
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissions.java": [
+          [
+            56,
+            58
+          ],
+          [
+            149,
+            149
+          ],
+          [
+            275,
+            275
+          ],
+          [
+            284,
+            284
+          ],
+          [
+            287,
+            287
+          ],
+          [
+            298,
+            299
+          ],
+          [
+            324,
+            324
+          ],
+          [
+            340,
+            340
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java": [
+          [
+            1,
+            211
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/MgmtPermissionsV2.java": [
+          [
+            27,
+            27
+          ],
+          [
+            57,
+            63
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/RolePermissions.java": [
+          [
+            302,
+            302
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionEvaluator.java": [
+          [
+            19,
+            20
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            32,
+            35
+          ],
+          [
+            37,
+            40
+          ],
+          [
+            42,
+            47
+          ],
+          [
+            49,
+            57
+          ],
+          [
+            60,
+            62
+          ],
+          [
+            64,
+            71
+          ],
+          [
+            74,
+            76
+          ],
+          [
+            78,
+            81
+          ],
+          [
+            83,
+            90
+          ],
+          [
+            92,
+            102
+          ],
+          [
+            105,
+            107
+          ],
+          [
+            109,
+            114
+          ],
+          [
+            116,
+            123
+          ],
+          [
+            126,
+            128
+          ],
+          [
+            131,
+            133
+          ],
+          [
+            135,
+            144
+          ],
+          [
+            147,
+            149
+          ],
+          [
+            151,
+            160
+          ],
+          [
+            162,
+            164
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissions.java": [
+          [
+            234,
+            234
+          ],
+          [
+            273,
+            273
+          ],
+          [
+            298,
+            298
+          ],
+          [
+            584,
+            584
+          ],
+          [
+            586,
+            586
+          ],
+          [
+            589,
+            589
+          ]
+        ],
+        "services/src/main/java/org/keycloak/services/resources/admin/permissions/UserPermissionsV2.java": [
+          [
+            48,
+            48
+          ],
+          [
+            52,
+            52
+          ],
+          [
+            57,
+            57
+          ],
+          [
+            61,
+            61
+          ],
+          [
+            78,
+            78
+          ],
+          [
+            82,
+            82
+          ],
+          [
+            87,
+            87
+          ],
+          [
+            91,
+            91
+          ]
+        ],
+        "test-framework/core/src/main/java/org/keycloak/testframework/util/ApiUtil.java": [
+          [
+            9,
+            13
+          ]
+        ],
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java": [
+          [
+            1,
+            320
+          ]
+        ],
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/RealmAdminPermissionsConfig.java": [
+          [
+            34,
+            36
+          ]
+        ],
+        "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/UserResourceTypeEvaluationTest.java": []
+      }
+    },
+    "deletions": 126,
+    "files": 19,
+    "generation_batches": 1,
+    "hunks": 30,
+    "merge_base_sha": "7ea067aae9be56cb2622bce6563864817c3dfeaf",
+    "sha256": "17556562da720f4e6dafcb3804ed027872d216220ce57b65a16de81cb1e7f888"
+  },
+  "duration_ms": 192612,
+  "findings": [
+    {
+      "body": "The view-only administrator passes `canManage()` and can perform group-management operations despite having no `manage` permission.",
+      "category": "security",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.98,
+      "end_line": 70,
+      "evidence": "return hasPermission(null, AdminPermissionsSchema.VIEW, AdminPermissionsSchema.MANAGE);",
+      "failure_mode": "Authorization decisions for global group mutations accept read-only permissions.",
+      "finding_id": "bb-f813a68307eca2bbd34d",
+      "fingerprint": "f98759668429b542f321c777d256af27d7b4a343108a3d36119d851fd9ae041f",
+      "fix_scope": "local",
+      "impact": "The view-only administrator passes `canManage()` and can perform group-management operations despite having no `manage` permission.",
+      "line": 70,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The V2 global group-management check treats the view scope as sufficient for management.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Check only `AdminPermissionsSchema.MANAGE` in `canManage()`; retain `VIEW` as a valid scope only for `canView()`.",
+      "title": "View-only all-groups permission grants group management",
+      "trigger": "With ADMIN_FINE_GRAINED_AUTHZ_V2 enabled, an administrator has only the `view` scope on the all-groups resource and calls an endpoint that invokes `requireManage()` for groups, such as creating a top-level group.",
+      "verifier_confidence": 0.92,
+      "verifier_family_key": "view_scope_grants_manage",
+      "verifier_reason": "Line 70 verbatim shows `return hasPermission(null, AdminPermissionsSchema.VIEW, AdminPermissionsSchema.MANAGE);` in `canManage()`. The method accepts VIEW scope for management authorization. Comparing to `canManage(GroupModel group)` at line 79 which correctly checks only MANAGE scope, and to the V1 `GroupPermissions.canManage()` at line 274-276 which only checks `AdminRoles.MANAGE_USERS`, this is an authorization bypass where VIEW-only permission grants management capability."
+    }
+  ],
+  "pr": {
+    "base_ref": "main",
+    "base_sha": "7ea067aae9be56cb2622bce6563864817c3dfeaf",
+    "body": "…ation implementation\r\n\r\nCloses #35562\r\n\r\n<!---\r\nPlease read https://github.com/keycloak/keycloak/blob/main/CONTRIBUTING.md and follow these guidelines when contributing to Keycloak\r\n-->\r\n",
+    "clone_url": "https://github.com/code-review-benchmark/keycloak__keycloak__augment__PR37038__20260122.git",
+    "head_ref": "pr-37038",
+    "head_sha": "7355f05e6aafe2a7acc6434fb40c686665416606",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "keycloak__keycloak__augment__PR37038__20260122",
+    "resolved_at": "2026-08-23T19:44:10.588010Z",
+    "title": "Add Groups resource type and scopes to authorization schema and evalu…",
+    "url": "https://github.com/code-review-benchmark/keycloak__keycloak__augment__PR37038__20260122/pull/1"
+  },
+  "raw_findings": [
+    {
+      "body": "The view-only administrator passes `canManage()` and can perform group-management operations despite having no `manage` permission.",
+      "category": "security",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.98,
+      "end_line": 70,
+      "evidence": "return hasPermission(null, AdminPermissionsSchema.VIEW, AdminPermissionsSchema.MANAGE);",
+      "failure_mode": "Authorization decisions for global group mutations accept read-only permissions.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The view-only administrator passes `canManage()` and can perform group-management operations despite having no `manage` permission.",
+      "line": 70,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The V2 global group-management check treats the view scope as sufficient for management.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Check only `AdminPermissionsSchema.MANAGE` in `canManage()`; retain `VIEW` as a valid scope only for `canView()`.",
+      "title": "View-only all-groups permission grants group management",
+      "trigger": "With ADMIN_FINE_GRAINED_AUTHZ_V2 enabled, an administrator has only the `view` scope on the all-groups resource and calls an endpoint that invokes `requireManage()` for groups, such as creating a top-level group.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The enumeration returns no group resources, so `getGroupIdsWithViewPermission()` returns an empty set and authorized group members are omitted from group-filtered counts and queries.",
+      "category": "bug",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.96,
+      "end_line": 121,
+      "evidence": "resourceStore.findByType(server, AdminPermissionsSchema.GROUPS_RESOURCE_TYPE, groupResource -> {",
+      "failure_mode": "The permission-to-group-ID projection silently produces no entries even when per-group policies grant access.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "repeated_pattern",
+      "impact": "The enumeration returns no group resources, so `getGroupIdsWithViewPermission()` returns an empty set and authorized group members are omitted from group-filtered counts and queries.",
+      "line": 121,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The new V2 lookup requires a resource type that the schema resource-creation path does not set for group-specific resources.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Assign `AdminPermissionsSchema.GROUPS_RESOURCE_TYPE` to each schema-created group resource, or enumerate the schema's group resources using a predicate that matches their actual persisted representation.",
+      "title": "Group permission enumeration searches for an unset resource type",
+      "trigger": "A per-group `VIEW_MEMBERS` or `MANAGE_MEMBERS` policy is created through the V2 schema, whose group-specific resources are created without assigning the `Groups` type, and a user count or filtered user query requests group-scoped results.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "`hasPermission` cannot find the specific resource because it looks up the supplied value by name, so valid per-group permissions are ignored and the group is not returned.",
+      "category": "bug",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.99,
+      "end_line": 122,
+      "evidence": "if (hasPermission(groupResource.getId(), AdminPermissionsSchema.VIEW_MEMBERS, AdminPermissionsSchema.MANAGE_MEMBERS)) {",
+      "failure_mode": "Per-group access is lost during the conversion from authorization resources to user-query group filters.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "`hasPermission` cannot find the specific resource because it looks up the supplied value by name, so valid per-group permissions are ignored and the group is not returned.",
+      "line": 122,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The callback confuses the authorization resource's internal database ID with the group identifier expected by `hasPermission`.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Pass the group resource name (the schema stores the group model ID as the resource name), or add a helper that evaluates the already-fetched `groupResource` directly.",
+      "title": "Per-group permission checks pass the authorization resource ID as a group ID",
+      "trigger": "The resource enumeration reaches a group-specific resource and the administrator has a member-view permission on that group, but the authorization resource's internal ID differs from the group resource name/group model ID.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "User storage compares memberships against group model IDs, so the authorization resource IDs do not match and authorized users are excluded from filtered searches and counts.",
+      "category": "data",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.99,
+      "end_line": 123,
+      "evidence": "granted.add(groupResource.getId());",
+      "failure_mode": "Authorized users disappear from group-scoped result sets even after the permission has been correctly evaluated.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "User storage compares memberships against group model IDs, so the authorization resource IDs do not match and authorized users are excluded from filtered searches and counts.",
+      "line": 123,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The new projection emits authorization-resource identifiers where downstream user queries require realm group identifiers.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Add the group model ID stored in the resource name, for example `groupResource.getName()`, rather than the authorization resource's internal ID.",
+      "title": "Group-filter IDs use authorization resource IDs instead of group model IDs",
+      "trigger": "A group resource is accepted by the permission check and the resulting set is passed to `UsersResource`/the user provider as the `groupIds` filter.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    }
+  ],
+  "rejected_findings": [
+    {
+      "finding": {
+        "body": "The enumeration returns no group resources, so `getGroupIdsWithViewPermission()` returns an empty set and authorized group members are omitted from group-filtered counts and queries.",
+        "category": "bug",
+        "chunk_id": "f0009:c0000-65c1dabc3097",
+        "confidence": 0.96,
+        "end_line": 121,
+        "evidence": "resourceStore.findByType(server, AdminPermissionsSchema.GROUPS_RESOURCE_TYPE, groupResource -> {",
+        "failure_mode": "The permission-to-group-ID projection silently produces no entries even when per-group policies grant access.",
+        "finding_id": "bb-63799e14246b1a471575",
+        "fingerprint": "f1786f51b38ff349d657b608dd306f2f0eb20a4c241fad1f50b0f5e0f2d3ba03",
+        "fix_scope": "repeated_pattern",
+        "impact": "The enumeration returns no group resources, so `getGroupIdsWithViewPermission()` returns an empty set and authorized group members are omitted from group-filtered counts and queries.",
+        "line": 121,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "root_cause": "The new V2 lookup requires a resource type that the schema resource-creation path does not set for group-specific resources.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Assign `AdminPermissionsSchema.GROUPS_RESOURCE_TYPE` to each schema-created group resource, or enumerate the schema's group resources using a predicate that matches their actual persisted representation.",
+        "title": "Group permission enumeration searches for an unset resource type",
+        "trigger": "A per-group `VIEW_MEMBERS` or `MANAGE_MEMBERS` policy is created through the V2 schema, whose group-specific resources are created without assigning the `Groups` type, and a user count or filtered user query requests group-scoped results.",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "missing_resource_type",
+        "verifier_reason": "The claim that group resources are created without GROUPS_RESOURCE_TYPE is unsubstantiated. AdminPermissionsSchema.getOrCreateResource at lines 121-127 shows resources are created with scopes from getResourceTypes().get(resourceType), and the schema defines GROUPS with GROUPS_RESOURCE_TYPE. The candidate speculates about resource creation behavior not evidenced in the patch or context."
+      },
+      "reason": "The claim that group resources are created without GROUPS_RESOURCE_TYPE is unsubstantiated. AdminPermissionsSchema.getOrCreateResource at lines 121-127 shows resources are created with scopes from getResourceTypes().get(resourceType), and the schema defines GROUPS with GROUPS_RESOURCE_TYPE. The candidate speculates about resource creation behavior not evidenced in the patch or context.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "`hasPermission` cannot find the specific resource because it looks up the supplied value by name, so valid per-group permissions are ignored and the group is not returned.",
+        "category": "bug",
+        "chunk_id": "f0009:c0000-65c1dabc3097",
+        "confidence": 0.99,
+        "end_line": 122,
+        "evidence": "if (hasPermission(groupResource.getId(), AdminPermissionsSchema.VIEW_MEMBERS, AdminPermissionsSchema.MANAGE_MEMBERS)) {",
+        "failure_mode": "Per-group access is lost during the conversion from authorization resources to user-query group filters.",
+        "finding_id": "bb-31ae267e4d5919b6c820",
+        "fingerprint": "f9ad9614e165d23b516ec9a4721330d64c64142df6a8f87ac5b87168fa74896b",
+        "fix_scope": "local",
+        "impact": "`hasPermission` cannot find the specific resource because it looks up the supplied value by name, so valid per-group permissions are ignored and the group is not returned.",
+        "line": 122,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "root_cause": "The callback confuses the authorization resource's internal database ID with the group identifier expected by `hasPermission`.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Pass the group resource name (the schema stores the group model ID as the resource name), or add a helper that evaluates the already-fetched `groupResource` directly.",
+        "title": "Per-group permission checks pass the authorization resource ID as a group ID",
+        "trigger": "The resource enumeration reaches a group-specific resource and the administrator has a member-view permission on that group, but the authorization resource's internal ID differs from the group resource name/group model ID.",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "resource_id_vs_name_mismatch",
+        "verifier_reason": "Line 122 shows `hasPermission(groupResource.getId(), ...)` where groupResource.getId() is the authorization Resource's internal ID. However, hasPermission at line 141 does `resourceStore.findByName(server, groupId)` - it looks up by name, not by ID. AdminPermissionsSchema.resolveGroup at line 185 returns `group.getId()` as the resource name. So passing the Resource's internal ID to hasPermission will fail the lookup since it expects the group model ID (which is stored as resource name)."
+      },
+      "reason": "0.880 is below 0.920: Line 122 shows `hasPermission(groupResource.getId(), ...)` where groupResource.getId() is the authorization Resource's internal ID. However, hasPermission at line 141 does `resourceStore.findByName(server, groupId)` - it looks up by name, not by ID. AdminPermissionsSchema.resolveGroup at line 185 returns `group.getId()` as the resource name. So passing the Resource's internal ID to hasPermission will fail the lookup since it expects the group model ID (which is stored as resource name).",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "User storage compares memberships against group model IDs, so the authorization resource IDs do not match and authorized users are excluded from filtered searches and counts.",
+        "category": "data",
+        "chunk_id": "f0009:c0000-65c1dabc3097",
+        "confidence": 0.99,
+        "end_line": 123,
+        "evidence": "granted.add(groupResource.getId());",
+        "failure_mode": "Authorized users disappear from group-scoped result sets even after the permission has been correctly evaluated.",
+        "finding_id": "bb-ee013c03bf2ccbd22b4d",
+        "fingerprint": "30732c48db236f3c83ac2633e4160a2fc14360bbbab10b143f13ebd554345a50",
+        "fix_scope": "local",
+        "impact": "User storage compares memberships against group model IDs, so the authorization resource IDs do not match and authorized users are excluded from filtered searches and counts.",
+        "line": 123,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "root_cause": "The new projection emits authorization-resource identifiers where downstream user queries require realm group identifiers.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Add the group model ID stored in the resource name, for example `groupResource.getName()`, rather than the authorization resource's internal ID.",
+        "title": "Group-filter IDs use authorization resource IDs instead of group model IDs",
+        "trigger": "A group resource is accepted by the permission check and the resulting set is passed to `UsersResource`/the user provider as the `groupIds` filter.",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "resource_id_vs_name_mismatch",
+        "verifier_reason": "Line 123 `granted.add(groupResource.getId())` adds the authorization Resource's internal ID, but downstream user queries expect group model IDs. This is the same root cause as candidate 2 - confusion between authorization resource ID and group model ID. The fix would be the same: use groupResource.getName() which contains the group model ID per AdminPermissionsSchema.resolveGroup."
+      },
+      "reason": "merged into finding 2",
+      "stage": "verifier_merge"
+    }
+  ],
+  "run_id": "e648668395d585a77cea9252",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "openai",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "openai/gpt-5.6-luna",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-23T19:53:30.701767Z",
+  "status": "completed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.0",
+  "validated_findings": [
+    {
+      "body": "The view-only administrator passes `canManage()` and can perform group-management operations despite having no `manage` permission.",
+      "category": "security",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.98,
+      "end_line": 70,
+      "evidence": "return hasPermission(null, AdminPermissionsSchema.VIEW, AdminPermissionsSchema.MANAGE);",
+      "failure_mode": "Authorization decisions for global group mutations accept read-only permissions.",
+      "finding_id": "bb-f813a68307eca2bbd34d",
+      "fingerprint": "f98759668429b542f321c777d256af27d7b4a343108a3d36119d851fd9ae041f",
+      "fix_scope": "local",
+      "impact": "The view-only administrator passes `canManage()` and can perform group-management operations despite having no `manage` permission.",
+      "line": 70,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The V2 global group-management check treats the view scope as sufficient for management.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Check only `AdminPermissionsSchema.MANAGE` in `canManage()`; retain `VIEW` as a valid scope only for `canView()`.",
+      "title": "View-only all-groups permission grants group management",
+      "trigger": "With ADMIN_FINE_GRAINED_AUTHZ_V2 enabled, an administrator has only the `view` scope on the all-groups resource and calls an endpoint that invokes `requireManage()` for groups, such as creating a top-level group.",
+      "verifier_confidence": 0.92,
+      "verifier_family_key": "view_scope_grants_manage",
+      "verifier_reason": "Line 70 verbatim shows `return hasPermission(null, AdminPermissionsSchema.VIEW, AdminPermissionsSchema.MANAGE);` in `canManage()`. The method accepts VIEW scope for management authorization. Comparing to `canManage(GroupModel group)` at line 79 which correctly checks only MANAGE scope, and to the V1 `GroupPermissions.canManage()` at line 274-276 which only checks `AdminRoles.MANAGE_USERS`, this is an authorization bypass where VIEW-only permission grants management capability."
+    },
+    {
+      "body": "The enumeration returns no group resources, so `getGroupIdsWithViewPermission()` returns an empty set and authorized group members are omitted from group-filtered counts and queries.",
+      "category": "bug",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.96,
+      "end_line": 121,
+      "evidence": "resourceStore.findByType(server, AdminPermissionsSchema.GROUPS_RESOURCE_TYPE, groupResource -> {",
+      "failure_mode": "The permission-to-group-ID projection silently produces no entries even when per-group policies grant access.",
+      "finding_id": "bb-63799e14246b1a471575",
+      "fingerprint": "f1786f51b38ff349d657b608dd306f2f0eb20a4c241fad1f50b0f5e0f2d3ba03",
+      "fix_scope": "repeated_pattern",
+      "impact": "The enumeration returns no group resources, so `getGroupIdsWithViewPermission()` returns an empty set and authorized group members are omitted from group-filtered counts and queries.",
+      "line": 121,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The new V2 lookup requires a resource type that the schema resource-creation path does not set for group-specific resources.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Assign `AdminPermissionsSchema.GROUPS_RESOURCE_TYPE` to each schema-created group resource, or enumerate the schema's group resources using a predicate that matches their actual persisted representation.",
+      "title": "Group permission enumeration searches for an unset resource type",
+      "trigger": "A per-group `VIEW_MEMBERS` or `MANAGE_MEMBERS` policy is created through the V2 schema, whose group-specific resources are created without assigning the `Groups` type, and a user count or filtered user query requests group-scoped results.",
+      "verifier_confidence": 0.85,
+      "verifier_family_key": "missing_resource_type",
+      "verifier_reason": "The claim that group resources are created without GROUPS_RESOURCE_TYPE is unsubstantiated. AdminPermissionsSchema.getOrCreateResource at lines 121-127 shows resources are created with scopes from getResourceTypes().get(resourceType), and the schema defines GROUPS with GROUPS_RESOURCE_TYPE. The candidate speculates about resource creation behavior not evidenced in the patch or context."
+    },
+    {
+      "body": "`hasPermission` cannot find the specific resource because it looks up the supplied value by name, so valid per-group permissions are ignored and the group is not returned.",
+      "category": "bug",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.99,
+      "end_line": 122,
+      "evidence": "if (hasPermission(groupResource.getId(), AdminPermissionsSchema.VIEW_MEMBERS, AdminPermissionsSchema.MANAGE_MEMBERS)) {",
+      "failure_mode": "Per-group access is lost during the conversion from authorization resources to user-query group filters.",
+      "finding_id": "bb-31ae267e4d5919b6c820",
+      "fingerprint": "f9ad9614e165d23b516ec9a4721330d64c64142df6a8f87ac5b87168fa74896b",
+      "fix_scope": "local",
+      "impact": "`hasPermission` cannot find the specific resource because it looks up the supplied value by name, so valid per-group permissions are ignored and the group is not returned.",
+      "line": 122,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The callback confuses the authorization resource's internal database ID with the group identifier expected by `hasPermission`.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Pass the group resource name (the schema stores the group model ID as the resource name), or add a helper that evaluates the already-fetched `groupResource` directly.",
+      "title": "Per-group permission checks pass the authorization resource ID as a group ID",
+      "trigger": "The resource enumeration reaches a group-specific resource and the administrator has a member-view permission on that group, but the authorization resource's internal ID differs from the group resource name/group model ID.",
+      "verifier_confidence": 0.88,
+      "verifier_family_key": "resource_id_vs_name_mismatch",
+      "verifier_reason": "Line 122 shows `hasPermission(groupResource.getId(), ...)` where groupResource.getId() is the authorization Resource's internal ID. However, hasPermission at line 141 does `resourceStore.findByName(server, groupId)` - it looks up by name, not by ID. AdminPermissionsSchema.resolveGroup at line 185 returns `group.getId()` as the resource name. So passing the Resource's internal ID to hasPermission will fail the lookup since it expects the group model ID (which is stored as resource name)."
+    },
+    {
+      "body": "User storage compares memberships against group model IDs, so the authorization resource IDs do not match and authorized users are excluded from filtered searches and counts.",
+      "category": "data",
+      "chunk_id": "f0009:c0000-65c1dabc3097",
+      "confidence": 0.99,
+      "end_line": 123,
+      "evidence": "granted.add(groupResource.getId());",
+      "failure_mode": "Authorized users disappear from group-scoped result sets even after the permission has been correctly evaluated.",
+      "finding_id": "bb-ee013c03bf2ccbd22b4d",
+      "fingerprint": "30732c48db236f3c83ac2633e4160a2fc14360bbbab10b143f13ebd554345a50",
+      "fix_scope": "local",
+      "impact": "User storage compares memberships against group model IDs, so the authorization resource IDs do not match and authorized users are excluded from filtered searches and counts.",
+      "line": 123,
+      "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+      "root_cause": "The new projection emits authorization-resource identifiers where downstream user queries require realm group identifiers.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Add the group model ID stored in the resource name, for example `groupResource.getName()`, rather than the authorization resource's internal ID.",
+      "title": "Group-filter IDs use authorization resource IDs instead of group model IDs",
+      "trigger": "A group resource is accepted by the permission check and the resulting set is passed to `UsersResource`/the user provider as the `groupIds` filter.",
+      "verifier_confidence": 0.9,
+      "verifier_family_key": "resource_id_vs_name_mismatch",
+      "verifier_reason": "Line 123 `granted.add(groupResource.getId())` adds the authorization Resource's internal ID, but downstream user queries expect group model IDs. This is the same root cause as candidate 2 - confusion between authorization resource ID and group model ID. The fix would be the same: use groupResource.getName() which contains the group model ID per AdminPermissionsSchema.resolveGroup."
+    }
+  ]
+}

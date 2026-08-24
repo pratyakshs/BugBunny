@@ -1,0 +1,1207 @@
+{
+  "job_plan_sha256": "fdb0c878a48721dc4aa70267119f83a1d5c95e800b5d4adb526f7b2c3eeeac27",
+  "records": [
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "artifact_sha256": "83cd00e092890f96b0bdb4d06e26992a9eaa25050c8856e579c184aebc6f3fdf",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155",
+      "findings": 2,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "artifact_sha256": "ac1974e3b7a091c38b4075aa49d42962c2d093d51d4cceb813deb9a7e9cdeef9",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+      "findings": 4,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "artifact_sha256": "92f64772e39e6b525f8c95a6ce6e47a3f74c54af9703f46cdbfacb134946dd9c",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "artifact_sha256": "6a3829e87ffdbd0eed61fd636e6d81747c56584b87655eb71ae6b859b412aec4",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "artifact_sha256": "3d99313460d0ef35c4840bc22ee075de2b7ead3d97b297c2d307c7407067261b",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0",
+      "findings": 7,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "artifact_sha256": "8668b24548b65281ee09f4db39835cbde858a3620eeaa71d17e663b4d68b4bb9",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "artifact_sha256": "69a4a246dbd7e820a25c078c4f1c4f46e8639a3bad9e9ac410d0116261ac8267",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "artifact_sha256": "a148cf960d1ee1daae7e239bcc28b0e16a2bb9ec3c6e6351f2a6560b4a1e2411",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "artifact_sha256": "7c499d287323ab573d65fc5193dc4dcdc2a63a498d8568e33f98d1a8697df810",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "artifact_sha256": "b6cc87757d3128cdf5b41150b72c39b85638f15afc2fae17dc55bd823b348487",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "artifact_sha256": "19daa3708ed0d9fe28b60e11c1366da7f7da3941d4c8f462694b0f532a1ec3d0",
+      "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "artifact_sha256": "58c7b15f6684dff8b3666d7cb21374b33995cb3f4e8c40bc134da5af227a22f1",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr1-93109beb71",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "artifact_sha256": "37447bdbcdea0dea1982d815956b0c671369325fe44a21ef1116bc9ad0835f54",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "artifact_sha256": "802844cb3851649074002f971460f522b8f226f1d64d16d5d8c78e37faf17853",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "artifact_sha256": "0263aaf1579f97b8d393d65ca1eee7461267e1b5e67bf78bcb523e4a942d6303",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75",
+      "findings": 2,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr10600-98442a0665.json",
+      "artifact_sha256": "234c6cd6419b5adb149533e22cc9b2957d365e92b38db7fe7080f3830d8dc68d",
+      "case_id": "calcom-cal-com-pr10600-98442a0665",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "artifact_sha256": "ca58a879544900cde2ed41252f85bd285e462be67019833373694fd29e99eea8",
+      "case_id": "calcom-cal-com-pr10967-e0f66e47c7",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr11059-edc4826515.json",
+      "artifact_sha256": "c6ab3aa37738406cc074d2c22f3112dd94ab0d853c02a5c01e72683a26915e33",
+      "case_id": "calcom-cal-com-pr11059-edc4826515",
+      "findings": 2,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr14740-454655f78e.json",
+      "artifact_sha256": "843912315a38ad56a89471862e19d8c5b8286b0797a823ba910e2b79055c0d35",
+      "case_id": "calcom-cal-com-pr14740-454655f78e",
+      "findings": 4,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "artifact_sha256": "d0a3db1b309d4c3a5910ca42cd164829c2f3b6c4a7a5f05b7f0e0402bdaea63d",
+      "case_id": "calcom-cal-com-pr14943-77f0b97fa3",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "artifact_sha256": "2de7abb6bece3305587969d6e1b33d5acdf564589b42cfb1f1ecd0fd6bf5f4bf",
+      "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr22532-56a2f3185b.json",
+      "artifact_sha256": "9e74e77a0b8bf8b620af56d30b12587073edfd67defc844cf18f0495af06b66a",
+      "case_id": "calcom-cal-com-pr22532-56a2f3185b",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr7232-532a700f35.json",
+      "artifact_sha256": "528b71ebf26bc6f25459cee1e243d671490aeb33abcacf8887a3f3ed70d24784",
+      "case_id": "calcom-cal-com-pr7232-532a700f35",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr8087-9c23e8296f.json",
+      "artifact_sha256": "7a37629cc57e5ab7651842ae757f4419e18642febe01fbba1d552c3e741a1878",
+      "case_id": "calcom-cal-com-pr8087-9c23e8296f",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/calcom-cal-com-pr8330-800af76fcf.json",
+      "artifact_sha256": "192dc551f9a050fc105bc3142e9857d6957e21cd4b343630e6b58917224f75b5",
+      "case_id": "calcom-cal-com-pr8330-800af76fcf",
+      "findings": 4,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/getsentry-sentry-pr67876-f0a5b21040.json",
+      "artifact_sha256": "13a3af30f7a2652574e58759dcde30db179ff5ba9dfe77aeeb0afc346bbd3111",
+      "case_id": "getsentry-sentry-pr67876-f0a5b21040",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "artifact_sha256": "4c3de5483066afcf8b68ba1e8406e2d75265b717ce064f58fff53b2a90d3d44f",
+      "case_id": "getsentry-sentry-pr77754-eaf4b87db9",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/getsentry-sentry-pr80168-731fa28972.json",
+      "artifact_sha256": "0f23f29764a866d4e723e569f2a230b368f387e37b0ae90d5e6e16f5b02980c7",
+      "case_id": "getsentry-sentry-pr80168-731fa28972",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/getsentry-sentry-pr80528-5c5505e00a.json",
+      "artifact_sha256": "dd79a3b2af161ca8002bac32f3981f7559c5f7416c9b346421c23da10089ef4b",
+      "case_id": "getsentry-sentry-pr80528-5c5505e00a",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/getsentry-sentry-pr93824-36dbd11db8.json",
+      "artifact_sha256": "105b8f9a074b24be020d2754c34dd322a269d87cdafd69ca5878a2470d421c1d",
+      "case_id": "getsentry-sentry-pr93824-36dbd11db8",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/getsentry-sentry-pr95633-118c8d30ab.json",
+      "artifact_sha256": "f1508b94661b8584639aa5293d0cad969aa585d6890dcc98c9991cabdcf10d90",
+      "case_id": "getsentry-sentry-pr95633-118c8d30ab",
+      "findings": 2,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr103633-1ccdfad177.json",
+      "artifact_sha256": "ec48a27c41e43cc3cfe70e256ff2b9be9dd8850058211b37178e209af6bdc927",
+      "case_id": "grafana-grafana-pr103633-1ccdfad177",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr106778-24d4677828.json",
+      "artifact_sha256": "cd32df9735afc5bafc80065d8094e9d4e145a99bbc946c18b04bcc012c89c3a8",
+      "case_id": "grafana-grafana-pr106778-24d4677828",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr107534-d0d4422f9e.json",
+      "artifact_sha256": "4e6acdb3423fd4b7b3cf3ecb862f8e2f70f0d850add812f7b6796e75bf74af72",
+      "case_id": "grafana-grafana-pr107534-d0d4422f9e",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr76186-74710117cb.json",
+      "artifact_sha256": "a40eef63bf812048a8e181bbba5873c7cd24eb7ca6735b2c6ee8e3aa2465a77c",
+      "case_id": "grafana-grafana-pr76186-74710117cb",
+      "findings": 2,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "artifact_sha256": "46a8b5e2e0358c13add9bdc9faf2985d077ac60297b0b3b789f04761c5e9d04f",
+      "case_id": "grafana-grafana-pr79265-1ff10dc6e2",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "artifact_sha256": "f0f38e22da38f8672d2e13018391c791ecbabca347e23ab9317756730c6e7bc8",
+      "case_id": "grafana-grafana-pr80329-a24dbb3cc0",
+      "findings": 2,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr90045-80de62a20a.json",
+      "artifact_sha256": "5df6c5e8d118b7b68586282a6af182279a39e3ef963b40760bfcee09d44227de",
+      "case_id": "grafana-grafana-pr90045-80de62a20a",
+      "findings": 5,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr90939-086eb48f48.json",
+      "artifact_sha256": "5cbe686ac4056992028f586e100566a9795df44927d1f26aad9fe9659a733d73",
+      "case_id": "grafana-grafana-pr90939-086eb48f48",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr94942-03516b9766.json",
+      "artifact_sha256": "8470367e64cb258d156703bfe1aaf656aa739d0bf67677e15aab549c32063891",
+      "case_id": "grafana-grafana-pr94942-03516b9766",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/grafana-grafana-pr97529-b30a8ea395.json",
+      "artifact_sha256": "2aadc2a46a400500f72f92bfa036a704a184939d402cfcb35c8b293dadc783a5",
+      "case_id": "grafana-grafana-pr97529-b30a8ea395",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr32918-e125545e1c.json",
+      "artifact_sha256": "d100932dab39f6ac0c6d477afd4c791a064735c8edb68c1cfc1edbe08fcd841d",
+      "case_id": "keycloak-keycloak-pr32918-e125545e1c",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "artifact_sha256": "72410d75c0ce8571ab4c21e4ea72d0bf3fd2b260eeda44c3e7e78ca58c05711b",
+      "case_id": "keycloak-keycloak-pr33832-fb78fbfca4",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "artifact_sha256": "ff06721bc8182d7f7ff48e5114d1b150472f956767bcd579936b50b1f468dc6a",
+      "case_id": "keycloak-keycloak-pr36880-3c6bf37b7f",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "artifact_sha256": "240e9814116451d4b1b1520d605bf5c9eb52d975363d7dc032b88b1bfd7ce9be",
+      "case_id": "keycloak-keycloak-pr36882-b7f567acb6",
+      "findings": 0,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "artifact_sha256": "07ca9cfcb361d3ab102be0c40d3b7bba67fd67ef058ce52e92f9a506a5f0cb18",
+      "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr37429-9694dc5640.json",
+      "artifact_sha256": "1cb6c52d8401fa9f10c1588d47437a3355db514389b7906a443ffcbe8ecd3266",
+      "case_id": "keycloak-keycloak-pr37429-9694dc5640",
+      "findings": 3,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr37634-2979e65c20.json",
+      "artifact_sha256": "870ef038f56280add7827e921502eba014cd943968a5c526678226731a597090",
+      "case_id": "keycloak-keycloak-pr37634-2979e65c20",
+      "findings": 2,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr38446-d522975328.json",
+      "artifact_sha256": "dd05e7e8b6529a08e1e50aa8ce2f720208ea2ccc32dd31278b4b0038875e79e3",
+      "case_id": "keycloak-keycloak-pr38446-d522975328",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-luna--65a8fc1dec/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "artifact_sha256": "c06624390d9de2ed117eeadbe82591e7e89a9c605eb6ab5fefd5d0c127bef9a0",
+      "case_id": "keycloak-keycloak-pr40940-c3b1c314ee",
+      "findings": 1,
+      "model": "openai/gpt-5.6-luna",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "artifact_sha256": "3793a2e103817e5c05050bd7385c74052d78988a07936751b6aac4fb95a6f9cf",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "artifact_sha256": "5546b57e75cef475038684968c9b4db757ee3128fa39952da6aad3bf55a7f5a0",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+      "findings": 7,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "artifact_sha256": "b16cf39597c72a541487daa808c13100aef30c2e667db0b2cf6a4200ea33ef5a",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "artifact_sha256": "ef4ec117d8f1149edfa75008624d09475e264e00a0e5dd9ebbcaf85abfca3817",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "artifact_sha256": "405378b31083a0da052eabd68fad881a779763113cca0bd64063e0faa60c395c",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0",
+      "findings": 10,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "artifact_sha256": "19389d69633d7dcdb678509c5b7b5e9ac97cb7cf0ffd15a944a95d84fdc914e5",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "artifact_sha256": "111eb2922983d0c0388e097af3c40222fea4eba361df96d3ce567f560a15b1bf",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "artifact_sha256": "a30f667dc9ab39b94bfd08e65f39174771a67f967129643395de79c43809b410",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+      "findings": 4,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "artifact_sha256": "71dada1bb04020fa976fa7c7b5ca7b81eb0f536747383e002375703b243c479a",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "artifact_sha256": "2155035981479f23d7e22ebcb2b4a70f4422ec074c51a8b53d0d7d7f8823a33f",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75",
+      "findings": 0,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "artifact_sha256": "2b199179a1b042b054eacbe80f46c1f636ea1c720cb0e997ff0bf0f079e5ea08",
+      "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "artifact_sha256": "4c98de84a3b01838ffa34eedf4f0f961b293360dfdbd18313e8e524bbfa67421",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr1-93109beb71",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "artifact_sha256": "65972b2d9f7548fd0cf9d0989ae583237bd7e4db761fa26914260661baaada7f",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "artifact_sha256": "263a3a62a243233415c9fcdb1f30db6d548c014417a88e6143aa9274115d265b",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "artifact_sha256": "6551bfa4653031b051864ef209a8abac18b95b3f79c68c1110211d260babbcdb",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75",
+      "findings": 6,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr10600-98442a0665.json",
+      "artifact_sha256": "a84f45288f5c9d9b7ec4474f81d927a28c42529abf93b6870ee1cd50f29aa9f5",
+      "case_id": "calcom-cal-com-pr10600-98442a0665",
+      "findings": 4,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "artifact_sha256": "c8746235ce6604be9442c0219c7317dc21b77ba3eb48d9d3dea95a561d73b24d",
+      "case_id": "calcom-cal-com-pr10967-e0f66e47c7",
+      "findings": 5,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr11059-edc4826515.json",
+      "artifact_sha256": "ebb7add547d55a0036efd460060864dddebbdebc1d37b8e5623171e5bc807a4d",
+      "case_id": "calcom-cal-com-pr11059-edc4826515",
+      "findings": 6,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr14740-454655f78e.json",
+      "artifact_sha256": "39482f822eeeaf45d8f0005bb9740bcccf136678d7cd1e6195e9eec139be953b",
+      "case_id": "calcom-cal-com-pr14740-454655f78e",
+      "findings": 4,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "artifact_sha256": "3c3d04921063a170fbd62798479d60ee6ab0ecbf5ccf3e0a322cc120aca370ec",
+      "case_id": "calcom-cal-com-pr14943-77f0b97fa3",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "artifact_sha256": "5bb01cf872a24a4abf7204cf287951dbba11ba07c469a457658d2f2bffc5ae1b",
+      "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+      "findings": 0,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr22532-56a2f3185b.json",
+      "artifact_sha256": "edf99fe0b61ccd6d7d410e240de8ec0a383f4008e798d5eedbf674c7a030cf44",
+      "case_id": "calcom-cal-com-pr22532-56a2f3185b",
+      "findings": 5,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr7232-532a700f35.json",
+      "artifact_sha256": "a11a8bc98c7a915e0254b88907c70752ad39378aa773a27cd8f70e55895d0134",
+      "case_id": "calcom-cal-com-pr7232-532a700f35",
+      "findings": 0,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr8087-9c23e8296f.json",
+      "artifact_sha256": "2ec2734f22ed8d4dbc04b3f89f512c620f3962f1d804967de54f95eeecd7be3a",
+      "case_id": "calcom-cal-com-pr8087-9c23e8296f",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/calcom-cal-com-pr8330-800af76fcf.json",
+      "artifact_sha256": "fb2ad69eaa9bb84d3b75f3d71433b286925a9e43d119be002294e7e72012404f",
+      "case_id": "calcom-cal-com-pr8330-800af76fcf",
+      "findings": 5,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/getsentry-sentry-pr67876-f0a5b21040.json",
+      "artifact_sha256": "6e9caa0a30cb2b0a923b4ff473e772a5e4cbb40e1a68913c4de74065a6f0e2e0",
+      "case_id": "getsentry-sentry-pr67876-f0a5b21040",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "artifact_sha256": "63d1966318500e15b9c724b7a78b045dc84fa60bdabf27de7de6396952db387e",
+      "case_id": "getsentry-sentry-pr77754-eaf4b87db9",
+      "findings": 4,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/getsentry-sentry-pr80168-731fa28972.json",
+      "artifact_sha256": "f3a3cdd9a055ffd4c0d30090288ef1797c0cc9607636bff57ba5720f0f231d55",
+      "case_id": "getsentry-sentry-pr80168-731fa28972",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/getsentry-sentry-pr80528-5c5505e00a.json",
+      "artifact_sha256": "6cd687ada5836ae1077323fecb40345c7e9eedf1bc0972d00a5298ef72196d73",
+      "case_id": "getsentry-sentry-pr80528-5c5505e00a",
+      "findings": 0,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/getsentry-sentry-pr93824-36dbd11db8.json",
+      "artifact_sha256": "2dc761566d0243fdc32c52adb4dbdef6dd361f2fc3af2df433091794889fa69b",
+      "case_id": "getsentry-sentry-pr93824-36dbd11db8",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/getsentry-sentry-pr95633-118c8d30ab.json",
+      "artifact_sha256": "60e0a4b50b199ba3102d9af92f7e9a3ee41e525ea3373d7897669d630da7a29a",
+      "case_id": "getsentry-sentry-pr95633-118c8d30ab",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr103633-1ccdfad177.json",
+      "artifact_sha256": "b88ed89730d7cfe9083f4c2fe512e62bde6c33b1c982860081623a8d0cf79671",
+      "case_id": "grafana-grafana-pr103633-1ccdfad177",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr106778-24d4677828.json",
+      "artifact_sha256": "b50594a2bc414d1bd33640686386f8576a63047ab304aea0c41ead43297ec1d9",
+      "case_id": "grafana-grafana-pr106778-24d4677828",
+      "findings": 4,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr107534-d0d4422f9e.json",
+      "artifact_sha256": "4a3d11bd445097b6641a06f23dba6ea948d0bed1da471973db6afcb6dfb24c02",
+      "case_id": "grafana-grafana-pr107534-d0d4422f9e",
+      "findings": 0,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr76186-74710117cb.json",
+      "artifact_sha256": "74851a3e51588c35c5f58cddf4e2d669daaa5a4d1e9942bdda6e496b9c22af5a",
+      "case_id": "grafana-grafana-pr76186-74710117cb",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "artifact_sha256": "07e70e8717a71b193a48252089c414fddfc5ce4cc8bd27aa9e2e120f66fa4c05",
+      "case_id": "grafana-grafana-pr79265-1ff10dc6e2",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "artifact_sha256": "92d20b761257b1130fbf3c684dc3cc58d6955d2d034e3e6df65d34fb56771df8",
+      "case_id": "grafana-grafana-pr80329-a24dbb3cc0",
+      "findings": 5,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr90045-80de62a20a.json",
+      "artifact_sha256": "76eaa6bead6c5fb6522f43acfc13071fd0f6c8e54348db611016dcafb5416a67",
+      "case_id": "grafana-grafana-pr90045-80de62a20a",
+      "findings": 5,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr90939-086eb48f48.json",
+      "artifact_sha256": "7f0e718fee634375fe71c21058e89a0219855808ba975e1ba39a2ec9addb39b6",
+      "case_id": "grafana-grafana-pr90939-086eb48f48",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr94942-03516b9766.json",
+      "artifact_sha256": "3d9a00d048a1a28e5c5d67897ce9f7e750ed39310a5a4ffa3b3c7e658c08f080",
+      "case_id": "grafana-grafana-pr94942-03516b9766",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/grafana-grafana-pr97529-b30a8ea395.json",
+      "artifact_sha256": "561a7452e674cc91659296f65d6e87de5a0116728c4f63f24503e04ae5d59765",
+      "case_id": "grafana-grafana-pr97529-b30a8ea395",
+      "findings": 0,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr32918-e125545e1c.json",
+      "artifact_sha256": "51c3e64da1f5374d61812dce30a48057ba124b2b61c4ec4074c6da3fc84dad96",
+      "case_id": "keycloak-keycloak-pr32918-e125545e1c",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "artifact_sha256": "7751b443390c9a4df692a800086fcb658da228865ec071af68a9788a2074d238",
+      "case_id": "keycloak-keycloak-pr33832-fb78fbfca4",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "artifact_sha256": "9bc1b4d2a752386afafb8ccb26d092a2a526aa61fc4cabd290077b7d6125b428",
+      "case_id": "keycloak-keycloak-pr36880-3c6bf37b7f",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "artifact_sha256": "c948ba94d9deaeda98d5784b1407dae5db76e51fad8318a2e679fe231d3c6267",
+      "case_id": "keycloak-keycloak-pr36882-b7f567acb6",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "artifact_sha256": "4462ea942768bfecd79915df503e5f7612877e596fae70053a0d98b6e822b16d",
+      "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+      "findings": 3,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr37429-9694dc5640.json",
+      "artifact_sha256": "32dc0145d5e5807407c0569c857420396a9fb966b46e8aeef48958df2641f20f",
+      "case_id": "keycloak-keycloak-pr37429-9694dc5640",
+      "findings": 6,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr37634-2979e65c20.json",
+      "artifact_sha256": "9f6a8fc6eab5ac9a21a485f275f5c61f014695609acfbbce0ab1fbd2dd1fcf82",
+      "case_id": "keycloak-keycloak-pr37634-2979e65c20",
+      "findings": 2,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr38446-d522975328.json",
+      "artifact_sha256": "33b1f45e1bf458dec9dfdab999cd6db4275923b8252e5eb19cb35c43bfaf7135",
+      "case_id": "keycloak-keycloak-pr38446-d522975328",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-sol--0510680735/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "artifact_sha256": "dc548541732cf35616d4d51d826aec938865119e9dadb9ddc62a18199eb16427",
+      "case_id": "keycloak-keycloak-pr40940-c3b1c314ee",
+      "findings": 1,
+      "model": "openai/gpt-5.6-sol",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "artifact_sha256": "69a6123dc35355426923ba5cff35c289a0fcf0d9e656b30099fa7881d8834d02",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "artifact_sha256": "52497a4df98d9290eaaf336fe2702786ac59bd2ff1fd474ab497047b2de32fb7",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "artifact_sha256": "597ba632ef673335998096b96ad9863ff426024596c21418620b91af0fb15dc6",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "artifact_sha256": "e07447bd265a6ea39a7d31035d7cad920542b207e7c527752111188fd3ab36a8",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "artifact_sha256": "2a5a46ebc89fddbae01ea4acfb504b900509760cbc534940c42dacaf721152b5",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0",
+      "findings": 4,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "artifact_sha256": "fb739ad917705b68f5237ffb8575ac5a14533fb1efc30c57bbcafe24d3a58aa1",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "artifact_sha256": "4e3f73ba289869b8e7b04ad2b6a6086a6d2f1a26fb18f62823161dcad3625f42",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "artifact_sha256": "63c9a216fb6092130d47b54f95dbc94ae89906f1f0a2687b868de7782d569104",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "artifact_sha256": "3cface8447175fedd9a6b20cd26910d588e8792f7d1730a1edd4a6a65e744e29",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "artifact_sha256": "2a2f391faa82478e4ee3811e76ca2f85d0e62645392e1ab3e594aa91b3e84a96",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "artifact_sha256": "bbef049526b8c7ee74295974c718ae450287bb754a600d4d1fceca09f9957734",
+      "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "artifact_sha256": "fee0b2341a89217f993a5f367a1e8acb02f38b9b8c4e398ad052c6e857019a91",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr1-93109beb71",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "artifact_sha256": "283d02c619ca13417bca6e03cae30dfd1ad7fa43e2dc296f90f7b39a983b9f53",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "artifact_sha256": "94c5a5a966bc4a7c9b1dd7e5934ceead7b7aed564f86d2f7fb4ab03f275e4fc6",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "artifact_sha256": "20a762a20caf9fe0ae9230e5a3ddecdd4e80dfa770527799c42764768426443c",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr10600-98442a0665.json",
+      "artifact_sha256": "c431a11fbd05257af2336d02ba38ca1b668dd24d88df782c05b67cb3ecae1c2c",
+      "case_id": "calcom-cal-com-pr10600-98442a0665",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "artifact_sha256": "e2652e9f6ffbebbfa1ef1d966853089aa1c032cfd38bc7cc71749a623b07e6c9",
+      "case_id": "calcom-cal-com-pr10967-e0f66e47c7",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr11059-edc4826515.json",
+      "artifact_sha256": "cadb5e1040dd664b8924e17fe8424497fd108e508ad9fbcab882c5339b30825c",
+      "case_id": "calcom-cal-com-pr11059-edc4826515",
+      "findings": 7,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr14740-454655f78e.json",
+      "artifact_sha256": "e25db463ba2ac6401b34736f2130f86b8a81a84a56d1d5d9485d3d2339d92df9",
+      "case_id": "calcom-cal-com-pr14740-454655f78e",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "artifact_sha256": "38efff87a593cc62e74e3c6019e9304977eccf14148d1292d4582c0b7b36964a",
+      "case_id": "calcom-cal-com-pr14943-77f0b97fa3",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "artifact_sha256": "933de920e2e50ec3787e99c7c108f5b2ef440f146ba4112481cc6386c5b91a79",
+      "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr22532-56a2f3185b.json",
+      "artifact_sha256": "1e12c718a7a5f199efaa73d057f41e980a09351905ae3e572116896eb9bcd965",
+      "case_id": "calcom-cal-com-pr22532-56a2f3185b",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr7232-532a700f35.json",
+      "artifact_sha256": "c69fa38efb708b1ec9fc9ef59c780b274d99657b894b19474ed96028adb88035",
+      "case_id": "calcom-cal-com-pr7232-532a700f35",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr8087-9c23e8296f.json",
+      "artifact_sha256": "8827c74c265d32c5f2f70fba9868767613c6e5f460ef1abba61b9f34929c32eb",
+      "case_id": "calcom-cal-com-pr8087-9c23e8296f",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/calcom-cal-com-pr8330-800af76fcf.json",
+      "artifact_sha256": "5fd67693bfb1bfc4d100ba54797d6c5a8fdec974d0254ae82bb4d6b28e624211",
+      "case_id": "calcom-cal-com-pr8330-800af76fcf",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/getsentry-sentry-pr67876-f0a5b21040.json",
+      "artifact_sha256": "b7e9d834931c0f4e2a3be58b2bfdbf06ff137dc8be5518f64e8aaaf93e3e952e",
+      "case_id": "getsentry-sentry-pr67876-f0a5b21040",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "artifact_sha256": "08bc4e87b353c4462840cbf3ae7ca05158693a7e64fde134536d1e9249fb9540",
+      "case_id": "getsentry-sentry-pr77754-eaf4b87db9",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/getsentry-sentry-pr80168-731fa28972.json",
+      "artifact_sha256": "4a5bf0ab83f44d8750c5559d55affc54f90237e19d8454c972a74b8b6a114bc5",
+      "case_id": "getsentry-sentry-pr80168-731fa28972",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/getsentry-sentry-pr80528-5c5505e00a.json",
+      "artifact_sha256": "28803af39924498f46931e3960370410e6a2e4f7fba63d7ec111045669e76e9d",
+      "case_id": "getsentry-sentry-pr80528-5c5505e00a",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/getsentry-sentry-pr93824-36dbd11db8.json",
+      "artifact_sha256": "da0d5e25fa9e2880a6c7ef467a5e015e10b682d22a944b1c1f24df1901a24785",
+      "case_id": "getsentry-sentry-pr93824-36dbd11db8",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/getsentry-sentry-pr95633-118c8d30ab.json",
+      "artifact_sha256": "0ade4b720274a1ff93893722d2d9de47fb1700eaf176e35447be276119ce1b29",
+      "case_id": "getsentry-sentry-pr95633-118c8d30ab",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr103633-1ccdfad177.json",
+      "artifact_sha256": "1c88228a10101a1d62ca5558419ae4f49bdc7cfea5da7bbcf82ffc895fd659b6",
+      "case_id": "grafana-grafana-pr103633-1ccdfad177",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr106778-24d4677828.json",
+      "artifact_sha256": "667effdb1b10d54f8654c002a6e5639de62e4f08ca6c77daaac32afb4f8914a4",
+      "case_id": "grafana-grafana-pr106778-24d4677828",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr107534-d0d4422f9e.json",
+      "artifact_sha256": "d0e6161d8d3806a6c83274199a053827e014086f2117083306b8a30e92210ca8",
+      "case_id": "grafana-grafana-pr107534-d0d4422f9e",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr76186-74710117cb.json",
+      "artifact_sha256": "d4dfc36c8b29234eae961919f9ac8a732d8208b58d10a61f63642035495dff39",
+      "case_id": "grafana-grafana-pr76186-74710117cb",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "artifact_sha256": "cf3f8894900cca846a755783fb6a18e90b50acc7803c8c302c4863a1014abdd7",
+      "case_id": "grafana-grafana-pr79265-1ff10dc6e2",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "artifact_sha256": "4b750ddfdcb83f8208f7bbff644438ca70c150fb633030e72c1df00c88b54c4e",
+      "case_id": "grafana-grafana-pr80329-a24dbb3cc0",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr90045-80de62a20a.json",
+      "artifact_sha256": "755c52ae8469b4ee83c350bb974841cae2faa6c3ddaa80f1f87ae304cb9e9cce",
+      "case_id": "grafana-grafana-pr90045-80de62a20a",
+      "findings": 5,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr90939-086eb48f48.json",
+      "artifact_sha256": "4894ddb1e6073420f130b760b7df696d61a10a967838db4c51b34764a165fa63",
+      "case_id": "grafana-grafana-pr90939-086eb48f48",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr94942-03516b9766.json",
+      "artifact_sha256": "999747cea89d006fe2be802547f40858cd8141fd00392e78865c080984e40e6a",
+      "case_id": "grafana-grafana-pr94942-03516b9766",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/grafana-grafana-pr97529-b30a8ea395.json",
+      "artifact_sha256": "3d0aea14fec95d5ee9859780e6c78d3e6c32a6be9d05ede3e09f3e6a071e1fd4",
+      "case_id": "grafana-grafana-pr97529-b30a8ea395",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr32918-e125545e1c.json",
+      "artifact_sha256": "c2531611f173c90c87f381f9d98df27bcb79ceeda9bbc09b005496ca88a89c3e",
+      "case_id": "keycloak-keycloak-pr32918-e125545e1c",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "artifact_sha256": "3baf32023d6cdae4353c6b613f8ebb220134b1c627819bd081d88b8dc98953bb",
+      "case_id": "keycloak-keycloak-pr33832-fb78fbfca4",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "artifact_sha256": "075508176ee8a7b649618c8b5f4e5582ed65c3acedb02eea2a44bf3762f134a8",
+      "case_id": "keycloak-keycloak-pr36880-3c6bf37b7f",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "artifact_sha256": "2770208aa0323fdaf97423c541912b336a8c616662d26f5f7ca4027c16b39b54",
+      "case_id": "keycloak-keycloak-pr36882-b7f567acb6",
+      "findings": 0,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "artifact_sha256": "e4dadccab5b29fefa872e6159d8d4f383493c0bc5f3b92bd2ddd6b4f86190f32",
+      "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr37429-9694dc5640.json",
+      "artifact_sha256": "d448429d6493250fe4b752a7dde6e17e70f9626610c6281b8cccb359e233db93",
+      "case_id": "keycloak-keycloak-pr37429-9694dc5640",
+      "findings": 3,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr37634-2979e65c20.json",
+      "artifact_sha256": "1a5885499fa3c0220b40ef71d488470e5a6193baec23f7a0761478d84d994a2e",
+      "case_id": "keycloak-keycloak-pr37634-2979e65c20",
+      "findings": 4,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr38446-d522975328.json",
+      "artifact_sha256": "34b7105b63b60c59b09faeea2c11f04b43ab53e9a112a70ecebb0d948c1d48e4",
+      "case_id": "keycloak-keycloak-pr38446-d522975328",
+      "findings": 2,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    },
+    {
+      "artifact": "artifacts/openai_gpt-5.6-terra--f8dbf8d16f/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "artifact_sha256": "5a2285594038551f6117ee716f9a8e53c5629af4797c765a1fb2939690e5f06a",
+      "case_id": "keycloak-keycloak-pr40940-c3b1c314ee",
+      "findings": 1,
+      "model": "openai/gpt-5.6-terra",
+      "status": "completed"
+    }
+  ],
+  "schema_version": "bugbunny-benchmark-checkpoint-v1",
+  "updated_at": "2026-08-23T22:59:07.597892Z"
+}

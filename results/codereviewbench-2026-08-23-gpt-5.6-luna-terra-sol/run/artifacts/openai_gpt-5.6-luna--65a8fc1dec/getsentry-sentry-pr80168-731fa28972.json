@@ -1,0 +1,2239 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "getsentry-sentry-pr80168-731fa28972",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "018e9a6e6f0537e12ae945ceec8f4b3f68dd23b1dca8a5f45b627e910da49648",
+    "golden_url": "https://github.com/getsentry/sentry/pull/80168",
+    "review_url": "https://github.com/code-review-benchmark/sentry__sentry__augment__PR80168__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-fda152f40890",
+      "cost_usd": 0.00847225,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 22312,
+      "latency_ms": 21679,
+      "output_tokens": 2412,
+      "request_sha256": "16510f186ab25efd7207d85617a9b06018aedcc27bb357e74da9ca588a4cedfd",
+      "requested_model": "openai/gpt-5.6-luna",
+      "resolved_model": "openai/gpt-5.6-luna",
+      "response_sha256": "b5319fce7216cc8e8ad3f8a3221669cdb3dd35ccbf4586db21993c8f41a304d9",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-fda152f40890",
+      "cost_usd": 0.01630255,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 40534,
+      "latency_ms": 41335,
+      "output_tokens": 5141,
+      "request_sha256": "0743c2cd1eedd6278b240376a7dc337db0b595f2d0bc6aa5dd4e39efb5761ae7",
+      "requested_model": "openai/gpt-5.6-luna",
+      "resolved_model": "openai/gpt-5.6-luna",
+      "response_sha256": "6ebe05146f80fbdc59783a5825f961faa87d6e498c237e2b8d4f1845e119200c",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-fda152f40890",
+      "cost_usd": 0.02474955,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 52482,
+      "latency_ms": 89476,
+      "output_tokens": 9691,
+      "request_sha256": "fac635e571d1de92769cb0ae4a61a104c518b52e7897e0399975b1ac814319de",
+      "requested_model": "openai/gpt-5.6-luna",
+      "resolved_model": "openai/gpt-5.6-luna",
+      "response_sha256": "1bb102b8a9d197c0f8c57a5b756abd68f65bbc6e48446a00f3f96d2ebc4b875d",
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "candidates-0-3",
+      "cost_usd": 0.3395975,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 52372,
+      "latency_ms": 12668,
+      "output_tokens": 491,
+      "request_sha256": "17bdbaa6fe0eea4213132ae18429ec2a3dc81e98e11ee528033e3cd9a9e3d6f3",
+      "requested_model": "anthropic/claude-opus-4-5",
+      "resolved_model": "anthropic/claude-opus-4-5",
+      "response_sha256": "3055995aa164cfc3bd464423194276605702d9b5d0e79c57afb0e4f6d92b4a19",
+      "retry_errors": [],
+      "schema_sha256": "4f0c55f0b3b361fe2e31f7433e4f531d14d9dff4c97f0ccc17814ccd9ba1a5a1",
+      "stage": "verification"
+    }
+  ],
+  "completed_at": "2026-08-23T21:12:40.171490Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 1050000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 2026272,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 805708,
+    "max_context_chars": 1208564,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 32768,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "openai/gpt-5.6-luna",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 1050000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 2026272,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 805708,
+      "max_context_chars_per_generation_call": 1208564,
+      "max_output_tokens_per_call": 32768,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.12379402332023791,
+      "largest_verifier_input_char_budget_utilization": 0.5178869164378187,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 1,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 1,
+        "round_limit_hit": 1,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 45,
+      "verifier_generation_context_files_available": 45
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "diagnostics": [
+      {
+        "chunk_id": "f0001:c0000-35ae2e7bd5cc",
+        "code": "test_hint_unavailable",
+        "level": "warning",
+        "message": "bounded related-test read failed for tests/sentry/tasks/test_statistical_detectors.py: refusing to read tests/sentry/tasks/test_statistical_detectors.py: file exceeds 24000 bytes",
+        "stage": "context"
+      }
+    ],
+    "effective_context_files_exposed_to_model": [
+      ".craft.yml",
+      ".eslintrc.js",
+      ".github/CODEOWNERS",
+      "CHANGES",
+      "api-docs/yarn.lock",
+      "fixtures/backup/model_dependencies/detailed.json",
+      "fixtures/gitlab.py",
+      "fixtures/sudo_testutils.py",
+      "src/bitfield/types.py",
+      "src/flagpole/__init__.py",
+      "src/sentry/_importchecker.py",
+      "src/sentry/adoption/__init__.py",
+      "src/sentry/adoption/manager.py",
+      "src/sentry/api/endpoints/codeowners/__init__.py",
+      "src/sentry/api/endpoints/organization_api_key_details.py",
+      "src/sentry/api/endpoints/organization_events_trace.py",
+      "src/sentry/api/endpoints/organization_fork.py",
+      "src/sentry/api/endpoints/organization_releases.py",
+      "src/sentry/api/endpoints/project_performance_issue_settings.py",
+      "src/sentry/api/helpers/events.py",
+      "src/sentry/api/helpers/group_index/delete.py",
+      "src/sentry/api/helpers/group_index/update.py",
+      "src/sentry/api/helpers/group_index/validators/group.py",
+      "src/sentry/api/issue_search.py",
+      "src/sentry/data_export/endpoints/data_export.py",
+      "src/sentry/data_export/tasks.py",
+      "src/sentry/incidents/grouptype.py",
+      "src/sentry/incidents/models/alert_rule.py",
+      "src/sentry/incidents/subscription_processor.py",
+      "src/sentry/issues/grouptype.py",
+      "src/sentry/issues/issue_occurrence.py",
+      "src/sentry/issues/producer.py",
+      "src/sentry/locale/af/LC_MESSAGES/django.po",
+      "src/sentry/release_health/metrics_sessions_v2.py",
+      "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+      "src/sentry/testutils/cases.py",
+      "src/sentry/workflow_engine/models/__init__.py",
+      "src/sentry/workflow_engine/models/data_source.py",
+      "src/sentry/workflow_engine/models/detector.py",
+      "src/sentry/workflow_engine/processors/__init__.py",
+      "src/sentry/workflow_engine/processors/detector.py",
+      "src/sentry/workflow_engine/types.py",
+      "tests/sentry/issues/test_grouptype.py",
+      "tests/sentry/models/test_statistical_detectors.py",
+      "tests/sentry/workflow_engine/processors/test_detector.py"
+    ],
+    "generation_batches": {
+      "b0000-fda152f40890": {
+        "chunk_ids": [
+          "f0000:c0000-cf24ba24dfcb",
+          "f0001:c0000-35ae2e7bd5cc",
+          "f0002:c0000-9986a159b04c",
+          "f0003:c0000-3a89a2fde768"
+        ],
+        "context_budget_chars": 1208564,
+        "context_budget_utilization": 0.12379402332023791,
+        "context_chars": 149613,
+        "context_files_available_before_generation_prompt_fit": [
+          ".craft.yml",
+          ".eslintrc.js",
+          ".github/CODEOWNERS",
+          "CHANGES",
+          "api-docs/yarn.lock",
+          "fixtures/backup/model_dependencies/detailed.json",
+          "fixtures/gitlab.py",
+          "fixtures/sudo_testutils.py",
+          "src/bitfield/types.py",
+          "src/flagpole/__init__.py",
+          "src/sentry/_importchecker.py",
+          "src/sentry/adoption/__init__.py",
+          "src/sentry/adoption/manager.py",
+          "src/sentry/api/endpoints/codeowners/__init__.py",
+          "src/sentry/api/endpoints/organization_api_key_details.py",
+          "src/sentry/api/endpoints/organization_events_trace.py",
+          "src/sentry/api/endpoints/organization_fork.py",
+          "src/sentry/api/endpoints/organization_releases.py",
+          "src/sentry/api/endpoints/project_performance_issue_settings.py",
+          "src/sentry/api/helpers/events.py",
+          "src/sentry/api/helpers/group_index/delete.py",
+          "src/sentry/api/helpers/group_index/update.py",
+          "src/sentry/api/helpers/group_index/validators/group.py",
+          "src/sentry/api/issue_search.py",
+          "src/sentry/data_export/endpoints/data_export.py",
+          "src/sentry/data_export/tasks.py",
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/incidents/models/alert_rule.py",
+          "src/sentry/incidents/subscription_processor.py",
+          "src/sentry/issues/grouptype.py",
+          "src/sentry/issues/issue_occurrence.py",
+          "src/sentry/issues/producer.py",
+          "src/sentry/locale/af/LC_MESSAGES/django.po",
+          "src/sentry/release_health/metrics_sessions_v2.py",
+          "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+          "src/sentry/testutils/cases.py",
+          "src/sentry/workflow_engine/models/__init__.py",
+          "src/sentry/workflow_engine/models/data_source.py",
+          "src/sentry/workflow_engine/models/detector.py",
+          "src/sentry/workflow_engine/processors/__init__.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "src/sentry/workflow_engine/types.py",
+          "tests/sentry/issues/test_grouptype.py",
+          "tests/sentry/models/test_statistical_detectors.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ],
+        "context_files_exposed_to_model": [
+          ".craft.yml",
+          ".eslintrc.js",
+          ".github/CODEOWNERS",
+          "CHANGES",
+          "api-docs/yarn.lock",
+          "fixtures/backup/model_dependencies/detailed.json",
+          "fixtures/gitlab.py",
+          "fixtures/sudo_testutils.py",
+          "src/bitfield/types.py",
+          "src/flagpole/__init__.py",
+          "src/sentry/_importchecker.py",
+          "src/sentry/adoption/__init__.py",
+          "src/sentry/adoption/manager.py",
+          "src/sentry/api/endpoints/codeowners/__init__.py",
+          "src/sentry/api/endpoints/organization_api_key_details.py",
+          "src/sentry/api/endpoints/organization_events_trace.py",
+          "src/sentry/api/endpoints/organization_fork.py",
+          "src/sentry/api/endpoints/organization_releases.py",
+          "src/sentry/api/endpoints/project_performance_issue_settings.py",
+          "src/sentry/api/helpers/events.py",
+          "src/sentry/api/helpers/group_index/delete.py",
+          "src/sentry/api/helpers/group_index/update.py",
+          "src/sentry/api/helpers/group_index/validators/group.py",
+          "src/sentry/api/issue_search.py",
+          "src/sentry/data_export/endpoints/data_export.py",
+          "src/sentry/data_export/tasks.py",
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/incidents/models/alert_rule.py",
+          "src/sentry/incidents/subscription_processor.py",
+          "src/sentry/issues/grouptype.py",
+          "src/sentry/issues/issue_occurrence.py",
+          "src/sentry/issues/producer.py",
+          "src/sentry/locale/af/LC_MESSAGES/django.po",
+          "src/sentry/release_health/metrics_sessions_v2.py",
+          "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+          "src/sentry/testutils/cases.py",
+          "src/sentry/workflow_engine/models/__init__.py",
+          "src/sentry/workflow_engine/models/data_source.py",
+          "src/sentry/workflow_engine/models/detector.py",
+          "src/sentry/workflow_engine/processors/__init__.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "src/sentry/workflow_engine/types.py",
+          "tests/sentry/issues/test_grouptype.py",
+          "tests/sentry/models/test_statistical_detectors.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "d54c661fa4ff79b6104cb33d11b974cee45c78d209a1d588eda61843b58926a3",
+        "context_truncated": true,
+        "context_utf8_bytes": 149881,
+        "estimated_context_tokens": 37404,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 2026272,
+        "generation_input_char_budget_utilization": 0.10353397766933561,
+        "generation_prompt_chars": 209788,
+        "generation_prompt_utf8_bytes": 210060,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 45
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 4,
+    "packets": {
+      "f0000:c0000-cf24ba24dfcb": {
+        "callers": 0,
+        "definitions": 3,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 8,
+        "prompt_chars": 5169,
+        "prompt_sha256": "037925f14708d513d4ac51251f80c79ee74f87a8e67a497013a31be395aa7c37",
+        "symbols": [
+          "MetricAlertDetectorHandler",
+          "MetricAlertFire",
+          "workflow_engine",
+          "StatefulDetectorHandler",
+          "QuerySubscriptionUpdate",
+          "sentry",
+          "processors",
+          "detector",
+          "pass"
+        ],
+        "tests": 1,
+        "truncated": false,
+        "usages": 15
+      },
+      "f0001:c0000-35ae2e7bd5cc": {
+        "callers": 1,
+        "definitions": 4,
+        "diagnostics": [
+          "bounded related-test read failed for tests/sentry/tasks/test_statistical_detectors.py: refusing to read tests/sentry/tasks/test_statistical_detectors.py: file exceeds 24000 bytes"
+        ],
+        "hypotheses": 0,
+        "imports": 6,
+        "prompt_chars": 6961,
+        "prompt_sha256": "14b5b968b0c98f38a8cf6c46a40c85b62f9aeefa9001b442083a9cb2f73c1399",
+        "symbols": [
+          "group_type",
+          "Detector",
+          "Meta",
+          "project_id",
+          "get_by_slug",
+          "GroupType",
+          "builtins",
+          "sentry",
+          "issues",
+          "grouptype",
+          "property",
+          "registry"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 27
+      },
+      "f0002:c0000-9986a159b04c": {
+        "callers": 3,
+        "definitions": 6,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 8,
+        "prompt_chars": 8575,
+        "prompt_sha256": "d30b7ffa6e465ecb48460eee91ab37a2860cabcbbe8afbc7478c5c836c7e173f",
+        "symbols": [
+          "evaluate",
+          "build_occurrence_and_event_data",
+          "DetectorEvaluationResult",
+          "process_detectors",
+          "values",
+          "PriorityLevel",
+          "Detector",
+          "DetectorGroupKey",
+          "detector_results",
+          "data_packet",
+          "DataPacket",
+          "group_key",
+          "new_status",
+          "IssueOccurrence"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 26
+      },
+      "f0003:c0000-3a89a2fde768": {
+        "callers": 5,
+        "definitions": 12,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 5461,
+        "prompt_sha256": "3f8c331c929b4d62d7f7d02f35d48f40a6fa9a625459a47a691e7e53a9c6716d",
+        "symbols": [
+          "MockDetectorStateHandler",
+          "get_dedupe_value",
+          "get_group_key_values",
+          "build_occurrence_and_event_data",
+          "BaseDetectorHandlerTest",
+          "evaluate",
+          "tearDown",
+          "create_detector_and_conditions",
+          "build_handler",
+          "assert_updates",
+          "TestProcessDetectors",
+          "setUp",
+          "test_state_results",
+          "test_state_results_multi_group"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 1
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 335,
+        "serialized_chars": 345,
+        "serialized_limit_chars": 6000,
+        "sha256": "f762385087ca294bff906f56baf14e27b35d612f60bc4b3530e0e379fbeb4656",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 87,
+        "serialized_chars": 89,
+        "serialized_limit_chars": 1000,
+        "sha256": "4e94ab016133592dceb5cce6a860344af9174badb0ab68cc604ae1fc4566ca27",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 26166,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 62846
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 52482
+      },
+      "verification": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 52372
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-fda152f40890": {
+          "action_counts": {
+            "list": 0,
+            "read": 15,
+            "search": 15
+          },
+          "actions_executed": 30,
+          "actions_failed": 0,
+          "additional_context_files_selected": 13,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "src/sentry/incidents/grouptype.py",
+            "src/sentry/incidents/models/alert_rule.py",
+            "src/sentry/incidents/subscription_processor.py",
+            "src/sentry/issues/grouptype.py",
+            "src/sentry/issues/issue_occurrence.py",
+            "src/sentry/issues/producer.py",
+            "src/sentry/workflow_engine/models/data_source.py",
+            "src/sentry/workflow_engine/models/detector.py",
+            "src/sentry/workflow_engine/processors/__init__.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "src/sentry/workflow_engine/types.py",
+            "tests/sentry/issues/test_grouptype.py",
+            "tests/sentry/workflow_engine/processors/test_detector.py"
+          ],
+          "context_files_exposed_to_model": [
+            "src/sentry/incidents/grouptype.py",
+            "src/sentry/incidents/models/alert_rule.py",
+            "src/sentry/incidents/subscription_processor.py",
+            "src/sentry/issues/grouptype.py",
+            "src/sentry/issues/issue_occurrence.py",
+            "src/sentry/issues/producer.py",
+            "src/sentry/workflow_engine/models/data_source.py",
+            "src/sentry/workflow_engine/models/detector.py",
+            "src/sentry/workflow_engine/processors/__init__.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "src/sentry/workflow_engine/types.py",
+            "tests/sentry/issues/test_grouptype.py",
+            "tests/sentry/workflow_engine/processors/test_detector.py"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 37404,
+          "context_truncated": false,
+          "cursor_requests_rejected": 1,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 149613,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 2026272,
+          "generation_input_char_budget_utilization": 0.10353397766933561,
+          "generation_prompt_chars": 209788,
+          "generation_prompt_utf8_bytes": 210060,
+          "hypotheses_final": 8,
+          "hypotheses_open_final": 7,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 1,
+          "hypotheses_returned": 16,
+          "hypothesis_linked_actions": 31,
+          "largest_selector_input_char_budget_utilization": 0.08002380726773109,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 2430,
+          "repository_files": 15464,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 15464,
+          "repository_index_chars": 3689,
+          "repository_index_chars_by_round": [
+            3689,
+            3689
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 923,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": true,
+          "request_limit_hit": true,
+          "requests_accepted": 30,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 1,
+          "requests_rejected": 2,
+          "requests_returned": 32,
+          "round_limit": 2,
+          "round_limit_hit": true,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 33,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 26515,
+          "seed_context_chars_original": 26515,
+          "seed_context_truncated": false,
+          "selected_context_chars": 123096,
+          "selection_done": false,
+          "selector_input_char_budget": 2026272,
+          "selector_input_chars_by_round": [
+            89487,
+            162150
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 13
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 20,
+      "callers": 9,
+      "changed_context_files_exposed_to_model": [
+        "src/sentry/incidents/grouptype.py",
+        "src/sentry/workflow_engine/models/detector.py",
+        "src/sentry/workflow_engine/processors/detector.py",
+        "tests/sentry/workflow_engine/processors/test_detector.py"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 4,
+      "context_chars": 26166,
+      "context_files_exposed_to_model": [
+        ".craft.yml",
+        ".eslintrc.js",
+        ".github/CODEOWNERS",
+        "CHANGES",
+        "api-docs/yarn.lock",
+        "fixtures/backup/model_dependencies/detailed.json",
+        "fixtures/gitlab.py",
+        "fixtures/sudo_testutils.py",
+        "src/bitfield/types.py",
+        "src/flagpole/__init__.py",
+        "src/sentry/_importchecker.py",
+        "src/sentry/adoption/__init__.py",
+        "src/sentry/adoption/manager.py",
+        "src/sentry/api/endpoints/codeowners/__init__.py",
+        "src/sentry/api/endpoints/organization_api_key_details.py",
+        "src/sentry/api/endpoints/organization_events_trace.py",
+        "src/sentry/api/endpoints/organization_fork.py",
+        "src/sentry/api/endpoints/organization_releases.py",
+        "src/sentry/api/endpoints/project_performance_issue_settings.py",
+        "src/sentry/api/helpers/events.py",
+        "src/sentry/api/helpers/group_index/delete.py",
+        "src/sentry/api/helpers/group_index/update.py",
+        "src/sentry/api/helpers/group_index/validators/group.py",
+        "src/sentry/api/issue_search.py",
+        "src/sentry/data_export/endpoints/data_export.py",
+        "src/sentry/data_export/tasks.py",
+        "src/sentry/incidents/grouptype.py",
+        "src/sentry/incidents/models/alert_rule.py",
+        "src/sentry/incidents/subscription_processor.py",
+        "src/sentry/locale/af/LC_MESSAGES/django.po",
+        "src/sentry/release_health/metrics_sessions_v2.py",
+        "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+        "src/sentry/testutils/cases.py",
+        "src/sentry/workflow_engine/models/__init__.py",
+        "src/sentry/workflow_engine/models/data_source.py",
+        "src/sentry/workflow_engine/models/detector.py",
+        "src/sentry/workflow_engine/processors/__init__.py",
+        "src/sentry/workflow_engine/processors/detector.py",
+        "tests/sentry/issues/test_grouptype.py",
+        "tests/sentry/models/test_statistical_detectors.py",
+        "tests/sentry/workflow_engine/processors/test_detector.py"
+      ],
+      "context_utf8_bytes": 26434,
+      "cross_file_context_files_exposed_to_model": [
+        ".craft.yml",
+        ".eslintrc.js",
+        ".github/CODEOWNERS",
+        "CHANGES",
+        "api-docs/yarn.lock",
+        "fixtures/backup/model_dependencies/detailed.json",
+        "fixtures/gitlab.py",
+        "fixtures/sudo_testutils.py",
+        "src/bitfield/types.py",
+        "src/flagpole/__init__.py",
+        "src/sentry/_importchecker.py",
+        "src/sentry/adoption/__init__.py",
+        "src/sentry/adoption/manager.py",
+        "src/sentry/api/endpoints/codeowners/__init__.py",
+        "src/sentry/api/endpoints/organization_api_key_details.py",
+        "src/sentry/api/endpoints/organization_events_trace.py",
+        "src/sentry/api/endpoints/organization_fork.py",
+        "src/sentry/api/endpoints/organization_releases.py",
+        "src/sentry/api/endpoints/project_performance_issue_settings.py",
+        "src/sentry/api/helpers/events.py",
+        "src/sentry/api/helpers/group_index/delete.py",
+        "src/sentry/api/helpers/group_index/update.py",
+        "src/sentry/api/helpers/group_index/validators/group.py",
+        "src/sentry/api/issue_search.py",
+        "src/sentry/data_export/endpoints/data_export.py",
+        "src/sentry/data_export/tasks.py",
+        "src/sentry/incidents/models/alert_rule.py",
+        "src/sentry/incidents/subscription_processor.py",
+        "src/sentry/locale/af/LC_MESSAGES/django.po",
+        "src/sentry/release_health/metrics_sessions_v2.py",
+        "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+        "src/sentry/testutils/cases.py",
+        "src/sentry/workflow_engine/models/__init__.py",
+        "src/sentry/workflow_engine/models/data_source.py",
+        "src/sentry/workflow_engine/processors/__init__.py",
+        "src/sentry/workflow_engine/processors/detector.py",
+        "tests/sentry/issues/test_grouptype.py",
+        "tests/sentry/models/test_statistical_detectors.py",
+        "tests/sentry/workflow_engine/processors/test_detector.py"
+      ],
+      "definitions": 25,
+      "estimated_context_tokens": 6544,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 133,
+      "evidence_rows_clipped_during_render": 0,
+      "evidence_rows_omitted_due_to_render_budget": 0,
+      "evidence_rows_rendered": 133,
+      "hypotheses": 0,
+      "imports": 24,
+      "largest_prompt_budget": 8913,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 40,
+        "max_symbols_per_chunk": 2,
+        "prompt_render_budget": 2
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 0,
+        "source_read_budget": 0,
+        "symbol_config_limit": 127,
+        "symbol_search_budget": 20
+      },
+      "packet_metrics": {
+        "f0000:c0000-cf24ba24dfcb": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".craft.yml",
+            "CHANGES",
+            "fixtures/backup/model_dependencies/detailed.json",
+            "src/sentry/data_export/endpoints/data_export.py",
+            "src/sentry/data_export/tasks.py",
+            "src/sentry/incidents/grouptype.py",
+            "src/sentry/incidents/subscription_processor.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "tests/sentry/issues/test_grouptype.py"
+          ],
+          "context_files_exposed_to_model_count": 9,
+          "cross_file_context_files_exposed_to_model": [
+            ".craft.yml",
+            "CHANGES",
+            "fixtures/backup/model_dependencies/detailed.json",
+            "src/sentry/data_export/endpoints/data_export.py",
+            "src/sentry/data_export/tasks.py",
+            "src/sentry/incidents/subscription_processor.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "tests/sentry/issues/test_grouptype.py"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 8,
+          "estimated_context_tokens": 1293,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".craft.yml",
+            "CHANGES",
+            "fixtures/backup/model_dependencies/detailed.json",
+            "src/sentry/data_export/endpoints/data_export.py",
+            "src/sentry/data_export/tasks.py",
+            "src/sentry/incidents/grouptype.py",
+            "src/sentry/incidents/subscription_processor.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "tests/sentry/issues/test_grouptype.py"
+          ],
+          "evidence_rows_available_to_render": 27,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 27,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 8913,
+          "prompt_budget_utilization": 0.5799394143386065,
+          "prompt_chars": 5169,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 5225,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1289,
+          "source_excerpt_truncated": false,
+          "source_excerpt_utf8_bytes": 1289,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 9,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0001:c0000-35ae2e7bd5cc": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".craft.yml",
+            ".eslintrc.js",
+            ".github/CODEOWNERS",
+            "CHANGES",
+            "api-docs/yarn.lock",
+            "fixtures/sudo_testutils.py",
+            "src/sentry/_importchecker.py",
+            "src/sentry/adoption/__init__.py",
+            "src/sentry/adoption/manager.py",
+            "src/sentry/api/endpoints/codeowners/__init__.py",
+            "src/sentry/api/endpoints/organization_api_key_details.py",
+            "src/sentry/api/endpoints/organization_fork.py",
+            "src/sentry/api/endpoints/project_performance_issue_settings.py",
+            "src/sentry/api/helpers/events.py",
+            "src/sentry/api/helpers/group_index/delete.py",
+            "src/sentry/api/issue_search.py",
+            "src/sentry/locale/af/LC_MESSAGES/django.po",
+            "src/sentry/workflow_engine/models/detector.py",
+            "tests/sentry/models/test_statistical_detectors.py"
+          ],
+          "context_files_exposed_to_model_count": 19,
+          "cross_file_context_files_exposed_to_model": [
+            ".craft.yml",
+            ".eslintrc.js",
+            ".github/CODEOWNERS",
+            "CHANGES",
+            "api-docs/yarn.lock",
+            "fixtures/sudo_testutils.py",
+            "src/sentry/_importchecker.py",
+            "src/sentry/adoption/__init__.py",
+            "src/sentry/adoption/manager.py",
+            "src/sentry/api/endpoints/codeowners/__init__.py",
+            "src/sentry/api/endpoints/organization_api_key_details.py",
+            "src/sentry/api/endpoints/organization_fork.py",
+            "src/sentry/api/endpoints/project_performance_issue_settings.py",
+            "src/sentry/api/helpers/events.py",
+            "src/sentry/api/helpers/group_index/delete.py",
+            "src/sentry/api/issue_search.py",
+            "src/sentry/locale/af/LC_MESSAGES/django.po",
+            "tests/sentry/models/test_statistical_detectors.py"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 18,
+          "estimated_context_tokens": 1741,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".craft.yml",
+            ".eslintrc.js",
+            ".github/CODEOWNERS",
+            "CHANGES",
+            "api-docs/yarn.lock",
+            "fixtures/sudo_testutils.py",
+            "src/sentry/_importchecker.py",
+            "src/sentry/adoption/__init__.py",
+            "src/sentry/adoption/manager.py",
+            "src/sentry/api/endpoints/codeowners/__init__.py",
+            "src/sentry/api/endpoints/organization_api_key_details.py",
+            "src/sentry/api/endpoints/organization_fork.py",
+            "src/sentry/api/endpoints/project_performance_issue_settings.py",
+            "src/sentry/api/helpers/events.py",
+            "src/sentry/api/helpers/group_index/delete.py",
+            "src/sentry/api/issue_search.py",
+            "src/sentry/locale/af/LC_MESSAGES/django.po",
+            "src/sentry/workflow_engine/models/detector.py",
+            "tests/sentry/models/test_statistical_detectors.py"
+          ],
+          "evidence_rows_available_to_render": 39,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 39,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 8913,
+          "prompt_budget_utilization": 0.7809940536295299,
+          "prompt_chars": 6961,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 7039,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 2204,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 2204,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 12,
+          "symbol_candidates_discovered": 12,
+          "symbol_candidates_extracted": 12,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 12,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0002:c0000-9986a159b04c": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "CHANGES",
+            "src/bitfield/types.py",
+            "src/flagpole/__init__.py",
+            "src/sentry/api/endpoints/organization_events_trace.py",
+            "src/sentry/api/endpoints/organization_releases.py",
+            "src/sentry/api/helpers/group_index/update.py",
+            "src/sentry/api/helpers/group_index/validators/group.py",
+            "src/sentry/locale/af/LC_MESSAGES/django.po",
+            "src/sentry/release_health/metrics_sessions_v2.py",
+            "src/sentry/workflow_engine/models/__init__.py",
+            "src/sentry/workflow_engine/models/data_source.py",
+            "src/sentry/workflow_engine/processors/__init__.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "tests/sentry/models/test_statistical_detectors.py",
+            "tests/sentry/workflow_engine/processors/test_detector.py"
+          ],
+          "context_files_exposed_to_model_count": 15,
+          "cross_file_context_files_exposed_to_model": [
+            "CHANGES",
+            "src/bitfield/types.py",
+            "src/flagpole/__init__.py",
+            "src/sentry/api/endpoints/organization_events_trace.py",
+            "src/sentry/api/endpoints/organization_releases.py",
+            "src/sentry/api/helpers/group_index/update.py",
+            "src/sentry/api/helpers/group_index/validators/group.py",
+            "src/sentry/locale/af/LC_MESSAGES/django.po",
+            "src/sentry/release_health/metrics_sessions_v2.py",
+            "src/sentry/workflow_engine/models/__init__.py",
+            "src/sentry/workflow_engine/models/data_source.py",
+            "src/sentry/workflow_engine/processors/__init__.py",
+            "tests/sentry/models/test_statistical_detectors.py",
+            "tests/sentry/workflow_engine/processors/test_detector.py"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 14,
+          "estimated_context_tokens": 2144,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "CHANGES",
+            "src/bitfield/types.py",
+            "src/flagpole/__init__.py",
+            "src/sentry/api/endpoints/organization_events_trace.py",
+            "src/sentry/api/endpoints/organization_releases.py",
+            "src/sentry/api/helpers/group_index/update.py",
+            "src/sentry/api/helpers/group_index/validators/group.py",
+            "src/sentry/locale/af/LC_MESSAGES/django.po",
+            "src/sentry/release_health/metrics_sessions_v2.py",
+            "src/sentry/workflow_engine/models/__init__.py",
+            "src/sentry/workflow_engine/models/data_source.py",
+            "src/sentry/workflow_engine/processors/__init__.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "tests/sentry/models/test_statistical_detectors.py",
+            "tests/sentry/workflow_engine/processors/test_detector.py"
+          ],
+          "evidence_rows_available_to_render": 45,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 45,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 8913,
+          "prompt_budget_utilization": 0.9620778637944576,
+          "prompt_chars": 8575,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 8665,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 2204,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 2204,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 31,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 7,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 14,
+          "symbol_searches_skipped_due_to_budget": 10
+        },
+        "f0003:c0000-3a89a2fde768": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "fixtures/gitlab.py",
+            "fixtures/sudo_testutils.py",
+            "src/bitfield/types.py",
+            "src/flagpole/__init__.py",
+            "src/sentry/incidents/models/alert_rule.py",
+            "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+            "src/sentry/testutils/cases.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "tests/sentry/workflow_engine/processors/test_detector.py"
+          ],
+          "context_files_exposed_to_model_count": 9,
+          "cross_file_context_files_exposed_to_model": [
+            "fixtures/gitlab.py",
+            "fixtures/sudo_testutils.py",
+            "src/bitfield/types.py",
+            "src/flagpole/__init__.py",
+            "src/sentry/incidents/models/alert_rule.py",
+            "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+            "src/sentry/testutils/cases.py",
+            "src/sentry/workflow_engine/processors/detector.py"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 8,
+          "estimated_context_tokens": 1366,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "fixtures/gitlab.py",
+            "fixtures/sudo_testutils.py",
+            "src/bitfield/types.py",
+            "src/flagpole/__init__.py",
+            "src/sentry/incidents/models/alert_rule.py",
+            "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+            "src/sentry/testutils/cases.py",
+            "src/sentry/workflow_engine/processors/detector.py",
+            "tests/sentry/workflow_engine/processors/test_detector.py"
+          ],
+          "evidence_rows_available_to_render": 22,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 22,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 8912,
+          "prompt_budget_utilization": 0.6127692998204668,
+          "prompt_chars": 5461,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 5505,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 2204,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 2204,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 144,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 120,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 14,
+          "symbol_searches_skipped_due_to_budget": 10
+        }
+      },
+      "packets_hitting_symbol_config_limit": 2,
+      "packets_hitting_symbol_render_budget_limit": 2,
+      "prompt_budget_chars": 35651,
+      "prompt_budget_utilization": 0.7339485568427253,
+      "prompt_truncated_packets": 0,
+      "smallest_prompt_budget": 8912,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 3,
+      "symbol_candidates_after_config_limit": 69,
+      "symbol_candidates_discovered": 196,
+      "symbol_candidates_omitted_by_config_limit": 127,
+      "symbol_searches_skipped_due_to_budget": 20,
+      "symbols": 49,
+      "tests": 6,
+      "tree_files": 15464,
+      "truncated_packets": 3,
+      "unchanged_context_files_exposed_to_model": [
+        ".craft.yml",
+        ".eslintrc.js",
+        ".github/CODEOWNERS",
+        "CHANGES",
+        "api-docs/yarn.lock",
+        "fixtures/backup/model_dependencies/detailed.json",
+        "fixtures/gitlab.py",
+        "fixtures/sudo_testutils.py",
+        "src/bitfield/types.py",
+        "src/flagpole/__init__.py",
+        "src/sentry/_importchecker.py",
+        "src/sentry/adoption/__init__.py",
+        "src/sentry/adoption/manager.py",
+        "src/sentry/api/endpoints/codeowners/__init__.py",
+        "src/sentry/api/endpoints/organization_api_key_details.py",
+        "src/sentry/api/endpoints/organization_events_trace.py",
+        "src/sentry/api/endpoints/organization_fork.py",
+        "src/sentry/api/endpoints/organization_releases.py",
+        "src/sentry/api/endpoints/project_performance_issue_settings.py",
+        "src/sentry/api/helpers/events.py",
+        "src/sentry/api/helpers/group_index/delete.py",
+        "src/sentry/api/helpers/group_index/update.py",
+        "src/sentry/api/helpers/group_index/validators/group.py",
+        "src/sentry/api/issue_search.py",
+        "src/sentry/data_export/endpoints/data_export.py",
+        "src/sentry/data_export/tasks.py",
+        "src/sentry/incidents/models/alert_rule.py",
+        "src/sentry/incidents/subscription_processor.py",
+        "src/sentry/locale/af/LC_MESSAGES/django.po",
+        "src/sentry/release_health/metrics_sessions_v2.py",
+        "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+        "src/sentry/testutils/cases.py",
+        "src/sentry/workflow_engine/models/__init__.py",
+        "src/sentry/workflow_engine/models/data_source.py",
+        "src/sentry/workflow_engine/processors/__init__.py",
+        "tests/sentry/issues/test_grouptype.py",
+        "tests/sentry/models/test_statistical_detectors.py"
+      ],
+      "unique_changed_context_files_exposed_to_model": 4,
+      "unique_context_files_exposed_to_model": 41,
+      "unique_cross_file_context_files_exposed_to_model": 39,
+      "unique_unchanged_context_files_exposed_to_model": 37,
+      "usages": 69,
+      "whole_repo_grep_cache_hits": 4,
+      "whole_repo_grep_calls": 45,
+      "whole_repo_grep_calls_returning_configured_limit": 40
+    },
+    "unique_changed_context_files_exposed_to_model": 4,
+    "unique_effective_context_files_exposed_to_model": 45,
+    "unique_unchanged_context_files_exposed_to_model": 41,
+    "verification_batches": [
+      {
+        "candidate_count": 4,
+        "candidate_offset": 0,
+        "candidate_payload_chars": 6304,
+        "context_budget_chars": 190176,
+        "context_budget_clipped": false,
+        "context_chars": 154795,
+        "context_chars_available": 154795,
+        "context_chars_before_prompt_fit": 154795,
+        "context_chars_omitted_by_evidence_budget": 0,
+        "context_chars_omitted_by_prompt_fit": 0,
+        "context_chars_rendered": 154795,
+        "context_clipped_to_any_budget": false,
+        "context_clipped_to_prompt_budget": false,
+        "evidence_budget_clipped": false,
+        "evidence_clipped_to_any_budget": false,
+        "generation_context_blocks_available": 1,
+        "generation_context_blocks_rendered": 1,
+        "generation_context_chars_available": 149662,
+        "generation_context_chars_omitted": 0,
+        "generation_context_chars_rendered": 149662,
+        "generation_context_files_after_prompt_fit": [
+          ".craft.yml",
+          ".eslintrc.js",
+          ".github/CODEOWNERS",
+          "CHANGES",
+          "api-docs/yarn.lock",
+          "fixtures/backup/model_dependencies/detailed.json",
+          "fixtures/gitlab.py",
+          "fixtures/sudo_testutils.py",
+          "src/bitfield/types.py",
+          "src/flagpole/__init__.py",
+          "src/sentry/_importchecker.py",
+          "src/sentry/adoption/__init__.py",
+          "src/sentry/adoption/manager.py",
+          "src/sentry/api/endpoints/codeowners/__init__.py",
+          "src/sentry/api/endpoints/organization_api_key_details.py",
+          "src/sentry/api/endpoints/organization_events_trace.py",
+          "src/sentry/api/endpoints/organization_fork.py",
+          "src/sentry/api/endpoints/organization_releases.py",
+          "src/sentry/api/endpoints/project_performance_issue_settings.py",
+          "src/sentry/api/helpers/events.py",
+          "src/sentry/api/helpers/group_index/delete.py",
+          "src/sentry/api/helpers/group_index/update.py",
+          "src/sentry/api/helpers/group_index/validators/group.py",
+          "src/sentry/api/issue_search.py",
+          "src/sentry/data_export/endpoints/data_export.py",
+          "src/sentry/data_export/tasks.py",
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/incidents/models/alert_rule.py",
+          "src/sentry/incidents/subscription_processor.py",
+          "src/sentry/issues/grouptype.py",
+          "src/sentry/issues/issue_occurrence.py",
+          "src/sentry/issues/producer.py",
+          "src/sentry/locale/af/LC_MESSAGES/django.po",
+          "src/sentry/release_health/metrics_sessions_v2.py",
+          "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+          "src/sentry/testutils/cases.py",
+          "src/sentry/workflow_engine/models/__init__.py",
+          "src/sentry/workflow_engine/models/data_source.py",
+          "src/sentry/workflow_engine/models/detector.py",
+          "src/sentry/workflow_engine/processors/__init__.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "src/sentry/workflow_engine/types.py",
+          "tests/sentry/issues/test_grouptype.py",
+          "tests/sentry/models/test_statistical_detectors.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ],
+        "generation_context_files_available": [
+          ".craft.yml",
+          ".eslintrc.js",
+          ".github/CODEOWNERS",
+          "CHANGES",
+          "api-docs/yarn.lock",
+          "fixtures/backup/model_dependencies/detailed.json",
+          "fixtures/gitlab.py",
+          "fixtures/sudo_testutils.py",
+          "src/bitfield/types.py",
+          "src/flagpole/__init__.py",
+          "src/sentry/_importchecker.py",
+          "src/sentry/adoption/__init__.py",
+          "src/sentry/adoption/manager.py",
+          "src/sentry/api/endpoints/codeowners/__init__.py",
+          "src/sentry/api/endpoints/organization_api_key_details.py",
+          "src/sentry/api/endpoints/organization_events_trace.py",
+          "src/sentry/api/endpoints/organization_fork.py",
+          "src/sentry/api/endpoints/organization_releases.py",
+          "src/sentry/api/endpoints/project_performance_issue_settings.py",
+          "src/sentry/api/helpers/events.py",
+          "src/sentry/api/helpers/group_index/delete.py",
+          "src/sentry/api/helpers/group_index/update.py",
+          "src/sentry/api/helpers/group_index/validators/group.py",
+          "src/sentry/api/issue_search.py",
+          "src/sentry/data_export/endpoints/data_export.py",
+          "src/sentry/data_export/tasks.py",
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/incidents/models/alert_rule.py",
+          "src/sentry/incidents/subscription_processor.py",
+          "src/sentry/issues/grouptype.py",
+          "src/sentry/issues/issue_occurrence.py",
+          "src/sentry/issues/producer.py",
+          "src/sentry/locale/af/LC_MESSAGES/django.po",
+          "src/sentry/release_health/metrics_sessions_v2.py",
+          "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+          "src/sentry/testutils/cases.py",
+          "src/sentry/workflow_engine/models/__init__.py",
+          "src/sentry/workflow_engine/models/data_source.py",
+          "src/sentry/workflow_engine/models/detector.py",
+          "src/sentry/workflow_engine/processors/__init__.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "src/sentry/workflow_engine/types.py",
+          "tests/sentry/issues/test_grouptype.py",
+          "tests/sentry/models/test_statistical_detectors.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ],
+        "generation_context_files_omitted": [],
+        "generation_context_files_rendered": [
+          ".craft.yml",
+          ".eslintrc.js",
+          ".github/CODEOWNERS",
+          "CHANGES",
+          "api-docs/yarn.lock",
+          "fixtures/backup/model_dependencies/detailed.json",
+          "fixtures/gitlab.py",
+          "fixtures/sudo_testutils.py",
+          "src/bitfield/types.py",
+          "src/flagpole/__init__.py",
+          "src/sentry/_importchecker.py",
+          "src/sentry/adoption/__init__.py",
+          "src/sentry/adoption/manager.py",
+          "src/sentry/api/endpoints/codeowners/__init__.py",
+          "src/sentry/api/endpoints/organization_api_key_details.py",
+          "src/sentry/api/endpoints/organization_events_trace.py",
+          "src/sentry/api/endpoints/organization_fork.py",
+          "src/sentry/api/endpoints/organization_releases.py",
+          "src/sentry/api/endpoints/project_performance_issue_settings.py",
+          "src/sentry/api/helpers/events.py",
+          "src/sentry/api/helpers/group_index/delete.py",
+          "src/sentry/api/helpers/group_index/update.py",
+          "src/sentry/api/helpers/group_index/validators/group.py",
+          "src/sentry/api/issue_search.py",
+          "src/sentry/data_export/endpoints/data_export.py",
+          "src/sentry/data_export/tasks.py",
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/incidents/models/alert_rule.py",
+          "src/sentry/incidents/subscription_processor.py",
+          "src/sentry/issues/grouptype.py",
+          "src/sentry/issues/issue_occurrence.py",
+          "src/sentry/issues/producer.py",
+          "src/sentry/locale/af/LC_MESSAGES/django.po",
+          "src/sentry/release_health/metrics_sessions_v2.py",
+          "src/sentry/silo/patches/silo_aware_transaction_patch.py",
+          "src/sentry/testutils/cases.py",
+          "src/sentry/workflow_engine/models/__init__.py",
+          "src/sentry/workflow_engine/models/data_source.py",
+          "src/sentry/workflow_engine/models/detector.py",
+          "src/sentry/workflow_engine/processors/__init__.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "src/sentry/workflow_engine/types.py",
+          "tests/sentry/issues/test_grouptype.py",
+          "tests/sentry/models/test_statistical_detectors.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ],
+        "input_char_budget": 326272,
+        "input_char_budget_utilization": 0.5178869164378187,
+        "patch_blocks_available": 3,
+        "patch_blocks_rendered": 3,
+        "patch_budget_chars": 126784,
+        "patch_budget_clipped": false,
+        "patch_chars": 5369,
+        "patch_chars_available": 5369,
+        "patch_chars_omitted_by_evidence_budget": 0,
+        "patch_chars_rendered": 5369,
+        "prompt_chars": 168972,
+        "prompt_utf8_bytes": 169240,
+        "source_blocks_available": 3,
+        "source_blocks_rendered": 3,
+        "source_context_chars_available": 5131,
+        "source_context_chars_omitted": 0,
+        "source_context_chars_rendered": 5131,
+        "source_files_after_prompt_fit": [
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ],
+        "source_files_available": [
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ],
+        "source_files_omitted": [],
+        "source_files_rendered": [
+          "src/sentry/incidents/grouptype.py",
+          "src/sentry/workflow_engine/processors/detector.py",
+          "tests/sentry/workflow_engine/processors/test_detector.py"
+        ]
+      }
+    ],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": true,
+    "completed_hunks": [
+      "src/sentry/incidents/grouptype.py:1:1:h000",
+      "src/sentry/workflow_engine/models/detector.py:1:1:h000",
+      "src/sentry/workflow_engine/models/detector.py:44:46:h001",
+      "src/sentry/workflow_engine/processors/detector.py:5:5:h000",
+      "src/sentry/workflow_engine/processors/detector.py:36:37:h001",
+      "src/sentry/workflow_engine/processors/detector.py:127:114:h002",
+      "src/sentry/workflow_engine/processors/detector.py:165:154:h003",
+      "src/sentry/workflow_engine/processors/detector.py:219:214:h004",
+      "src/sentry/workflow_engine/processors/detector.py:280:277:h005",
+      "tests/sentry/workflow_engine/processors/test_detector.py:1:1:h000",
+      "tests/sentry/workflow_engine/processors/test_detector.py:202:315:h001",
+      "tests/sentry/workflow_engine/processors/test_detector.py:296:367:h002",
+      "tests/sentry/workflow_engine/processors/test_detector.py:339:410:h003"
+    ],
+    "coverage_ratio": 1.0,
+    "eligible_files": 4,
+    "eligible_hunks": 13,
+    "excluded_files": [],
+    "failed_hunks": [],
+    "total_files": 4,
+    "total_hunks": 13
+  },
+  "diagnostics": [
+    {
+      "batch_id": "b0000-fda152f40890",
+      "chunk_ids": [
+        "f0000:c0000-cf24ba24dfcb",
+        "f0001:c0000-35ae2e7bd5cc",
+        "f0002:c0000-9986a159b04c",
+        "f0003:c0000-3a89a2fde768"
+      ],
+      "code": "invalid_search_cursor",
+      "stage": "context_action"
+    }
+  ],
+  "diff": {
+    "additions": 249,
+    "bytes": 39204,
+    "chunk_plan_complete": true,
+    "chunks": 4,
+    "commentable_ranges": {
+      "LEFT": {
+        "src/sentry/incidents/grouptype.py": [
+          [
+            7,
+            8
+          ],
+          [
+            12,
+            17
+          ]
+        ],
+        "src/sentry/workflow_engine/models/detector.py": [
+          [
+            58,
+            58
+          ]
+        ],
+        "src/sentry/workflow_engine/processors/detector.py": [
+          [
+            48,
+            48
+          ],
+          [
+            58,
+            70
+          ],
+          [
+            75,
+            76
+          ],
+          [
+            139,
+            139
+          ],
+          [
+            231,
+            231
+          ],
+          [
+            240,
+            240
+          ],
+          [
+            246,
+            246
+          ],
+          [
+            292,
+            292
+          ],
+          [
+            301,
+            302
+          ]
+        ],
+        "tests/sentry/workflow_engine/processors/test_detector.py": [
+          [
+            7,
+            7
+          ],
+          [
+            17,
+            17
+          ],
+          [
+            21,
+            21
+          ],
+          [
+            32,
+            33
+          ],
+          [
+            42,
+            53
+          ],
+          [
+            67,
+            67
+          ],
+          [
+            76,
+            76
+          ],
+          [
+            80,
+            82
+          ],
+          [
+            92,
+            92
+          ],
+          [
+            96,
+            98
+          ],
+          [
+            113,
+            113
+          ],
+          [
+            116,
+            126
+          ],
+          [
+            128,
+            133
+          ],
+          [
+            155,
+            162
+          ],
+          [
+            214,
+            256
+          ],
+          [
+            308,
+            308
+          ],
+          [
+            351,
+            351
+          ],
+          [
+            354,
+            356
+          ],
+          [
+            361,
+            361
+          ],
+          [
+            366,
+            366
+          ],
+          [
+            368,
+            369
+          ],
+          [
+            374,
+            374
+          ],
+          [
+            376,
+            376
+          ],
+          [
+            378,
+            379
+          ],
+          [
+            390,
+            390
+          ],
+          [
+            397,
+            397
+          ],
+          [
+            407,
+            408
+          ],
+          [
+            413,
+            413
+          ],
+          [
+            417,
+            417
+          ],
+          [
+            422,
+            423
+          ],
+          [
+            428,
+            428
+          ],
+          [
+            432,
+            432
+          ],
+          [
+            439,
+            439
+          ]
+        ]
+      },
+      "RIGHT": {
+        "src/sentry/incidents/grouptype.py": [
+          [
+            7,
+            7
+          ],
+          [
+            11,
+            12
+          ]
+        ],
+        "src/sentry/workflow_engine/models/detector.py": [
+          [
+            3,
+            3
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            58,
+            61
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "src/sentry/workflow_engine/processors/detector.py": [
+          [
+            17,
+            17
+          ],
+          [
+            49,
+            49
+          ],
+          [
+            60,
+            60
+          ],
+          [
+            126,
+            128
+          ],
+          [
+            166,
+            171
+          ],
+          [
+            226,
+            228
+          ],
+          [
+            237,
+            237
+          ],
+          [
+            243,
+            243
+          ],
+          [
+            289,
+            289
+          ],
+          [
+            298,
+            301
+          ]
+        ],
+        "tests/sentry/workflow_engine/processors/test_detector.py": [
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            23,
+            23
+          ],
+          [
+            27,
+            44
+          ],
+          [
+            47,
+            50
+          ],
+          [
+            59,
+            62
+          ],
+          [
+            82,
+            127
+          ],
+          [
+            130,
+            132
+          ],
+          [
+            141,
+            141
+          ],
+          [
+            145,
+            148
+          ],
+          [
+            150,
+            153
+          ],
+          [
+            158,
+            159
+          ],
+          [
+            164,
+            164
+          ],
+          [
+            167,
+            172
+          ],
+          [
+            174,
+            177
+          ],
+          [
+            179,
+            182
+          ],
+          [
+            187,
+            191
+          ],
+          [
+            197,
+            198
+          ],
+          [
+            203,
+            203
+          ],
+          [
+            206,
+            221
+          ],
+          [
+            244,
+            275
+          ],
+          [
+            327,
+            327
+          ],
+          [
+            379,
+            379
+          ],
+          [
+            422,
+            423
+          ],
+          [
+            426,
+            431
+          ],
+          [
+            435,
+            436
+          ],
+          [
+            438,
+            438
+          ],
+          [
+            443,
+            443
+          ],
+          [
+            445,
+            449
+          ],
+          [
+            453,
+            454
+          ],
+          [
+            456,
+            456
+          ],
+          [
+            458,
+            458
+          ],
+          [
+            460,
+            461
+          ],
+          [
+            472,
+            472
+          ],
+          [
+            479,
+            479
+          ],
+          [
+            489,
+            493
+          ],
+          [
+            497,
+            498
+          ],
+          [
+            500,
+            500
+          ],
+          [
+            504,
+            504
+          ],
+          [
+            509,
+            513
+          ],
+          [
+            517,
+            518
+          ],
+          [
+            520,
+            520
+          ],
+          [
+            524,
+            524
+          ],
+          [
+            531,
+            532
+          ],
+          [
+            536,
+            538
+          ],
+          [
+            543,
+            544
+          ]
+        ]
+      }
+    },
+    "deletions": 151,
+    "files": 4,
+    "generation_batches": 1,
+    "hunks": 13,
+    "merge_base_sha": "bdd229e3f22e307fe40b30ef99e92ff3f6723da4",
+    "sha256": "090a0c4a0e33e2645ba0a0869caca5b07ecae702b8243846bcdcca1e5fdb1c28"
+  },
+  "duration_ms": 178903,
+  "findings": [
+    {
+      "body": "Instantiation raises a TypeError because the handler still has unimplemented abstract methods, aborting detector processing instead of evaluating the metric alert.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-cf24ba24dfcb",
+      "confidence": 1.0,
+      "end_line": 11,
+      "evidence": "class MetricAlertDetectorHandler(StatefulDetectorHandler[QuerySubscriptionUpdate]):",
+      "failure_mode": "Runtime detector processing fails during handler construction before state evaluation or occurrence production can occur.",
+      "finding_id": "bb-17549e9f50feb9d08182",
+      "fingerprint": "a0420127cb7f8c2db2bb0229188630b716c72cadd62945dc48ecf19c7e0c1ab4",
+      "fix_scope": "local",
+      "impact": "Instantiation raises a TypeError because the handler still has unimplemented abstract methods, aborting detector processing instead of evaluating the metric alert.",
+      "line": 11,
+      "path": "src/sentry/incidents/grouptype.py",
+      "root_cause": "The metric alert handler was changed to inherit from the abstract stateful handler without implementing its required abstract interface.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Implement `counter_names`, `get_dedupe_value`, `get_group_key_values`, and `build_occurrence_and_event_data`, or do not register this incomplete handler as the group type's detector handler until it is concrete.",
+      "title": "Metric alert detector handler cannot be instantiated",
+      "trigger": "A detector whose type is `metric_alert_fire` is passed to `process_detectors`, causing `Detector.detector_handler` to instantiate this handler.",
+      "verifier_confidence": 0.92,
+      "verifier_family_key": "abstract_method_not_implemented",
+      "verifier_reason": "Patch line R11 shows MetricAlertDetectorHandler inherits from StatefulDetectorHandler but only contains 'pass'. StatefulDetectorHandler (L135-170) declares abstract methods counter_names, get_dedupe_value, get_group_key_values, and build_occurrence_and_event_data. MetricAlertFire (L27) sets detector_handler=MetricAlertDetectorHandler, and Detector.detector_handler property (L86) instantiates it. Instantiation of abstract class raises TypeError."
+    }
+  ],
+  "pr": {
+    "base_ref": "master",
+    "base_sha": "bdd229e3f22e307fe40b30ef99e92ff3f6723da4",
+    "body": "This adds a hook that can be implemented to produce an occurrence specific to the detector that is subclassing the StatefulDetector.\r\n\r\nAlso change the signature of evaluate to return a dict keyed by groupkey instead of a list. This helps avoid the chance of duplicate results for the same group key.\r\n\r\n<!-- Describe your PR here. -->",
+    "clone_url": "https://github.com/code-review-benchmark/sentry__sentry__augment__PR80168__20260122.git",
+    "head_ref": "pr-80168",
+    "head_sha": "8422030ef456e3a898415e96475b4d8ddfc7640f",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "sentry__sentry__augment__PR80168__20260122",
+    "resolved_at": "2026-08-23T19:44:09.747973Z",
+    "title": "feat(workflow_engine): Add in hook for producing occurrences from the stateful detector",
+    "url": "https://github.com/code-review-benchmark/sentry__sentry__augment__PR80168__20260122/pull/1"
+  },
+  "raw_findings": [
+    {
+      "body": "Instantiation raises a TypeError because the handler still has unimplemented abstract methods, aborting detector processing instead of evaluating the metric alert.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-cf24ba24dfcb",
+      "confidence": 1.0,
+      "end_line": 11,
+      "evidence": "class MetricAlertDetectorHandler(StatefulDetectorHandler[QuerySubscriptionUpdate]):",
+      "failure_mode": "Runtime detector processing fails during handler construction before state evaluation or occurrence production can occur.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "Instantiation raises a TypeError because the handler still has unimplemented abstract methods, aborting detector processing instead of evaluating the metric alert.",
+      "line": 11,
+      "path": "src/sentry/incidents/grouptype.py",
+      "root_cause": "The metric alert handler was changed to inherit from the abstract stateful handler without implementing its required abstract interface.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Implement `counter_names`, `get_dedupe_value`, `get_group_key_values`, and `build_occurrence_and_event_data`, or do not register this incomplete handler as the group type's detector handler until it is concrete.",
+      "title": "Metric alert detector handler cannot be instantiated",
+      "trigger": "A detector whose type is `metric_alert_fire` is passed to `process_detectors`, causing `Detector.detector_handler` to instantiate this handler.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The adjacent docstring incorrectly describes the return value as a list, which can lead callers or subclasses to use list iteration semantics instead of the returned group-key mapping.",
+      "category": "doc_defect",
+      "chunk_id": "f0002:c0000-9986a159b04c",
+      "confidence": 1.0,
+      "end_line": 228,
+      "evidence": ") -> dict[DetectorGroupKey, DetectorEvaluationResult]:",
+      "failure_mode": "API documentation gives an incorrect contract, reducing review and implementation reliability.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The adjacent docstring incorrectly describes the return value as a list, which can lead callers or subclasses to use list iteration semantics instead of the returned group-key mapping.",
+      "line": 228,
+      "path": "src/sentry/workflow_engine/processors/detector.py",
+      "root_cause": "The return type was changed from a list to a dict without updating the method documentation.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Update the docstring to state that the method returns a dict keyed by `DetectorGroupKey` and describe the mapping semantics.",
+      "title": "Stateful detector evaluate docstring still promises a list",
+      "trigger": "A developer reads the `StatefulDetectorHandler.evaluate` documentation while consuming or implementing the newly changed API.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The comment claims the class will become stateful later even though it now inherits from `StatefulDetectorHandler`, obscuring the current implementation state and the missing abstract methods.",
+      "category": "doc_defect",
+      "chunk_id": "f0000:c0000-cf24ba24dfcb",
+      "confidence": 1.0,
+      "end_line": 11,
+      "evidence": "class MetricAlertDetectorHandler(StatefulDetectorHandler[QuerySubscriptionUpdate]):",
+      "failure_mode": "Code navigation and review are misled by documentation that contradicts the class definition.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The comment claims the class will become stateful later even though it now inherits from `StatefulDetectorHandler`, obscuring the current implementation state and the missing abstract methods.",
+      "line": 11,
+      "path": "src/sentry/incidents/grouptype.py",
+      "root_cause": "The base class was changed to `StatefulDetectorHandler` without updating the existing statefulness TODO.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Remove the obsolete TODO or rewrite it to describe the remaining concrete implementation work.",
+      "title": "Metric alert handler comment is stale after switching to the stateful abstraction",
+      "trigger": "A maintainer uses the comment immediately above this class to determine whether the stateful detector abstraction has already been introduced.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The test constructs expected data with 6 instead of the actual group value, and the mock occurrence helper does not encode or assert `value`, so the test can pass even if per-group values are passed incorrectly to occurrence generation.",
+      "category": "test_gap",
+      "chunk_id": "f0003:c0000-3a89a2fde768",
+      "confidence": 1.0,
+      "end_line": 191,
+      "evidence": "detector.detector_handler, \"group_2\", 6, PriorityLevel.HIGH",
+      "failure_mode": "Regression tests fail to detect incorrect metric values being propagated into occurrence generation.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "repeated_pattern",
+      "impact": "The test constructs expected data with 6 instead of the actual group value, and the mock occurrence helper does not encode or assert `value`, so the test can pass even if per-group values are passed incorrectly to occurrence generation.",
+      "line": 191,
+      "path": "tests/sentry/workflow_engine/processors/test_detector.py",
+      "root_cause": "The new occurrence test fixtures use hard-coded values unrelated to the evaluated packet values and do not make the callback's `value` argument observable.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Assert the occurrence-builder call arguments for each group and use 10 for `group_2` (also correct the analogous mismatched expected values in the other occurrence tests).",
+      "title": "Multi-group occurrence test uses the wrong expected value",
+      "trigger": "The packet supplies `group_2` with value 10 and the detector builds an occurrence for that group.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    }
+  ],
+  "rejected_findings": [
+    {
+      "finding": {
+        "body": "The adjacent docstring incorrectly describes the return value as a list, which can lead callers or subclasses to use list iteration semantics instead of the returned group-key mapping.",
+        "category": "doc_defect",
+        "chunk_id": "f0002:c0000-9986a159b04c",
+        "confidence": 1.0,
+        "end_line": 228,
+        "evidence": ") -> dict[DetectorGroupKey, DetectorEvaluationResult]:",
+        "failure_mode": "API documentation gives an incorrect contract, reducing review and implementation reliability.",
+        "finding_id": "bb-31721ccb6c4ca9ffa61d",
+        "fingerprint": "5f89de5ffee89058da5ec1f58ab2a5995ac2e673e358dcc4de75c505f3a24418",
+        "fix_scope": "local",
+        "impact": "The adjacent docstring incorrectly describes the return value as a list, which can lead callers or subclasses to use list iteration semantics instead of the returned group-key mapping.",
+        "line": 228,
+        "path": "src/sentry/workflow_engine/processors/detector.py",
+        "root_cause": "The return type was changed from a list to a dict without updating the method documentation.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Update the docstring to state that the method returns a dict keyed by `DetectorGroupKey` and describe the mapping semantics.",
+        "title": "Stateful detector evaluate docstring still promises a list",
+        "trigger": "A developer reads the `StatefulDetectorHandler.evaluate` documentation while consuming or implementing the newly changed API.",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "stale_docstring",
+        "verifier_reason": "Patch lines R226-228 change return type to dict[DetectorGroupKey, DetectorEvaluationResult], but docstring at L230 still says 'returns a list of DetectorEvaluationResult'. The return type annotation contradicts the docstring, which is a documentation defect introduced by this patch."
+      },
+      "reason": "0.880 is below 0.920: Patch lines R226-228 change return type to dict[DetectorGroupKey, DetectorEvaluationResult], but docstring at L230 still says 'returns a list of DetectorEvaluationResult'. The return type annotation contradicts the docstring, which is a documentation defect introduced by this patch.",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "The comment claims the class will become stateful later even though it now inherits from `StatefulDetectorHandler`, obscuring the current implementation state and the missing abstract methods.",
+        "category": "doc_defect",
+        "chunk_id": "f0000:c0000-cf24ba24dfcb",
+        "confidence": 1.0,
+        "end_line": 11,
+        "evidence": "class MetricAlertDetectorHandler(StatefulDetectorHandler[QuerySubscriptionUpdate]):",
+        "failure_mode": "Code navigation and review are misled by documentation that contradicts the class definition.",
+        "finding_id": "bb-bc66b75498dc4ba108d9",
+        "fingerprint": "3a80b0a5fb84b97955cabad5f7982458249eeddeefe1456a5c27c0587eb4e375",
+        "fix_scope": "local",
+        "impact": "The comment claims the class will become stateful later even though it now inherits from `StatefulDetectorHandler`, obscuring the current implementation state and the missing abstract methods.",
+        "line": 11,
+        "path": "src/sentry/incidents/grouptype.py",
+        "root_cause": "The base class was changed to `StatefulDetectorHandler` without updating the existing statefulness TODO.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Remove the obsolete TODO or rewrite it to describe the remaining concrete implementation work.",
+        "title": "Metric alert handler comment is stale after switching to the stateful abstraction",
+        "trigger": "A maintainer uses the comment immediately above this class to determine whether the stateful detector abstraction has already been introduced.",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "stale_comment",
+        "verifier_reason": "The TODO comment at L10 'This will be a stateful detector when we build that abstraction' predates this patch (visible in both LEFT and RIGHT context). The patch did not introduce or modify this comment; it was pre-existing. The finding incorrectly attributes the stale comment to this patch."
+      },
+      "reason": "The TODO comment at L10 'This will be a stateful detector when we build that abstraction' predates this patch (visible in both LEFT and RIGHT context). The patch did not introduce or modify this comment; it was pre-existing. The finding incorrectly attributes the stale comment to this patch.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "The test constructs expected data with 6 instead of the actual group value, and the mock occurrence helper does not encode or assert `value`, so the test can pass even if per-group values are passed incorrectly to occurrence generation.",
+        "category": "test_gap",
+        "chunk_id": "f0003:c0000-3a89a2fde768",
+        "confidence": 1.0,
+        "end_line": 191,
+        "evidence": "detector.detector_handler, \"group_2\", 6, PriorityLevel.HIGH",
+        "failure_mode": "Regression tests fail to detect incorrect metric values being propagated into occurrence generation.",
+        "finding_id": "bb-4260e5b57aa02acf3158",
+        "fingerprint": "dcfd128e4a67ee92b190629ac80ea4c3ac66a6b885cd0f64ae2e06c483bc590e",
+        "fix_scope": "repeated_pattern",
+        "impact": "The test constructs expected data with 6 instead of the actual group value, and the mock occurrence helper does not encode or assert `value`, so the test can pass even if per-group values are passed incorrectly to occurrence generation.",
+        "line": 191,
+        "path": "tests/sentry/workflow_engine/processors/test_detector.py",
+        "root_cause": "The new occurrence test fixtures use hard-coded values unrelated to the evaluated packet values and do not make the callback's `value` argument observable.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Assert the occurrence-builder call arguments for each group and use 10 for `group_2` (also correct the analogous mismatched expected values in the other occurrence tests).",
+        "title": "Multi-group occurrence test uses the wrong expected value",
+        "trigger": "The packet supplies `group_2` with value 10 and the detector builds an occurrence for that group.",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "test_value_mismatch",
+        "verifier_reason": "Patch line R191 shows build_mock_occurrence_and_event called with value 6 for group_2, but data_packet at R177 provides group_2:10. The test constructs expected occurrence with wrong value (6 instead of 10), masking potential bugs in value propagation. This is a test gap introduced by the patch."
+      },
+      "reason": "0.900 is below 0.920: Patch line R191 shows build_mock_occurrence_and_event called with value 6 for group_2, but data_packet at R177 provides group_2:10. The test constructs expected occurrence with wrong value (6 instead of 10), masking potential bugs in value propagation. This is a test gap introduced by the patch.",
+      "stage": "verifier_confidence"
+    }
+  ],
+  "run_id": "7675edde887c09e60415f5f2",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "openai",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "openai/gpt-5.6-luna",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-23T21:09:41.268727Z",
+  "status": "completed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.0",
+  "validated_findings": [
+    {
+      "body": "Instantiation raises a TypeError because the handler still has unimplemented abstract methods, aborting detector processing instead of evaluating the metric alert.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-cf24ba24dfcb",
+      "confidence": 1.0,
+      "end_line": 11,
+      "evidence": "class MetricAlertDetectorHandler(StatefulDetectorHandler[QuerySubscriptionUpdate]):",
+      "failure_mode": "Runtime detector processing fails during handler construction before state evaluation or occurrence production can occur.",
+      "finding_id": "bb-17549e9f50feb9d08182",
+      "fingerprint": "a0420127cb7f8c2db2bb0229188630b716c72cadd62945dc48ecf19c7e0c1ab4",
+      "fix_scope": "local",
+      "impact": "Instantiation raises a TypeError because the handler still has unimplemented abstract methods, aborting detector processing instead of evaluating the metric alert.",
+      "line": 11,
+      "path": "src/sentry/incidents/grouptype.py",
+      "root_cause": "The metric alert handler was changed to inherit from the abstract stateful handler without implementing its required abstract interface.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Implement `counter_names`, `get_dedupe_value`, `get_group_key_values`, and `build_occurrence_and_event_data`, or do not register this incomplete handler as the group type's detector handler until it is concrete.",
+      "title": "Metric alert detector handler cannot be instantiated",
+      "trigger": "A detector whose type is `metric_alert_fire` is passed to `process_detectors`, causing `Detector.detector_handler` to instantiate this handler.",
+      "verifier_confidence": 0.92,
+      "verifier_family_key": "abstract_method_not_implemented",
+      "verifier_reason": "Patch line R11 shows MetricAlertDetectorHandler inherits from StatefulDetectorHandler but only contains 'pass'. StatefulDetectorHandler (L135-170) declares abstract methods counter_names, get_dedupe_value, get_group_key_values, and build_occurrence_and_event_data. MetricAlertFire (L27) sets detector_handler=MetricAlertDetectorHandler, and Detector.detector_handler property (L86) instantiates it. Instantiation of abstract class raises TypeError."
+    },
+    {
+      "body": "The adjacent docstring incorrectly describes the return value as a list, which can lead callers or subclasses to use list iteration semantics instead of the returned group-key mapping.",
+      "category": "doc_defect",
+      "chunk_id": "f0002:c0000-9986a159b04c",
+      "confidence": 1.0,
+      "end_line": 228,
+      "evidence": ") -> dict[DetectorGroupKey, DetectorEvaluationResult]:",
+      "failure_mode": "API documentation gives an incorrect contract, reducing review and implementation reliability.",
+      "finding_id": "bb-31721ccb6c4ca9ffa61d",
+      "fingerprint": "5f89de5ffee89058da5ec1f58ab2a5995ac2e673e358dcc4de75c505f3a24418",
+      "fix_scope": "local",
+      "impact": "The adjacent docstring incorrectly describes the return value as a list, which can lead callers or subclasses to use list iteration semantics instead of the returned group-key mapping.",
+      "line": 228,
+      "path": "src/sentry/workflow_engine/processors/detector.py",
+      "root_cause": "The return type was changed from a list to a dict without updating the method documentation.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Update the docstring to state that the method returns a dict keyed by `DetectorGroupKey` and describe the mapping semantics.",
+      "title": "Stateful detector evaluate docstring still promises a list",
+      "trigger": "A developer reads the `StatefulDetectorHandler.evaluate` documentation while consuming or implementing the newly changed API.",
+      "verifier_confidence": 0.88,
+      "verifier_family_key": "stale_docstring",
+      "verifier_reason": "Patch lines R226-228 change return type to dict[DetectorGroupKey, DetectorEvaluationResult], but docstring at L230 still says 'returns a list of DetectorEvaluationResult'. The return type annotation contradicts the docstring, which is a documentation defect introduced by this patch."
+    },
+    {
+      "body": "The comment claims the class will become stateful later even though it now inherits from `StatefulDetectorHandler`, obscuring the current implementation state and the missing abstract methods.",
+      "category": "doc_defect",
+      "chunk_id": "f0000:c0000-cf24ba24dfcb",
+      "confidence": 1.0,
+      "end_line": 11,
+      "evidence": "class MetricAlertDetectorHandler(StatefulDetectorHandler[QuerySubscriptionUpdate]):",
+      "failure_mode": "Code navigation and review are misled by documentation that contradicts the class definition.",
+      "finding_id": "bb-bc66b75498dc4ba108d9",
+      "fingerprint": "3a80b0a5fb84b97955cabad5f7982458249eeddeefe1456a5c27c0587eb4e375",
+      "fix_scope": "local",
+      "impact": "The comment claims the class will become stateful later even though it now inherits from `StatefulDetectorHandler`, obscuring the current implementation state and the missing abstract methods.",
+      "line": 11,
+      "path": "src/sentry/incidents/grouptype.py",
+      "root_cause": "The base class was changed to `StatefulDetectorHandler` without updating the existing statefulness TODO.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Remove the obsolete TODO or rewrite it to describe the remaining concrete implementation work.",
+      "title": "Metric alert handler comment is stale after switching to the stateful abstraction",
+      "trigger": "A maintainer uses the comment immediately above this class to determine whether the stateful detector abstraction has already been introduced.",
+      "verifier_confidence": 0.85,
+      "verifier_family_key": "stale_comment",
+      "verifier_reason": "The TODO comment at L10 'This will be a stateful detector when we build that abstraction' predates this patch (visible in both LEFT and RIGHT context). The patch did not introduce or modify this comment; it was pre-existing. The finding incorrectly attributes the stale comment to this patch."
+    },
+    {
+      "body": "The test constructs expected data with 6 instead of the actual group value, and the mock occurrence helper does not encode or assert `value`, so the test can pass even if per-group values are passed incorrectly to occurrence generation.",
+      "category": "test_gap",
+      "chunk_id": "f0003:c0000-3a89a2fde768",
+      "confidence": 1.0,
+      "end_line": 191,
+      "evidence": "detector.detector_handler, \"group_2\", 6, PriorityLevel.HIGH",
+      "failure_mode": "Regression tests fail to detect incorrect metric values being propagated into occurrence generation.",
+      "finding_id": "bb-4260e5b57aa02acf3158",
+      "fingerprint": "dcfd128e4a67ee92b190629ac80ea4c3ac66a6b885cd0f64ae2e06c483bc590e",
+      "fix_scope": "repeated_pattern",
+      "impact": "The test constructs expected data with 6 instead of the actual group value, and the mock occurrence helper does not encode or assert `value`, so the test can pass even if per-group values are passed incorrectly to occurrence generation.",
+      "line": 191,
+      "path": "tests/sentry/workflow_engine/processors/test_detector.py",
+      "root_cause": "The new occurrence test fixtures use hard-coded values unrelated to the evaluated packet values and do not make the callback's `value` argument observable.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Assert the occurrence-builder call arguments for each group and use 10 for `group_2` (also correct the analogous mismatched expected values in the other occurrence tests).",
+      "title": "Multi-group occurrence test uses the wrong expected value",
+      "trigger": "The packet supplies `group_2` with value 10 and the detector builds an occurrence for that group.",
+      "verifier_confidence": 0.9,
+      "verifier_family_key": "test_value_mismatch",
+      "verifier_reason": "Patch line R191 shows build_mock_occurrence_and_event called with value 6 for group_2, but data_packet at R177 provides group_2:10. The test constructs expected occurrence with wrong value (6 instead of 10), masking potential bugs in value propagation. This is a test gap introduced by the patch."
+    }
+  ]
+}

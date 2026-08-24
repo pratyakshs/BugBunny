@@ -1,0 +1,129 @@
+{
+  "created_at": "2026-08-23T22:59:36.637174Z",
+  "exports": [
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-generator-openai-gpt-5-6-luna-0efff476a85d_candidate_audit.json",
+      "candidates": 266,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "generator",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-generator-openai-gpt-5-6-luna-0efff476a85d_export_manifest.json",
+      "manifest_sha256": "cc64b3845ab91c03766b69ac9acd726c8f361d24a12cec96686dbdce1abfcb99",
+      "model": "openai/gpt-5.6-luna",
+      "reviews": 50,
+      "tool_id": "bugbunny-generator-openai-gpt-5-6-luna-0efff476a85d"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-balanced-openai-gpt-5-6-luna-f888fd9190a6_candidate_audit.json",
+      "candidates": 81,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "balanced",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-balanced-openai-gpt-5-6-luna-f888fd9190a6_export_manifest.json",
+      "manifest_sha256": "10100e8a27fcffe6daf40e66414c85edfb1cb59785db5e7c1d5e676628c9f88b",
+      "model": "openai/gpt-5.6-luna",
+      "reviews": 50,
+      "tool_id": "bugbunny-balanced-openai-gpt-5-6-luna-f888fd9190a6"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-family-openai-gpt-5-6-luna-1ff47539eb59_candidate_audit.json",
+      "candidates": 79,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "family",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-family-openai-gpt-5-6-luna-1ff47539eb59_export_manifest.json",
+      "manifest_sha256": "2eb5e510b620ca8f4e4b3fe13fa0588141306ce480b7b9bcefe76f440b26e620",
+      "model": "openai/gpt-5.6-luna",
+      "reviews": 50,
+      "tool_id": "bugbunny-family-openai-gpt-5-6-luna-1ff47539eb59"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-generator-openai-gpt-5-6-sol-f0d905277d32_candidate_audit.json",
+      "candidates": 471,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "generator",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-generator-openai-gpt-5-6-sol-f0d905277d32_export_manifest.json",
+      "manifest_sha256": "f5058a078d2256a36e197a70f63be0aa3a430ca2c87543ecd509bf208071c84e",
+      "model": "openai/gpt-5.6-sol",
+      "reviews": 50,
+      "tool_id": "bugbunny-generator-openai-gpt-5-6-sol-f0d905277d32"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-balanced-openai-gpt-5-6-sol-082977991f23_candidate_audit.json",
+      "candidates": 139,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "balanced",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-balanced-openai-gpt-5-6-sol-082977991f23_export_manifest.json",
+      "manifest_sha256": "1556e0db4cde01350a81e1da3b6e550c72074982d517a8bfc05736d3d6553a25",
+      "model": "openai/gpt-5.6-sol",
+      "reviews": 50,
+      "tool_id": "bugbunny-balanced-openai-gpt-5-6-sol-082977991f23"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-family-openai-gpt-5-6-sol-451e4c3a4caa_candidate_audit.json",
+      "candidates": 138,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "family",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-family-openai-gpt-5-6-sol-451e4c3a4caa_export_manifest.json",
+      "manifest_sha256": "6cff7b125adccc7d80b7d1f8d92c03ecc47ad9df255cabf03b88d7bd0c7dee55",
+      "model": "openai/gpt-5.6-sol",
+      "reviews": 50,
+      "tool_id": "bugbunny-family-openai-gpt-5-6-sol-451e4c3a4caa"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3_candidate_audit.json",
+      "candidates": 249,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "generator",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3_export_manifest.json",
+      "manifest_sha256": "3186d44f10ae30271ce41e6c3ec5d3b3e447700b130cea55eeebb645e50af86e",
+      "model": "openai/gpt-5.6-terra",
+      "reviews": 50,
+      "tool_id": "bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-balanced-openai-gpt-5-6-terra-f296986013dc_candidate_audit.json",
+      "candidates": 86,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "balanced",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-balanced-openai-gpt-5-6-terra-f296986013dc_export_manifest.json",
+      "manifest_sha256": "c83c8487516990d03e2a140cfafc3d9873ebe45542433e81899d6d5b32a0e224",
+      "model": "openai/gpt-5.6-terra",
+      "reviews": 50,
+      "tool_id": "bugbunny-balanced-openai-gpt-5-6-terra-f296986013dc"
+    },
+    {
+      "benchmark_data": "benchmark_data.json",
+      "candidate_audit": "anthropic_claude-opus-4-5/bugbunny-family-openai-gpt-5-6-terra-d7aaaf15affb_candidate_audit.json",
+      "candidates": 86,
+      "candidates_path": "anthropic_claude-opus-4-5/candidates.json",
+      "dedup_groups_path": "anthropic_claude-opus-4-5/dedup_groups.json",
+      "finding_stage": "family",
+      "manifest": "anthropic_claude-opus-4-5/bugbunny-family-openai-gpt-5-6-terra-d7aaaf15affb_export_manifest.json",
+      "manifest_sha256": "e978bde7f35e32949430790ef5177895e8538e03af907338837424794abc6286",
+      "model": "openai/gpt-5.6-terra",
+      "reviews": 50,
+      "tool_id": "bugbunny-family-openai-gpt-5-6-terra-d7aaaf15affb"
+    }
+  ],
+  "judge_model": "anthropic/claude-opus-4-5",
+  "output_files_sha256": {
+    "anthropic_claude-opus-4-5/candidates.json": "e7e8fa53efdcb3ca3904452c95889fdb1f0328cbfebc095a1202417476a6c181",
+    "anthropic_claude-opus-4-5/dedup_groups.json": "86631621add1aceb5df842646badbe562b94b9b036c9bc1ecc5d9328aa77b018",
+    "benchmark_data.json": "b0ff7ef28059e107dad4c51f01255c4a5fa1e107d24489361639e6140680be43"
+  },
+  "schema_version": "bugbunny-codereviewbench-export-index-v2"
+}

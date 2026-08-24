@@ -1,0 +1,210 @@
+{
+  "schema_version": "bugbunny-result-bundle-v1",
+  "experiment_id": "codereviewbench-2026-08-23-gpt-5.6-luna-terra-sol",
+  "completed_at": "2026-08-23T23:34:09.800014Z",
+  "primary_track": "balanced",
+  "source": {
+    "bugbunny_repository": "https://github.com/pratyakshs/BugBunny",
+    "bugbunny_commit": "29a9bc71e961fecf0a18aa0f6ffb3601e2b02e4f",
+    "codereviewbench_repository": "https://github.com/code-review-benchmark/code-review-benchmark",
+    "codereviewbench_commit": "2b092b670f7d6cae6d429babaaee18948b4bdacb",
+    "benchmark_path": "offline/results/benchmark_data.json",
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "case_count": 50,
+    "golden_issue_count": 173,
+    "fixture_selection": "auto"
+  },
+  "treatment": {
+    "generation_models": [
+      "openai/gpt-5.6-luna",
+      "openai/gpt-5.6-terra",
+      "openai/gpt-5.6-sol"
+    ],
+    "generation_reasoning_effort_requested": "high",
+    "generation_context_window_tokens": {
+      "openai/gpt-5.6-luna": 1050000,
+      "openai/gpt-5.6-terra": 1050000,
+      "openai/gpt-5.6-sol": 1050000
+    }
+  },
+  "fixed_pipeline": {
+    "gateway": "https://api.withmartian.com/v1",
+    "profile": "balanced",
+    "review_policy": "codereviewbench",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "context_mode": "agentic",
+    "context_selection_rounds": 2,
+    "context_requests_per_round": 16,
+    "max_context_files": 64,
+    "context_read_lines": 240,
+    "context_read_chars": 48000,
+    "context_blob_read_bytes": 16000000,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "repository_index_chars": 120000,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort_requested": "low",
+    "verifier_reasoning_effort_transport_sent": false,
+    "verifier_context_window_tokens": 200000,
+    "operating_point_file": "calibration/opus-4-5-low-v1.json",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "min_verifier_confidence": 0.92,
+    "judge_model": "anthropic/claude-opus-4-5",
+    "finding_stages": ["generator", "balanced", "family"],
+    "bootstrap_samples": 5000,
+    "bootstrap_seed": 17042,
+    "bootstrap_unit": "pull_request"
+  },
+  "scheduling": {
+    "llm_concurrency_per_review": 1,
+    "active_reviews": 3,
+    "global_llm_concurrency": 3,
+    "github_concurrency": 16,
+    "git_concurrency": 4,
+    "model_timeout_seconds": 900,
+    "initial_judge": {
+      "judge_concurrency": 20,
+      "review_concurrency": 10,
+      "call_timeout_seconds": 60,
+      "review_timeout_seconds": 1800,
+      "max_retries": 5
+    },
+    "judge_recovery": {
+      "judge_concurrency": 5,
+      "review_concurrency": 2,
+      "reused_complete_matrices": true,
+      "incomplete_matrices_repaired": 10
+    }
+  },
+  "reproduction": {
+    "path_variables": {
+      "BENCHMARK_DATA": "<code-review-benchmark>/offline/results/benchmark_data.json",
+      "CACHE_DIR": "<cache>/codereviewbench",
+      "RUN_DIR": "<runs>/gpt-5.6-luna-terra-sol",
+      "RESULTS_DIR": "<judge-results>/gpt-5.6-luna-terra-sol"
+    },
+    "benchmark_run_argv": [
+      "bugbunny", "benchmark", "run",
+      "--benchmark-data", "$BENCHMARK_DATA",
+      "--fixture-tool", "auto",
+      "--model", "openai/gpt-5.6-luna",
+      "--model", "openai/gpt-5.6-terra",
+      "--model", "openai/gpt-5.6-sol",
+      "--profile", "balanced",
+      "--review-policy", "codereviewbench",
+      "--verifier-model", "anthropic/claude-opus-4-5",
+      "--reasoning-effort", "high",
+      "--verifier-reasoning-effort", "low",
+      "--context-mode", "agentic",
+      "--model-context-window", "openai/gpt-5.6-luna=1050000",
+      "--model-context-window", "openai/gpt-5.6-terra=1050000",
+      "--model-context-window", "openai/gpt-5.6-sol=1050000",
+      "--verifier-context-window-tokens", "200000",
+      "--context-selection-rounds", "2",
+      "--context-requests-per-round", "16",
+      "--max-context-files", "64",
+      "--context-read-lines", "240",
+      "--context-read-chars", "48000",
+      "--context-blob-read-bytes", "16000000",
+      "--context-search-hits", "24",
+      "--context-search-max-offset", "100000",
+      "--repository-index-chars", "120000",
+      "--operating-point", "calibration/opus-4-5-low-v1.json",
+      "--llm-concurrency", "1",
+      "--active-reviews", "3",
+      "--global-llm-concurrency", "3",
+      "--github-concurrency", "16",
+      "--git-concurrency", "4",
+      "--timeout", "900",
+      "--cache-dir", "$CACHE_DIR",
+      "--run-dir", "$RUN_DIR",
+      "--env-file", ".env"
+    ],
+    "benchmark_export_argv": [
+      "bugbunny", "benchmark", "export",
+      "--benchmark-data", "$BENCHMARK_DATA",
+      "--run-dir", "$RUN_DIR",
+      "--judge-model", "anthropic/claude-opus-4-5",
+      "--finding-stage", "generator",
+      "--finding-stage", "balanced",
+      "--finding-stage", "family",
+      "--output-dir", "$RESULTS_DIR"
+    ],
+    "judge_initial_argv": [
+      "bugbunny", "benchmark", "judge",
+      "--results-dir", "$RESULTS_DIR",
+      "--judge-model", "anthropic/claude-opus-4-5",
+      "--judge-concurrency", "20",
+      "--review-concurrency", "10",
+      "--call-timeout", "60",
+      "--review-timeout", "1800",
+      "--max-retries", "5",
+      "--env-file", ".env"
+    ],
+    "judge_recovery_argv": [
+      "bugbunny", "benchmark", "judge",
+      "--results-dir", "$RESULTS_DIR",
+      "--judge-model", "anthropic/claude-opus-4-5",
+      "--judge-concurrency", "5",
+      "--review-concurrency", "2",
+      "--call-timeout", "60",
+      "--review-timeout", "1800",
+      "--max-retries", "5",
+      "--env-file", ".env"
+    ],
+    "analyze_argv": [
+      "bugbunny", "benchmark", "analyze",
+      "--run-dir", "$RUN_DIR",
+      "--results-dir", "$RESULTS_DIR",
+      "--judge-model", "anthropic/claude-opus-4-5",
+      "--bootstrap-samples", "5000",
+      "--bootstrap-seed", "17042"
+    ]
+  },
+  "validation": {
+    "generation_jobs_expected": 150,
+    "generation_jobs_completed": 150,
+    "generation_errors": 0,
+    "generation_timeouts": 0,
+    "exported_tracks": 9,
+    "review_tool_matrices": 450,
+    "judge_pair_decisions": 6722,
+    "judge_errors_final": 0,
+    "judge_timeouts_final": 0,
+    "model_call_retries": 2,
+    "optional_agent_action_failures": 9
+  },
+  "metrics": {
+    "balanced": {
+      "openai/gpt-5.6-luna": {"precision": 0.6049382716049383, "recall": 0.2832369942196532, "f1": 0.38582677165354334, "f1_ci95": [0.30041845493562236, 0.46216344586068514], "tp": 49, "fp": 32, "fn": 124, "candidates": 81},
+      "openai/gpt-5.6-terra": {"precision": 0.5934065934065934, "recall": 0.31213872832369943, "f1": 0.40909090909090906, "f1_ci95": [0.3257575757575758, 0.48818897637795267], "tp": 54, "fp": 37, "fn": 119, "candidates": 86},
+      "openai/gpt-5.6-sol": {"precision": 0.5957446808510638, "recall": 0.48554913294797686, "f1": 0.535031847133758, "f1_ci95": [0.47222222222222227, 0.5964937200956938], "tp": 84, "fp": 57, "fn": 89, "candidates": 139}
+    },
+    "generator": {
+      "openai/gpt-5.6-luna": {"precision": 0.3408239700374532, "recall": 0.5260115606936416, "f1": 0.41363636363636364, "candidates": 266},
+      "openai/gpt-5.6-terra": {"precision": 0.36507936507936506, "recall": 0.5317919075144508, "f1": 0.43294117647058816, "candidates": 249},
+      "openai/gpt-5.6-sol": {"precision": 0.2564102564102564, "recall": 0.6936416184971098, "f1": 0.374414976599064, "candidates": 471}
+    },
+    "family": {
+      "openai/gpt-5.6-luna": {"precision": 0.5925925925925926, "recall": 0.2774566473988439, "f1": 0.37795275590551175, "candidates": 79},
+      "openai/gpt-5.6-terra": {"precision": 0.5934065934065934, "recall": 0.31213872832369943, "f1": 0.40909090909090906, "candidates": 86},
+      "openai/gpt-5.6-sol": {"precision": 0.5957446808510638, "recall": 0.48554913294797686, "f1": 0.535031847133758, "candidates": 138}
+    }
+  },
+  "archived_artifacts": {
+    "run_directory": "run",
+    "judge_directory": "export/anthropic_claude-opus-4-5",
+    "run_manifest_sha256": "1d3b1f57e159ddccd3305449592bc49f9597e5ef8c0d53df002e11f15ee45e80",
+    "export_index_sha256": "15ab2636004066f60ce278f7cd3dca8a57bf9dcf5806c59b6a2335d04242e4f9",
+    "evaluations_sha256": "7b7184c2207af70f449806fac8c50781dafb205236aaaf3e4a7c61dac2dd5e33",
+    "generated_export_benchmark_sha256": "b0ff7ef28059e107dad4c51f01255c4a5fa1e107d24489361639e6140680be43",
+    "generated_export_benchmark_archived": false
+  },
+  "secrets": {
+    "required_environment_variable": "MARTIAN_API_KEY",
+    "credential_archived": false
+  }
+}

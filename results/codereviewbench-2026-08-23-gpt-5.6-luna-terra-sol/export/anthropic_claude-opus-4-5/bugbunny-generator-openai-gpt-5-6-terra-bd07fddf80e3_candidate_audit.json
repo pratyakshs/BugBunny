@@ -1,0 +1,4838 @@
+{
+  "cases": {
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/1": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "d5575a856e93c805add9ec6849b59bae82dce9df37cc9cfe8784b1153e7e2f6d",
+        "category": "bug",
+        "end_line": 182,
+        "family_member_ids": [
+          "bb-73c52095422ec547809c"
+        ],
+        "finding_id": "bb-73c52095422ec547809c",
+        "fingerprint": "ebd3a05866f5d1e7e2b27fc1573b5f98b6aef64d71990185851eb18548e5385a",
+        "generator_confidence": 0.99,
+        "line": 182,
+        "path": "app/assets/javascripts/discourse/lib/utilities.js",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "client_server_size_mismatch_attachment"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "9e1c2ce12d767e641f632e36e0aa5dc678dfd22b2aebbf43cbf1a605ecc76246",
+        "category": "doc_defect",
+        "end_line": 182,
+        "family_member_ids": [
+          "bb-c51c723e32e5c8f770f7"
+        ],
+        "finding_id": "bb-c51c723e32e5c8f770f7",
+        "fingerprint": "db04356c00e19cd81bf4cbf5158d3b58d8ae8441f50137453d14380518d97932",
+        "generator_confidence": 0.96,
+        "line": 182,
+        "path": "app/assets/javascripts/discourse/lib/utilities.js",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "proxy_config_documentation"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "e2ff5f0588eda48ea9e8626f259c175ba2c172ae16f78961682c2e3576465db8",
+        "category": "bug",
+        "end_line": 246,
+        "family_member_ids": [
+          "bb-287df4c3b1098648cc97"
+        ],
+        "finding_id": "bb-287df4c3b1098648cc97",
+        "fingerprint": "28b87748ef83c58b2d83834ac4f12daf14f11dff85bbc694323a30de97832bf7",
+        "generator_confidence": 0.98,
+        "line": 246,
+        "path": "app/assets/javascripts/discourse/lib/utilities.js",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "misleading_413_error_message"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "6f26a725017d30e3bd98d059a60701a4b476140569d6afb94224bccc20d8f670",
+        "category": "data",
+        "end_line": 55,
+        "family_member_ids": [
+          "bb-9690a247c895922b87f9"
+        ],
+        "finding_id": "bb-9690a247c895922b87f9",
+        "fingerprint": "152667af144aad6509e7bca8aa8b4e1c9a26606adbad4af9b320c259e76c1a96",
+        "generator_confidence": 0.97,
+        "line": 55,
+        "path": "app/controllers/uploads_controller.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "truncated_remote_download"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "8120bcfab2ea116d849905586ef4a019bd49e1e1826c58503ad35a0b18ff305c",
+        "category": "bug",
+        "end_line": 149,
+        "family_member_ids": [
+          "bb-30876a14b6ee1afc2cc8"
+        ],
+        "finding_id": "bb-30876a14b6ee1afc2cc8",
+        "fingerprint": "e932739c870549413c7ea16b8dc9dd3ed685829eb580e0e6b54fbb07e6db8c14",
+        "generator_confidence": 0.99,
+        "line": 149,
+        "path": "app/models/optimized_image.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "ruby_method_redefinition_downsize"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/10": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "37a929349df9c8492f2639624207b2bc6a0101fd17cfd65328c5fa099b5888e6",
+        "category": "bug",
+        "end_line": 38,
+        "family_member_ids": [
+          "bb-b9866d724eb74c32c985"
+        ],
+        "finding_id": "bb-b9866d724eb74c32c985",
+        "fingerprint": "1571a14f74314ffb8d0ee5688369ed153d57a3e75bee27a507ff5ed916ddfd66",
+        "generator_confidence": 0.93,
+        "line": 38,
+        "path": "app/assets/javascripts/admin/components/embeddable-host.js.es6",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.72,
+        "verifier_family_key": "category_display_mismatch"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "5fc3b2dc7900c13dac8ee5dd3b20191492c0141e19683ed25247c6d84239e753",
+        "category": "api",
+        "end_line": 10,
+        "family_member_ids": [
+          "bb-88ffb293cf58ac684e84"
+        ],
+        "finding_id": "bb-88ffb293cf58ac684e84",
+        "fingerprint": "2e0c164cbe5853250e996825015808ebe49b9681e6b442c8878d32f7f009e4f9",
+        "generator_confidence": 0.99,
+        "line": 10,
+        "path": "app/controllers/admin/embeddable_hosts_controller.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.91,
+        "verifier_family_key": "missing_record_nil_dereference"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "248c1190bfaff5da4bc9096f2b52bc272012c33dc93ea1eb0f2002867833b713",
+        "category": "api",
+        "end_line": 15,
+        "family_member_ids": [
+          "bb-fb4e6382f68c09d2e3f6"
+        ],
+        "finding_id": "bb-fb4e6382f68c09d2e3f6",
+        "fingerprint": "53325e7a4d62cf7469536762836627444d3ee03a018a06a3e78f97410e455466",
+        "generator_confidence": 0.99,
+        "line": 15,
+        "path": "app/controllers/admin/embeddable_hosts_controller.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.91,
+        "verifier_family_key": "missing_record_nil_dereference"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "8f91b34811d95dcbddbb21c295f65f770b764a39ea0d875feb043b8937202f28",
+        "category": "bug",
+        "end_line": 6,
+        "family_member_ids": [
+          "bb-9ac1b4d9268be2cdeab9"
+        ],
+        "finding_id": "bb-9ac1b4d9268be2cdeab9",
+        "fingerprint": "3c74e28f8c85e445488fc1471780925493aedebaf0aace4de8363af7045d094c",
+        "generator_confidence": 0.96,
+        "line": 6,
+        "path": "app/models/embeddable_host.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "nil_host_dereference"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "c785fa1db1be0d7032125b828aabfa4207db474181dcaa68ff7953f313494640",
+        "category": "bug",
+        "end_line": 14,
+        "family_member_ids": [
+          "bb-9bb15e35eb6a697c0698"
+        ],
+        "finding_id": "bb-9bb15e35eb6a697c0698",
+        "fingerprint": "db633f0f29e95d42af36efe95f3c8c97a5cd70b02b670b57cc4edee4089a914e",
+        "generator_confidence": 0.97,
+        "line": 14,
+        "path": "app/models/embeddable_host.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "port_mismatch_lookup"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "0010151aa275781452aac7cf0a03544ba7bc56bf04686d2c9bc3535bd2806a35",
+        "category": "data",
+        "end_line": 17,
+        "family_member_ids": [
+          "bb-48692a51436f2e07afdf"
+        ],
+        "finding_id": "bb-48692a51436f2e07afdf",
+        "fingerprint": "c2cdfec3f76c3ba7d4a481649d8e7c642c39def8621763fb955dcc28aa00d0eb",
+        "generator_confidence": 0.94,
+        "line": 17,
+        "path": "app/models/embeddable_host.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "duplicate_host_mapping"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "543dd1a26413e8a4cd352903545fe80e489a1b69f6281e2d5f3e490e6e5b9e9f",
+        "category": "bug",
+        "end_line": 869,
+        "family_member_ids": [
+          "bb-d8f0ebd682631c126dd0"
+        ],
+        "finding_id": "bb-d8f0ebd682631c126dd0",
+        "fingerprint": "d147235fe08b80dde0f17bea67e659351e9f646206e6265acc7faa6a20ebb635",
+        "generator_confidence": 0.95,
+        "line": 869,
+        "path": "app/models/topic.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "expandable_post_check"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "be44b19530a04188d108ba7c230ee8911d02af16ae034d6680c7191be007d186",
+        "category": "data",
+        "end_line": 11,
+        "family_member_ids": [
+          "bb-019550727d23433421c0"
+        ],
+        "finding_id": "bb-019550727d23433421c0",
+        "fingerprint": "ba8e6547f8b572aa24b5da455c9ce0cd66a7208900fc278f33aa60f16389a47a",
+        "generator_confidence": 0.99,
+        "line": 11,
+        "path": "db/migrate/20150818190757_create_embeddable_hosts.rb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "migration_nil_dereference"
+      },
+      {
+        "candidate_index": 8,
+        "candidate_sha256": "78f218cb361e8551c4d554c243164cf4517d0d4cdcd6f9a1bcef2d09fb4d7986",
+        "category": "data",
+        "end_line": 25,
+        "family_member_ids": [
+          "bb-8ef682139ee309c8343d"
+        ],
+        "finding_id": "bb-8ef682139ee309c8343d",
+        "fingerprint": "601aac4f45e018dafef8bb107b7a312306c104d291d707ebe8b046b042c8636e",
+        "generator_confidence": 0.98,
+        "line": 25,
+        "path": "db/migrate/20150818190757_create_embeddable_hosts.rb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "host_normalization_mismatch"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/2": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "7dc14825605ff95bc8ed01a8aecaf71f4f0e629081910d2b8a24dc6dd1d1f6ab",
+        "category": "style",
+        "end_line": 5,
+        "family_member_ids": [
+          "bb-da7923352773d64e4b3d"
+        ],
+        "finding_id": "bb-da7923352773d64e4b3d",
+        "fingerprint": "3886f0bb847f75b4dc0e33ec69461158522dd7cd477b2db6cb805ea770713417",
+        "generator_confidence": 0.99,
+        "line": 5,
+        "path": "app/assets/javascripts/discourse/controllers/topic-unsubscribe.js.es6",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "typo_identifier"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "16216449137eb71b02cf03006b881d34d59b0d64498c5caf869178fec9de64bc",
+        "category": "security",
+        "end_line": 3,
+        "family_member_ids": [
+          "bb-0a5a44b327d70cb3bffb"
+        ],
+        "finding_id": "bb-0a5a44b327d70cb3bffb",
+        "fingerprint": "10fab071a63f67e59dc42ef00d656c5970fc5b9ecac8d881e06552be45af395d",
+        "generator_confidence": 0.86,
+        "line": 3,
+        "path": "app/assets/javascripts/discourse/templates/topic/unsubscribe.hbs",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "xss_raw_html_title"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "a2b048657fae871484f598522642cd7b42d24cc59d1917e8ee891a15e673c2c5",
+        "category": "bug",
+        "end_line": 105,
+        "family_member_ids": [
+          "bb-74bcf241c48d90a44ee2"
+        ],
+        "finding_id": "bb-74bcf241c48d90a44ee2",
+        "fingerprint": "57427752b3fa7db111e49ba5d592cd30709b0332279097f18a9d0e38daea33ea",
+        "generator_confidence": 0.98,
+        "line": 105,
+        "path": "app/controllers/topics_controller.rb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "nil_dereference_topic_user"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "d7b86cfd7ceb028a5533dda3216e9ccf6da10c3b1d24e5bf05aa4591fb3d6be0",
+        "category": "concurrency",
+        "end_line": 113,
+        "family_member_ids": [
+          "bb-5ba2424e1b6458355bda"
+        ],
+        "finding_id": "bb-5ba2424e1b6458355bda",
+        "fingerprint": "cb07f25c61d3135c61826eed76dc81ac6fc7d9c7e564f8c60db3f90824e9b46d",
+        "generator_confidence": 0.88,
+        "line": 113,
+        "path": "app/controllers/topics_controller.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "missing_messagebus_publish"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "dc70dd60615ea42c45ed9037be4af28aeaa25b9fbf03fb88500ccab574037483",
+        "category": "doc_defect",
+        "end_line": 1855,
+        "family_member_ids": [
+          "bb-77ef32896b2ee3fd6c8b"
+        ],
+        "finding_id": "bb-77ef32896b2ee3fd6c8b",
+        "fingerprint": "a4c0d639b61a978dd586f403f4a7ceb675301c9e597a31a6617485b880d62f5d",
+        "generator_confidence": 0.9,
+        "line": 1855,
+        "path": "config/locales/server.en.yml",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "missing_locale_translation"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "77af9e1118bbba9864735605e3b6d479603f2c37e5793d323356de5ab32fd4c8",
+        "category": "security",
+        "end_line": 440,
+        "family_member_ids": [
+          "bb-0e344ff6e069759b3f3d"
+        ],
+        "finding_id": "bb-0e344ff6e069759b3f3d",
+        "fingerprint": "2180cf2aabfeb7474ffb6fc39f55eb782a0d68556ce925d5a6ab03fe3495648e",
+        "generator_confidence": 0.96,
+        "line": 440,
+        "path": "config/routes.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "csrf_get_mutation"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "807b2de651ff7c2423a9934f27b2bb42cdc8acaf046d9597787b4ffcffb47169",
+        "category": "test_gap",
+        "end_line": 172,
+        "family_member_ids": [
+          "bb-b0e119d68f3a3c17ad0f"
+        ],
+        "finding_id": "bb-b0e119d68f3a3c17ad0f",
+        "fingerprint": "40ee8dd81bc807d44ab873ca61501f73c25a4e1fe97fe1e09779ec3c8dbebf91",
+        "generator_confidence": 0.98,
+        "line": 172,
+        "path": "spec/components/email/message_builder_spec.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "test_missing_assertion"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/3": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "a4e67a6db34ea8c7f15590bb31e9769425c1b45ccedda3d20e61ee1f7f1e976f",
+        "category": "bug",
+        "end_line": 275,
+        "family_member_ids": [
+          "bb-2d3f3f41b427dabbc4be"
+        ],
+        "finding_id": "bb-2d3f3f41b427dabbc4be",
+        "fingerprint": "ce4d3e553e78e06ff64e2554dab39c8f184a57f94e2c1ffd7c6d156198f7bfd7",
+        "generator_confidence": 0.91,
+        "line": 275,
+        "path": "app/assets/javascripts/discourse/controllers/create_account_controller.js",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "rejected_email_cache_stale"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "f363deb9a79212cce8490761bc387d19826deddf75c8846cf03ab515565210dd",
+        "category": "security",
+        "end_line": 12,
+        "family_member_ids": [
+          "bb-a8d8d0eca34adc8f17e0"
+        ],
+        "finding_id": "bb-a8d8d0eca34adc8f17e0",
+        "fingerprint": "5bef8e659b49793c84fedf56c6aab69ebd05bdae868db945875adc016c4fe552",
+        "generator_confidence": 0.97,
+        "line": 12,
+        "path": "app/models/blocked_email.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "blocked_email_case_insensitive"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "e23c2b1c2b6d9a728f8f3aadbcc9f66e0df27b7d5b0ef0cb665cf2002798484a",
+        "category": "concurrency",
+        "end_line": 14,
+        "family_member_ids": [
+          "bb-334984db5cf807bf0356"
+        ],
+        "finding_id": "bb-334984db5cf807bf0356",
+        "fingerprint": "64fc877e7b7d0af76fb17dbfd3141c5ad91ee6eb6650bce432907ac1015a2727",
+        "generator_confidence": 0.99,
+        "line": 14,
+        "path": "app/models/blocked_email.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "match_count_race"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "b552fb944e3ef6c66892995a329bd46d60b54440f424c8732821651906837ec0",
+        "category": "doc_defect",
+        "end_line": 734,
+        "family_member_ids": [
+          "bb-d56487bfe771245ad026"
+        ],
+        "finding_id": "bb-d56487bfe771245ad026",
+        "fingerprint": "39aefea0915362e5aa38283604365b462b73369e9cdf72ff6b4504868511356f",
+        "generator_confidence": 0.84,
+        "line": 734,
+        "path": "config/locales/server.en.yml",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "missing_i18n_blocked_email"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/4": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "4674c263510f8bbcccdba462051b070662cf499108a05cc809fe8fb8d37d576c",
+        "category": "security",
+        "end_line": 17,
+        "family_member_ids": [
+          "bb-459d9e548ae6fa307fd7"
+        ],
+        "finding_id": "bb-459d9e548ae6fa307fd7",
+        "fingerprint": "4d5b4f1c33f3c84e0741387788cca72688038e137270c404e27d263a9b5c5304",
+        "generator_confidence": 0.88,
+        "line": 17,
+        "path": "app/assets/javascripts/embed.js",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "postmessage_origin_bypass"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "ae8cf34b51cf6ce4fb2961195aa8d8564b01b149405599b44064681c3906aa68",
+        "category": "security",
+        "end_line": 22,
+        "family_member_ids": [
+          "bb-2812d78dc45f4df0bcb2"
+        ],
+        "finding_id": "bb-2812d78dc45f4df0bcb2",
+        "fingerprint": "7f9d00e94d559d8778459c4646127bdb7b9515adef0f382565c7a6e38c819e14",
+        "generator_confidence": 0.98,
+        "line": 22,
+        "path": "app/models/topic_embed.rb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "raw_html_xss"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "45e7600f0cee14d71daf0b9326ce8071c7b9e98c4aade59d2905a0e64f86af92",
+        "category": "security",
+        "end_line": 48,
+        "family_member_ids": [
+          "bb-437587e37e69e3e227d3"
+        ],
+        "finding_id": "bb-437587e37e69e3e227d3",
+        "fingerprint": "cd65ce54252f15aa2d72af0a244c0e6a082e35e774f2cd335496bfa03f7e29a7",
+        "generator_confidence": 0.9,
+        "line": 48,
+        "path": "app/models/topic_embed.rb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "ssrf_redirect"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "7c986b04058724b52ff504cba59bdee1a2077bea751f865c807aca08b5269fc2",
+        "category": "bug",
+        "end_line": 48,
+        "family_member_ids": [
+          "bb-e8b83752537964f844f5"
+        ],
+        "finding_id": "bb-e8b83752537964f844f5",
+        "fingerprint": "f415db210969981455d65b8151c11882f521a2dabee88810e16cb9b85003f213",
+        "generator_confidence": 0.87,
+        "line": 48,
+        "path": "app/models/topic_embed.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "missing_open_uri"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "d2279e89903a0b2c6da6ec5730945d9353d751c625459ab300d272bb33023a67",
+        "category": "bug",
+        "end_line": 64,
+        "family_member_ids": [
+          "bb-c467e003296e94d1cdcf"
+        ],
+        "finding_id": "bb-c467e003296e94d1cdcf",
+        "fingerprint": "d3ffbec618ce592e813c0ce38a9d8ccab2f5a3482b1e37844c552774d4006bd4",
+        "generator_confidence": 0.95,
+        "line": 64,
+        "path": "app/models/topic_embed.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "relative_url_resolution"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "7634779af98f028279ffa7f0158e7ebf9fdd65e094ac645a743334def2aeaa6b",
+        "category": "bug",
+        "end_line": 4,
+        "family_member_ids": [
+          "bb-a72cb5e78d48c50b85b0"
+        ],
+        "finding_id": "bb-a72cb5e78d48c50b85b0",
+        "fingerprint": "bb4991c72570791d11f760b528a9cf493de8998ae70de5f6f2d96d7b2621ae4e",
+        "generator_confidence": 0.91,
+        "line": 4,
+        "path": "app/views/layouts/embed.html.erb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.7,
+        "verifier_family_key": "asset_precompile"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "2d19370eb765ce195678b364923529916fc9cc6887ff1200a04199b512361c73",
+        "category": "security",
+        "end_line": 11,
+        "family_member_ids": [
+          "bb-3b35bda86c87a49361d2"
+        ],
+        "finding_id": "bb-3b35bda86c87a49361d2",
+        "fingerprint": "01ae389385ca05d4f4f41939c4863d3c0058d9690ebe42b5caa13c894e367604",
+        "generator_confidence": 0.93,
+        "line": 11,
+        "path": "app/views/layouts/embed.html.erb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "referer_xss"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "4c9c6da13e53b3c8cb34611e1e8203b4ff2f3fc04fedd111a746a47263b34e34",
+        "category": "api",
+        "end_line": 117,
+        "family_member_ids": [
+          "bb-f20b11bdf779b019ebc3"
+        ],
+        "finding_id": "bb-f20b11bdf779b019ebc3",
+        "fingerprint": "68bff6220619e635cb229d05a4456992e0ef05f19080998bb0c2cc5f8bcea76f",
+        "generator_confidence": 0.99,
+        "line": 117,
+        "path": "lib/tasks/disqus.thor",
+        "severity": "low",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "disqus_category_removed"
+      },
+      {
+        "candidate_index": 8,
+        "candidate_sha256": "a5855f22535384da3befd3ec9fd1603a57895104c206ec1f691b8c4e6eddd65a",
+        "category": "data",
+        "end_line": 148,
+        "family_member_ids": [
+          "bb-c235447f4f8db4ed9e20"
+        ],
+        "finding_id": "bb-c235447f4f8db4ed9e20",
+        "fingerprint": "44ef1096d6a755a19507926ad36760676086660c3c344a9c884b01a2798e6df6",
+        "generator_confidence": 0.98,
+        "line": 148,
+        "path": "lib/tasks/disqus.thor",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "disqus_timestamp_lost"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/5": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "421af9f119c21088c5e01f77b41b7365a15d2905fb1651311de84d42005b001d",
+        "category": "bug",
+        "end_line": 17,
+        "family_member_ids": [
+          "bb-27f2fb198bc4eab84731"
+        ],
+        "finding_id": "bb-27f2fb198bc4eab84731",
+        "fingerprint": "0f16cb9edf2b244532dc4efb14579a89bcb19e2047a10365be752b7c3755dab3",
+        "generator_confidence": 0.99,
+        "line": 17,
+        "path": "app/assets/stylesheets/common/base/header.scss",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "flex_container_hierarchy"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "d5887b9dfd1988000d445dbee87e4c5b4253a7b18c900d38ad4ae0dd0c6cd20f",
+        "category": "bug",
+        "end_line": 118,
+        "family_member_ids": [
+          "bb-79a34d657f8077009c1e"
+        ],
+        "finding_id": "bb-79a34d657f8077009c1e",
+        "fingerprint": "3c2a1dedc843505dd6107dc41bdbc90bbaeb217e4e77156a0bd5682c1d87fc73",
+        "generator_confidence": 0.97,
+        "line": 118,
+        "path": "app/assets/stylesheets/common/foundation/mixins.scss",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "legacy_moz_flex_alignment"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/6": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "7fe08dbbefe72b7c0a65bc4d48294432748f05a296123799153c154ec5fd4b1e",
+        "category": "security",
+        "end_line": 43,
+        "family_member_ids": [
+          "bb-f499a852bb4736d99ac5"
+        ],
+        "finding_id": "bb-f499a852bb4736d99ac5",
+        "fingerprint": "627088d17824f13f40809ea9978713758cb95b67d97b77ffb2863467071ab1f9",
+        "generator_confidence": 0.99,
+        "line": 43,
+        "path": "app/serializers/user_serializer.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "website_name_visibility_bypass"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "4038e21a40e1def3fc103bb16a26623b110128992855bebb716a5cbaebe1216a",
+        "category": "bug",
+        "end_line": 141,
+        "family_member_ids": [
+          "bb-4da71d59e849e230075c"
+        ],
+        "finding_id": "bb-4da71d59e849e230075c",
+        "fingerprint": "bed2f28d00485cdcceada4ee5df2b8210c3dc9d054da43ade351dd9c9b58e044",
+        "generator_confidence": 0.97,
+        "line": 141,
+        "path": "app/serializers/user_serializer.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "hostname_case_sensitivity"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "5d0781f06291721d4f60c072cc7ee58f0d81705a4709386162d7718daaa20ec5",
+        "category": "api",
+        "end_line": 153,
+        "family_member_ids": [
+          "bb-595a9ebcb6ebc1e5910b"
+        ],
+        "finding_id": "bb-595a9ebcb6ebc1e5910b",
+        "fingerprint": "4366793d3734d618ef8c2794e18a64b6f18e22664f925f4f184d52b419d7a7fc",
+        "generator_confidence": 0.99,
+        "line": 153,
+        "path": "app/serializers/user_serializer.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "missing_predicate_question_mark"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/7": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "a27f5e49caec6287430e0697674137d133a83e1edae4ed7e173a3553b0bc2e11",
+        "category": "bug",
+        "end_line": 291,
+        "family_member_ids": [
+          "bb-26097a1198d2ef6c5fbb"
+        ],
+        "finding_id": "bb-26097a1198d2ef6c5fbb",
+        "fingerprint": "e9f4b1599e63217272a91eecd6706744f1ccf8756db664bf37b0e2a930e5178a",
+        "generator_confidence": 0.99,
+        "line": 291,
+        "path": "app/assets/stylesheets/desktop/topic-post.scss",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "inverted_lightness_conversion"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "188d118b7933f574d4049f473e1fb2339da42948d7f2cae705c659909d224892",
+        "category": "bug",
+        "end_line": 522,
+        "family_member_ids": [
+          "bb-7b90665cf0242efeb8f4"
+        ],
+        "finding_id": "bb-7b90665cf0242efeb8f4",
+        "fingerprint": "79ef889db4ba5226a34e66478db25c60a6759b85aca2755a44bce3c6d68c6273",
+        "generator_confidence": 0.99,
+        "line": 522,
+        "path": "app/assets/stylesheets/desktop/user.scss",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "lightness_value_changed"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "5b67b98a81ada506d811482742f570bc124406c12b3e493ec5c4ffe317da0684",
+        "category": "bug",
+        "end_line": 102,
+        "family_member_ids": [
+          "bb-46eb4eaee0084137f48d"
+        ],
+        "finding_id": "bb-46eb4eaee0084137f48d",
+        "fingerprint": "33b3201326351f1d689c3d49f9db708322d315301155eac896f09ec6862cae78",
+        "generator_confidence": 0.99,
+        "line": 102,
+        "path": "app/assets/stylesheets/mobile/modal.scss",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "inverted_lightness_conversion"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "3c42907e4b60a7409b373c1a57693b6ffc5dd85142999b2e588e8cc49e700502",
+        "category": "bug",
+        "end_line": 182,
+        "family_member_ids": [
+          "bb-4066c1f8b7e281efab44"
+        ],
+        "finding_id": "bb-4066c1f8b7e281efab44",
+        "fingerprint": "9e347f8f9571cc35c30a89931dcff5db57d167fa3feadf5918694d9c7dce721a",
+        "generator_confidence": 0.99,
+        "line": 182,
+        "path": "app/assets/stylesheets/mobile/topic-post.scss",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "lightness_value_changed"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "769103600dcf5117f1d66e57630619fed820474bfcbc4c228c051ce0bc43b9c1",
+        "category": "bug",
+        "end_line": 497,
+        "family_member_ids": [
+          "bb-8fe3e71d95842fc3666c"
+        ],
+        "finding_id": "bb-8fe3e71d95842fc3666c",
+        "fingerprint": "714b944e1be36697be8bd20bf6efd829c9d89f4ef210a33af75199e8545187ac",
+        "generator_confidence": 0.99,
+        "line": 497,
+        "path": "app/assets/stylesheets/mobile/user.scss",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "lightness_value_changed"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/8": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "5a02465d84a67037aff5b310b67583839815fa386bb6dc8c866e032ea280a276",
+        "category": "bug",
+        "end_line": 13,
+        "family_member_ids": [
+          "bb-2e483f44ba966e253746"
+        ],
+        "finding_id": "bb-2e483f44ba966e253746",
+        "fingerprint": "74970fdc37837a17ac06d4f1f5af55e89c70664c8d3870e2d16066775bbc6e55",
+        "generator_confidence": 0.99,
+        "line": 13,
+        "path": "app/assets/javascripts/admin/controllers/admin-group.js.es6",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "pagination_off_by_one"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "c1a3f49ef35174a37c412d8756abc2275f1a922e722bdedf3789027dd84a47b6",
+        "category": "bug",
+        "end_line": 1,
+        "family_member_ids": [
+          "bb-8e7e58c96d6727b75705"
+        ],
+        "finding_id": "bb-8e7e58c96d6727b75705",
+        "fingerprint": "02332aa7ff7ac7b05c6e8e9ae93412395efa83c375149f60b776e4f6d64cafa9",
+        "generator_confidence": 0.83,
+        "line": 1,
+        "path": "app/assets/javascripts/admin/templates/group_member.hbs",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "automatic_group_remove_button"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "eb68eba7322bfb3ffcf8720a7117dc459b77fa85e24b5b4e04b49b219fa813b1",
+        "category": "api",
+        "end_line": 24,
+        "family_member_ids": [
+          "bb-4fd56f6cc1dffd888395"
+        ],
+        "finding_id": "bb-4fd56f6cc1dffd888395",
+        "fingerprint": "713a6eaedff07b58a4d3f34786a120547ad31ff63d16c269780f991244e1fb87",
+        "generator_confidence": 0.97,
+        "line": 24,
+        "path": "app/controllers/admin/groups_controller.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.91,
+        "verifier_family_key": "create_payload_contract_break"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "c635e329555b34b6d78d3fcc2b0fa755a9b64ce1742a6918ba9e56be9bce8192",
+        "category": "data",
+        "end_line": 38,
+        "family_member_ids": [
+          "bb-3b70b25d5c2e19210111"
+        ],
+        "finding_id": "bb-3b70b25d5c2e19210111",
+        "fingerprint": "78cae89547d4553de45c413b9c3833dc1891abf37b152d748400a91825823dae",
+        "generator_confidence": 0.98,
+        "line": 38,
+        "path": "app/controllers/admin/groups_controller.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "visibility_reset_on_patch"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "4469c851599d9960e5d2b985cefe8db67a2c1c5102aecf5b4c67a329586ed1c5",
+        "category": "api",
+        "end_line": 65,
+        "family_member_ids": [
+          "bb-52cc2b3842eb8f0a7c8b"
+        ],
+        "finding_id": "bb-52cc2b3842eb8f0a7c8b",
+        "fingerprint": "11ba805be580fbdc9b8c3fd35c32ebd378ec7f0601e7e9253f2d9642c5721ee7",
+        "generator_confidence": 0.98,
+        "line": 65,
+        "path": "app/controllers/admin/groups_controller.rb",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "patch_membership_removal"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "14d37e94c94e3d80eea7583d2ef59cb1ebf8e978e161246d0222a0795df16676",
+        "category": "bug",
+        "end_line": 26,
+        "family_member_ids": [
+          "bb-4f8bcdfe9875c8c60044"
+        ],
+        "finding_id": "bb-4f8bcdfe9875c8c60044",
+        "fingerprint": "857afd60ec75bc5af743b0fec2e8099aa94210fc198fe51b3253a871175f328e",
+        "generator_confidence": 0.96,
+        "line": 26,
+        "path": "app/controllers/groups_controller.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "pagination_offset_clamp"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "8eee5ea677f0c7dfd91eaad377182dd98b367d692c2c5fe11aa3b982a2421b14",
+        "category": "test_gap",
+        "end_line": 115,
+        "family_member_ids": [
+          "bb-75c009e41e2e34586332"
+        ],
+        "finding_id": "bb-75c009e41e2e34586332",
+        "fingerprint": "02832403107165dea8af4b0b754e6f43f21b6da832a32ec1ad5e424b8387be98",
+        "generator_confidence": 0.99,
+        "line": 115,
+        "path": "spec/controllers/admin/groups_controller_spec.rb",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.94,
+        "verifier_family_key": "test_http_method_mismatch"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/9": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "1bf72d10a781e01755ca2095be54cda7d37eef8df7ab22ec67487621b2b5d0b4",
+        "category": "bug",
+        "end_line": 9,
+        "family_member_ids": [
+          "bb-f3b4feb05a696572b078"
+        ],
+        "finding_id": "bb-f3b4feb05a696572b078",
+        "fingerprint": "51b9d1456146508cf9b591fb130a329748f6c3f6673c0ca0e168eb8f7862364c",
+        "generator_confidence": 0.98,
+        "line": 9,
+        "path": "config/initializers/i18n.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "fallback_locale_loading"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "e9fce3e0edf17b7b5e7db9276a31066e78b9a2730cbe08f9580e2e8ef992b06f",
+        "category": "data",
+        "end_line": 17,
+        "family_member_ids": [
+          "bb-9e69fb6b23669976a734"
+        ],
+        "finding_id": "bb-9e69fb6b23669976a734",
+        "fingerprint": "1102fcd6c9c9d088954b379e5363c11ca1fbc43d6867821cbd83a8e214e78ad4",
+        "generator_confidence": 0.94,
+        "line": 17,
+        "path": "config/initializers/i18n.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "cache_invalidation_default_locale"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/keycloak-greptile/pull/1": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "04817cfdc5199bedec6e88365f12769aa7721635b8704e7721981dc32f378d9b",
+        "category": "bug",
+        "end_line": 47,
+        "family_member_ids": [
+          "bb-2be6ca04ed1d883caff4"
+        ],
+        "finding_id": "bb-2be6ca04ed1d883caff4",
+        "fingerprint": "8e91fb6579509449288ee98348bdbc1e811d9fee4bd133df82c0d94bb3bbed66",
+        "generator_confidence": 0.99,
+        "line": 47,
+        "path": "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "missing_method_argument"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "279a44cabf436cdbbb4aa4b2c1ad47a8571bc80daa88b89c3ef950bd99ba3021",
+        "category": "bug",
+        "end_line": 161,
+        "family_member_ids": [
+          "bb-04673753fb1b26991adb"
+        ],
+        "finding_id": "bb-04673753fb1b26991adb",
+        "fingerprint": "8dac329f88c2b4004e663782d12d314160e554ab6aac83d1e9c43f3f5ca965f5",
+        "generator_confidence": 0.98,
+        "line": 161,
+        "path": "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "conditional_passkeys_user_check"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "862d1e71a26b59419c743db293f755df3e83b53c489645c3e1c4ff3e208f4e34",
+        "category": "test_gap",
+        "end_line": 294,
+        "family_member_ids": [
+          "bb-6f84b1e386826c730ec2"
+        ],
+        "finding_id": "bb-6f84b1e386826c730ec2",
+        "fingerprint": "087f1ece920c10327db561e64e9728bfef31b3f46fc95806bed7b0bdcd0d18db",
+        "generator_confidence": 0.94,
+        "line": 294,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "overly_broad_exception_catch"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/1": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "e2e5ea9c6b6dcf37e8d0f73729147daf8c084dfd1de0ba008dce6841efdfe0a1",
+        "category": "bug",
+        "end_line": 840,
+        "family_member_ids": [
+          "bb-536fedb9a055d0854155"
+        ],
+        "finding_id": "bb-536fedb9a055d0854155",
+        "fingerprint": "e3e9b187449730eba94b64c7b67f8653bf95e5c8d5633a52a0d9d0845bc018b3",
+        "generator_confidence": 0.99,
+        "line": 840,
+        "path": "src/sentry/api/paginator.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "datetime_math_type_error"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "31680c40aa3bc691f764a37032102b24dc594f3d09a93e92519a18c482f4a9d9",
+        "category": "bug",
+        "end_line": 882,
+        "family_member_ids": [
+          "bb-d5470e0812850fb30a17"
+        ],
+        "finding_id": "bb-d5470e0812850fb30a17",
+        "fingerprint": "2990c7fb6fbaed2d8091a953db090f7285a3382f0b48580c41cdd62b76609f5d",
+        "generator_confidence": 0.98,
+        "line": 882,
+        "path": "src/sentry/api/paginator.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "negative_queryset_slice"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/2": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "a18db7c095d4367bb9efa7f9e48bfbe7550ebb11a19c14dcb3fa8dc753fd7ec5",
+        "category": "bug",
+        "end_line": 840,
+        "family_member_ids": [
+          "bb-a46f9570443c66a88968"
+        ],
+        "finding_id": "bb-a46f9570443c66a88968",
+        "fingerprint": "ee6db44e0bd7b8da7a93419f4dae6c21ef35b9bad5d71a996ba900074a608b0f",
+        "generator_confidence": 0.99,
+        "line": 840,
+        "path": "src/sentry/api/paginator.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "datetime_paginator_type_error"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "a5e913d370b53973cd0824dab814a2c9245663cc1fd126584419dee49f45c0e2",
+        "category": "bug",
+        "end_line": 843,
+        "family_member_ids": [
+          "bb-4a13d0c40377d2c477c1"
+        ],
+        "finding_id": "bb-4a13d0c40377d2c477c1",
+        "fingerprint": "4e1fe63ae64798e0000df19b33b2103d3bf815e740986fe7d9009c27fd8d5cd5",
+        "generator_confidence": 0.98,
+        "line": 843,
+        "path": "src/sentry/api/paginator.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "datetime_paginator_type_error"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "907978798fd32c9847c74863874af21a77cea4b5046527bef654ac4d2e40bb4c",
+        "category": "bug",
+        "end_line": 880,
+        "family_member_ids": [
+          "bb-f89f9a62d7b7d99bc213"
+        ],
+        "finding_id": "bb-f89f9a62d7b7d99bc213",
+        "fingerprint": "25e133c979d53c9c1cecc7f81284cde8a7a59ebc20e92cb2c1e4c745b3edc9ba",
+        "generator_confidence": 0.99,
+        "line": 880,
+        "path": "src/sentry/api/paginator.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.91,
+        "verifier_family_key": "negative_offset_slice"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "91503cc655cd4554bb8248c0a96897b3065c526198284498f2158f90ffc4987f",
+        "category": "bug",
+        "end_line": 30,
+        "family_member_ids": [
+          "bb-12e50aab1295da9295ad"
+        ],
+        "finding_id": "bb-12e50aab1295da9295ad",
+        "fingerprint": "e73f013ff24451b215030bfd627f6007f4d0c0bb9de02e5cf5569de7fbad1e67",
+        "generator_confidence": 0.99,
+        "line": 30,
+        "path": "src/sentry/scripts/spans/add-buffer.lua",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "redirect_depth_limit"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "b7f9f99d96f7827434c700233ad227356031679838ed7631749aae057ed44d36",
+        "category": "bug",
+        "end_line": 62,
+        "family_member_ids": [
+          "bb-7a50e551c791787ff6c4"
+        ],
+        "finding_id": "bb-7a50e551c791787ff6c4",
+        "fingerprint": "a5820365ebf79ebc780d50c55e58f91c8ea5fa31c69e67bfc2ff6082fab0fd04",
+        "generator_confidence": 0.97,
+        "line": 62,
+        "path": "src/sentry/scripts/spans/add-buffer.lua",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "hardcoded_span_limit"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "51a5352e44569817f40c6fc065da8dd46143528bf6d408b617136fcaecb45f4e",
+        "category": "data",
+        "end_line": 197,
+        "family_member_ids": [
+          "bb-45447d0e148ff2b20860"
+        ],
+        "finding_id": "bb-45447d0e148ff2b20860",
+        "fingerprint": "5a31e2e42cda90595dd961ff3c724fac9d360cd37368c8584e58ad009713888f",
+        "generator_confidence": 0.98,
+        "line": 197,
+        "path": "src/sentry/spans/buffer.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "redis_type_migration"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/3": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "321166cf186d917b4cea4195a9eef9d2aec0e3cfcaa39ed48755420baa735b1b",
+        "category": "bug",
+        "end_line": 221,
+        "family_member_ids": [
+          "bb-c8ea3b18ef7d722705e8"
+        ],
+        "finding_id": "bb-c8ea3b18ef7d722705e8",
+        "fingerprint": "68f032452daa27f75c9b8c1775bd646394a54007db25957e3ea371985e6dd39e",
+        "generator_confidence": 0.96,
+        "line": 221,
+        "path": "src/sentry/api/endpoints/organization_events_stats.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "wrong_dataset_eligibility"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "3177f261ae88df1ba55c0efd68b262252d8b9cddc3656d3162ad5304cc55f186",
+        "category": "bug",
+        "end_line": 254,
+        "family_member_ids": [
+          "bb-5431ae33f3281f1a775f"
+        ],
+        "finding_id": "bb-5431ae33f3281f1a775f",
+        "fingerprint": "c2be76113787cbd4067ff2ac9900120b45285ce64e47c1b50dbb4fb31c7cc773",
+        "generator_confidence": 0.93,
+        "line": 254,
+        "path": "src/sentry/api/endpoints/organization_events_stats.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "top_events_ranking_mismatch"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "aa06d044d47517df9af4f7eb992f1781024b07f1eaa57a99da50f53b0bec4932",
+        "category": "bug",
+        "end_line": 137,
+        "family_member_ids": [
+          "bb-6e4f04a585c7348b15bc"
+        ],
+        "finding_id": "bb-6e4f04a585c7348b15bc",
+        "fingerprint": "36540e3fb8a27c36ec774ff06eafba774b9a5c2327c32645151ce146e21b3ea4",
+        "generator_confidence": 0.98,
+        "line": 137,
+        "path": "src/sentry/api/helpers/error_upsampling.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "substring_event_type_check"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "3e2309bf55c67f106924cbdbe5d5e84a919f86ac292a555fd99b6bf98f27157a",
+        "category": "test_gap",
+        "end_line": 355,
+        "family_member_ids": [
+          "bb-63b3f34ea2e007c15b5b"
+        ],
+        "finding_id": "bb-63b3f34ea2e007c15b5b",
+        "fingerprint": "0c414866cf8fbd226158991787d791b7947365350b6f3c031a0173dbc8224da1",
+        "generator_confidence": 0.97,
+        "line": 355,
+        "path": "src/sentry/testutils/factories.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.72,
+        "verifier_family_key": "test_factory_allowlist_bypass"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "83cb3124a93584b07563de568cc39981d28677fd569a6f9078b488dece1d7dc5",
+        "category": "test_gap",
+        "end_line": 355,
+        "family_member_ids": [
+          "bb-9af871be4d1b6963c41e"
+        ],
+        "finding_id": "bb-9af871be4d1b6963c41e",
+        "fingerprint": "cd21258c7ae4477bf4fbf698624c707230b3c4def9fe2bcc37dceae9587a5e8c",
+        "generator_confidence": 0.98,
+        "line": 355,
+        "path": "src/sentry/testutils/factories.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "test_factory_invalid_rate"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "43702ac260002b952da2c6bedf058d6416df68cf76c457561a79d1032b691c72",
+        "category": "style",
+        "end_line": 14,
+        "family_member_ids": [
+          "bb-9ffa6726cd26ca948e3d"
+        ],
+        "finding_id": "bb-9ffa6726cd26ca948e3d",
+        "fingerprint": "4bee13e73074a4acc07fb451eb32c22663f9043b5a685e1b45e59f72c3685e3d",
+        "generator_confidence": 0.97,
+        "line": 14,
+        "path": "tests/sentry/api/helpers/test_error_upsampling.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "unused_import"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/5": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "9e3e32242bd8c6df37748b97e3fd29be7b36ff95df64d0bed873b3bbfeddcd2c",
+        "category": "bug",
+        "end_line": 48,
+        "family_member_ids": [
+          "bb-ba72316698d72884b38e"
+        ],
+        "finding_id": "bb-ba72316698d72884b38e",
+        "fingerprint": "40a1b57d975ca82282e2ae81029ed9b71832fc99d1a65a4323f8b2193269c1a5",
+        "generator_confidence": 0.91,
+        "line": 48,
+        "path": "src/sentry/issues/endpoints/browser_reporting_collector.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "browser_report_missing_clock"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "8533915e6631b6f738bb11d7c95aabd4ab2c755ae03456028fbe6bb5589f397d",
+        "category": "bug",
+        "end_line": 52,
+        "family_member_ids": [
+          "bb-a3786c6e82dcd6a2a8f3"
+        ],
+        "finding_id": "bb-a3786c6e82dcd6a2a8f3",
+        "fingerprint": "2dbbc3504f4c000cf14df690deea8a6bb8dc164a888b66935e472494562ad3f3",
+        "generator_confidence": 0.98,
+        "line": 52,
+        "path": "src/sentry/issues/endpoints/browser_reporting_collector.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "browser_report_truthiness_check"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "9da8301102088519ec3f01e54256c1f62beb316213db371ee9ef84f8b7f9469e",
+        "category": "bug",
+        "end_line": 168,
+        "family_member_ids": [
+          "bb-1a0d2b104ef1271bd506"
+        ],
+        "finding_id": "bb-1a0d2b104ef1271bd506",
+        "fingerprint": "55454b9f9e7e80117ef46b98b3dcd114ae1b82b0b107166ec44a48ecaeed110b",
+        "generator_confidence": 0.99,
+        "line": 168,
+        "path": "static/app/views/dashboards/widgetCard/chart.tsx",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "empty_table_widget_data"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "6499cd5e9528c6642ed55675b4906da22d6ea1d233c57e1f5cceac83bc54ca3e",
+        "category": "bug",
+        "end_line": 71,
+        "family_member_ids": [
+          "bb-bbde443c975c24ec1d01"
+        ],
+        "finding_id": "bb-bbde443c975c24ec1d01",
+        "fingerprint": "8208c458f8772d2af708db87284d02af7f758a4133b6615b480dabf2e66405d0",
+        "generator_confidence": 0.93,
+        "line": 71,
+        "path": "static/app/views/dashboards/widgets/tableWidget/defaultTableCellRenderers.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "falsy_cell_render_check"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "9e97c560c5798c0ab939aebcf462ef17569213195637e58cbf5c7611e9ca7b8b",
+        "category": "bug",
+        "end_line": 114,
+        "family_member_ids": [
+          "bb-d7650fd6ccbf8979b101"
+        ],
+        "finding_id": "bb-d7650fd6ccbf8979b101",
+        "fingerprint": "765298c423a73dee3f161dad0709d757a386e9d76069d78874887ecbacfe6c69",
+        "generator_confidence": 0.94,
+        "line": 114,
+        "path": "static/app/views/explore/contexts/pageParamsContext/aggregateFields.tsx",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "visualize_serialization"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "ea571f1765596caad13d9e5fb51392dc01be9f38bf38b689adc599c8c3bcb52e",
+        "category": "bug",
+        "end_line": 40,
+        "family_member_ids": [
+          "bb-5d55d503cb31b08de028"
+        ],
+        "finding_id": "bb-5d55d503cb31b08de028",
+        "fingerprint": "03250e3847ca2c039e6a45166ca31e6f0e04ae52e7d2c4e2532019d163278e2e",
+        "generator_confidence": 0.87,
+        "line": 40,
+        "path": "static/app/views/explore/hooks/useTraceItemAttributeKeys.tsx",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "missing_org_in_query_key"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/10600": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "38d0ac3b0140761d0de26e0ca99245c77209df0b32a5262ef972cfb6f3222122",
+        "category": "bug",
+        "end_line": 135,
+        "family_member_ids": [
+          "bb-2b7b6deaf440c3588a70"
+        ],
+        "finding_id": "bb-2b7b6deaf440c3588a70",
+        "fingerprint": "0fdfe65c52a170486e232bc893f4a9ec2c5bda89aae615e5a35b5e94d04942da",
+        "generator_confidence": 0.86,
+        "line": 135,
+        "path": "apps/web/components/settings/EnableTwoFactorModal.tsx",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "enable_callback_deferred"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "f3083dfb089f42c037d0c118a3c174be38e3bab8750b5dcf55073fd75cf8e77e",
+        "category": "test_gap",
+        "end_line": 12,
+        "family_member_ids": [
+          "bb-79a1e63c762a051570f7"
+        ],
+        "finding_id": "bb-79a1e63c762a051570f7",
+        "fingerprint": "74e6b0a7a3de9a69d64fd22987e1d908a537a278ed968e6320de040af51760dd",
+        "generator_confidence": 0.99,
+        "line": 12,
+        "path": "apps/web/playwright/login.2fa.e2e.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "missing_backup_code_disable_test"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "61db1930dd8ac89808df71915fc0869f857630439680195098cef45f71cbbe5c",
+        "category": "test_gap",
+        "end_line": 12,
+        "family_member_ids": [
+          "bb-d6717b850aed6440958f"
+        ],
+        "finding_id": "bb-d6717b850aed6440958f",
+        "fingerprint": "0dfbada2aab2695366987b167f302e3956d35edd4eeae818c282a5a0118c29dd",
+        "generator_confidence": 0.99,
+        "line": 12,
+        "path": "apps/web/playwright/login.2fa.e2e.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "missing_backup_code_login_test"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "b343c0a681cab8b395485bb5a83320b99217775a19fa9a5110ec74590b155c80",
+        "category": "test_gap",
+        "end_line": 117,
+        "family_member_ids": [
+          "bb-e08d0dd919a9a65a92d1"
+        ],
+        "finding_id": "bb-e08d0dd919a9a65a92d1",
+        "fingerprint": "d74684c6415963602f8fd38a143a999d49f764d6deff9e3a7ba476d8a3a4212d",
+        "generator_confidence": 0.99,
+        "line": 117,
+        "path": "apps/web/playwright/login.2fa.e2e.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "incomplete_download_test"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "d4699ea39ff933dd655e54026c33eac1409cb816252854b2c6c85ccb598b8cf4",
+        "category": "test_gap",
+        "end_line": 122,
+        "family_member_ids": [
+          "bb-339f7fb4a81af2d2beca"
+        ],
+        "finding_id": "bb-339f7fb4a81af2d2beca",
+        "fingerprint": "f184064445394b8cc0ba749eba96033d82758134e7f9bc48b13f69d4d7c7d374",
+        "generator_confidence": 0.99,
+        "line": 122,
+        "path": "apps/web/playwright/login.2fa.e2e.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "incomplete_copy_test"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "d67f7ba2d1f95d947c31490aaf378fea518a0543b1619246b900559e6801066e",
+        "category": "security",
+        "end_line": 131,
+        "family_member_ids": [
+          "bb-5b2592f0ca60361b2439"
+        ],
+        "finding_id": "bb-5b2592f0ca60361b2439",
+        "fingerprint": "2aacef10a2351b571387a0401aa5891f50b3221844e0a4e157c10ac4b3ac8806",
+        "generator_confidence": 0.98,
+        "line": 131,
+        "path": "packages/features/auth/lib/next-auth-options.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "backup_code_password_bypass"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "ec593009ad13233c1d0b53133be531a59fc71fd41715724feb5caf891b552629",
+        "category": "concurrency",
+        "end_line": 148,
+        "family_member_ids": [
+          "bb-b410aea94627518c4e2b"
+        ],
+        "finding_id": "bb-b410aea94627518c4e2b",
+        "fingerprint": "6078d5dc14ab2e4cbeea6310527174e32107080f8683d4fde2115aa2bcf7305d",
+        "generator_confidence": 0.96,
+        "line": 148,
+        "path": "packages/features/auth/lib/next-auth-options.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "backup_code_race_condition"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "d109d51ab8d3232acdd40cb20c8985a91ef2442bebceac94f07c8b3b29b04fb3",
+        "category": "bug",
+        "end_line": 49,
+        "family_member_ids": [
+          "bb-77bb45f4c227fb56df44"
+        ],
+        "finding_id": "bb-77bb45f4c227fb56df44",
+        "fingerprint": "2d219b6ca3256ee4a0d8999f18ebeba1a5c55f7f013ab7f965c65e3e6218bdae",
+        "generator_confidence": 0.98,
+        "line": 49,
+        "path": "packages/ui/components/form/inputs/Input.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "password_toggle_keyboard_accessibility"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/10967": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "1903b2e229b145dd1cfee9c7c38ac71a373b6f10ebf1e947574020a5ee82320f",
+        "category": "bug",
+        "end_line": 149,
+        "family_member_ids": [
+          "bb-533262eca3dca4e4e03f"
+        ],
+        "finding_id": "bb-533262eca3dca4e4e03f",
+        "fingerprint": "3039d5bc4b654e1eec83518b1df02c11a39d4b1fe09447ccc66e74a67ea67014",
+        "generator_confidence": 0.97,
+        "line": 148,
+        "path": "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "google_credential_id_match_fallback"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "064a587886b9b41e456f899be49a3f750685a07bde2a50bfe87abc6d670e7e84",
+        "category": "bug",
+        "end_line": 154,
+        "family_member_ids": [
+          "bb-644aa13ed85301a532bd"
+        ],
+        "finding_id": "bb-644aa13ed85301a532bd",
+        "fingerprint": "b61997085b75a6156c401bca4800911548f6e088b3df6233c141a6346cb069d8",
+        "generator_confidence": 0.95,
+        "line": 154,
+        "path": "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "google_patch_undefined_calendar"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "adb217ce41ccd6ac1caae240718df272a3eb591c6715ae4e28a8e4b661e2b1cf",
+        "category": "bug",
+        "end_line": 256,
+        "family_member_ids": [
+          "bb-836eee2a599a1d35b41a"
+        ],
+        "finding_id": "bb-836eee2a599a1d35b41a",
+        "fingerprint": "35228615a794e4fcf035dca2badc5821415a7bed35adf353a5aad73b02fdd4b6",
+        "generator_confidence": 0.93,
+        "line": 256,
+        "path": "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "google_update_undefined_fallback"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "b9ee58c11ce145f060079fc469e0de822d2d097af2e7ec03bc07495044d6c43c",
+        "category": "bug",
+        "end_line": 128,
+        "family_member_ids": [
+          "bb-d4d2c4846b2fd35aee5c"
+        ],
+        "finding_id": "bb-d4d2c4846b2fd35aee5c",
+        "fingerprint": "efc9875d9ea026fb78f3383d39f24e5a7aeb1a5669bab51446e2eb1ba8b25267",
+        "generator_confidence": 0.97,
+        "line": 128,
+        "path": "packages/app-store/larkcalendar/lib/CalendarService.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "first_destination_reuse_multi_host"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "adb2b74ac57e136ffe15e6e169fa610c2516eb236c861fdbaf1d11755dfca18d",
+        "category": "bug",
+        "end_line": 73,
+        "family_member_ids": [
+          "bb-a377e05330dcf1e8a874"
+        ],
+        "finding_id": "bb-a377e05330dcf1e8a874",
+        "fingerprint": "60401a660a74970235ff88ce2fbe49c4dc5f7c265f25d257b0454537614eeb6f",
+        "generator_confidence": 0.97,
+        "line": 73,
+        "path": "packages/app-store/office365calendar/lib/CalendarService.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "first_destination_reuse_multi_host"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "40d60b6acb1320882284ee11d1d47703ef9f9c93b7e5bb3410b0d0f0d31d7e39",
+        "category": "bug",
+        "end_line": 119,
+        "family_member_ids": [
+          "bb-9a7fa1bf13f6768d32f5"
+        ],
+        "finding_id": "bb-9a7fa1bf13f6768d32f5",
+        "fingerprint": "c43938bb9999e55c5d7caee663d4c65bd5365aa795a3432bea12335174a163e5",
+        "generator_confidence": 0.99,
+        "line": 119,
+        "path": "packages/core/EventManager.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "undefined_property_access_destination_calendar"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "1807466b28a9e1b6b7ab6db28e1f0648016465d187b85d87fc39b46556a2effa",
+        "category": "test_gap",
+        "end_line": 339,
+        "family_member_ids": [
+          "bb-5e00862ffdcecdedcf24"
+        ],
+        "finding_id": "bb-5e00862ffdcecdedcf24",
+        "fingerprint": "b4ede49298db2ec3f89dfe60e0392c87e3987bbe26f77fc23481b3d6ccf2003b",
+        "generator_confidence": 0.98,
+        "line": 339,
+        "path": "packages/core/EventManager.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "test_coverage_gap"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "0e9c00e4462ef9747a2d0b13972c1338c4c8d39502616e14b9e6c82e53884985",
+        "category": "bug",
+        "end_line": 339,
+        "family_member_ids": [
+          "bb-f7a058eba3c8f12f7252"
+        ],
+        "finding_id": "bb-f7a058eba3c8f12f7252",
+        "fingerprint": "2db6793a730b9fcc7298dc47bab241bbb332e0e756f3c9be25c26119fc42e956",
+        "generator_confidence": 0.94,
+        "line": 339,
+        "path": "packages/core/EventManager.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "reschedule_stale_events"
+      },
+      {
+        "candidate_index": 8,
+        "candidate_sha256": "88c5e636e46d7a2f21b87f3e0bcce1ab063da1a140a2dfa6bf19b92eb485f3bc",
+        "category": "bug",
+        "end_line": 380,
+        "family_member_ids": [
+          "bb-908da0220d7c8f8d9784"
+        ],
+        "finding_id": "bb-908da0220d7c8f8d9784",
+        "fingerprint": "2cbf70a63d84309195588052d9c4abac56116ae5094c63d98594f11b8d040589",
+        "generator_confidence": 0.96,
+        "line": 380,
+        "path": "packages/core/EventManager.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "missing_external_id_no_credential"
+      },
+      {
+        "candidate_index": 9,
+        "candidate_sha256": "6130a45c276425fefe02074e47018727b729ac9653d22ff88a2b83d27721c361",
+        "category": "bug",
+        "end_line": 423,
+        "family_member_ids": [
+          "bb-9467b15bde5a7c3570fd"
+        ],
+        "finding_id": "bb-9467b15bde5a7c3570fd",
+        "fingerprint": "5a7920089a4de268afefed1c8f94841eb417ca376319932e21eff04696cba7df",
+        "generator_confidence": 0.92,
+        "line": 423,
+        "path": "packages/features/bookings/lib/handleCancelBooking.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.8,
+        "verifier_family_key": "recurring_cancel_stale_events"
+      },
+      {
+        "candidate_index": 10,
+        "candidate_sha256": "67d33fe7bfde13298ee355c379d72bc782b251b9d4f75aa9c6152bf3f84b2aa5",
+        "category": "bug",
+        "end_line": 1078,
+        "family_member_ids": [
+          "bb-6fd8523e5c20260ee084"
+        ],
+        "finding_id": "bb-6fd8523e5c20260ee084",
+        "fingerprint": "ba5baa9d508516c3aa5a43bf480b69885bcec2a7ef67f53f3c9fd7463245d441",
+        "generator_confidence": 0.98,
+        "line": 1078,
+        "path": "packages/features/bookings/lib/handleNewBooking.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "collective_destination_calendar_dropped"
+      },
+      {
+        "candidate_index": 11,
+        "candidate_sha256": "4a831c15ce8ff7c24479d81960b5a7d2d52dfed276d33e356ff71123aba9e092",
+        "category": "data",
+        "end_line": 1877,
+        "family_member_ids": [
+          "bb-fc562c4fd169b7011bbe"
+        ],
+        "finding_id": "bb-fc562c4fd169b7011bbe",
+        "fingerprint": "33ea335288f803230b6dcfc625de8d655e1dae1bf14500aa6984b2dd1d18008f",
+        "generator_confidence": 0.95,
+        "line": 1877,
+        "path": "packages/features/bookings/lib/handleNewBooking.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "multi_destination_persistence_loss"
+      },
+      {
+        "candidate_index": 12,
+        "candidate_sha256": "81f8384c7ab4f27765c22eec6981c9ad27f8860f2f63251c33ab13d0f21dcece",
+        "category": "bug",
+        "end_line": 151,
+        "family_member_ids": [
+          "bb-376902aa1394d389b4ff"
+        ],
+        "finding_id": "bb-376902aa1394d389b4ff",
+        "fingerprint": "3c94438e8231f5017eb346ff55316d36f7fcf136936cd67fde94548dafdb834c",
+        "generator_confidence": 0.98,
+        "line": 151,
+        "path": "packages/trpc/server/routers/viewer/organizations/create.handler.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "org_slug_billing_inversion"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/11059": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "f29831916e83e896efbf42dc76a024a226bbc05e26b03acf02d29ea097bc2de0",
+        "category": "bug",
+        "end_line": 50,
+        "family_member_ids": [
+          "bb-89e5198870e5d01b3d01"
+        ],
+        "finding_id": "bb-89e5198870e5d01b3d01",
+        "fingerprint": "ec2b0d1f4222eb9b5a8c561125d23e4742dca6609531105d718b59a0a3c5625f",
+        "generator_confidence": 0.91,
+        "line": 50,
+        "path": "apps/web/pages/api/webhook/app-credential.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "metadata_key_mismatch"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "249738b4bdd62053466ce8cd92065759381422747e4548d908740114d0e92c31",
+        "category": "concurrency",
+        "end_line": 83,
+        "family_member_ids": [
+          "bb-02f0f863eedb223b7802"
+        ],
+        "finding_id": "bb-02f0f863eedb223b7802",
+        "fingerprint": "f56a2add091cf8ec831561b21b7f08e95c423131caf60f987b5e06a22201d8d3",
+        "generator_confidence": 0.94,
+        "line": 83,
+        "path": "apps/web/pages/api/webhook/app-credential.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "webhook_race_condition"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "f8571ee73fa08250c89182a44b43abbe0a7d7c3c88ed5686285d79366644e68f",
+        "category": "bug",
+        "end_line": 8,
+        "family_member_ids": [
+          "bb-9056d1ac0170e07701c4"
+        ],
+        "finding_id": "bb-9056d1ac0170e07701c4",
+        "fingerprint": "f69e901ea6470a989eb10d347a5a542472c331bd5d5366aaeaf3aa6a1ce9f739",
+        "generator_confidence": 0.98,
+        "line": 8,
+        "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.97,
+        "verifier_family_key": "zod_computed_key_misuse"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "1b576a4120b0aa27d760a9d28f963632b9fb0cf478a27741080a3b31afbdae0c",
+        "category": "data",
+        "end_line": 26,
+        "family_member_ids": [
+          "bb-fb83c5ca4249bcaacf12"
+        ],
+        "finding_id": "bb-fb83c5ca4249bcaacf12",
+        "fingerprint": "bb44cc92fafd7566c351268d3168e7b70ece48cc338c1b30e01be7796fea13e1",
+        "generator_confidence": 0.95,
+        "line": 26,
+        "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.96,
+        "verifier_family_key": "refresh_token_sentinel"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "388d17746e6a6063369cb85ce05ce3f8762463da1af87fb575f935de59485875",
+        "category": "bug",
+        "end_line": 15,
+        "family_member_ids": [
+          "bb-56277071b265c4a65ae8"
+        ],
+        "finding_id": "bb-56277071b265c4a65ae8",
+        "fingerprint": "831967226626771dd3815b41a868662472245f3fc530fee40169c9bfcadcbede",
+        "generator_confidence": 0.99,
+        "line": 15,
+        "path": "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "fetch_response_type_mismatch"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "df89118d4ba3a9330fcb62818eedcf95ca8cdd93a601924eb1fd34fb1fe3f4c0",
+        "category": "bug",
+        "end_line": 97,
+        "family_member_ids": [
+          "bb-957402196022a1d30289"
+        ],
+        "finding_id": "bb-957402196022a1d30289",
+        "fingerprint": "925e3a6e0e5674228018b4d5dbcd02eb6fda36e0daf86aea4f9142065ef78b0a",
+        "generator_confidence": 0.99,
+        "line": 97,
+        "path": "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.98,
+        "verifier_family_key": "safeparse_wrapper_stored"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "a7a978790cbaa3a46224d7a3e0b14a07b83b521e1f4a065bbd50d07fa2f474d3",
+        "category": "bug",
+        "end_line": 75,
+        "family_member_ids": [
+          "bb-6098fb2c4f27e26938db"
+        ],
+        "finding_id": "bb-6098fb2c4f27e26938db",
+        "fingerprint": "91944b3635413e6b4207378ce2f2d58ec80e2d9487b9a7e8bc43d08b1420a709",
+        "generator_confidence": 0.95,
+        "line": 75,
+        "path": "packages/app-store/salesforce/lib/CalendarService.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "salesforce_bypasses_sync"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "1c072ebcfe58db248e117dd7bcf838e0c8dc302f1b7c67e5e042d85ae30914b7",
+        "category": "bug",
+        "end_line": 96,
+        "family_member_ids": [
+          "bb-87cd44d756240b0bcb1c"
+        ],
+        "finding_id": "bb-87cd44d756240b0bcb1c",
+        "fingerprint": "591350c6cf0f3ceb2d446261f16a5b0d5617542fa16ea2d2b0554f39b1122d15",
+        "generator_confidence": 0.99,
+        "line": 96,
+        "path": "packages/app-store/salesforce/lib/CalendarService.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.99,
+        "verifier_family_key": "missing_prisma_import"
+      },
+      {
+        "candidate_index": 8,
+        "candidate_sha256": "ddff7b8ef528a2f15848a6e71bbf712f0e7bc1f9fc696e52e31b2b4f72529bd5",
+        "category": "bug",
+        "end_line": 93,
+        "family_member_ids": [
+          "bb-c27552bcb6804f199f8a"
+        ],
+        "finding_id": "bb-c27552bcb6804f199f8a",
+        "fingerprint": "ab2642b86311f13381f70987006990d38a5cc5d9745dd90e2a5e4aee786809a5",
+        "generator_confidence": 0.99,
+        "line": 93,
+        "path": "packages/app-store/zoho-bigin/lib/CalendarService.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.97,
+        "verifier_family_key": "wrong_id_parameter"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/14740": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "535be3487bcf73a89455191e1bdf5901ff626f397296ced74a2011f68cab0d3d",
+        "category": "bug",
+        "end_line": 529,
+        "family_member_ids": [
+          "bb-014b941aa07763ee176f"
+        ],
+        "finding_id": "bb-014b941aa07763ee176f",
+        "fingerprint": "bc1ba96febe1a3f3e3a332fb33a7376f015d22ab792220086a403fd6b27bce9e",
+        "generator_confidence": 0.96,
+        "line": 529,
+        "path": "packages/emails/email-manager.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "email_suppression_ignored"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "915590e1836868feea2a921d1e22039a3924c1a3892579904cc7a7cb18e1bfbd",
+        "category": "bug",
+        "end_line": 32,
+        "family_member_ids": [
+          "bb-81b24883fe57e784d897"
+        ],
+        "finding_id": "bb-81b24883fe57e784d897",
+        "fingerprint": "24c0325a6e14cd7d4eb871f8e60e8781ecfca98a00ae827481d06d972e9ef144",
+        "generator_confidence": 0.94,
+        "line": 32,
+        "path": "packages/trpc/server/routers/viewer/bookings/addGuests.handler.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "missing_team_data"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "a25b20e47e209a4843f3ee6c21a8c666202ba474e7ef0d1bbf00345d9e8a4d18",
+        "category": "api",
+        "end_line": 47,
+        "family_member_ids": [
+          "bb-e7c4c879077039db7ea1"
+        ],
+        "finding_id": "bb-e7c4c879077039db7ea1",
+        "fingerprint": "8511365ce0f9063c3a01c8d6a942d04d6cf5087e8ceeec6774a16f5ba64ebb00",
+        "generator_confidence": 0.99,
+        "line": 47,
+        "path": "packages/trpc/server/routers/viewer/bookings/addGuests.handler.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "team_admin_auth_logic_error"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "a3728cc726198914d054a2bc620110907e4e7c4cf1f0fe2f917a576c748aa976",
+        "category": "security",
+        "end_line": 77,
+        "family_member_ids": [
+          "bb-71384f0607d0e3d42476"
+        ],
+        "finding_id": "bb-71384f0607d0e3d42476",
+        "fingerprint": "dd53ca33ec123b94036083f4c73b46bc47b3ec611db143814f81bf0071ae8f2c",
+        "generator_confidence": 0.98,
+        "line": 77,
+        "path": "packages/trpc/server/routers/viewer/bookings/addGuests.handler.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "blacklist_case_bypass"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "c63de282877935fef62d7c803683cac8632f51ad12e20a010cc7b68d35823a24",
+        "category": "bug",
+        "end_line": 158,
+        "family_member_ids": [
+          "bb-99be94d00b24829f823c"
+        ],
+        "finding_id": "bb-99be94d00b24829f823c",
+        "fingerprint": "c4f510276a23c983385fc8fe1f97aa24e5c6d312c0f321b2c1e9a3bbaf2e09b2",
+        "generator_confidence": 0.87,
+        "line": 158,
+        "path": "packages/trpc/server/routers/viewer/bookings/addGuests.handler.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "wrong_credentials_for_calendar"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "6e54f3cd4a551e7947406dec6ef8a5626140940905eb11c9b0f0f974c1a120ab",
+        "category": "bug",
+        "end_line": 168,
+        "family_member_ids": [
+          "bb-634ec81540b444037e6c"
+        ],
+        "finding_id": "bb-634ec81540b444037e6c",
+        "fingerprint": "bd86b2972733cf982692d81068f69342b3f91116b6ada47d3e3dd638e8368422",
+        "generator_confidence": 0.98,
+        "line": 168,
+        "path": "packages/trpc/server/routers/viewer/bookings/addGuests.handler.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.91,
+        "verifier_family_key": "wrong_email_recipient_list"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "5cb1a18f49f93c9b713cc10d1aabcec97e5156455c068a02ea414b530ffd9ffe",
+        "category": "data",
+        "end_line": 5,
+        "family_member_ids": [
+          "bb-be487ba884eb561d3134"
+        ],
+        "finding_id": "bb-be487ba884eb561d3134",
+        "fingerprint": "b94f7cb8e0b14aa4588dc1140a1abcd499a0712f2c22895edc99f81759d8e7bc",
+        "generator_confidence": 0.98,
+        "line": 5,
+        "path": "packages/trpc/server/routers/viewer/bookings/addGuests.schema.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "duplicate_guest_input"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/14943": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "c0df352fe3a6b49afdf3c092c5daebd06108ba4bbb9f6a1a865bd419bb1efc5b",
+        "category": "data",
+        "end_line": 39,
+        "family_member_ids": [
+          "bb-b0b06a28813cde7c158c"
+        ],
+        "finding_id": "bb-b0b06a28813cde7c158c",
+        "fingerprint": "0a56edf684bb2bc81dc3a6dfa23fdef15a82841daaf9f152e1d2b54dedeb8a01",
+        "generator_confidence": 0.97,
+        "line": 39,
+        "path": "packages/features/ee/workflows/api/scheduleSMSReminders.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "retry_cleanup_missing_method_filter"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "93a17f09bd091e785d4e1408fac591e431edfdfc92ff8061755d63e1d5c87b71",
+        "category": "concurrency",
+        "end_line": 184,
+        "family_member_ids": [
+          "bb-f55b8af8209e28410ce1"
+        ],
+        "finding_id": "bb-f55b8af8209e28410ce1",
+        "fingerprint": "93c5d366b87a910774a6d60492affa5447f446b91104ff1639d1a4af2d73d21a",
+        "generator_confidence": 0.96,
+        "line": 184,
+        "path": "packages/features/ee/workflows/api/scheduleSMSReminders.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.72,
+        "verifier_family_key": "non_atomic_retry_increment"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "d95e7f570bcb670431fa6ebfc011f116cd23e072137d41ed6d68fbdeae54cb24",
+        "category": "concurrency",
+        "end_line": 190,
+        "family_member_ids": [
+          "bb-937ae990b4413caccc5c"
+        ],
+        "finding_id": "bb-937ae990b4413caccc5c",
+        "fingerprint": "40cb40b7f7b4e83acde3ffadee3ce0e3f92d03bb4023f7a4496cdf04f79c6fc1",
+        "generator_confidence": 0.91,
+        "line": 190,
+        "path": "packages/features/ee/workflows/api/scheduleSMSReminders.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "unhandled_update_error_in_catch"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "ef1eac89039b67ddc15e3b9190960ed0ede0e0f6a2cfa28214c6255265444c21",
+        "category": "concurrency",
+        "end_line": 195,
+        "family_member_ids": [
+          "bb-ea5b87bccf7a0155316b"
+        ],
+        "finding_id": "bb-ea5b87bccf7a0155316b",
+        "fingerprint": "428541baa2a352b1816d86de0367cd14896180fb7128df9ec38be40af117c295",
+        "generator_confidence": 0.96,
+        "line": 195,
+        "path": "packages/features/ee/workflows/api/scheduleSMSReminders.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.72,
+        "verifier_family_key": "non_atomic_retry_increment"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/22345": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "99fcbc81306f43039c53b3160d470b1e2b26131e66cb085a33f099cdb649f076",
+        "category": "api",
+        "end_line": 33,
+        "family_member_ids": [
+          "bb-21ed567ad81dd6cc35fc"
+        ],
+        "finding_id": "bb-21ed567ad81dd6cc35fc",
+        "fingerprint": "8112a75ae45393aee88d35461af431d658ccd20f85c16b231a3da8f898b880d0",
+        "generator_confidence": 0.97,
+        "line": 33,
+        "path": "packages/lib/server/service/insightsBooking.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "type_schema_mismatch"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "b2f6f8f23e5ba6d263a047b3cf7d2c901a3b2be2032037518e70a70ae0ce7d4a",
+        "category": "api",
+        "end_line": 63,
+        "family_member_ids": [
+          "bb-f425776ef0105ee5fa41"
+        ],
+        "finding_id": "bb-f425776ef0105ee5fa41",
+        "fingerprint": "c254a7b00722a262179d28a07e61bc882f1ec3636194baba426c4f9247b5ac69",
+        "generator_confidence": 0.98,
+        "line": 63,
+        "path": "packages/lib/server/service/insightsBooking.ts",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "removed_public_method"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/22532": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "430de4701e7d0839733aff27615eb0a1d5c2d96d5339b632bcedfe10b22a8385",
+        "category": "bug",
+        "end_line": 79,
+        "family_member_ids": [
+          "bb-9c072485143ff4817c6c"
+        ],
+        "finding_id": "bb-9c072485143ff4817c6c",
+        "fingerprint": "4e909a89c18c33584e55dab7240324efb19231df3f1bcb89827b257d2633d4b1",
+        "generator_confidence": 0.9,
+        "line": 79,
+        "path": "packages/features/apps/components/CredentialActionsDropdown.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "missing_accessible_name"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "eb5b500bce4d821553c7e82e71cd3cdf9aa571e27f5b5f5f6bb5ec67503d4019",
+        "category": "bug",
+        "end_line": 89,
+        "family_member_ids": [
+          "bb-a680574923c0f2e4552c"
+        ],
+        "finding_id": "bb-a680574923c0f2e4552c",
+        "fingerprint": "e9fe7911ea6dd68fd0788e5d315c03334d0c0cf0704f0c79240b3f560b078b2a",
+        "generator_confidence": 0.97,
+        "line": 89,
+        "path": "packages/features/apps/components/CredentialActionsDropdown.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "hardcoded_locale"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "b30e08c63447e211335345d15d9864dd48b603845f301f448c42e0dea2d376c3",
+        "category": "doc_defect",
+        "end_line": 4,
+        "family_member_ids": [
+          "bb-20757329de4a352d5d9e"
+        ],
+        "finding_id": "bb-20757329de4a352d5d9e",
+        "fingerprint": "9842b30b02c747949d99630d979ff4cbc146106d5fda9ea176e5799a239edc69",
+        "generator_confidence": 0.99,
+        "line": 4,
+        "path": "packages/prisma/migrations/20250715160635_add_calendar_cache_updated_at/migration.sql",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "migration_warning_contradiction"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "2e8757e375c8ad7a247569c9e255be361e40a9fd482e174196e24ab957377006",
+        "category": "data",
+        "end_line": 9,
+        "family_member_ids": [
+          "bb-e531e7a36b79b6301b5e"
+        ],
+        "finding_id": "bb-e531e7a36b79b6301b5e",
+        "fingerprint": "8fa1f0f32444366fc1f315fd1016d2fc4dbf41b0b065c4a5f838e35f0a71d676",
+        "generator_confidence": 0.98,
+        "line": 9,
+        "path": "packages/prisma/migrations/20250715160635_add_calendar_cache_updated_at/migration.sql",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "migration_backfill_timestamp"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "10a521b91cc3da2af7e98b4f4876f1559acfa49e6bf09727bf4e6261cb5b5d96",
+        "category": "api",
+        "end_line": 25,
+        "family_member_ids": [
+          "bb-9afdc04a6ea4c09ff81f"
+        ],
+        "finding_id": "bb-9afdc04a6ea4c09ff81f",
+        "fingerprint": "006f12ec2ac9e563e2cc9bdd9d12c85097e8cf2d0bd2ee967422d1e55c02c667",
+        "generator_confidence": 0.95,
+        "line": 25,
+        "path": "packages/trpc/server/routers/viewer/calendars/deleteCache.handler.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "trpc_error_type"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "b9328d6feacb9db75eeae461338b1fe16a066afcb4d0d2234f1ef23a11b0c9d7",
+        "category": "bug",
+        "end_line": 5,
+        "family_member_ids": [
+          "bb-97dfa2c75e0f1ece8295"
+        ],
+        "finding_id": "bb-97dfa2c75e0f1ece8295",
+        "fingerprint": "bf3962c815d827b3ab62d4cf8933100b678026b8f9ef6aab061bf788cbedb842",
+        "generator_confidence": 0.94,
+        "line": 5,
+        "path": "scripts/test-gcal-webhooks.sh",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "env_file_relative_path"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "88355196fdf2cd27262e0c2e62b1d319b77a9e3c103178849bff08aa35ae0ab5",
+        "category": "bug",
+        "end_line": 17,
+        "family_member_ids": [
+          "bb-9de9c975eaeb48372ce8"
+        ],
+        "finding_id": "bb-9de9c975eaeb48372ce8",
+        "fingerprint": "f46505e3f108295573dbd41a8500505361cfe468ae6fccb799ba749bc6e732ff",
+        "generator_confidence": 0.98,
+        "line": 17,
+        "path": "scripts/test-gcal-webhooks.sh",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "cleanup_exit_status"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "0110777b708c9ee77b951bd4473438a5f94c69e7831a6eb0f3cb0079ced5c87d",
+        "category": "bug",
+        "end_line": 68,
+        "family_member_ids": [
+          "bb-be3cc1b8373f6664b56b"
+        ],
+        "finding_id": "bb-be3cc1b8373f6664b56b",
+        "fingerprint": "2905facf015c8a9d64ba34dd1b9d3ed669231fc74f04d11fc5bb4d78057d99f3",
+        "generator_confidence": 0.98,
+        "line": 68,
+        "path": "scripts/test-gcal-webhooks.sh",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "sed_portability"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/7232": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "93b654e598d1ebddbbb05e91763f254b041389e15a7bec6c3302452e821e6673",
+        "category": "bug",
+        "end_line": 48,
+        "family_member_ids": [
+          "bb-052273df1fbab1dcf5c0"
+        ],
+        "finding_id": "bb-052273df1fbab1dcf5c0",
+        "fingerprint": "620c2678ce264b98c7556193d82c7314a1f53af48c9c9d445a669846e6fbe4e9",
+        "generator_confidence": 0.98,
+        "line": 48,
+        "path": "packages/features/ee/workflows/api/scheduleEmailReminders.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "deferred_cancellation_timing"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "2df3b2df3ac6af765dde326dbcc67cc6b430be0c98643f811b99694f4112173a",
+        "category": "bug",
+        "end_line": 57,
+        "family_member_ids": [
+          "bb-217319f410af7720e34e"
+        ],
+        "finding_id": "bb-217319f410af7720e34e",
+        "fingerprint": "a4c0d501c858c3468ebdcdd782724e80edc58873b0fef459db30da1313b93cc9",
+        "generator_confidence": 0.97,
+        "line": 57,
+        "path": "packages/features/ee/workflows/api/scheduleEmailReminders.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "loop_error_handling"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "d22cb3b58a057ae8a44c2e53e039f918a1f243c3e4cc401226d55859c316e36e",
+        "category": "bug",
+        "end_line": 57,
+        "family_member_ids": [
+          "bb-81787a34fa1861622650"
+        ],
+        "finding_id": "bb-81787a34fa1861622650",
+        "fingerprint": "cba707fc4b1d725323fe30b6f0d0dd6199c9ff7b994a5f7cf3cbde81b16aac95",
+        "generator_confidence": 0.9,
+        "line": 57,
+        "path": "packages/features/ee/workflows/api/scheduleEmailReminders.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "sendgrid_rate_limit"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "01f4eacc8c539fe3b34c3f1f767431e9394f094baf228f4347c2341cfdec604d",
+        "category": "bug",
+        "end_line": 213,
+        "family_member_ids": [
+          "bb-4ca2054bea41a1c28255"
+        ],
+        "finding_id": "bb-4ca2054bea41a1c28255",
+        "fingerprint": "e4d338dad23a66389ee482d8b7ee0a5b85eaafca4fcb56fc4487da1fb0a6f82d",
+        "generator_confidence": 0.96,
+        "line": 213,
+        "path": "packages/features/ee/workflows/lib/reminders/emailReminderManager.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "immediate_delete_no_retry"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/8087": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "c4c9ccda212544b8e03287b791bf7af38481e4d80606ba418b25d878ca87a709",
+        "category": "doc_defect",
+        "end_line": 3,
+        "family_member_ids": [
+          "bb-0b5142ca3d306b1a722c"
+        ],
+        "finding_id": "bb-0b5142ca3d306b1a722c",
+        "fingerprint": "4ee6891d589e5d267b627fff6501016ef241fc816c64a24e13264fb562cec40c",
+        "generator_confidence": 0.91,
+        "line": 3,
+        "path": "packages/app-store/index.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "outdated_documentation"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "1745198081ddf2a2eaff948ab359854ce344b74539802acde4cb244ea530c305",
+        "category": "concurrency",
+        "end_line": 125,
+        "family_member_ids": [
+          "bb-3da83159c71d5cce4375"
+        ],
+        "finding_id": "bb-3da83159c71d5cce4375",
+        "fingerprint": "9690e85b5236da263261033c4d39413d69c95a544a543a897f1503f929da83b1",
+        "generator_confidence": 0.98,
+        "line": 125,
+        "path": "packages/app-store/vital/lib/reschedule.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "async_foreach_unawaited"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "6eea7b90579421dd03bda9a1a380b238e138d53b3e801fa50ac55c09decb04a6",
+        "category": "concurrency",
+        "end_line": 125,
+        "family_member_ids": [
+          "bb-839efa44d5cbb1fb3579"
+        ],
+        "finding_id": "bb-839efa44d5cbb1fb3579",
+        "fingerprint": "c121447b542c5e89ccd17d2385b3055d7e1ebf6c0459c9115a2779e9e9302cdb",
+        "generator_confidence": 0.98,
+        "line": 125,
+        "path": "packages/app-store/wipemycalother/lib/reschedule.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "async_foreach_unawaited"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "4b18696318dd6785d498972111f0bf8f343d4f4a74f1b76c9a8310b7358ba845",
+        "category": "concurrency",
+        "end_line": 553,
+        "family_member_ids": [
+          "bb-8b32126ec2fae540194c"
+        ],
+        "finding_id": "bb-8b32126ec2fae540194c",
+        "fingerprint": "209d107a6c2118f44533388632a6de25833888c149322c887ec9b53eb94ea5b8",
+        "generator_confidence": 0.98,
+        "line": 553,
+        "path": "packages/trpc/server/routers/viewer/bookings.tsx",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "async_foreach_unawaited"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/8330": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "941cff0c70567aaa3e085bb5630208752b887dd2bec71927be03b89004fc4830",
+        "category": "test_gap",
+        "end_line": 799,
+        "family_member_ids": [
+          "bb-e42350f37bec023a3e9e"
+        ],
+        "finding_id": "bb-e42350f37bec023a3e9e",
+        "fingerprint": "f4d8d668579cbf3a34830f3b8d115e908c33b9498c4f56e821e71399845aebcf",
+        "generator_confidence": 0.99,
+        "line": 799,
+        "path": "apps/web/test/lib/getSchedule.test.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "test_assertion_gap"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "d4a24dba030211530186626ad7d15b45b7723bd14860e4368ab337d04d3819cd",
+        "category": "bug",
+        "end_line": 212,
+        "family_member_ids": [
+          "bb-a3b819a76aa4cf3e6891"
+        ],
+        "finding_id": "bb-a3b819a76aa4cf3e6891",
+        "fingerprint": "d01fb6b84bab012e1b109f3ecb1acecbea3b8d8558fee111cc2753df7893e4d0",
+        "generator_confidence": 0.93,
+        "line": 212,
+        "path": "packages/lib/slots.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "dst_offset_calculation"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "8a7507d9776905b8eb75fe4f15e428155713bb06b83bee44f396cab8a0df6ff0",
+        "category": "bug",
+        "end_line": 106,
+        "family_member_ids": [
+          "bb-2d68947cd89ce8b561bc"
+        ],
+        "finding_id": "bb-2d68947cd89ce8b561bc",
+        "fingerprint": "d6b96b3e0ef10e9dbd49bbabc79b3ca275e73b0f4558ab37126e6ba33add96ce",
+        "generator_confidence": 0.97,
+        "line": 106,
+        "path": "packages/trpc/server/routers/viewer/slots.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "find_vs_some_override"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "383a757e12cc7f602ba1fdcd5e46e7516fa8a9ef06c31f80311b5f4013b479b9",
+        "category": "bug",
+        "end_line": 114,
+        "family_member_ids": [
+          "bb-9ba94f6fbe08a04ee778"
+        ],
+        "finding_id": "bb-9ba94f6fbe08a04ee778",
+        "fingerprint": "4c11e23e8e60a98a177a4a979ec065bc2735daae264d34ab73d03485085980dc",
+        "generator_confidence": 0.99,
+        "line": 114,
+        "path": "packages/trpc/server/routers/viewer/slots.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "dayjs_reference_equality"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "d3c71573d4580d4c9f182952c69424e2e45b101b666800af33d7dab8aed86ae1",
+        "category": "bug",
+        "end_line": 123,
+        "family_member_ids": [
+          "bb-c2ae25802c37a50a8c35"
+        ],
+        "finding_id": "bb-c2ae25802c37a50a8c35",
+        "fingerprint": "0f5f95addf1e66836de76076669685f5f55f00d0f20702771b84c4b66e7cdfde",
+        "generator_confidence": 0.98,
+        "line": 123,
+        "path": "packages/trpc/server/routers/viewer/slots.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "override_boundary_check"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "1192f142918c13470eda2d2a791067348621de33ae020b28eab7cef54cbb6f47",
+        "category": "bug",
+        "end_line": 139,
+        "family_member_ids": [
+          "bb-5cfade81c5013b4c8ba4"
+        ],
+        "finding_id": "bb-5cfade81c5013b4c8ba4",
+        "fingerprint": "35d4b559c2bf32070db8c6c1be872c60a20f2cb1acc9b4913c61964cdcf575b1",
+        "generator_confidence": 0.99,
+        "line": 139,
+        "path": "packages/trpc/server/routers/viewer/slots.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "find_vs_some_working_hours"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/67876": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "bd51cefd54450fb523ecb6075a41336f2693255f10afd7c40cc5431ec6d7b57c",
+        "category": "security",
+        "end_line": 402,
+        "family_member_ids": [
+          "bb-5480be46958b3a22207e"
+        ],
+        "finding_id": "bb-5480be46958b3a22207e",
+        "fingerprint": "cd9a7c7901250b5f7c476ee58034464365d870d22acb9e675478934374f7db5c",
+        "generator_confidence": 0.9,
+        "line": 402,
+        "path": "src/sentry/integrations/github/integration.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "oauth_state_csrf"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "623c05c1bc26831f51724b43fdc2669a6d5d0d6bb8c58b1a5b25825d1c4a622f",
+        "category": "bug",
+        "end_line": 434,
+        "family_member_ids": [
+          "bb-944b950b4338f80993f6"
+        ],
+        "finding_id": "bb-944b950b4338f80993f6",
+        "fingerprint": "b16192a84d7a3569dd8693db03edb6727d720bf08baa8cd39403d3d65a60dc3a",
+        "generator_confidence": 0.98,
+        "line": 434,
+        "path": "src/sentry/integrations/github/integration.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "unhandled_user_api_error"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "d9c0b70e6e4647cc763ee587ac1cfb624e588d1fc84dd9a81d39584d1c50ff90",
+        "category": "security",
+        "end_line": 502,
+        "family_member_ids": [
+          "bb-c905628e102802885187"
+        ],
+        "finding_id": "bb-c905628e102802885187",
+        "fingerprint": "2cd03e2a8012e71083c12dbc89625e8fb894706100d3fa3b7e57702893f0981a",
+        "generator_confidence": 0.91,
+        "line": 502,
+        "path": "src/sentry/integrations/github/integration.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "installer_identity_bypass"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "ddf12d44bdac4ff3311199f878dbedb5b702002bf2ce023a6f006fa8bcb67be4",
+        "category": "test_gap",
+        "end_line": 120,
+        "family_member_ids": [
+          "bb-af2d222eb373b85313f4"
+        ],
+        "finding_id": "bb-af2d222eb373b85313f4",
+        "fingerprint": "803e00c2c156b26b1f171d408137bc1acd916dcef4ef1ecf9456416ad11aea80",
+        "generator_confidence": 0.92,
+        "line": 120,
+        "path": "tests/sentry/integrations/github/test_integration.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "missing_oauth_error_test_coverage"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/77754": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "d17e50a42cc724fd1b756484bb9a33b246d7e8a0bbfddffaee8a923add9d377f",
+        "category": "api",
+        "end_line": 416,
+        "family_member_ids": [
+          "bb-bfbf06d273c552a843bc"
+        ],
+        "finding_id": "bb-bfbf06d273c552a843bc",
+        "fingerprint": "89a0407bc1fe936bb1f35e2ee52010bc34cce92cdbde4d1b696933e2488106e6",
+        "generator_confidence": 0.88,
+        "line": 416,
+        "path": "src/sentry/integrations/mixins/issues.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "abstract_method_signature_mismatch"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "aa0f99d166c9e4cd684bff42265abdc9184fb080c59431313825168298ad968f",
+        "category": "bug",
+        "end_line": 18,
+        "family_member_ids": [
+          "bb-6e378016eb0c79e11954"
+        ],
+        "finding_id": "bb-6e378016eb0c79e11954",
+        "fingerprint": "6964e65ca9f31eeb98bc5c50c13a442b1228bb13c335a32a820373c1647a6a83",
+        "generator_confidence": 0.99,
+        "line": 18,
+        "path": "src/sentry/integrations/services/assignment_source.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "dataclass_default_evaluated_once"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/80168": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "4a3939370a5b33a474ebc66763de3078cfae8bd89877ad772249ea0f205da3e1",
+        "category": "doc_defect",
+        "end_line": 11,
+        "family_member_ids": [
+          "bb-929f1a79c2e9dc110f51"
+        ],
+        "finding_id": "bb-929f1a79c2e9dc110f51",
+        "fingerprint": "f0cde13546cc7458f3c8c5da769091e0659a420eec9141ceefc8bd3f010bb64b",
+        "generator_confidence": 0.99,
+        "line": 11,
+        "path": "src/sentry/incidents/grouptype.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "stale_comment"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "1cbdba6e3e4c8ee64c0c41a8ec6524b3df2e0df6e7872cf8f65295adfea9c8f2",
+        "category": "bug",
+        "end_line": 11,
+        "family_member_ids": [
+          "bb-ca98d2dc8c623e89d204"
+        ],
+        "finding_id": "bb-ca98d2dc8c623e89d204",
+        "fingerprint": "c6e9498346f9ddf43e39ba8902d5764e9a15f0d43d12f2810ec6b9ab5fe156aa",
+        "generator_confidence": 0.99,
+        "line": 11,
+        "path": "src/sentry/incidents/grouptype.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "abstract_method_not_implemented"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "fd0e124e2eaeb638c0f07e2c17a21c96f92305c93e5044ebcd3b882a7c8d89ec",
+        "category": "doc_defect",
+        "end_line": 228,
+        "family_member_ids": [
+          "bb-1437057b44913569b792"
+        ],
+        "finding_id": "bb-1437057b44913569b792",
+        "fingerprint": "0878acd5342e70b9b6ec911a1959d7041a9c6e6d6fd04c08274e95bcf397bcbb",
+        "generator_confidence": 0.99,
+        "line": 228,
+        "path": "src/sentry/workflow_engine/processors/detector.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "stale_docstring"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "2e6e5f06131a2b5b137783f83a9b2685472a68a5fde02af40249ee52db144927",
+        "category": "test_gap",
+        "end_line": 191,
+        "family_member_ids": [
+          "bb-1fad6579f38a29d584a3"
+        ],
+        "finding_id": "bb-1fad6579f38a29d584a3",
+        "fingerprint": "6a8316f2082f5384718cc907eff123428b0b359d21eb63eaed23feada488c257",
+        "generator_confidence": 0.96,
+        "line": 191,
+        "path": "tests/sentry/workflow_engine/processors/test_detector.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "test_value_mismatch"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/80528": [],
+    "https://github.com/getsentry/sentry/pull/93824": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "188c259671f4c1bb7e4240f8ddfc91094640981e68c8252921a569fba4cb979b",
+        "category": "bug",
+        "end_line": 435,
+        "family_member_ids": [
+          "bb-a630b15147d5a1db2c0d"
+        ],
+        "finding_id": "bb-a630b15147d5a1db2c0d",
+        "fingerprint": "fcc959479664d90031e17688aa9b10e1bac50c1d085c6e080952325625fdf883",
+        "generator_confidence": 0.99,
+        "line": 435,
+        "path": "src/sentry/consumers/__init__.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "negative_process_count_validation"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "957da429f090386b5d705c0a893ee23138db743dd9bfef8a012c0a070b8c59f1",
+        "category": "doc_defect",
+        "end_line": 32,
+        "family_member_ids": [
+          "bb-c912127d6c7d7466e16c"
+        ],
+        "finding_id": "bb-c912127d6c7d7466e16c",
+        "fingerprint": "48b5765ea0b1c775bc421702286efb7016439e79ec61abefc0751f379fb82270",
+        "generator_confidence": 0.99,
+        "line": 32,
+        "path": "src/sentry/spans/consumers/process/flusher.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "incorrect_docstring"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "703b92ba57771f50b5b86c78cf5fec638b35c50ae8b37b79944fdff294b1b509",
+        "category": "performance",
+        "end_line": 93,
+        "family_member_ids": [
+          "bb-6612c14cf47763f1b323"
+        ],
+        "finding_id": "bb-6612c14cf47763f1b323",
+        "fingerprint": "c14a1d63ae05f4a489cb2086f20134f316fd305e8a444c7ac836e8622d864f98",
+        "generator_confidence": 0.94,
+        "line": 93,
+        "path": "src/sentry/spans/consumers/process/flusher.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "flush_limit_multiplication"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "157cc66cc20b57f37afb0dce30ba6ee2bdd674426e03db0884d2811aafead682",
+        "category": "performance",
+        "end_line": 300,
+        "family_member_ids": [
+          "bb-1bfa635d418790740906"
+        ],
+        "finding_id": "bb-1bfa635d418790740906",
+        "fingerprint": "e5f3427d5907c709dd4f1e2cec2e10b6e551a78e18e1cea94fe23a3c29502f66",
+        "generator_confidence": 0.96,
+        "line": 300,
+        "path": "src/sentry/spans/consumers/process/flusher.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "redundant_memory_queries"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "d00b17cca2fd98f768d4301af5f837c47c5c325785c153ea9f632a173389e728",
+        "category": "concurrency",
+        "end_line": 341,
+        "family_member_ids": [
+          "bb-cfa43fb2717191cd8647"
+        ],
+        "finding_id": "bb-cfa43fb2717191cd8647",
+        "fingerprint": "229fd1e518b6a3911e5cedae470d11d8818f5e9b032923f3512939b247c33836",
+        "generator_confidence": 0.97,
+        "line": 341,
+        "path": "src/sentry/spans/consumers/process/flusher.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "incomplete_process_cleanup"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "144d1574dc9738005d2db306cd73e86bfac280f8c6f3b9c1ec2c021eddbbb629",
+        "category": "test_gap",
+        "end_line": 115,
+        "family_member_ids": [
+          "bb-2ffe54764a05b4590885"
+        ],
+        "finding_id": "bb-2ffe54764a05b4590885",
+        "fingerprint": "be4419ac7a740451fd79b8667f68d367236443ff1a0b59d4b019b1179c2ecb41",
+        "generator_confidence": 0.95,
+        "line": 115,
+        "path": "tests/sentry/spans/consumers/process/test_consumer.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "test_coverage_gap"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/95633": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "74c2c686db7d1ec5252f1dcfcc0d286d8502b934894f21941bb9cdeefc74a1b4",
+        "category": "concurrency",
+        "end_line": 74,
+        "family_member_ids": [
+          "bb-378bb3fe7427bfb0f0db"
+        ],
+        "finding_id": "bb-378bb3fe7427bfb0f0db",
+        "fingerprint": "df2f6f3d81bc6ce73a373d6b24c71e938aa893df14da5a4d1d258d829d55b2da",
+        "generator_confidence": 0.9,
+        "line": 74,
+        "path": "src/sentry/remote_subscriptions/consumers/queue_consumer.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "partition_map_race"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "32defe5694c02bd25646398e667bc68bb97e51afc967672a94a6d81fd72f0235",
+        "category": "data",
+        "end_line": 149,
+        "family_member_ids": [
+          "bb-95d42ac3ba743b7ab696"
+        ],
+        "finding_id": "bb-95d42ac3ba743b7ab696",
+        "fingerprint": "4bb4b57c5079f1954b469f0a5a67a56b03077f4111b903a24d3c1657bf904835",
+        "generator_confidence": 0.97,
+        "line": 149,
+        "path": "src/sentry/remote_subscriptions/consumers/queue_consumer.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "offset_ack_on_failure"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "df9af497f04ea43b42d595497845943b3126904be30c348902ce7ff0926791b2",
+        "category": "performance",
+        "end_line": 185,
+        "family_member_ids": [
+          "bb-2551204d3c579262ddf9"
+        ],
+        "finding_id": "bb-2551204d3c579262ddf9",
+        "fingerprint": "b431ea89664efd8ded653f6d305880875816edcfe94a7d0f06d9ff6ed93fa931",
+        "generator_confidence": 0.98,
+        "line": 185,
+        "path": "src/sentry/remote_subscriptions/consumers/queue_consumer.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "unbounded_queue_backpressure"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "1c976a119e2759d0f6cb2ba87cdf1608acf2fbb32429ab39b2f9cb164194d6ac",
+        "category": "concurrency",
+        "end_line": 234,
+        "family_member_ids": [
+          "bb-6b539976868485a3fb13"
+        ],
+        "finding_id": "bb-6b539976868485a3fb13",
+        "fingerprint": "391f10496cff13bb14d08b4c81f2ec219c3c9e198614ebaa42af5d4d1227c875",
+        "generator_confidence": 0.98,
+        "line": 234,
+        "path": "src/sentry/remote_subscriptions/consumers/queue_consumer.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "shutdown_work_abandonment"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "bb6e14014c5697ec68f79e273940ccd1fb7e9f7adaffb5da9f99db3a5f7d05e0",
+        "category": "concurrency",
+        "end_line": 345,
+        "family_member_ids": [
+          "bb-c638ef1e73156c6d1a19"
+        ],
+        "finding_id": "bb-c638ef1e73156c6d1a19",
+        "fingerprint": "d9b8051fe60d0c10a2ca56bfa101bfd1f3791fb9d15d7d1ab5f42149aadb3a47",
+        "generator_confidence": 0.96,
+        "line": 345,
+        "path": "src/sentry/remote_subscriptions/consumers/queue_consumer.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "join_timeout_ignored"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "64159eda75d90bc2c8c67b61284fee9721df1c2f7ecac7e0a987c0d85ad06529",
+        "category": "bug",
+        "end_line": 136,
+        "family_member_ids": [
+          "bb-88e6ab1c30af2c79c834"
+        ],
+        "finding_id": "bb-88e6ab1c30af2c79c834",
+        "fingerprint": "fda30d978977204af911666cb61eb97a55d70a53d8e7245b2ecb360f75f66f70",
+        "generator_confidence": 0.99,
+        "line": 136,
+        "path": "src/sentry/remote_subscriptions/consumers/result_consumer.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "negative_max_workers_validation"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "007ae06d7bdcc61342e4755e44885a5c81f3ee80b87efb2db44db73fedc47a2e",
+        "category": "concurrency",
+        "end_line": 184,
+        "family_member_ids": [
+          "bb-24a86ce987c6641f6ea6"
+        ],
+        "finding_id": "bb-24a86ce987c6641f6ea6",
+        "fingerprint": "27ca8355edc6edb2bc204a53698cd4f9e9f224be0598d36b136d71c0f58af26c",
+        "generator_confidence": 0.91,
+        "line": 184,
+        "path": "src/sentry/remote_subscriptions/consumers/result_consumer.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "commit_thread_leak"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "6c82fea6645800f3a586ac0b6012e51518782f606bbb96db23143c19de84033e",
+        "category": "test_gap",
+        "end_line": 106,
+        "family_member_ids": [
+          "bb-8d61d48cae11255a77b1"
+        ],
+        "finding_id": "bb-8d61d48cae11255a77b1",
+        "fingerprint": "8d031ec39d20ee0134c7f71bdf1fa3c5992bff887e97ea8bc4c57ba76f28d1c5",
+        "generator_confidence": 0.99,
+        "line": 106,
+        "path": "tests/sentry/remote_subscriptions/consumers/test_queue_consumer.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "flaky_distribution_test"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/103633": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "3a06be2094ddb1fec7abfa5b02dce7f80aa68150d8f422843293c3642058bbb0",
+        "category": "bug",
+        "end_line": 116,
+        "family_member_ids": [
+          "bb-4c82ccadba77166e2b05"
+        ],
+        "finding_id": "bb-4c82ccadba77166e2b05",
+        "fingerprint": "18260d5cd329173bcef59925e074f9497b558293ad0ba8526f0c787ffc004014",
+        "generator_confidence": 0.99,
+        "line": 116,
+        "path": "pkg/services/authz/rbac/service.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "denial_cache_identity_type_collision"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "c75bf3d1ae4c734a4ea1087c6256700f42b8bb9f51a4b18c7269c9c6bd75a0b6",
+        "category": "test_gap",
+        "end_line": 982,
+        "family_member_ids": [
+          "bb-e5bdbd8de7be9df91e78"
+        ],
+        "finding_id": "bb-e5bdbd8de7be9df91e78",
+        "fingerprint": "4df3e7e8fa80d6c5435ebb21ec612fd02e02a952b16cb1ce5c92bf73cb3fa01f",
+        "generator_confidence": 0.99,
+        "line": 982,
+        "path": "pkg/services/authz/rbac/service_test.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "test_ineffective_permission_value"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/106778": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "3e762da44818a7dd29fa5740fde3fddb5a6fe5c67d7afdc302e11faa34b54115",
+        "category": "bug",
+        "end_line": 83,
+        "family_member_ids": [
+          "bb-a79b0cb6c551ac0b7c87"
+        ],
+        "finding_id": "bb-a79b0cb6c551ac0b7c87",
+        "fingerprint": "2bd923c408c6f5fba5759b6ced31ff653fda200f5df608081e2b483791f02e1c",
+        "generator_confidence": 0.96,
+        "line": 83,
+        "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "menu_action_ruler_dependency"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "8b01e52b6a1cbdfff9256962a5f711b6aa1297aee9dfb1528cefa52c4414ab89",
+        "category": "bug",
+        "end_line": 87,
+        "family_member_ids": [
+          "bb-95af39a5ae52cbfc34bb"
+        ],
+        "finding_id": "bb-95af39a5ae52cbfc34bb",
+        "fingerprint": "6498b9e23848a178954561bde66d7da1f5ef96879777e765a524353456d34e53",
+        "generator_confidence": 0.98,
+        "line": 87,
+        "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "menu_action_ruler_dependency"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "2e9942a7bef625f469cec896a38d05eace0f7d2fce80a0a0a3eef6b7733f422c",
+        "category": "bug",
+        "end_line": 96,
+        "family_member_ids": [
+          "bb-6ab3db68180e91819ab3"
+        ],
+        "finding_id": "bb-6ab3db68180e91819ab3",
+        "fingerprint": "8b5f99ed0dbb14847438c8252c83c31715cff65667f34ea646039e3c7b87d42e",
+        "generator_confidence": 0.98,
+        "line": 96,
+        "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "menu_action_ruler_dependency"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "ef35c425dd17debe7fe3541a1d4cb666d153102f38d2c249cf350a4fae2dce2e",
+        "category": "bug",
+        "end_line": 157,
+        "family_member_ids": [
+          "bb-223638f548a248559e3c"
+        ],
+        "finding_id": "bb-223638f548a248559e3c",
+        "fingerprint": "179eff146d98af033fc0bb0666e75f01257a7e6d530cd0a512547e5a268b32f8",
+        "generator_confidence": 0.97,
+        "line": 157,
+        "path": "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "missing_react_key"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "e5ab69da65b203fef0d5d1b1dc9b6ce1ff90f9dfa8dac6b4390dff9d798e135f",
+        "category": "test_gap",
+        "end_line": 207,
+        "family_member_ids": [
+          "bb-67572f7f0f51a310af8b"
+        ],
+        "finding_id": "bb-67572f7f0f51a310af8b",
+        "fingerprint": "0b44e939bce172f8fec915608753c4732db0a7bd50434ca884328ed291b0b241",
+        "generator_confidence": 0.98,
+        "line": 207,
+        "path": "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "test_coverage_gap"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "c4809e659063745205aea2307e9bcef3015e5cf63fee75f4477d0241cc988ca5",
+        "category": "doc_defect",
+        "end_line": 43,
+        "family_member_ids": [
+          "bb-ca82e40499e8672c0d57"
+        ],
+        "finding_id": "bb-ca82e40499e8672c0d57",
+        "fingerprint": "fd5bed2bc92a2d16cd51916b876f13d065806554bf00c61c3179a33837437fc7",
+        "generator_confidence": 0.99,
+        "line": 43,
+        "path": "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "stale_documentation"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "261257eccf7ce7632c720db74c0e6d003ab486ff0f31b837dfe225f1cf7e27db",
+        "category": "bug",
+        "end_line": 40,
+        "family_member_ids": [
+          "bb-03cd14f850430f490d96"
+        ],
+        "finding_id": "bb-03cd14f850430f490d96",
+        "fingerprint": "f29e3b9d854e963dcc72b414d48eec66209da05194620f8144ecfedb7912f292",
+        "generator_confidence": 0.94,
+        "line": 40,
+        "path": "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "missing_return_to"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/107534": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "e530e176cfc6ccdb794b5c684b92495030a60a39a488a9fdf3b84511491563ea",
+        "category": "performance",
+        "end_line": 299,
+        "family_member_ids": [
+          "bb-948400fce666459cc3fd"
+        ],
+        "finding_id": "bb-948400fce666459cc3fd",
+        "fingerprint": "75b43d9020d92ff51fad0577d1ee74540d4875c654eca7e57d73a1e06edecec4",
+        "generator_confidence": 0.97,
+        "line": 299,
+        "path": "public/app/plugins/datasource/loki/querySplitting.ts",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "duplicate_adhoc_filters"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "388738fceedaebe2c6651eb0cf02f2fed8ea3ec97e729668242000a39ec17de7",
+        "category": "bug",
+        "end_line": 299,
+        "family_member_ids": [
+          "bb-ff2d5ed12e82ac82a43b"
+        ],
+        "finding_id": "bb-ff2d5ed12e82ac82a43b",
+        "fingerprint": "bb8c4399be326c802cd731dcd2f5767e2acb4432c7066b4b81ea595f0e4237aa",
+        "generator_confidence": 0.96,
+        "line": 299,
+        "path": "public/app/plugins/datasource/loki/querySplitting.ts",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "double_template_interpolation"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/76186": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "fcb4b38212571fcdcc2a3995ce18b7f04925aa49d89fff13e94f50c0296e37a5",
+        "category": "test_gap",
+        "end_line": 47,
+        "family_member_ids": [
+          "bb-531586e0b8e9dba21a38"
+        ],
+        "finding_id": "bb-531586e0b8e9dba21a38",
+        "fingerprint": "45fd890ca1858a195be587b25d47d0fb42eea39d9639c92a3567acf7d6ac60cf",
+        "generator_confidence": 0.98,
+        "line": 47,
+        "path": "pkg/plugins/log/fake.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "test_logger_fromcontext"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "308b84f0ee1e3bc5428772a618c75494465e8d5c6a4eba3f276aa53e578a7bf7",
+        "category": "api",
+        "end_line": 23,
+        "family_member_ids": [
+          "bb-ef781a89b4e25cf5a4d2"
+        ],
+        "finding_id": "bb-ef781a89b4e25cf5a4d2",
+        "fingerprint": "2744b1abbb472dc8d657343e061b1244fb43ead9c9524f73edd78a534cc437f1",
+        "generator_confidence": 0.98,
+        "line": 23,
+        "path": "pkg/plugins/log/ifaces.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "interface_breaking_change"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "c449be58c2e1603056b9074cb2a3a24c6634aa24b98add2567babd3e81b29221",
+        "category": "api",
+        "end_line": 36,
+        "family_member_ids": [
+          "bb-71b6ad9383ec3e552b87"
+        ],
+        "finding_id": "bb-71b6ad9383ec3e552b87",
+        "fingerprint": "caf0d1cad42380befca88355a48ad2fc70a667b45bfd67be6b95d6074e5a5705",
+        "generator_confidence": 0.93,
+        "line": 36,
+        "path": "pkg/services/pluginsintegration/clientmiddleware/logger_middleware.go",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "logger_middleware_context"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "5a173ddd03694fc321f9678c2ea3e49c7c15c7b363cfe06e0604c338029dae9b",
+        "category": "bug",
+        "end_line": 61,
+        "family_member_ids": [
+          "bb-4623649b27153bf62c75"
+        ],
+        "finding_id": "bb-4623649b27153bf62c75",
+        "fingerprint": "dc6b90ac5699eb533856da9de2c632b6ed56119672b5916e5108d5db04623432",
+        "generator_confidence": 0.9,
+        "line": 61,
+        "path": "pkg/services/pluginsintegration/clientmiddleware/logger_middleware.go",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "trace_id_logging"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "2baf473a47f3bceb78c1c160ec49bca2e74234c9ec61c32f839be4e63419047f",
+        "category": "api",
+        "end_line": 29,
+        "family_member_ids": [
+          "bb-b0eec8dfbf89cdd817b9"
+        ],
+        "finding_id": "bb-b0eec8dfbf89cdd817b9",
+        "fingerprint": "ec7b0c62e252c1505eef47019f13ff07f58c77e2b5b28b312b321979b6c1e785",
+        "generator_confidence": 0.95,
+        "line": 29,
+        "path": "pkg/services/pluginsintegration/clientmiddleware/metrics_middleware.go",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.91,
+        "verifier_family_key": "api_symbol_removal"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "70d39ba7c8055f19ff96d4aa1c61232f7cc0109c71cd68e970e8d1f6aa25c3e6",
+        "category": "api",
+        "end_line": 79,
+        "family_member_ids": [
+          "bb-90b5e4d827a6e8dc733a"
+        ],
+        "finding_id": "bb-90b5e4d827a6e8dc733a",
+        "fingerprint": "99aa6612c2124e4bf8fb5ee1174da799ae0544559a6271499efbb6093e824734",
+        "generator_confidence": 0.97,
+        "line": 79,
+        "path": "pkg/services/pluginsintegration/clientmiddleware/metrics_middleware.go",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "api_symbol_removal"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/79265": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "c82ae5356b7ce9a530f28e536e37b7165fd9ca47178182dfe8db4bc27fe8073d",
+        "category": "concurrency",
+        "end_line": 110,
+        "family_member_ids": [
+          "bb-e695067a0f0f6fa07231"
+        ],
+        "finding_id": "bb-e695067a0f0f6fa07231",
+        "fingerprint": "7f75e1ce0e06964e42d7d9670a115595bf199dacd3082224201f65ce6b07e88a",
+        "generator_confidence": 0.99,
+        "line": 110,
+        "path": "pkg/services/anonymous/anonimpl/anonstore/database.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "device_limit_race_condition"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "ade8f414318713c2db35a5d4c92d73a6620f3285ac26e08773a2da62a18ff174",
+        "category": "bug",
+        "end_line": 116,
+        "family_member_ids": [
+          "bb-68b3c461bfffb4e095b1"
+        ],
+        "finding_id": "bb-68b3c461bfffb4e095b1",
+        "fingerprint": "fcdacf837a7ad2ba340fa6ac49dcc20359d08544a355312eea2af17576b1ca78",
+        "generator_confidence": 0.98,
+        "line": 116,
+        "path": "pkg/services/anonymous/anonimpl/anonstore/database.go",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "cache_before_store_error"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "9cf010104961c5aa6f382242265c89b858d174a8a50c9673075125d464f37838",
+        "category": "bug",
+        "end_line": 37,
+        "family_member_ids": [
+          "bb-03faf640f87bc0bf4839"
+        ],
+        "finding_id": "bb-03faf640f87bc0bf4839",
+        "fingerprint": "edea3b539140a5c63db085949922dfa3844bd614390022f9cceaa196347a575e",
+        "generator_confidence": 0.99,
+        "line": 37,
+        "path": "pkg/services/anonymous/anonimpl/impl.go",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "wire_injector_signature"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/80329": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "dad061eb373a0d2465cbd7e8668752506d855d9b59d531ba10f8e22ca14731c1",
+        "category": "bug",
+        "end_line": 534,
+        "family_member_ids": [
+          "bb-197bfcd5c77c2a2ae9e6"
+        ],
+        "finding_id": "bb-197bfcd5c77c2a2ae9e6",
+        "fingerprint": "1736470bad95301c314aea4606f6912783264600b241782aef87aeb00dc2c5c1",
+        "generator_confidence": 0.99,
+        "line": 534,
+        "path": "pkg/services/annotations/annotationsimpl/xorm_store.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.98,
+        "verifier_family_key": "incorrect_log_level"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "31de3dfc2f845bfa425376e42a90f9cf5eee4d6fc09aabfc9818d1213d493580",
+        "category": "api",
+        "end_line": 615,
+        "family_member_ids": [
+          "bb-b97daa3c80bb8cbe3ca6"
+        ],
+        "finding_id": "bb-b97daa3c80bb8cbe3ca6",
+        "fingerprint": "93702b532747c7342c7bbf2b52a439cd2742b53f306e998c9526e6b220712678",
+        "generator_confidence": 0.96,
+        "line": 615,
+        "path": "pkg/services/annotations/annotationsimpl/xorm_store.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "sql_bind_parameter_limit"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "14fd9114a48de90c41b59077f966e1126d44b0aa3a4a141c5eceb2fcac4290fa",
+        "category": "performance",
+        "end_line": 77,
+        "family_member_ids": [
+          "bb-0cf0b852b343f00c58cc"
+        ],
+        "finding_id": "bb-0cf0b852b343f00c58cc",
+        "fingerprint": "6308c0e08915045bb46beaff8c3a501b74ec458a71438c32f8304604ae1090cc",
+        "generator_confidence": 0.98,
+        "line": 77,
+        "path": "pkg/services/cleanup/cleanup.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "cleanup_ticker_interval"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/90045": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "c26d22cdb1caba3be2b4aef469cabb64863aa4f48dca22fa9c908d4f667542cf",
+        "category": "data",
+        "end_line": 45,
+        "family_member_ids": [
+          "bb-2e314e2d84f15df7ccbe"
+        ],
+        "finding_id": "bb-2e314e2d84f15df7ccbe",
+        "fingerprint": "d62b2d6f6cf659fcf21009f64cd33662eb03efee8ba740ed6ce572b01f45676e",
+        "generator_confidence": 0.99,
+        "line": 45,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.97,
+        "verifier_family_key": "wrong_metric_recorder"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "e97ccbd3a1d9e3b60de2be5c70decef0afe6da169b8c1a751133c2761820b3f8",
+        "category": "data",
+        "end_line": 50,
+        "family_member_ids": [
+          "bb-09af2885f0cf23f272eb"
+        ],
+        "finding_id": "bb-09af2885f0cf23f272eb",
+        "fingerprint": "c119e5cbb5a968a1fbdec81ad0fb28565e66bb36ea005a7c497637e3675c4de0",
+        "generator_confidence": 0.93,
+        "line": 50,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "mutation_ordering"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "b684de544716805e2e67cde250cb71eac12d348cfbbadadc7be0921f20d417d3",
+        "category": "performance",
+        "end_line": 50,
+        "family_member_ids": [
+          "bb-df58104789dae586e2bd"
+        ],
+        "finding_id": "bb-df58104789dae586e2bd",
+        "fingerprint": "e7af1a3da12b0ac874127bafdbaa334be849268e42724980885c23640cb93f73",
+        "generator_confidence": 0.9,
+        "line": 50,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "unbounded_goroutines"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "6da5431096eb8c1d402cc536aa38971e75ea9a51de1964403cf427248e8872bd",
+        "category": "data",
+        "end_line": 51,
+        "family_member_ids": [
+          "bb-4d6ee70e7edae36435df"
+        ],
+        "finding_id": "bb-4d6ee70e7edae36435df",
+        "fingerprint": "a1f451c3d37d22b15a86009a2ebe9e63e0925d283bac7ef990aa2d6771082ec1",
+        "generator_confidence": 0.95,
+        "line": 51,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "request_context_inheritance"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "9ac36440c1f32d095c6fcdd9ad445ad550648c10cde7d1c4ebce5d0f7839b747",
+        "category": "data",
+        "end_line": 104,
+        "family_member_ids": [
+          "bb-b8ee2b56490eea54c419"
+        ],
+        "finding_id": "bb-b8ee2b56490eea54c419",
+        "fingerprint": "11ead7532a51afeced18667c82224856b505d934147ba3420227f1cd0dcfc9eb",
+        "generator_confidence": 0.9,
+        "line": 104,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "delete_notfound_handling"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "c6ed7aedfaf31cc6b21135b05ff5ef83653444ab1552905e74fce4991fafcb9f",
+        "category": "performance",
+        "end_line": 106,
+        "family_member_ids": [
+          "bb-a3f199ef7b34efd4c9e2"
+        ],
+        "finding_id": "bb-a3f199ef7b34efd4c9e2",
+        "fingerprint": "407d7a27b4aabfe4d5e2c35fd4599071a6f72c2bb93f041b94b7767182dc7482",
+        "generator_confidence": 0.98,
+        "line": 106,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.96,
+        "verifier_family_key": "metric_label_cardinality"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "7f5e00f4cca6df55016857d1ceb2fea82236adfe6fff3a923b1e617c8db75a9b",
+        "category": "data",
+        "end_line": 129,
+        "family_member_ids": [
+          "bb-4b0b05d543f39af2c972"
+        ],
+        "finding_id": "bb-4b0b05d543f39af2c972",
+        "fingerprint": "ec51aa8a3b41b0c5e6c614f96701f54530988ea345fab8d50708e7b0e50b560e",
+        "generator_confidence": 0.99,
+        "line": 129,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.97,
+        "verifier_family_key": "wrong_metric_recorder"
+      },
+      {
+        "candidate_index": 7,
+        "candidate_sha256": "8e290d25b1230b2eba355ed9137cfc07b558ed0139c777ce046dae30d95677f0",
+        "category": "data",
+        "end_line": 139,
+        "family_member_ids": [
+          "bb-129b61770e34476636c9"
+        ],
+        "finding_id": "bb-129b61770e34476636c9",
+        "fingerprint": "98d444a9185f3f8698f646465fd3b460cd159c7d4eb44752b43e8dafd1c3a28a",
+        "generator_confidence": 0.94,
+        "line": 139,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "update_wrapper_missing"
+      },
+      {
+        "candidate_index": 8,
+        "candidate_sha256": "fb7b5101810bce589b2add21fc7106c7098d0bbb947be0a033f66ea04b9cd1ee",
+        "category": "data",
+        "end_line": 166,
+        "family_member_ids": [
+          "bb-ad88b7b811c094aa14aa"
+        ],
+        "finding_id": "bb-ad88b7b811c094aa14aa",
+        "fingerprint": "2fdc22981b33827e6dbbe71b102062b938b079959e5a6562c52d19c241574a71",
+        "generator_confidence": 0.99,
+        "line": 166,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.97,
+        "verifier_family_key": "wrong_metric_recorder_deletecollection"
+      },
+      {
+        "candidate_index": 9,
+        "candidate_sha256": "3188e6b7a7e0f5d48927f14a2338568064d717ec22f8d2e2fb207d9196eee2e9",
+        "category": "test_gap",
+        "end_line": 8,
+        "family_member_ids": [
+          "bb-92c18348e3dea6cb96fd"
+        ],
+        "finding_id": "bb-92c18348e3dea6cb96fd",
+        "fingerprint": "75c327a4d2a45962cb24c933c1784d39cf78d7be37a758d31af09e42c8ae103f",
+        "generator_confidence": 0.99,
+        "line": 8,
+        "path": "pkg/apiserver/rest/dualwriter_mode3_test.go",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "unused_import"
+      },
+      {
+        "candidate_index": 10,
+        "candidate_sha256": "b4e99ea52d326a816ccf0574617780336d5b020fa7ae0d90791606e52343ccb9",
+        "category": "test_gap",
+        "end_line": 31,
+        "family_member_ids": [
+          "bb-243b21e4579bfa79a351"
+        ],
+        "finding_id": "bb-243b21e4579bfa79a351",
+        "fingerprint": "643548b8c27e2955462a788b758771822953512c2dffcf854a2a2864d9f86a2d",
+        "generator_confidence": 0.96,
+        "line": 31,
+        "path": "pkg/apiserver/rest/dualwriter_mode3_test.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "async_test_verification"
+      },
+      {
+        "candidate_index": 11,
+        "candidate_sha256": "3b2f34df8a8d09b2a20679bcedc9f326d39b8f4d8cc8bad7f67bc6022de6c1ea",
+        "category": "test_gap",
+        "end_line": 141,
+        "family_member_ids": [
+          "bb-6049550f13f270e3d5d1"
+        ],
+        "finding_id": "bb-6049550f13f270e3d5d1",
+        "fingerprint": "00b1faa47e0723f5cba25ab43fcccc472678ea9942e4c3c9b92b95c1c19f6a14",
+        "generator_confidence": 0.94,
+        "line": 141,
+        "path": "pkg/tests/apis/playlist/playlist_test.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "mode3_transition"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/90939": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "a15aff2648a53880a6d7f8ce08a0df18eda3ed74e1baf6256a1489100ecd53aa",
+        "category": "performance",
+        "end_line": 48,
+        "family_member_ids": [
+          "bb-379db7a06e6d299380d2"
+        ],
+        "finding_id": "bb-379db7a06e6d299380d2",
+        "fingerprint": "49b9cb6e6e0913a8c12af834d59272da0a38c63c3ba4d6d52c2fb3f9fdd3da9c",
+        "generator_confidence": 0.99,
+        "line": 48,
+        "path": "pkg/api/webassets/webassets.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "missing_double_check_locking"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/94942": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "1da6017e1c222ffd759bc9f0f319bdb8a91779bdc7d26f9c372bb992de63b6ab",
+        "category": "test_gap",
+        "end_line": 131,
+        "family_member_ids": [
+          "bb-811b173d75fa563fb285"
+        ],
+        "finding_id": "bb-811b173d75fa563fb285",
+        "fingerprint": "853d2b3e0dc8bc737b0010da090ba5f68e9c742def223ff86f6407d5e3e36d65",
+        "generator_confidence": 0.97,
+        "line": 131,
+        "path": "pkg/expr/reader.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "missing_test_coverage"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "672f92eaf82bcd9907f2ead8e6c8e34360eb07b29dba166ee28176bb90cef1ce",
+        "category": "doc_defect",
+        "end_line": 11,
+        "family_member_ids": [
+          "bb-7783a90a1ffd8e4870d3"
+        ],
+        "finding_id": "bb-7783a90a1ffd8e4870d3",
+        "fingerprint": "ba4e50224155d3660cd7449bdc0539821cee5168e8ddf8d53bb43a6e8b31ff6a",
+        "generator_confidence": 0.99,
+        "line": 11,
+        "path": "pkg/expr/sql/parser.go",
+        "severity": "low",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "stale_documentation"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/97529": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "ba4db5c4222fc71db902077c431b703688843bdcb848cb2797d3a5b8fdf750a9",
+        "category": "test_gap",
+        "end_line": 37,
+        "family_member_ids": [
+          "bb-4408e313d8aee46ed290"
+        ],
+        "finding_id": "bb-4408e313d8aee46ed290",
+        "fingerprint": "6c1a0486f7bc8a24073b6997545e883779f9553aba9dbdc4cc71678c82c48845",
+        "generator_confidence": 0.98,
+        "line": 37,
+        "path": "pkg/server/module_server_test.go",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "disabled_postgres_test"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "eceff070608a644214578c76c169b420514026c0c45c43512dbf23454cbaa8f9",
+        "category": "bug",
+        "end_line": 258,
+        "family_member_ids": [
+          "bb-b73928aa01d1f7feed4f"
+        ],
+        "finding_id": "bb-b73928aa01d1f7feed4f",
+        "fingerprint": "2121c76e87cd941a5a7750161ed0e14833777a6357579106a988aa6f1b224470",
+        "generator_confidence": 0.87,
+        "line": 258,
+        "path": "pkg/storage/unified/resource/server.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "init_cleanup_on_failure"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "75595c861b997ec51c358e1c0c32dff402b611a8fe4d23dcabc5c7cec6d54739",
+        "category": "concurrency",
+        "end_line": 88,
+        "family_member_ids": [
+          "bb-db641627df5df9552924"
+        ],
+        "finding_id": "bb-db641627df5df9552924",
+        "fingerprint": "cf138a4a1210ad13ca47ac531f58fd2e5df16ed8990bfd2437d603a0c42c40a7",
+        "generator_confidence": 0.96,
+        "line": 88,
+        "path": "pkg/storage/unified/search/bleve.go",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "bleve_index_build_race"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/32918": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "23dbcce921518caff7be1aa1c612b0e917bc53701cc3761a795aba09b638e4bb",
+        "category": "test_gap",
+        "end_line": 381,
+        "family_member_ids": [
+          "bb-9bd9ae9c3dbcb7fd67b6"
+        ],
+        "finding_id": "bb-9bd9ae9c3dbcb7fd67b6",
+        "fingerprint": "2e848e6e574ca17b8503464aca52f84705054451c25c64282e4c8981f87f86f8",
+        "generator_confidence": 0.99,
+        "line": 381,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/organization/cache/OrganizationCacheTest.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "cleanup_wrong_alias"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "ba45b7faf2204a9fdcacf5c7cc0c2ba755a65cb517d654ee5b6483010547b247",
+        "category": "test_gap",
+        "end_line": 425,
+        "family_member_ids": [
+          "bb-b3abd445eb3bb05d4095"
+        ],
+        "finding_id": "bb-b3abd445eb3bb05d4095",
+        "fingerprint": "4394399421ac35f15821a32486d8a6e11b626bd41d4c821daeac0e81831a0078",
+        "generator_confidence": 0.99,
+        "line": 425,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/organization/cache/OrganizationCacheTest.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "cleanup_wrong_alias"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/33832": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "be3e634163b7c205c00eb76f02f8fffe7c0ffe0b14d8e76770fe9dafaaf56314",
+        "category": "security",
+        "end_line": 109,
+        "family_member_ids": [
+          "bb-af89960c71225f837134"
+        ],
+        "finding_id": "bb-af89960c71225f837134",
+        "fingerprint": "d33a92306e0dc2874033fe36ad117e50f0fd44c942dba8ef2af9af322fabdfa7",
+        "generator_confidence": 0.93,
+        "line": 109,
+        "path": "authz/client/src/main/java/org/keycloak/authorization/client/util/crypto/AuthzClientCryptoProvider.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "ecdsa_trailing_bytes"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "dd4181b394f39cfb5c48443c87b07afc9d80b931ce9cd2063ae9000259c442df",
+        "category": "test_gap",
+        "end_line": 42,
+        "family_member_ids": [
+          "bb-de37fdc2f18723f4b2c5"
+        ],
+        "finding_id": "bb-de37fdc2f18723f4b2c5",
+        "fingerprint": "1ecff6c124dcd5fe42478c4bd9efd95b652eadab982c86bd7f5b811bf17652b0",
+        "generator_confidence": 0.91,
+        "line": 42,
+        "path": "authz/client/src/test/java/org/keycloak/authorization/client/test/ECDSAAlgorithmTest.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.8,
+        "verifier_family_key": "test_curve_coverage"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "6bbd311dd03dfdec1c6704008d7b067a96eeac451cfe72f23b8fd9c1a31fd625",
+        "category": "test_gap",
+        "end_line": 47,
+        "family_member_ids": [
+          "bb-fd31c2c88953fd015fbc"
+        ],
+        "finding_id": "bb-fd31c2c88953fd015fbc",
+        "fingerprint": "9bdeebdf4b9989fb33dbed515e1b199a3fe4bbde18831ae3ca1779984283b93e",
+        "generator_confidence": 0.94,
+        "line": 47,
+        "path": "authz/client/src/test/java/org/keycloak/authorization/client/test/ECDSAAlgorithmTest.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "test_discovery_gap"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "e4fc92105a4ae29a18568a027c2a5021a578717eb2156e1d0efaecb07ef0febf",
+        "category": "security",
+        "end_line": 57,
+        "family_member_ids": [
+          "bb-079a0500849c4b0bcb8d"
+        ],
+        "finding_id": "bb-079a0500849c4b0bcb8d",
+        "fingerprint": "e3dce4e5140a5574f44531d75d1a17c918b26763b0680d515cfc77f5e0562950",
+        "generator_confidence": 0.96,
+        "line": 57,
+        "path": "common/src/main/java/org/keycloak/common/crypto/CryptoIntegration.java",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "ambiguous_provider_priority"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "cbfeb0f1e1e2cc9b224a2138d8ddd94deffc3b749a13624e8a82d9be6d677419",
+        "category": "api",
+        "end_line": 44,
+        "family_member_ids": [
+          "bb-510c03dc9a36c301b67d"
+        ],
+        "finding_id": "bb-510c03dc9a36c301b67d",
+        "fingerprint": "fff38f1d88f1c5d3227d4a9618b29885eef30b12d7844ea40520b1a4238d8607",
+        "generator_confidence": 0.98,
+        "line": 44,
+        "path": "common/src/main/java/org/keycloak/common/crypto/CryptoProvider.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "spi_binary_compatibility"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/36880": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "fa7b58c10d5749326ddf6506ac46eb756b0b1466f22e443b2e327e8c344e2841",
+        "category": "data",
+        "end_line": 73,
+        "family_member_ids": [
+          "bb-00f87baf6d408cd586c7"
+        ],
+        "finding_id": "bb-00f87baf6d408cd586c7",
+        "fingerprint": "280dc6ae76f079a99df52494957795812d882486491cd11b3979f9ba0ea7fe89",
+        "generator_confidence": 0.97,
+        "line": 73,
+        "path": "server-spi-private/src/main/java/org/keycloak/authorization/AdminPermissionsSchema.java",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "schema_migration_backfill"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "9bd9797b0184e8fe0924170a7be4683747459c0a754308fd75eb65f4509f9ff2",
+        "category": "data",
+        "end_line": 77,
+        "family_member_ids": [
+          "bb-5eed8d8d11c86890c760"
+        ],
+        "finding_id": "bb-5eed8d8d11c86890c760",
+        "fingerprint": "b4932404f16e14095eff78437e13c80c381f8e1cf26fb9e96e16d5d004d43eab",
+        "generator_confidence": 0.82,
+        "line": 77,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "v2_cleanup_missing"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "60c542ea876026c7c43b70af346ead5ef77574bde6da4d65f48642fd606c6671",
+        "category": "api",
+        "end_line": 77,
+        "family_member_ids": [
+          "bb-e465c144fb4cc50c8e7c"
+        ],
+        "finding_id": "bb-e465c144fb4cc50c8e7c",
+        "fingerprint": "cf2c50cb6841c2bef8c0ea3206cf3bd1d5d29f0e955cef73cd6ad9af568ec246",
+        "generator_confidence": 0.9,
+        "line": 77,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "v1_v2_feature_conflict"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "d3de94fa1f1eece965263ee80de5a300a6be3f99831a0ab19a89b52acf5cea72",
+        "category": "bug",
+        "end_line": 87,
+        "family_member_ids": [
+          "bb-a8f71be3880aa593c41a"
+        ],
+        "finding_id": "bb-a8f71be3880aa593c41a",
+        "fingerprint": "14adf5f0b989cabcc0a7efa953f3ed87a24572ac8d18c42aef4c6adc445399c3",
+        "generator_confidence": 0.94,
+        "line": 87,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "manage_implies_view"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "899fbb20d5deadbafe25e3b42c5e3116e9a1b7dabab3e75e1b59fd0c89c97d0e",
+        "category": "api",
+        "end_line": 138,
+        "family_member_ids": [
+          "bb-642c9d0ae98068cf963d"
+        ],
+        "finding_id": "bb-642c9d0ae98068cf963d",
+        "fingerprint": "9c224c6b1dbf4a0cf578db4b1765f0c24d9346fb9a40b509304e3bf8dd86bfff",
+        "generator_confidence": 0.9,
+        "line": 138,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "resource_type_missing"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "b1318afab5837c00b4ea09775693771226e14811914a50e6ed5e9239cfcbb8b4",
+        "category": "bug",
+        "end_line": 214,
+        "family_member_ids": [
+          "bb-3a45b9b1c08b5f72b0c3"
+        ],
+        "finding_id": "bb-3a45b9b1c08b5f72b0c3",
+        "fingerprint": "dbcee68bfb5975f573fe99d0b569959da48a4baf0066f0a1419a642a4220d469",
+        "generator_confidence": 0.88,
+        "line": 214,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "resource_owner_lookup"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "0f51c7391dd3003fedb8942d8c5d357d0269abd02e5df3af1d0e8335b16667a4",
+        "category": "bug",
+        "end_line": 244,
+        "family_member_ids": [
+          "bb-1e950c8987e0e6fea889"
+        ],
+        "finding_id": "bb-1e950c8987e0e6fea889",
+        "fingerprint": "646d2c07072a1ce1aada1bc46d4759d895672a9bd8d7e55389b444f04816ecee",
+        "generator_confidence": 0.87,
+        "line": 244,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/ClientPermissionsV2.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.8,
+        "verifier_family_key": "resource_owner_lookup"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/36882": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "01c47eb06d71eb9fd426559776d8f30ef724bd7ba5c6b30471b1a01fcab21eac",
+        "category": "doc_defect",
+        "end_line": 477,
+        "family_member_ids": [
+          "bb-db59d5fa536669d0f110"
+        ],
+        "finding_id": "bb-db59d5fa536669d0f110",
+        "fingerprint": "08a55ef830af0b4db3da8825c08ee577fe1ed090ab9742495bf346de1a270e7b",
+        "generator_confidence": 0.9,
+        "line": 477,
+        "path": "docs/guides/operator/advanced-configuration.adoc",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "rolling_updates_build_requirement"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/37038": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "6c067408b80639bdbbcb462bda03c87b344aa271be87e22921f77ee47d758d35",
+        "category": "data",
+        "end_line": 74,
+        "family_member_ids": [
+          "bb-9ec33e0d91544aee08ba"
+        ],
+        "finding_id": "bb-9ec33e0d91544aee08ba",
+        "fingerprint": "a4bbfaadab218b2ede99e0b2dd9ba8b6db3f7ecfa62956ec8aa0138ecd7ea0ff",
+        "generator_confidence": 0.9,
+        "line": 74,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/AdminPermissions.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "v2_group_cleanup_missing"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "f3e55379dd899d8e5dd5d9adb4a0c5b85df39c6b0a43b70aaabfdebc82f5722f",
+        "category": "doc_defect",
+        "end_line": 133,
+        "family_member_ids": [
+          "bb-59af169b463017db1e4f"
+        ],
+        "finding_id": "bb-59af169b463017db1e4f",
+        "fingerprint": "27ffcdcfc2a349a1d2b9ac7f767646b22d874dd12b17b0b3e6b20ce5861ec678",
+        "generator_confidence": 0.99,
+        "line": 133,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "javadoc_wrong_predicate_link"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "022f32070a20a411eba436cf8c4864310c0b40d719df2ba749d829574fcd2c05",
+        "category": "doc_defect",
+        "end_line": 145,
+        "family_member_ids": [
+          "bb-ce46e610cd57d7623797"
+        ],
+        "finding_id": "bb-ce46e610cd57d7623797",
+        "fingerprint": "1ba909f439f51f8b057c139b9c484474d708efcad3b23d2fe0844e2401d8dc37",
+        "generator_confidence": 0.99,
+        "line": 145,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionEvaluator.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.97,
+        "verifier_family_key": "javadoc_wrong_return_type"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "3d503fbd6a14f6827ef1fac8c5d23967a0f932fe33adb294f152d4c3c36cc881",
+        "category": "security",
+        "end_line": 70,
+        "family_member_ids": [
+          "bb-5c6b5e9a9364c5806da2"
+        ],
+        "finding_id": "bb-5c6b5e9a9364c5806da2",
+        "fingerprint": "1d9a0314b2b5567e3744944c76061afea3595c632fcd8c54c335013443213f9c",
+        "generator_confidence": 0.98,
+        "line": 70,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "view_manage_scope_confusion"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "8da8e6b97b4d844aa261d0665e818df4178fbe15c3e6e737b0d8ff6576795326",
+        "category": "bug",
+        "end_line": 123,
+        "family_member_ids": [
+          "bb-b8c8c8406af2e27c9c1c"
+        ],
+        "finding_id": "bb-b8c8c8406af2e27c9c1c",
+        "fingerprint": "53edfbeedde0a3c5865b9081413789e7b9c29e40d170a3584cdad5b0c617c558",
+        "generator_confidence": 0.99,
+        "line": 123,
+        "path": "services/src/main/java/org/keycloak/services/resources/admin/permissions/GroupPermissionsV2.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "resource_id_vs_group_id"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/37429": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "cdec1b1233479935c6f7b00c7421e0ef4e7bada9cb0795fb9d3645ee079b9728",
+        "category": "bug",
+        "end_line": 188,
+        "family_member_ids": [
+          "bb-6f2f0fada76f72e57cf6"
+        ],
+        "finding_id": "bb-6f2f0fada76f72e57cf6",
+        "fingerprint": "7510316461b2a2be6bfcb87a8ac079a6fe142a122cd039631faf40c96d132940",
+        "generator_confidence": 0.98,
+        "line": 188,
+        "path": "js/apps/account-ui/maven-resources/theme/keycloak.v3/account/messages/messages_en.properties",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "messageformat_placeholder_mismatch"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "4c43231397d72ee35a1f30bd2a0eabc75da1dc19598f52393fef490d3d8178b1",
+        "category": "bug",
+        "end_line": 3138,
+        "family_member_ids": [
+          "bb-49f4843e88de3b60dc5f"
+        ],
+        "finding_id": "bb-49f4843e88de3b60dc5f",
+        "fingerprint": "67ea084eea1ae0c6ae9da767f675e3373dae3dc777cc74231a67e26ac4494793",
+        "generator_confidence": 0.98,
+        "line": 3138,
+        "path": "js/apps/admin-ui/maven-resources/theme/keycloak.v2/admin/messages/messages_en.properties",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "messageformat_placeholder_mismatch"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "2270c857980f9ba50a6135af0cab3d732c4530c9648fd5b54d21bb604dbd918e",
+        "category": "api",
+        "end_line": 76,
+        "family_member_ids": [
+          "bb-7b995390a4116fde1b3b"
+        ],
+        "finding_id": "bb-7b995390a4116fde1b3b",
+        "fingerprint": "f322bb4f2b2a34a93d436275cba508965d7106c63933e8efb16fcb3d92a3c594",
+        "generator_confidence": 0.88,
+        "line": 76,
+        "path": "misc/theme-verifier/src/main/java/org/keycloak/themeverifier/VerifyMessageProperties.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "missing_english_file_crash"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "539d6281d3913dbc2778737a2d58cb13631e82e6e7bd0f88a3e1af6bad5d314f",
+        "category": "bug",
+        "end_line": 154,
+        "family_member_ids": [
+          "bb-1fefd4862c3d5483d6d7"
+        ],
+        "finding_id": "bb-1fefd4862c3d5483d6d7",
+        "fingerprint": "e67a226f941eaf8f51058cd475cfd96d3bd922b3416d9c5bda1c93b4a94754c4",
+        "generator_confidence": 0.9,
+        "line": 154,
+        "path": "misc/theme-verifier/src/main/java/org/keycloak/themeverifier/VerifyMessageProperties.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "anchor_order_validation"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "0570741fac5b091c4168b4aa561f1ceb6bd94856f0f8c86b619dcfdc068f548b",
+        "category": "doc_defect",
+        "end_line": 101,
+        "family_member_ids": [
+          "bb-f7407282c8419bf15cb9"
+        ],
+        "finding_id": "bb-f7407282c8419bf15cb9",
+        "fingerprint": "de7a324593ebae6e998cd8c36dc0f9833ee9ea1fc25985128578710cd62ae801",
+        "generator_confidence": 0.99,
+        "line": 101,
+        "path": "themes/src/main/resources-community/theme/base/account/messages/messages_lt.properties",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.99,
+        "verifier_family_key": "wrong_language_translation"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "fa8899c9f249dde970b16ee965a78f5fa938b52f862e9934e6c8c77ddd2d7a1b",
+        "category": "doc_defect",
+        "end_line": 112,
+        "family_member_ids": [
+          "bb-3b2c6c76251138fe699f"
+        ],
+        "finding_id": "bb-3b2c6c76251138fe699f",
+        "fingerprint": "8bc33d871df6aaf13c5ead94f5334e9c5a24f0710878463ac773a89b63932fa9",
+        "generator_confidence": 0.96,
+        "line": 112,
+        "path": "themes/src/main/resources-community/theme/base/account/messages/messages_zh_CN.properties",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "wrong_script_translation"
+      },
+      {
+        "candidate_index": 6,
+        "candidate_sha256": "5e7f18436cce54a728670f28526ee197607e006366a326a986d1505a5c89fd8d",
+        "category": "doc_defect",
+        "end_line": 71,
+        "family_member_ids": [
+          "bb-c473c488b15e639b3a91"
+        ],
+        "finding_id": "bb-c473c488b15e639b3a91",
+        "fingerprint": "265b99de52a9cd1ee07e30c906578428eaec9c3f6a0edd6f5df3765f792e99e1",
+        "generator_confidence": 0.99,
+        "line": 71,
+        "path": "themes/src/main/resources-community/theme/base/login/messages/messages_lt.properties",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.99,
+        "verifier_family_key": "wrong_language_translation"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/37634": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "d4b0a92962822b9bd13064da9ca92c97e42882c442693a8d4399e2b7543bafdf",
+        "category": "api",
+        "end_line": 115,
+        "family_member_ids": [
+          "bb-f0e0bcb9a33e26e2198d"
+        ],
+        "finding_id": "bb-f0e0bcb9a33e26e2198d",
+        "fingerprint": "876aae6fc5c6ac25dac7a89c7033061d8a7587e84bd3526a284768467e50b24b",
+        "generator_confidence": 0.93,
+        "line": 102,
+        "path": "server-spi-private/src/main/java/org/keycloak/protocol/oidc/grants/OAuth2GrantType.java",
+        "severity": "medium",
+        "side": "LEFT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "spi_binary_compatibility"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "b491cf79520665a527be5b8a94139d0b3b45f857f831b9f824d1b32218adcef0",
+        "category": "api",
+        "end_line": 33,
+        "family_member_ids": [
+          "bb-ba86cee6f6f44f9d479f"
+        ],
+        "finding_id": "bb-ba86cee6f6f44f9d479f",
+        "fingerprint": "3173160fd52dbbc9fd4d481e0bcfa34524491e0b2ac749bdbc9c0e326bb2fba1",
+        "generator_confidence": 0.98,
+        "line": 33,
+        "path": "server-spi-private/src/main/java/org/keycloak/protocol/oidc/grants/OAuth2GrantTypeFactory.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "spi_binary_compatibility"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "e349721ef64261b4fece444a123c15b7feab74c04cc2d84187141a12158e5d9a",
+        "category": "bug",
+        "end_line": 73,
+        "family_member_ids": [
+          "bb-6da34de52647bbaff16c"
+        ],
+        "finding_id": "bb-6da34de52647bbaff16c",
+        "fingerprint": "b0c388805981f99adef4612c8c09648ccbad10d2918358a23622015cebbda343",
+        "generator_confidence": 0.99,
+        "line": 73,
+        "path": "services/src/main/java/org/keycloak/protocol/oidc/encode/AccessTokenContext.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.97,
+        "verifier_family_key": "null_check_wrong_variable"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "9b93568bcb1728c24982aad68202454436727bb217948ef4f76ab9adfded6871",
+        "category": "bug",
+        "end_line": 74,
+        "family_member_ids": [
+          "bb-a81857b8682f596ded7a"
+        ],
+        "finding_id": "bb-a81857b8682f596ded7a",
+        "fingerprint": "775e018e53a63d6677ea2d5b6171d7d6adcbe6e3fbeb5d88b4bed833e5399efb",
+        "generator_confidence": 0.97,
+        "line": 74,
+        "path": "services/src/main/java/org/keycloak/protocol/oidc/encode/DefaultTokenContextEncoderProvider.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "shortcut_length_mismatch"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "5ff6039a4da7c4981604e4670cbb89c6a8d81ab8e206a97990a110162c91c22b",
+        "category": "data",
+        "end_line": 113,
+        "family_member_ids": [
+          "bb-ee201ad6d6a75bb7ac6a"
+        ],
+        "finding_id": "bb-ee201ad6d6a75bb7ac6a",
+        "fingerprint": "6c5eacf5bf9fb3e1fca96113017b05f45bf7b630a44907e32115a735486126ae",
+        "generator_confidence": 0.92,
+        "line": 113,
+        "path": "services/src/main/java/org/keycloak/protocol/oidc/encode/DefaultTokenContextEncoderProviderFactory.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "shortcut_collision"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "1a38ae605311fb6587fe529e7d1865944c141bc30e6824cc52ba040a3b6d3369",
+        "category": "test_gap",
+        "end_line": 483,
+        "family_member_ids": [
+          "bb-29a679263630464e88cd"
+        ],
+        "finding_id": "bb-29a679263630464e88cd",
+        "fingerprint": "2367cab90ab02128d3aa478cc2ca902b9ae38aff24bcff3b66043f54f261efcc",
+        "generator_confidence": 0.99,
+        "line": 483,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AssertEvents.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "test_matcher_logic_error"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/38446": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "fb4e4e677c528d1870cb321bafe92f367c3b0e9553fe33cc9950e61fd8060817",
+        "category": "data",
+        "end_line": 123,
+        "family_member_ids": [
+          "bb-289fa866b49af69fc9b6"
+        ],
+        "finding_id": "bb-289fa866b49af69fc9b6",
+        "fingerprint": "b7bb8c9a3c9b40d95b2dfea655507072886e4a09234614e4a05502e560dd17f3",
+        "generator_confidence": 0.91,
+        "line": 123,
+        "path": "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "recovery_code_label_loss"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "44feb668d922157a9226121cba0062931335c0dca159abb9753bdaf42f366a2b",
+        "category": "api",
+        "end_line": 125,
+        "family_member_ids": [
+          "bb-3cc66a663be22a1d62e8"
+        ],
+        "finding_id": "bb-3cc66a663be22a1d62e8",
+        "fingerprint": "9caf26ece35e7688856f7ce8388ad62d3cf08a117ebb5fd38ed5a71cb27f83b3",
+        "generator_confidence": 0.94,
+        "line": 125,
+        "path": "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "federated_credential_lifecycle"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "0829dded5a6ea153bb498f6acfe5e7ec80d1d24758ee6b16800544eaf0e1cd49",
+        "category": "test_gap",
+        "end_line": 237,
+        "family_member_ids": [
+          "bb-2dbdce8603a1b51e890d"
+        ],
+        "finding_id": "bb-2dbdce8603a1b51e890d",
+        "fingerprint": "0d49953d2145a84b1f3a7ac155965729471885af7de51141ae73ece9dca9bc26",
+        "generator_confidence": 0.96,
+        "line": 237,
+        "path": "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "missing_credential_id"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "ff4c9a980f5b7fecc92877d2f5086ffe39cabec8aa4ba178c4b74078cbafb15f",
+        "category": "test_gap",
+        "end_line": 340,
+        "family_member_ids": [
+          "bb-ed276a15d6f5d32964ce"
+        ],
+        "finding_id": "bb-ed276a15d6f5d32964ce",
+        "fingerprint": "ed24040528c93b72bc27c21c59f262fbb632fd3d8ca62513503098505ed60f90",
+        "generator_confidence": 0.98,
+        "line": 340,
+        "path": "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "recovery_code_reuse"
+      },
+      {
+        "candidate_index": 4,
+        "candidate_sha256": "26ed14b1c4811c2c2eb51d864c8cef9cc4b2b690a35bc91b1a964fe12318cba5",
+        "category": "test_gap",
+        "end_line": 259,
+        "family_member_ids": [
+          "bb-18149070fc56a42819b8"
+        ],
+        "finding_id": "bb-18149070fc56a42819b8",
+        "fingerprint": "b6e494359f37f619ffffbae07f20e2016db245e1b589e3e754549b1477582dce",
+        "generator_confidence": 0.99,
+        "line": 259,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "off_by_one_code_number"
+      },
+      {
+        "candidate_index": 5,
+        "candidate_sha256": "31e0f695c7f4a6385fecabd923a9468901603376044486bc5ed8bacd777325e8",
+        "category": "test_gap",
+        "end_line": 482,
+        "family_member_ids": [
+          "bb-29db146b55ad4e4f067b"
+        ],
+        "finding_id": "bb-29db146b55ad4e4f067b",
+        "fingerprint": "afd0f914ed94005f4dbe6ff5bf9203b813594fe027bcc9cc63da7fea06e52d8f",
+        "generator_confidence": 0.99,
+        "line": 482,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "off_by_one_code_number"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/40940": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "ba41664c8d6ec6778721e54e7934e12049c64862a1af9d47dbfb1e58517174a1",
+        "category": "api",
+        "end_line": 275,
+        "family_member_ids": [
+          "bb-7b7e838e7c353834929f"
+        ],
+        "finding_id": "bb-7b7e838e7c353834929f",
+        "fingerprint": "e9ba190333eb5199e8ffa6076a92bdc57b52dd5cd40995dbb2a7969870f0580b",
+        "generator_confidence": 0.98,
+        "line": 275,
+        "path": "model/infinispan/src/main/java/org/keycloak/models/cache/infinispan/GroupAdapter.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "null_subgroup_count_contract_violation"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "31c12609d1a276b0be2c7adad7eff409445d7af556fb0b5b736acf5afa9ffc86",
+        "category": "test_gap",
+        "end_line": 149,
+        "family_member_ids": [
+          "bb-0a3edf001d5655609b42"
+        ],
+        "finding_id": "bb-0a3edf001d5655609b42",
+        "fingerprint": "f708783e5a20f5a875a0f7d86606a25341f750283c626957baadc395847db833",
+        "generator_confidence": 0.97,
+        "line": 149,
+        "path": "tests/base/src/test/java/org/keycloak/tests/admin/group/GroupTest.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "test_race_no_reader_execution"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "aaf26db4da0df273f03e31c8997c1864e1de10afdb3d6f72d74c5495a98fd521",
+        "category": "test_gap",
+        "end_line": 155,
+        "family_member_ids": [
+          "bb-a0fc2421f84b7ced27ae"
+        ],
+        "finding_id": "bb-a0fc2421f84b7ced27ae",
+        "fingerprint": "fcd19dc236eda9c6f16988f6cb166aaffa6daf0cb262d4639cfef7fde96ec61a",
+        "generator_confidence": 0.95,
+        "line": 155,
+        "path": "tests/base/src/test/java/org/keycloak/tests/admin/group/GroupTest.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.8,
+        "verifier_family_key": "test_thread_cleanup_missing_finally"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "6b56a30948997215828d893721dc89f52b09354e303ea2ff60eca26996e4c43d",
+        "category": "test_gap",
+        "end_line": 157,
+        "family_member_ids": [
+          "bb-0a8e9237fb8c81e657c1"
+        ],
+        "finding_id": "bb-0a8e9237fb8c81e657c1",
+        "fingerprint": "e8311f75e92ddcaf85c07d8b7b737e2c8e52592e210e4cebe94c51e04cb1e794",
+        "generator_confidence": 0.98,
+        "line": 157,
+        "path": "tests/base/src/test/java/org/keycloak/tests/admin/group/GroupTest.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "generator-validated",
+        "verifier_confidence": 0.82,
+        "verifier_family_key": "test_race_assertion_timing"
+      }
+    ]
+  },
+  "finding_stage": "generator",
+  "review_model": "openai/gpt-5.6-terra",
+  "schema_version": "bugbunny-candidate-audit-v1",
+  "tool_id": "bugbunny-generator-openai-gpt-5-6-terra-bd07fddf80e3"
+}
