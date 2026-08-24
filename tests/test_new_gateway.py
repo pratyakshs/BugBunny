@@ -620,6 +620,43 @@ def test_runtime_provenance_marks_non_openai_martian_reasoning_parameter_omitted
     assert provenance["limits"]["temperature_applied"] is True
 
 
+@pytest.mark.parametrize(
+    "model",
+    [
+        "anthropic/claude-fable-5",
+        "anthropic/claude-opus-4-8",
+        "anthropic/claude-opus-5",
+        "anthropic/claude-sonnet-5",
+    ],
+)
+@pytest.mark.asyncio
+async def test_martian_omits_temperature_for_routes_that_reject_it(model: str):
+    captured: dict[str, object] = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        captured.update(json.loads(request.content))
+        return httpx.Response(200, json=_response('{"findings":[]}'))
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        gateway = ModelGateway(
+            GatewayConfig(api_key="test-key", temperature=0.25),
+            http_client=client,
+        )
+        result = await gateway.complete_json(
+            "review",
+            model=model,
+            stage="generation",
+            schema_name="findings",
+            schema=SCHEMA,
+        )
+
+    assert result.payload == {"findings": []}
+    assert "temperature" not in captured
+    provenance = gateway.runtime_provenance(model)
+    assert provenance["limits"]["temperature"] == 0.25
+    assert provenance["limits"]["temperature_applied"] is False
+
+
 def test_json_extraction_handles_fences_prose_and_rejects_duplicates():
     assert extract_json_object('answer:\n```json\n{"ok": true}\n```') == {"ok": True}
     assert extract_json_object('preface {"ok": true} trailing') == {"ok": True}

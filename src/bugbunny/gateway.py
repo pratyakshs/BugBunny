@@ -24,6 +24,19 @@ from bugbunny.models import CallRecord
 MARTIAN_API_BASE = "https://api.withmartian.com/v1"
 MARTIAN_API_KEY_ENV = "MARTIAN_API_KEY"
 
+# These catalog routes reject the otherwise-supported ``temperature`` field
+# with HTTP 400. Keep the compatibility rule explicit and model-scoped so the
+# fixed-temperature behavior of existing routes (including the benchmark
+# verifier and judge) does not change.
+_MARTIAN_MODELS_WITHOUT_TEMPERATURE = frozenset(
+    {
+        "anthropic/claude-fable-5",
+        "anthropic/claude-opus-4-8",
+        "anthropic/claude-opus-5",
+        "anthropic/claude-sonnet-5",
+    }
+)
+
 # ``codex exec`` is an autonomous agent binary, not a plain completion HTTP
 # client.  Its child environment and tool surface therefore need a much tighter
 # boundary than the in-process Martian HTTP adapter: review prompts contain
@@ -96,6 +109,11 @@ def _codex_environment() -> dict[str, str]:
     return {
         name: value for name in _CODEX_ENV_ALLOWLIST if (value := os.environ.get(name)) is not None
     }
+
+
+def _martian_uses_temperature(model: str) -> bool:
+    provider, _ = _model_parts(model)
+    return provider != "openai" and model not in _MARTIAN_MODELS_WITHOUT_TEMPERATURE
 
 
 class GatewayError(RuntimeError):
@@ -265,7 +283,7 @@ class GatewayConfig:
                 "max_output_tokens": self.max_output_tokens,
                 "max_output_tokens_transport_applied": not is_codex,
                 "temperature": self.temperature,
-                "temperature_applied": not is_codex and provider != "openai",
+                "temperature_applied": not is_codex and _martian_uses_temperature(model),
                 "reasoning_effort_parameter_will_be_sent": is_codex or provider == "openai",
             },
             "api_base": api_base,
@@ -921,7 +939,7 @@ class ModelGateway:
         provider, _ = _model_parts(model)
         if provider == "openai":
             request["reasoning_effort"] = reasoning_effort
-        else:
+        elif _martian_uses_temperature(model):
             request["temperature"] = self.config.temperature
 
         active_request = request

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bugbunny"
-version = "0.7.0"
+version = "0.7.1"
 description = "Fast, lossless, reproducible LLM code review for CodeReviewBench"
 readme = "README.md"
 requires-python = ">=3.11"

@@ -164,6 +164,9 @@ is limited to OpenAI reasoning models, so BugBunny omits it for `anthropic/*`,
 `google/*`, and other Martian prefixes. Artifacts record both the requested
 value and whether BugBunny is configured to send the transport parameter; a
 requested `high` value must not be interpreted as sent when that flag is false.
+The gateway also rejects `temperature` for some catalog routes; BugBunny keeps
+an explicit model-scoped compatibility list and records `temperature_applied`
+as false for those routes without changing fixed-temperature behavior elsewhere.
 
 ## Repository context
 
