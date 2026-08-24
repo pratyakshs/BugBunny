@@ -652,9 +652,11 @@ async def test_martian_omits_temperature_for_routes_that_reject_it(model: str):
 
     assert result.payload == {"findings": []}
     assert "temperature" not in captured
+    assert captured["reasoning_effort"] == "low"
     provenance = gateway.runtime_provenance(model)
     assert provenance["limits"]["temperature"] == 0.25
     assert provenance["limits"]["temperature_applied"] is False
+    assert provenance["limits"]["reasoning_effort_parameter_will_be_sent"] is True
 
 
 def test_json_extraction_handles_fences_prose_and_rejects_duplicates():

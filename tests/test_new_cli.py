@@ -284,6 +284,32 @@ def test_pinned_verifier_needs_its_own_window_in_an_adaptive_run() -> None:
     assert config.verifier_max_output_tokens == 16_000
 
 
+def test_generation_and_verifier_can_use_separate_completion_caps() -> None:
+    args = cli.build_parser().parse_args(
+        [
+            "review-pr",
+            "https://github.com/o/r/pull/1",
+            "--context-window-tokens",
+            "200000",
+            "--verifier-model",
+            "provider/verifier",
+            "--verifier-context-window-tokens",
+            "200000",
+            "--max-output-tokens",
+            "50000",
+            "--verifier-max-output-tokens",
+            "32768",
+        ]
+    )
+
+    config = cli._review_config(args)
+
+    assert config.max_output_tokens == 50_000
+    assert config.verifier_max_output_tokens == 32_768
+    assert config.generation_input_char_budget == 291_808
+    assert config.verifier_input_char_budget == 326_272
+
+
 def test_model_window_override_must_name_a_selected_model() -> None:
     args = cli.build_parser().parse_args(
         [

@@ -36,6 +36,14 @@ _MARTIAN_MODELS_WITHOUT_TEMPERATURE = frozenset(
         "anthropic/claude-sonnet-5",
     }
 )
+_MARTIAN_NON_OPENAI_MODELS_WITH_REASONING_EFFORT = frozenset(
+    {
+        "anthropic/claude-fable-5",
+        "anthropic/claude-opus-4-8",
+        "anthropic/claude-opus-5",
+        "anthropic/claude-sonnet-5",
+    }
+)
 
 # ``codex exec`` is an autonomous agent binary, not a plain completion HTTP
 # client.  Its child environment and tool surface therefore need a much tighter
@@ -114,6 +122,11 @@ def _codex_environment() -> dict[str, str]:
 def _martian_uses_temperature(model: str) -> bool:
     provider, _ = _model_parts(model)
     return provider != "openai" and model not in _MARTIAN_MODELS_WITHOUT_TEMPERATURE
+
+
+def _martian_uses_reasoning_effort(model: str) -> bool:
+    provider, _ = _model_parts(model)
+    return provider == "openai" or model in _MARTIAN_NON_OPENAI_MODELS_WITH_REASONING_EFFORT
 
 
 class GatewayError(RuntimeError):
@@ -284,7 +297,9 @@ class GatewayConfig:
                 "max_output_tokens_transport_applied": not is_codex,
                 "temperature": self.temperature,
                 "temperature_applied": not is_codex and _martian_uses_temperature(model),
-                "reasoning_effort_parameter_will_be_sent": is_codex or provider == "openai",
+                "reasoning_effort_parameter_will_be_sent": (
+                    is_codex or _martian_uses_reasoning_effort(model)
+                ),
             },
             "api_base": api_base,
         }
@@ -936,10 +951,9 @@ class ModelGateway:
                 "schema_name": schema_name,
             },
         }
-        provider, _ = _model_parts(model)
-        if provider == "openai":
+        if _martian_uses_reasoning_effort(model):
             request["reasoning_effort"] = reasoning_effort
-        elif _martian_uses_temperature(model):
+        if _martian_uses_temperature(model):
             request["temperature"] = self.config.temperature
 
         active_request = request

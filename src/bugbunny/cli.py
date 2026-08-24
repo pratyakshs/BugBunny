@@ -194,6 +194,13 @@ def _add_model_options(
         metavar="N",
         help=("completion-token cap for Martian and planning reserve for Codex (default: 32768)"),
     )
+    parser.add_argument(
+        "--verifier-max-output-tokens",
+        type=_positive_int,
+        default=None,
+        metavar="N",
+        help="separate verifier completion cap (default: --max-output-tokens)",
+    )
 
 
 def _add_auth_options(parser: argparse.ArgumentParser) -> None:
@@ -629,9 +636,12 @@ def _review_config(args: argparse.Namespace, *, model: str | None = None) -> Rev
     context_config = _resolved_context_config(args, model=selected_model)
     review_window = context_config["context_window_tokens"]
     verifier_window = getattr(args, "verifier_context_window_tokens", None)
+    verifier_output_override = getattr(args, "verifier_max_output_tokens", None)
     if verifier is None:
         if verifier_window is not None:
             raise CliError("--verifier-context-window-tokens requires an enabled verifier")
+        if verifier_output_override is not None:
+            raise CliError("--verifier-max-output-tokens requires an enabled verifier")
     elif verifier == "same":
         verifier_window = verifier_window or review_window
     elif review_window is not None and verifier_window is None:
@@ -639,18 +649,19 @@ def _review_config(args: argparse.Namespace, *, model: str | None = None) -> Rev
             "a pinned verifier needs --verifier-context-window-tokens when review windows are declared"
         )
 
+    requested_verifier_output = int(verifier_output_override or args.max_output_tokens)
     if verifier_window is None:
         verifier_max_output_tokens = (
             int(context_config["max_output_tokens"])
             if verifier is None
-            else int(args.max_output_tokens)
+            else requested_verifier_output
         )
         verifier_input_char_budget = None
     else:
         if verifier_window < 16_384:
             raise CliError("declared verifier context windows must be at least 16384 tokens")
         verifier_max_output_tokens = min(
-            int(args.max_output_tokens), max(2_048, verifier_window // 4)
+            requested_verifier_output, max(2_048, verifier_window // 4)
         )
         verifier_input_tokens = (
             verifier_window - verifier_max_output_tokens - DECLARED_WINDOW_PROTOCOL_RESERVE_TOKENS
