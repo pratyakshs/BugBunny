@@ -1,0 +1,3500 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "grafana-grafana-pr106778-24d4677828",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "be43ec139b3def3193773b2624df4508a8bf810da2252b140bcabdad04249b81",
+    "golden_url": "https://github.com/grafana/grafana/pull/106778",
+    "review_url": "https://github.com/code-review-benchmark/grafana__grafana__augment__PR106778__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-9ff298ad9351",
+      "cost_usd": 1.08941,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 67941,
+      "latency_ms": 58399,
+      "output_tokens": 4803,
+      "request_sha256": "e4acfe4c6095981169a97506f11ed9a8e3a645a51a75f62f4f3301bf00d20f16",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "934157d3bd4a9b257b08dfdccc5b2a65d732b49ffc447574e3cf4aea8b214f06",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-9ff298ad9351",
+      "cost_usd": 1.2909475,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 90772,
+      "latency_ms": 41264,
+      "output_tokens": 3126,
+      "request_sha256": "cc0f07efd17147ec93eb7500246716179a6afb5718d035e88421b1a7df07e730",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "cc9ffb21260206735a5f225a7818e6bc7cc1bef70117ea231af32b50b13f17cd",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-9ff298ad9351",
+      "cost_usd": 1.9077725,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 93354,
+      "latency_ms": 174919,
+      "output_tokens": 14817,
+      "request_sha256": "c424eb5e60f9846f58ba89a1e6aab0c94fc07bc9d60329b9e31d0cc5ea0b9dbe",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "8198397780363170000f7c50fd816da21734c6a64728bf8a9fcf87671466f2f2",
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "candidates-0-8",
+      "cost_usd": 0.354735,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 50778,
+      "latency_ms": 31694,
+      "output_tokens": 1495,
+      "request_sha256": "94b922d44ceb9583ecef6a2553ac7bd0752149c36d3e5c03a5a378a6759792f2",
+      "requested_model": "anthropic/claude-opus-4-5",
+      "resolved_model": "anthropic/claude-opus-4-5",
+      "response_sha256": "cc6558b59300ab32f671de85d62ce61f91b60a3eedabc3d15acd667647fab359",
+      "retry_errors": [],
+      "schema_sha256": "4f0c55f0b3b361fe2e31f7433e4f531d14d9dff4c97f0ccc17814ccd9ba1a5a1",
+      "stage": "verification"
+    }
+  ],
+  "completed_at": "2026-08-24T05:16:32.515480Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-fable-5",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.5788783989040117,
+      "largest_verifier_input_char_budget_utilization": 0.47098126716359356,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 1,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 0,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 46,
+      "verifier_generation_context_files_available": 46
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "diagnostics": [
+      {
+        "chunk_id": "f0011:c0000-498a6181ad00",
+        "code": "test_hint_unavailable",
+        "level": "warning",
+        "message": "bounded related-test read failed for pkg/services/ngalert/provisioning/alert_rules_test.go: refusing to read pkg/services/ngalert/provisioning/alert_rules_test.go: file exceeds 24000 bytes",
+        "stage": "context"
+      },
+      {
+        "chunk_id": "f0013:c0000-3e3dd513693a",
+        "code": "source_unavailable",
+        "level": "warning",
+        "message": "bounded head source read failed for public/locales/en-US/grafana.json: refusing to read public/locales/en-US/grafana.json: file exceeds 288000 bytes",
+        "stage": "context"
+      }
+    ],
+    "effective_context_files_exposed_to_model": [
+      ".betterer.eslint.config.js",
+      ".betterer.results",
+      ".betterer.ts",
+      ".changelog-archive/CHANGELOG.04.md",
+      ".changelog-archive/CHANGELOG.06.md",
+      ".changelog-archive/CHANGELOG.07.md",
+      ".changelog-archive/CHANGELOG.09.md",
+      ".github/actions/changelog/index.js",
+      "e2e/cypress/support/e2e.js",
+      "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+      "packages/grafana-data/src/geo/layer.ts",
+      "packages/grafana-prometheus/src/index.ts",
+      "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+      "packages/grafana-prometheus/src/types.ts",
+      "pkg/build/cmd/grafanacom_test.go",
+      "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+      "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+      "pkg/services/ngalert/accesscontrol/rules_test.go",
+      "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+      "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+      "public/app/features/alerting/unified/api/buildInfo.ts",
+      "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+      "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+      "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+      "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+      "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+      "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+      "public/app/features/alerting/unified/hooks/useAbilities.ts",
+      "public/app/features/alerting/unified/hooks/useFolder.ts",
+      "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+      "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+      "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+      "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+      "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+      "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+      "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+      "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+      "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+      "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+      "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+      "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+      "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+      "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+      "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+      "public/app/features/alerting/unified/utils/rules.ts",
+      "public/app/types/unified-alerting-dto.ts"
+    ],
+    "generation_batches": {
+      "b0000-9ff298ad9351": {
+        "chunk_ids": [
+          "f0000:c0000-8cd11171c633",
+          "f0001:c0000-e0d552d569ee",
+          "f0002:c0000-e684e08e2904",
+          "f0003:c0000-1a83b1742602",
+          "f0004:c0000-dfec24b58b04",
+          "f0005:c0000-ffd254c7cb92",
+          "f0006:c0000-4928e8804e4d",
+          "f0007:c0000-73b6ad7dc8fa",
+          "f0008:c0000-827fde9583dc",
+          "f0009:c0000-e4dfbab0befe",
+          "f0010:c0000-5386d0a465d1",
+          "f0011:c0000-498a6181ad00",
+          "f0012:c0000-4610d1d3685b",
+          "f0013:c0000-3e3dd513693a"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.5788783989040117,
+        "context_chars": 97185,
+        "context_files_available_before_generation_prompt_fit": [
+          ".betterer.eslint.config.js",
+          ".betterer.results",
+          ".betterer.ts",
+          ".changelog-archive/CHANGELOG.04.md",
+          ".changelog-archive/CHANGELOG.06.md",
+          ".changelog-archive/CHANGELOG.07.md",
+          ".changelog-archive/CHANGELOG.09.md",
+          ".github/actions/changelog/index.js",
+          "e2e/cypress/support/e2e.js",
+          "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+          "packages/grafana-data/src/geo/layer.ts",
+          "packages/grafana-prometheus/src/index.ts",
+          "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+          "packages/grafana-prometheus/src/types.ts",
+          "pkg/build/cmd/grafanacom_test.go",
+          "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+          "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+          "pkg/services/ngalert/accesscontrol/rules_test.go",
+          "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+          "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+          "public/app/features/alerting/unified/api/buildInfo.ts",
+          "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/hooks/useFolder.ts",
+          "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+          "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+          "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+          "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+          "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+          "public/app/features/alerting/unified/utils/rules.ts",
+          "public/app/types/unified-alerting-dto.ts"
+        ],
+        "context_files_exposed_to_model": [
+          ".betterer.eslint.config.js",
+          ".betterer.results",
+          ".betterer.ts",
+          ".changelog-archive/CHANGELOG.04.md",
+          ".changelog-archive/CHANGELOG.06.md",
+          ".changelog-archive/CHANGELOG.07.md",
+          ".changelog-archive/CHANGELOG.09.md",
+          ".github/actions/changelog/index.js",
+          "e2e/cypress/support/e2e.js",
+          "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+          "packages/grafana-data/src/geo/layer.ts",
+          "packages/grafana-prometheus/src/index.ts",
+          "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+          "packages/grafana-prometheus/src/types.ts",
+          "pkg/build/cmd/grafanacom_test.go",
+          "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+          "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+          "pkg/services/ngalert/accesscontrol/rules_test.go",
+          "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+          "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+          "public/app/features/alerting/unified/api/buildInfo.ts",
+          "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/hooks/useFolder.ts",
+          "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+          "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+          "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+          "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+          "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+          "public/app/features/alerting/unified/utils/rules.ts",
+          "public/app/types/unified-alerting-dto.ts"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "5fd7b9e74e81d18e70c6a46eef6d54efa61051e03fca9deb0ce4a38e20092ef0",
+        "context_truncated": true,
+        "context_utf8_bytes": 97386,
+        "estimated_context_tokens": 24297,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 291808,
+        "generation_input_char_budget_utilization": 0.7377556475490734,
+        "generation_prompt_chars": 215283,
+        "generation_prompt_utf8_bytes": 215488,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 46
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 14,
+    "packets": {
+      "f0000:c0000-8cd11171c633": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 2367,
+        "prompt_sha256": "6f613c915fd20b5b2b6133c13f1821fdc031cbd7bfb8edfb7779f6b2e6b86f66",
+        "symbols": [
+          "useRulerRuleAbilities",
+          "useGrafanaPromRuleAbilities",
+          "rule",
+          "AlertRuleAction"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 7
+      },
+      "f0001:c0000-e0d552d569ee": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2450,
+        "prompt_sha256": "52018920306327bd23e6ff1ce70fc614d9a347ccaa8cf9e08ff921ff8ddbd417",
+        "symbols": [
+          "mimirDataSource",
+          "getCloudRule",
+          "Cloud",
+          "mocks"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0002:c0000-e684e08e2904": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 2318,
+        "prompt_sha256": "c39db0a5e89fe83c0d40bbde268aa868e44f91e52d25ab01a5b5af7ebcb50018",
+        "symbols": [
+          "useAlertRuleAbility",
+          "useGrafanaPromRuleAbilities",
+          "useGrafanaPromRuleAbility",
+          "mocked"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0003:c0000-1a83b1742602": {
+        "callers": 5,
+        "definitions": 3,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2443,
+        "prompt_sha256": "9a3157cd643f51d30319450b070a4bc618d0a7f3140221e6be7041ae9ec00dd3",
+        "symbols": [
+          "useAllRulerRuleAbilities",
+          "useAllGrafanaPromRuleAbilities",
+          "IsGrafanaPromRuleEditableResult",
+          "useIsGrafanaPromRuleEditable"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0004:c0000-dfec24b58b04": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 4,
+        "prompt_chars": 2434,
+        "prompt_sha256": "a225906b50cee39d0350655462790ff783eb62bd11ea0ae960c4d8a21142607b",
+        "symbols": [
+          "GrafanaRuleListItem",
+          "rule",
+          "showLocation"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 7
+      },
+      "f0005:c0000-ffd254c7cb92": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 1748,
+        "prompt_sha256": "28abd90f7af5fe870e6bed440cabdc1e5539dcfd50f983b9f6d741f9e0a34b95",
+        "symbols": [
+          "byRole",
+          "beforeEach",
+          "grantUserPermissions",
+          "setFolderAccessControl"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0006:c0000-4928e8804e4d": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 4,
+        "prompt_chars": 2446,
+        "prompt_sha256": "23d1d2547a0428884281d19c31822fcc0a04462b9803b28f73f4cbea661b0c68",
+        "symbols": [
+          "map",
+          "GrafanaRuleListItem",
+          "isPromResponseLoading",
+          "promResponse"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0007:c0000-73b6ad7dc8fa": {
+        "callers": 2,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 5,
+        "prompt_chars": 2437,
+        "prompt_sha256": "bb714c9c7b55e5a12709385fb6c18ca65da50f1113db6be10116812ec98d30b1",
+        "symbols": [
+          "GrafanaRuleListItemProps",
+          "GrafanaRuleListItem",
+          "createRelativeUrl",
+          "Boolean"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0008:c0000-827fde9583dc": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 1276,
+        "prompt_sha256": "2e84d3923de9b3c760713b6014c8a146e162a8323a8ba1262fd93053a25bf32d",
+        "symbols": [],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0009:c0000-e4dfbab0befe": {
+        "callers": 2,
+        "definitions": 3,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2382,
+        "prompt_sha256": "b4b62fa487abd93d049dfa48306e52b4d84ebcd344bfd6b96e20c873105cbb81",
+        "symbols": [
+          "RuleProps",
+          "Props",
+          "getIsProvisioned",
+          "getEditableIdentifier"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 4
+      },
+      "f0010:c0000-5386d0a465d1": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 1917,
+        "prompt_sha256": "71b6aa7fdd6909ddfa095e9c489a902a2dc5983a97353cc23fcc00678f0f75d7",
+        "symbols": [
+          "UseGeneratorHookOptions"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0011:c0000-498a6181ad00": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [
+          "bounded related-test read failed for pkg/services/ngalert/provisioning/alert_rules_test.go: refusing to read pkg/services/ngalert/provisioning/alert_rules_test.go: file exceeds 24000 bytes"
+        ],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 2393,
+        "prompt_sha256": "70785bcb906a91dca8479622b74392c9a93777a16a7d2746bf389a2f005fa628",
+        "symbols": [
+          "isProvisionedPromRule",
+          "rule",
+          "Boolean",
+          "PromRuleDTO"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 7
+      },
+      "f0012:c0000-4610d1d3685b": {
+        "callers": 0,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2441,
+        "prompt_sha256": "457b5e88b12c42043ec6e4fb48fa1471b709e4255e8748b24df03e719e9086b8",
+        "symbols": [
+          "PromBuildInfoResponse",
+          "PromApiFeature",
+          "provenance",
+          "string"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 7
+      },
+      "f0013:c0000-3e3dd513693a": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [
+          "bounded head source read failed for public/locales/en-US/grafana.json: refusing to read public/locales/en-US/grafana.json: file exceeds 288000 bytes"
+        ],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 727,
+        "prompt_sha256": "4a3f6fb53aff29155ba59c0aeaea953770cc317addf9d4234af1eab0ddb1150d",
+        "symbols": [],
+        "tests": 2,
+        "truncated": false,
+        "usages": 0
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 2273,
+        "serialized_chars": 2385,
+        "serialized_limit_chars": 6000,
+        "sha256": "596e210f77a4c4a343cc15914618cb9c2762810545c1922bbf7b64e5f00ea8b0",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 44,
+        "serialized_chars": 46,
+        "serialized_limit_chars": 1000,
+        "sha256": "341d0b94f86269b07b15198a567245608703325c69fde3c06b992d37e42ead2d",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 29779,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 158713
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 93354
+      },
+      "verification": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 50778
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-9ff298ad9351": {
+          "action_counts": {
+            "list": 0,
+            "read": 13,
+            "search": 6
+          },
+          "actions_executed": 19,
+          "actions_failed": 0,
+          "additional_context_files_selected": 14,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+            "public/app/features/alerting/unified/hooks/useAbilities.ts",
+            "public/app/features/alerting/unified/hooks/useFolder.ts",
+            "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+            "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+            "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+            "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+            "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+            "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+            "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+            "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+            "public/app/features/alerting/unified/utils/rules.ts",
+            "public/app/types/unified-alerting-dto.ts"
+          ],
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+            "public/app/features/alerting/unified/hooks/useAbilities.ts",
+            "public/app/features/alerting/unified/hooks/useFolder.ts",
+            "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+            "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+            "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+            "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+            "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+            "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+            "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+            "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+            "public/app/features/alerting/unified/utils/rules.ts",
+            "public/app/types/unified-alerting-dto.ts"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 24297,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 97185,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 291808,
+          "generation_input_char_budget_utilization": 0.7377556475490734,
+          "generation_prompt_chars": 215283,
+          "generation_prompt_utf8_bytes": 215488,
+          "hypotheses_final": 11,
+          "hypotheses_open_final": 3,
+          "hypotheses_rejected_final": 2,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 6,
+          "hypotheses_returned": 22,
+          "hypothesis_linked_actions": 19,
+          "largest_selector_input_char_budget_utilization": 0.7052651058230069,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 1462,
+          "repository_files": 17932,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 17932,
+          "repository_index_chars": 7333,
+          "repository_index_chars_by_round": [
+            7333,
+            7333
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 1834,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": true,
+          "request_limit_hit": false,
+          "requests_accepted": 19,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 2,
+          "requests_returned": 21,
+          "round_limit": 2,
+          "round_limit_hit": false,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 16,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 31277,
+          "seed_context_chars_original": 31277,
+          "seed_context_truncated": false,
+          "selected_context_chars": 65906,
+          "selection_done": true,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            153818,
+            205802
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 14
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 136,
+      "callers": 17,
+      "changed_context_files_exposed_to_model": [
+        "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+        "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+        "public/app/features/alerting/unified/hooks/useAbilities.ts",
+        "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+        "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+        "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+        "public/app/features/alerting/unified/utils/rules.ts",
+        "public/app/types/unified-alerting-dto.ts"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 14,
+      "context_chars": 29779,
+      "context_files_exposed_to_model": [
+        ".betterer.eslint.config.js",
+        ".betterer.results",
+        ".betterer.ts",
+        ".changelog-archive/CHANGELOG.04.md",
+        ".changelog-archive/CHANGELOG.06.md",
+        ".changelog-archive/CHANGELOG.07.md",
+        ".changelog-archive/CHANGELOG.09.md",
+        ".github/actions/changelog/index.js",
+        "e2e/cypress/support/e2e.js",
+        "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+        "packages/grafana-data/src/geo/layer.ts",
+        "packages/grafana-prometheus/src/index.ts",
+        "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+        "packages/grafana-prometheus/src/types.ts",
+        "pkg/build/cmd/grafanacom_test.go",
+        "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+        "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+        "pkg/services/ngalert/accesscontrol/rules_test.go",
+        "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+        "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+        "public/app/features/alerting/unified/api/buildInfo.ts",
+        "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+        "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+        "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+        "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+        "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+        "public/app/features/alerting/unified/hooks/useAbilities.ts",
+        "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+        "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+        "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+        "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+        "public/app/features/alerting/unified/utils/rules.ts",
+        "public/app/types/unified-alerting-dto.ts"
+      ],
+      "context_utf8_bytes": 29975,
+      "cross_file_context_files_exposed_to_model": [
+        ".betterer.eslint.config.js",
+        ".betterer.results",
+        ".betterer.ts",
+        ".changelog-archive/CHANGELOG.04.md",
+        ".changelog-archive/CHANGELOG.06.md",
+        ".changelog-archive/CHANGELOG.07.md",
+        ".changelog-archive/CHANGELOG.09.md",
+        ".github/actions/changelog/index.js",
+        "e2e/cypress/support/e2e.js",
+        "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+        "packages/grafana-data/src/geo/layer.ts",
+        "packages/grafana-prometheus/src/index.ts",
+        "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+        "packages/grafana-prometheus/src/types.ts",
+        "pkg/build/cmd/grafanacom_test.go",
+        "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+        "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+        "pkg/services/ngalert/accesscontrol/rules_test.go",
+        "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+        "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+        "public/app/features/alerting/unified/api/buildInfo.ts",
+        "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+        "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+        "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+        "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+        "public/app/features/alerting/unified/hooks/useAbilities.ts",
+        "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+        "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+        "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx"
+      ],
+      "definitions": 10,
+      "estimated_context_tokens": 7451,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 138,
+      "evidence_rows_clipped_during_render": 5,
+      "evidence_rows_omitted_due_to_render_budget": 40,
+      "evidence_rows_rendered": 98,
+      "hypotheses": 0,
+      "imports": 36,
+      "largest_prompt_budget": 2465,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 31,
+        "max_symbols_per_chunk": 6,
+        "prompt_render_budget": 9
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 40,
+        "source_read_budget": 0,
+        "symbol_config_limit": 431,
+        "symbol_search_budget": 136
+      },
+      "packet_metrics": {
+        "f0000:c0000-8cd11171c633": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+            "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+            "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+            "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 592,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+            "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+            "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx"
+          ],
+          "evidence_rows_available_to_render": 14,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 6,
+          "evidence_rows_rendered": 8,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2465,
+          "prompt_budget_utilization": 0.9602434077079107,
+          "prompt_chars": 2367,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2383,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 70,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 46,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0001:c0000-e0d552d569ee": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".betterer.eslint.config.js",
+            ".changelog-archive/CHANGELOG.04.md",
+            ".changelog-archive/CHANGELOG.07.md",
+            "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".betterer.eslint.config.js",
+            ".changelog-archive/CHANGELOG.04.md",
+            ".changelog-archive/CHANGELOG.07.md"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 613,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".betterer.eslint.config.js",
+            ".changelog-archive/CHANGELOG.04.md",
+            ".changelog-archive/CHANGELOG.07.md",
+            "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx"
+          ],
+          "evidence_rows_available_to_render": 10,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 9,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2465,
+          "prompt_budget_utilization": 0.9939148073022313,
+          "prompt_chars": 2450,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2468,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 11,
+          "symbol_candidates_discovered": 11,
+          "symbol_candidates_extracted": 11,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0002:c0000-e684e08e2904": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+            "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+            "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+            "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+            "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+            "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 580,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+            "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+            "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+            "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx"
+          ],
+          "evidence_rows_available_to_render": 10,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2465,
+          "prompt_budget_utilization": 0.9403651115618661,
+          "prompt_chars": 2318,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2332,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 64,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 40,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0003:c0000-1a83b1742602": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+            "public/app/features/alerting/unified/hooks/useAbilities.ts"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/hooks/useAbilities.test.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 611,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+            "public/app/features/alerting/unified/hooks/useAbilities.ts"
+          ],
+          "evidence_rows_available_to_render": 14,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 7,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2465,
+          "prompt_budget_utilization": 0.9910750507099392,
+          "prompt_chars": 2443,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2457,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 157,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 133,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0004:c0000-dfec24b58b04": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".betterer.results",
+            "packages/grafana-data/src/geo/layer.ts",
+            "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx"
+          ],
+          "context_files_exposed_to_model_count": 5,
+          "cross_file_context_files_exposed_to_model": [
+            ".betterer.results",
+            "packages/grafana-data/src/geo/layer.ts",
+            "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 4,
+          "estimated_context_tokens": 609,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".betterer.results",
+            "packages/grafana-data/src/geo/layer.ts",
+            "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx"
+          ],
+          "evidence_rows_available_to_render": 12,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 9,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2465,
+          "prompt_budget_utilization": 0.9874239350912779,
+          "prompt_chars": 2434,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2452,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0005:c0000-ffd254c7cb92": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "e2e/cypress/support/e2e.js",
+            "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "e2e/cypress/support/e2e.js",
+            "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 437,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "e2e/cypress/support/e2e.js",
+            "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2465,
+          "prompt_budget_utilization": 0.7091277890466532,
+          "prompt_chars": 1748,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 1758,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 132,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 108,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0006:c0000-4928e8804e4d": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".betterer.ts",
+            ".changelog-archive/CHANGELOG.06.md",
+            "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx"
+          ],
+          "context_files_exposed_to_model_count": 5,
+          "cross_file_context_files_exposed_to_model": [
+            ".betterer.ts",
+            ".changelog-archive/CHANGELOG.06.md",
+            "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 4,
+          "estimated_context_tokens": 612,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".betterer.ts",
+            ".changelog-archive/CHANGELOG.06.md",
+            "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx"
+          ],
+          "evidence_rows_available_to_render": 14,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 4,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.9926948051948052,
+          "prompt_chars": 2446,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2466,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0007:c0000-73b6ad7dc8fa": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 610,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+            "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+            "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx"
+          ],
+          "evidence_rows_available_to_render": 13,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 5,
+          "evidence_rows_rendered": 8,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.9890422077922078,
+          "prompt_chars": 2437,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2453,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 68,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 44,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0008:c0000-827fde9583dc": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 319,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.5178571428571429,
+          "prompt_chars": 1276,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 1280,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0009:c0000-e4dfbab0befe": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+            "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 596,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+            "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx"
+          ],
+          "evidence_rows_available_to_render": 12,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 5,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.9667207792207793,
+          "prompt_chars": 2382,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2396,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 84,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 60,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0010:c0000-5386d0a465d1": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 480,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.7780032467532467,
+          "prompt_chars": 1917,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 1927,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 1,
+          "symbol_candidates_discovered": 1,
+          "symbol_candidates_extracted": 1,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 1,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0011:c0000-498a6181ad00": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".betterer.results",
+            ".github/actions/changelog/index.js",
+            "pkg/services/ngalert/accesscontrol/rules_test.go",
+            "public/app/features/alerting/unified/hooks/useAbilities.ts",
+            "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+            "public/app/features/alerting/unified/utils/rules.ts"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            ".betterer.results",
+            ".github/actions/changelog/index.js",
+            "pkg/services/ngalert/accesscontrol/rules_test.go",
+            "public/app/features/alerting/unified/hooks/useAbilities.ts",
+            "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 599,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".betterer.results",
+            ".github/actions/changelog/index.js",
+            "pkg/services/ngalert/accesscontrol/rules_test.go",
+            "public/app/features/alerting/unified/hooks/useAbilities.ts",
+            "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+            "public/app/features/alerting/unified/utils/rules.ts"
+          ],
+          "evidence_rows_available_to_render": 12,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.971185064935065,
+          "prompt_chars": 2393,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2413,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 5
+        },
+        "f0012:c0000-4610d1d3685b": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".betterer.ts",
+            ".changelog-archive/CHANGELOG.09.md",
+            "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+            "packages/grafana-prometheus/src/index.ts",
+            "packages/grafana-prometheus/src/types.ts",
+            "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+            "public/app/features/alerting/unified/api/buildInfo.ts",
+            "public/app/types/unified-alerting-dto.ts"
+          ],
+          "context_files_exposed_to_model_count": 8,
+          "cross_file_context_files_exposed_to_model": [
+            ".betterer.ts",
+            ".changelog-archive/CHANGELOG.09.md",
+            "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+            "packages/grafana-prometheus/src/index.ts",
+            "packages/grafana-prometheus/src/types.ts",
+            "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+            "public/app/features/alerting/unified/api/buildInfo.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 7,
+          "estimated_context_tokens": 611,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".betterer.ts",
+            ".changelog-archive/CHANGELOG.09.md",
+            "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+            "packages/grafana-prometheus/src/index.ts",
+            "packages/grafana-prometheus/src/types.ts",
+            "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+            "public/app/features/alerting/unified/api/buildInfo.ts",
+            "public/app/types/unified-alerting-dto.ts"
+          ],
+          "evidence_rows_available_to_render": 13,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 4,
+          "evidence_rows_rendered": 9,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.9906655844155844,
+          "prompt_chars": 2441,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2459,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 592,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 592,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0013:c0000-3e3dd513693a": {
+          "changed_file_context_exposed_to_model": false,
+          "context_files_exposed_to_model": [
+            "pkg/build/cmd/grafanacom_test.go",
+            "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "pkg/build/cmd/grafanacom_test.go",
+            "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 182,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "pkg/build/cmd/grafanacom_test.go",
+            "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2464,
+          "prompt_budget_utilization": 0.2950487012987013,
+          "prompt_chars": 727,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 731,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 0,
+          "source_excerpt_truncated": false,
+          "source_excerpt_utf8_bytes": 0,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        }
+      },
+      "packets_hitting_symbol_config_limit": 6,
+      "packets_hitting_symbol_render_budget_limit": 9,
+      "prompt_budget_chars": 34502,
+      "prompt_budget_utilization": 0.8631093849631906,
+      "prompt_truncated_packets": 10,
+      "smallest_prompt_budget": 2464,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 13,
+      "symbol_candidates_after_config_limit": 180,
+      "symbol_candidates_discovered": 611,
+      "symbol_candidates_omitted_by_config_limit": 431,
+      "symbol_searches_skipped_due_to_budget": 136,
+      "symbols": 44,
+      "tests": 18,
+      "tree_files": 17932,
+      "truncated_packets": 13,
+      "unchanged_context_files_exposed_to_model": [
+        ".betterer.eslint.config.js",
+        ".betterer.results",
+        ".betterer.ts",
+        ".changelog-archive/CHANGELOG.04.md",
+        ".changelog-archive/CHANGELOG.06.md",
+        ".changelog-archive/CHANGELOG.07.md",
+        ".changelog-archive/CHANGELOG.09.md",
+        ".github/actions/changelog/index.js",
+        "e2e/cypress/support/e2e.js",
+        "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+        "packages/grafana-data/src/geo/layer.ts",
+        "packages/grafana-prometheus/src/index.ts",
+        "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+        "packages/grafana-prometheus/src/types.ts",
+        "pkg/build/cmd/grafanacom_test.go",
+        "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+        "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+        "pkg/services/ngalert/accesscontrol/rules_test.go",
+        "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+        "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+        "public/app/features/alerting/unified/api/buildInfo.ts",
+        "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+        "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+        "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+        "public/app/features/alerting/unified/rule-list/FilterView.test.tsx"
+      ],
+      "unique_changed_context_files_exposed_to_model": 13,
+      "unique_context_files_exposed_to_model": 38,
+      "unique_cross_file_context_files_exposed_to_model": 31,
+      "unique_unchanged_context_files_exposed_to_model": 25,
+      "usages": 57,
+      "whole_repo_grep_cache_hits": 6,
+      "whole_repo_grep_calls": 38,
+      "whole_repo_grep_calls_returning_configured_limit": 31
+    },
+    "unique_changed_context_files_exposed_to_model": 13,
+    "unique_effective_context_files_exposed_to_model": 46,
+    "unique_unchanged_context_files_exposed_to_model": 33,
+    "verification_batches": [
+      {
+        "candidate_count": 9,
+        "candidate_offset": 0,
+        "candidate_payload_chars": 16794,
+        "context_budget_chars": 167885,
+        "context_budget_clipped": false,
+        "context_chars": 116125,
+        "context_chars_available": 116125,
+        "context_chars_before_prompt_fit": 116125,
+        "context_chars_omitted_by_evidence_budget": 0,
+        "context_chars_omitted_by_prompt_fit": 0,
+        "context_chars_rendered": 116125,
+        "context_clipped_to_any_budget": false,
+        "context_clipped_to_prompt_budget": false,
+        "evidence_budget_clipped": false,
+        "evidence_clipped_to_any_budget": false,
+        "generation_context_blocks_available": 1,
+        "generation_context_blocks_rendered": 1,
+        "generation_context_chars_available": 97234,
+        "generation_context_chars_omitted": 0,
+        "generation_context_chars_rendered": 97234,
+        "generation_context_files_after_prompt_fit": [
+          ".betterer.eslint.config.js",
+          ".betterer.results",
+          ".betterer.ts",
+          ".changelog-archive/CHANGELOG.04.md",
+          ".changelog-archive/CHANGELOG.06.md",
+          ".changelog-archive/CHANGELOG.07.md",
+          ".changelog-archive/CHANGELOG.09.md",
+          ".github/actions/changelog/index.js",
+          "e2e/cypress/support/e2e.js",
+          "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+          "packages/grafana-data/src/geo/layer.ts",
+          "packages/grafana-prometheus/src/index.ts",
+          "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+          "packages/grafana-prometheus/src/types.ts",
+          "pkg/build/cmd/grafanacom_test.go",
+          "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+          "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+          "pkg/services/ngalert/accesscontrol/rules_test.go",
+          "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+          "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+          "public/app/features/alerting/unified/api/buildInfo.ts",
+          "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/hooks/useFolder.ts",
+          "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+          "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+          "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+          "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+          "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+          "public/app/features/alerting/unified/utils/rules.ts",
+          "public/app/types/unified-alerting-dto.ts"
+        ],
+        "generation_context_files_available": [
+          ".betterer.eslint.config.js",
+          ".betterer.results",
+          ".betterer.ts",
+          ".changelog-archive/CHANGELOG.04.md",
+          ".changelog-archive/CHANGELOG.06.md",
+          ".changelog-archive/CHANGELOG.07.md",
+          ".changelog-archive/CHANGELOG.09.md",
+          ".github/actions/changelog/index.js",
+          "e2e/cypress/support/e2e.js",
+          "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+          "packages/grafana-data/src/geo/layer.ts",
+          "packages/grafana-prometheus/src/index.ts",
+          "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+          "packages/grafana-prometheus/src/types.ts",
+          "pkg/build/cmd/grafanacom_test.go",
+          "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+          "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+          "pkg/services/ngalert/accesscontrol/rules_test.go",
+          "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+          "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+          "public/app/features/alerting/unified/api/buildInfo.ts",
+          "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/hooks/useFolder.ts",
+          "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+          "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+          "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+          "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+          "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+          "public/app/features/alerting/unified/utils/rules.ts",
+          "public/app/types/unified-alerting-dto.ts"
+        ],
+        "generation_context_files_omitted": [],
+        "generation_context_files_rendered": [
+          ".betterer.eslint.config.js",
+          ".betterer.results",
+          ".betterer.ts",
+          ".changelog-archive/CHANGELOG.04.md",
+          ".changelog-archive/CHANGELOG.06.md",
+          ".changelog-archive/CHANGELOG.07.md",
+          ".changelog-archive/CHANGELOG.09.md",
+          ".github/actions/changelog/index.js",
+          "e2e/cypress/support/e2e.js",
+          "e2e/plugin-e2e/plugin-e2e-api-tests/as-admin-user/alerting.spec.ts",
+          "packages/grafana-data/src/geo/layer.ts",
+          "packages/grafana-prometheus/src/index.ts",
+          "packages/grafana-prometheus/src/test/helpers/selectOptionInTest.ts",
+          "packages/grafana-prometheus/src/types.ts",
+          "pkg/build/cmd/grafanacom_test.go",
+          "pkg/cmd/grafana-cli/commands/datamigrations/to_unified_storage_test.go",
+          "pkg/infra/httpclient/httpclientprovider/grafana_request_id_header_middleware_test.go",
+          "pkg/services/ngalert/accesscontrol/rules_test.go",
+          "public/app/features/alerting/unified/GrafanaRuleQueryViewer.tsx",
+          "public/app/features/alerting/unified/PanelAlertTabContent.test.tsx",
+          "public/app/features/alerting/unified/api/buildInfo.ts",
+          "public/app/features/alerting/unified/components/contact-points/ContactPointHeader.tsx",
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleActionsButtons.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx",
+          "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.test.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/hooks/useFolder.ts",
+          "public/app/features/alerting/unified/hooks/useIsRuleEditable.ts",
+          "public/app/features/alerting/unified/rule-list/DataSourceGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.test.tsx",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx",
+          "public/app/features/alerting/unified/rule-list/components/AlertRuleListItem.tsx",
+          "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx",
+          "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts",
+          "public/app/features/alerting/unified/rule-list/hooks/useFilteredRulesIterator.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.test.ts",
+          "public/app/features/alerting/unified/rule-list/ruleMatching.ts",
+          "public/app/features/alerting/unified/utils/groupIdentifier.ts",
+          "public/app/features/alerting/unified/utils/rules.ts",
+          "public/app/types/unified-alerting-dto.ts"
+        ],
+        "input_char_budget": 326272,
+        "input_char_budget_utilization": 0.47098126716359356,
+        "patch_blocks_available": 9,
+        "patch_blocks_rendered": 9,
+        "patch_budget_chars": 111923,
+        "patch_budget_clipped": false,
+        "patch_chars": 18243,
+        "patch_chars_available": 18243,
+        "patch_chars_omitted_by_evidence_budget": 0,
+        "patch_chars_rendered": 18243,
+        "prompt_chars": 153668,
+        "prompt_utf8_bytes": 153869,
+        "source_blocks_available": 9,
+        "source_blocks_rendered": 9,
+        "source_context_chars_available": 18889,
+        "source_context_chars_omitted": 0,
+        "source_context_chars_rendered": 18889,
+        "source_files_after_prompt_fit": [
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx"
+        ],
+        "source_files_available": [
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx"
+        ],
+        "source_files_omitted": [],
+        "source_files_rendered": [
+          "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+          "public/app/features/alerting/unified/hooks/useAbilities.ts",
+          "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+          "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx"
+        ]
+      }
+    ],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": true,
+    "completed_hunks": [
+      "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx:1:1:h000",
+      "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx:1:1:h000",
+      "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx:23:24:h001",
+      "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx:72:75:h002",
+      "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx:1:1:h000",
+      "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx:37:48:h001",
+      "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx:114:156:h002",
+      "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx:155:201:h003",
+      "public/app/features/alerting/unified/hooks/useAbilities.ts:5:5:h000",
+      "public/app/features/alerting/unified/hooks/useAbilities.ts:191:196:h001",
+      "public/app/features/alerting/unified/hooks/useAbilities.ts:254:266:h002",
+      "public/app/features/alerting/unified/rule-list/FilterView.tsx:3:3:h000",
+      "public/app/features/alerting/unified/rule-list/FilterView.tsx:145:145:h001",
+      "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx:1:1:h000",
+      "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx:1:1:h000",
+      "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx:39:30:h001",
+      "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx:0:1:h000",
+      "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx:1:0:h000",
+      "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx:1:1:h000",
+      "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx:84:105:h001",
+      "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts:1:1:h000",
+      "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts:74:73:h001",
+      "public/app/features/alerting/unified/utils/rules.ts:159:159:h000",
+      "public/app/types/unified-alerting-dto.ts:123:123:h000",
+      "public/locales/en-US/grafana.json:2390:2390:h000"
+    ],
+    "coverage_ratio": 1.0,
+    "eligible_files": 14,
+    "eligible_hunks": 25,
+    "excluded_files": [],
+    "failed_hunks": [],
+    "total_files": 14,
+    "total_hunks": 25
+  },
+  "diagnostics": [],
+  "diff": {
+    "additions": 542,
+    "bytes": 79305,
+    "chunk_plan_complete": true,
+    "chunks": 14,
+    "commentable_ranges": {
+      "LEFT": {
+        "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx": [
+          [
+            13,
+            13
+          ],
+          [
+            49,
+            71
+          ]
+        ],
+        "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx": [
+          [
+            84,
+            84
+          ]
+        ],
+        "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx": [
+          [
+            7,
+            7
+          ],
+          [
+            16,
+            18
+          ],
+          [
+            55,
+            55
+          ],
+          [
+            58,
+            58
+          ],
+          [
+            68,
+            68
+          ],
+          [
+            71,
+            72
+          ],
+          [
+            83,
+            83
+          ],
+          [
+            86,
+            87
+          ],
+          [
+            96,
+            96
+          ],
+          [
+            99,
+            100
+          ],
+          [
+            126,
+            127
+          ],
+          [
+            129,
+            130
+          ]
+        ],
+        "public/app/features/alerting/unified/hooks/useAbilities.ts": [
+          [
+            17,
+            17
+          ],
+          [
+            22,
+            23
+          ],
+          [
+            25,
+            25
+          ],
+          [
+            203,
+            203
+          ],
+          [
+            214,
+            217
+          ],
+          [
+            219,
+            219
+          ],
+          [
+            221,
+            226
+          ],
+          [
+            228,
+            228
+          ],
+          [
+            231,
+            235
+          ],
+          [
+            266,
+            266
+          ],
+          [
+            271,
+            277
+          ],
+          [
+            279,
+            279
+          ],
+          [
+            282,
+            283
+          ],
+          [
+            285,
+            285
+          ],
+          [
+            291,
+            292
+          ],
+          [
+            298,
+            298
+          ],
+          [
+            306,
+            309
+          ],
+          [
+            311,
+            311
+          ],
+          [
+            317,
+            317
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/FilterView.tsx": [
+          [
+            15,
+            15
+          ],
+          [
+            157,
+            159
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx": [
+          [
+            16,
+            16
+          ],
+          [
+            18,
+            18
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            58,
+            59
+          ],
+          [
+            68,
+            69
+          ],
+          [
+            71,
+            75
+          ],
+          [
+            78,
+            81
+          ],
+          [
+            84,
+            84
+          ],
+          [
+            86,
+            86
+          ],
+          [
+            90,
+            91
+          ],
+          [
+            93,
+            94
+          ],
+          [
+            96,
+            97
+          ],
+          [
+            99,
+            99
+          ],
+          [
+            101,
+            107
+          ],
+          [
+            109,
+            109
+          ],
+          [
+            111,
+            111
+          ],
+          [
+            113,
+            114
+          ],
+          [
+            116,
+            118
+          ],
+          [
+            121,
+            122
+          ],
+          [
+            124,
+            125
+          ],
+          [
+            127,
+            128
+          ],
+          [
+            130,
+            133
+          ],
+          [
+            135,
+            140
+          ],
+          [
+            142,
+            143
+          ],
+          [
+            145,
+            145
+          ],
+          [
+            147,
+            148
+          ],
+          [
+            150,
+            153
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx": [
+          [
+            1,
+            2
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            17,
+            17
+          ],
+          [
+            19,
+            19
+          ],
+          [
+            51,
+            61
+          ],
+          [
+            63,
+            64
+          ],
+          [
+            74,
+            74
+          ],
+          [
+            89,
+            105
+          ],
+          [
+            110,
+            110
+          ],
+          [
+            118,
+            129
+          ],
+          [
+            133,
+            172
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx": [],
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx": [
+          [
+            1,
+            150
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx": [
+          [
+            9,
+            9
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            14,
+            14
+          ],
+          [
+            17,
+            18
+          ],
+          [
+            26,
+            26
+          ],
+          [
+            40,
+            40
+          ],
+          [
+            44,
+            44
+          ],
+          [
+            49,
+            49
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts": [
+          [
+            7,
+            7
+          ],
+          [
+            86,
+            92
+          ]
+        ],
+        "public/app/features/alerting/unified/utils/rules.ts": [],
+        "public/app/types/unified-alerting-dto.ts": [],
+        "public/locales/en-US/grafana.json": [
+          [
+            2402,
+            2403
+          ]
+        ]
+      },
+      "RIGHT": {
+        "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx": [
+          [
+            13,
+            18
+          ],
+          [
+            41,
+            42
+          ],
+          [
+            56,
+            100
+          ]
+        ],
+        "public/app/features/alerting/unified/components/rules/RuleDetails.test.tsx": [
+          [
+            10,
+            10
+          ],
+          [
+            36,
+            37
+          ],
+          [
+            87,
+            87
+          ]
+        ],
+        "public/app/features/alerting/unified/components/rules/RulesTable.test.tsx": [
+          [
+            7,
+            14
+          ],
+          [
+            23,
+            26
+          ],
+          [
+            29,
+            31
+          ],
+          [
+            60,
+            73
+          ],
+          [
+            80,
+            82
+          ],
+          [
+            85,
+            85
+          ],
+          [
+            88,
+            93
+          ],
+          [
+            101,
+            102
+          ],
+          [
+            105,
+            108
+          ],
+          [
+            119,
+            120
+          ],
+          [
+            123,
+            126
+          ],
+          [
+            135,
+            136
+          ],
+          [
+            139,
+            142
+          ],
+          [
+            168,
+            173
+          ],
+          [
+            175,
+            176
+          ],
+          [
+            213,
+            218
+          ],
+          [
+            232,
+            237
+          ],
+          [
+            252,
+            257
+          ],
+          [
+            271,
+            276
+          ]
+        ],
+        "public/app/features/alerting/unified/hooks/useAbilities.ts": [
+          [
+            17,
+            17
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            24,
+            30
+          ],
+          [
+            208,
+            208
+          ],
+          [
+            219,
+            221
+          ],
+          [
+            223,
+            229
+          ],
+          [
+            231,
+            237
+          ],
+          [
+            239,
+            239
+          ],
+          [
+            242,
+            247
+          ],
+          [
+            278,
+            278
+          ],
+          [
+            283,
+            289
+          ],
+          [
+            291,
+            293
+          ],
+          [
+            296,
+            299
+          ],
+          [
+            301,
+            302
+          ],
+          [
+            308,
+            309
+          ],
+          [
+            315,
+            315
+          ],
+          [
+            323,
+            326
+          ],
+          [
+            328,
+            328
+          ],
+          [
+            334,
+            334
+          ],
+          [
+            339,
+            407
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/FilterView.tsx": [
+          [
+            15,
+            15
+          ],
+          [
+            157,
+            158
+          ],
+          [
+            161,
+            161
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx": [
+          [
+            5,
+            5
+          ],
+          [
+            17,
+            17
+          ],
+          [
+            19,
+            19
+          ],
+          [
+            23,
+            23
+          ],
+          [
+            36,
+            43
+          ],
+          [
+            47,
+            64
+          ],
+          [
+            85,
+            86
+          ],
+          [
+            95,
+            97
+          ],
+          [
+            99,
+            101
+          ],
+          [
+            104,
+            118
+          ],
+          [
+            121,
+            121
+          ],
+          [
+            123,
+            123
+          ],
+          [
+            127,
+            134
+          ],
+          [
+            136,
+            138
+          ],
+          [
+            140,
+            145
+          ],
+          [
+            148,
+            153
+          ],
+          [
+            155,
+            155
+          ],
+          [
+            157,
+            157
+          ],
+          [
+            159,
+            159
+          ],
+          [
+            161,
+            168
+          ],
+          [
+            171,
+            172
+          ],
+          [
+            174,
+            174
+          ],
+          [
+            176,
+            178
+          ],
+          [
+            180,
+            191
+          ],
+          [
+            193,
+            194
+          ],
+          [
+            196,
+            197
+          ],
+          [
+            199,
+            200
+          ],
+          [
+            202,
+            203
+          ],
+          [
+            205,
+            207
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.tsx": [
+          [
+            8,
+            8
+          ],
+          [
+            43,
+            43
+          ],
+          [
+            53,
+            53
+          ],
+          [
+            68,
+            68
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx": [
+          [
+            1,
+            71
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/GrafanaRuleLoader.tsx": [],
+        "public/app/features/alerting/unified/rule-list/components/RuleActionsButtons.V2.tsx": [
+          [
+            2,
+            2
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            19,
+            20
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            25,
+            26
+          ],
+          [
+            28,
+            30
+          ],
+          [
+            37,
+            37
+          ],
+          [
+            51,
+            51
+          ],
+          [
+            54,
+            59
+          ],
+          [
+            61,
+            61
+          ],
+          [
+            66,
+            70
+          ],
+          [
+            117,
+            151
+          ]
+        ],
+        "public/app/features/alerting/unified/rule-list/hooks/prometheusGroupsGenerator.ts": [],
+        "public/app/features/alerting/unified/utils/rules.ts": [
+          [
+            171,
+            174
+          ]
+        ],
+        "public/app/types/unified-alerting-dto.ts": [
+          [
+            135,
+            135
+          ]
+        ],
+        "public/locales/en-US/grafana.json": []
+      }
+    },
+    "deletions": 418,
+    "files": 14,
+    "generation_batches": 1,
+    "hunks": 25,
+    "merge_base_sha": "15e1aa88551d925a80796a966e52f2b7a178203b",
+    "sha256": "9c266e784f56f41a304fb7398a4758af9749d4dfeb8d903a0a2f6568ebe9a6fe"
+  },
+  "duration_ms": 323177,
+  "findings": [
+    {
+      "body": "React emits missing-key warnings and cannot correctly reconcile list items as rules stream in incrementally via load-more, potentially reusing component state/DOM across different rules and causing incorrect item rendering.",
+      "category": "bug",
+      "chunk_id": "f0004:c0000-dfec24b58b04",
+      "confidence": 0.9,
+      "end_line": 158,
+      "evidence": "<GrafanaRuleListItem\n  rule={rule}",
+      "failure_mode": "React list reconciliation errors and console warnings in the filtered rule list.",
+      "finding_id": "bb-3f5ca9229320f5dab4ca",
+      "fingerprint": "74af3a5fadb8810a9bd63b29ddbcc49adf349abe4cfe5b99363392c106e424b3",
+      "fix_scope": "local",
+      "impact": "React emits missing-key warnings and cannot correctly reconcile list items as rules stream in incrementally via load-more, potentially reusing component state/DOM across different rules and causing incorrect item rendering.",
+      "line": 157,
+      "path": "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+      "root_cause": "The key prop was dropped when replacing GrafanaRuleLoader with GrafanaRuleListItem.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Restore `key={key}` on the GrafanaRuleListItem element, mirroring the DataSourceRuleLoader branch.",
+      "title": "Missing React key on GrafanaRuleListItem rendered inside rules.map()",
+      "trigger": "FilterView renders the filtered rule list; the 'grafana' branch of the switch inside rules.map() no longer passes the `key` prop that the removed GrafanaRuleLoader received (key={key}).",
+      "verifier_confidence": 0.95,
+      "verifier_family_key": "missing_react_key",
+      "verifier_reason": "The patch at FilterView.tsx:157-162 shows GrafanaRuleListItem rendered without a key prop, while the old GrafanaRuleLoader had `key={key}` (L158 removed). The DataSourceRuleLoader branch at line 165 still has `key={key}`. This is a clear React key omission in a .map() that will cause reconciliation warnings and potential state bugs during incremental loading."
+    }
+  ],
+  "pr": {
+    "base_ref": "main",
+    "base_sha": "47e5bd23163e6037fc0741068ac78930bba2769f",
+    "body": "<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto-generate the changelog for issues marked with the \"add to changelog\" label.\r\n\r\n7. If your PR content should be added to the What's New document for the next major or minor release, add the **add to what's new** label to your PR. Note that you should add this label to the main PR that introduces the feature; do not add this label to smaller PRs for the feature.\r\n\r\n-->\r\n\r\n**What is this feature?**\r\n\r\n[Add a brief description of what the feature or update does.]\r\n\r\n**Why do we need this feature?**\r\n\r\n[Add a description of the problem the feature is trying to solve.]\r\n\r\n**Who is this feature for?**\r\n\r\n[Add information on what kind of user the feature is for.]\r\n\r\n**Which issue(s) does this PR fix?**:\r\n\r\n<!--\r\n\r\n- Automatically closes linked issue when the Pull Request is merged.\r\n\r\nUsage: \"Fixes #<issue number>\", or \"Fixes (paste link of issue)\"\r\n\r\n-->\r\n\r\nFixes #\r\n\r\n**Special notes for your reviewer:**\r\n\r\nPlease check that:\r\n- [ ] It works as expected from a user's perspective.\r\n- [ ] If this is a pre-GA feature, it is behind a feature toggle.\r\n- [ ] The docs are updated, and if this is a [notable improvement](https://grafana.com/docs/writers-toolkit/contribute/release-notes/#how-to-determine-if-content-belongs-in-whats-new), it's added to our [What's New](https://grafana.com/docs/writers-toolkit/contribute/release-notes/) doc.\r\n",
+    "clone_url": "https://github.com/code-review-benchmark/grafana__grafana__augment__PR106778__20260122.git",
+    "head_ref": "pr-106778",
+    "head_sha": "8df850371034b73dc4dd9908cc30fa09f12a1f97",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "grafana__grafana__augment__PR106778__20260122",
+    "resolved_at": "2026-08-24T04:12:24.473984Z",
+    "title": "Alerting: Remove ruler from alert list view2",
+    "url": "https://github.com/code-review-benchmark/grafana__grafana__augment__PR106778__20260122/pull/1"
+  },
+  "raw_findings": [
+    {
+      "body": "The menu item is shown (canSilence becomes true via the new grafanaSilenceAbility), but clicking it only sets showSilenceDrawer; the drawer in RuleActionsButtons.V2 is gated by rulerRuleType.grafana.alertingRule(rule) which is false when rulerRule is undefined, so nothing happens. The user sees a visible action that silently does nothing.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-8cd11171c633",
+      "confidence": 0.7,
+      "end_line": 96,
+      "evidence": "const canSilence = (silenceSupported && silenceAllowed) || (grafanaSilenceSupported && grafanaSilenceAllowed);",
+      "failure_mode": "User-visible action that has no effect when triggered from the ruler-free list view.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The menu item is shown (canSilence becomes true via the new grafanaSilenceAbility), but clicking it only sets showSilenceDrawer; the drawer in RuleActionsButtons.V2 is gated by rulerRuleType.grafana.alertingRule(rule) which is false when rulerRule is undefined, so nothing happens. The user sees a visible action that silently does nothing.",
+      "line": 96,
+      "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+      "root_cause": "canSilence now incorporates the prom-rule-based ability, but the downstream silence drawer was not updated to work without a RulerRuleDTO.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Either render SilenceGrafanaRuleDrawer based on the prom rule (accepting a GrafanaPromRuleDTO) when no ruler rule is present, or do not include the grafana ability in canSilence until the drawer supports prom-only rules.",
+      "title": "Silence menu item is a no-op for prom-only rules because SilenceGrafanaRuleDrawer still requires a ruler rule",
+      "trigger": "In the new alert list view, GrafanaRuleListItem renders RuleActionsButtons with only promRule (rulerRule undefined). A user with silence permissions opens the More menu and clicks 'Silence notifications'.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The Delete menu item is rendered under the unchanged guard `canDelete && rulerRule &&` and handleDelete requires a RulerRuleDTO, so Delete never appears in the ruler-free list view even when grafanaDeleteAbility is [true, true]. Users lose the ability to delete rules from the list view, and the new grafana delete ability computation is dead code.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-8cd11171c633",
+      "confidence": 0.6,
+      "end_line": 87,
+      "evidence": "const canDelete = (deleteSupported && deleteAllowed) || (grafanaDeleteSupported && grafanaDeleteAllowed);",
+      "failure_mode": "Feature regression: delete action silently missing in the new list view; dead ability computation.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "repeated_pattern",
+      "impact": "The Delete menu item is rendered under the unchanged guard `canDelete && rulerRule &&` and handleDelete requires a RulerRuleDTO, so Delete never appears in the ruler-free list view even when grafanaDeleteAbility is [true, true]. Users lose the ability to delete rules from the list view, and the new grafana delete ability computation is dead code.",
+      "line": 87,
+      "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+      "root_cause": "New prom-rule-based delete ability was added without updating the render guard and delete handler that still depend on rulerRule.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Update the Delete menu item guard and handleDelete signature to work with a Grafana prom rule identifier (uid) when rulerRule is absent, or remove the grafanaDeleteAbility computation until delete is supported.",
+      "title": "Delete action is unreachable for prom-only rules despite computing the new grafanaDeleteAbility",
+      "trigger": "New alert list view renders AlertRuleMenu with promRule only (rulerRule undefined) for a user with AlertingRuleDelete permission.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)`, so pause never renders in the ruler-free list view even when grafanaPauseAbility is [true, true]. Additionally, canPause=true feeds showDivider, so a Menu.Divider can render with no actionable items above it.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-8cd11171c633",
+      "confidence": 0.55,
+      "end_line": 83,
+      "evidence": "const canPause = (pauseSupported && pauseAllowed) || (grafanaPauseSupported && grafanaPauseAllowed);",
+      "failure_mode": "Feature missing from the new list view plus a cosmetic divider glitch; dead ability computation.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "repeated_pattern",
+      "impact": "MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)`, so pause never renders in the ruler-free list view even when grafanaPauseAbility is [true, true]. Additionally, canPause=true feeds showDivider, so a Menu.Divider can render with no actionable items above it.",
+      "line": 83,
+      "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+      "root_cause": "New prom-rule-based pause ability was added without updating MenuItemPauseRule's rulerRule requirement.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Make MenuItemPauseRule accept a Grafana prom rule (or its uid) when rulerRule is absent, or exclude the grafana pause ability from canPause/showDivider until pause supports prom-only rules.",
+      "title": "Pause action is unreachable for prom-only rules despite computing the new grafanaPauseAbility, causing dead code and a stray menu divider",
+      "trigger": "New alert list view renders AlertRuleMenu with promRule only (rulerRule undefined) for a user with rule update permission on the folder.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "React emits missing-key warnings and cannot correctly reconcile list items as rules stream in incrementally via load-more, potentially reusing component state/DOM across different rules and causing incorrect item rendering.",
+      "category": "bug",
+      "chunk_id": "f0004:c0000-dfec24b58b04",
+      "confidence": 0.9,
+      "end_line": 158,
+      "evidence": "<GrafanaRuleListItem\n  rule={rule}",
+      "failure_mode": "React list reconciliation errors and console warnings in the filtered rule list.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "React emits missing-key warnings and cannot correctly reconcile list items as rules stream in incrementally via load-more, potentially reusing component state/DOM across different rules and causing incorrect item rendering.",
+      "line": 157,
+      "path": "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+      "root_cause": "The key prop was dropped when replacing GrafanaRuleLoader with GrafanaRuleListItem.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Restore `key={key}` on the GrafanaRuleListItem element, mirroring the DataSourceRuleLoader branch.",
+      "title": "Missing React key on GrafanaRuleListItem rendered inside rules.map()",
+      "trigger": "FilterView renders the filtered rule list; the 'grafana' branch of the switch inside rules.map() no longer passes the `key` prop that the removed GrafanaRuleLoader received (key={key}).",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The old implementation computed `isFederated = isFederatedRuleGroup(rule.group)` and marked federated rules immutable. useAllRulerRuleAbilities hardcodes `const isFederated = false;` (only a TODO), so federated rules now report Update/Delete as supported, exposing Edit/Delete actions that should be disabled and letting users attempt mutations on federated groups.",
+      "category": "bug",
+      "chunk_id": "f0003:c0000-1a83b1742602",
+      "confidence": 0.6,
+      "end_line": 228,
+      "evidence": "return useAllRulerRuleAbilities(rule.rulerRule, groupIdentifierV2);",
+      "failure_mode": "Federated rules incorrectly appear editable/removable in the UI.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The old implementation computed `isFederated = isFederatedRuleGroup(rule.group)` and marked federated rules immutable. useAllRulerRuleAbilities hardcodes `const isFederated = false;` (only a TODO), so federated rules now report Update/Delete as supported, exposing Edit/Delete actions that should be disabled and letting users attempt mutations on federated groups.",
+      "line": 228,
+      "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+      "root_cause": "Refactor delegated CombinedRule ability computation to a function that lacks access to the rule group and stubs isFederated to false.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Pass federated-group information into useAllRulerRuleAbilities (e.g., derive it from the group identifier or accept an isFederated flag) instead of hardcoding false, or keep the isFederatedRuleGroup(rule.group) check in useAllAlertRuleAbilities before delegating.",
+      "title": "useAllAlertRuleAbilities delegation drops the federated rule group immutability check",
+      "trigger": "A user views a federated Mimir rule group in any view using useAlertRuleAbility/useAllAlertRuleAbilities (e.g., the existing rule list or detail views) with edit/delete permissions.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "With rule undefined, loading is false and MaybeSupported becomes AlwaysSupported, so Duplicate resolves to [true, hasCreatePermission]. canDuplicate in AlertRuleMenu then becomes true via the grafana path even though the ruler-based ability is [false, ...], showing a Duplicate menu item for rules that cannot be duplicated; clicking it triggers a clone flow that fails.",
+      "category": "bug",
+      "chunk_id": "f0003:c0000-1a83b1742602",
+      "confidence": 0.6,
+      "end_line": 309,
+      "evidence": "const MaybeSupported = loading ? NotSupported : AlwaysSupported;",
+      "failure_mode": "Incorrect ability results leak actionable but non-functional menu items for non-Grafana rules.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "With rule undefined, loading is false and MaybeSupported becomes AlwaysSupported, so Duplicate resolves to [true, hasCreatePermission]. canDuplicate in AlertRuleMenu then becomes true via the grafana path even though the ruler-based ability is [false, ...], showing a Duplicate menu item for rules that cannot be duplicated; clicking it triggers a clone flow that fails.",
+      "line": 309,
+      "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+      "root_cause": "The skipToken/undefined-rule path still computes supported flags as AlwaysSupported rather than NotSupported.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Short-circuit useAllGrafanaPromRuleAbilities to return all-NotSupported abilities when rule is undefined, instead of computing supported flags from an absent rule.",
+      "title": "useAllGrafanaPromRuleAbilities reports actions as supported when rule is undefined (skipToken)",
+      "trigger": "AlertRuleMenu/RuleActionsButtons call useGrafanaPromRuleAbilities with skipToken for non-Grafana rules (e.g., a vanilla Prometheus data source rule without a ruler API) while the user holds Grafana rule create permission.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The replaced GrafanaRuleLoader built the href with createReturnTo() (`createRelativeUrl(..., { returnTo })`); the new component omits it, so the rule detail page loses the returnTo query parameter and can no longer navigate back to the exact list/filter state the user came from.",
+      "category": "bug",
+      "chunk_id": "f0007:c0000-73b6ad7dc8fa",
+      "confidence": 0.55,
+      "end_line": 40,
+      "evidence": "href: createRelativeUrl(`/alerting/grafana/${uid}/view`),",
+      "failure_mode": "Navigation regression: back/return-to context lost after opening a rule from the list.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The replaced GrafanaRuleLoader built the href with createReturnTo() (`createRelativeUrl(..., { returnTo })`); the new component omits it, so the rule detail page loses the returnTo query parameter and can no longer navigate back to the exact list/filter state the user came from.",
+      "line": 40,
+      "path": "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+      "root_cause": "returnTo handling was not carried over when GrafanaRuleListItem was extracted from GrafanaRuleLoader.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Reintroduce createReturnTo() and pass { returnTo } to createRelativeUrl when building the view href.",
+      "title": "GrafanaRuleListItem drops the returnTo parameter from the rule view link",
+      "trigger": "User clicks a Grafana rule name in the new list view (grouped or filtered) to open the rule detail page, then uses the return-to-previous navigation.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The stray '// duplicate' note conveys no meaning (nothing is duplicated on that line) and looks like an unfinished refactoring marker, reducing code clarity in a permissions-critical hook.",
+      "category": "style",
+      "chunk_id": "f0003:c0000-1a83b1742602",
+      "confidence": 0.7,
+      "end_line": 289,
+      "evidence": "const { isEditable, isRemovable, loading } = useIsGrafanaPromRuleEditable(rule); // duplicate",
+      "failure_mode": "Confusing dead comment in reviewed code.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The stray '// duplicate' note conveys no meaning (nothing is duplicated on that line) and looks like an unfinished refactoring marker, reducing code clarity in a permissions-critical hook.",
+      "line": 289,
+      "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+      "root_cause": "Development scratch comment committed with the new hook.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Remove the '// duplicate' comment or replace it with an explanatory comment if it was meant to flag intentional duplication of useIsRuleEditable logic.",
+      "title": "Leftover '// duplicate' comment on useIsGrafanaPromRuleEditable call",
+      "trigger": "Any reader or reviewer of useAllGrafanaPromRuleAbilities encounters the trailing comment.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The test asserts the exact absence of the Delete menu item even though the user has delete permissions, silently enshrining the list-view delete regression; if delete support is later restored, the brittle exact-count assertion will fail for the wrong reason.",
+      "category": "test_gap",
+      "chunk_id": "f0005:c0000-ffd254c7cb92",
+      "confidence": 0.5,
+      "end_line": 207,
+      "evidence": "expect(menuItems.length).toBe(4);",
+      "failure_mode": "Test masks a functional regression and is brittle to legitimate menu changes.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The test asserts the exact absence of the Delete menu item even though the user has delete permissions, silently enshrining the list-view delete regression; if delete support is later restored, the brittle exact-count assertion will fail for the wrong reason.",
+      "line": 207,
+      "path": "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+      "root_cause": "Exact-count assertion written against current (regressed) behavior rather than intended permission-driven behavior.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Assert the presence/absence of each expected menu item explicitly (including an explicit expectation and comment about Delete being unsupported in the ruler-free list view) instead of an exact total count.",
+      "title": "New test hard-codes exactly 4 menu items, baking in the missing Delete action for a user with delete permission",
+      "trigger": "Running GrafanaGroupLoader.test.tsx: the beforeEach grants AlertingRuleDelete and folder delete access control, yet the menu assertion counts only silence/copy-link/duplicate/export.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    }
+  ],
+  "rejected_findings": [
+    {
+      "finding": {
+        "body": "The menu item is shown (canSilence becomes true via the new grafanaSilenceAbility), but clicking it only sets showSilenceDrawer; the drawer in RuleActionsButtons.V2 is gated by rulerRuleType.grafana.alertingRule(rule) which is false when rulerRule is undefined, so nothing happens. The user sees a visible action that silently does nothing.",
+        "category": "bug",
+        "chunk_id": "f0000:c0000-8cd11171c633",
+        "confidence": 0.7,
+        "end_line": 96,
+        "evidence": "const canSilence = (silenceSupported && silenceAllowed) || (grafanaSilenceSupported && grafanaSilenceAllowed);",
+        "failure_mode": "User-visible action that has no effect when triggered from the ruler-free list view.",
+        "finding_id": "bb-8c4a1ed0e616ab8b1dc8",
+        "fingerprint": "5abb0d8dc92aabb4a7bb80a8d21207cf0b4737b27ad93fc65b7af795820b7aab",
+        "fix_scope": "local",
+        "impact": "The menu item is shown (canSilence becomes true via the new grafanaSilenceAbility), but clicking it only sets showSilenceDrawer; the drawer in RuleActionsButtons.V2 is gated by rulerRuleType.grafana.alertingRule(rule) which is false when rulerRule is undefined, so nothing happens. The user sees a visible action that silently does nothing.",
+        "line": 96,
+        "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "root_cause": "canSilence now incorporates the prom-rule-based ability, but the downstream silence drawer was not updated to work without a RulerRuleDTO.",
+        "severity": "high",
+        "side": "RIGHT",
+        "suggested_fix": "Either render SilenceGrafanaRuleDrawer based on the prom rule (accepting a GrafanaPromRuleDTO) when no ruler rule is present, or do not include the grafana ability in canSilence until the drawer supports prom-only rules.",
+        "title": "Silence menu item is a no-op for prom-only rules because SilenceGrafanaRuleDrawer still requires a ruler rule",
+        "trigger": "In the new alert list view, GrafanaRuleListItem renders RuleActionsButtons with only promRule (rulerRule undefined). A user with silence permissions opens the More menu and clicks 'Silence notifications'.",
+        "verifier_confidence": 0.7,
+        "verifier_family_key": "prom_only_action_mismatch",
+        "verifier_reason": "The claim that SilenceGrafanaRuleDrawer is gated by rulerRuleType.grafana.alertingRule(rule) is correct per RuleActionsButtons.V2.tsx:104, but the patch shows canSilence now includes grafanaSilenceAbility which uses useGrafanaRulesSilenceSupport and useCanSilenceInFolder (lines 292-293 in useAbilities.ts). The drawer guard requires rulerRule, but the finding assumes the menu item will show without the drawer working. However, the silence menu item in AlertRuleMenu.tsx:126-131 only calls handleSilence which sets showSilenceDrawer - the drawer rendering is in RuleActionsButtons.V2.tsx:104-106 which does require rulerRuleType.grafana.alertingRule(rule). This is a valid concern but the trigger scenario is speculative - we cannot confirm from the patch that GrafanaRuleListItem passes only promRule without rulerRule in a way that triggers this exact path."
+      },
+      "reason": "The claim that SilenceGrafanaRuleDrawer is gated by rulerRuleType.grafana.alertingRule(rule) is correct per RuleActionsButtons.V2.tsx:104, but the patch shows canSilence now includes grafanaSilenceAbility which uses useGrafanaRulesSilenceSupport and useCanSilenceInFolder (lines 292-293 in useAbilities.ts). The drawer guard requires rulerRule, but the finding assumes the menu item will show without the drawer working. However, the silence menu item in AlertRuleMenu.tsx:126-131 only calls handleSilence which sets showSilenceDrawer - the drawer rendering is in RuleActionsButtons.V2.tsx:104-106 which does require rulerRuleType.grafana.alertingRule(rule). This is a valid concern but the trigger scenario is speculative - we cannot confirm from the patch that GrafanaRuleListItem passes only promRule without rulerRule in a way that triggers this exact path.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "The Delete menu item is rendered under the unchanged guard `canDelete && rulerRule &&` and handleDelete requires a RulerRuleDTO, so Delete never appears in the ruler-free list view even when grafanaDeleteAbility is [true, true]. Users lose the ability to delete rules from the list view, and the new grafana delete ability computation is dead code.",
+        "category": "bug",
+        "chunk_id": "f0000:c0000-8cd11171c633",
+        "confidence": 0.6,
+        "end_line": 87,
+        "evidence": "const canDelete = (deleteSupported && deleteAllowed) || (grafanaDeleteSupported && grafanaDeleteAllowed);",
+        "failure_mode": "Feature regression: delete action silently missing in the new list view; dead ability computation.",
+        "finding_id": "bb-341c63e5ce59761af800",
+        "fingerprint": "713b067a57ecc0597249fe046b649aecf138294261e7bccd75478c022383fb01",
+        "fix_scope": "repeated_pattern",
+        "impact": "The Delete menu item is rendered under the unchanged guard `canDelete && rulerRule &&` and handleDelete requires a RulerRuleDTO, so Delete never appears in the ruler-free list view even when grafanaDeleteAbility is [true, true]. Users lose the ability to delete rules from the list view, and the new grafana delete ability computation is dead code.",
+        "line": 87,
+        "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "root_cause": "New prom-rule-based delete ability was added without updating the render guard and delete handler that still depend on rulerRule.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Update the Delete menu item guard and handleDelete signature to work with a Grafana prom rule identifier (uid) when rulerRule is absent, or remove the grafanaDeleteAbility computation until delete is supported.",
+        "title": "Delete action is unreachable for prom-only rules despite computing the new grafanaDeleteAbility",
+        "trigger": "New alert list view renders AlertRuleMenu with promRule only (rulerRule undefined) for a user with AlertingRuleDelete permission.",
+        "verifier_confidence": 0.65,
+        "verifier_family_key": "prom_only_action_mismatch",
+        "verifier_reason": "The claim that Delete menu item is gated by `canDelete && rulerRule &&` is confirmed in AlertRuleMenu.tsx:165. However, the finding claims this is a regression - the patch adds grafanaDeleteAbility computation but the render guard was already requiring rulerRule before this patch. The patch doesn't change the render guard, so this is pre-existing behavior, not a patch-introduced bug. The new ability computation may be intentionally for future use."
+      },
+      "reason": "The claim that Delete menu item is gated by `canDelete && rulerRule &&` is confirmed in AlertRuleMenu.tsx:165. However, the finding claims this is a regression - the patch adds grafanaDeleteAbility computation but the render guard was already requiring rulerRule before this patch. The patch doesn't change the render guard, so this is pre-existing behavior, not a patch-introduced bug. The new ability computation may be intentionally for future use.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)`, so pause never renders in the ruler-free list view even when grafanaPauseAbility is [true, true]. Additionally, canPause=true feeds showDivider, so a Menu.Divider can render with no actionable items above it.",
+        "category": "bug",
+        "chunk_id": "f0000:c0000-8cd11171c633",
+        "confidence": 0.55,
+        "end_line": 83,
+        "evidence": "const canPause = (pauseSupported && pauseAllowed) || (grafanaPauseSupported && grafanaPauseAllowed);",
+        "failure_mode": "Feature missing from the new list view plus a cosmetic divider glitch; dead ability computation.",
+        "finding_id": "bb-d4649ab3f7d153bcaf23",
+        "fingerprint": "22982a9215cae5fc5d206274304cf1fb0d91e9755eb93bc37a9f6dfbe6b6049d",
+        "fix_scope": "repeated_pattern",
+        "impact": "MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)`, so pause never renders in the ruler-free list view even when grafanaPauseAbility is [true, true]. Additionally, canPause=true feeds showDivider, so a Menu.Divider can render with no actionable items above it.",
+        "line": 83,
+        "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+        "root_cause": "New prom-rule-based pause ability was added without updating MenuItemPauseRule's rulerRule requirement.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Make MenuItemPauseRule accept a Grafana prom rule (or its uid) when rulerRule is absent, or exclude the grafana pause ability from canPause/showDivider until pause supports prom-only rules.",
+        "title": "Pause action is unreachable for prom-only rules despite computing the new grafanaPauseAbility, causing dead code and a stray menu divider",
+        "trigger": "New alert list view renders AlertRuleMenu with promRule only (rulerRule undefined) for a user with rule update permission on the folder.",
+        "verifier_confidence": 0.65,
+        "verifier_family_key": "prom_only_action_mismatch",
+        "verifier_reason": "Similar to candidate 1 - MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)` per AlertRuleMenu.tsx:123. The patch adds grafanaPauseAbility but doesn't change the render guard. This is pre-existing behavior where the guard requires rulerRule. The new ability may be for future use. Not a patch-introduced regression."
+      },
+      "reason": "Similar to candidate 1 - MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)` per AlertRuleMenu.tsx:123. The patch adds grafanaPauseAbility but doesn't change the render guard. This is pre-existing behavior where the guard requires rulerRule. The new ability may be for future use. Not a patch-introduced regression.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "The old implementation computed `isFederated = isFederatedRuleGroup(rule.group)` and marked federated rules immutable. useAllRulerRuleAbilities hardcodes `const isFederated = false;` (only a TODO), so federated rules now report Update/Delete as supported, exposing Edit/Delete actions that should be disabled and letting users attempt mutations on federated groups.",
+        "category": "bug",
+        "chunk_id": "f0003:c0000-1a83b1742602",
+        "confidence": 0.6,
+        "end_line": 228,
+        "evidence": "return useAllRulerRuleAbilities(rule.rulerRule, groupIdentifierV2);",
+        "failure_mode": "Federated rules incorrectly appear editable/removable in the UI.",
+        "finding_id": "bb-1e83351643d1badab721",
+        "fingerprint": "a61558bb8e8214d5b6e363a76f05a9e5325810501a82d098f75e18ee4097c98c",
+        "fix_scope": "local",
+        "impact": "The old implementation computed `isFederated = isFederatedRuleGroup(rule.group)` and marked federated rules immutable. useAllRulerRuleAbilities hardcodes `const isFederated = false;` (only a TODO), so federated rules now report Update/Delete as supported, exposing Edit/Delete actions that should be disabled and letting users attempt mutations on federated groups.",
+        "line": 228,
+        "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+        "root_cause": "Refactor delegated CombinedRule ability computation to a function that lacks access to the rule group and stubs isFederated to false.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Pass federated-group information into useAllRulerRuleAbilities (e.g., derive it from the group identifier or accept an isFederated flag) instead of hardcoding false, or keep the isFederatedRuleGroup(rule.group) check in useAllAlertRuleAbilities before delegating.",
+        "title": "useAllAlertRuleAbilities delegation drops the federated rule group immutability check",
+        "trigger": "A user views a federated Mimir rule group in any view using useAlertRuleAbility/useAllAlertRuleAbilities (e.g., the existing rule list or detail views) with edit/delete permissions.",
+        "verifier_confidence": 0.6,
+        "verifier_family_key": "federated_rule_check",
+        "verifier_reason": "The finding claims useAllAlertRuleAbilities delegation drops federated rule check. Looking at useAbilities.ts:228, useAllAlertRuleAbilities now delegates to useAllRulerRuleAbilities. The old code had `isFederated = isFederatedRuleGroup(rule.group)` but the new useAllRulerRuleAbilities at line 245 has `const isFederated = false;` with a TODO comment. However, useAllAlertRuleAbilities is marked @deprecated (line 220) and the federated check was already a TODO in the old code. The patch context doesn't show the old implementation had working federated detection that was removed."
+      },
+      "reason": "The finding claims useAllAlertRuleAbilities delegation drops federated rule check. Looking at useAbilities.ts:228, useAllAlertRuleAbilities now delegates to useAllRulerRuleAbilities. The old code had `isFederated = isFederatedRuleGroup(rule.group)` but the new useAllRulerRuleAbilities at line 245 has `const isFederated = false;` with a TODO comment. However, useAllAlertRuleAbilities is marked @deprecated (line 220) and the federated check was already a TODO in the old code. The patch context doesn't show the old implementation had working federated detection that was removed.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "With rule undefined, loading is false and MaybeSupported becomes AlwaysSupported, so Duplicate resolves to [true, hasCreatePermission]. canDuplicate in AlertRuleMenu then becomes true via the grafana path even though the ruler-based ability is [false, ...], showing a Duplicate menu item for rules that cannot be duplicated; clicking it triggers a clone flow that fails.",
+        "category": "bug",
+        "chunk_id": "f0003:c0000-1a83b1742602",
+        "confidence": 0.6,
+        "end_line": 309,
+        "evidence": "const MaybeSupported = loading ? NotSupported : AlwaysSupported;",
+        "failure_mode": "Incorrect ability results leak actionable but non-functional menu items for non-Grafana rules.",
+        "finding_id": "bb-155b3ae1b975beafdd98",
+        "fingerprint": "2223e25911f13473fa578e02fef95ac31be23284758508efd3d7fdaffd7be479",
+        "fix_scope": "local",
+        "impact": "With rule undefined, loading is false and MaybeSupported becomes AlwaysSupported, so Duplicate resolves to [true, hasCreatePermission]. canDuplicate in AlertRuleMenu then becomes true via the grafana path even though the ruler-based ability is [false, ...], showing a Duplicate menu item for rules that cannot be duplicated; clicking it triggers a clone flow that fails.",
+        "line": 309,
+        "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+        "root_cause": "The skipToken/undefined-rule path still computes supported flags as AlwaysSupported rather than NotSupported.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Short-circuit useAllGrafanaPromRuleAbilities to return all-NotSupported abilities when rule is undefined, instead of computing supported flags from an absent rule.",
+        "title": "useAllGrafanaPromRuleAbilities reports actions as supported when rule is undefined (skipToken)",
+        "trigger": "AlertRuleMenu/RuleActionsButtons call useGrafanaPromRuleAbilities with skipToken for non-Grafana rules (e.g., a vanilla Prometheus data source rule without a ruler API) while the user holds Grafana rule create permission.",
+        "verifier_confidence": 0.7,
+        "verifier_family_key": "undefined_rule_abilities",
+        "verifier_reason": "The finding claims useAllGrafanaPromRuleAbilities reports actions as supported when rule is undefined. Looking at line 309, `MaybeSupported = loading ? NotSupported : AlwaysSupported`. When rule is undefined, useIsGrafanaPromRuleEditable returns loading=false per the pattern, so MaybeSupported becomes AlwaysSupported. However, examining the code flow: when rule is undefined, isEditable and isRemovable would be undefined/false, and the abilities use these values directly (lines 320-321). The Duplicate ability uses duplicateSupported which depends on isPluginProvided check that handles undefined rule. The claim about canDuplicate becoming true is not fully substantiated - the permission check still applies."
+      },
+      "reason": "The finding claims useAllGrafanaPromRuleAbilities reports actions as supported when rule is undefined. Looking at line 309, `MaybeSupported = loading ? NotSupported : AlwaysSupported`. When rule is undefined, useIsGrafanaPromRuleEditable returns loading=false per the pattern, so MaybeSupported becomes AlwaysSupported. However, examining the code flow: when rule is undefined, isEditable and isRemovable would be undefined/false, and the abilities use these values directly (lines 320-321). The Duplicate ability uses duplicateSupported which depends on isPluginProvided check that handles undefined rule. The claim about canDuplicate becoming true is not fully substantiated - the permission check still applies.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "The replaced GrafanaRuleLoader built the href with createReturnTo() (`createRelativeUrl(..., { returnTo })`); the new component omits it, so the rule detail page loses the returnTo query parameter and can no longer navigate back to the exact list/filter state the user came from.",
+        "category": "bug",
+        "chunk_id": "f0007:c0000-73b6ad7dc8fa",
+        "confidence": 0.55,
+        "end_line": 40,
+        "evidence": "href: createRelativeUrl(`/alerting/grafana/${uid}/view`),",
+        "failure_mode": "Navigation regression: back/return-to context lost after opening a rule from the list.",
+        "finding_id": "bb-5156f9da42bbd86145c7",
+        "fingerprint": "b406459abfabbe3920c9e2c84648bb9f9503cba55e7f030f5320aa53ebf6846e",
+        "fix_scope": "local",
+        "impact": "The replaced GrafanaRuleLoader built the href with createReturnTo() (`createRelativeUrl(..., { returnTo })`); the new component omits it, so the rule detail page loses the returnTo query parameter and can no longer navigate back to the exact list/filter state the user came from.",
+        "line": 40,
+        "path": "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+        "root_cause": "returnTo handling was not carried over when GrafanaRuleListItem was extracted from GrafanaRuleLoader.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Reintroduce createReturnTo() and pass { returnTo } to createRelativeUrl when building the view href.",
+        "title": "GrafanaRuleListItem drops the returnTo parameter from the rule view link",
+        "trigger": "User clicks a Grafana rule name in the new list view (grouped or filtered) to open the rule detail page, then uses the return-to-previous navigation.",
+        "verifier_confidence": 0.6,
+        "verifier_family_key": "missing_return_to",
+        "verifier_reason": "The finding claims returnTo parameter is dropped. Looking at GrafanaRuleListItem.tsx:40, the href is `createRelativeUrl(`/alerting/grafana/${uid}/view`)` without returnTo. However, the patch context doesn't show the old GrafanaRuleLoader implementation to confirm it had returnTo. The immutable head file for GrafanaRuleListItem.tsx shows this is the new component. Without evidence of what the old component did, this is speculative. The search for GrafanaRuleLoader returned no matches, suggesting it was removed entirely."
+      },
+      "reason": "The finding claims returnTo parameter is dropped. Looking at GrafanaRuleListItem.tsx:40, the href is `createRelativeUrl(`/alerting/grafana/${uid}/view`)` without returnTo. However, the patch context doesn't show the old GrafanaRuleLoader implementation to confirm it had returnTo. The immutable head file for GrafanaRuleListItem.tsx shows this is the new component. Without evidence of what the old component did, this is speculative. The search for GrafanaRuleLoader returned no matches, suggesting it was removed entirely.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "The stray '// duplicate' note conveys no meaning (nothing is duplicated on that line) and looks like an unfinished refactoring marker, reducing code clarity in a permissions-critical hook.",
+        "category": "style",
+        "chunk_id": "f0003:c0000-1a83b1742602",
+        "confidence": 0.7,
+        "end_line": 289,
+        "evidence": "const { isEditable, isRemovable, loading } = useIsGrafanaPromRuleEditable(rule); // duplicate",
+        "failure_mode": "Confusing dead comment in reviewed code.",
+        "finding_id": "bb-bf3c24f7b0235ac04580",
+        "fingerprint": "35b4a6ac9d8cea6b1435b5ad677c3b7b102139fded5e52267ad384d70934c9fa",
+        "fix_scope": "local",
+        "impact": "The stray '// duplicate' note conveys no meaning (nothing is duplicated on that line) and looks like an unfinished refactoring marker, reducing code clarity in a permissions-critical hook.",
+        "line": 289,
+        "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+        "root_cause": "Development scratch comment committed with the new hook.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Remove the '// duplicate' comment or replace it with an explanatory comment if it was meant to flag intentional duplication of useIsRuleEditable logic.",
+        "title": "Leftover '// duplicate' comment on useIsGrafanaPromRuleEditable call",
+        "trigger": "Any reader or reviewer of useAllGrafanaPromRuleAbilities encounters the trailing comment.",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "stray_comment",
+        "verifier_reason": "This is a style/comment issue. The `// duplicate` comment at line 289 is indeed present in the patch and appears to be a leftover development note. However, the instructions specify to drop stylistic findings. This is categorized as 'style' by the candidate itself."
+      },
+      "reason": "This is a style/comment issue. The `// duplicate` comment at line 289 is indeed present in the patch and appears to be a leftover development note. However, the instructions specify to drop stylistic findings. This is categorized as 'style' by the candidate itself.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "The test asserts the exact absence of the Delete menu item even though the user has delete permissions, silently enshrining the list-view delete regression; if delete support is later restored, the brittle exact-count assertion will fail for the wrong reason.",
+        "category": "test_gap",
+        "chunk_id": "f0005:c0000-ffd254c7cb92",
+        "confidence": 0.5,
+        "end_line": 207,
+        "evidence": "expect(menuItems.length).toBe(4);",
+        "failure_mode": "Test masks a functional regression and is brittle to legitimate menu changes.",
+        "finding_id": "bb-8ae5e3996a432816acea",
+        "fingerprint": "1c55ee8f87567f3efe486afe5add7dfcd0a5801330492c4ef6f9581ef2e1fce5",
+        "fix_scope": "local",
+        "impact": "The test asserts the exact absence of the Delete menu item even though the user has delete permissions, silently enshrining the list-view delete regression; if delete support is later restored, the brittle exact-count assertion will fail for the wrong reason.",
+        "line": 207,
+        "path": "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+        "root_cause": "Exact-count assertion written against current (regressed) behavior rather than intended permission-driven behavior.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Assert the presence/absence of each expected menu item explicitly (including an explicit expectation and comment about Delete being unsupported in the ruler-free list view) instead of an exact total count.",
+        "title": "New test hard-codes exactly 4 menu items, baking in the missing Delete action for a user with delete permission",
+        "trigger": "Running GrafanaGroupLoader.test.tsx: the beforeEach grants AlertingRuleDelete and folder delete access control, yet the menu assertion counts only silence/copy-link/duplicate/export.",
+        "verifier_confidence": 0.7,
+        "verifier_family_key": "test_assertion_brittleness",
+        "verifier_reason": "This is categorized as test_gap, not a bug. The test at line 207 asserts exactly 4 menu items. The finding claims this 'bakes in' a regression, but the test comments at lines 191-203 explicitly document what the 4 items are (silence, copy-link, duplicate, export). The test is documenting current expected behavior. Whether Delete should be present is a design decision, not a test defect. The assertion is intentional per the comments."
+      },
+      "reason": "This is categorized as test_gap, not a bug. The test at line 207 asserts exactly 4 menu items. The finding claims this 'bakes in' a regression, but the test comments at lines 191-203 explicitly document what the 4 items are (silence, copy-link, duplicate, export). The test is documenting current expected behavior. Whether Delete should be present is a design decision, not a test defect. The assertion is intentional per the comments.",
+      "stage": "verifier"
+    }
+  ],
+  "run_id": "be3fce63a150be14013f5806",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-fable-5",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T05:11:09.340465Z",
+  "status": "completed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": [
+    {
+      "body": "The menu item is shown (canSilence becomes true via the new grafanaSilenceAbility), but clicking it only sets showSilenceDrawer; the drawer in RuleActionsButtons.V2 is gated by rulerRuleType.grafana.alertingRule(rule) which is false when rulerRule is undefined, so nothing happens. The user sees a visible action that silently does nothing.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-8cd11171c633",
+      "confidence": 0.7,
+      "end_line": 96,
+      "evidence": "const canSilence = (silenceSupported && silenceAllowed) || (grafanaSilenceSupported && grafanaSilenceAllowed);",
+      "failure_mode": "User-visible action that has no effect when triggered from the ruler-free list view.",
+      "finding_id": "bb-8c4a1ed0e616ab8b1dc8",
+      "fingerprint": "5abb0d8dc92aabb4a7bb80a8d21207cf0b4737b27ad93fc65b7af795820b7aab",
+      "fix_scope": "local",
+      "impact": "The menu item is shown (canSilence becomes true via the new grafanaSilenceAbility), but clicking it only sets showSilenceDrawer; the drawer in RuleActionsButtons.V2 is gated by rulerRuleType.grafana.alertingRule(rule) which is false when rulerRule is undefined, so nothing happens. The user sees a visible action that silently does nothing.",
+      "line": 96,
+      "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+      "root_cause": "canSilence now incorporates the prom-rule-based ability, but the downstream silence drawer was not updated to work without a RulerRuleDTO.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Either render SilenceGrafanaRuleDrawer based on the prom rule (accepting a GrafanaPromRuleDTO) when no ruler rule is present, or do not include the grafana ability in canSilence until the drawer supports prom-only rules.",
+      "title": "Silence menu item is a no-op for prom-only rules because SilenceGrafanaRuleDrawer still requires a ruler rule",
+      "trigger": "In the new alert list view, GrafanaRuleListItem renders RuleActionsButtons with only promRule (rulerRule undefined). A user with silence permissions opens the More menu and clicks 'Silence notifications'.",
+      "verifier_confidence": 0.7,
+      "verifier_family_key": "prom_only_action_mismatch",
+      "verifier_reason": "The claim that SilenceGrafanaRuleDrawer is gated by rulerRuleType.grafana.alertingRule(rule) is correct per RuleActionsButtons.V2.tsx:104, but the patch shows canSilence now includes grafanaSilenceAbility which uses useGrafanaRulesSilenceSupport and useCanSilenceInFolder (lines 292-293 in useAbilities.ts). The drawer guard requires rulerRule, but the finding assumes the menu item will show without the drawer working. However, the silence menu item in AlertRuleMenu.tsx:126-131 only calls handleSilence which sets showSilenceDrawer - the drawer rendering is in RuleActionsButtons.V2.tsx:104-106 which does require rulerRuleType.grafana.alertingRule(rule). This is a valid concern but the trigger scenario is speculative - we cannot confirm from the patch that GrafanaRuleListItem passes only promRule without rulerRule in a way that triggers this exact path."
+    },
+    {
+      "body": "The Delete menu item is rendered under the unchanged guard `canDelete && rulerRule &&` and handleDelete requires a RulerRuleDTO, so Delete never appears in the ruler-free list view even when grafanaDeleteAbility is [true, true]. Users lose the ability to delete rules from the list view, and the new grafana delete ability computation is dead code.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-8cd11171c633",
+      "confidence": 0.6,
+      "end_line": 87,
+      "evidence": "const canDelete = (deleteSupported && deleteAllowed) || (grafanaDeleteSupported && grafanaDeleteAllowed);",
+      "failure_mode": "Feature regression: delete action silently missing in the new list view; dead ability computation.",
+      "finding_id": "bb-341c63e5ce59761af800",
+      "fingerprint": "713b067a57ecc0597249fe046b649aecf138294261e7bccd75478c022383fb01",
+      "fix_scope": "repeated_pattern",
+      "impact": "The Delete menu item is rendered under the unchanged guard `canDelete && rulerRule &&` and handleDelete requires a RulerRuleDTO, so Delete never appears in the ruler-free list view even when grafanaDeleteAbility is [true, true]. Users lose the ability to delete rules from the list view, and the new grafana delete ability computation is dead code.",
+      "line": 87,
+      "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+      "root_cause": "New prom-rule-based delete ability was added without updating the render guard and delete handler that still depend on rulerRule.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Update the Delete menu item guard and handleDelete signature to work with a Grafana prom rule identifier (uid) when rulerRule is absent, or remove the grafanaDeleteAbility computation until delete is supported.",
+      "title": "Delete action is unreachable for prom-only rules despite computing the new grafanaDeleteAbility",
+      "trigger": "New alert list view renders AlertRuleMenu with promRule only (rulerRule undefined) for a user with AlertingRuleDelete permission.",
+      "verifier_confidence": 0.65,
+      "verifier_family_key": "prom_only_action_mismatch",
+      "verifier_reason": "The claim that Delete menu item is gated by `canDelete && rulerRule &&` is confirmed in AlertRuleMenu.tsx:165. However, the finding claims this is a regression - the patch adds grafanaDeleteAbility computation but the render guard was already requiring rulerRule before this patch. The patch doesn't change the render guard, so this is pre-existing behavior, not a patch-introduced bug. The new ability computation may be intentionally for future use."
+    },
+    {
+      "body": "MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)`, so pause never renders in the ruler-free list view even when grafanaPauseAbility is [true, true]. Additionally, canPause=true feeds showDivider, so a Menu.Divider can render with no actionable items above it.",
+      "category": "bug",
+      "chunk_id": "f0000:c0000-8cd11171c633",
+      "confidence": 0.55,
+      "end_line": 83,
+      "evidence": "const canPause = (pauseSupported && pauseAllowed) || (grafanaPauseSupported && grafanaPauseAllowed);",
+      "failure_mode": "Feature missing from the new list view plus a cosmetic divider glitch; dead ability computation.",
+      "finding_id": "bb-d4649ab3f7d153bcaf23",
+      "fingerprint": "22982a9215cae5fc5d206274304cf1fb0d91e9755eb93bc37a9f6dfbe6b6049d",
+      "fix_scope": "repeated_pattern",
+      "impact": "MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)`, so pause never renders in the ruler-free list view even when grafanaPauseAbility is [true, true]. Additionally, canPause=true feeds showDivider, so a Menu.Divider can render with no actionable items above it.",
+      "line": 83,
+      "path": "public/app/features/alerting/unified/components/rule-viewer/AlertRuleMenu.tsx",
+      "root_cause": "New prom-rule-based pause ability was added without updating MenuItemPauseRule's rulerRule requirement.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Make MenuItemPauseRule accept a Grafana prom rule (or its uid) when rulerRule is absent, or exclude the grafana pause ability from canPause/showDivider until pause supports prom-only rules.",
+      "title": "Pause action is unreachable for prom-only rules despite computing the new grafanaPauseAbility, causing dead code and a stray menu divider",
+      "trigger": "New alert list view renders AlertRuleMenu with promRule only (rulerRule undefined) for a user with rule update permission on the folder.",
+      "verifier_confidence": 0.65,
+      "verifier_family_key": "prom_only_action_mismatch",
+      "verifier_reason": "Similar to candidate 1 - MenuItemPauseRule is gated by `canPause && rulerRuleType.grafana.rule(rulerRule)` per AlertRuleMenu.tsx:123. The patch adds grafanaPauseAbility but doesn't change the render guard. This is pre-existing behavior where the guard requires rulerRule. The new ability may be for future use. Not a patch-introduced regression."
+    },
+    {
+      "body": "React emits missing-key warnings and cannot correctly reconcile list items as rules stream in incrementally via load-more, potentially reusing component state/DOM across different rules and causing incorrect item rendering.",
+      "category": "bug",
+      "chunk_id": "f0004:c0000-dfec24b58b04",
+      "confidence": 0.9,
+      "end_line": 158,
+      "evidence": "<GrafanaRuleListItem\n  rule={rule}",
+      "failure_mode": "React list reconciliation errors and console warnings in the filtered rule list.",
+      "finding_id": "bb-3f5ca9229320f5dab4ca",
+      "fingerprint": "74af3a5fadb8810a9bd63b29ddbcc49adf349abe4cfe5b99363392c106e424b3",
+      "fix_scope": "local",
+      "impact": "React emits missing-key warnings and cannot correctly reconcile list items as rules stream in incrementally via load-more, potentially reusing component state/DOM across different rules and causing incorrect item rendering.",
+      "line": 157,
+      "path": "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+      "root_cause": "The key prop was dropped when replacing GrafanaRuleLoader with GrafanaRuleListItem.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Restore `key={key}` on the GrafanaRuleListItem element, mirroring the DataSourceRuleLoader branch.",
+      "title": "Missing React key on GrafanaRuleListItem rendered inside rules.map()",
+      "trigger": "FilterView renders the filtered rule list; the 'grafana' branch of the switch inside rules.map() no longer passes the `key` prop that the removed GrafanaRuleLoader received (key={key}).",
+      "verifier_confidence": 0.95,
+      "verifier_family_key": "missing_react_key",
+      "verifier_reason": "The patch at FilterView.tsx:157-162 shows GrafanaRuleListItem rendered without a key prop, while the old GrafanaRuleLoader had `key={key}` (L158 removed). The DataSourceRuleLoader branch at line 165 still has `key={key}`. This is a clear React key omission in a .map() that will cause reconciliation warnings and potential state bugs during incremental loading."
+    },
+    {
+      "body": "The old implementation computed `isFederated = isFederatedRuleGroup(rule.group)` and marked federated rules immutable. useAllRulerRuleAbilities hardcodes `const isFederated = false;` (only a TODO), so federated rules now report Update/Delete as supported, exposing Edit/Delete actions that should be disabled and letting users attempt mutations on federated groups.",
+      "category": "bug",
+      "chunk_id": "f0003:c0000-1a83b1742602",
+      "confidence": 0.6,
+      "end_line": 228,
+      "evidence": "return useAllRulerRuleAbilities(rule.rulerRule, groupIdentifierV2);",
+      "failure_mode": "Federated rules incorrectly appear editable/removable in the UI.",
+      "finding_id": "bb-1e83351643d1badab721",
+      "fingerprint": "a61558bb8e8214d5b6e363a76f05a9e5325810501a82d098f75e18ee4097c98c",
+      "fix_scope": "local",
+      "impact": "The old implementation computed `isFederated = isFederatedRuleGroup(rule.group)` and marked federated rules immutable. useAllRulerRuleAbilities hardcodes `const isFederated = false;` (only a TODO), so federated rules now report Update/Delete as supported, exposing Edit/Delete actions that should be disabled and letting users attempt mutations on federated groups.",
+      "line": 228,
+      "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+      "root_cause": "Refactor delegated CombinedRule ability computation to a function that lacks access to the rule group and stubs isFederated to false.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Pass federated-group information into useAllRulerRuleAbilities (e.g., derive it from the group identifier or accept an isFederated flag) instead of hardcoding false, or keep the isFederatedRuleGroup(rule.group) check in useAllAlertRuleAbilities before delegating.",
+      "title": "useAllAlertRuleAbilities delegation drops the federated rule group immutability check",
+      "trigger": "A user views a federated Mimir rule group in any view using useAlertRuleAbility/useAllAlertRuleAbilities (e.g., the existing rule list or detail views) with edit/delete permissions.",
+      "verifier_confidence": 0.6,
+      "verifier_family_key": "federated_rule_check",
+      "verifier_reason": "The finding claims useAllAlertRuleAbilities delegation drops federated rule check. Looking at useAbilities.ts:228, useAllAlertRuleAbilities now delegates to useAllRulerRuleAbilities. The old code had `isFederated = isFederatedRuleGroup(rule.group)` but the new useAllRulerRuleAbilities at line 245 has `const isFederated = false;` with a TODO comment. However, useAllAlertRuleAbilities is marked @deprecated (line 220) and the federated check was already a TODO in the old code. The patch context doesn't show the old implementation had working federated detection that was removed."
+    },
+    {
+      "body": "With rule undefined, loading is false and MaybeSupported becomes AlwaysSupported, so Duplicate resolves to [true, hasCreatePermission]. canDuplicate in AlertRuleMenu then becomes true via the grafana path even though the ruler-based ability is [false, ...], showing a Duplicate menu item for rules that cannot be duplicated; clicking it triggers a clone flow that fails.",
+      "category": "bug",
+      "chunk_id": "f0003:c0000-1a83b1742602",
+      "confidence": 0.6,
+      "end_line": 309,
+      "evidence": "const MaybeSupported = loading ? NotSupported : AlwaysSupported;",
+      "failure_mode": "Incorrect ability results leak actionable but non-functional menu items for non-Grafana rules.",
+      "finding_id": "bb-155b3ae1b975beafdd98",
+      "fingerprint": "2223e25911f13473fa578e02fef95ac31be23284758508efd3d7fdaffd7be479",
+      "fix_scope": "local",
+      "impact": "With rule undefined, loading is false and MaybeSupported becomes AlwaysSupported, so Duplicate resolves to [true, hasCreatePermission]. canDuplicate in AlertRuleMenu then becomes true via the grafana path even though the ruler-based ability is [false, ...], showing a Duplicate menu item for rules that cannot be duplicated; clicking it triggers a clone flow that fails.",
+      "line": 309,
+      "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+      "root_cause": "The skipToken/undefined-rule path still computes supported flags as AlwaysSupported rather than NotSupported.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Short-circuit useAllGrafanaPromRuleAbilities to return all-NotSupported abilities when rule is undefined, instead of computing supported flags from an absent rule.",
+      "title": "useAllGrafanaPromRuleAbilities reports actions as supported when rule is undefined (skipToken)",
+      "trigger": "AlertRuleMenu/RuleActionsButtons call useGrafanaPromRuleAbilities with skipToken for non-Grafana rules (e.g., a vanilla Prometheus data source rule without a ruler API) while the user holds Grafana rule create permission.",
+      "verifier_confidence": 0.7,
+      "verifier_family_key": "undefined_rule_abilities",
+      "verifier_reason": "The finding claims useAllGrafanaPromRuleAbilities reports actions as supported when rule is undefined. Looking at line 309, `MaybeSupported = loading ? NotSupported : AlwaysSupported`. When rule is undefined, useIsGrafanaPromRuleEditable returns loading=false per the pattern, so MaybeSupported becomes AlwaysSupported. However, examining the code flow: when rule is undefined, isEditable and isRemovable would be undefined/false, and the abilities use these values directly (lines 320-321). The Duplicate ability uses duplicateSupported which depends on isPluginProvided check that handles undefined rule. The claim about canDuplicate becoming true is not fully substantiated - the permission check still applies."
+    },
+    {
+      "body": "The replaced GrafanaRuleLoader built the href with createReturnTo() (`createRelativeUrl(..., { returnTo })`); the new component omits it, so the rule detail page loses the returnTo query parameter and can no longer navigate back to the exact list/filter state the user came from.",
+      "category": "bug",
+      "chunk_id": "f0007:c0000-73b6ad7dc8fa",
+      "confidence": 0.55,
+      "end_line": 40,
+      "evidence": "href: createRelativeUrl(`/alerting/grafana/${uid}/view`),",
+      "failure_mode": "Navigation regression: back/return-to context lost after opening a rule from the list.",
+      "finding_id": "bb-5156f9da42bbd86145c7",
+      "fingerprint": "b406459abfabbe3920c9e2c84648bb9f9503cba55e7f030f5320aa53ebf6846e",
+      "fix_scope": "local",
+      "impact": "The replaced GrafanaRuleLoader built the href with createReturnTo() (`createRelativeUrl(..., { returnTo })`); the new component omits it, so the rule detail page loses the returnTo query parameter and can no longer navigate back to the exact list/filter state the user came from.",
+      "line": 40,
+      "path": "public/app/features/alerting/unified/rule-list/GrafanaRuleListItem.tsx",
+      "root_cause": "returnTo handling was not carried over when GrafanaRuleListItem was extracted from GrafanaRuleLoader.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Reintroduce createReturnTo() and pass { returnTo } to createRelativeUrl when building the view href.",
+      "title": "GrafanaRuleListItem drops the returnTo parameter from the rule view link",
+      "trigger": "User clicks a Grafana rule name in the new list view (grouped or filtered) to open the rule detail page, then uses the return-to-previous navigation.",
+      "verifier_confidence": 0.6,
+      "verifier_family_key": "missing_return_to",
+      "verifier_reason": "The finding claims returnTo parameter is dropped. Looking at GrafanaRuleListItem.tsx:40, the href is `createRelativeUrl(`/alerting/grafana/${uid}/view`)` without returnTo. However, the patch context doesn't show the old GrafanaRuleLoader implementation to confirm it had returnTo. The immutable head file for GrafanaRuleListItem.tsx shows this is the new component. Without evidence of what the old component did, this is speculative. The search for GrafanaRuleLoader returned no matches, suggesting it was removed entirely."
+    },
+    {
+      "body": "The stray '// duplicate' note conveys no meaning (nothing is duplicated on that line) and looks like an unfinished refactoring marker, reducing code clarity in a permissions-critical hook.",
+      "category": "style",
+      "chunk_id": "f0003:c0000-1a83b1742602",
+      "confidence": 0.7,
+      "end_line": 289,
+      "evidence": "const { isEditable, isRemovable, loading } = useIsGrafanaPromRuleEditable(rule); // duplicate",
+      "failure_mode": "Confusing dead comment in reviewed code.",
+      "finding_id": "bb-bf3c24f7b0235ac04580",
+      "fingerprint": "35b4a6ac9d8cea6b1435b5ad677c3b7b102139fded5e52267ad384d70934c9fa",
+      "fix_scope": "local",
+      "impact": "The stray '// duplicate' note conveys no meaning (nothing is duplicated on that line) and looks like an unfinished refactoring marker, reducing code clarity in a permissions-critical hook.",
+      "line": 289,
+      "path": "public/app/features/alerting/unified/hooks/useAbilities.ts",
+      "root_cause": "Development scratch comment committed with the new hook.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Remove the '// duplicate' comment or replace it with an explanatory comment if it was meant to flag intentional duplication of useIsRuleEditable logic.",
+      "title": "Leftover '// duplicate' comment on useIsGrafanaPromRuleEditable call",
+      "trigger": "Any reader or reviewer of useAllGrafanaPromRuleAbilities encounters the trailing comment.",
+      "verifier_confidence": 0.85,
+      "verifier_family_key": "stray_comment",
+      "verifier_reason": "This is a style/comment issue. The `// duplicate` comment at line 289 is indeed present in the patch and appears to be a leftover development note. However, the instructions specify to drop stylistic findings. This is categorized as 'style' by the candidate itself."
+    },
+    {
+      "body": "The test asserts the exact absence of the Delete menu item even though the user has delete permissions, silently enshrining the list-view delete regression; if delete support is later restored, the brittle exact-count assertion will fail for the wrong reason.",
+      "category": "test_gap",
+      "chunk_id": "f0005:c0000-ffd254c7cb92",
+      "confidence": 0.5,
+      "end_line": 207,
+      "evidence": "expect(menuItems.length).toBe(4);",
+      "failure_mode": "Test masks a functional regression and is brittle to legitimate menu changes.",
+      "finding_id": "bb-8ae5e3996a432816acea",
+      "fingerprint": "1c55ee8f87567f3efe486afe5add7dfcd0a5801330492c4ef6f9581ef2e1fce5",
+      "fix_scope": "local",
+      "impact": "The test asserts the exact absence of the Delete menu item even though the user has delete permissions, silently enshrining the list-view delete regression; if delete support is later restored, the brittle exact-count assertion will fail for the wrong reason.",
+      "line": 207,
+      "path": "public/app/features/alerting/unified/rule-list/GrafanaGroupLoader.test.tsx",
+      "root_cause": "Exact-count assertion written against current (regressed) behavior rather than intended permission-driven behavior.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Assert the presence/absence of each expected menu item explicitly (including an explicit expectation and comment about Delete being unsupported in the ruler-free list view) instead of an exact total count.",
+      "title": "New test hard-codes exactly 4 menu items, baking in the missing Delete action for a user with delete permission",
+      "trigger": "Running GrafanaGroupLoader.test.tsx: the beforeEach grants AlertingRuleDelete and folder delete access control, yet the menu assertion counts only silence/copy-link/duplicate/export.",
+      "verifier_confidence": 0.7,
+      "verifier_family_key": "test_assertion_brittleness",
+      "verifier_reason": "This is categorized as test_gap, not a bug. The test at line 207 asserts exactly 4 menu items. The finding claims this 'bakes in' a regression, but the test comments at lines 191-203 explicitly document what the 4 items are (silence, copy-link, duplicate, export). The test is documenting current expected behavior. Whether Delete should be present is a design decision, not a test defect. The assertion is intentional per the comments."
+    }
+  ]
+}

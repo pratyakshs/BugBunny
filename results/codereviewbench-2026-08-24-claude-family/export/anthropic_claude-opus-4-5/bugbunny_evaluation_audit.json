@@ -1,0 +1,1983 @@
+{
+  "bootstrap": {
+    "samples": 5000,
+    "seed": 17042,
+    "unit": "pull_request"
+  },
+  "created_at": "2026-08-24T12:22:38.606162Z",
+  "golden_category_counts": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": {
+      "api": {
+        "fn": 10,
+        "tp": 3
+      },
+      "bug": {
+        "fn": 76,
+        "tp": 18
+      },
+      "concurrency": {
+        "fn": 12,
+        "tp": 2
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 8,
+        "tp": 1
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 11
+      },
+      "speculative": {
+        "fn": 4,
+        "tp": 1
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": {
+      "api": {
+        "fn": 10,
+        "tp": 3
+      },
+      "bug": {
+        "fn": 70,
+        "tp": 24
+      },
+      "concurrency": {
+        "fn": 12,
+        "tp": 2
+      },
+      "data": {
+        "fn": 7
+      },
+      "doc_defect": {
+        "fn": 8,
+        "tp": 1
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 10,
+        "tp": 1
+      },
+      "speculative": {
+        "fn": 4,
+        "tp": 1
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": {
+      "api": {
+        "fn": 9,
+        "tp": 4
+      },
+      "bug": {
+        "fn": 73,
+        "tp": 21
+      },
+      "concurrency": {
+        "fn": 13,
+        "tp": 1
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 7,
+        "tp": 2
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 11
+      },
+      "speculative": {
+        "fn": 5
+      },
+      "style": {
+        "fn": 8,
+        "tp": 2
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": {
+      "api": {
+        "fn": 11,
+        "tp": 2
+      },
+      "bug": {
+        "fn": 72,
+        "tp": 22
+      },
+      "concurrency": {
+        "fn": 11,
+        "tp": 3
+      },
+      "data": {
+        "fn": 7
+      },
+      "doc_defect": {
+        "fn": 8,
+        "tp": 1
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 11
+      },
+      "speculative": {
+        "fn": 3,
+        "tp": 2
+      },
+      "style": {
+        "fn": 8,
+        "tp": 2
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": {
+      "api": {
+        "fn": 10,
+        "tp": 3
+      },
+      "bug": {
+        "fn": 76,
+        "tp": 18
+      },
+      "concurrency": {
+        "fn": 12,
+        "tp": 2
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 8,
+        "tp": 1
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 11
+      },
+      "speculative": {
+        "fn": 4,
+        "tp": 1
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": {
+      "api": {
+        "fn": 10,
+        "tp": 3
+      },
+      "bug": {
+        "fn": 70,
+        "tp": 24
+      },
+      "concurrency": {
+        "fn": 12,
+        "tp": 2
+      },
+      "data": {
+        "fn": 7
+      },
+      "doc_defect": {
+        "fn": 8,
+        "tp": 1
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 10,
+        "tp": 1
+      },
+      "speculative": {
+        "fn": 4,
+        "tp": 1
+      },
+      "style": {
+        "fn": 9,
+        "tp": 1
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": {
+      "api": {
+        "fn": 9,
+        "tp": 4
+      },
+      "bug": {
+        "fn": 73,
+        "tp": 21
+      },
+      "concurrency": {
+        "fn": 13,
+        "tp": 1
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 7,
+        "tp": 2
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 11
+      },
+      "speculative": {
+        "fn": 4,
+        "tp": 1
+      },
+      "style": {
+        "fn": 8,
+        "tp": 2
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": {
+      "api": {
+        "fn": 11,
+        "tp": 2
+      },
+      "bug": {
+        "fn": 72,
+        "tp": 22
+      },
+      "concurrency": {
+        "fn": 11,
+        "tp": 3
+      },
+      "data": {
+        "fn": 7
+      },
+      "doc_defect": {
+        "fn": 8,
+        "tp": 1
+      },
+      "perf": {
+        "fn": 4,
+        "tp": 2
+      },
+      "security": {
+        "fn": 11
+      },
+      "speculative": {
+        "fn": 3,
+        "tp": 2
+      },
+      "style": {
+        "fn": 8,
+        "tp": 2
+      },
+      "test_gap": {
+        "fn": 4
+      }
+    },
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": {
+      "api": {
+        "fn": 3,
+        "tp": 10
+      },
+      "bug": {
+        "fn": 23,
+        "tp": 71
+      },
+      "concurrency": {
+        "fn": 3,
+        "tp": 11
+      },
+      "data": {
+        "fn": 2,
+        "tp": 5
+      },
+      "doc_defect": {
+        "fn": 3,
+        "tp": 6
+      },
+      "perf": {
+        "fn": 3,
+        "tp": 3
+      },
+      "security": {
+        "fn": 7,
+        "tp": 4
+      },
+      "speculative": {
+        "fn": 1,
+        "tp": 4
+      },
+      "style": {
+        "fn": 3,
+        "tp": 7
+      },
+      "test_gap": {
+        "fn": 1,
+        "tp": 3
+      }
+    },
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": {
+      "api": {
+        "fn": 4,
+        "tp": 9
+      },
+      "bug": {
+        "fn": 44,
+        "tp": 50
+      },
+      "concurrency": {
+        "fn": 6,
+        "tp": 8
+      },
+      "data": {
+        "fn": 6,
+        "tp": 1
+      },
+      "doc_defect": {
+        "fn": 6,
+        "tp": 3
+      },
+      "perf": {
+        "fn": 2,
+        "tp": 4
+      },
+      "security": {
+        "fn": 10,
+        "tp": 1
+      },
+      "speculative": {
+        "fn": 1,
+        "tp": 4
+      },
+      "style": {
+        "fn": 4,
+        "tp": 6
+      },
+      "test_gap": {
+        "fn": 1,
+        "tp": 3
+      }
+    },
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": {
+      "api": {
+        "fn": 2,
+        "tp": 11
+      },
+      "bug": {
+        "fn": 25,
+        "tp": 69
+      },
+      "concurrency": {
+        "fn": 2,
+        "tp": 12
+      },
+      "data": {
+        "fn": 1,
+        "tp": 6
+      },
+      "doc_defect": {
+        "fn": 3,
+        "tp": 6
+      },
+      "perf": {
+        "fn": 2,
+        "tp": 4
+      },
+      "security": {
+        "fn": 8,
+        "tp": 3
+      },
+      "speculative": {
+        "fn": 1,
+        "tp": 4
+      },
+      "style": {
+        "fn": 3,
+        "tp": 7
+      },
+      "test_gap": {
+        "fn": 1,
+        "tp": 3
+      }
+    },
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": {
+      "api": {
+        "fn": 5,
+        "tp": 8
+      },
+      "bug": {
+        "fn": 47,
+        "tp": 47
+      },
+      "concurrency": {
+        "fn": 4,
+        "tp": 10
+      },
+      "data": {
+        "fn": 5,
+        "tp": 2
+      },
+      "doc_defect": {
+        "fn": 6,
+        "tp": 3
+      },
+      "perf": {
+        "fn": 2,
+        "tp": 4
+      },
+      "security": {
+        "fn": 9,
+        "tp": 2
+      },
+      "speculative": {
+        "fn": 1,
+        "tp": 4
+      },
+      "style": {
+        "fn": 5,
+        "tp": 5
+      },
+      "test_gap": {
+        "fn": 2,
+        "tp": 2
+      }
+    }
+  },
+  "inputs": {
+    "evaluations": "/Users/praty/Documents/Codex/2026-08-20/review-this-paper-x20-based-on-2/work/bugbunny-eval-v072-claude-family-2026-08-23-v2-results/anthropic_claude-opus-4-5/evaluations.json",
+    "evaluations_sha256": "e846d6355bea72edccbd0bb8140c7378c4d463de794eef9cd4a6904a13de55de",
+    "export_index": "/Users/praty/Documents/Codex/2026-08-20/review-this-paper-x20-based-on-2/work/bugbunny-eval-v072-claude-family-2026-08-23-v2-results/anthropic_claude-opus-4-5/bugbunny_export_index.json",
+    "export_index_sha256": "568eef83064a53729184d2db3cf7f0c6b0928e88023de3b32342f82f021aedd9",
+    "judge_model": "anthropic/claude-opus-4-5",
+    "run_manifest": "/Users/praty/Documents/Codex/2026-08-20/review-this-paper-x20-based-on-2/work/bugbunny-eval-v072-claude-family-2026-08-23-v2/run_manifest.json",
+    "run_manifest_sha256": "bbcd1ba10ee61f3454c6b2a24636eb38a8258cf8e1d814968069f03a4c061566"
+  },
+  "interpretation_limits": [
+    "CodeReviewBench golden comments may be incomplete, so false positives are benchmark-relative.",
+    "Threshold curves reuse the fixed judge pair matrix; they do not make additional judge calls.",
+    "Confidence intervals resample pull requests and do not model judge-model uncertainty.",
+    "Hierarchical repository-index summarization is reported separately from prompt and discovery bounds because the full inventory remains pageable."
+  ],
+  "paired_model_comparisons": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92__minus__bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": {
+      "case_count": 50,
+      "f1_delta": -0.043193889644879524,
+      "f1_delta_95_ci": [
+        -0.11625413328096117,
+        0.02738626199178297
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.1084
+    },
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92__minus__bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": {
+      "case_count": 50,
+      "f1_delta": -0.01989540447312782,
+      "f1_delta_95_ci": [
+        -0.07879008432325968,
+        0.04131903798381727
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.2604
+    },
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92__minus__bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": {
+      "case_count": 50,
+      "f1_delta": -0.02773347510189611,
+      "f1_delta_95_ci": [
+        -0.09288137954162218,
+        0.04022002484469876
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.2064
+    },
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8__minus__bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": {
+      "case_count": 50,
+      "f1_delta": 0.023298485171751704,
+      "f1_delta_95_ci": [
+        -0.051071363358737756,
+        0.10084453757842501
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.7292
+    },
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8__minus__bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": {
+      "case_count": 50,
+      "f1_delta": 0.015460414542983414,
+      "f1_delta_95_ci": [
+        -0.05301535805612019,
+        0.08489009249252731
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.6724
+    },
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774__minus__bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": {
+      "case_count": 50,
+      "f1_delta": -0.00783807062876829,
+      "f1_delta_95_ci": [
+        -0.0780893326198889,
+        0.06629070969478223
+      ],
+      "finding_stage": "balanced",
+      "probability_left_gt_right": 0.4118
+    },
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a__minus__bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": {
+      "case_count": 50,
+      "f1_delta": -0.0462519936204146,
+      "f1_delta_95_ci": [
+        -0.11941932554954579,
+        0.025012817590715584
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.0938
+    },
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a__minus__bugbunny-family-anthropic-claude-opus-5-c31790f5671b": {
+      "case_count": 50,
+      "f1_delta": -0.02773347510189611,
+      "f1_delta_95_ci": [
+        -0.08613161772129749,
+        0.03527922018970895
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.1858
+    },
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a__minus__bugbunny-family-anthropic-claude-sonnet-5-167809a84058": {
+      "case_count": 50,
+      "f1_delta": -0.03216748657816104,
+      "f1_delta_95_ci": [
+        -0.09854270520159004,
+        0.036337196493963386
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.1658
+    },
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac__minus__bugbunny-family-anthropic-claude-opus-5-c31790f5671b": {
+      "case_count": 50,
+      "f1_delta": 0.01851851851851849,
+      "f1_delta_95_ci": [
+        -0.056911150956248595,
+        0.09936021232453426
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.6756
+    },
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac__minus__bugbunny-family-anthropic-claude-sonnet-5-167809a84058": {
+      "case_count": 50,
+      "f1_delta": 0.014084507042253558,
+      "f1_delta_95_ci": [
+        -0.05560488085353769,
+        0.08586078247371061
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.652
+    },
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b__minus__bugbunny-family-anthropic-claude-sonnet-5-167809a84058": {
+      "case_count": 50,
+      "f1_delta": -0.004434011476264932,
+      "f1_delta_95_ci": [
+        -0.0749072612567485,
+        0.06832741675030925
+      ],
+      "finding_stage": "family",
+      "probability_left_gt_right": 0.4478
+    },
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe__minus__bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": {
+      "case_count": 50,
+      "f1_delta": -0.011731181230110077,
+      "f1_delta_95_ci": [
+        -0.0602426319249587,
+        0.04135933120034949
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 0.3154
+    },
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe__minus__bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": {
+      "case_count": 50,
+      "f1_delta": 0.10014811438988269,
+      "f1_delta_95_ci": [
+        0.0689449969057194,
+        0.12787308411302176
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 1.0
+    },
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe__minus__bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": {
+      "case_count": 50,
+      "f1_delta": 0.06483173852273949,
+      "f1_delta_95_ci": [
+        0.0036524378224540477,
+        0.13352052407484724
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 0.9802
+    },
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622__minus__bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": {
+      "case_count": 50,
+      "f1_delta": 0.11187929561999277,
+      "f1_delta_95_ci": [
+        0.057018599167732525,
+        0.16200087958134776
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 1.0
+    },
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622__minus__bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": {
+      "case_count": 50,
+      "f1_delta": 0.07656291975284957,
+      "f1_delta_95_ci": [
+        0.023584910605545305,
+        0.13038676992899048
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 0.998
+    },
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853__minus__bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": {
+      "case_count": 50,
+      "f1_delta": -0.0353163758671432,
+      "f1_delta_95_ci": [
+        -0.09133676835167023,
+        0.031636366788866666
+      ],
+      "finding_stage": "generator",
+      "probability_left_gt_right": 0.1368
+    }
+  },
+  "schema_version": "bugbunny-evaluation-audit-v2",
+  "stage_counts": {
+    "anthropic/claude-fable-5": {
+      "context_files_max": 342,
+      "context_files_mean": 66,
+      "discovery_bound_hits_by_reason": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 1,
+        "file_limit_hit": 0,
+        "list_pagination_unresolved": 6,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 23,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "generation_budget_utilization_max": 0.8507430681716651,
+      "generation_budget_utilization_mean": 0.46010900318670517,
+      "generation_input_tokens_mean": 67874.38,
+      "model_call_retries": 3,
+      "raw_findings": 356,
+      "rejections_by_stage": {
+        "validation": 2,
+        "verifier": 128,
+        "verifier_confidence": 180,
+        "verifier_merge": 12
+      },
+      "reviews": 50,
+      "reviews_hitting_discovery_bound": 22,
+      "reviews_hitting_prompt_or_evidence_bound": 4,
+      "reviews_with_hierarchical_index_summary": 50,
+      "validated_findings": 354,
+      "verified_findings": 34,
+      "verifier_budget_utilization_max": 0.7308012946253433,
+      "verifier_budget_utilization_mean": 0.35550920704197725,
+      "verifier_input_tokens_mean": 39773.54
+    },
+    "anthropic/claude-opus-4-8": {
+      "context_files_max": 293,
+      "context_files_mean": 56.56,
+      "discovery_bound_hits_by_reason": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 1,
+        "file_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 51,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 12,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "generation_budget_utilization_max": 0.48134735086517555,
+      "generation_budget_utilization_mean": 0.29073449087172765,
+      "generation_input_tokens_mean": 53843.26,
+      "model_call_retries": 9,
+      "raw_findings": 192,
+      "rejections_by_stage": {
+        "validation": 3,
+        "verifier": 76,
+        "verifier_confidence": 66,
+        "verifier_merge": 7
+      },
+      "reviews": 50,
+      "reviews_hitting_discovery_bound": 47,
+      "reviews_hitting_prompt_or_evidence_bound": 1,
+      "reviews_with_hierarchical_index_summary": 48,
+      "validated_findings": 189,
+      "verified_findings": 40,
+      "verifier_budget_utilization_max": 0.6658524176147509,
+      "verifier_budget_utilization_mean": 0.22496162710867007,
+      "verifier_input_tokens_mean": 24304.68
+    },
+    "anthropic/claude-opus-5": {
+      "context_files_max": 374,
+      "context_files_mean": 73.36,
+      "discovery_bound_hits_by_reason": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 3,
+        "file_limit_hit": 2,
+        "list_pagination_unresolved": 7,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 5,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 31,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "generation_budget_utilization_max": 0.7708193108377759,
+      "generation_budget_utilization_mean": 0.5032652113053578,
+      "generation_input_tokens_mean": 70942.1,
+      "model_call_retries": 3,
+      "raw_findings": 498,
+      "rejections_by_stage": {
+        "validation": 3,
+        "verifier": 216,
+        "verifier_confidence": 224,
+        "verifier_merge": 15
+      },
+      "reviews": 50,
+      "reviews_hitting_discovery_bound": 31,
+      "reviews_hitting_prompt_or_evidence_bound": 5,
+      "reviews_with_hierarchical_index_summary": 50,
+      "validated_findings": 495,
+      "verified_findings": 40,
+      "verifier_budget_utilization_max": 0.7214379413495489,
+      "verifier_budget_utilization_mean": 0.4110933209101608,
+      "verifier_input_tokens_mean": 48908.68
+    },
+    "anthropic/claude-sonnet-5": {
+      "context_files_max": 325,
+      "context_files_mean": 63.94,
+      "discovery_bound_hits_by_reason": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_pagination_unresolved": 4,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 40,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 26,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "generation_budget_utilization_max": 0.7956339160735026,
+      "generation_budget_utilization_mean": 0.38017845549036544,
+      "generation_input_tokens_mean": 61096.1,
+      "model_call_retries": 1,
+      "raw_findings": 270,
+      "rejections_by_stage": {
+        "validation": 17,
+        "verifier": 107,
+        "verifier_confidence": 94,
+        "verifier_merge": 11
+      },
+      "reviews": 50,
+      "reviews_hitting_discovery_bound": 40,
+      "reviews_hitting_prompt_or_evidence_bound": 3,
+      "reviews_with_hierarchical_index_summary": 49,
+      "validated_findings": 253,
+      "verified_findings": 41,
+      "verifier_budget_utilization_max": 0.6952297469595919,
+      "verifier_budget_utilization_mean": 0.29313842438211063,
+      "verifier_input_tokens_mean": 31209.76
+    }
+  },
+  "threshold_curves_from_generator_judgments": {
+    "anthropic/claude-fable-5": [
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.0,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.05,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.1,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.15,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.2,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.25,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.3,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.35,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.4,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.45,
+        "tp": 109
+      },
+      {
+        "f1": 0.5662337662337662,
+        "fn": 64,
+        "fp": 103,
+        "precision": 0.5141509433962265,
+        "recall": 0.630057803468208,
+        "threshold": 0.5,
+        "tp": 109
+      },
+      {
+        "f1": 0.5677083333333334,
+        "fn": 64,
+        "fp": 102,
+        "precision": 0.5165876777251185,
+        "recall": 0.630057803468208,
+        "threshold": 0.55,
+        "tp": 109
+      },
+      {
+        "f1": 0.5699208443271768,
+        "fn": 65,
+        "fp": 98,
+        "precision": 0.5242718446601942,
+        "recall": 0.6242774566473989,
+        "threshold": 0.6,
+        "tp": 108
+      },
+      {
+        "f1": 0.5691489361702127,
+        "fn": 66,
+        "fp": 96,
+        "precision": 0.5270935960591133,
+        "recall": 0.6184971098265896,
+        "threshold": 0.65,
+        "tp": 107
+      },
+      {
+        "f1": 0.576923076923077,
+        "fn": 68,
+        "fp": 86,
+        "precision": 0.5497382198952879,
+        "recall": 0.6069364161849711,
+        "threshold": 0.7,
+        "tp": 105
+      },
+      {
+        "f1": 0.5756676557863502,
+        "fn": 76,
+        "fp": 67,
+        "precision": 0.5914634146341463,
+        "recall": 0.5606936416184971,
+        "threshold": 0.75,
+        "tp": 97
+      },
+      {
+        "f1": 0.5359477124183006,
+        "fn": 91,
+        "fp": 51,
+        "precision": 0.6165413533834586,
+        "recall": 0.47398843930635837,
+        "threshold": 0.8,
+        "tp": 82
+      },
+      {
+        "f1": 0.5255474452554745,
+        "fn": 101,
+        "fp": 29,
+        "precision": 0.7128712871287128,
+        "recall": 0.4161849710982659,
+        "threshold": 0.85,
+        "tp": 72
+      },
+      {
+        "f1": 0.39826839826839827,
+        "fn": 127,
+        "fp": 12,
+        "precision": 0.7931034482758621,
+        "recall": 0.2658959537572254,
+        "threshold": 0.9,
+        "tp": 46
+      },
+      {
+        "f1": 0.2870813397129187,
+        "fn": 143,
+        "fp": 6,
+        "precision": 0.8333333333333334,
+        "recall": 0.17341040462427745,
+        "threshold": 0.92,
+        "tp": 30
+      },
+      {
+        "f1": 0.22999999999999998,
+        "fn": 150,
+        "fp": 4,
+        "precision": 0.8518518518518519,
+        "recall": 0.1329479768786127,
+        "threshold": 0.95,
+        "tp": 23
+      },
+      {
+        "f1": 0.0,
+        "fn": 173,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 1.0,
+        "tp": 0
+      }
+    ],
+    "anthropic/claude-opus-4-8": [
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.0,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.05,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.1,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.15,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.2,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.25,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.3,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.35,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.4,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.45,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.5,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.55,
+        "tp": 70
+      },
+      {
+        "f1": 0.5017921146953406,
+        "fn": 103,
+        "fp": 36,
+        "precision": 0.660377358490566,
+        "recall": 0.4046242774566474,
+        "threshold": 0.6,
+        "tp": 70
+      },
+      {
+        "f1": 0.5054151624548737,
+        "fn": 103,
+        "fp": 34,
+        "precision": 0.6730769230769231,
+        "recall": 0.4046242774566474,
+        "threshold": 0.65,
+        "tp": 70
+      },
+      {
+        "f1": 0.5036496350364964,
+        "fn": 104,
+        "fp": 32,
+        "precision": 0.6831683168316832,
+        "recall": 0.3988439306358382,
+        "threshold": 0.7,
+        "tp": 69
+      },
+      {
+        "f1": 0.4962962962962963,
+        "fn": 106,
+        "fp": 30,
+        "precision": 0.6907216494845361,
+        "recall": 0.3872832369942196,
+        "threshold": 0.75,
+        "tp": 67
+      },
+      {
+        "f1": 0.48837209302325574,
+        "fn": 110,
+        "fp": 22,
+        "precision": 0.7411764705882353,
+        "recall": 0.36416184971098264,
+        "threshold": 0.8,
+        "tp": 63
+      },
+      {
+        "f1": 0.4578313253012048,
+        "fn": 116,
+        "fp": 19,
+        "precision": 0.75,
+        "recall": 0.32947976878612717,
+        "threshold": 0.85,
+        "tp": 57
+      },
+      {
+        "f1": 0.375,
+        "fn": 131,
+        "fp": 9,
+        "precision": 0.8235294117647058,
+        "recall": 0.24277456647398843,
+        "threshold": 0.9,
+        "tp": 42
+      },
+      {
+        "f1": 0.33488372093023255,
+        "fn": 137,
+        "fp": 6,
+        "precision": 0.8571428571428571,
+        "recall": 0.20809248554913296,
+        "threshold": 0.92,
+        "tp": 36
+      },
+      {
+        "f1": 0.16666666666666669,
+        "fn": 157,
+        "fp": 3,
+        "precision": 0.8421052631578947,
+        "recall": 0.09248554913294797,
+        "threshold": 0.95,
+        "tp": 16
+      },
+      {
+        "f1": 0.0,
+        "fn": 173,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 1.0,
+        "tp": 0
+      }
+    ],
+    "anthropic/claude-opus-5": [
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.0,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.05,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.1,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.15,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.2,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.25,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.3,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.35,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.4,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.45,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.5,
+        "tp": 111
+      },
+      {
+        "f1": 0.5056947608200456,
+        "fn": 62,
+        "fp": 155,
+        "precision": 0.41729323308270677,
+        "recall": 0.6416184971098265,
+        "threshold": 0.55,
+        "tp": 111
+      },
+      {
+        "f1": 0.5103448275862068,
+        "fn": 62,
+        "fp": 151,
+        "precision": 0.42366412213740456,
+        "recall": 0.6416184971098265,
+        "threshold": 0.6,
+        "tp": 111
+      },
+      {
+        "f1": 0.514018691588785,
+        "fn": 63,
+        "fp": 145,
+        "precision": 0.43137254901960786,
+        "recall": 0.6358381502890174,
+        "threshold": 0.65,
+        "tp": 110
+      },
+      {
+        "f1": 0.5181598062953995,
+        "fn": 66,
+        "fp": 133,
+        "precision": 0.44583333333333336,
+        "recall": 0.6184971098265896,
+        "threshold": 0.7,
+        "tp": 107
+      },
+      {
+        "f1": 0.5251989389920425,
+        "fn": 74,
+        "fp": 105,
+        "precision": 0.4852941176470588,
+        "recall": 0.5722543352601156,
+        "threshold": 0.75,
+        "tp": 99
+      },
+      {
+        "f1": 0.525679758308157,
+        "fn": 86,
+        "fp": 71,
+        "precision": 0.5506329113924051,
+        "recall": 0.5028901734104047,
+        "threshold": 0.8,
+        "tp": 87
+      },
+      {
+        "f1": 0.5187713310580204,
+        "fn": 97,
+        "fp": 44,
+        "precision": 0.6333333333333333,
+        "recall": 0.4393063583815029,
+        "threshold": 0.85,
+        "tp": 76
+      },
+      {
+        "f1": 0.3999999999999999,
+        "fn": 126,
+        "fp": 15,
+        "precision": 0.7580645161290323,
+        "recall": 0.27167630057803466,
+        "threshold": 0.9,
+        "tp": 47
+      },
+      {
+        "f1": 0.3148148148148148,
+        "fn": 139,
+        "fp": 9,
+        "precision": 0.7906976744186046,
+        "recall": 0.19653179190751446,
+        "threshold": 0.92,
+        "tp": 34
+      },
+      {
+        "f1": 0.1752577319587629,
+        "fn": 156,
+        "fp": 4,
+        "precision": 0.8095238095238095,
+        "recall": 0.09826589595375723,
+        "threshold": 0.95,
+        "tp": 17
+      },
+      {
+        "f1": 0.0,
+        "fn": 173,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 1.0,
+        "tp": 0
+      }
+    ],
+    "anthropic/claude-sonnet-5": [
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.0,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.05,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.1,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.15,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.2,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.25,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.3,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.35,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.4,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.45,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.5,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.55,
+        "tp": 76
+      },
+      {
+        "f1": 0.4999999999999999,
+        "fn": 97,
+        "fp": 55,
+        "precision": 0.5801526717557252,
+        "recall": 0.4393063583815029,
+        "threshold": 0.6,
+        "tp": 76
+      },
+      {
+        "f1": 0.5033112582781456,
+        "fn": 97,
+        "fp": 53,
+        "precision": 0.5891472868217055,
+        "recall": 0.4393063583815029,
+        "threshold": 0.65,
+        "tp": 76
+      },
+      {
+        "f1": 0.505050505050505,
+        "fn": 98,
+        "fp": 49,
+        "precision": 0.6048387096774194,
+        "recall": 0.43352601156069365,
+        "threshold": 0.7,
+        "tp": 75
+      },
+      {
+        "f1": 0.5017667844522968,
+        "fn": 102,
+        "fp": 39,
+        "precision": 0.6454545454545455,
+        "recall": 0.41040462427745666,
+        "threshold": 0.75,
+        "tp": 71
+      },
+      {
+        "f1": 0.46792452830188674,
+        "fn": 111,
+        "fp": 30,
+        "precision": 0.6739130434782609,
+        "recall": 0.3583815028901734,
+        "threshold": 0.8,
+        "tp": 62
+      },
+      {
+        "f1": 0.4244897959183674,
+        "fn": 121,
+        "fp": 20,
+        "precision": 0.7222222222222222,
+        "recall": 0.30057803468208094,
+        "threshold": 0.85,
+        "tp": 52
+      },
+      {
+        "f1": 0.3378995433789954,
+        "fn": 136,
+        "fp": 9,
+        "precision": 0.8043478260869565,
+        "recall": 0.2138728323699422,
+        "threshold": 0.9,
+        "tp": 37
+      },
+      {
+        "f1": 0.32407407407407407,
+        "fn": 138,
+        "fp": 8,
+        "precision": 0.813953488372093,
+        "recall": 0.2023121387283237,
+        "threshold": 0.92,
+        "tp": 35
+      },
+      {
+        "f1": 0.208955223880597,
+        "fn": 152,
+        "fp": 7,
+        "precision": 0.75,
+        "recall": 0.12138728323699421,
+        "threshold": 0.95,
+        "tp": 21
+      },
+      {
+        "f1": 0.0,
+        "fn": 173,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 1.0,
+        "tp": 0
+      }
+    ]
+  },
+  "tracks": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": {
+      "finding_stage": "balanced",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.18811067726490957,
+            0.38095238095238093
+          ],
+          "precision": [
+            0.7110964912280703,
+            0.9500304878048775
+          ],
+          "recall": [
+            0.10637965425531916,
+            0.24550898203592814
+          ]
+        },
+        "exported_candidates": 34,
+        "f1": 0.2870813397129187,
+        "fn": 143,
+        "fp": 6,
+        "precision": 0.8333333333333334,
+        "recall": 0.17341040462427745,
+        "reviews": 50,
+        "tp": 30
+      },
+      "model": "anthropic/claude-fable-5"
+    },
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": {
+      "finding_stage": "balanced",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.24489795918367346,
+            0.41474654377880177
+          ],
+          "precision": [
+            0.6976744186046512,
+            0.9122997711670477
+          ],
+          "recall": [
+            0.14556962025316456,
+            0.27672955974842767
+          ]
+        },
+        "exported_candidates": 40,
+        "f1": 0.33027522935779824,
+        "fn": 137,
+        "fp": 9,
+        "precision": 0.8,
+        "recall": 0.20809248554913296,
+        "reviews": 50,
+        "tp": 36
+      },
+      "model": "anthropic/claude-opus-4-8"
+    },
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": {
+      "finding_stage": "balanced",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.2164937296380595,
+            0.3923086124401914
+          ],
+          "precision": [
+            0.6538461538461539,
+            0.9210526315789473
+          ],
+          "recall": [
+            0.12650602409638553,
+            0.2590519536710375
+          ]
+        },
+        "exported_candidates": 40,
+        "f1": 0.30697674418604654,
+        "fn": 140,
+        "fp": 9,
+        "precision": 0.7857142857142857,
+        "recall": 0.1907514450867052,
+        "reviews": 50,
+        "tp": 33
+      },
+      "model": "anthropic/claude-opus-5"
+    },
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": {
+      "finding_stage": "balanced",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.21696897490760553,
+            0.40930786267995556
+          ],
+          "precision": [
+            0.6557235726399095,
+            0.9428571428571428
+          ],
+          "recall": [
+            0.125,
+            0.27545389989252256
+          ]
+        },
+        "exported_candidates": 41,
+        "f1": 0.3148148148148148,
+        "fn": 139,
+        "fp": 9,
+        "precision": 0.7906976744186046,
+        "recall": 0.19653179190751446,
+        "reviews": 50,
+        "tp": 34
+      },
+      "model": "anthropic/claude-sonnet-5"
+    },
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": {
+      "finding_stage": "family",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.18811067726490957,
+            0.38095238095238093
+          ],
+          "precision": [
+            0.7110964912280703,
+            0.9500304878048775
+          ],
+          "recall": [
+            0.10637965425531916,
+            0.24550898203592814
+          ]
+        },
+        "exported_candidates": 34,
+        "f1": 0.2870813397129187,
+        "fn": 143,
+        "fp": 6,
+        "precision": 0.8333333333333334,
+        "recall": 0.17341040462427745,
+        "reviews": 50,
+        "tp": 30
+      },
+      "model": "anthropic/claude-fable-5"
+    },
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": {
+      "finding_stage": "family",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.24630162940507766,
+            0.4192214293321971
+          ],
+          "precision": [
+            0.735279111644658,
+            0.9375
+          ],
+          "recall": [
+            0.14556962025316456,
+            0.27672955974842767
+          ]
+        },
+        "exported_candidates": 38,
+        "f1": 0.3333333333333333,
+        "fn": 137,
+        "fp": 7,
+        "precision": 0.8372093023255814,
+        "recall": 0.20809248554913296,
+        "reviews": 50,
+        "tp": 36
+      },
+      "model": "anthropic/claude-opus-4-8"
+    },
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": {
+      "finding_stage": "family",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.2191748206131768,
+            0.4052863436123348
+          ],
+          "precision": [
+            0.6666666666666666,
+            0.9216063348416283
+          ],
+          "recall": [
+            0.1288298712015212,
+            0.2716049382716049
+          ]
+        },
+        "exported_candidates": 40,
+        "f1": 0.3148148148148148,
+        "fn": 139,
+        "fp": 9,
+        "precision": 0.7906976744186046,
+        "recall": 0.19653179190751446,
+        "reviews": 50,
+        "tp": 34
+      },
+      "model": "anthropic/claude-opus-5"
+    },
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": {
+      "finding_stage": "family",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.21833664152441445,
+            0.4188034188034188
+          ],
+          "precision": [
+            0.6923076923076923,
+            1.0
+          ],
+          "recall": [
+            0.125,
+            0.27545389989252256
+          ]
+        },
+        "exported_candidates": 36,
+        "f1": 0.31924882629107976,
+        "fn": 139,
+        "fp": 6,
+        "precision": 0.85,
+        "recall": 0.19653179190751446,
+        "reviews": 50,
+        "tp": 34
+      },
+      "model": "anthropic/claude-sonnet-5"
+    },
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": {
+      "finding_stage": "generator",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.4136432499158344,
+            0.5322397444348662
+          ],
+          "precision": [
+            0.3007509824681034,
+            0.40789473684210525
+          ],
+          "recall": [
+            0.6415043068088597,
+            0.7891574405731033
+          ]
+        },
+        "exported_candidates": 354,
+        "f1": 0.4732824427480916,
+        "fn": 49,
+        "fp": 227,
+        "precision": 0.35327635327635326,
+        "recall": 0.7167630057803468,
+        "reviews": 50,
+        "tp": 124
+      },
+      "model": "anthropic/claude-fable-5"
+    },
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": {
+      "finding_stage": "generator",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.41208422174840087,
+            0.556473829201102
+          ],
+          "precision": [
+            0.3804347826086957,
+            0.5380434782608695
+          ],
+          "recall": [
+            0.43283363882342674,
+            0.5975609756097561
+          ]
+        },
+        "exported_candidates": 189,
+        "f1": 0.4850136239782017,
+        "fn": 84,
+        "fp": 105,
+        "precision": 0.4587628865979381,
+        "recall": 0.5144508670520231,
+        "reviews": 50,
+        "tp": 89
+      },
+      "model": "anthropic/claude-opus-4-8"
+    },
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": {
+      "finding_stage": "generator",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.31838887086754736,
+            0.4306756013807647
+          ],
+          "precision": [
+            0.20744245647969053,
+            0.3009484424607739
+          ],
+          "recall": [
+            0.648801406926407,
+            0.7916726878612715
+          ]
+        },
+        "exported_candidates": 495,
+        "f1": 0.3731343283582089,
+        "fn": 48,
+        "fp": 372,
+        "precision": 0.2515090543259557,
+        "recall": 0.7225433526011561,
+        "reviews": 50,
+        "tp": 125
+      },
+      "model": "anthropic/claude-opus-5"
+    },
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": {
+      "finding_stage": "generator",
+      "metrics": {
+        "bootstrap_95_ci": {
+          "f1": [
+            0.3429812281259942,
+            0.4733178654292343
+          ],
+          "precision": [
+            0.2862064613831398,
+            0.40329218106995884
+          ],
+          "recall": [
+            0.410105452201142,
+            0.5974025974025974
+          ]
+        },
+        "exported_candidates": 253,
+        "f1": 0.4084507042253521,
+        "fn": 86,
+        "fp": 166,
+        "precision": 0.3438735177865613,
+        "recall": 0.5028901734104047,
+        "reviews": 50,
+        "tp": 87
+      },
+      "model": "anthropic/claude-sonnet-5"
+    }
+  }
+}

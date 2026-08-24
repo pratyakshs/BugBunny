@@ -1,0 +1,1784 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "keycloak-keycloak-pr38446-d522975328",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "2e4698512826dc2c8445142741acdeaa8ec2a383470187feda3614dc1a1e5aca",
+    "golden_url": "https://github.com/keycloak/keycloak/pull/38446",
+    "review_url": "https://github.com/code-review-benchmark/keycloak__keycloak__augment__PR38446__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": null,
+      "chunk_id": "b0000-ef6b44281034",
+      "cost_usd": null,
+      "error": "_BackendFailure: Martian Gateway returned HTTP 529: Service temporarily overloaded. Please try again later.",
+      "gateway": "martian_http",
+      "input_tokens": null,
+      "latency_ms": 7910,
+      "output_tokens": null,
+      "request_sha256": "30fa18c5b79696f00469413b5971decee259e53857b65f9846d5ab1513ab1725",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": null,
+      "response_sha256": null,
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    }
+  ],
+  "completed_at": "2026-08-24T05:31:51.931468Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-fable-5",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.20636149745361407,
+      "largest_verifier_input_char_budget_utilization": 0.0,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 0,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 0,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 0,
+      "verifier_generation_context_files_available": 0
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      ".github/CODEOWNERS",
+      ".github/actions/archive-surefire-reports/action.yml",
+      ".github/mvn-rel-settings.xml",
+      "ADOPTERS.md",
+      "CONTRIBUTING.md",
+      "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+      "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+      "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+      "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+      "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+      "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+      "docs/documentation/release_notes/topics/26_2_0.adoc",
+      "docs/documentation/server_development/topics/auth-spi.adoc",
+      "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+      "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+      "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+      "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+      "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+      "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+      "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+      "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+      "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+      "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+      "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+      "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+      "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java",
+      "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+      "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+      "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java",
+      "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java",
+      "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java",
+      "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+      "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+      "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+    ],
+    "generation_batches": {
+      "b0000-ef6b44281034": {
+        "chunk_ids": [
+          "f0000:c0000-5e07e65a4f06",
+          "f0001:c0000-1ad189cba635",
+          "f0002:c0000-5bcddc8b8f59",
+          "f0003:c0000-68ab462ad0cb",
+          "f0004:c0000-c19064ebda4e",
+          "f0005:c0000-87fe48b7ef23",
+          "f0006:c0000-3b7d45bdfbb8",
+          "f0007:c0000-047dfb021ea3"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.20636149745361407,
+        "context_chars": 34645,
+        "context_files_available_before_generation_prompt_fit": [
+          ".github/CODEOWNERS",
+          ".github/actions/archive-surefire-reports/action.yml",
+          ".github/mvn-rel-settings.xml",
+          "ADOPTERS.md",
+          "CONTRIBUTING.md",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+          "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+          "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+          "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+          "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+          "docs/documentation/release_notes/topics/26_2_0.adoc",
+          "docs/documentation/server_development/topics/auth-spi.adoc",
+          "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+          "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+          "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+          "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+          "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+          "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+          "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+          "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+          "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+          "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+          "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+          "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+          "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+          "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+          "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java",
+          "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+          "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+          "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java",
+          "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+          "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+          "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+        ],
+        "context_files_exposed_to_model": [
+          ".github/CODEOWNERS",
+          ".github/actions/archive-surefire-reports/action.yml",
+          ".github/mvn-rel-settings.xml",
+          "ADOPTERS.md",
+          "CONTRIBUTING.md",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+          "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+          "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+          "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+          "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+          "docs/documentation/release_notes/topics/26_2_0.adoc",
+          "docs/documentation/server_development/topics/auth-spi.adoc",
+          "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+          "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+          "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+          "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+          "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+          "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+          "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+          "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+          "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+          "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+          "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+          "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+          "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+          "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+          "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java",
+          "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java",
+          "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+          "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+          "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java",
+          "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+          "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+          "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "927cf3a56967764a099dfaaf28fb9c105f08db30b1bbe560d844500abc5a76f1",
+        "context_truncated": true,
+        "context_utf8_bytes": 34847,
+        "estimated_context_tokens": 8662,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": null,
+        "generation_input_char_budget_utilization": null,
+        "generation_prompt_chars": null,
+        "generation_prompt_utf8_bytes": null,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 47
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 8,
+    "packets": {
+      "f0000:c0000-5e07e65a4f06": {
+        "callers": 13,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 4289,
+        "prompt_sha256": "0bf665f0d6787ada80073985b5d59bb537182a96eb208fe5aaf9ba5ecfa8d15c",
+        "symbols": [
+          "getConfigurableAuthenticatorFactory",
+          "getKeycloakSessionFactory",
+          "getProviderFactory",
+          "storage",
+          "createRecoveryCodesCredential",
+          "getProvider",
+          "writeValueAsString"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0001:c0000-1ad189cba635": {
+        "callers": 13,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 4340,
+        "prompt_sha256": "8e81b3a0e1df794c1d08a96105967412e4424a3551b58f818844b7c030d07b01",
+        "symbols": [
+          "RecoveryAuthnCodesUtils",
+          "getCredential",
+          "credentialManager",
+          "getFederatedCredentialsStream",
+          "filter",
+          "equals",
+          "getType"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0002:c0000-5bcddc8b8f59": {
+        "callers": 3,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 4,
+        "prompt_chars": 4338,
+        "prompt_sha256": "decadc8dda4e3838ef50d7854268c70f49c19703d9e803c0b9c00e9bc6b7d21d",
+        "symbols": [
+          "getCredential",
+          "Optional",
+          "CredentialModel",
+          "RecoveryAuthnCodesUtils",
+          "optUserCredentialFound",
+          "authenticatedUser"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 13
+      },
+      "f0003:c0000-68ab462ad0cb": {
+        "callers": 11,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 4,
+        "prompt_chars": 4336,
+        "prompt_sha256": "b78c4e0ad0e43ceb0b56364793090d73afbd80ef05dd3eb2069cc475ce54c2f2",
+        "symbols": [
+          "createRecoveryCodesCredential",
+          "getSession",
+          "getRealm",
+          "getUser",
+          "CredentialHelper",
+          "org",
+          "keycloak"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 8
+      },
+      "f0004:c0000-c19064ebda4e": {
+        "callers": 6,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 5,
+        "prompt_chars": 4318,
+        "prompt_sha256": "9635f3295c26dfdebaca11379683551a58cfbb10fe076f6d409d6e35070200a2",
+        "symbols": [
+          "RecoveryAuthnCodeInputLoginBean",
+          "getCredential",
+          "createFromCredentialModel",
+          "get",
+          "RecoveryAuthnCodesUtils",
+          "Optional",
+          "CredentialModel"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 11
+      },
+      "f0005:c0000-87fe48b7ef23": {
+        "callers": 13,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 4325,
+        "prompt_sha256": "2dbf942f627a790b21a71dc14f1433f483b61c3e8f647ab6cc64dd56a01ffdd1",
+        "symbols": [
+          "AbstractUserAdapterFederatedStorage",
+          "isOTPType",
+          "equals",
+          "setId",
+          "generateId",
+          "getType",
+          "CredentialModel"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0006:c0000-3b7d45bdfbb8": {
+        "callers": 4,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 4309,
+        "prompt_sha256": "68bec046863f098d7b0cb7eaf4bca96c3628297dba4d45fcd32c2b835e05d929",
+        "symbols": [
+          "hasRecoveryCodes",
+          "get",
+          "getRecoveryCodes",
+          "String",
+          "BackwardsCompatibilityUserStorage",
+          "MyUser",
+          "public"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 10
+      },
+      "f0007:c0000-047dfb021ea3": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 3108,
+        "prompt_sha256": "210fd0faea75a09924df512314dee9db5d92818092a00005f41c3892bf55c5b4",
+        "symbols": [
+          "EnableFeature",
+          "configureBrowserFlowWithRecoveryAuthnCodes",
+          "server",
+          "run",
+          "inCurrentRealm",
+          "copyBrowserFlow",
+          "selectFlow"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 6
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 103,
+        "serialized_chars": 105,
+        "serialized_limit_chars": 6000,
+        "sha256": "66a927a3846f033ccff3af2fd7c7fdf5f9b0a4826e3b03e1ac744e9259569eb2",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 45,
+        "serialized_chars": 47,
+        "serialized_limit_chars": 1000,
+        "sha256": "20ee9b8298ea4e01e3e0901fe5fceb05867fee6defe476cb72725a270f9ba6ef",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 33363,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 1,
+        "calls_with_provider_reported_input_tokens": 0,
+        "provider_reported_input_tokens": 0
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-ef6b44281034": {
+          "action_counts": {
+            "list": 0,
+            "read": 0,
+            "search": 0
+          },
+          "actions_executed": 0,
+          "actions_failed": 0,
+          "additional_context_files_selected": 0,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_exposed_to_model": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 8662,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": true,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 34645,
+          "hypotheses_final": 0,
+          "hypotheses_open_final": 0,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 0,
+          "hypotheses_returned": 0,
+          "hypothesis_linked_actions": 0,
+          "largest_selector_input_char_budget_utilization": 0.382234208794824,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 0,
+          "repository_files": 10383,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 10383,
+          "repository_index_chars": 4751,
+          "repository_index_chars_by_round": [
+            4751
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 1188,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": false,
+          "request_limit_hit": false,
+          "requests_accepted": 0,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 0,
+          "requests_returned": 0,
+          "round_limit": 2,
+          "round_limit_hit": false,
+          "rounds_completed": 0,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 0,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 34645,
+          "seed_context_chars_original": 34645,
+          "seed_context_truncated": false,
+          "selected_context_chars": 0,
+          "selection_done": false,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            111539
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 0
+        }
+      },
+      "failed_batches": [
+        "b0000-ef6b44281034"
+      ]
+    },
+    "stats": {
+      "budget_skipped_searches": 86,
+      "callers": 63,
+      "changed_context_files_exposed_to_model": [
+        "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+        "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+        "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java",
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 8,
+      "context_chars": 33363,
+      "context_files_exposed_to_model": [
+        ".github/CODEOWNERS",
+        ".github/actions/archive-surefire-reports/action.yml",
+        ".github/mvn-rel-settings.xml",
+        "ADOPTERS.md",
+        "CONTRIBUTING.md",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+        "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+        "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+        "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+        "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+        "docs/documentation/release_notes/topics/26_2_0.adoc",
+        "docs/documentation/server_development/topics/auth-spi.adoc",
+        "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+        "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+        "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+        "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+        "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+        "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+        "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+        "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+        "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+        "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+        "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+        "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+        "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java",
+        "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+        "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+      ],
+      "context_utf8_bytes": 33565,
+      "cross_file_context_files_exposed_to_model": [
+        ".github/CODEOWNERS",
+        ".github/actions/archive-surefire-reports/action.yml",
+        ".github/mvn-rel-settings.xml",
+        "ADOPTERS.md",
+        "CONTRIBUTING.md",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+        "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+        "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+        "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+        "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+        "docs/documentation/release_notes/topics/26_2_0.adoc",
+        "docs/documentation/server_development/topics/auth-spi.adoc",
+        "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+        "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+        "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+        "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+        "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+        "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+        "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+        "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+        "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+        "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+        "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+        "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java",
+        "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+        "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+      ],
+      "definitions": 3,
+      "estimated_context_tokens": 8344,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 158,
+      "evidence_rows_clipped_during_render": 9,
+      "evidence_rows_omitted_due_to_render_budget": 57,
+      "evidence_rows_rendered": 101,
+      "hypotheses": 0,
+      "imports": 25,
+      "largest_prompt_budget": 4340,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 42,
+        "max_symbols_per_chunk": 4,
+        "prompt_render_budget": 7
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 57,
+        "source_read_budget": 0,
+        "symbol_config_limit": 265,
+        "symbol_search_budget": 86
+      },
+      "packet_metrics": {
+        "f0000:c0000-5e07e65a4f06": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+            "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+            "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+            "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+            "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+            "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 1073,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+            "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+            "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+            "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java",
+            "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java"
+          ],
+          "evidence_rows_available_to_render": 19,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 8,
+          "evidence_rows_rendered": 11,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4340,
+          "prompt_budget_utilization": 0.9882488479262673,
+          "prompt_chars": 4289,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 4311,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1061,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1061,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 63,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 39,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 7,
+          "symbol_searches_skipped_due_to_budget": 17
+        },
+        "f0001:c0000-1ad189cba635": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+            "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+            "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+            "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java"
+          ],
+          "context_files_exposed_to_model_count": 11,
+          "cross_file_context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+            "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+            "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 10,
+          "estimated_context_tokens": 1085,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+            "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+            "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+            "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java"
+          ],
+          "evidence_rows_available_to_render": 21,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 6,
+          "evidence_rows_rendered": 15,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4340,
+          "prompt_budget_utilization": 1.0,
+          "prompt_chars": 4340,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 4370,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1061,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1061,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 33,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 9,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 7,
+          "symbol_searches_skipped_due_to_budget": 17
+        },
+        "f0002:c0000-5bcddc8b8f59": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "CONTRIBUTING.md",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+            "docs/documentation/release_notes/topics/26_2_0.adoc",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java"
+          ],
+          "context_files_exposed_to_model_count": 9,
+          "cross_file_context_files_exposed_to_model": [
+            "CONTRIBUTING.md",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+            "docs/documentation/release_notes/topics/26_2_0.adoc",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 8,
+          "estimated_context_tokens": 1085,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "CONTRIBUTING.md",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+            "docs/documentation/release_notes/topics/26_2_0.adoc",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java"
+          ],
+          "evidence_rows_available_to_render": 20,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 5,
+          "evidence_rows_rendered": 15,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4340,
+          "prompt_budget_utilization": 0.9995391705069124,
+          "prompt_chars": 4338,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 4368,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1061,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1061,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 6,
+          "symbol_candidates_discovered": 6,
+          "symbol_candidates_extracted": 6,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0003:c0000-68ab462ad0cb": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+            "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+            "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+            "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java"
+          ],
+          "context_files_exposed_to_model_count": 9,
+          "cross_file_context_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+            "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+            "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 8,
+          "estimated_context_tokens": 1084,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+            "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+            "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java",
+            "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java"
+          ],
+          "evidence_rows_available_to_render": 23,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 10,
+          "evidence_rows_rendered": 13,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4340,
+          "prompt_budget_utilization": 0.9990783410138249,
+          "prompt_chars": 4336,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 4362,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1061,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1061,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 11,
+          "symbol_candidates_discovered": 11,
+          "symbol_candidates_extracted": 11,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 7,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0004:c0000-c19064ebda4e": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "CONTRIBUTING.md",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+            "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+            "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java"
+          ],
+          "context_files_exposed_to_model_count": 9,
+          "cross_file_context_files_exposed_to_model": [
+            "CONTRIBUTING.md",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+            "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 8,
+          "estimated_context_tokens": 1080,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "CONTRIBUTING.md",
+            "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+            "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+            "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+            "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+            "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java"
+          ],
+          "evidence_rows_available_to_render": 23,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 9,
+          "evidence_rows_rendered": 14,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4340,
+          "prompt_budget_utilization": 0.9949308755760369,
+          "prompt_chars": 4318,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 4346,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1061,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1061,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 17,
+          "symbol_candidates_discovered": 17,
+          "symbol_candidates_extracted": 17,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 7,
+          "symbol_searches_skipped_due_to_budget": 10
+        },
+        "f0005:c0000-87fe48b7ef23": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+            "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+            "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+            "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+          ],
+          "context_files_exposed_to_model_count": 9,
+          "cross_file_context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+            "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+            "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 8,
+          "estimated_context_tokens": 1082,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+            "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+            "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java",
+            "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+          ],
+          "evidence_rows_available_to_render": 22,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 10,
+          "evidence_rows_rendered": 12,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4340,
+          "prompt_budget_utilization": 0.9965437788018433,
+          "prompt_chars": 4325,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 4349,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1061,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1061,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 78,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 54,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 7,
+          "symbol_searches_skipped_due_to_budget": 17
+        },
+        "f0006:c0000-3b7d45bdfbb8": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "ADOPTERS.md",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+            "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+            "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            "ADOPTERS.md",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+            "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 1078,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "ADOPTERS.md",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+            "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java",
+            "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java"
+          ],
+          "evidence_rows_available_to_render": 20,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 9,
+          "evidence_rows_rendered": 11,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4339,
+          "prompt_budget_utilization": 0.9930859645079512,
+          "prompt_chars": 4309,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 4331,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1060,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1060,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 11,
+          "symbol_candidates_discovered": 11,
+          "symbol_candidates_extracted": 11,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 7,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0007:c0000-047dfb021ea3": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/CODEOWNERS",
+            ".github/actions/archive-surefire-reports/action.yml",
+            ".github/mvn-rel-settings.xml",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/CODEOWNERS",
+            ".github/actions/archive-surefire-reports/action.yml",
+            ".github/mvn-rel-settings.xml",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 777,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/CODEOWNERS",
+            ".github/actions/archive-surefire-reports/action.yml",
+            ".github/mvn-rel-settings.xml",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java"
+          ],
+          "evidence_rows_available_to_render": 10,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 4339,
+          "prompt_budget_utilization": 0.7162940769762618,
+          "prompt_chars": 3108,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 3128,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 1060,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 1060,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 187,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 163,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 7,
+          "symbol_searches_skipped_due_to_budget": 17
+        }
+      },
+      "packets_hitting_symbol_config_limit": 4,
+      "packets_hitting_symbol_render_budget_limit": 7,
+      "prompt_budget_chars": 34718,
+      "prompt_budget_utilization": 0.9609712541044991,
+      "prompt_truncated_packets": 7,
+      "smallest_prompt_budget": 4339,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 8,
+      "symbol_candidates_after_config_limit": 141,
+      "symbol_candidates_discovered": 406,
+      "symbol_candidates_omitted_by_config_limit": 265,
+      "symbol_searches_skipped_due_to_budget": 86,
+      "symbols": 55,
+      "tests": 6,
+      "tree_files": 10383,
+      "truncated_packets": 8,
+      "unchanged_context_files_exposed_to_model": [
+        ".github/CODEOWNERS",
+        ".github/actions/archive-surefire-reports/action.yml",
+        ".github/mvn-rel-settings.xml",
+        "ADOPTERS.md",
+        "CONTRIBUTING.md",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/cloned/HttpClientBuilder.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/Key.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/SP.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/config/parsers/RoleMappingsProviderParser.java",
+        "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/ElytronSamlSessionStore.java",
+        "adapters/saml/wildfly-elytron/src/main/java/org/keycloak/adapters/saml/elytron/KeycloakSecurityRealm.java",
+        "adapters/spi/jboss-adapter-core/src/main/java/org/keycloak/adapters/jboss/KeycloakLoginModule.java",
+        "authz/client/src/main/java/org/keycloak/authorization/client/AuthzClient.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/client/ClientPolicyProviderFactory.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/clientscope/ClientScopePolicyProviderFactory.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/regex/RegexPolicyProvider.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+        "docs/documentation/release_notes/topics/26_2_0.adoc",
+        "docs/documentation/server_development/topics/auth-spi.adoc",
+        "docs/documentation/server_development/topics/user-storage/augmenting.adoc",
+        "docs/documentation/upgrading/topics/changes/changes-19_0_0.adoc",
+        "federation/kerberos/src/main/java/org/keycloak/federation/kerberos/KerberosFederationProviderFactory.java",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/LDAPStorageProviderFactory.java",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/membership/group/GroupLDAPStorageMapper.java",
+        "model/jpa/src/main/java/org/keycloak/connections/jpa/DefaultJpaConnectionProviderFactory.java",
+        "model/storage/src/main/java/org/keycloak/credential/UserCredentialManager.java",
+        "server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+        "server-spi/src/main/java/org/keycloak/models/CredentialValidationOutput.java",
+        "server-spi/src/main/java/org/keycloak/models/SubjectCredentialManager.java",
+        "server-spi/src/main/java/org/keycloak/models/credential/RecoveryAuthnCodesCredentialModel.java",
+        "services/src/main/java/org/keycloak/forms/login/freemarker/FreeMarkerLoginFormsProvider.java",
+        "services/src/main/java/org/keycloak/services/resources/admin/AuthenticationManagementResource.java",
+        "test-framework/examples/tests/src/test/java/org/keycloak/test/examples/FancyRealmTest.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeature.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/arquillian/annotation/EnableFeatures.java",
+        "testsuite/model/src/test/java/org/keycloak/testsuite/model/parameters/BackwardsCompatibilityUserStorage.java"
+      ],
+      "unique_changed_context_files_exposed_to_model": 8,
+      "unique_context_files_exposed_to_model": 47,
+      "unique_cross_file_context_files_exposed_to_model": 43,
+      "unique_unchanged_context_files_exposed_to_model": 39,
+      "usages": 61,
+      "whole_repo_grep_cache_hits": 11,
+      "whole_repo_grep_calls": 44,
+      "whole_repo_grep_calls_returning_configured_limit": 42
+    },
+    "unique_changed_context_files_exposed_to_model": 8,
+    "unique_effective_context_files_exposed_to_model": 47,
+    "unique_unchanged_context_files_exposed_to_model": 39,
+    "verification_batches": [],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": false,
+    "completed_hunks": [],
+    "coverage_ratio": 0.0,
+    "eligible_files": 8,
+    "eligible_hunks": 20,
+    "excluded_files": [],
+    "failed_hunks": [
+      "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java:24:24:h000",
+      "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java:60:64:h001",
+      "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java:96:100:h002",
+      "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java:1:1:h000",
+      "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java:34:38:h001",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java:68:68:h000",
+      "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java:1:1:h000",
+      "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java:77:78:h001",
+      "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java:1:1:h000",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java:9:9:h000",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java:80:83:h001",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java:163:167:h002",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java:204:218:h003",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java:274:314:h004",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java:360:415:h005",
+      "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java:41:41:h000",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java:15:15:h000",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java:184:228:h001",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java:241:316:h002",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java:323:398:h003"
+    ],
+    "total_files": 8,
+    "total_hunks": 20
+  },
+  "diagnostics": [
+    {
+      "batch_id": "b0000-ef6b44281034",
+      "chunk_ids": [
+        "f0000:c0000-5e07e65a4f06",
+        "f0001:c0000-1ad189cba635",
+        "f0002:c0000-5bcddc8b8f59",
+        "f0003:c0000-68ab462ad0cb",
+        "f0004:c0000-c19064ebda4e",
+        "f0005:c0000-87fe48b7ef23",
+        "f0006:c0000-3b7d45bdfbb8",
+        "f0007:c0000-047dfb021ea3"
+      ],
+      "code": "gateway_error",
+      "stage": "context_selection"
+    },
+    {
+      "batch_id": "b0000-ef6b44281034",
+      "chunk_ids": [
+        "f0000:c0000-5e07e65a4f06",
+        "f0001:c0000-1ad189cba635",
+        "f0002:c0000-5bcddc8b8f59",
+        "f0003:c0000-68ab462ad0cb",
+        "f0004:c0000-c19064ebda4e",
+        "f0005:c0000-87fe48b7ef23",
+        "f0006:c0000-3b7d45bdfbb8",
+        "f0007:c0000-047dfb021ea3"
+      ],
+      "error": "model-directed context selection failed",
+      "stage": "context_selection"
+    }
+  ],
+  "diff": {
+    "additions": 256,
+    "bytes": 51085,
+    "chunk_plan_complete": true,
+    "chunks": 8,
+    "commentable_ranges": {
+      "LEFT": {
+        "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java": [
+          [
+            72,
+            80
+          ]
+        ],
+        "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java": [],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java": [
+          [
+            80,
+            81
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java": [
+          [
+            14,
+            15
+          ],
+          [
+            89,
+            90
+          ],
+          [
+            93,
+            95
+          ],
+          [
+            120,
+            121
+          ]
+        ],
+        "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java": [
+          [
+            14,
+            15
+          ],
+          [
+            17,
+            17
+          ]
+        ],
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java": [
+          [
+            25,
+            25
+          ],
+          [
+            36,
+            36
+          ],
+          [
+            58,
+            58
+          ],
+          [
+            92,
+            92
+          ],
+          [
+            110,
+            110
+          ],
+          [
+            286,
+            286
+          ]
+        ],
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java": [],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java": [
+          [
+            253,
+            253
+          ],
+          [
+            355,
+            355
+          ]
+        ]
+      },
+      "RIGHT": {
+        "server-spi-private/src/main/java/org/keycloak/utils/CredentialHelper.java": [
+          [
+            36,
+            36
+          ],
+          [
+            38,
+            38
+          ],
+          [
+            40,
+            41
+          ],
+          [
+            76,
+            84
+          ],
+          [
+            112,
+            132
+          ]
+        ],
+        "server-spi/src/main/java/org/keycloak/models/utils/RecoveryAuthnCodesUtils.java": [
+          [
+            3,
+            3
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            11,
+            12
+          ],
+          [
+            50,
+            62
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/RecoveryAuthnCodesFormAuthenticator.java": [
+          [
+            80,
+            80
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/requiredactions/RecoveryAuthnCodesAction.java": [
+          [
+            5,
+            5
+          ],
+          [
+            28,
+            29
+          ],
+          [
+            116,
+            116
+          ]
+        ],
+        "services/src/main/java/org/keycloak/forms/login/freemarker/model/RecoveryAuthnCodeInputLoginBean.java": [
+          [
+            8,
+            10
+          ],
+          [
+            17,
+            17
+          ],
+          [
+            19,
+            19
+          ]
+        ],
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorage.java": [
+          [
+            21,
+            22
+          ],
+          [
+            46,
+            47
+          ],
+          [
+            56,
+            56
+          ],
+          [
+            61,
+            61
+          ],
+          [
+            95,
+            95
+          ],
+          [
+            113,
+            114
+          ],
+          [
+            179,
+            179
+          ],
+          [
+            192,
+            200
+          ],
+          [
+            230,
+            253
+          ],
+          [
+            275,
+            276
+          ],
+          [
+            326,
+            341
+          ],
+          [
+            427,
+            427
+          ],
+          [
+            436,
+            439
+          ]
+        ],
+        "testsuite/integration-arquillian/servers/auth-server/services/testsuite-providers/src/main/java/org/keycloak/testsuite/federation/BackwardsCompatibilityUserStorageFactory.java": [
+          [
+            53,
+            57
+          ]
+        ],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/federation/storage/BackwardsCompatibilityUserStorageTest.java": [
+          [
+            27,
+            29
+          ],
+          [
+            31,
+            31
+          ],
+          [
+            48,
+            48
+          ],
+          [
+            50,
+            50
+          ],
+          [
+            52,
+            52
+          ],
+          [
+            54,
+            54
+          ],
+          [
+            58,
+            59
+          ],
+          [
+            65,
+            65
+          ],
+          [
+            72,
+            72
+          ],
+          [
+            74,
+            74
+          ],
+          [
+            82,
+            82
+          ],
+          [
+            85,
+            86
+          ],
+          [
+            101,
+            106
+          ],
+          [
+            123,
+            144
+          ],
+          [
+            240,
+            270
+          ],
+          [
+            328,
+            328
+          ],
+          [
+            410,
+            437
+          ],
+          [
+            456,
+            464
+          ],
+          [
+            467,
+            468
+          ],
+          [
+            476,
+            484
+          ]
+        ]
+      }
+    },
+    "deletions": 31,
+    "files": 8,
+    "generation_batches": 1,
+    "hunks": 20,
+    "merge_base_sha": "85737f52b59aa2e3403c9b8e48acf71ccc5bfae3",
+    "sha256": "95859e23ab3d5a8704172e4e9c085799fa8dde6103728369ae94fd0bea7d8e84"
+  },
+  "duration_ms": 16613,
+  "findings": [],
+  "pr": {
+    "base_ref": "main",
+    "base_sha": "85737f52b59aa2e3403c9b8e48acf71ccc5bfae3",
+    "body": "Create recovery keys in user storage or local. Closes https://github.com/keycloak/keycloak/issues/38445",
+    "clone_url": "https://github.com/code-review-benchmark/keycloak__keycloak__augment__PR38446__20260122.git",
+    "head_ref": "pr-38446",
+    "head_sha": "ce2dcc537b4b1f98a335e88cfe8e0b804483252a",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "keycloak__keycloak__augment__PR38446__20260122",
+    "resolved_at": "2026-08-24T04:12:25.002916Z",
+    "title": "Create recovery keys in user storage or local",
+    "url": "https://github.com/code-review-benchmark/keycloak__keycloak__augment__PR38446__20260122/pull/1"
+  },
+  "raw_findings": [],
+  "rejected_findings": [],
+  "run_id": "4a0a05952d5dd38f5d50a012",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-fable-5",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T05:31:35.319561Z",
+  "status": "failed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": []
+}

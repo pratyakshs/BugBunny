@@ -1,0 +1,4265 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "calcom-cal-com-pr11059-edc4826515",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "3a920d914dad600957b3dc78bc7e90e10138f26fcece5ef4bf487ef5453abc65",
+    "golden_url": "https://github.com/calcom/cal.com/pull/11059",
+    "review_url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR11059__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-f63d7ad44cba",
+      "cost_usd": 0.42853625,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 62202,
+      "latency_ms": 20096,
+      "output_tokens": 1591,
+      "request_sha256": "429169d5bb50c6219f11138503faa5d462c427d009a698abbabc401e4224d8f3",
+      "requested_model": "anthropic/claude-opus-4-8",
+      "resolved_model": "anthropic/claude-opus-4-8",
+      "response_sha256": "c8ca8404ebbedd315e53872e3905a37e6e576c30308e07e732e76c2af42fcae4",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-f63d7ad44cba",
+      "cost_usd": 0.45279875,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 67232,
+      "latency_ms": 19015,
+      "output_tokens": 1304,
+      "request_sha256": "58b5e56cea760b6aa35f513cf2b86e09a0727b5837d827100caf3f3c106844b2",
+      "requested_model": "anthropic/claude-opus-4-8",
+      "resolved_model": "anthropic/claude-opus-4-8",
+      "response_sha256": "91b13272e8344e0d96d0fef71240606173c264788227b60e7c52997081ab4fc4",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-f63d7ad44cba",
+      "cost_usd": 0.67163625,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 66678,
+      "latency_ms": 130579,
+      "output_tokens": 10196,
+      "request_sha256": "0d4bfe0e8c45592b52eb00cd0f4e9b551cf1f257bea434fd9601e30a3ccbcca2",
+      "requested_model": "anthropic/claude-opus-4-8",
+      "resolved_model": "anthropic/claude-opus-4-8",
+      "response_sha256": "ec2bc9e095b20ed879240b64e793668b7d3f7d779a3486add3762dd7724c6662",
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "candidates-0-5",
+      "cost_usd": 0.1721225,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 24424,
+      "latency_ms": 21609,
+      "output_tokens": 779,
+      "request_sha256": "cec6c92830d27eb422bb4d7bf8314c9029bac627374bbe23ebda7346b8ae4036",
+      "requested_model": "anthropic/claude-opus-4-5",
+      "resolved_model": "anthropic/claude-opus-4-5",
+      "response_sha256": "003b7715708afe7c08f39af025b8bb734fd011432bceb818b47cbb14a506fc9e",
+      "retry_errors": [],
+      "schema_sha256": "4f0c55f0b3b361fe2e31f7433e4f531d14d9dff4c97f0ccc17814ccd9ba1a5a1",
+      "stage": "verification"
+    }
+  ],
+  "completed_at": "2026-08-24T05:20:50.923127Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-opus-4-8",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.26879709324835455,
+      "largest_verifier_input_char_budget_utilization": 0.22958145351118087,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 0,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 1,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 11,
+      "verifier_generation_context_files_available": 11
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      ".env.appStore.example",
+      ".env.example",
+      ".github/actions/dangerous-git-checkout/action.yml",
+      ".snaplet/transform.ts",
+      ".yarn/releases/yarn-3.4.1.cjs",
+      "packages/app-store/appStoreMetaData.ts",
+      "packages/app-store/hubspot/lib/CalendarService.ts",
+      "packages/app-store/office365calendar/lib/CalendarService.ts",
+      "packages/app-store/salesforce/lib/CalendarService.ts",
+      "packages/lib/crypto.ts",
+      "turbo.json"
+    ],
+    "generation_batches": {
+      "b0000-f63d7ad44cba": {
+        "chunk_ids": [
+          "f0000:c0000-1ded72272266",
+          "f0001:c0000-73bf555163c5",
+          "f0002:c0000-67e527b14e11",
+          "f0003:c0000-9a969fcf517d",
+          "f0004:c0000-938324668922",
+          "f0005:c0000-0747d8c3564d",
+          "f0006:c0000-d5f7a0e79888",
+          "f0007:c0000-8c939b16e156",
+          "f0008:c0000-e809f98cc034",
+          "f0009:c0000-767760e6f3fa",
+          "f0010:c0000-b39eace07cb4",
+          "f0011:c0000-a1ba8a788eea",
+          "f0012:c0000-583004dcd8bb",
+          "f0013:c0000-7361a9ebcb18",
+          "f0014:c0000-7fe019ba5682",
+          "f0015:c0000-3559f6083b28",
+          "f0016:c0000-5d455eadb68d",
+          "f0017:c0000-5dea1dbf195d",
+          "f0018:c0000-6c9a1737ce88",
+          "f0019:c0000-d4f8addf00af",
+          "f0020:c0000-e3814a5370b1",
+          "f0021:c0000-4670d8e89833",
+          "f0022:c0000-4f8128155e21",
+          "f0023:c0000-a51fc21fb067",
+          "f0024:c0000-b9baeb9612ad",
+          "f0025:c0000-38f782b10d93",
+          "f0026:c0000-8970590913b0",
+          "f0027:c0000-a2df015117d2",
+          "f0028:c0000-5bf3c8a19f7c",
+          "f0029:c0000-a489b47b486c",
+          "f0030:c0000-18dc0c01e11e",
+          "f0031:c0000-d97e3e52e04e",
+          "f0032:c0000-c57d04f4d412",
+          "f0033:c0000-82a70101eec3",
+          "f0034:c0000-33c012b5c9c8",
+          "f0035:c0000-35d17ea7cb07",
+          "f0036:c0000-260a5a7e2ad8",
+          "f0037:c0000-2fc6af69399c",
+          "f0038:c0000-06285b8d4a37",
+          "f0039:c0000-f0bdbd51b785"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.26879709324835455,
+        "context_chars": 45127,
+        "context_files_available_before_generation_prompt_fit": [
+          ".env.appStore.example",
+          ".env.example",
+          ".github/actions/dangerous-git-checkout/action.yml",
+          ".snaplet/transform.ts",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "apps/web/pages/api/webhook/app-credential.ts",
+          "packages/app-store/_utils/oauth/createOAuthAppCredential.ts",
+          "packages/app-store/_utils/oauth/decodeOAuthState.ts",
+          "packages/app-store/_utils/oauth/encodeOAuthState.ts",
+          "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+          "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+          "packages/app-store/appStoreMetaData.ts",
+          "packages/app-store/googlecalendar/api/add.ts",
+          "packages/app-store/googlecalendar/api/callback.ts",
+          "packages/app-store/googlecalendar/lib/CalendarService.ts",
+          "packages/app-store/hubspot/api/add.ts",
+          "packages/app-store/hubspot/api/callback.ts",
+          "packages/app-store/hubspot/lib/CalendarService.ts",
+          "packages/app-store/larkcalendar/api/add.ts",
+          "packages/app-store/larkcalendar/api/callback.ts",
+          "packages/app-store/larkcalendar/lib/CalendarService.ts",
+          "packages/app-store/office365calendar/api/add.ts",
+          "packages/app-store/office365calendar/api/callback.ts",
+          "packages/app-store/office365calendar/lib/CalendarService.ts",
+          "packages/app-store/office365video/api/add.ts",
+          "packages/app-store/office365video/api/callback.ts",
+          "packages/app-store/office365video/lib/VideoApiAdapter.ts",
+          "packages/app-store/salesforce/api/add.ts",
+          "packages/app-store/salesforce/api/callback.ts",
+          "packages/app-store/salesforce/lib/CalendarService.ts",
+          "packages/app-store/stripepayment/api/callback.ts",
+          "packages/app-store/tandemvideo/api/callback.ts",
+          "packages/app-store/webex/api/callback.ts",
+          "packages/app-store/webex/lib/VideoApiAdapter.ts",
+          "packages/app-store/zoho-bigin/api/add.ts",
+          "packages/app-store/zoho-bigin/api/callback.ts",
+          "packages/app-store/zoho-bigin/lib/CalendarService.ts",
+          "packages/app-store/zohocrm/api/_getAdd.ts",
+          "packages/app-store/zohocrm/api/callback.ts",
+          "packages/app-store/zohocrm/lib/CalendarService.ts",
+          "packages/app-store/zoomvideo/api/add.ts",
+          "packages/app-store/zoomvideo/api/callback.ts",
+          "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts",
+          "packages/lib/constants.ts",
+          "packages/lib/crypto.ts",
+          "turbo.json"
+        ],
+        "context_files_exposed_to_model": [
+          ".env.appStore.example",
+          ".env.example",
+          ".github/actions/dangerous-git-checkout/action.yml",
+          ".snaplet/transform.ts",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "packages/app-store/appStoreMetaData.ts",
+          "packages/app-store/hubspot/lib/CalendarService.ts",
+          "packages/app-store/office365calendar/lib/CalendarService.ts",
+          "packages/app-store/salesforce/lib/CalendarService.ts",
+          "packages/lib/crypto.ts",
+          "turbo.json"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [
+          "apps/web/pages/api/webhook/app-credential.ts",
+          "packages/app-store/_utils/oauth/createOAuthAppCredential.ts",
+          "packages/app-store/_utils/oauth/decodeOAuthState.ts",
+          "packages/app-store/_utils/oauth/encodeOAuthState.ts",
+          "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+          "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+          "packages/app-store/googlecalendar/api/add.ts",
+          "packages/app-store/googlecalendar/api/callback.ts",
+          "packages/app-store/googlecalendar/lib/CalendarService.ts",
+          "packages/app-store/hubspot/api/add.ts",
+          "packages/app-store/hubspot/api/callback.ts",
+          "packages/app-store/larkcalendar/api/add.ts",
+          "packages/app-store/larkcalendar/api/callback.ts",
+          "packages/app-store/larkcalendar/lib/CalendarService.ts",
+          "packages/app-store/office365calendar/api/add.ts",
+          "packages/app-store/office365calendar/api/callback.ts",
+          "packages/app-store/office365video/api/add.ts",
+          "packages/app-store/office365video/api/callback.ts",
+          "packages/app-store/office365video/lib/VideoApiAdapter.ts",
+          "packages/app-store/salesforce/api/add.ts",
+          "packages/app-store/salesforce/api/callback.ts",
+          "packages/app-store/stripepayment/api/callback.ts",
+          "packages/app-store/tandemvideo/api/callback.ts",
+          "packages/app-store/webex/api/callback.ts",
+          "packages/app-store/webex/lib/VideoApiAdapter.ts",
+          "packages/app-store/zoho-bigin/api/add.ts",
+          "packages/app-store/zoho-bigin/api/callback.ts",
+          "packages/app-store/zoho-bigin/lib/CalendarService.ts",
+          "packages/app-store/zohocrm/api/_getAdd.ts",
+          "packages/app-store/zohocrm/api/callback.ts",
+          "packages/app-store/zohocrm/lib/CalendarService.ts",
+          "packages/app-store/zoomvideo/api/add.ts",
+          "packages/app-store/zoomvideo/api/callback.ts",
+          "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts",
+          "packages/lib/constants.ts"
+        ],
+        "context_sha256": "a005ea7c8b511234aa0cd7929789bcefb06dd48883fdc9b1da0a973666a46620",
+        "context_truncated": true,
+        "context_utf8_bytes": 45361,
+        "estimated_context_tokens": 11282,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 291808,
+        "generation_input_char_budget_utilization": 0.5181694813027744,
+        "generation_prompt_chars": 151206,
+        "generation_prompt_utf8_bytes": 151444,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 11
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 40,
+    "packets": {
+      "f0000:c0000-1ded72272266": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 612,
+        "prompt_sha256": "637adcca4add5604296098120aca97f1aed52365e9594952f75de1f528f67362",
+        "symbols": [
+          "APP",
+          "CREDENTIAL"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0001:c0000-73bf555163c5": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 761,
+        "prompt_sha256": "8d8dc409283f7151957c11563655a42026243bfe6cb84e480d517a2374590b15",
+        "symbols": [
+          "handler",
+          "object"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0002:c0000-67e527b14e11": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "3ed09df09e7ed3b7ac52e170b9036e3b1334338bdfdcdfe1ad40a84468207438",
+        "symbols": [
+          "decodeOAuthState",
+          "oauth"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0003:c0000-9a969fcf517d": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "b0ee1cc028edf0306f41259c775c6a800cfdfb6e45d8fb7a3489b648654bbe8a",
+        "symbols": [
+          "IntegrationOAuthCallbackState",
+          "types"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0004:c0000-938324668922": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "8f3978772ec8c1833af6f7e6a930a7899e9d97e607d12106ee4c077cce3e60e7",
+        "symbols": [
+          "IntegrationOAuthCallbackState",
+          "types"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0005:c0000-0747d8c3564d": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 650,
+        "prompt_sha256": "c1d17ed21e155fdd002c5a3ca52f916f3c32b42dd34b9d3f931521370840c2db",
+        "symbols": [
+          "object",
+          "string"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0006:c0000-d5f7a0e79888": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 745,
+        "prompt_sha256": "7c5a29fd71c08c46c7b4c18aa517fcf1ea6277ff1eaec997ab4b74b43bfc0585",
+        "symbols": [
+          "fetch",
+          "URLSearchParams"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0007:c0000-8c939b16e156": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "a0bf10266eadf1d63da7479840721222c85be9fd24f068711ef62a16840f447a",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0008:c0000-e809f98cc034": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "a0292ab4369685ed15c0694c3fd6f8de7f9b75925b4ec59c7650a560058b3258",
+        "symbols": [
+          "_utils",
+          "decodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0009:c0000-767760e6f3fa": {
+        "callers": 2,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "9887d331a6899f8d16780246128befc371e8e3bc620d44311a99ccb35c0ef3dd",
+        "symbols": [
+          "refreshOAuthTokens",
+          "refreshToken"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0010:c0000-b39eace07cb4": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "d01d9620436947bb84ca0a339a5cd218074a9f92b6804f04e75e4b861a6ef302",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0011:c0000-a1ba8a788eea": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "13da91380fc9c511323f6fc720fa8d7948c576422aee6f006b89553413e435df",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0012:c0000-583004dcd8bb": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "353ecb917a973ae3d508194345840b908d9eb7dc0f87bfa6f44ce8a8fb7b3376",
+        "symbols": [
+          "refreshOAuthTokens",
+          "createToken"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0013:c0000-7361a9ebcb18": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "987a7e38c0436f91c9b2dc82f749123cc26f4fa2fd17bdd6df8ab023b9cf3d4f",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0014:c0000-7fe019ba5682": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "8548a48213019ea45360615b6427191833ac1b98619f7e54345d811bb87290dd",
+        "symbols": [
+          "_utils",
+          "decodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0015:c0000-3559f6083b28": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "20dec8b033da360a551699afd9f576e570d120691387d41ee9888fb6c874559f",
+        "symbols": [
+          "refreshOAuthTokens",
+          "fetch"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0016:c0000-5d455eadb68d": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "aef4b053a191c23fbb66c7b0c1779f1f3c3770d3897996ccc94f988f06a5fb15",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0017:c0000-5dea1dbf195d": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "6e85cc338a1ba83186cdaa942ccc3046680ec43eff60b35df8547a79e826e02d",
+        "symbols": [
+          "_utils",
+          "decodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0018:c0000-6c9a1737ce88": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "d87723af4d41456ad116ab15f59254d3fc6b221c1b0e9cd89a9af445c69ee975",
+        "symbols": [
+          "refreshOAuthTokens",
+          "fetch"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0019:c0000-d4f8addf00af": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "c6d79267137e5e60b90f9d5a604f4de6316cef1a849c20a7cb5bf39bd75c6700",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0020:c0000-e3814a5370b1": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "4681c3da5a481a1bf2674f3ad5a4c7fd36f4aa149d11551956f4d4e3641d2918",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0021:c0000-4670d8e89833": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "95c49c0959fdd210991208928cd675a41fea25bb51a69336feda429fd1c1c03a",
+        "symbols": [
+          "refreshOAuthTokens",
+          "fetch"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0022:c0000-4f8128155e21": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "283caa8fa553d88b19d58bc7ceab18516ab83420b224b4bb8068de13b141a7c5",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0023:c0000-a51fc21fb067": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "561440fe3c18be3f448bd32fa5498022234818fc726cdff8f34fd76efb8cbed1",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0024:c0000-b9baeb9612ad": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 751,
+        "prompt_sha256": "0680ccfd099bd46f624719ba63b28e3e4e090148315201e6a3e40d2f7ad65df5",
+        "symbols": [
+          "object",
+          "string"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0025:c0000-38f782b10d93": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "dac6962a18ca72489562040d11c58cc251c4db01edc1d456ffc7905b94514e13",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0026:c0000-8970590913b0": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "ac9c5967a15808cd3ee62fc509f4cdbbd93f06b81b74d17ecaf678abcbfd8ea7",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0027:c0000-a2df015117d2": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "a4c27869d52394572f797a1b3e066c0ae06854f728346057f3928b7f7f27cd7e",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0028:c0000-5bf3c8a19f7c": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "b5d7b171a0c80f01306bcc657fc2c6d21f040790bafe0945674d59882d237708",
+        "symbols": [
+          "refreshOAuthTokens",
+          "fetch"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0029:c0000-a489b47b486c": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "e8d643f2ae1f911b2135d2f47e9c272859a1c34c188621e56cdcbbb334a8dad7",
+        "symbols": [
+          "_utils",
+          "WEBAPP_URL"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0030:c0000-18dc0c01e11e": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "27355d8fadc837523021d515d900b15abcb4667fedbf8dcf989dec92402dca27",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0031:c0000-d97e3e52e04e": {
+        "callers": 0,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "5c78fc0bc4565eb0fb7c72ab9c41e023d0b8d38dcf0366b710ef381247925b21",
+        "symbols": [
+          "refreshOAuthTokens",
+          "post"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0032:c0000-c57d04f4d412": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "c1aa8181a04e076e88507658dfbd7c278da58c75239e652e069a313f3533ce73",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0033:c0000-82a70101eec3": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "0df013efcdd4cbffa2c6c4d4acb1bffc404294a352fcce2c9045ee8066676fee",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0034:c0000-33c012b5c9c8": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "f0fc29c51118b78aa1da0f69c2b0e85ffa270f442be9146ec0fdd3c00fe0cdae",
+        "symbols": [
+          "refreshOAuthTokens",
+          "axios"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0035:c0000-35d17ea7cb07": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "564b0b0fc1eb5b203aa8648fc6d2400c7d5503b741ae1ddf8ac6662ad1a3a5a5",
+        "symbols": [
+          "_utils",
+          "encodeOAuthState"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0036:c0000-260a5a7e2ad8": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "9e21a9510cbfc28f49d1563c89d61f0a2458fbb29ff3f6df2792517ae60e52c4",
+        "symbols": [
+          "_utils",
+          "createOAuthAppCredential"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0037:c0000-2fc6af69399c": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 761,
+        "prompt_sha256": "82211828e172fcd96f7856642ea7fa6b0a59c6b836cef6d2a2eb4853617071be",
+        "symbols": [
+          "refreshOAuthTokens",
+          "fetch"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0038:c0000-06285b8d4a37": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 761,
+        "prompt_sha256": "6479d212aed7f24fde80b9b96e1167f2cd5e970144fd19b2f4e4f03450be6fb1",
+        "symbols": [
+          "APP_CREDENTIAL_SHARING_ENABLED",
+          "CALCOM_WEBHOOK_SECRET"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0039:c0000-f0bdbd51b785": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 660,
+        "prompt_sha256": "9d3bba6baa9ab18e69453a21a7b6cfb31b059aeb97552e92cc94ee6643330582",
+        "symbols": [
+          "CALCOM_APP_CREDENTIAL_ENCRYPTION_KEY",
+          "CALCOM_CREDENTIAL_SYNC_ENDPOINT"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 2117,
+        "serialized_chars": 2211,
+        "serialized_limit_chars": 6000,
+        "sha256": "7fe630a9d123cdb7356876cee5905ceb05c82df7281eb823f0535dd0fe4b0fd4",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 66,
+        "serialized_chars": 68,
+        "serialized_limit_chars": 1000,
+        "sha256": "118455bffaa7c8b4cc24f2b67cd1ce5128f7c8365c863fe568d2207a8dde0638",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 30053,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 129434
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 66678
+      },
+      "verification": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 24424
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-f63d7ad44cba": {
+          "action_counts": {
+            "list": 0,
+            "read": 5,
+            "search": 3
+          },
+          "actions_executed": 8,
+          "actions_failed": 1,
+          "additional_context_files_selected": 5,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "packages/app-store/appStoreMetaData.ts",
+            "packages/app-store/hubspot/lib/CalendarService.ts",
+            "packages/app-store/office365calendar/lib/CalendarService.ts",
+            "packages/app-store/salesforce/lib/CalendarService.ts",
+            "packages/lib/crypto.ts"
+          ],
+          "context_files_exposed_to_model": [
+            "packages/app-store/appStoreMetaData.ts",
+            "packages/app-store/hubspot/lib/CalendarService.ts",
+            "packages/app-store/office365calendar/lib/CalendarService.ts",
+            "packages/app-store/salesforce/lib/CalendarService.ts",
+            "packages/lib/crypto.ts"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 11282,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 45127,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 291808,
+          "generation_input_char_budget_utilization": 0.5181694813027744,
+          "generation_prompt_chars": 151206,
+          "generation_prompt_utf8_bytes": 151444,
+          "hypotheses_final": 4,
+          "hypotheses_open_final": 4,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 0,
+          "hypotheses_returned": 9,
+          "hypothesis_linked_actions": 9,
+          "largest_selector_input_char_budget_utilization": 0.5182517271630661,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 227,
+          "repository_files": 3859,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 3859,
+          "repository_index_chars": 2260,
+          "repository_index_chars_by_round": [
+            2260,
+            2260
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 565,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": false,
+          "request_limit_hit": false,
+          "requests_accepted": 9,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 1,
+          "requests_returned": 9,
+          "round_limit": 2,
+          "round_limit_hit": true,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 8,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 33544,
+          "seed_context_chars_original": 33544,
+          "seed_context_truncated": false,
+          "selected_context_chars": 11581,
+          "selection_done": false,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            139145,
+            151230
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 5
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 329,
+      "callers": 16,
+      "changed_context_files_exposed_to_model": [
+        ".env.example",
+        "apps/web/pages/api/webhook/app-credential.ts",
+        "packages/app-store/_utils/oauth/createOAuthAppCredential.ts",
+        "packages/app-store/_utils/oauth/decodeOAuthState.ts",
+        "packages/app-store/_utils/oauth/encodeOAuthState.ts",
+        "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+        "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+        "packages/app-store/googlecalendar/api/add.ts",
+        "packages/app-store/googlecalendar/api/callback.ts",
+        "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "packages/app-store/hubspot/api/add.ts",
+        "packages/app-store/hubspot/api/callback.ts",
+        "packages/app-store/hubspot/lib/CalendarService.ts",
+        "packages/app-store/larkcalendar/api/add.ts",
+        "packages/app-store/larkcalendar/api/callback.ts",
+        "packages/app-store/larkcalendar/lib/CalendarService.ts",
+        "packages/app-store/office365calendar/api/add.ts",
+        "packages/app-store/office365calendar/api/callback.ts",
+        "packages/app-store/office365calendar/lib/CalendarService.ts",
+        "packages/app-store/office365video/api/add.ts",
+        "packages/app-store/office365video/api/callback.ts",
+        "packages/app-store/office365video/lib/VideoApiAdapter.ts",
+        "packages/app-store/salesforce/api/add.ts",
+        "packages/app-store/salesforce/api/callback.ts",
+        "packages/app-store/salesforce/lib/CalendarService.ts",
+        "packages/app-store/stripepayment/api/callback.ts",
+        "packages/app-store/tandemvideo/api/callback.ts",
+        "packages/app-store/webex/api/callback.ts",
+        "packages/app-store/webex/lib/VideoApiAdapter.ts",
+        "packages/app-store/zoho-bigin/api/add.ts",
+        "packages/app-store/zoho-bigin/api/callback.ts",
+        "packages/app-store/zoho-bigin/lib/CalendarService.ts",
+        "packages/app-store/zohocrm/api/_getAdd.ts",
+        "packages/app-store/zohocrm/api/callback.ts",
+        "packages/app-store/zohocrm/lib/CalendarService.ts",
+        "packages/app-store/zoomvideo/api/add.ts",
+        "packages/app-store/zoomvideo/api/callback.ts",
+        "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts",
+        "packages/lib/constants.ts",
+        "turbo.json"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 40,
+      "context_chars": 30053,
+      "context_files_exposed_to_model": [
+        ".env.appStore.example",
+        ".env.example",
+        ".github/actions/dangerous-git-checkout/action.yml",
+        ".snaplet/transform.ts",
+        ".yarn/releases/yarn-3.4.1.cjs",
+        "apps/web/pages/api/webhook/app-credential.ts",
+        "packages/app-store/_utils/oauth/createOAuthAppCredential.ts",
+        "packages/app-store/_utils/oauth/decodeOAuthState.ts",
+        "packages/app-store/_utils/oauth/encodeOAuthState.ts",
+        "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+        "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+        "packages/app-store/googlecalendar/api/add.ts",
+        "packages/app-store/googlecalendar/api/callback.ts",
+        "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "packages/app-store/hubspot/api/add.ts",
+        "packages/app-store/hubspot/api/callback.ts",
+        "packages/app-store/hubspot/lib/CalendarService.ts",
+        "packages/app-store/larkcalendar/api/add.ts",
+        "packages/app-store/larkcalendar/api/callback.ts",
+        "packages/app-store/larkcalendar/lib/CalendarService.ts",
+        "packages/app-store/office365calendar/api/add.ts",
+        "packages/app-store/office365calendar/api/callback.ts",
+        "packages/app-store/office365calendar/lib/CalendarService.ts",
+        "packages/app-store/office365video/api/add.ts",
+        "packages/app-store/office365video/api/callback.ts",
+        "packages/app-store/office365video/lib/VideoApiAdapter.ts",
+        "packages/app-store/salesforce/api/add.ts",
+        "packages/app-store/salesforce/api/callback.ts",
+        "packages/app-store/salesforce/lib/CalendarService.ts",
+        "packages/app-store/stripepayment/api/callback.ts",
+        "packages/app-store/tandemvideo/api/callback.ts",
+        "packages/app-store/webex/api/callback.ts",
+        "packages/app-store/webex/lib/VideoApiAdapter.ts",
+        "packages/app-store/zoho-bigin/api/add.ts",
+        "packages/app-store/zoho-bigin/api/callback.ts",
+        "packages/app-store/zoho-bigin/lib/CalendarService.ts",
+        "packages/app-store/zohocrm/api/_getAdd.ts",
+        "packages/app-store/zohocrm/api/callback.ts",
+        "packages/app-store/zohocrm/lib/CalendarService.ts",
+        "packages/app-store/zoomvideo/api/add.ts",
+        "packages/app-store/zoomvideo/api/callback.ts",
+        "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts",
+        "packages/lib/constants.ts",
+        "turbo.json"
+      ],
+      "context_utf8_bytes": 30287,
+      "cross_file_context_files_exposed_to_model": [
+        ".env.appStore.example",
+        ".github/actions/dangerous-git-checkout/action.yml",
+        ".snaplet/transform.ts",
+        ".yarn/releases/yarn-3.4.1.cjs"
+      ],
+      "definitions": 31,
+      "estimated_context_tokens": 7541,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 162,
+      "evidence_rows_clipped_during_render": 113,
+      "evidence_rows_omitted_due_to_render_budget": 45,
+      "evidence_rows_rendered": 117,
+      "hypotheses": 0,
+      "imports": 59,
+      "largest_prompt_budget": 813,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 23,
+        "max_symbols_per_chunk": 10,
+        "prompt_render_budget": 38
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 45,
+        "source_read_budget": 0,
+        "symbol_config_limit": 211,
+        "symbol_search_budget": 329
+      },
+      "packet_metrics": {
+        "f0000:c0000-1ded72272266": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".env.appStore.example",
+            ".env.example"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            ".env.appStore.example"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 153,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".env.appStore.example"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.7527675276752768,
+          "prompt_chars": 612,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 616,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 61,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 37,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0001:c0000-73bf555163c5": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "apps/web/pages/api/webhook/app-credential.ts"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 91,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 67,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0002:c0000-67e527b14e11": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/_utils/oauth/createOAuthAppCredential.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0003:c0000-9a969fcf517d": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/_utils/oauth/decodeOAuthState.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 2,
+          "symbol_candidates_discovered": 2,
+          "symbol_candidates_extracted": 2,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0004:c0000-938324668922": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/_utils/oauth/encodeOAuthState.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 2,
+          "symbol_candidates_discovered": 2,
+          "symbol_candidates_extracted": 2,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0005:c0000-0747d8c3564d": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".snaplet/transform.ts",
+            "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            ".snaplet/transform.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 163,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".snaplet/transform.ts"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.7995079950799509,
+          "prompt_chars": 650,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 654,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 41,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 17,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0006:c0000-d5f7a0e79888": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/actions/dangerous-git-checkout/action.yml",
+            "packages/app-store/_utils/oauth/refreshOAuthTokens.ts"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/actions/dangerous-git-checkout/action.yml"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 187,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/actions/dangerous-git-checkout/action.yml"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9163591635916359,
+          "prompt_chars": 745,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 751,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 46,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 22,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0007:c0000-8c939b16e156": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/googlecalendar/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0008:c0000-e809f98cc034": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/googlecalendar/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0009:c0000-767760e6f3fa": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/googlecalendar/lib/CalendarService.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 4,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 16,
+          "symbol_candidates_discovered": 16,
+          "symbol_candidates_extracted": 16,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 14
+        },
+        "f0010:c0000-b39eace07cb4": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/hubspot/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0011:c0000-a1ba8a788eea": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/hubspot/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 2
+        },
+        "f0012:c0000-583004dcd8bb": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/hubspot/lib/CalendarService.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 20,
+          "symbol_candidates_discovered": 20,
+          "symbol_candidates_extracted": 20,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 18
+        },
+        "f0013:c0000-7361a9ebcb18": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/larkcalendar/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0014:c0000-7fe019ba5682": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/larkcalendar/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0015:c0000-3559f6083b28": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/larkcalendar/lib/CalendarService.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 29,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 5,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0016:c0000-5d455eadb68d": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/office365calendar/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0017:c0000-5dea1dbf195d": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/office365calendar/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0018:c0000-6c9a1737ce88": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/office365calendar/lib/CalendarService.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 40,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 16,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0019:c0000-d4f8addf00af": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/office365video/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0020:c0000-e3814a5370b1": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/office365video/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 2
+        },
+        "f0021:c0000-4670d8e89833": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/office365video/lib/VideoApiAdapter.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 30,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 6,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0022:c0000-4f8128155e21": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/salesforce/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0023:c0000-a51fc21fb067": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/salesforce/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 2
+        },
+        "f0024:c0000-b9baeb9612ad": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".snaplet/transform.ts",
+            "packages/app-store/salesforce/lib/CalendarService.ts"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            ".snaplet/transform.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 188,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".snaplet/transform.ts"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.923739237392374,
+          "prompt_chars": 751,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 757,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 56,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 32,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0025:c0000-38f782b10d93": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/stripepayment/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0026:c0000-8970590913b0": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/tandemvideo/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0027:c0000-a2df015117d2": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/webex/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0028:c0000-5bf3c8a19f7c": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/webex/lib/VideoApiAdapter.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 813,
+          "prompt_budget_utilization": 0.9360393603936039,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 27,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 3,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0029:c0000-a489b47b486c": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zoho-bigin/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 10,
+          "symbol_candidates_discovered": 10,
+          "symbol_candidates_extracted": 10,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 8
+        },
+        "f0030:c0000-18dc0c01e11e": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zoho-bigin/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 2
+        },
+        "f0031:c0000-d97e3e52e04e": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "packages/app-store/zoho-bigin/lib/CalendarService.ts"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs"
+          ],
+          "evidence_rows_available_to_render": 6,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 20,
+          "symbol_candidates_discovered": 20,
+          "symbol_candidates_extracted": 20,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 18
+        },
+        "f0032:c0000-c57d04f4d412": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zohocrm/api/_getAdd.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0033:c0000-82a70101eec3": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zohocrm/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 2
+        },
+        "f0034:c0000-33c012b5c9c8": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zohocrm/lib/CalendarService.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 6,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 22,
+          "symbol_candidates_discovered": 22,
+          "symbol_candidates_extracted": 22,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0035:c0000-35d17ea7cb07": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zoomvideo/api/add.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0036:c0000-260a5a7e2ad8": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zoomvideo/api/callback.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0037:c0000-2fc6af69399c": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 30,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 6,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0038:c0000-06285b8d4a37": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/lib/constants.ts"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 191,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.937192118226601,
+          "prompt_chars": 761,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 767,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 5,
+          "symbol_candidates_discovered": 5,
+          "symbol_candidates_extracted": 5,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 3
+        },
+        "f0039:c0000-f0bdbd51b785": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "turbo.json"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 165,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 812,
+          "prompt_budget_utilization": 0.812807881773399,
+          "prompt_chars": 660,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 664,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 179,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 179,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 2
+        }
+      },
+      "packets_hitting_symbol_config_limit": 10,
+      "packets_hitting_symbol_render_budget_limit": 38,
+      "prompt_budget_chars": 32509,
+      "prompt_budget_utilization": 0.9244516903011474,
+      "prompt_truncated_packets": 40,
+      "smallest_prompt_budget": 812,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 40,
+      "symbol_candidates_after_config_limit": 409,
+      "symbol_candidates_discovered": 620,
+      "symbol_candidates_omitted_by_config_limit": 211,
+      "symbol_searches_skipped_due_to_budget": 329,
+      "symbols": 80,
+      "tests": 8,
+      "tree_files": 3859,
+      "truncated_packets": 40,
+      "unchanged_context_files_exposed_to_model": [
+        ".env.appStore.example",
+        ".github/actions/dangerous-git-checkout/action.yml",
+        ".snaplet/transform.ts",
+        ".yarn/releases/yarn-3.4.1.cjs"
+      ],
+      "unique_changed_context_files_exposed_to_model": 40,
+      "unique_context_files_exposed_to_model": 44,
+      "unique_cross_file_context_files_exposed_to_model": 4,
+      "unique_unchanged_context_files_exposed_to_model": 4,
+      "usages": 48,
+      "whole_repo_grep_cache_hits": 56,
+      "whole_repo_grep_calls": 24,
+      "whole_repo_grep_calls_returning_configured_limit": 23
+    },
+    "unique_changed_context_files_exposed_to_model": 5,
+    "unique_effective_context_files_exposed_to_model": 11,
+    "unique_unchanged_context_files_exposed_to_model": 6,
+    "verification_batches": [
+      {
+        "candidate_count": 6,
+        "candidate_offset": 0,
+        "candidate_payload_chars": 10483,
+        "context_budget_chars": 167885,
+        "context_budget_clipped": false,
+        "context_chars": 52918,
+        "context_chars_available": 52918,
+        "context_chars_before_prompt_fit": 52918,
+        "context_chars_omitted_by_evidence_budget": 0,
+        "context_chars_omitted_by_prompt_fit": 0,
+        "context_chars_rendered": 52918,
+        "context_clipped_to_any_budget": false,
+        "context_clipped_to_prompt_budget": false,
+        "evidence_budget_clipped": false,
+        "evidence_clipped_to_any_budget": false,
+        "generation_context_blocks_available": 1,
+        "generation_context_blocks_rendered": 1,
+        "generation_context_chars_available": 45176,
+        "generation_context_chars_omitted": 0,
+        "generation_context_chars_rendered": 45176,
+        "generation_context_files_after_prompt_fit": [
+          ".env.appStore.example",
+          ".env.example",
+          ".github/actions/dangerous-git-checkout/action.yml",
+          ".snaplet/transform.ts",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "packages/app-store/appStoreMetaData.ts",
+          "packages/app-store/hubspot/lib/CalendarService.ts",
+          "packages/app-store/office365calendar/lib/CalendarService.ts",
+          "packages/app-store/salesforce/lib/CalendarService.ts",
+          "packages/lib/crypto.ts",
+          "turbo.json"
+        ],
+        "generation_context_files_available": [
+          ".env.appStore.example",
+          ".env.example",
+          ".github/actions/dangerous-git-checkout/action.yml",
+          ".snaplet/transform.ts",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "packages/app-store/appStoreMetaData.ts",
+          "packages/app-store/hubspot/lib/CalendarService.ts",
+          "packages/app-store/office365calendar/lib/CalendarService.ts",
+          "packages/app-store/salesforce/lib/CalendarService.ts",
+          "packages/lib/crypto.ts",
+          "turbo.json"
+        ],
+        "generation_context_files_omitted": [],
+        "generation_context_files_rendered": [
+          ".env.appStore.example",
+          ".env.example",
+          ".github/actions/dangerous-git-checkout/action.yml",
+          ".snaplet/transform.ts",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "packages/app-store/appStoreMetaData.ts",
+          "packages/app-store/hubspot/lib/CalendarService.ts",
+          "packages/app-store/office365calendar/lib/CalendarService.ts",
+          "packages/app-store/salesforce/lib/CalendarService.ts",
+          "packages/lib/crypto.ts",
+          "turbo.json"
+        ],
+        "input_char_budget": 326272,
+        "input_char_budget_utilization": 0.22958145351118087,
+        "patch_blocks_available": 6,
+        "patch_blocks_rendered": 6,
+        "patch_budget_chars": 111923,
+        "patch_budget_clipped": false,
+        "patch_chars": 9001,
+        "patch_chars_available": 9001,
+        "patch_chars_omitted_by_evidence_budget": 0,
+        "patch_chars_rendered": 9001,
+        "prompt_chars": 74906,
+        "prompt_utf8_bytes": 75140,
+        "source_blocks_available": 6,
+        "source_blocks_rendered": 6,
+        "source_context_chars_available": 7740,
+        "source_context_chars_omitted": 0,
+        "source_context_chars_rendered": 7740,
+        "source_files_after_prompt_fit": [
+          "apps/web/pages/api/webhook/app-credential.ts",
+          "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+          "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+          "packages/app-store/zoho-bigin/api/add.ts"
+        ],
+        "source_files_available": [
+          "apps/web/pages/api/webhook/app-credential.ts",
+          "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+          "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+          "packages/app-store/zoho-bigin/api/add.ts"
+        ],
+        "source_files_omitted": [],
+        "source_files_rendered": [
+          "apps/web/pages/api/webhook/app-credential.ts",
+          "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+          "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+          "packages/app-store/zoho-bigin/api/add.ts"
+        ]
+      }
+    ],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": true,
+    "completed_hunks": [
+      ".env.example:221:221:h000",
+      "apps/web/pages/api/webhook/app-credential.ts:0:1:h000",
+      "packages/app-store/_utils/oauth/createOAuthAppCredential.ts:1:1:h000",
+      "packages/app-store/_utils/oauth/decodeOAuthState.ts:1:1:h000",
+      "packages/app-store/_utils/oauth/encodeOAuthState.ts:1:1:h000",
+      "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts:0:1:h000",
+      "packages/app-store/_utils/oauth/refreshOAuthTokens.ts:0:1:h000",
+      "packages/app-store/googlecalendar/api/add.ts:1:1:h000",
+      "packages/app-store/googlecalendar/api/callback.ts:1:1:h000",
+      "packages/app-store/googlecalendar/lib/CalendarService.ts:9:9:h000",
+      "packages/app-store/googlecalendar/lib/CalendarService.ts:72:74:h001",
+      "packages/app-store/hubspot/api/add.ts:1:1:h000",
+      "packages/app-store/hubspot/api/callback.ts:1:1:h000",
+      "packages/app-store/hubspot/lib/CalendarService.ts:14:14:h000",
+      "packages/app-store/hubspot/lib/CalendarService.ts:164:165:h001",
+      "packages/app-store/larkcalendar/api/add.ts:1:1:h000",
+      "packages/app-store/larkcalendar/api/callback.ts:1:1:h000",
+      "packages/app-store/larkcalendar/lib/CalendarService.ts:2:2:h000",
+      "packages/app-store/larkcalendar/lib/CalendarService.ts:54:55:h001",
+      "packages/app-store/office365calendar/api/add.ts:1:1:h000",
+      "packages/app-store/office365calendar/api/callback.ts:1:1:h000",
+      "packages/app-store/office365calendar/lib/CalendarService.ts:8:8:h000",
+      "packages/app-store/office365calendar/lib/CalendarService.ts:232:234:h001",
+      "packages/app-store/office365video/api/add.ts:1:1:h000",
+      "packages/app-store/office365video/api/callback.ts:1:1:h000",
+      "packages/app-store/office365video/lib/VideoApiAdapter.ts:1:1:h000",
+      "packages/app-store/office365video/lib/VideoApiAdapter.ts:48:49:h001",
+      "packages/app-store/salesforce/api/add.ts:1:1:h000",
+      "packages/app-store/salesforce/api/callback.ts:1:1:h000",
+      "packages/app-store/salesforce/lib/CalendarService.ts:1:1:h000",
+      "packages/app-store/salesforce/lib/CalendarService.ts:51:63:h001",
+      "packages/app-store/stripepayment/api/callback.ts:1:1:h000",
+      "packages/app-store/tandemvideo/api/callback.ts:1:1:h000",
+      "packages/app-store/webex/api/callback.ts:1:1:h000",
+      "packages/app-store/webex/lib/VideoApiAdapter.ts:1:1:h000",
+      "packages/app-store/webex/lib/VideoApiAdapter.ts:49:50:h001",
+      "packages/app-store/zoho-bigin/api/add.ts:1:1:h000",
+      "packages/app-store/zoho-bigin/api/callback.ts:1:1:h000",
+      "packages/app-store/zoho-bigin/lib/CalendarService.ts:6:6:h000",
+      "packages/app-store/zoho-bigin/lib/CalendarService.ts:72:73:h001",
+      "packages/app-store/zohocrm/api/_getAdd.ts:1:1:h000",
+      "packages/app-store/zohocrm/api/callback.ts:1:1:h000",
+      "packages/app-store/zohocrm/lib/CalendarService.ts:7:7:h000",
+      "packages/app-store/zohocrm/lib/CalendarService.ts:191:192:h001",
+      "packages/app-store/zoomvideo/api/add.ts:1:1:h000",
+      "packages/app-store/zoomvideo/api/callback.ts:1:1:h000",
+      "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts:1:1:h000",
+      "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts:65:67:h001",
+      "packages/lib/constants.ts:90:90:h000",
+      "turbo.json:188:188:h000"
+    ],
+    "coverage_ratio": 1.0,
+    "eligible_files": 40,
+    "eligible_hunks": 50,
+    "excluded_files": [],
+    "failed_hunks": [],
+    "total_files": 40,
+    "total_hunks": 50
+  },
+  "diagnostics": [
+    {
+      "batch_id": "b0000-f63d7ad44cba",
+      "chunk_ids": [
+        "f0000:c0000-1ded72272266",
+        "f0001:c0000-73bf555163c5",
+        "f0002:c0000-67e527b14e11",
+        "f0003:c0000-9a969fcf517d",
+        "f0004:c0000-938324668922",
+        "f0005:c0000-0747d8c3564d",
+        "f0006:c0000-d5f7a0e79888",
+        "f0007:c0000-8c939b16e156",
+        "f0008:c0000-e809f98cc034",
+        "f0009:c0000-767760e6f3fa",
+        "f0010:c0000-b39eace07cb4",
+        "f0011:c0000-a1ba8a788eea",
+        "f0012:c0000-583004dcd8bb",
+        "f0013:c0000-7361a9ebcb18",
+        "f0014:c0000-7fe019ba5682",
+        "f0015:c0000-3559f6083b28",
+        "f0016:c0000-5d455eadb68d",
+        "f0017:c0000-5dea1dbf195d",
+        "f0018:c0000-6c9a1737ce88",
+        "f0019:c0000-d4f8addf00af",
+        "f0020:c0000-e3814a5370b1",
+        "f0021:c0000-4670d8e89833",
+        "f0022:c0000-4f8128155e21",
+        "f0023:c0000-a51fc21fb067",
+        "f0024:c0000-b9baeb9612ad",
+        "f0025:c0000-38f782b10d93",
+        "f0026:c0000-8970590913b0",
+        "f0027:c0000-a2df015117d2",
+        "f0028:c0000-5bf3c8a19f7c",
+        "f0029:c0000-a489b47b486c",
+        "f0030:c0000-18dc0c01e11e",
+        "f0031:c0000-d97e3e52e04e",
+        "f0032:c0000-c57d04f4d412",
+        "f0033:c0000-82a70101eec3",
+        "f0034:c0000-33c012b5c9c8",
+        "f0035:c0000-35d17ea7cb07",
+        "f0036:c0000-260a5a7e2ad8",
+        "f0037:c0000-2fc6af69399c",
+        "f0038:c0000-06285b8d4a37",
+        "f0039:c0000-f0bdbd51b785"
+      ],
+      "code": "path_not_in_inventory",
+      "stage": "context_action"
+    }
+  ],
+  "diff": {
+    "additions": 375,
+    "bytes": 72247,
+    "chunk_plan_complete": true,
+    "chunks": 40,
+    "commentable_ranges": {
+      "LEFT": {
+        ".env.example": [
+          [
+            246,
+            246
+          ]
+        ],
+        "apps/web/pages/api/webhook/app-credential.ts": [],
+        "packages/app-store/_utils/oauth/createOAuthAppCredential.ts": [
+          [
+            6,
+            7
+          ]
+        ],
+        "packages/app-store/_utils/oauth/decodeOAuthState.ts": [
+          [
+            3,
+            3
+          ]
+        ],
+        "packages/app-store/_utils/oauth/encodeOAuthState.ts": [
+          [
+            3,
+            3
+          ]
+        ],
+        "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts": [],
+        "packages/app-store/_utils/oauth/refreshOAuthTokens.ts": [],
+        "packages/app-store/googlecalendar/api/add.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/googlecalendar/api/callback.ts": [
+          [
+            8,
+            8
+          ]
+        ],
+        "packages/app-store/googlecalendar/lib/CalendarService.ts": [
+          [
+            84,
+            84
+          ],
+          [
+            88,
+            88
+          ]
+        ],
+        "packages/app-store/hubspot/api/add.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/hubspot/api/callback.ts": [
+          [
+            8,
+            9
+          ]
+        ],
+        "packages/app-store/hubspot/lib/CalendarService.ts": [
+          [
+            176,
+            182
+          ]
+        ],
+        "packages/app-store/larkcalendar/api/add.ts": [
+          [
+            8,
+            8
+          ]
+        ],
+        "packages/app-store/larkcalendar/api/callback.ts": [
+          [
+            9,
+            9
+          ]
+        ],
+        "packages/app-store/larkcalendar/lib/CalendarService.ts": [
+          [
+            66,
+            76
+          ]
+        ],
+        "packages/app-store/office365calendar/api/add.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/office365calendar/api/callback.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/office365calendar/lib/CalendarService.ts": [
+          [
+            244,
+            254
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            258,
+            265
+          ]
+        ],
+        "packages/app-store/office365video/api/add.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/office365video/api/callback.ts": [
+          [
+            7,
+            8
+          ]
+        ],
+        "packages/app-store/office365video/lib/VideoApiAdapter.ts": [
+          [
+            60,
+            69
+          ]
+        ],
+        "packages/app-store/salesforce/api/add.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/salesforce/api/callback.ts": [
+          [
+            7,
+            8
+          ]
+        ],
+        "packages/app-store/salesforce/lib/CalendarService.ts": [],
+        "packages/app-store/stripepayment/api/callback.ts": [
+          [
+            5,
+            5
+          ]
+        ],
+        "packages/app-store/tandemvideo/api/callback.ts": [
+          [
+            5,
+            5
+          ]
+        ],
+        "packages/app-store/webex/api/callback.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/webex/lib/VideoApiAdapter.ts": [
+          [
+            61,
+            72
+          ]
+        ],
+        "packages/app-store/zoho-bigin/api/add.ts": [
+          [
+            6,
+            6
+          ],
+          [
+            17,
+            17
+          ]
+        ],
+        "packages/app-store/zoho-bigin/api/callback.ts": [
+          [
+            8,
+            9
+          ]
+        ],
+        "packages/app-store/zoho-bigin/lib/CalendarService.ts": [
+          [
+            84,
+            88
+          ]
+        ],
+        "packages/app-store/zohocrm/api/_getAdd.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/zohocrm/api/callback.ts": [
+          [
+            8,
+            9
+          ]
+        ],
+        "packages/app-store/zohocrm/lib/CalendarService.ts": [
+          [
+            203,
+            210
+          ]
+        ],
+        "packages/app-store/zoomvideo/api/add.ts": [
+          [
+            8,
+            8
+          ]
+        ],
+        "packages/app-store/zoomvideo/api/callback.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts": [
+          [
+            77,
+            87
+          ],
+          [
+            97,
+            97
+          ]
+        ],
+        "packages/lib/constants.ts": [],
+        "turbo.json": []
+      },
+      "RIGHT": {
+        ".env.example": [
+          [
+            233,
+            245
+          ],
+          [
+            259,
+            259
+          ]
+        ],
+        "apps/web/pages/api/webhook/app-credential.ts": [
+          [
+            1,
+            93
+          ]
+        ],
+        "packages/app-store/_utils/oauth/createOAuthAppCredential.ts": [
+          [
+            6,
+            7
+          ]
+        ],
+        "packages/app-store/_utils/oauth/decodeOAuthState.ts": [
+          [
+            3,
+            3
+          ]
+        ],
+        "packages/app-store/_utils/oauth/encodeOAuthState.ts": [
+          [
+            3,
+            3
+          ]
+        ],
+        "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts": [
+          [
+            1,
+            32
+          ]
+        ],
+        "packages/app-store/_utils/oauth/refreshOAuthTokens.ts": [
+          [
+            1,
+            22
+          ]
+        ],
+        "packages/app-store/googlecalendar/api/add.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/googlecalendar/api/callback.ts": [
+          [
+            10,
+            10
+          ]
+        ],
+        "packages/app-store/googlecalendar/lib/CalendarService.ts": [
+          [
+            21,
+            22
+          ],
+          [
+            86,
+            93
+          ],
+          [
+            97,
+            97
+          ]
+        ],
+        "packages/app-store/hubspot/api/add.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/hubspot/api/callback.ts": [
+          [
+            10,
+            11
+          ]
+        ],
+        "packages/app-store/hubspot/lib/CalendarService.ts": [
+          [
+            26,
+            26
+          ],
+          [
+            177,
+            188
+          ]
+        ],
+        "packages/app-store/larkcalendar/api/add.ts": [
+          [
+            9,
+            9
+          ]
+        ],
+        "packages/app-store/larkcalendar/api/callback.ts": [
+          [
+            10,
+            10
+          ]
+        ],
+        "packages/app-store/larkcalendar/lib/CalendarService.ts": [
+          [
+            14,
+            14
+          ],
+          [
+            67,
+            82
+          ]
+        ],
+        "packages/app-store/office365calendar/api/add.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/office365calendar/api/callback.ts": [
+          [
+            9,
+            9
+          ]
+        ],
+        "packages/app-store/office365calendar/lib/CalendarService.ts": [
+          [
+            20,
+            21
+          ],
+          [
+            246,
+            261
+          ],
+          [
+            263,
+            263
+          ]
+        ],
+        "packages/app-store/office365video/api/add.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/office365video/api/callback.ts": [
+          [
+            9,
+            10
+          ]
+        ],
+        "packages/app-store/office365video/lib/VideoApiAdapter.ts": [
+          [
+            12,
+            12
+          ],
+          [
+            61,
+            75
+          ]
+        ],
+        "packages/app-store/salesforce/api/add.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/salesforce/api/callback.ts": [
+          [
+            9,
+            10
+          ]
+        ],
+        "packages/app-store/salesforce/lib/CalendarService.ts": [
+          [
+            4,
+            4
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            39,
+            48
+          ],
+          [
+            75,
+            100
+          ]
+        ],
+        "packages/app-store/stripepayment/api/callback.ts": [
+          [
+            6,
+            6
+          ]
+        ],
+        "packages/app-store/tandemvideo/api/callback.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/webex/api/callback.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/webex/lib/VideoApiAdapter.ts": [
+          [
+            11,
+            11
+          ],
+          [
+            62,
+            78
+          ]
+        ],
+        "packages/app-store/zoho-bigin/api/add.ts": [
+          [
+            7,
+            7
+          ],
+          [
+            17,
+            17
+          ]
+        ],
+        "packages/app-store/zoho-bigin/api/callback.ts": [
+          [
+            10,
+            11
+          ]
+        ],
+        "packages/app-store/zoho-bigin/lib/CalendarService.ts": [
+          [
+            18,
+            18
+          ],
+          [
+            85,
+            94
+          ]
+        ],
+        "packages/app-store/zohocrm/api/_getAdd.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/zohocrm/api/callback.ts": [
+          [
+            10,
+            11
+          ]
+        ],
+        "packages/app-store/zohocrm/lib/CalendarService.ts": [
+          [
+            19,
+            19
+          ],
+          [
+            204,
+            216
+          ]
+        ],
+        "packages/app-store/zoomvideo/api/add.ts": [
+          [
+            8,
+            8
+          ]
+        ],
+        "packages/app-store/zoomvideo/api/callback.ts": [
+          [
+            7,
+            7
+          ]
+        ],
+        "packages/app-store/zoomvideo/lib/VideoApiAdapter.ts": [
+          [
+            12,
+            13
+          ],
+          [
+            79,
+            94
+          ],
+          [
+            104,
+            104
+          ]
+        ],
+        "packages/lib/constants.ts": [
+          [
+            102,
+            104
+          ]
+        ],
+        "turbo.json": [
+          [
+            200,
+            201
+          ],
+          [
+            205,
+            205
+          ],
+          [
+            207,
+            207
+          ]
+        ]
+      }
+    },
+    "deletions": 119,
+    "files": 40,
+    "generation_batches": 1,
+    "hunks": 50,
+    "merge_base_sha": "bc89fe00ea84d20bedcec782f0701b9711dc8201",
+    "sha256": "715ccb175120e5e420dd3ef5e950a9bc7ac6d7bb1a9ffd1921cf2d7ade4d2154"
+  },
+  "duration_ms": 196151,
+  "findings": [
+    {
+      "body": "Both computed property keys evaluate to the string \"[object Object]\" (Object.prototype.toString on a ZodString), so the second definition overwrites the first and the schema only ever validates `access_token` plus a single optional `[object Object]` key; the intended \"any numeric property is the expiry / allow other properties\" validation never happens.",
+      "category": "bug",
+      "chunk_id": "f0005:c0000-0747d8c3564d",
+      "confidence": 0.72,
+      "end_line": 10,
+      "evidence": "[z.string().toString()]: z.number(),",
+      "failure_mode": "Schema silently under-validates token responses, defeating the purpose of the minimum schema.",
+      "finding_id": "bb-7cc52bfd393aa0f71c1c",
+      "fingerprint": "5fc01ec5528391da1fa78e742da19abc3b60653553e73011a931ff2718a7b5e7",
+      "fix_scope": "local",
+      "impact": "Both computed property keys evaluate to the string \"[object Object]\" (Object.prototype.toString on a ZodString), so the second definition overwrites the first and the schema only ever validates `access_token` plus a single optional `[object Object]` key; the intended \"any numeric property is the expiry / allow other properties\" validation never happens.",
+      "line": 8,
+      "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+      "root_cause": "Computed object keys are produced by calling `.toString()` on Zod schema instances, which yields identical non-unique strings.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Use z.object with `.passthrough()` (or a `.catchall(z.unknown())`) and an explicitly named expiry field instead of computed keys built from `z.string().toString()`.",
+      "title": "minimumTokenResponseSchema uses colliding computed keys that both stringify to \"[object Object]\"",
+      "trigger": "Any call to parseRefreshTokenResponse while APP_CREDENTIAL_SHARING_ENABLED and CALCOM_CREDENTIAL_SYNC_ENDPOINT are set, so minimumTokenResponseSchema is used.",
+      "verifier_confidence": 0.92,
+      "verifier_family_key": "zod_computed_key_collision",
+      "verifier_reason": "Line 8 `[z.string().toString()]: z.number()` exists verbatim. `z.string().toString()` returns '[object Object]' (Zod schema's default toString), and line 10 uses `z.string().optional().toString()` which also returns '[object Object]'. Both computed keys collide, causing the second to overwrite the first. The schema only validates access_token plus one '[object Object]' key, defeating intended validation."
+    }
+  ],
+  "pr": {
+    "base_ref": "main",
+    "base_sha": "bc89fe00ea84d20bedcec782f0701b9711dc8201",
+    "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\nThis PR allows self-hosters that have their own app store, to sync their user's 3rd party credentials with their instance of Cal.com. This allows their app store to be the source of truth for apps.\r\n\r\nFixes # (issue)\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\n## Requirement/Documentation\r\n\r\n<!-- Please provide all documents that are important to understand the reason of that PR. -->\r\n\r\n- If there is a requirement document, please, share it here.\r\n- If there is ab UI/UX design document, please, share it here.\r\n\r\n## Type of change\r\n\r\n<!-- Please delete bullets that are not relevant. -->\r\n\r\n- [X] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [X] This change requires a documentation update\r\n\r\n## How should this be tested?\r\n\r\n<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration. Write details that help to start the tests -->\r\n\r\n- Set up the required .env variables that were added in the PR\r\n- Hit the `api/webhook/app-credential` endpoint with the correct webhook secret and encrypted payload\r\n- The new credentials should be created in the DB\r\n- For the affected apps, force a refresh of the tokens. The endpoint they are hitting should simulate what a self-hoster would have made\r\n- Force a refresh of the tokens but this time do not enable app credential syncing\r\n\r\n## Mandatory Tasks\r\n\r\n- [x] Make sure you have self-reviewed the code. A decent size PR without self-review might be rejected.\r\n\r\n## Checklist\r\n\r\n<!-- Please remove all the irrelevant bullets to your PR -->\r\n\r\n- I haven't added tests that prove my fix is effective or that my feature works\r\n- I haven't checked if new and existing unit tests pass locally with my changes\r\n",
+    "clone_url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR11059__20260122.git",
+    "head_ref": "pr-11059",
+    "head_sha": "9fde0e906897cc0f4f71793f647dd629faba3317",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "cal_dot_com__cal.com__augment__PR11059__20260122",
+    "resolved_at": "2026-08-24T04:12:23.789264Z",
+    "title": "feat: Sync app credentials between Cal.com & self-hosted platforms",
+    "url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR11059__20260122/pull/1"
+  },
+  "raw_findings": [
+    {
+      "body": "Both computed property keys evaluate to the string \"[object Object]\" (Object.prototype.toString on a ZodString), so the second definition overwrites the first and the schema only ever validates `access_token` plus a single optional `[object Object]` key; the intended \"any numeric property is the expiry / allow other properties\" validation never happens.",
+      "category": "bug",
+      "chunk_id": "f0005:c0000-0747d8c3564d",
+      "confidence": 0.72,
+      "end_line": 10,
+      "evidence": "[z.string().toString()]: z.number(),",
+      "failure_mode": "Schema silently under-validates token responses, defeating the purpose of the minimum schema.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "Both computed property keys evaluate to the string \"[object Object]\" (Object.prototype.toString on a ZodString), so the second definition overwrites the first and the schema only ever validates `access_token` plus a single optional `[object Object]` key; the intended \"any numeric property is the expiry / allow other properties\" validation never happens.",
+      "line": 8,
+      "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+      "root_cause": "Computed object keys are produced by calling `.toString()` on Zod schema instances, which yields identical non-unique strings.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Use z.object with `.passthrough()` (or a `.catchall(z.unknown())`) and an explicitly named expiry field instead of computed keys built from `z.string().toString()`.",
+      "title": "minimumTokenResponseSchema uses colliding computed keys that both stringify to \"[object Object]\"",
+      "trigger": "Any call to parseRefreshTokenResponse while APP_CREDENTIAL_SHARING_ENABLED and CALCOM_CREDENTIAL_SYNC_ENDPOINT are set, so minimumTokenResponseSchema is used.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "data.refresh_token is forced to the placeholder string \"refresh_token\", which callers such as office365calendar CalendarService spread into the stored credential (`{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting the real refresh token with garbage and breaking all subsequent token refreshes until the user re-authenticates.",
+      "category": "data",
+      "chunk_id": "f0005:c0000-0747d8c3564d",
+      "confidence": 0.5,
+      "end_line": 26,
+      "evidence": "refreshTokenResponse.data.refresh_token = \"refresh_token\";",
+      "failure_mode": "Stored credential is corrupted, causing integration failures on the next refresh.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "repeated_pattern",
+      "impact": "data.refresh_token is forced to the placeholder string \"refresh_token\", which callers such as office365calendar CalendarService spread into the stored credential (`{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting the real refresh token with garbage and breaking all subsequent token refreshes until the user re-authenticates.",
+      "line": 26,
+      "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+      "root_cause": "Placeholder assignment mutates parsed data with an invalid token value that downstream code persists.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Do not inject a fake refresh_token; leave it absent so existing credential values are preserved, or only set it when the provider actually returns one.",
+      "title": "parseRefreshTokenResponse overwrites a valid refresh_token with the literal string \"refresh_token\"",
+      "trigger": "An OAuth refresh response that does not include a refresh_token (e.g. Microsoft/office365 refresh where the token is not rotated), parsed with a schema whose refresh_token is optional.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The sync branch returns a raw fetch Response, but google-calendar reads `res?.data`, zoho-bigin/zohocrm read `tokenInfo.data.error`, and hubspot reads `.expiresIn` on the returned value; because a fetch Response has no `.data`, these dereferences yield undefined (NaN expiry) or throw TypeError, breaking token refresh in credential-sync mode.",
+      "category": "bug",
+      "chunk_id": "f0006:c0000-d5f7a0e79888",
+      "confidence": 0.55,
+      "end_line": 15,
+      "evidence": "return response;",
+      "failure_mode": "Runtime TypeError / undefined-token handling when credential sync is enabled for axios- and object-based providers.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "systemic",
+      "impact": "The sync branch returns a raw fetch Response, but google-calendar reads `res?.data`, zoho-bigin/zohocrm read `tokenInfo.data.error`, and hubspot reads `.expiresIn` on the returned value; because a fetch Response has no `.data`, these dereferences yield undefined (NaN expiry) or throw TypeError, breaking token refresh in credential-sync mode.",
+      "line": 15,
+      "path": "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+      "root_cause": "The wrapper returns a fetch Response object whose shape differs from what the non-sync refresh functions return for several callers.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Normalize the sync-endpoint response (e.g. `return response.json()` or return an object matching each caller's expected shape) so it is shape-compatible with the fallback refreshFunction return values.",
+      "title": "refreshOAuthTokens returns a raw fetch Response in sync mode, incompatible with callers expecting a parsed object",
+      "trigger": "APP_CREDENTIAL_SHARING_ENABLED with CALCOM_CREDENTIAL_SYNC_ENDPOINT set and a user-owned credential, using google-calendar, zoho-bigin, zohocrm, or hubspot refresh paths.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The outbound request carries no webhook secret/signature or auth header, so the self-hoster's token endpoint has no way to verify the caller and any party that can reach the endpoint can request access tokens for arbitrary calcomUserId/appSlug values.",
+      "category": "security",
+      "chunk_id": "f0006:c0000-d5f7a0e79888",
+      "confidence": 0.5,
+      "end_line": 14,
+      "evidence": "const response = await fetch(process.env.CALCOM_CREDENTIAL_SYNC_ENDPOINT, {",
+      "failure_mode": "Unauthenticated token issuance path with no caller verification.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The outbound request carries no webhook secret/signature or auth header, so the self-hoster's token endpoint has no way to verify the caller and any party that can reach the endpoint can request access tokens for arbitrary calcomUserId/appSlug values.",
+      "line": 8,
+      "path": "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+      "root_cause": "The sync fetch omits any authentication material for the outbound credential request.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Attach the configured webhook secret (e.g. CALCOM_WEBHOOK_HEADER_NAME/CALCOM_WEBHOOK_SECRET) or a signature header to the sync request so the receiving endpoint can authenticate it.",
+      "title": "Credential sync endpoint is called without any authentication secret",
+      "trigger": "Credential-sync mode enabled; Cal.com POSTs to CALCOM_CREDENTIAL_SYNC_ENDPOINT to obtain fresh access tokens.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "`.parse` throws a ZodError that is not caught, producing an opaque 500 response instead of a 400 validation error, and leaking a stack/validation error rather than a clean message.",
+      "category": "bug",
+      "chunk_id": "f0001:c0000-73bf555163c5",
+      "confidence": 0.6,
+      "end_line": 31,
+      "evidence": "const reqBody = appCredentialWebhookRequestBodySchema.parse(req.body);",
+      "failure_mode": "Unhandled exception surfaces as a 500 for ordinary bad input.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "`.parse` throws a ZodError that is not caught, producing an opaque 500 response instead of a 400 validation error, and leaking a stack/validation error rather than a clean message.",
+      "line": 31,
+      "path": "apps/web/pages/api/webhook/app-credential.ts",
+      "root_cause": "Untrusted request body is validated with a throwing parser and no error handling.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use `safeParse` (or wrap in try/catch) and return res.status(400) with the validation details on failure.",
+      "title": "Webhook handler throws unhandled ZodError on malformed body",
+      "trigger": "A POST to /api/webhook/app-credential with a body missing userId/appSlug/keys or of wrong types.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The redirect URI no longer derives from appConfig.slug, so if the app slug is ever changed in config the OAuth redirect will silently point at the wrong path; it also introduces a needless template literal with no interpolation.",
+      "category": "style",
+      "chunk_id": "f0029:c0000-a489b47b486c",
+      "confidence": 0.55,
+      "end_line": 17,
+      "evidence": "const redirectUri = WEBAPP_URL + `/api/integrations/zoho-bigin/callback`;",
+      "failure_mode": "Maintainability/consistency regression that can desync redirect URI from config.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The redirect URI no longer derives from appConfig.slug, so if the app slug is ever changed in config the OAuth redirect will silently point at the wrong path; it also introduces a needless template literal with no interpolation.",
+      "line": 17,
+      "path": "packages/app-store/zoho-bigin/api/add.ts",
+      "root_cause": "A configurable slug reference was replaced with a hardcoded string.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Restore `WEBAPP_URL + \\`/api/integrations/${appConfig.slug}/callback\\`` to keep the redirect in sync with the config slug.",
+      "title": "zoho-bigin redirect URI hardcodes the slug instead of using appConfig.slug",
+      "trigger": "Reviewing/maintaining the add handler; appConfig.slug is still used in surrounding code but the redirect URI now hardcodes \"zoho-bigin\".",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    }
+  ],
+  "rejected_findings": [
+    {
+      "finding": {
+        "body": "data.refresh_token is forced to the placeholder string \"refresh_token\", which callers such as office365calendar CalendarService spread into the stored credential (`{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting the real refresh token with garbage and breaking all subsequent token refreshes until the user re-authenticates.",
+        "category": "data",
+        "chunk_id": "f0005:c0000-0747d8c3564d",
+        "confidence": 0.5,
+        "end_line": 26,
+        "evidence": "refreshTokenResponse.data.refresh_token = \"refresh_token\";",
+        "failure_mode": "Stored credential is corrupted, causing integration failures on the next refresh.",
+        "finding_id": "bb-4944c8b4d4ac011e6c52",
+        "fingerprint": "0341a5abca537d83e0a8c0b57bd9ed225fef09bcd291269ece19d8a7598b35b3",
+        "fix_scope": "repeated_pattern",
+        "impact": "data.refresh_token is forced to the placeholder string \"refresh_token\", which callers such as office365calendar CalendarService spread into the stored credential (`{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting the real refresh token with garbage and breaking all subsequent token refreshes until the user re-authenticates.",
+        "line": 26,
+        "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+        "root_cause": "Placeholder assignment mutates parsed data with an invalid token value that downstream code persists.",
+        "severity": "high",
+        "side": "RIGHT",
+        "suggested_fix": "Do not inject a fake refresh_token; leave it absent so existing credential values are preserved, or only set it when the provider actually returns one.",
+        "title": "parseRefreshTokenResponse overwrites a valid refresh_token with the literal string \"refresh_token\"",
+        "trigger": "An OAuth refresh response that does not include a refresh_token (e.g. Microsoft/office365 refresh where the token is not rotated), parsed with a schema whose refresh_token is optional.",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "placeholder_refresh_token_overwrite",
+        "verifier_reason": "Line 26 `refreshTokenResponse.data.refresh_token = \"refresh_token\";` exists verbatim. When refresh_token is absent/falsy, this assigns the literal string 'refresh_token'. Callers like office365calendar spread tokenResponse.data into credentials (line 263 context shows `{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting any existing valid refresh_token with garbage, breaking subsequent refreshes."
+      },
+      "reason": "0.850 is below 0.920: Line 26 `refreshTokenResponse.data.refresh_token = \"refresh_token\";` exists verbatim. When refresh_token is absent/falsy, this assigns the literal string 'refresh_token'. Callers like office365calendar spread tokenResponse.data into credentials (line 263 context shows `{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting any existing valid refresh_token with garbage, breaking subsequent refreshes.",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "The sync branch returns a raw fetch Response, but google-calendar reads `res?.data`, zoho-bigin/zohocrm read `tokenInfo.data.error`, and hubspot reads `.expiresIn` on the returned value; because a fetch Response has no `.data`, these dereferences yield undefined (NaN expiry) or throw TypeError, breaking token refresh in credential-sync mode.",
+        "category": "bug",
+        "chunk_id": "f0006:c0000-d5f7a0e79888",
+        "confidence": 0.55,
+        "end_line": 15,
+        "evidence": "return response;",
+        "failure_mode": "Runtime TypeError / undefined-token handling when credential sync is enabled for axios- and object-based providers.",
+        "finding_id": "bb-3b50ec51b9f526bb80c3",
+        "fingerprint": "6a07f883f1ea79c8d94f15c382cd2187fb384ed5082e886f1f45639420fce74f",
+        "fix_scope": "systemic",
+        "impact": "The sync branch returns a raw fetch Response, but google-calendar reads `res?.data`, zoho-bigin/zohocrm read `tokenInfo.data.error`, and hubspot reads `.expiresIn` on the returned value; because a fetch Response has no `.data`, these dereferences yield undefined (NaN expiry) or throw TypeError, breaking token refresh in credential-sync mode.",
+        "line": 15,
+        "path": "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+        "root_cause": "The wrapper returns a fetch Response object whose shape differs from what the non-sync refresh functions return for several callers.",
+        "severity": "high",
+        "side": "RIGHT",
+        "suggested_fix": "Normalize the sync-endpoint response (e.g. `return response.json()` or return an object matching each caller's expected shape) so it is shape-compatible with the fallback refreshFunction return values.",
+        "title": "refreshOAuthTokens returns a raw fetch Response in sync mode, incompatible with callers expecting a parsed object",
+        "trigger": "APP_CREDENTIAL_SHARING_ENABLED with CALCOM_CREDENTIAL_SYNC_ENDPOINT set and a user-owned credential, using google-calendar, zoho-bigin, zohocrm, or hubspot refresh paths.",
+        "verifier_confidence": 0.88,
+        "verifier_family_key": "fetch_response_shape_mismatch",
+        "verifier_reason": "Line 15 `return response;` exists verbatim. The sync branch returns a raw fetch Response object. Context shows google-calendar reads `res?.data`, office365 reads `.data`, hubspot reads `.expiresIn`. A fetch Response has no `.data` property, causing undefined/NaN expiry or TypeError when credential sync is enabled."
+      },
+      "reason": "0.880 is below 0.920: Line 15 `return response;` exists verbatim. The sync branch returns a raw fetch Response object. Context shows google-calendar reads `res?.data`, office365 reads `.data`, hubspot reads `.expiresIn`. A fetch Response has no `.data` property, causing undefined/NaN expiry or TypeError when credential sync is enabled.",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "The outbound request carries no webhook secret/signature or auth header, so the self-hoster's token endpoint has no way to verify the caller and any party that can reach the endpoint can request access tokens for arbitrary calcomUserId/appSlug values.",
+        "category": "security",
+        "chunk_id": "f0006:c0000-d5f7a0e79888",
+        "confidence": 0.5,
+        "end_line": 14,
+        "evidence": "const response = await fetch(process.env.CALCOM_CREDENTIAL_SYNC_ENDPOINT, {",
+        "failure_mode": "Unauthenticated token issuance path with no caller verification.",
+        "finding_id": "bb-a90414471e46272c11c1",
+        "fingerprint": "35e59130d3f61e9390e4105c132d3cf52f0b8ce6cd2756678fb2103b47a5a496",
+        "fix_scope": "local",
+        "impact": "The outbound request carries no webhook secret/signature or auth header, so the self-hoster's token endpoint has no way to verify the caller and any party that can reach the endpoint can request access tokens for arbitrary calcomUserId/appSlug values.",
+        "line": 8,
+        "path": "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+        "root_cause": "The sync fetch omits any authentication material for the outbound credential request.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Attach the configured webhook secret (e.g. CALCOM_WEBHOOK_HEADER_NAME/CALCOM_WEBHOOK_SECRET) or a signature header to the sync request so the receiving endpoint can authenticate it.",
+        "title": "Credential sync endpoint is called without any authentication secret",
+        "trigger": "Credential-sync mode enabled; Cal.com POSTs to CALCOM_CREDENTIAL_SYNC_ENDPOINT to obtain fresh access tokens.",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "missing_auth_header",
+        "verifier_reason": "The claim that no authentication is sent is incorrect. The code comment at line 6-7 says 'Customize the payload based on what your endpoint requires'. The endpoint is self-hosted and controlled by the deployer. The receiving webhook handler (app-credential.ts lines 24-28) validates CALCOM_WEBHOOK_SECRET. This is a design choice for self-hosters, not a security bug in the patch."
+      },
+      "reason": "The claim that no authentication is sent is incorrect. The code comment at line 6-7 says 'Customize the payload based on what your endpoint requires'. The endpoint is self-hosted and controlled by the deployer. The receiving webhook handler (app-credential.ts lines 24-28) validates CALCOM_WEBHOOK_SECRET. This is a design choice for self-hosters, not a security bug in the patch.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "`.parse` throws a ZodError that is not caught, producing an opaque 500 response instead of a 400 validation error, and leaking a stack/validation error rather than a clean message.",
+        "category": "bug",
+        "chunk_id": "f0001:c0000-73bf555163c5",
+        "confidence": 0.6,
+        "end_line": 31,
+        "evidence": "const reqBody = appCredentialWebhookRequestBodySchema.parse(req.body);",
+        "failure_mode": "Unhandled exception surfaces as a 500 for ordinary bad input.",
+        "finding_id": "bb-226663639698c32d22f1",
+        "fingerprint": "1fb2b179330ae0b605c076b15cf1504c91f65b052b37562ce5cadecc4f7202a9",
+        "fix_scope": "local",
+        "impact": "`.parse` throws a ZodError that is not caught, producing an opaque 500 response instead of a 400 validation error, and leaking a stack/validation error rather than a clean message.",
+        "line": 31,
+        "path": "apps/web/pages/api/webhook/app-credential.ts",
+        "root_cause": "Untrusted request body is validated with a throwing parser and no error handling.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Use `safeParse` (or wrap in try/catch) and return res.status(400) with the validation details on failure.",
+        "title": "Webhook handler throws unhandled ZodError on malformed body",
+        "trigger": "A POST to /api/webhook/app-credential with a body missing userId/appSlug/keys or of wrong types.",
+        "verifier_confidence": 0.7,
+        "verifier_family_key": "unhandled_zod_parse",
+        "verifier_reason": "While `.parse` does throw on invalid input, this is a webhook endpoint protected by secret validation (lines 24-28). The handler is not public-facing in the typical sense. Throwing ZodError for malformed body from an authenticated caller is acceptable behavior. Many Next.js API routes use .parse without try/catch. This is a stylistic/minor concern, not a bug introduced by this patch."
+      },
+      "reason": "While `.parse` does throw on invalid input, this is a webhook endpoint protected by secret validation (lines 24-28). The handler is not public-facing in the typical sense. Throwing ZodError for malformed body from an authenticated caller is acceptable behavior. Many Next.js API routes use .parse without try/catch. This is a stylistic/minor concern, not a bug introduced by this patch.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "The redirect URI no longer derives from appConfig.slug, so if the app slug is ever changed in config the OAuth redirect will silently point at the wrong path; it also introduces a needless template literal with no interpolation.",
+        "category": "style",
+        "chunk_id": "f0029:c0000-a489b47b486c",
+        "confidence": 0.55,
+        "end_line": 17,
+        "evidence": "const redirectUri = WEBAPP_URL + `/api/integrations/zoho-bigin/callback`;",
+        "failure_mode": "Maintainability/consistency regression that can desync redirect URI from config.",
+        "finding_id": "bb-21c3ff50b5cc6fee2878",
+        "fingerprint": "a77aeb43c6ce410fcd6171e57904f41e5faae386c61f0c25af9a2c48cf4fd3d4",
+        "fix_scope": "local",
+        "impact": "The redirect URI no longer derives from appConfig.slug, so if the app slug is ever changed in config the OAuth redirect will silently point at the wrong path; it also introduces a needless template literal with no interpolation.",
+        "line": 17,
+        "path": "packages/app-store/zoho-bigin/api/add.ts",
+        "root_cause": "A configurable slug reference was replaced with a hardcoded string.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Restore `WEBAPP_URL + \\`/api/integrations/${appConfig.slug}/callback\\`` to keep the redirect in sync with the config slug.",
+        "title": "zoho-bigin redirect URI hardcodes the slug instead of using appConfig.slug",
+        "trigger": "Reviewing/maintaining the add handler; appConfig.slug is still used in surrounding code but the redirect URI now hardcodes \"zoho-bigin\".",
+        "verifier_confidence": 0.8,
+        "verifier_family_key": "hardcoded_slug",
+        "verifier_reason": "The claim is stylistic. The patch hardcodes 'zoho-bigin' which matches appConfig.slug (from config.json). The slug is unlikely to change, and if it did, the entire integration path would need updating anyway. This is a minor maintainability preference, not a functional bug. The finding itself acknowledges it's a 'style' category issue."
+      },
+      "reason": "The claim is stylistic. The patch hardcodes 'zoho-bigin' which matches appConfig.slug (from config.json). The slug is unlikely to change, and if it did, the entire integration path would need updating anyway. This is a minor maintainability preference, not a functional bug. The finding itself acknowledges it's a 'style' category issue.",
+      "stage": "verifier"
+    }
+  ],
+  "run_id": "d5c150e5a76144adf214c1e2",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-opus-4-8",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T05:17:34.764078Z",
+  "status": "completed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": [
+    {
+      "body": "Both computed property keys evaluate to the string \"[object Object]\" (Object.prototype.toString on a ZodString), so the second definition overwrites the first and the schema only ever validates `access_token` plus a single optional `[object Object]` key; the intended \"any numeric property is the expiry / allow other properties\" validation never happens.",
+      "category": "bug",
+      "chunk_id": "f0005:c0000-0747d8c3564d",
+      "confidence": 0.72,
+      "end_line": 10,
+      "evidence": "[z.string().toString()]: z.number(),",
+      "failure_mode": "Schema silently under-validates token responses, defeating the purpose of the minimum schema.",
+      "finding_id": "bb-7cc52bfd393aa0f71c1c",
+      "fingerprint": "5fc01ec5528391da1fa78e742da19abc3b60653553e73011a931ff2718a7b5e7",
+      "fix_scope": "local",
+      "impact": "Both computed property keys evaluate to the string \"[object Object]\" (Object.prototype.toString on a ZodString), so the second definition overwrites the first and the schema only ever validates `access_token` plus a single optional `[object Object]` key; the intended \"any numeric property is the expiry / allow other properties\" validation never happens.",
+      "line": 8,
+      "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+      "root_cause": "Computed object keys are produced by calling `.toString()` on Zod schema instances, which yields identical non-unique strings.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Use z.object with `.passthrough()` (or a `.catchall(z.unknown())`) and an explicitly named expiry field instead of computed keys built from `z.string().toString()`.",
+      "title": "minimumTokenResponseSchema uses colliding computed keys that both stringify to \"[object Object]\"",
+      "trigger": "Any call to parseRefreshTokenResponse while APP_CREDENTIAL_SHARING_ENABLED and CALCOM_CREDENTIAL_SYNC_ENDPOINT are set, so minimumTokenResponseSchema is used.",
+      "verifier_confidence": 0.92,
+      "verifier_family_key": "zod_computed_key_collision",
+      "verifier_reason": "Line 8 `[z.string().toString()]: z.number()` exists verbatim. `z.string().toString()` returns '[object Object]' (Zod schema's default toString), and line 10 uses `z.string().optional().toString()` which also returns '[object Object]'. Both computed keys collide, causing the second to overwrite the first. The schema only validates access_token plus one '[object Object]' key, defeating intended validation."
+    },
+    {
+      "body": "data.refresh_token is forced to the placeholder string \"refresh_token\", which callers such as office365calendar CalendarService spread into the stored credential (`{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting the real refresh token with garbage and breaking all subsequent token refreshes until the user re-authenticates.",
+      "category": "data",
+      "chunk_id": "f0005:c0000-0747d8c3564d",
+      "confidence": 0.5,
+      "end_line": 26,
+      "evidence": "refreshTokenResponse.data.refresh_token = \"refresh_token\";",
+      "failure_mode": "Stored credential is corrupted, causing integration failures on the next refresh.",
+      "finding_id": "bb-4944c8b4d4ac011e6c52",
+      "fingerprint": "0341a5abca537d83e0a8c0b57bd9ed225fef09bcd291269ece19d8a7598b35b3",
+      "fix_scope": "repeated_pattern",
+      "impact": "data.refresh_token is forced to the placeholder string \"refresh_token\", which callers such as office365calendar CalendarService spread into the stored credential (`{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting the real refresh token with garbage and breaking all subsequent token refreshes until the user re-authenticates.",
+      "line": 26,
+      "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+      "root_cause": "Placeholder assignment mutates parsed data with an invalid token value that downstream code persists.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Do not inject a fake refresh_token; leave it absent so existing credential values are preserved, or only set it when the provider actually returns one.",
+      "title": "parseRefreshTokenResponse overwrites a valid refresh_token with the literal string \"refresh_token\"",
+      "trigger": "An OAuth refresh response that does not include a refresh_token (e.g. Microsoft/office365 refresh where the token is not rotated), parsed with a schema whose refresh_token is optional.",
+      "verifier_confidence": 0.85,
+      "verifier_family_key": "placeholder_refresh_token_overwrite",
+      "verifier_reason": "Line 26 `refreshTokenResponse.data.refresh_token = \"refresh_token\";` exists verbatim. When refresh_token is absent/falsy, this assigns the literal string 'refresh_token'. Callers like office365calendar spread tokenResponse.data into credentials (line 263 context shows `{ ...o365AuthCredentials, ...tokenResponse.data }`), overwriting any existing valid refresh_token with garbage, breaking subsequent refreshes."
+    },
+    {
+      "body": "The sync branch returns a raw fetch Response, but google-calendar reads `res?.data`, zoho-bigin/zohocrm read `tokenInfo.data.error`, and hubspot reads `.expiresIn` on the returned value; because a fetch Response has no `.data`, these dereferences yield undefined (NaN expiry) or throw TypeError, breaking token refresh in credential-sync mode.",
+      "category": "bug",
+      "chunk_id": "f0006:c0000-d5f7a0e79888",
+      "confidence": 0.55,
+      "end_line": 15,
+      "evidence": "return response;",
+      "failure_mode": "Runtime TypeError / undefined-token handling when credential sync is enabled for axios- and object-based providers.",
+      "finding_id": "bb-3b50ec51b9f526bb80c3",
+      "fingerprint": "6a07f883f1ea79c8d94f15c382cd2187fb384ed5082e886f1f45639420fce74f",
+      "fix_scope": "systemic",
+      "impact": "The sync branch returns a raw fetch Response, but google-calendar reads `res?.data`, zoho-bigin/zohocrm read `tokenInfo.data.error`, and hubspot reads `.expiresIn` on the returned value; because a fetch Response has no `.data`, these dereferences yield undefined (NaN expiry) or throw TypeError, breaking token refresh in credential-sync mode.",
+      "line": 15,
+      "path": "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+      "root_cause": "The wrapper returns a fetch Response object whose shape differs from what the non-sync refresh functions return for several callers.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Normalize the sync-endpoint response (e.g. `return response.json()` or return an object matching each caller's expected shape) so it is shape-compatible with the fallback refreshFunction return values.",
+      "title": "refreshOAuthTokens returns a raw fetch Response in sync mode, incompatible with callers expecting a parsed object",
+      "trigger": "APP_CREDENTIAL_SHARING_ENABLED with CALCOM_CREDENTIAL_SYNC_ENDPOINT set and a user-owned credential, using google-calendar, zoho-bigin, zohocrm, or hubspot refresh paths.",
+      "verifier_confidence": 0.88,
+      "verifier_family_key": "fetch_response_shape_mismatch",
+      "verifier_reason": "Line 15 `return response;` exists verbatim. The sync branch returns a raw fetch Response object. Context shows google-calendar reads `res?.data`, office365 reads `.data`, hubspot reads `.expiresIn`. A fetch Response has no `.data` property, causing undefined/NaN expiry or TypeError when credential sync is enabled."
+    },
+    {
+      "body": "The outbound request carries no webhook secret/signature or auth header, so the self-hoster's token endpoint has no way to verify the caller and any party that can reach the endpoint can request access tokens for arbitrary calcomUserId/appSlug values.",
+      "category": "security",
+      "chunk_id": "f0006:c0000-d5f7a0e79888",
+      "confidence": 0.5,
+      "end_line": 14,
+      "evidence": "const response = await fetch(process.env.CALCOM_CREDENTIAL_SYNC_ENDPOINT, {",
+      "failure_mode": "Unauthenticated token issuance path with no caller verification.",
+      "finding_id": "bb-a90414471e46272c11c1",
+      "fingerprint": "35e59130d3f61e9390e4105c132d3cf52f0b8ce6cd2756678fb2103b47a5a496",
+      "fix_scope": "local",
+      "impact": "The outbound request carries no webhook secret/signature or auth header, so the self-hoster's token endpoint has no way to verify the caller and any party that can reach the endpoint can request access tokens for arbitrary calcomUserId/appSlug values.",
+      "line": 8,
+      "path": "packages/app-store/_utils/oauth/refreshOAuthTokens.ts",
+      "root_cause": "The sync fetch omits any authentication material for the outbound credential request.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Attach the configured webhook secret (e.g. CALCOM_WEBHOOK_HEADER_NAME/CALCOM_WEBHOOK_SECRET) or a signature header to the sync request so the receiving endpoint can authenticate it.",
+      "title": "Credential sync endpoint is called without any authentication secret",
+      "trigger": "Credential-sync mode enabled; Cal.com POSTs to CALCOM_CREDENTIAL_SYNC_ENDPOINT to obtain fresh access tokens.",
+      "verifier_confidence": 0.75,
+      "verifier_family_key": "missing_auth_header",
+      "verifier_reason": "The claim that no authentication is sent is incorrect. The code comment at line 6-7 says 'Customize the payload based on what your endpoint requires'. The endpoint is self-hosted and controlled by the deployer. The receiving webhook handler (app-credential.ts lines 24-28) validates CALCOM_WEBHOOK_SECRET. This is a design choice for self-hosters, not a security bug in the patch."
+    },
+    {
+      "body": "`.parse` throws a ZodError that is not caught, producing an opaque 500 response instead of a 400 validation error, and leaking a stack/validation error rather than a clean message.",
+      "category": "bug",
+      "chunk_id": "f0001:c0000-73bf555163c5",
+      "confidence": 0.6,
+      "end_line": 31,
+      "evidence": "const reqBody = appCredentialWebhookRequestBodySchema.parse(req.body);",
+      "failure_mode": "Unhandled exception surfaces as a 500 for ordinary bad input.",
+      "finding_id": "bb-226663639698c32d22f1",
+      "fingerprint": "1fb2b179330ae0b605c076b15cf1504c91f65b052b37562ce5cadecc4f7202a9",
+      "fix_scope": "local",
+      "impact": "`.parse` throws a ZodError that is not caught, producing an opaque 500 response instead of a 400 validation error, and leaking a stack/validation error rather than a clean message.",
+      "line": 31,
+      "path": "apps/web/pages/api/webhook/app-credential.ts",
+      "root_cause": "Untrusted request body is validated with a throwing parser and no error handling.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use `safeParse` (or wrap in try/catch) and return res.status(400) with the validation details on failure.",
+      "title": "Webhook handler throws unhandled ZodError on malformed body",
+      "trigger": "A POST to /api/webhook/app-credential with a body missing userId/appSlug/keys or of wrong types.",
+      "verifier_confidence": 0.7,
+      "verifier_family_key": "unhandled_zod_parse",
+      "verifier_reason": "While `.parse` does throw on invalid input, this is a webhook endpoint protected by secret validation (lines 24-28). The handler is not public-facing in the typical sense. Throwing ZodError for malformed body from an authenticated caller is acceptable behavior. Many Next.js API routes use .parse without try/catch. This is a stylistic/minor concern, not a bug introduced by this patch."
+    },
+    {
+      "body": "The redirect URI no longer derives from appConfig.slug, so if the app slug is ever changed in config the OAuth redirect will silently point at the wrong path; it also introduces a needless template literal with no interpolation.",
+      "category": "style",
+      "chunk_id": "f0029:c0000-a489b47b486c",
+      "confidence": 0.55,
+      "end_line": 17,
+      "evidence": "const redirectUri = WEBAPP_URL + `/api/integrations/zoho-bigin/callback`;",
+      "failure_mode": "Maintainability/consistency regression that can desync redirect URI from config.",
+      "finding_id": "bb-21c3ff50b5cc6fee2878",
+      "fingerprint": "a77aeb43c6ce410fcd6171e57904f41e5faae386c61f0c25af9a2c48cf4fd3d4",
+      "fix_scope": "local",
+      "impact": "The redirect URI no longer derives from appConfig.slug, so if the app slug is ever changed in config the OAuth redirect will silently point at the wrong path; it also introduces a needless template literal with no interpolation.",
+      "line": 17,
+      "path": "packages/app-store/zoho-bigin/api/add.ts",
+      "root_cause": "A configurable slug reference was replaced with a hardcoded string.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Restore `WEBAPP_URL + \\`/api/integrations/${appConfig.slug}/callback\\`` to keep the redirect in sync with the config slug.",
+      "title": "zoho-bigin redirect URI hardcodes the slug instead of using appConfig.slug",
+      "trigger": "Reviewing/maintaining the add handler; appConfig.slug is still used in surrounding code but the redirect URI now hardcodes \"zoho-bigin\".",
+      "verifier_confidence": 0.8,
+      "verifier_family_key": "hardcoded_slug",
+      "verifier_reason": "The claim is stylistic. The patch hardcodes 'zoho-bigin' which matches appConfig.slug (from config.json). The slug is unlikely to change, and if it did, the entire integration path would need updating anyway. This is a minor maintainability preference, not a functional bug. The finding itself acknowledges it's a 'style' category issue."
+    }
+  ]
+}

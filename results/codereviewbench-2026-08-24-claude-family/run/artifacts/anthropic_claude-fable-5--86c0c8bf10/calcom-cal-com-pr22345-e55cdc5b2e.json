@@ -1,0 +1,1702 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "1e69926b5c18d8d2282ebce3677837e10df638d6a1621f9a79150982e7936d56",
+    "golden_url": "https://github.com/calcom/cal.com/pull/22345",
+    "review_url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR22345__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-37044a82dcfb",
+      "cost_usd": 0.497135,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 31027,
+      "latency_ms": 27112,
+      "output_tokens": 2186,
+      "request_sha256": "f00596c57a1d28262a9de3c98c2a380c1802b72a64490691cd659cc26f59793c",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "36ef8e844ddb4de4f2bb710c1b7005e3f7927fc4d2981f969966d0a843a989d4",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-37044a82dcfb",
+      "cost_usd": 0.6082975,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 40364,
+      "latency_ms": 26964,
+      "output_tokens": 2075,
+      "request_sha256": "014ed0b55dcf376c6d323ba21e525d0c2cc9f213563b0e851295d003be596da2",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "2ebb67e6b71fa14c9cb1578944ad0e5db43d61f010ffb715b1fc8c8ac799b228",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-37044a82dcfb",
+      "cost_usd": 1.0075225,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 45170,
+      "latency_ms": 105834,
+      "output_tokens": 8858,
+      "request_sha256": "59a55441ac2733924d4bd5115a5692d2d2c32dcf91a3d462db094abe7032d892",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "42769d0b75c380ac8997459ca9400d5b57b8780d6dd10109bb2bfddd0c51dd48",
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "candidates-0-1",
+      "cost_usd": 0.163535,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 25094,
+      "latency_ms": 8607,
+      "output_tokens": 268,
+      "request_sha256": "fb7f038b01d13cfbd8c02ec9104d5ec38f3d9ea2212d7548cafc86332a19ce78",
+      "requested_model": "anthropic/claude-opus-4-5",
+      "resolved_model": "anthropic/claude-opus-4-5",
+      "response_sha256": "3fddcd665def924af4b9e933e6b85334a11c8e76b3607f6c1f63111231321002",
+      "retry_errors": [],
+      "schema_sha256": "4f0c55f0b3b361fe2e31f7433e4f531d14d9dff4c97f0ccc17814ccd9ba1a5a1",
+      "stage": "verification"
+    }
+  ],
+  "completed_at": "2026-08-24T07:23:45.396880Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-fable-5",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.3716293891652024,
+      "largest_verifier_input_char_budget_utilization": 0.22709579737151825,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 0,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 0,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 37,
+      "verifier_generation_context_files_available": 37
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      ".editorconfig",
+      ".env.appStore.example",
+      ".env.example",
+      ".eslintignore",
+      ".github/CODEOWNERS",
+      ".github/ISSUE_TEMPLATE/bug_report.md",
+      ".github/PULL_REQUEST_TEMPLATE.md",
+      ".github/actions/cache-db/action.yml",
+      ".github/labeler.yml",
+      ".github/workflows/changesets.yml",
+      ".github/workflows/cleanup-report.yml",
+      ".github/workflows/draft-release.yml",
+      ".github/workflows/labeler.yml",
+      ".gitignore",
+      ".gitpod.yml",
+      ".snaplet/transform.ts",
+      ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+      ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+      ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+      ".yarn/releases/yarn-3.4.1.cjs",
+      "PERMISSIONS.md",
+      "PR_TODO.md",
+      "README.md",
+      "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+      "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+      "apps/web/public/static/locales/en/common.json",
+      "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+      "packages/features/insights/server/events.ts",
+      "packages/features/insights/server/routing-events.ts",
+      "packages/features/insights/server/trpc-router.ts",
+      "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+      "packages/lib/server/repository/membership.ts",
+      "packages/lib/server/repository/team.ts",
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+      "packages/lib/server/service/insightsBooking.ts",
+      "packages/lib/server/service/insightsRouting.ts",
+      "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+    ],
+    "generation_batches": {
+      "b0000-37044a82dcfb": {
+        "chunk_ids": [
+          "f0000:c0000-46f68d6482e1",
+          "f0001:c0000-f4cc467a114e"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.3716293891652024,
+        "context_chars": 62391,
+        "context_files_available_before_generation_prompt_fit": [
+          ".editorconfig",
+          ".env.appStore.example",
+          ".env.example",
+          ".eslintignore",
+          ".github/CODEOWNERS",
+          ".github/ISSUE_TEMPLATE/bug_report.md",
+          ".github/PULL_REQUEST_TEMPLATE.md",
+          ".github/actions/cache-db/action.yml",
+          ".github/labeler.yml",
+          ".github/workflows/changesets.yml",
+          ".github/workflows/cleanup-report.yml",
+          ".github/workflows/draft-release.yml",
+          ".github/workflows/labeler.yml",
+          ".gitignore",
+          ".gitpod.yml",
+          ".snaplet/transform.ts",
+          ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+          ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+          ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "PERMISSIONS.md",
+          "PR_TODO.md",
+          "README.md",
+          "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+          "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+          "apps/web/public/static/locales/en/common.json",
+          "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+          "packages/features/insights/server/events.ts",
+          "packages/features/insights/server/routing-events.ts",
+          "packages/features/insights/server/trpc-router.ts",
+          "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+          "packages/lib/server/repository/membership.ts",
+          "packages/lib/server/repository/team.ts",
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts",
+          "packages/lib/server/service/insightsRouting.ts",
+          "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+        ],
+        "context_files_exposed_to_model": [
+          ".editorconfig",
+          ".env.appStore.example",
+          ".env.example",
+          ".eslintignore",
+          ".github/CODEOWNERS",
+          ".github/ISSUE_TEMPLATE/bug_report.md",
+          ".github/PULL_REQUEST_TEMPLATE.md",
+          ".github/actions/cache-db/action.yml",
+          ".github/labeler.yml",
+          ".github/workflows/changesets.yml",
+          ".github/workflows/cleanup-report.yml",
+          ".github/workflows/draft-release.yml",
+          ".github/workflows/labeler.yml",
+          ".gitignore",
+          ".gitpod.yml",
+          ".snaplet/transform.ts",
+          ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+          ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+          ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "PERMISSIONS.md",
+          "PR_TODO.md",
+          "README.md",
+          "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+          "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+          "apps/web/public/static/locales/en/common.json",
+          "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+          "packages/features/insights/server/events.ts",
+          "packages/features/insights/server/routing-events.ts",
+          "packages/features/insights/server/trpc-router.ts",
+          "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+          "packages/lib/server/repository/membership.ts",
+          "packages/lib/server/repository/team.ts",
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts",
+          "packages/lib/server/service/insightsRouting.ts",
+          "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "efae180e0033348e296c16079f52fd2e931e3ac9b07067dbcdc637051480e2ca",
+        "context_truncated": true,
+        "context_utf8_bytes": 62619,
+        "estimated_context_tokens": 15598,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 291808,
+        "generation_input_char_budget_utilization": 0.3659495284570677,
+        "generation_prompt_chars": 106787,
+        "generation_prompt_utf8_bytes": 107023,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 37
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 2,
+    "packets": {
+      "f0000:c0000-46f68d6482e1": {
+        "callers": 4,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 13919,
+        "prompt_sha256": "c9d03020671f4fc892638cb6b55798295dcb98aa4a94a15d8cd1732b991e4675",
+        "symbols": [
+          "createTestData",
+          "expect",
+          "toEqual",
+          "ANY",
+          "describe",
+          "getBaseConditions",
+          "Prisma",
+          "NOTHING_CONDITION",
+          "SELECT",
+          "BookingTimeStatusDenormalized",
+          "WHERE",
+          "prisma",
+          "client",
+          "sql",
+          "conditions",
+          "userId",
+          "testData",
+          "user",
+          "teamId",
+          "team",
+          "isTeamBooking",
+          "org",
+          "team2",
+          "team3"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 46
+      },
+      "f0001:c0000-f4cc467a114e": {
+        "callers": 19,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 14596,
+        "prompt_sha256": "1c8267e5a800fcc953830c20315cded1a3462449b9e5eebb17686a5e96a8bc14",
+        "symbols": [
+          "InsightsBookingServicePublicOptions",
+          "InsightsBookingService",
+          "getBaseConditions",
+          "getAuthorizationConditions",
+          "getFilterConditions",
+          "buildFilterConditions",
+          "push",
+          "reduce",
+          "buildAuthorizationConditions",
+          "buildOrgAuthorizationCondition",
+          "buildTeamAuthorizationCondition",
+          "ANY",
+          "Set",
+          "Prisma",
+          "NOTHING_CONDITION",
+          "Sql",
+          "Promise",
+          "Join",
+          "Array",
+          "MembershipRole",
+          "OWNER",
+          "ADMIN",
+          "prisma",
+          "client"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 35
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 3673,
+        "serialized_chars": 3758,
+        "serialized_limit_chars": 6000,
+        "sha256": "edf5571bebf6a0005b9948607059725ba746ec8c4b9e445b76411d0fa4c4ae85",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 66,
+        "serialized_chars": 68,
+        "serialized_limit_chars": 1000,
+        "sha256": "a237b4b5e4a3ffcb78234c225bf77f3af03f66a71c85efd2e777521510589601",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 28515,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 71391
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 45170
+      },
+      "verification": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 25094
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-37044a82dcfb": {
+          "action_counts": {
+            "list": 0,
+            "read": 6,
+            "search": 7
+          },
+          "actions_executed": 13,
+          "actions_failed": 0,
+          "additional_context_files_selected": 11,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "PR_TODO.md",
+            "packages/features/insights/server/events.ts",
+            "packages/features/insights/server/routing-events.ts",
+            "packages/features/insights/server/trpc-router.ts",
+            "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+            "packages/lib/server/repository/membership.ts",
+            "packages/lib/server/repository/team.ts",
+            "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+            "packages/lib/server/service/insightsBooking.ts",
+            "packages/lib/server/service/insightsRouting.ts",
+            "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+          ],
+          "context_files_exposed_to_model": [
+            "PR_TODO.md",
+            "packages/features/insights/server/events.ts",
+            "packages/features/insights/server/routing-events.ts",
+            "packages/features/insights/server/trpc-router.ts",
+            "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+            "packages/lib/server/repository/membership.ts",
+            "packages/lib/server/repository/team.ts",
+            "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+            "packages/lib/server/service/insightsBooking.ts",
+            "packages/lib/server/service/insightsRouting.ts",
+            "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 15598,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 62391,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 291808,
+          "generation_input_char_budget_utilization": 0.3659495284570677,
+          "generation_prompt_chars": 106787,
+          "generation_prompt_utf8_bytes": 107023,
+          "hypotheses_final": 6,
+          "hypotheses_open_final": 2,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 4,
+          "hypotheses_returned": 11,
+          "hypothesis_linked_actions": 12,
+          "largest_selector_input_char_budget_utilization": 0.320957615966663,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 617,
+          "repository_files": 8041,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 8041,
+          "repository_index_chars": 2809,
+          "repository_index_chars_by_round": [
+            2809,
+            2809
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 703,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": false,
+          "request_limit_hit": false,
+          "requests_accepted": 13,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 0,
+          "requests_returned": 13,
+          "round_limit": 2,
+          "round_limit_hit": false,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 55,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 28716,
+          "seed_context_chars_original": 28716,
+          "seed_context_truncated": false,
+          "selected_context_chars": 33673,
+          "selection_done": true,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            71636,
+            93658
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 11
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 0,
+      "callers": 23,
+      "changed_context_files_exposed_to_model": [
+        "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+        "packages/lib/server/service/insightsBooking.ts"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 2,
+      "context_chars": 28515,
+      "context_files_exposed_to_model": [
+        ".editorconfig",
+        ".env.appStore.example",
+        ".env.example",
+        ".eslintignore",
+        ".github/CODEOWNERS",
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/actions/cache-db/action.yml",
+        ".github/labeler.yml",
+        ".github/workflows/changesets.yml",
+        ".github/workflows/cleanup-report.yml",
+        ".github/workflows/draft-release.yml",
+        ".github/workflows/labeler.yml",
+        ".gitignore",
+        ".gitpod.yml",
+        ".snaplet/transform.ts",
+        ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+        ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+        ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+        ".yarn/releases/yarn-3.4.1.cjs",
+        "PERMISSIONS.md",
+        "README.md",
+        "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+        "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+        "apps/web/public/static/locales/en/common.json",
+        "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+        "packages/features/insights/server/events.ts",
+        "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+        "packages/lib/server/service/insightsBooking.ts",
+        "packages/lib/server/service/insightsRouting.ts"
+      ],
+      "context_utf8_bytes": 28743,
+      "cross_file_context_files_exposed_to_model": [
+        ".editorconfig",
+        ".env.appStore.example",
+        ".env.example",
+        ".eslintignore",
+        ".github/CODEOWNERS",
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/actions/cache-db/action.yml",
+        ".github/labeler.yml",
+        ".github/workflows/changesets.yml",
+        ".github/workflows/cleanup-report.yml",
+        ".github/workflows/draft-release.yml",
+        ".github/workflows/labeler.yml",
+        ".gitignore",
+        ".gitpod.yml",
+        ".snaplet/transform.ts",
+        ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+        ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+        ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+        ".yarn/releases/yarn-3.4.1.cjs",
+        "PERMISSIONS.md",
+        "README.md",
+        "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+        "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+        "apps/web/public/static/locales/en/common.json",
+        "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+        "packages/features/insights/server/events.ts",
+        "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+        "packages/lib/server/service/insightsBooking.ts",
+        "packages/lib/server/service/insightsRouting.ts"
+      ],
+      "definitions": 2,
+      "estimated_context_tokens": 7129,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 114,
+      "evidence_rows_clipped_during_render": 30,
+      "evidence_rows_omitted_due_to_render_budget": 0,
+      "evidence_rows_rendered": 114,
+      "hypotheses": 0,
+      "imports": 4,
+      "largest_prompt_budget": 17900,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 41,
+        "max_symbols_per_chunk": 2,
+        "prompt_render_budget": 0
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 0,
+        "source_read_budget": 0,
+        "symbol_config_limit": 43,
+        "symbol_search_budget": 0
+      },
+      "packet_metrics": {
+        "f0000:c0000-46f68d6482e1": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".editorconfig",
+            ".env.appStore.example",
+            ".env.example",
+            ".eslintignore",
+            ".github/CODEOWNERS",
+            ".github/ISSUE_TEMPLATE/bug_report.md",
+            ".github/PULL_REQUEST_TEMPLATE.md",
+            ".github/actions/cache-db/action.yml",
+            ".github/labeler.yml",
+            ".github/workflows/cleanup-report.yml",
+            ".github/workflows/draft-release.yml",
+            ".github/workflows/labeler.yml",
+            ".gitignore",
+            ".gitpod.yml",
+            ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+            ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "PERMISSIONS.md",
+            "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+            "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+            "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+            "packages/features/insights/server/events.ts",
+            "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+            "packages/lib/server/service/insightsBooking.ts"
+          ],
+          "context_files_exposed_to_model_count": 24,
+          "cross_file_context_files_exposed_to_model": [
+            ".editorconfig",
+            ".env.appStore.example",
+            ".env.example",
+            ".eslintignore",
+            ".github/CODEOWNERS",
+            ".github/ISSUE_TEMPLATE/bug_report.md",
+            ".github/PULL_REQUEST_TEMPLATE.md",
+            ".github/actions/cache-db/action.yml",
+            ".github/labeler.yml",
+            ".github/workflows/cleanup-report.yml",
+            ".github/workflows/draft-release.yml",
+            ".github/workflows/labeler.yml",
+            ".gitignore",
+            ".gitpod.yml",
+            ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+            ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "PERMISSIONS.md",
+            "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+            "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+            "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+            "packages/features/insights/server/events.ts",
+            "packages/lib/server/service/insightsBooking.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 23,
+          "estimated_context_tokens": 3480,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".editorconfig",
+            ".env.appStore.example",
+            ".env.example",
+            ".eslintignore",
+            ".github/CODEOWNERS",
+            ".github/ISSUE_TEMPLATE/bug_report.md",
+            ".github/PULL_REQUEST_TEMPLATE.md",
+            ".github/actions/cache-db/action.yml",
+            ".github/labeler.yml",
+            ".github/workflows/cleanup-report.yml",
+            ".github/workflows/draft-release.yml",
+            ".github/workflows/labeler.yml",
+            ".gitignore",
+            ".gitpod.yml",
+            ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+            ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "PERMISSIONS.md",
+            "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+            "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+            "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+            "packages/features/insights/server/events.ts",
+            "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+            "packages/lib/server/service/insightsBooking.ts"
+          ],
+          "evidence_rows_available_to_render": 54,
+          "evidence_rows_clipped_during_render": 15,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 54,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 17900,
+          "prompt_budget_utilization": 0.7775977653631285,
+          "prompt_chars": 13919,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 14027,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 4451,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 4451,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 35,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 11,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk"
+          ],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 24,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0001:c0000-f4cc467a114e": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".env.appStore.example",
+            ".env.example",
+            ".eslintignore",
+            ".github/CODEOWNERS",
+            ".github/workflows/changesets.yml",
+            ".github/workflows/labeler.yml",
+            ".gitignore",
+            ".gitpod.yml",
+            ".snaplet/transform.ts",
+            ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "PERMISSIONS.md",
+            "README.md",
+            "apps/web/public/static/locales/en/common.json",
+            "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+            "packages/lib/server/service/insightsBooking.ts",
+            "packages/lib/server/service/insightsRouting.ts"
+          ],
+          "context_files_exposed_to_model_count": 18,
+          "cross_file_context_files_exposed_to_model": [
+            ".env.appStore.example",
+            ".env.example",
+            ".eslintignore",
+            ".github/CODEOWNERS",
+            ".github/workflows/changesets.yml",
+            ".github/workflows/labeler.yml",
+            ".gitignore",
+            ".gitpod.yml",
+            ".snaplet/transform.ts",
+            ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "PERMISSIONS.md",
+            "README.md",
+            "apps/web/public/static/locales/en/common.json",
+            "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+            "packages/lib/server/service/insightsRouting.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 17,
+          "estimated_context_tokens": 3649,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".env.appStore.example",
+            ".env.example",
+            ".eslintignore",
+            ".github/CODEOWNERS",
+            ".github/workflows/changesets.yml",
+            ".github/workflows/labeler.yml",
+            ".gitignore",
+            ".gitpod.yml",
+            ".snaplet/transform.ts",
+            ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "PERMISSIONS.md",
+            "README.md",
+            "apps/web/public/static/locales/en/common.json",
+            "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+            "packages/lib/server/service/insightsBooking.ts",
+            "packages/lib/server/service/insightsRouting.ts"
+          ],
+          "evidence_rows_available_to_render": 60,
+          "evidence_rows_clipped_during_render": 15,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 60,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 17899,
+          "prompt_budget_utilization": 0.8154645510922398,
+          "prompt_chars": 14596,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 14716,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 4450,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 4450,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 56,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 32,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk"
+          ],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 24,
+          "symbol_searches_skipped_due_to_budget": 0
+        }
+      },
+      "packets_hitting_symbol_config_limit": 2,
+      "packets_hitting_symbol_render_budget_limit": 0,
+      "prompt_budget_chars": 35799,
+      "prompt_budget_utilization": 0.7965306293471884,
+      "prompt_truncated_packets": 2,
+      "smallest_prompt_budget": 17899,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 2,
+      "symbol_candidates_after_config_limit": 48,
+      "symbol_candidates_discovered": 91,
+      "symbol_candidates_omitted_by_config_limit": 43,
+      "symbol_searches_skipped_due_to_budget": 0,
+      "symbols": 48,
+      "tests": 4,
+      "tree_files": 8041,
+      "truncated_packets": 2,
+      "unchanged_context_files_exposed_to_model": [
+        ".editorconfig",
+        ".env.appStore.example",
+        ".env.example",
+        ".eslintignore",
+        ".github/CODEOWNERS",
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/actions/cache-db/action.yml",
+        ".github/labeler.yml",
+        ".github/workflows/changesets.yml",
+        ".github/workflows/cleanup-report.yml",
+        ".github/workflows/draft-release.yml",
+        ".github/workflows/labeler.yml",
+        ".gitignore",
+        ".gitpod.yml",
+        ".snaplet/transform.ts",
+        ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+        ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+        ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+        ".yarn/releases/yarn-3.4.1.cjs",
+        "PERMISSIONS.md",
+        "README.md",
+        "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+        "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+        "apps/web/public/static/locales/en/common.json",
+        "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+        "packages/features/insights/server/events.ts",
+        "packages/lib/server/service/insightsRouting.ts"
+      ],
+      "unique_changed_context_files_exposed_to_model": 2,
+      "unique_context_files_exposed_to_model": 30,
+      "unique_cross_file_context_files_exposed_to_model": 30,
+      "unique_unchanged_context_files_exposed_to_model": 28,
+      "usages": 81,
+      "whole_repo_grep_cache_hits": 6,
+      "whole_repo_grep_calls": 42,
+      "whole_repo_grep_calls_returning_configured_limit": 41
+    },
+    "unique_changed_context_files_exposed_to_model": 2,
+    "unique_effective_context_files_exposed_to_model": 37,
+    "unique_unchanged_context_files_exposed_to_model": 35,
+    "verification_batches": [
+      {
+        "candidate_count": 2,
+        "candidate_offset": 0,
+        "candidate_payload_chars": 3871,
+        "context_budget_chars": 167885,
+        "context_budget_clipped": false,
+        "context_chars": 65075,
+        "context_chars_available": 65075,
+        "context_chars_before_prompt_fit": 65075,
+        "context_chars_omitted_by_evidence_budget": 0,
+        "context_chars_omitted_by_prompt_fit": 0,
+        "context_chars_rendered": 65075,
+        "context_clipped_to_any_budget": false,
+        "context_clipped_to_prompt_budget": false,
+        "evidence_budget_clipped": false,
+        "evidence_clipped_to_any_budget": false,
+        "generation_context_blocks_available": 1,
+        "generation_context_blocks_rendered": 1,
+        "generation_context_chars_available": 62440,
+        "generation_context_chars_omitted": 0,
+        "generation_context_chars_rendered": 62440,
+        "generation_context_files_after_prompt_fit": [
+          ".editorconfig",
+          ".env.appStore.example",
+          ".env.example",
+          ".eslintignore",
+          ".github/CODEOWNERS",
+          ".github/ISSUE_TEMPLATE/bug_report.md",
+          ".github/PULL_REQUEST_TEMPLATE.md",
+          ".github/actions/cache-db/action.yml",
+          ".github/labeler.yml",
+          ".github/workflows/changesets.yml",
+          ".github/workflows/cleanup-report.yml",
+          ".github/workflows/draft-release.yml",
+          ".github/workflows/labeler.yml",
+          ".gitignore",
+          ".gitpod.yml",
+          ".snaplet/transform.ts",
+          ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+          ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+          ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "PERMISSIONS.md",
+          "PR_TODO.md",
+          "README.md",
+          "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+          "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+          "apps/web/public/static/locales/en/common.json",
+          "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+          "packages/features/insights/server/events.ts",
+          "packages/features/insights/server/routing-events.ts",
+          "packages/features/insights/server/trpc-router.ts",
+          "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+          "packages/lib/server/repository/membership.ts",
+          "packages/lib/server/repository/team.ts",
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts",
+          "packages/lib/server/service/insightsRouting.ts",
+          "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+        ],
+        "generation_context_files_available": [
+          ".editorconfig",
+          ".env.appStore.example",
+          ".env.example",
+          ".eslintignore",
+          ".github/CODEOWNERS",
+          ".github/ISSUE_TEMPLATE/bug_report.md",
+          ".github/PULL_REQUEST_TEMPLATE.md",
+          ".github/actions/cache-db/action.yml",
+          ".github/labeler.yml",
+          ".github/workflows/changesets.yml",
+          ".github/workflows/cleanup-report.yml",
+          ".github/workflows/draft-release.yml",
+          ".github/workflows/labeler.yml",
+          ".gitignore",
+          ".gitpod.yml",
+          ".snaplet/transform.ts",
+          ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+          ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+          ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "PERMISSIONS.md",
+          "PR_TODO.md",
+          "README.md",
+          "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+          "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+          "apps/web/public/static/locales/en/common.json",
+          "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+          "packages/features/insights/server/events.ts",
+          "packages/features/insights/server/routing-events.ts",
+          "packages/features/insights/server/trpc-router.ts",
+          "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+          "packages/lib/server/repository/membership.ts",
+          "packages/lib/server/repository/team.ts",
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts",
+          "packages/lib/server/service/insightsRouting.ts",
+          "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+        ],
+        "generation_context_files_omitted": [],
+        "generation_context_files_rendered": [
+          ".editorconfig",
+          ".env.appStore.example",
+          ".env.example",
+          ".eslintignore",
+          ".github/CODEOWNERS",
+          ".github/ISSUE_TEMPLATE/bug_report.md",
+          ".github/PULL_REQUEST_TEMPLATE.md",
+          ".github/actions/cache-db/action.yml",
+          ".github/labeler.yml",
+          ".github/workflows/changesets.yml",
+          ".github/workflows/cleanup-report.yml",
+          ".github/workflows/draft-release.yml",
+          ".github/workflows/labeler.yml",
+          ".gitignore",
+          ".gitpod.yml",
+          ".snaplet/transform.ts",
+          ".yarn/patches/@prisma-client-npm-5.4.2-fca489b2dc.patch",
+          ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+          ".yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "PERMISSIONS.md",
+          "PR_TODO.md",
+          "README.md",
+          "apps/api/v1/lib/utils/bookings/get/buildWhereClause.ts",
+          "apps/web/app/api/cron/monthlyDigestEmail/route.ts",
+          "apps/web/public/static/locales/en/common.json",
+          "packages/features/bookings/lib/conflictChecker/checkForConflicts.test.ts",
+          "packages/features/insights/server/events.ts",
+          "packages/features/insights/server/routing-events.ts",
+          "packages/features/insights/server/trpc-router.ts",
+          "packages/features/pbac/infrastructure/repositories/PermissionRepository.ts",
+          "packages/lib/server/repository/membership.ts",
+          "packages/lib/server/repository/team.ts",
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts",
+          "packages/lib/server/service/insightsRouting.ts",
+          "packages/trpc/server/routers/viewer/availability/team/listTeamAvailability.handler.ts"
+        ],
+        "input_char_budget": 326272,
+        "input_char_budget_utilization": 0.22709579737151825,
+        "patch_blocks_available": 2,
+        "patch_blocks_rendered": 2,
+        "patch_budget_chars": 111923,
+        "patch_budget_clipped": false,
+        "patch_chars": 2646,
+        "patch_chars_available": 2646,
+        "patch_chars_omitted_by_evidence_budget": 0,
+        "patch_chars_rendered": 2646,
+        "prompt_chars": 74095,
+        "prompt_utf8_bytes": 74323,
+        "source_blocks_available": 2,
+        "source_blocks_rendered": 2,
+        "source_context_chars_available": 2633,
+        "source_context_chars_omitted": 0,
+        "source_context_chars_rendered": 2633,
+        "source_files_after_prompt_fit": [
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts"
+        ],
+        "source_files_available": [
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts"
+        ],
+        "source_files_omitted": [],
+        "source_files_rendered": [
+          "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+          "packages/lib/server/service/insightsBooking.ts"
+        ]
+      }
+    ],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": true,
+    "completed_hunks": [
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts:1:1:h000",
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts:195:198:h001",
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts:230:233:h002",
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts:258:261:h003",
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts:337:320:h004",
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts:397:372:h005",
+      "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts:578:468:h006",
+      "packages/lib/server/service/insightsBooking.ts:1:1:h000",
+      "packages/lib/server/service/insightsBooking.ts:17:17:h001"
+    ],
+    "coverage_ratio": 1.0,
+    "eligible_files": 2,
+    "eligible_hunks": 9,
+    "excluded_files": [],
+    "failed_hunks": [],
+    "total_files": 2,
+    "total_hunks": 9
+  },
+  "diagnostics": [],
+  "diff": {
+    "additions": 114,
+    "bytes": 23511,
+    "chunk_plan_complete": true,
+    "chunks": 2,
+    "commentable_ranges": {
+      "LEFT": {
+        "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts": [
+          [
+            207,
+            207
+          ],
+          [
+            242,
+            242
+          ],
+          [
+            270,
+            277
+          ],
+          [
+            299,
+            316
+          ],
+          [
+            349,
+            368
+          ],
+          [
+            409,
+            415
+          ],
+          [
+            436,
+            442
+          ],
+          [
+            464,
+            541
+          ],
+          [
+            547,
+            547
+          ],
+          [
+            590,
+            595
+          ],
+          [
+            598,
+            599
+          ]
+        ],
+        "packages/lib/server/service/insightsBooking.ts": [
+          [
+            1,
+            1
+          ],
+          [
+            36,
+            38
+          ],
+          [
+            44,
+            45
+          ],
+          [
+            53,
+            53
+          ],
+          [
+            63,
+            63
+          ],
+          [
+            67,
+            75
+          ],
+          [
+            78,
+            78
+          ],
+          [
+            85,
+            85
+          ],
+          [
+            92,
+            93
+          ],
+          [
+            100,
+            102
+          ],
+          [
+            106,
+            108
+          ],
+          [
+            111,
+            111
+          ],
+          [
+            114,
+            114
+          ],
+          [
+            116,
+            116
+          ],
+          [
+            120,
+            120
+          ],
+          [
+            123,
+            124
+          ],
+          [
+            126,
+            129
+          ],
+          [
+            131,
+            131
+          ],
+          [
+            133,
+            133
+          ],
+          [
+            135,
+            135
+          ],
+          [
+            137,
+            140
+          ],
+          [
+            145,
+            145
+          ],
+          [
+            162,
+            181
+          ],
+          [
+            186,
+            186
+          ],
+          [
+            194,
+            194
+          ],
+          [
+            203,
+            216
+          ],
+          [
+            226,
+            226
+          ]
+        ]
+      },
+      "RIGHT": {
+        "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts": [
+          [
+            2,
+            2
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            210,
+            210
+          ],
+          [
+            245,
+            245
+          ],
+          [
+            273,
+            273
+          ],
+          [
+            295,
+            299
+          ],
+          [
+            332,
+            343
+          ],
+          [
+            384,
+            386
+          ],
+          [
+            407,
+            407
+          ],
+          [
+            429,
+            431
+          ],
+          [
+            437,
+            437
+          ],
+          [
+            480,
+            484
+          ],
+          [
+            487,
+            491
+          ]
+        ],
+        "packages/lib/server/service/insightsBooking.ts": [
+          [
+            1,
+            1
+          ],
+          [
+            29,
+            35
+          ],
+          [
+            43,
+            43
+          ],
+          [
+            49,
+            50
+          ],
+          [
+            58,
+            58
+          ],
+          [
+            68,
+            68
+          ],
+          [
+            72,
+            80
+          ],
+          [
+            83,
+            83
+          ],
+          [
+            90,
+            90
+          ],
+          [
+            97,
+            98
+          ],
+          [
+            105,
+            107
+          ],
+          [
+            111,
+            111
+          ],
+          [
+            114,
+            122
+          ],
+          [
+            125,
+            125
+          ],
+          [
+            127,
+            127
+          ],
+          [
+            131,
+            131
+          ],
+          [
+            135,
+            135
+          ],
+          [
+            137,
+            137
+          ],
+          [
+            139,
+            139
+          ],
+          [
+            141,
+            141
+          ],
+          [
+            147,
+            147
+          ],
+          [
+            164,
+            174
+          ],
+          [
+            179,
+            179
+          ],
+          [
+            187,
+            187
+          ],
+          [
+            196,
+            207
+          ],
+          [
+            217,
+            217
+          ]
+        ]
+      }
+    },
+    "deletions": 231,
+    "files": 2,
+    "generation_batches": 1,
+    "hunks": 9,
+    "merge_base_sha": "c9a47dd0cebd121ff73f24e1f8c1829579daf8e3",
+    "sha256": "7427c40f4194b85d39ea45460aebb3de678c29fccb4cd0307b993c6dd699ebcf"
+  },
+  "duration_ms": 180755,
+  "findings": [],
+  "pr": {
+    "base_ref": "main",
+    "base_sha": "c9a47dd0cebd121ff73f24e1f8c1829579daf8e3",
+    "body": "\n# Fix: Update InsightsBookingService integration tests for Prisma.sql format\n\n## Summary\n\nThis PR updates the `InsightsBookingService` integration tests to work with the new Prisma.sql format that was previously converted in the service implementation. The changes follow the exact same testing patterns established in the `InsightsRoutingService` integration tests.\n\n**Key Changes:**\n- Replace Prisma object notation expectations with direct `Prisma.sql` template literal comparisons\n- Add `NOTHING_CONDITION = Prisma.sql`1=0`` constant for consistency with other services\n- Update all authorization and filter condition tests to expect raw SQL instead of object structures\n- Modify the final integration test to use `$queryRaw` for actual database querying\n- Remove complex object notation assertions in favor of direct SQL comparisons\n\n## Review & Testing Checklist for Human\n\n⚠️ **HIGH RISK** - This involves SQL query construction and authorization logic\n\n- [ ] **Run integration tests manually** - I encountered test runner configuration issues, so please verify the tests actually pass: `TZ=UTC yarn test packages/lib/server/service/__tests__/insightsBooking.integration-test.ts`\n- [ ] **Review SQL query construction** - Carefully examine the authorization conditions in the service, especially complex team/org scope logic with AND/OR combinations\n- [ ] **Verify authorization security** - Test with different user roles (owner, admin, member) to ensure no privilege escalation bugs\n- [ ] **Check parameter binding** - Ensure all user inputs in the SQL templates are properly parameterized (no injection risks)\n- [ ] **Test edge cases** - Verify behavior with empty teams, missing users, null values, and boundary conditions\n\n**Recommended Test Plan:**\n1. Run the integration tests locally to verify they pass\n2. Test the service with various user roles and team configurations\n3. Verify the `$queryRaw` integration test actually queries the database correctly\n4. Check that authorization conditions properly restrict access based on user permissions\n\n---\n\n### Diagram\n\n```mermaid\n%%{ init : { \"theme\" : \"default\" }}%%\ngraph TD\n    Service[\"packages/lib/server/service/<br/>insightsBooking.ts\"]:::context\n    Tests[\"packages/lib/server/service/__tests__/<br/>insightsBooking.integration-test.ts\"]:::major-edit\n    RoutingTests[\"InsightsRoutingService<br/>integration tests<br/>(attachment example)\"]:::context\n    \n    Service --> Tests\n    RoutingTests --> Tests\n    \n    Tests --> AuthTests[\"Authorization Condition Tests<br/>- NOTHING_CONDITION<br/>- User/Team/Org scope\"]:::major-edit\n    Tests --> FilterTests[\"Filter Condition Tests<br/>- Event type filtering<br/>- Member user filtering\"]:::major-edit\n    Tests --> IntegrationTest[\"Database Integration Test<br/>- $queryRaw usage<br/>- Real query execution\"]:::major-edit\n    \n    subgraph Legend\n        L1[Major Edit]:::major-edit\n        L2[Minor Edit]:::minor-edit\n        L3[Context/No Edit]:::context\n    end\n    \n    classDef major-edit fill:#90EE90\n    classDef minor-edit fill:#87CEEB\n    classDef context fill:#FFFFFF\n```\n\n### Notes\n\n- This conversion was based on the InsightsRoutingService integration test patterns provided in the user's attachment\n- The test runner had configuration issues during development, so manual verification of test execution is critical\n- All test expectations now use direct `Prisma.sql` comparisons instead of inspecting `.strings` and `.values` properties\n- The NOTHING_CONDITION constant ensures consistency across different insight services\n\n**Session Info:** Requested by @eunjae-lee | Session: https://app.devin.ai/sessions/a5e216ec6c364679a220f799e2abc700\n",
+    "clone_url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR22345__20260122.git",
+    "head_ref": "pr-22345",
+    "head_sha": "da09bc0808e7c6df1bc10e00d5acf764d94c7cc7",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "cal_dot_com__cal.com__augment__PR22345__20260122",
+    "resolved_at": "2026-08-24T04:12:23.977588Z",
+    "title": "feat: convert InsightsBookingService to use Prisma.sql raw queries",
+    "url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR22345__20260122/pull/1"
+  },
+  "raw_findings": [
+    {
+      "body": "The runtime zod safeParse fails silently, `this.options` becomes null, and every query resolves to `1=0`, so the caller gets an empty result set with no error, making the misconfiguration hard to diagnose.",
+      "category": "api",
+      "chunk_id": "f0001:c0000-f4cc467a114e",
+      "confidence": 0.5,
+      "end_line": 34,
+      "evidence": "export type InsightsBookingServicePublicOptions = {\n  scope: \"user\" | \"org\" | \"team\";\n  userId: number;\n  orgId: number;\n  teamId?: number;\n};",
+      "failure_mode": "Compile-time safety is lost; invalid option shapes degrade to silent empty query results instead of a type error or runtime exception.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The runtime zod safeParse fails silently, `this.options` becomes null, and every query resolves to `1=0`, so the caller gets an empty result set with no error, making the misconfiguration hard to diagnose.",
+      "line": 29,
+      "path": "packages/lib/server/service/insightsBooking.ts",
+      "root_cause": "The patch replaced the discriminated-union constructor option type with a new loose `InsightsBookingServicePublicOptions` type that no longer enforces `teamId` for team scope.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Keep `InsightsBookingServiceOptions` (the discriminated union) as the constructor parameter type, or throw/log on schema validation failure instead of silently nulling options.",
+      "title": "Constructor options widened to loose type, allowing invalid team-scope options to compile and silently return no data",
+      "trigger": "A caller constructs InsightsBookingService with `scope: \"team\"` but omits `teamId` (now allowed by the widened type, where the previous discriminated-union constructor parameter `InsightsBookingServiceOptions` made this a compile-time error).",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "No test now verifies that repeated calls to getAuthorizationConditions/getFilterConditions return the cached result, so a caching regression (redundant DB queries or stale/incorrect cached conditions) would land undetected.",
+      "category": "test_gap",
+      "chunk_id": "f0000:c0000-46f68d6482e1",
+      "confidence": 0.65,
+      "end_line": 480,
+      "evidence": "describe(\"Caching\", () => {\n    it(\"should cache authorization conditions\", async () => {",
+      "failure_mode": "Loss of regression coverage for behavior that still exists in production code.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "No test now verifies that repeated calls to getAuthorizationConditions/getFilterConditions return the cached result, so a caching regression (redundant DB queries or stale/incorrect cached conditions) would land undetected.",
+      "line": 479,
+      "path": "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+      "root_cause": "The patch removed the entire \"Caching\" describe block rather than converting those assertions to the new Prisma.Sql format, even though the caching fields and logic remain in the service.",
+      "severity": "low",
+      "side": "LEFT",
+      "suggested_fix": "Re-add caching tests adapted to the Prisma.Sql return type, e.g. call getAuthorizationConditions twice and assert the second result is identical (or spy that buildAuthorizationConditions is invoked once).",
+      "title": "Caching tests deleted while memoization behavior is retained in the service",
+      "trigger": "A future change breaks the `cachedAuthConditions` / `cachedFilterConditions` memoization in InsightsBookingService (e.g. rebuilding conditions on every call or caching the wrong value), which the service still implements after this patch.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    }
+  ],
+  "rejected_findings": [
+    {
+      "finding": {
+        "body": "The runtime zod safeParse fails silently, `this.options` becomes null, and every query resolves to `1=0`, so the caller gets an empty result set with no error, making the misconfiguration hard to diagnose.",
+        "category": "api",
+        "chunk_id": "f0001:c0000-f4cc467a114e",
+        "confidence": 0.5,
+        "end_line": 34,
+        "evidence": "export type InsightsBookingServicePublicOptions = {\n  scope: \"user\" | \"org\" | \"team\";\n  userId: number;\n  orgId: number;\n  teamId?: number;\n};",
+        "failure_mode": "Compile-time safety is lost; invalid option shapes degrade to silent empty query results instead of a type error or runtime exception.",
+        "finding_id": "bb-ae5109d91cbf80240a09",
+        "fingerprint": "3b0ce1b28cf4c658684cdc93e01c76077fe8886deedc797772ab0c6cd5f2ec81",
+        "fix_scope": "local",
+        "impact": "The runtime zod safeParse fails silently, `this.options` becomes null, and every query resolves to `1=0`, so the caller gets an empty result set with no error, making the misconfiguration hard to diagnose.",
+        "line": 29,
+        "path": "packages/lib/server/service/insightsBooking.ts",
+        "root_cause": "The patch replaced the discriminated-union constructor option type with a new loose `InsightsBookingServicePublicOptions` type that no longer enforces `teamId` for team scope.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Keep `InsightsBookingServiceOptions` (the discriminated union) as the constructor parameter type, or throw/log on schema validation failure instead of silently nulling options.",
+        "title": "Constructor options widened to loose type, allowing invalid team-scope options to compile and silently return no data",
+        "trigger": "A caller constructs InsightsBookingService with `scope: \"team\"` but omits `teamId` (now allowed by the widened type, where the previous discriminated-union constructor parameter `InsightsBookingServiceOptions` made this a compile-time error).",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "loose_constructor_type",
+        "verifier_reason": "The claim that safeParse fails silently causing null options and 1=0 queries is the *intended* behavior for invalid input, not a bug. The constructor still validates via the discriminated union schema (insightsBookingServiceOptionsSchema) at runtime. The InsightsBookingServicePublicOptions type is only for the constructor parameter signature; the actual validation still requires teamId for team scope. If validation fails, returning NOTHING_CONDITION is defensive design, not silent failure."
+      },
+      "reason": "The claim that safeParse fails silently causing null options and 1=0 queries is the *intended* behavior for invalid input, not a bug. The constructor still validates via the discriminated union schema (insightsBookingServiceOptionsSchema) at runtime. The InsightsBookingServicePublicOptions type is only for the constructor parameter signature; the actual validation still requires teamId for team scope. If validation fails, returning NOTHING_CONDITION is defensive design, not silent failure.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "No test now verifies that repeated calls to getAuthorizationConditions/getFilterConditions return the cached result, so a caching regression (redundant DB queries or stale/incorrect cached conditions) would land undetected.",
+        "category": "test_gap",
+        "chunk_id": "f0000:c0000-46f68d6482e1",
+        "confidence": 0.65,
+        "end_line": 480,
+        "evidence": "describe(\"Caching\", () => {\n    it(\"should cache authorization conditions\", async () => {",
+        "failure_mode": "Loss of regression coverage for behavior that still exists in production code.",
+        "finding_id": "bb-dd094643f18f452c4695",
+        "fingerprint": "d668c772bae396eadad18580233a5e15e8ac343144222f8fb799e74cdc55b614",
+        "fix_scope": "local",
+        "impact": "No test now verifies that repeated calls to getAuthorizationConditions/getFilterConditions return the cached result, so a caching regression (redundant DB queries or stale/incorrect cached conditions) would land undetected.",
+        "line": 479,
+        "path": "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+        "root_cause": "The patch removed the entire \"Caching\" describe block rather than converting those assertions to the new Prisma.Sql format, even though the caching fields and logic remain in the service.",
+        "severity": "low",
+        "side": "LEFT",
+        "suggested_fix": "Re-add caching tests adapted to the Prisma.Sql return type, e.g. call getAuthorizationConditions twice and assert the second result is identical (or spy that buildAuthorizationConditions is invoked once).",
+        "title": "Caching tests deleted while memoization behavior is retained in the service",
+        "trigger": "A future change breaks the `cachedAuthConditions` / `cachedFilterConditions` memoization in InsightsBookingService (e.g. rebuilding conditions on every call or caching the wrong value), which the service still implements after this patch.",
+        "verifier_confidence": 0.78,
+        "verifier_family_key": "deleted_caching_tests",
+        "verifier_reason": "The patch clearly removes the 'describe(\"Caching\")' block (lines L479-L493 shown deleted) while the service still has cachedAuthConditions and cachedFilterConditions fields (lines 49-50 in surrounding source). The caching logic remains in getAuthorizationConditions/getFilterConditions methods but test coverage for this behavior is removed."
+      },
+      "reason": "0.780 is below 0.920: The patch clearly removes the 'describe(\"Caching\")' block (lines L479-L493 shown deleted) while the service still has cachedAuthConditions and cachedFilterConditions fields (lines 49-50 in surrounding source). The caching logic remains in getAuthorizationConditions/getFilterConditions methods but test coverage for this behavior is removed.",
+      "stage": "verifier_confidence"
+    }
+  ],
+  "run_id": "08e189864ec55af88cafa03d",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-fable-5",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T07:20:44.641949Z",
+  "status": "completed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": [
+    {
+      "body": "The runtime zod safeParse fails silently, `this.options` becomes null, and every query resolves to `1=0`, so the caller gets an empty result set with no error, making the misconfiguration hard to diagnose.",
+      "category": "api",
+      "chunk_id": "f0001:c0000-f4cc467a114e",
+      "confidence": 0.5,
+      "end_line": 34,
+      "evidence": "export type InsightsBookingServicePublicOptions = {\n  scope: \"user\" | \"org\" | \"team\";\n  userId: number;\n  orgId: number;\n  teamId?: number;\n};",
+      "failure_mode": "Compile-time safety is lost; invalid option shapes degrade to silent empty query results instead of a type error or runtime exception.",
+      "finding_id": "bb-ae5109d91cbf80240a09",
+      "fingerprint": "3b0ce1b28cf4c658684cdc93e01c76077fe8886deedc797772ab0c6cd5f2ec81",
+      "fix_scope": "local",
+      "impact": "The runtime zod safeParse fails silently, `this.options` becomes null, and every query resolves to `1=0`, so the caller gets an empty result set with no error, making the misconfiguration hard to diagnose.",
+      "line": 29,
+      "path": "packages/lib/server/service/insightsBooking.ts",
+      "root_cause": "The patch replaced the discriminated-union constructor option type with a new loose `InsightsBookingServicePublicOptions` type that no longer enforces `teamId` for team scope.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Keep `InsightsBookingServiceOptions` (the discriminated union) as the constructor parameter type, or throw/log on schema validation failure instead of silently nulling options.",
+      "title": "Constructor options widened to loose type, allowing invalid team-scope options to compile and silently return no data",
+      "trigger": "A caller constructs InsightsBookingService with `scope: \"team\"` but omits `teamId` (now allowed by the widened type, where the previous discriminated-union constructor parameter `InsightsBookingServiceOptions` made this a compile-time error).",
+      "verifier_confidence": 0.85,
+      "verifier_family_key": "loose_constructor_type",
+      "verifier_reason": "The claim that safeParse fails silently causing null options and 1=0 queries is the *intended* behavior for invalid input, not a bug. The constructor still validates via the discriminated union schema (insightsBookingServiceOptionsSchema) at runtime. The InsightsBookingServicePublicOptions type is only for the constructor parameter signature; the actual validation still requires teamId for team scope. If validation fails, returning NOTHING_CONDITION is defensive design, not silent failure."
+    },
+    {
+      "body": "No test now verifies that repeated calls to getAuthorizationConditions/getFilterConditions return the cached result, so a caching regression (redundant DB queries or stale/incorrect cached conditions) would land undetected.",
+      "category": "test_gap",
+      "chunk_id": "f0000:c0000-46f68d6482e1",
+      "confidence": 0.65,
+      "end_line": 480,
+      "evidence": "describe(\"Caching\", () => {\n    it(\"should cache authorization conditions\", async () => {",
+      "failure_mode": "Loss of regression coverage for behavior that still exists in production code.",
+      "finding_id": "bb-dd094643f18f452c4695",
+      "fingerprint": "d668c772bae396eadad18580233a5e15e8ac343144222f8fb799e74cdc55b614",
+      "fix_scope": "local",
+      "impact": "No test now verifies that repeated calls to getAuthorizationConditions/getFilterConditions return the cached result, so a caching regression (redundant DB queries or stale/incorrect cached conditions) would land undetected.",
+      "line": 479,
+      "path": "packages/lib/server/service/__tests__/insightsBooking.integration-test.ts",
+      "root_cause": "The patch removed the entire \"Caching\" describe block rather than converting those assertions to the new Prisma.Sql format, even though the caching fields and logic remain in the service.",
+      "severity": "low",
+      "side": "LEFT",
+      "suggested_fix": "Re-add caching tests adapted to the Prisma.Sql return type, e.g. call getAuthorizationConditions twice and assert the second result is identical (or spy that buildAuthorizationConditions is invoked once).",
+      "title": "Caching tests deleted while memoization behavior is retained in the service",
+      "trigger": "A future change breaks the `cachedAuthConditions` / `cachedFilterConditions` memoization in InsightsBookingService (e.g. rebuilding conditions on every call or caching the wrong value), which the service still implements after this patch.",
+      "verifier_confidence": 0.78,
+      "verifier_family_key": "deleted_caching_tests",
+      "verifier_reason": "The patch clearly removes the 'describe(\"Caching\")' block (lines L479-L493 shown deleted) while the service still has cachedAuthConditions and cachedFilterConditions fields (lines 49-50 in surrounding source). The caching logic remains in getAuthorizationConditions/getFilterConditions methods but test coverage for this behavior is removed."
+    }
+  ]
+}

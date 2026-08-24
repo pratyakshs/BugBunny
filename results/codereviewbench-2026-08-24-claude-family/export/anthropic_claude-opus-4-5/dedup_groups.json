@@ -1,0 +1,5880 @@
+{
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/1": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/10": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/2": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/3": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/4": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16
+      ],
+      [
+        17
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/5": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/6": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/7": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/8": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/9": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/keycloak-greptile/pull/1": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/1": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/2": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/3": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/5": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16
+      ],
+      [
+        17
+      ],
+      [
+        18
+      ],
+      [
+        19
+      ],
+      [
+        20
+      ],
+      [
+        21
+      ],
+      [
+        22
+      ],
+      [
+        23
+      ],
+      [
+        24
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16
+      ],
+      [
+        17
+      ],
+      [
+        18
+      ],
+      [
+        19
+      ],
+      [
+        20
+      ],
+      [
+        21
+      ],
+      [
+        22
+      ],
+      [
+        23
+      ],
+      [
+        24
+      ],
+      [
+        25
+      ],
+      [
+        26
+      ],
+      [
+        27
+      ],
+      [
+        28
+      ],
+      [
+        29
+      ],
+      [
+        30
+      ],
+      [
+        31
+      ],
+      [
+        32
+      ],
+      [
+        33
+      ],
+      [
+        34
+      ],
+      [
+        35
+      ],
+      [
+        36
+      ],
+      [
+        37
+      ],
+      [
+        38
+      ],
+      [
+        39
+      ],
+      [
+        40
+      ],
+      [
+        41
+      ],
+      [
+        42
+      ],
+      [
+        43
+      ],
+      [
+        44
+      ],
+      [
+        45
+      ],
+      [
+        46
+      ],
+      [
+        47
+      ],
+      [
+        48
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/10600": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/10967": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16
+      ],
+      [
+        17
+      ],
+      [
+        18
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/11059": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": []
+  },
+  "https://github.com/calcom/cal.com/pull/14740": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/14943": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/22345": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/22532": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/7232": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/8087": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/calcom/cal.com/pull/8330": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/getsentry/sentry/pull/67876": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/getsentry/sentry/pull/77754": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/getsentry/sentry/pull/80168": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/getsentry/sentry/pull/80528": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ]
+  },
+  "https://github.com/getsentry/sentry/pull/93824": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "https://github.com/getsentry/sentry/pull/95633": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/103633": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/106778": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/107534": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/76186": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/79265": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/80329": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/90045": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/90939": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/94942": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ]
+  },
+  "https://github.com/grafana/grafana/pull/97529": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/32918": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/33832": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/36880": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/36882": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/37038": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/37429": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/37634": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/38446": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [
+      [
+        0
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ]
+  },
+  "https://github.com/keycloak/keycloak/pull/40940": {
+    "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92": [],
+    "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8": [],
+    "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774": [],
+    "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061": [],
+    "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a": [],
+    "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac": [],
+    "bugbunny-family-anthropic-claude-opus-5-c31790f5671b": [],
+    "bugbunny-family-anthropic-claude-sonnet-5-167809a84058": [],
+    "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ]
+  }
+}

@@ -1,0 +1,1409 @@
+{
+  "job_plan_sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3",
+  "records": [
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "artifact_sha256": "a8268496252771585260aef7e2a7e7130dceab15e7ee1a797b5dc5af59d366e4",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "artifact_sha256": "7c5e9199d1aa292e67e7e73834a27cc129d12517e79e28288c6faf8fdea37923",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "artifact_sha256": "036d0c3a138f0d3ebdde3c2f37824efc1c59bf23e265c5b9e5de6cd9bd172cbb",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "artifact_sha256": "474686cbb07cb3878168e69d4ccbe031909d1c0954ec27f7465338baedbe1c0e",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "artifact_sha256": "c6b3413b99d63f4a2bb8cd36578f5d3f644b27116fab9753ed560e3ca604f829",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "artifact_sha256": "a61152dce2e88fa8e1fb71626489d62a34a6b3e4aa44d90baa0ca71d338c4602",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "artifact_sha256": "3478fe2367f686f8c1f1a37885d23d4290028a8bfe0888dd1b254d0094656288",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "artifact_sha256": "4f14731503ae97786a673a41135269707707b705eaac38f2cc4dd03e1ff6606a",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "artifact_sha256": "ef82cf608622ab1a648f42053dcb77a0560e18fd26d10990afd958613b64da3f",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "artifact_sha256": "b926e3ffbff49d8e30834a34d4504f47ca6c675935ae6adea9cf129bf5118139",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "artifact_sha256": "76890c4c26b22c4b829c20519608ae098e58de10d2fc58b139ea00743d4ccbfe",
+      "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "artifact_sha256": "b8043380199086fcc96a9d2e3d3c89e3534173664313bca0d649266466b9a023",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr1-93109beb71",
+      "findings": 0,
+      "model": "anthropic/claude-fable-5",
+      "status": "failed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "artifact_sha256": "1dec7ce184143a90641db6e704d5b30a09324ebaea96060e68b955186e16e2e5",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2",
+      "findings": 0,
+      "model": "anthropic/claude-fable-5",
+      "status": "failed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "artifact_sha256": "4679fe5aac43d679ef7d9891375555aa843be7848c6be197efd8c87622cfb1a2",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "artifact_sha256": "466d952bdf9bf9c118fab465a58146b3bd6e7300e2fd6bf87310377320dba59b",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10600-98442a0665.json",
+      "artifact_sha256": "692619d8ac6a0a17208548c36bbbea65ad11253a8b94c6d259b68b742b17dc34",
+      "case_id": "calcom-cal-com-pr10600-98442a0665",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "artifact_sha256": "9b7780cd56e03b71addc0653cc1a7fec3dd4ac45a129c37b7244ac0b69cfe2ef",
+      "case_id": "calcom-cal-com-pr10967-e0f66e47c7",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr11059-edc4826515.json",
+      "artifact_sha256": "737ad76b9207590707524eec45eafbfdce872d83eb3c4ea9b3afa4c8d2d330b3",
+      "case_id": "calcom-cal-com-pr11059-edc4826515",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr14740-454655f78e.json",
+      "artifact_sha256": "4f7efa9c669843f818df65ffd439fe1882985d4505f955f118cf3738b514a797",
+      "case_id": "calcom-cal-com-pr14740-454655f78e",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "artifact_sha256": "ce77c39dc28191c2b869a779f2e8e8ade1201a684b2c0e114d59e6fb9f77ad0b",
+      "case_id": "calcom-cal-com-pr14943-77f0b97fa3",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "artifact_sha256": "1a52d479e4853b0abde8659226001d589003c325b8579850837cff1a90dd88d0",
+      "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr22532-56a2f3185b.json",
+      "artifact_sha256": "bcbe107c558f2219b6cbb053b17c979882d7d0b716cddcf7dd510a6a62a64ce6",
+      "case_id": "calcom-cal-com-pr22532-56a2f3185b",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr7232-532a700f35.json",
+      "artifact_sha256": "9e188920b9c3c48a68ee414418ec187b7d7493b02a11f416646626038a9c0548",
+      "case_id": "calcom-cal-com-pr7232-532a700f35",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr8087-9c23e8296f.json",
+      "artifact_sha256": "7808c0331535fc660794597d89bd3569572ca9409077d46df8c6e49adb24bc7f",
+      "case_id": "calcom-cal-com-pr8087-9c23e8296f",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr8330-800af76fcf.json",
+      "artifact_sha256": "d73df9ef0a53fb858a775b5288b396fa6fcb08e80a7053754415766905a039d0",
+      "case_id": "calcom-cal-com-pr8330-800af76fcf",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr67876-f0a5b21040.json",
+      "artifact_sha256": "c0ea0f68ce03ddffc66ed4f01b90d9e39807d1da0620b4a2298e01c45df17c8f",
+      "case_id": "getsentry-sentry-pr67876-f0a5b21040",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "artifact_sha256": "68f1ec8dbe687e6ba716a043f22728c41fb6c48376300057c5dd5a84af0ac5d1",
+      "case_id": "getsentry-sentry-pr77754-eaf4b87db9",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr80168-731fa28972.json",
+      "artifact_sha256": "b9f7d814fb90eb0aa4faf3231cf62fd867d6be089b287dd3cfb8f1e2dee5bb31",
+      "case_id": "getsentry-sentry-pr80168-731fa28972",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr80528-5c5505e00a.json",
+      "artifact_sha256": "416998ea8077c052c106c21963f64761fe2c3c78ead1f89186356de5010d9c66",
+      "case_id": "getsentry-sentry-pr80528-5c5505e00a",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr93824-36dbd11db8.json",
+      "artifact_sha256": "f067fa7b62f4aa2bd64a00cae61ee4c0ba6b8d631eefa9cedecccd1e8f688c15",
+      "case_id": "getsentry-sentry-pr93824-36dbd11db8",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr95633-118c8d30ab.json",
+      "artifact_sha256": "451f2f1ca272f07d619e30990d8d607095063340fc36c3b4fcd9c66f391d0230",
+      "case_id": "getsentry-sentry-pr95633-118c8d30ab",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr103633-1ccdfad177.json",
+      "artifact_sha256": "bae709233f7adb83b46a5ad44e4763daaa8af7eace29a781713e4d7cb1f08e89",
+      "case_id": "grafana-grafana-pr103633-1ccdfad177",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr106778-24d4677828.json",
+      "artifact_sha256": "48fd0839c3f8f8226f58044e917a5c1d8927eab79175e83b39939b515814fda8",
+      "case_id": "grafana-grafana-pr106778-24d4677828",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr107534-d0d4422f9e.json",
+      "artifact_sha256": "bf55874c22e3124ee72ab9065c44de396e1cdefa344c4a08f0af8e246789c796",
+      "case_id": "grafana-grafana-pr107534-d0d4422f9e",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr76186-74710117cb.json",
+      "artifact_sha256": "3f2f38605633971a5fed581222a13a1aa2963220dc58a1e9a38f4c8ce4a693da",
+      "case_id": "grafana-grafana-pr76186-74710117cb",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "artifact_sha256": "116db61bfc98382706d1164bf095f84f285fc08379731aaa8cfc88db1ecf17d5",
+      "case_id": "grafana-grafana-pr79265-1ff10dc6e2",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "artifact_sha256": "d75a2837fd6549abbe3d2ffbedb137c80a2f6de9f96cd685653fec91cd448129",
+      "case_id": "grafana-grafana-pr80329-a24dbb3cc0",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr90045-80de62a20a.json",
+      "artifact_sha256": "2af28a41574fdcca80b4d61346a41544595a53007139295d01914e8aff91e565",
+      "case_id": "grafana-grafana-pr90045-80de62a20a",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr90939-086eb48f48.json",
+      "artifact_sha256": "c23f11bd146e14f61b5de485df0ac03199a91ebcaa3c6c17cd8f92e1105feceb",
+      "case_id": "grafana-grafana-pr90939-086eb48f48",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr94942-03516b9766.json",
+      "artifact_sha256": "07a65ff01acb3a6d53590c00e8d66754b79a4a3fa7ec324dcb89c3e2eb01a58e",
+      "case_id": "grafana-grafana-pr94942-03516b9766",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr97529-b30a8ea395.json",
+      "artifact_sha256": "fade69eafaeb8afbb9d5f4178dd6e4a6305ccfa588a6a305a893fcc8e5c5b06f",
+      "case_id": "grafana-grafana-pr97529-b30a8ea395",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr32918-e125545e1c.json",
+      "artifact_sha256": "6f9be465a4aae4c53ad382c813b88984a14a146ae4f9fb95f4494878a9c8ac9b",
+      "case_id": "keycloak-keycloak-pr32918-e125545e1c",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "artifact_sha256": "5f439daa04e579f0719119910aaeb2b8e7330171c5c033ed6029a534f7e9bdcc",
+      "case_id": "keycloak-keycloak-pr33832-fb78fbfca4",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "artifact_sha256": "219a612110940f5514a8c3c5ba2ce2e0cb8a58fde2a2ad10b68968f3133989a4",
+      "case_id": "keycloak-keycloak-pr36880-3c6bf37b7f",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "artifact_sha256": "569876bf2f6b987321a68b46dd5da8ae3b6c06657e6dda4b0fb5e09b8dbfa5f3",
+      "case_id": "keycloak-keycloak-pr36882-b7f567acb6",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "artifact_sha256": "4dfbd3f810f7109594e371b3825b3f59247a39c2b237efc389932e9d0104e728",
+      "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37429-9694dc5640.json",
+      "artifact_sha256": "786bd70ac0d7f0885929f714067be3803975459274264c5110cf5fefdb09b5b2",
+      "case_id": "keycloak-keycloak-pr37429-9694dc5640",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37634-2979e65c20.json",
+      "artifact_sha256": "0342a180d150e4e3a0427de8d592cb24dd30c0c84382b19bc1585ff8d8565807",
+      "case_id": "keycloak-keycloak-pr37634-2979e65c20",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr38446-d522975328.json",
+      "artifact_sha256": "1b938cddfe2c8f0d836f20ff060df37addfc217101a04ea6f2d34a414ca812d9",
+      "case_id": "keycloak-keycloak-pr38446-d522975328",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "artifact_sha256": "c122149509b565462214b489c9a7a3d8873465345ff270d9b372ad61430d6b33",
+      "case_id": "keycloak-keycloak-pr40940-c3b1c314ee",
+      "model": "anthropic/claude-fable-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "artifact_sha256": "9758da7be6645f6e50227c5bfae1f70d44c68542ca0f5a4e0bf03bec9ff9b4cb",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "artifact_sha256": "93e396a1233372208658fbf9f4385a34b817e00b4ddc73122ed38e00b538ef4d",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "artifact_sha256": "50190886d7bf0e253286d3432bb896be9b4d3563a640344f82ab07fca4a7f90d",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "artifact_sha256": "b93b19810b35e10b7797fcd36c59622517e14328505334f65d4279dc61e2b3a8",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "artifact_sha256": "67f29920058c83c7e5b42f6a01c49480cba04a85f37cb6e9eba46ac92913ba12",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "artifact_sha256": "2ca463027cab94cc42c9366b1174680457db0a1a9bee55351537fd48f30be393",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "artifact_sha256": "4f276b4d434fb3a6c35fb5c44e3f8a1e2780ee70e9c2e82197079eaa5fb37b21",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "artifact_sha256": "2f62ed06f4c6a4fbf292f9f93e9caaec4aa97e573a58e8e591ea6b9396749344",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "artifact_sha256": "d5192050aa71d76d19b87a551faffd52028eff447874f64d8da123cb7a8201cd",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "artifact_sha256": "a64e8108a9ad6269e08c6463be17a2168858054294942deafe2138ca4f19d705",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "artifact_sha256": "4bdaa0c1293b912e49903c5fbc9d888aa4fc7c26a020d89bae6d14846f76b9c6",
+      "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "artifact_sha256": "5bc4441ca0772d8ba3c11fed87c55e936e7eed129ffba45ac606f25a9d4ea9d4",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr1-93109beb71",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "artifact_sha256": "42ce8545fe62b53628733f5338cfcffc9a06a8cf23f21eb05703857184590ab9",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "artifact_sha256": "81b6c136b457b60eb287ae4ed0870fa92528309aabf195aae7809c7539610b35",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "artifact_sha256": "91ce5f874fa0b14a59c307a21eb4594021cb3de3364f9e453d6c901cf595d567",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr10600-98442a0665.json",
+      "artifact_sha256": "073cdf37979eddc7b8d4a555ea1cf1c8e92e7aada2b88e4c334dc1665a9df789",
+      "case_id": "calcom-cal-com-pr10600-98442a0665",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "artifact_sha256": "097f0b6da803a768cab71b21af105fb2359ed9dc27c650c78a026f78854d8edb",
+      "case_id": "calcom-cal-com-pr10967-e0f66e47c7",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr11059-edc4826515.json",
+      "artifact_sha256": "ef7b1f783c26a4e51749017a69650c091cdeab7cce2392a6ebf0058d8949f419",
+      "case_id": "calcom-cal-com-pr11059-edc4826515",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr14740-454655f78e.json",
+      "artifact_sha256": "86a1a52d6592c765d39f1f8493c9feb51132251af9cf64ad15c235dd7f6932bd",
+      "case_id": "calcom-cal-com-pr14740-454655f78e",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "artifact_sha256": "ea3988075726b7efca413b4ab83192b5ec553cd54c5f5d2975dd2d5a64155ee7",
+      "case_id": "calcom-cal-com-pr14943-77f0b97fa3",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "artifact_sha256": "9774b01e5a5693dbbc7df490043c3717ef00b16641f25d4ef34c20eaf5efe449",
+      "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr22532-56a2f3185b.json",
+      "artifact_sha256": "a803a733ba92575541864bda42b53bb79af79f350c6dad23e82ad6b32c71d35b",
+      "case_id": "calcom-cal-com-pr22532-56a2f3185b",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr7232-532a700f35.json",
+      "artifact_sha256": "1363318ce0ef7b67a24c22f292d7fc472f15857d82a5de1ea2fcfec8c7d37e1a",
+      "case_id": "calcom-cal-com-pr7232-532a700f35",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr8087-9c23e8296f.json",
+      "artifact_sha256": "d888230db26938e234ae3a152a691d271276599b6045054563ebcb9b9e4ddf6c",
+      "case_id": "calcom-cal-com-pr8087-9c23e8296f",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr8330-800af76fcf.json",
+      "artifact_sha256": "3a345f5391078fee45382bcd4d8aeb7071ac528837ead1f5bf320dbe93d8d306",
+      "case_id": "calcom-cal-com-pr8330-800af76fcf",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr67876-f0a5b21040.json",
+      "artifact_sha256": "cc02768d8a17ba4bf452d7720b0588a64208695151d89b299ed9a90637f848a0",
+      "case_id": "getsentry-sentry-pr67876-f0a5b21040",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "artifact_sha256": "f894e671a3ad737dcfed9c7002baeab9d5786e176172d8ebca9020fee803d13a",
+      "case_id": "getsentry-sentry-pr77754-eaf4b87db9",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr80168-731fa28972.json",
+      "artifact_sha256": "ea4423170498e2e3a13edf3f94a39a0722d84e2b2fbdb80a8004152150b25e7d",
+      "case_id": "getsentry-sentry-pr80168-731fa28972",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr80528-5c5505e00a.json",
+      "artifact_sha256": "1aef9f6b49cd994d445f3c1e8c79c6d8af24721507a838d486ea4b47e3bbf07e",
+      "case_id": "getsentry-sentry-pr80528-5c5505e00a",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr93824-36dbd11db8.json",
+      "artifact_sha256": "5d333796a8d8af399956eeec8a8437b6845893b2b55ba54bd0bfed10eec0e7f2",
+      "case_id": "getsentry-sentry-pr93824-36dbd11db8",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr95633-118c8d30ab.json",
+      "artifact_sha256": "5ac8e145c1237b217c1dbaaf811e3e9a4bafcd0abe596e11afd0f82137e3ae56",
+      "case_id": "getsentry-sentry-pr95633-118c8d30ab",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr103633-1ccdfad177.json",
+      "artifact_sha256": "90fea42bc347e4ccf2d4cc875a5f713ce2635a0521649054508c260d72cc431a",
+      "case_id": "grafana-grafana-pr103633-1ccdfad177",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr106778-24d4677828.json",
+      "artifact_sha256": "f822a156c7aa9cb405ed866c72e977c9930e154486a1f0d2f5f1bc2e15c01e48",
+      "case_id": "grafana-grafana-pr106778-24d4677828",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr107534-d0d4422f9e.json",
+      "artifact_sha256": "4e6b91a857a8431fdf732532af9017d704cf5ad7d544cda50d57e352d6887c49",
+      "case_id": "grafana-grafana-pr107534-d0d4422f9e",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr76186-74710117cb.json",
+      "artifact_sha256": "8120d15012b391bf876c56542e1c827cd82a16ceb0840f06cf3d0795981ec76d",
+      "case_id": "grafana-grafana-pr76186-74710117cb",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "artifact_sha256": "20b70a28151920291904ecb070651df842d3bfe0e0da1c7cdd9051f98766328e",
+      "case_id": "grafana-grafana-pr79265-1ff10dc6e2",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "artifact_sha256": "4542c9ba766e0025551adc4b696328627c4ee681ce4e0a6a0063a7c2f299d956",
+      "case_id": "grafana-grafana-pr80329-a24dbb3cc0",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr90045-80de62a20a.json",
+      "artifact_sha256": "7de383f7c933a286cba4a2be1a2beeb3eaca149dc0a91c6cd7c09fcf19a4800b",
+      "case_id": "grafana-grafana-pr90045-80de62a20a",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr90939-086eb48f48.json",
+      "artifact_sha256": "1951922e9b5620054aa8fff89f94c00e1c48b9f2c63ba7adacd60693f55b5b28",
+      "case_id": "grafana-grafana-pr90939-086eb48f48",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr94942-03516b9766.json",
+      "artifact_sha256": "716477bd123b5807a3f4701a332e6c1c1b186688fbaf252fe82cb51200e1772d",
+      "case_id": "grafana-grafana-pr94942-03516b9766",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr97529-b30a8ea395.json",
+      "artifact_sha256": "724d9e6a13c6b94ba9135ee66424b89122a67f9945eee848c54acd24b1c4212a",
+      "case_id": "grafana-grafana-pr97529-b30a8ea395",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr32918-e125545e1c.json",
+      "artifact_sha256": "2e9142cefcc44a867680ca333cf41b107738581b46e10b5204d5ac2d08705a69",
+      "case_id": "keycloak-keycloak-pr32918-e125545e1c",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "artifact_sha256": "d340f0b1352a38b60bb4bec20ea11ff9d6df0391752fc5d49dceb64a2113f36a",
+      "case_id": "keycloak-keycloak-pr33832-fb78fbfca4",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "artifact_sha256": "039acdf4ef61c8e2a4f3c1263b1267ea8ed1eb607a3439c0bf5babe79c376aec",
+      "case_id": "keycloak-keycloak-pr36880-3c6bf37b7f",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "artifact_sha256": "cbedce33ad5537ca0ed97a63f8b6cea1c04e721138553ceab54d6934067f606e",
+      "case_id": "keycloak-keycloak-pr36882-b7f567acb6",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "artifact_sha256": "5652a1bc0ea6974ff96f723731864d467c0e35f45671c2bb7458f63070a5dd0e",
+      "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37429-9694dc5640.json",
+      "artifact_sha256": "3d67badcbdb1ffdcd2c1d64587909b941f7141cdf0f3ee2d12846191b2e52e99",
+      "case_id": "keycloak-keycloak-pr37429-9694dc5640",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37634-2979e65c20.json",
+      "artifact_sha256": "1a71fdf32a3c0a42182b26f3f263a962b9c08dc93ce335dac5451765f13d25df",
+      "case_id": "keycloak-keycloak-pr37634-2979e65c20",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr38446-d522975328.json",
+      "artifact_sha256": "6e9d2a33735ac97ac97515c5feef9117d8470ea2c4e135d7b8bf685875789ba2",
+      "case_id": "keycloak-keycloak-pr38446-d522975328",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "artifact_sha256": "0595a066e9fbb6fd9db4b3cea83aad32de853a8617d86b7a12efb1428009b642",
+      "case_id": "keycloak-keycloak-pr40940-c3b1c314ee",
+      "model": "anthropic/claude-opus-4-8",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "artifact_sha256": "cf34d1a623a3fb65220b3c5ba52e9adabb6016801d8a0e58253212abf0107eba",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "artifact_sha256": "61f7961a7ab7542b6649e20700877a17b4ee8ba956003370c9622a46f2b5ec37",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "artifact_sha256": "e192097678d19e155fc2c27eaae798515c7f4f3911397f436550ab56f6772b1d",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "artifact_sha256": "120eab2fb4d95763e086f0ada7add40882389f213c318afe053470bf98f32283",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "artifact_sha256": "7f723d4aca89ccb0d40425ac318f720a01c104918259f4dddc26aa254a32547d",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "artifact_sha256": "a90b3720b94064fae1e5b4a0cd76c6ecf531b2742fc075db0807a37cbfe30879",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "artifact_sha256": "87921e3263d42f412766b48f3c3d17191467606c105db95fb0dfb5aaf5ecd822",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "artifact_sha256": "6869d62779d357c68f31e8ff10ff8905e281f2616a578a4c6794c56887e8c401",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "artifact_sha256": "897e33ba2966b64e9ad4c14cdb2d0b1cacaea175880afb6e0732fce627e6a1bb",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "artifact_sha256": "1bf878abcac88a46cb03348b2683d87fe0dd41ebb758d38ce8fe30888267ab22",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "artifact_sha256": "c02558124334fb5ab618c6dd3c7b356d982c70edc09b8d1405af6115d0cfaff1",
+      "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "artifact_sha256": "d7052521e88bdef00c548b6b1736692c65820335d2e5f2596ff079bc784df9ea",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr1-93109beb71",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "artifact_sha256": "002b8db9e746257da7b34cca2c0064cb4acdf4257f7b2757e6debce8b040723d",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "artifact_sha256": "de22d75d9d2cd9637b7d74867f5e77fc0bfabd6f29539c69d0ec4a6bd35a3978",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "artifact_sha256": "e10ea763fd9235e7d547b0dbf0f4a2a97c52b8b3dd7e9ca58bccbc3c9398babd",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr10600-98442a0665.json",
+      "artifact_sha256": "4ee73be71bca9eff6c3e37993ae1d3984657283ad22f237d0f5a47adbe502f41",
+      "case_id": "calcom-cal-com-pr10600-98442a0665",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "artifact_sha256": "7db791aacffab6493956f23cdcdd8969aa0a50a5ee4adf4f708efb0c43560ad3",
+      "case_id": "calcom-cal-com-pr10967-e0f66e47c7",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr11059-edc4826515.json",
+      "artifact_sha256": "b930741fcc6dd6ecca4a5c1da137adb2705e5d911eabd81aa65e8761a742d461",
+      "case_id": "calcom-cal-com-pr11059-edc4826515",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr14740-454655f78e.json",
+      "artifact_sha256": "4c90172a8d5d8305877b933e89580bfb71f5301be027c5b5452cdb538e3d7df4",
+      "case_id": "calcom-cal-com-pr14740-454655f78e",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "artifact_sha256": "20353a5c928f3b5268ad370563215a15f1377011be5494e57b11a978171b2227",
+      "case_id": "calcom-cal-com-pr14943-77f0b97fa3",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "artifact_sha256": "2bf34a050e301353204723e2bba271880e3333fc8212e3356fcdd87985bc065d",
+      "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr22532-56a2f3185b.json",
+      "artifact_sha256": "364d09762852e70ad29ab1635fff3ee63d293365faed87386dc42b4129e174c3",
+      "case_id": "calcom-cal-com-pr22532-56a2f3185b",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr7232-532a700f35.json",
+      "artifact_sha256": "bb85b3f7adda4a8160834bc29aa84ccf2c396a4dec98a8186a45171458a8983a",
+      "case_id": "calcom-cal-com-pr7232-532a700f35",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr8087-9c23e8296f.json",
+      "artifact_sha256": "e6a6affdec699c029c214b895996f422ca841679da38e6fa903c9539a5200f7e",
+      "case_id": "calcom-cal-com-pr8087-9c23e8296f",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr8330-800af76fcf.json",
+      "artifact_sha256": "ef98021878ef6e8a7cecfb418bf9628e75e1c1126cfa746c921b8f0271aebbc9",
+      "case_id": "calcom-cal-com-pr8330-800af76fcf",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr67876-f0a5b21040.json",
+      "artifact_sha256": "3475491cf3b03986fbf1513e69525e680a97c1c0150a4347baa947d33d328866",
+      "case_id": "getsentry-sentry-pr67876-f0a5b21040",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "artifact_sha256": "a86e01e9abd1d2d469179d66ab6d0ec5cb689b848e8f6e5f7fad9c97c38ac636",
+      "case_id": "getsentry-sentry-pr77754-eaf4b87db9",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr80168-731fa28972.json",
+      "artifact_sha256": "d8baed4e8060912c37f95a69daf0862e267ab978483e3696585987290744cb4c",
+      "case_id": "getsentry-sentry-pr80168-731fa28972",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr80528-5c5505e00a.json",
+      "artifact_sha256": "37a7804b55577a8a3e0897e50e08ce21069370df19f13b1224bd1a3557ee1062",
+      "case_id": "getsentry-sentry-pr80528-5c5505e00a",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr93824-36dbd11db8.json",
+      "artifact_sha256": "65054f9d9bfcff32accf5704c39710721caa4220e4e5984a5952b80d5de94c43",
+      "case_id": "getsentry-sentry-pr93824-36dbd11db8",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr95633-118c8d30ab.json",
+      "artifact_sha256": "3f8b30761408894202ea566895cd106c67f8057e9411e407ebdf2bdd531820a7",
+      "case_id": "getsentry-sentry-pr95633-118c8d30ab",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr103633-1ccdfad177.json",
+      "artifact_sha256": "8933d1e57ced8f33ec5fa36e6b523236e13492d9ad046dec28646945c0ae6267",
+      "case_id": "grafana-grafana-pr103633-1ccdfad177",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr106778-24d4677828.json",
+      "artifact_sha256": "691f96ed037c77cd2c0f8cabc3a85667368c24ed878a6c7ca97cb26659e861ce",
+      "case_id": "grafana-grafana-pr106778-24d4677828",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr107534-d0d4422f9e.json",
+      "artifact_sha256": "bdd5528cda3d7d7adbd753d8b2307beb84f95bf526e6d7d955483c56c2af6aa1",
+      "case_id": "grafana-grafana-pr107534-d0d4422f9e",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr76186-74710117cb.json",
+      "artifact_sha256": "8a367b11e65f793bab0f2d1b0bc16823ddb1f4ba3d01d0f068d3a314418385b9",
+      "case_id": "grafana-grafana-pr76186-74710117cb",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "artifact_sha256": "70a9175f6af300b14554d3b880958421a8ed76a89f925c002e9ea7e1c2683556",
+      "case_id": "grafana-grafana-pr79265-1ff10dc6e2",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "artifact_sha256": "049328dd446a43b5a08bb04d70fd8bcace0175a3ba78b157fdcb98f5be5c8e02",
+      "case_id": "grafana-grafana-pr80329-a24dbb3cc0",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr90045-80de62a20a.json",
+      "artifact_sha256": "72ff487a26f9c2114f76e0313ea83c092689335a621e70bd7631bddecfc8a84a",
+      "case_id": "grafana-grafana-pr90045-80de62a20a",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr90939-086eb48f48.json",
+      "artifact_sha256": "81623f219cdd93787b5cf0981642d30885ffa66570b7f72d9ba6ee19f3231854",
+      "case_id": "grafana-grafana-pr90939-086eb48f48",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr94942-03516b9766.json",
+      "artifact_sha256": "0b8bd43b6545376e1b514b5df7f3617d9d709e3967893efb9f4d33f1075a184b",
+      "case_id": "grafana-grafana-pr94942-03516b9766",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr97529-b30a8ea395.json",
+      "artifact_sha256": "8e28ee29bc992c65fa63305fa8d3e0af6e1762e15a10566692637916d7a73061",
+      "case_id": "grafana-grafana-pr97529-b30a8ea395",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr32918-e125545e1c.json",
+      "artifact_sha256": "cc0be9198cb9e3b9ee7f9515afeb4b4588510c155e915f9f45d9c948832ed57e",
+      "case_id": "keycloak-keycloak-pr32918-e125545e1c",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "artifact_sha256": "2fc8f7a092af1e2ee84f529334e16982ff59ac6ea7315a0165eaf10af1f50006",
+      "case_id": "keycloak-keycloak-pr33832-fb78fbfca4",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "artifact_sha256": "589843770176789c760aa1feb3c0196204eadfa4d151831ad25c6ea2398fa16d",
+      "case_id": "keycloak-keycloak-pr36880-3c6bf37b7f",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "artifact_sha256": "08e624a596134d44c52d8dd739fd9b69949d0a8579df31aee0b7fee7b0314c13",
+      "case_id": "keycloak-keycloak-pr36882-b7f567acb6",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "artifact_sha256": "8b312a137e3f473cd4770f5db7c2ed550d2a0375a425046acb79cadb71de06ec",
+      "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37429-9694dc5640.json",
+      "artifact_sha256": "7f3efc601793e3a4c4c1e6f18daaf4914560635571b12726884e7a0efe12d99a",
+      "case_id": "keycloak-keycloak-pr37429-9694dc5640",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37634-2979e65c20.json",
+      "artifact_sha256": "6da773857f3e56679b0532c4814fffb782e8b696d1e55692df99385fd65b42dc",
+      "case_id": "keycloak-keycloak-pr37634-2979e65c20",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr38446-d522975328.json",
+      "artifact_sha256": "c7a50c53e0d3ae17e8dd3682a25ef4e1ec64db45b0f24a73a0941e216d86dc46",
+      "case_id": "keycloak-keycloak-pr38446-d522975328",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "artifact_sha256": "51525139917d7521dfad11c90eab2ed315c402e713cf9382d3604f7e23551da7",
+      "case_id": "keycloak-keycloak-pr40940-c3b1c314ee",
+      "model": "anthropic/claude-opus-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "artifact_sha256": "6acc3f712121422240311ad40c2a4e9363f9955acd08e87ee0c73c8c47bad9ab",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "artifact_sha256": "2d9030981cbc20881af391042dbc538fbf50d13d35f80b8eaeeb2bf057852030",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "artifact_sha256": "2f250f4ba4c9818660f09de847916f6627a2c86826b04e041c2a0b092a8bb51e",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "artifact_sha256": "ffd40c6a85b04b548d2ae8c00004331675c295885a33eaf0086ff296baa388dc",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "artifact_sha256": "7a40b2798fb7e796a4a03dfe4ce58fec157d549be5ee2bf29509b3ee4db7493e",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "artifact_sha256": "8d4431626fc9b0722b474b335ff88b8b3b440997eef88c7c4ce3a9213e78ae34",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "artifact_sha256": "624c6ac6d73cffd42e6ab499468d7cbf05c69396eb31828aee41f5c9f1174f70",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "artifact_sha256": "0e34de9db7917e181677b9916218056163d1ab1a1eccee78082d6e2bbbbd71bf",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "artifact_sha256": "bb88269902986e8aac077a9ead982aa4db89da4f749be23eb0b352642afb3f1f",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "artifact_sha256": "4c4c39af58d37d34fb02e2a814aa1111fa2bc9e0928dd5a93ee4677f927dd681",
+      "case_id": "ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "artifact_sha256": "6f6a198f6fa9e3f7c23e05f74a5080d6107725090625b7bd9dddec5fcf1a7f68",
+      "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "artifact_sha256": "31fecc2f6385678aab69fc42284493a5afc1db5c61ad853e2cfaa4d6bc299716",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr1-93109beb71",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "artifact_sha256": "948d89d98d2056eb5ebee283d37f05b14f70bcc5862506749a9ea03706dba621",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "artifact_sha256": "cb4e9dadf21a5de41dd4f4f3a534990effbd1b7fb9bbb6c294c8e8ed78fb6bf3",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "artifact_sha256": "9d8e483059c0bad6c293d4541ce365595703ba8d4d883019104f888bee2997da",
+      "case_id": "ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr10600-98442a0665.json",
+      "artifact_sha256": "6e288809b6ace6204af0259271317c268dd39b70f6eba46dc35756b5e12b3171",
+      "case_id": "calcom-cal-com-pr10600-98442a0665",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "artifact_sha256": "5dcf0c323ea96539f0b051a817d64582778aa3f5d123ae370daff5ff0202c9a1",
+      "case_id": "calcom-cal-com-pr10967-e0f66e47c7",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr11059-edc4826515.json",
+      "artifact_sha256": "f2ecbf79709106d42e2c22e5f7fc6810a5b352d89af961c922d5458be7cb9975",
+      "case_id": "calcom-cal-com-pr11059-edc4826515",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr14740-454655f78e.json",
+      "artifact_sha256": "aa50598625824a061006912b20da821b99375ec97aeda008ffa40074655e7e19",
+      "case_id": "calcom-cal-com-pr14740-454655f78e",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "artifact_sha256": "9ec2e1ec40e0347384995b12912293dbfdf405d7f0b5a1624fee58bcdc48f4d0",
+      "case_id": "calcom-cal-com-pr14943-77f0b97fa3",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "artifact_sha256": "8116227798bed8d697eb64658dc36882b34b9511e99d2fdf2d5d34dbb3f8a1ad",
+      "case_id": "calcom-cal-com-pr22345-e55cdc5b2e",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr22532-56a2f3185b.json",
+      "artifact_sha256": "aba1536b4a9a0e1ef132ebadea7c388eb39ed9c1034d2408a6b28db422658a5d",
+      "case_id": "calcom-cal-com-pr22532-56a2f3185b",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr7232-532a700f35.json",
+      "artifact_sha256": "a1edd7afaa632fb6b48a2293a48e86e33c873c9858c53a60e01950d0cd476dcf",
+      "case_id": "calcom-cal-com-pr7232-532a700f35",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr8087-9c23e8296f.json",
+      "artifact_sha256": "52db2c61d726b57829b4a40c7d9fcf932fe4fbff21e596165ad5935d2ddd80a9",
+      "case_id": "calcom-cal-com-pr8087-9c23e8296f",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr8330-800af76fcf.json",
+      "artifact_sha256": "137cd595f600c9f47a083927b82024e6c91f189fbc40d9ddb9afccfa4edbc8ec",
+      "case_id": "calcom-cal-com-pr8330-800af76fcf",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr67876-f0a5b21040.json",
+      "artifact_sha256": "d620a4de5426b64283ac18b46fdeea79b05c611cbb0e7601cd8ceac6bacffb3d",
+      "case_id": "getsentry-sentry-pr67876-f0a5b21040",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "artifact_sha256": "715ae68e9865a8ef6ecd0024b774af60d73a437faab815446014158b519b22bb",
+      "case_id": "getsentry-sentry-pr77754-eaf4b87db9",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr80168-731fa28972.json",
+      "artifact_sha256": "69a3903e0dfdeeb1f2de931a0319885c7c22e256092c3c0a0bd682a5b3480fcd",
+      "case_id": "getsentry-sentry-pr80168-731fa28972",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr80528-5c5505e00a.json",
+      "artifact_sha256": "61132f4900b8427ee8765e25c181d186595d8ffbc480653439e93b5fc60600a7",
+      "case_id": "getsentry-sentry-pr80528-5c5505e00a",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr93824-36dbd11db8.json",
+      "artifact_sha256": "fc6a8cbe00547d96028c57c8e8fcb90b9f282c4d4e212295a0fea3329d22676a",
+      "case_id": "getsentry-sentry-pr93824-36dbd11db8",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr95633-118c8d30ab.json",
+      "artifact_sha256": "1559bae31e2be0dd0df7ad099838d6ef642079e67c11bbcd038fcbada2ad8bf4",
+      "case_id": "getsentry-sentry-pr95633-118c8d30ab",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr103633-1ccdfad177.json",
+      "artifact_sha256": "efc2781d3d171f739ccf8bc58cd69891e8ed40419e245b69ba8ea122bf48335f",
+      "case_id": "grafana-grafana-pr103633-1ccdfad177",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr106778-24d4677828.json",
+      "artifact_sha256": "f478bf6d659d9c660af5231d54bfff3bd49169d21fc630e4e49215f7cb1e016d",
+      "case_id": "grafana-grafana-pr106778-24d4677828",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr107534-d0d4422f9e.json",
+      "artifact_sha256": "af0512dd2953b5e64b1c226b6cf2eac155ba28ecd05d9d458783274e2d89bf9f",
+      "case_id": "grafana-grafana-pr107534-d0d4422f9e",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr76186-74710117cb.json",
+      "artifact_sha256": "d3d1d6c8b586daaae6999af858c56a29fe33e61e1e4da42743068ccf962ef97f",
+      "case_id": "grafana-grafana-pr76186-74710117cb",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "artifact_sha256": "c1a9d637cdcfd6b82155f25bf6f636a44be5c7100df7fa56d2afa27a937580e2",
+      "case_id": "grafana-grafana-pr79265-1ff10dc6e2",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "artifact_sha256": "ef7868f15ca24aa28bd2721dcc1bf108b1f7e8816e8237c6b95ed6509eda8b9d",
+      "case_id": "grafana-grafana-pr80329-a24dbb3cc0",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr90045-80de62a20a.json",
+      "artifact_sha256": "aff5323f2c05430d914fe091e102f6bb4697d08b0e644cda277bcec813b8911a",
+      "case_id": "grafana-grafana-pr90045-80de62a20a",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr90939-086eb48f48.json",
+      "artifact_sha256": "9e5a9f12be6a39078250e12318391a43860d686f6c026ddd9d20bbdab78798b0",
+      "case_id": "grafana-grafana-pr90939-086eb48f48",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr94942-03516b9766.json",
+      "artifact_sha256": "5c4b050f34955099ebe4b2c6d9819d2f587576d4de0e5c1f3bfb34a5599dd286",
+      "case_id": "grafana-grafana-pr94942-03516b9766",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr97529-b30a8ea395.json",
+      "artifact_sha256": "974e796e2135746731f1ca2f93426d940e3ec1bb96cda3cedd7d733d1f8ce6a6",
+      "case_id": "grafana-grafana-pr97529-b30a8ea395",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr32918-e125545e1c.json",
+      "artifact_sha256": "e951373a4e5eb0751015d93d33ebb3c1a18be71f9e25e9a5dd5fac8b1bb2d0b0",
+      "case_id": "keycloak-keycloak-pr32918-e125545e1c",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "artifact_sha256": "09b568a8367b37b2dcc4e0d08fce13c91c246c575430f22ca648e3a23a2d07f5",
+      "case_id": "keycloak-keycloak-pr33832-fb78fbfca4",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "artifact_sha256": "db1c27da3d1f880900c49612253080799e189d26f385abeb4f76858f05adff57",
+      "case_id": "keycloak-keycloak-pr36880-3c6bf37b7f",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "artifact_sha256": "2168d19c2f0218cea8d94cb5489c5504d47d4504e580b069c607f81079b06354",
+      "case_id": "keycloak-keycloak-pr36882-b7f567acb6",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "artifact_sha256": "ff2b1923242cd045f1075d6d8f8b32585e3d019b0754b595d8032ce4af5e9354",
+      "case_id": "keycloak-keycloak-pr37038-e30cc1b5ff",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37429-9694dc5640.json",
+      "artifact_sha256": "1a6299bfcfcedcbe87a1a985899ca55b6b829cd71afa27ec6490beaddbaa6b03",
+      "case_id": "keycloak-keycloak-pr37429-9694dc5640",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37634-2979e65c20.json",
+      "artifact_sha256": "9a2fb8e0e2767b523198640308d2f015353ac19a0f5e8c6a771633b6ff75aad5",
+      "case_id": "keycloak-keycloak-pr37634-2979e65c20",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr38446-d522975328.json",
+      "artifact_sha256": "2c28aa9cfef6e49f76e40fc956956e3b14aa45abc5b6d9ea192ddf556b10c5f3",
+      "case_id": "keycloak-keycloak-pr38446-d522975328",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    },
+    {
+      "artifact": "artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "artifact_sha256": "128401049da6fabf7e28be3806a1eea3fde62f012be5e5545c50e7a7f6a5b7db",
+      "case_id": "keycloak-keycloak-pr40940-c3b1c314ee",
+      "model": "anthropic/claude-sonnet-5",
+      "status": "resumed"
+    }
+  ],
+  "schema_version": "bugbunny-benchmark-checkpoint-v1",
+  "updated_at": "2026-08-24T08:46:06.677855Z"
+}

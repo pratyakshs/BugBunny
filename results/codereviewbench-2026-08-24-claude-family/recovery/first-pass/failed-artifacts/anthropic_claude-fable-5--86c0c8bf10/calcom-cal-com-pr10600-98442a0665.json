@@ -1,0 +1,2368 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "calcom-cal-com-pr10600-98442a0665",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "fa5e6a14afd18e7a3efa2cdf48b2cb9629fe4cf1aa9b5f5c5690daed20beff8a",
+    "golden_url": "https://github.com/calcom/cal.com/pull/10600",
+    "review_url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR10600__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-c6d3d9ff3da5",
+      "cost_usd": 0.7552975,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 48500,
+      "latency_ms": 43368,
+      "output_tokens": 2981,
+      "request_sha256": "e36defc59a372caddb71bc867b3cbc80f11f5ac2a7f64cb77758420ca2007c8c",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "01cae182760a1c55d2ec578a6ffb0afc0728757a16f0dc9f6a72b8df0ef59e25",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 2,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-c6d3d9ff3da5",
+      "cost_usd": 1.58677,
+      "error": "_BackendFailure: Martian message has no JSON content (finish_reason='stop', completion_tokens=276, reasoning_tokens=276)",
+      "gateway": "martian_http",
+      "input_tokens": 125298,
+      "latency_ms": 30694,
+      "output_tokens": 411,
+      "request_sha256": "e7c4b0de209e90ca0710bae691429f155da0eb9a0c281be4dc5f82655a640ae4",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "b4fbc76ad08d7f9a3f35b8850488f46ed38d0734a3e15f9d89766d04ac55e241",
+      "retry_errors": [
+        "ResponseFormatError: Martian message has no JSON content (finish_reason='stop', completion_tokens=135, reasoning_tokens=135)",
+        "ResponseFormatError: Martian message has no JSON content (finish_reason='stop', completion_tokens=276, reasoning_tokens=276)"
+      ],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    }
+  ],
+  "completed_at": "2026-08-24T05:44:32.166226Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-fable-5",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.396455907317509,
+      "largest_verifier_input_char_budget_utilization": 0.0,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 0,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 0,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 0,
+      "verifier_generation_context_files_available": 0
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      ".env.example",
+      ".github/actions/cache-db/action.yml",
+      ".github/matchers/tsc-absolute.json",
+      ".github/workflows/apply-issue-labels-to-pr.yml",
+      ".github/workflows/lint.yml",
+      ".github/workflows/release-docker.yaml",
+      ".snaplet/transform.ts",
+      ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+      ".yarn/releases/yarn-3.4.1.cjs",
+      "README.md",
+      "apps/api/test/jest-setup.js",
+      "apps/web/components/AddToHomescreen.tsx",
+      "apps/web/components/auth/BackupCode.tsx",
+      "apps/web/components/auth/TwoFactor.tsx",
+      "apps/web/components/security/ChangePasswordSection.tsx",
+      "apps/web/components/security/DisableTwoFactorModal.tsx",
+      "apps/web/components/security/EnableTwoFactorModal.tsx",
+      "apps/web/components/security/TwoFactorAuthSection.tsx",
+      "apps/web/components/settings/DisableTwoFactorModal.tsx",
+      "apps/web/components/settings/EnableTwoFactorModal.tsx",
+      "apps/web/components/settings/TwoFactorAuthAPI.ts",
+      "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+      "apps/web/pages/api/auth/two-factor/totp/enable.ts",
+      "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+      "apps/web/pages/auth/login.tsx",
+      "apps/web/pages/settings/security/two-factor-auth.tsx",
+      "apps/web/playwright/availability.e2e.ts",
+      "apps/web/playwright/fixtures/users.ts",
+      "apps/web/playwright/login.2fa.e2e.ts",
+      "apps/web/playwright/manage-booking-questions.e2e.ts",
+      "apps/web/public/static/locales/en/common.json",
+      "apps/web/test/jest-setup.js",
+      "apps/web/test/lib/next-config.test.ts",
+      "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+      "packages/app-store/typeform/playwright/tests/basic.e2e.ts",
+      "packages/features/auth/lib/ErrorCode.ts",
+      "packages/features/auth/lib/next-auth-options.ts",
+      "packages/lib/crypto.ts",
+      "packages/lib/test/builder.ts",
+      "packages/prisma/migrations/20210605225044_init/migration.sql",
+      "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+      "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+      "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+      "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql",
+      "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql",
+      "packages/prisma/schema.prisma",
+      "packages/ui/components/form/inputs/Input.tsx",
+      "packages/ui/components/form/inputs/input.test.tsx"
+    ],
+    "generation_batches": {
+      "b0000-c6d3d9ff3da5": {
+        "chunk_ids": [
+          "f0000:c0000-2b6380075b86",
+          "f0001:c0000-2d3e6508be31",
+          "f0002:c0000-7f0dd600dd27",
+          "f0003:c0000-b83055655352",
+          "f0004:c0000-f45711913bea",
+          "f0005:c0000-a66ff2c873bb",
+          "f0006:c0000-05652423e3fe",
+          "f0007:c0000-1a93fbf4a7ee",
+          "f0008:c0000-fc05c6816428",
+          "f0009:c0000-563947cbaf34",
+          "f0010:c0000-59a1788ce115",
+          "f0011:c0000-f554c59e3665",
+          "f0012:c0000-bb0a24e007e5",
+          "f0013:c0000-b89f6aed4ccd",
+          "f0014:c0000-b0b38db5ad45",
+          "f0015:c0000-4ae944ceec75"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.396455907317509,
+        "context_chars": 66559,
+        "context_files_available_before_generation_prompt_fit": [
+          ".env.example",
+          ".github/actions/cache-db/action.yml",
+          ".github/matchers/tsc-absolute.json",
+          ".github/workflows/apply-issue-labels-to-pr.yml",
+          ".github/workflows/lint.yml",
+          ".github/workflows/release-docker.yaml",
+          ".snaplet/transform.ts",
+          ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "README.md",
+          "apps/api/test/jest-setup.js",
+          "apps/web/components/AddToHomescreen.tsx",
+          "apps/web/components/auth/BackupCode.tsx",
+          "apps/web/components/auth/TwoFactor.tsx",
+          "apps/web/components/security/ChangePasswordSection.tsx",
+          "apps/web/components/security/DisableTwoFactorModal.tsx",
+          "apps/web/components/security/EnableTwoFactorModal.tsx",
+          "apps/web/components/security/TwoFactorAuthSection.tsx",
+          "apps/web/components/settings/DisableTwoFactorModal.tsx",
+          "apps/web/components/settings/EnableTwoFactorModal.tsx",
+          "apps/web/components/settings/TwoFactorAuthAPI.ts",
+          "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+          "apps/web/pages/api/auth/two-factor/totp/enable.ts",
+          "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+          "apps/web/pages/auth/login.tsx",
+          "apps/web/pages/settings/security/two-factor-auth.tsx",
+          "apps/web/playwright/availability.e2e.ts",
+          "apps/web/playwright/fixtures/users.ts",
+          "apps/web/playwright/login.2fa.e2e.ts",
+          "apps/web/playwright/manage-booking-questions.e2e.ts",
+          "apps/web/public/static/locales/en/common.json",
+          "apps/web/test/jest-setup.js",
+          "apps/web/test/lib/next-config.test.ts",
+          "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+          "packages/app-store/typeform/playwright/tests/basic.e2e.ts",
+          "packages/features/auth/lib/ErrorCode.ts",
+          "packages/features/auth/lib/next-auth-options.ts",
+          "packages/lib/crypto.ts",
+          "packages/lib/test/builder.ts",
+          "packages/prisma/migrations/20210605225044_init/migration.sql",
+          "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+          "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+          "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+          "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql",
+          "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql",
+          "packages/prisma/schema.prisma",
+          "packages/ui/components/form/inputs/Input.tsx",
+          "packages/ui/components/form/inputs/input.test.tsx"
+        ],
+        "context_files_exposed_to_model": [
+          ".env.example",
+          ".github/actions/cache-db/action.yml",
+          ".github/matchers/tsc-absolute.json",
+          ".github/workflows/apply-issue-labels-to-pr.yml",
+          ".github/workflows/lint.yml",
+          ".github/workflows/release-docker.yaml",
+          ".snaplet/transform.ts",
+          ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+          ".yarn/releases/yarn-3.4.1.cjs",
+          "README.md",
+          "apps/api/test/jest-setup.js",
+          "apps/web/components/AddToHomescreen.tsx",
+          "apps/web/components/auth/BackupCode.tsx",
+          "apps/web/components/auth/TwoFactor.tsx",
+          "apps/web/components/security/ChangePasswordSection.tsx",
+          "apps/web/components/security/DisableTwoFactorModal.tsx",
+          "apps/web/components/security/EnableTwoFactorModal.tsx",
+          "apps/web/components/security/TwoFactorAuthSection.tsx",
+          "apps/web/components/settings/DisableTwoFactorModal.tsx",
+          "apps/web/components/settings/EnableTwoFactorModal.tsx",
+          "apps/web/components/settings/TwoFactorAuthAPI.ts",
+          "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+          "apps/web/pages/api/auth/two-factor/totp/enable.ts",
+          "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+          "apps/web/pages/auth/login.tsx",
+          "apps/web/pages/settings/security/two-factor-auth.tsx",
+          "apps/web/playwright/availability.e2e.ts",
+          "apps/web/playwright/fixtures/users.ts",
+          "apps/web/playwright/login.2fa.e2e.ts",
+          "apps/web/playwright/manage-booking-questions.e2e.ts",
+          "apps/web/public/static/locales/en/common.json",
+          "apps/web/test/jest-setup.js",
+          "apps/web/test/lib/next-config.test.ts",
+          "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+          "packages/app-store/typeform/playwright/tests/basic.e2e.ts",
+          "packages/features/auth/lib/ErrorCode.ts",
+          "packages/features/auth/lib/next-auth-options.ts",
+          "packages/lib/crypto.ts",
+          "packages/lib/test/builder.ts",
+          "packages/prisma/migrations/20210605225044_init/migration.sql",
+          "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+          "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+          "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+          "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql",
+          "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql",
+          "packages/prisma/schema.prisma",
+          "packages/ui/components/form/inputs/Input.tsx",
+          "packages/ui/components/form/inputs/input.test.tsx"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "ef6fd88c95afabe4af1ac09f82e15b596ef97ff307c840bb2ed82612a1f42eb4",
+        "context_truncated": true,
+        "context_utf8_bytes": 66771,
+        "estimated_context_tokens": 16640,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": null,
+        "generation_input_char_budget_utilization": null,
+        "generation_prompt_chars": null,
+        "generation_prompt_utf8_bytes": null,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 48
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 16,
+    "packets": {
+      "f0000:c0000-2b6380075b86": {
+        "callers": 4,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 6,
+        "prompt_chars": 2082,
+        "prompt_sha256": "cc111721d8e7b273ece4aa360cbf666571769ed0d15317a141a8a4d653284639",
+        "symbols": [
+          "TwoFactor",
+          "useLocale",
+          "useFormContext",
+          "register"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 1
+      },
+      "f0001:c0000-2d3e6508be31": {
+        "callers": 0,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 2106,
+        "prompt_sha256": "bc93036c6b4f1b795da55b08dee0982723004e3bd9d4b0c181a801770c399b03",
+        "symbols": [
+          "TwoFactor",
+          "center",
+          "autoFocus",
+          "index"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0002:c0000-7f0dd600dd27": {
+        "callers": 6,
+        "definitions": 3,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2133,
+        "prompt_sha256": "016f80097df28a1cad9d467972fe156dbebb38c72027631aab86f609b3a2e540",
+        "symbols": [
+          "handleDisable",
+          "useState",
+          "setValue",
+          "setErrorMessage"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0003:c0000-b83055655352": {
+        "callers": 6,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2067,
+        "prompt_sha256": "81c3d098ed91bc0d852cdaf7481acba65f0230c8ad8a6ae5c5ea0e5c05bf0fe7",
+        "symbols": [
+          "useState",
+          "setPassword",
+          "setErrorMessage",
+          "setStep"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0004:c0000-f45711913bea": {
+        "callers": 4,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 2124,
+        "prompt_sha256": "1fbff553d97d5077a0ac6a2da3648adf6549d449042204a21d2f47247c3ab86b",
+        "symbols": [
+          "disable",
+          "stringify",
+          "JSON",
+          "password"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0005:c0000-a66ff2c873bb": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2083,
+        "prompt_sha256": "a57a9c0a4ac40ae8f9df3dacff74b501b9ee6785bf7684e6f15aba6fd36cf69f",
+        "symbols": [
+          "error",
+          "Error",
+          "status",
+          "json"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0006:c0000-05652423e3fe": {
+        "callers": 6,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 2146,
+        "prompt_sha256": "14a49d2ffb463fffa1e86fb15388ff4b4495f108be857e04c289bb15e9e23ea8",
+        "symbols": [
+          "Array",
+          "randomBytes",
+          "toString",
+          "symmetricEncrypt"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0007:c0000-1a93fbf4a7ee": {
+        "callers": 6,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2160,
+        "prompt_sha256": "496b13437b979f48312f7ad8082ecd56d73e9886a438788ea36502909887b75b",
+        "symbols": [
+          "useState",
+          "setTwoFactorLostAccess",
+          "setValue",
+          "setTwoFactorRequired"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0008:c0000-fc05c6816428": {
+        "callers": 5,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2146,
+        "prompt_sha256": "1e688b465dba1fab922ab915ef574880dca2047ce50053567b1769c9ba159679",
+        "symbols": [
+          "waitForEvent",
+          "getByTestId",
+          "click",
+          "expect"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0009:c0000-563947cbaf34": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 1536,
+        "prompt_sha256": "c84920b289caf3a96e5ad0f048a56f84faf4e49b2a0eeeb503bd1abb7c63c7b5",
+        "symbols": [
+          "backup_code",
+          "Backup",
+          "Code",
+          "backup_codes"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0010:c0000-59a1788ce115": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 2144,
+        "prompt_sha256": "9dc48831c71924838ce81b046b937ea1fe155c3a8c457d48dd400ae1c40ba403",
+        "symbols": [
+          "ErrorCode",
+          "IncorrectBackupCode",
+          "MissingBackupCodes",
+          "incorrect"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0011:c0000-f554c59e3665": {
+        "callers": 6,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 2161,
+        "prompt_sha256": "8ed066f9f697e5da6196e5d7a20c2256e2ba3b069d1508f49eb79ba32ff9c9ab",
+        "symbols": [
+          "error",
+          "Error",
+          "parse",
+          "symmetricDecrypt"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0012:c0000-bb0a24e007e5": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2073,
+        "prompt_sha256": "e6001e74b7199acc302019828e7683e2d7d55e1a76604b50be14e634d79bcb6a",
+        "symbols": [
+          "backupCodes"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 6
+      },
+      "f0013:c0000-b89f6aed4ccd": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 1495,
+        "prompt_sha256": "0a2462324b4e2645821f8fbb0a46375807360bd89940537d604a507b1413f6b3",
+        "symbols": [
+          "AlterTable",
+          "ALTER",
+          "TABLE",
+          "ADD"
+        ],
+        "tests": 0,
+        "truncated": false,
+        "usages": 6
+      },
+      "f0014:c0000-b0b38db5ad45": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 2025,
+        "prompt_sha256": "98c3e130194a0245b232fe811a0c59b0e56e9a18edd6d1d867ffad1af7544036",
+        "symbols": [
+          "String",
+          "backupCodes"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0015:c0000-4ae944ceec75": {
+        "callers": 1,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 2086,
+        "prompt_sha256": "5193bc5698f892db85d2a0d3004ec00489c99abde2b3205e33cb704fe5f2eff7",
+        "symbols": [
+          "toggleIsPasswordVisible",
+          "button",
+          "className",
+          "text"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 6
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 900,
+        "serialized_chars": 962,
+        "serialized_limit_chars": 6000,
+        "sha256": "f3a2d194e2cb60de8fa3ca7da95a72efe3881ee2bce380c51658d4aba045f4a3",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 22,
+        "serialized_chars": 24,
+        "serialized_limit_chars": 1000,
+        "sha256": "6c2494454c8381e8ac98fe3018c83f78b96afe5526da7394cccb716262de09e6",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 32567,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 173798
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-c6d3d9ff3da5": {
+          "action_counts": {
+            "list": 0,
+            "read": 7,
+            "search": 5
+          },
+          "actions_executed": 12,
+          "actions_failed": 0,
+          "additional_context_files_selected": 13,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_exposed_to_model": [
+            "apps/web/components/security/DisableTwoFactorModal.tsx",
+            "apps/web/components/security/EnableTwoFactorModal.tsx",
+            "apps/web/components/security/TwoFactorAuthSection.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx",
+            "apps/web/components/settings/EnableTwoFactorModal.tsx",
+            "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+            "apps/web/pages/api/auth/two-factor/totp/enable.ts",
+            "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+            "apps/web/pages/auth/login.tsx",
+            "apps/web/pages/settings/security/two-factor-auth.tsx",
+            "apps/web/public/static/locales/en/common.json",
+            "packages/features/auth/lib/next-auth-options.ts",
+            "packages/lib/crypto.ts"
+          ],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 16640,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": true,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 66559,
+          "hypotheses_final": 6,
+          "hypotheses_open_final": 6,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 0,
+          "hypotheses_returned": 6,
+          "hypothesis_linked_actions": 12,
+          "largest_selector_input_char_budget_utilization": 0.4988451310450707,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 649,
+          "repository_files": 3726,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 3726,
+          "repository_index_chars": 2206,
+          "repository_index_chars_by_round": [
+            2206,
+            2206
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 552,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": false,
+          "request_limit_hit": false,
+          "requests_accepted": 12,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 0,
+          "requests_returned": 12,
+          "round_limit": 2,
+          "round_limit_hit": false,
+          "rounds_completed": 1,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 18,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 33936,
+          "seed_context_chars_original": 33936,
+          "seed_context_truncated": false,
+          "selected_context_chars": 32621,
+          "selection_done": false,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            111171,
+            145567
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 13
+        }
+      },
+      "failed_batches": [
+        "b0000-c6d3d9ff3da5"
+      ]
+    },
+    "stats": {
+      "budget_skipped_searches": 193,
+      "callers": 47,
+      "changed_context_files_exposed_to_model": [
+        "apps/web/components/auth/BackupCode.tsx",
+        "apps/web/components/auth/TwoFactor.tsx",
+        "apps/web/components/settings/DisableTwoFactorModal.tsx",
+        "apps/web/components/settings/EnableTwoFactorModal.tsx",
+        "apps/web/components/settings/TwoFactorAuthAPI.ts",
+        "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+        "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+        "apps/web/pages/auth/login.tsx",
+        "apps/web/playwright/login.2fa.e2e.ts",
+        "apps/web/public/static/locales/en/common.json",
+        "packages/features/auth/lib/ErrorCode.ts",
+        "packages/features/auth/lib/next-auth-options.ts",
+        "packages/lib/test/builder.ts",
+        "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql",
+        "packages/prisma/schema.prisma",
+        "packages/ui/components/form/inputs/Input.tsx"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 16,
+      "context_chars": 32567,
+      "context_files_exposed_to_model": [
+        ".env.example",
+        ".github/actions/cache-db/action.yml",
+        ".github/matchers/tsc-absolute.json",
+        ".github/workflows/apply-issue-labels-to-pr.yml",
+        ".github/workflows/lint.yml",
+        ".github/workflows/release-docker.yaml",
+        ".snaplet/transform.ts",
+        ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+        ".yarn/releases/yarn-3.4.1.cjs",
+        "README.md",
+        "apps/api/test/jest-setup.js",
+        "apps/web/components/AddToHomescreen.tsx",
+        "apps/web/components/auth/BackupCode.tsx",
+        "apps/web/components/auth/TwoFactor.tsx",
+        "apps/web/components/security/ChangePasswordSection.tsx",
+        "apps/web/components/security/DisableTwoFactorModal.tsx",
+        "apps/web/components/security/EnableTwoFactorModal.tsx",
+        "apps/web/components/settings/DisableTwoFactorModal.tsx",
+        "apps/web/components/settings/EnableTwoFactorModal.tsx",
+        "apps/web/components/settings/TwoFactorAuthAPI.ts",
+        "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+        "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+        "apps/web/pages/auth/login.tsx",
+        "apps/web/playwright/availability.e2e.ts",
+        "apps/web/playwright/fixtures/users.ts",
+        "apps/web/playwright/login.2fa.e2e.ts",
+        "apps/web/playwright/manage-booking-questions.e2e.ts",
+        "apps/web/public/static/locales/en/common.json",
+        "apps/web/test/jest-setup.js",
+        "apps/web/test/lib/next-config.test.ts",
+        "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+        "packages/app-store/typeform/playwright/tests/basic.e2e.ts",
+        "packages/features/auth/lib/ErrorCode.ts",
+        "packages/features/auth/lib/next-auth-options.ts",
+        "packages/lib/test/builder.ts",
+        "packages/prisma/migrations/20210605225044_init/migration.sql",
+        "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+        "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+        "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+        "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql",
+        "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql",
+        "packages/prisma/schema.prisma",
+        "packages/ui/components/form/inputs/Input.tsx",
+        "packages/ui/components/form/inputs/input.test.tsx"
+      ],
+      "context_utf8_bytes": 32779,
+      "cross_file_context_files_exposed_to_model": [
+        ".env.example",
+        ".github/actions/cache-db/action.yml",
+        ".github/matchers/tsc-absolute.json",
+        ".github/workflows/apply-issue-labels-to-pr.yml",
+        ".github/workflows/lint.yml",
+        ".github/workflows/release-docker.yaml",
+        ".snaplet/transform.ts",
+        ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+        ".yarn/releases/yarn-3.4.1.cjs",
+        "README.md",
+        "apps/api/test/jest-setup.js",
+        "apps/web/components/AddToHomescreen.tsx",
+        "apps/web/components/auth/BackupCode.tsx",
+        "apps/web/components/auth/TwoFactor.tsx",
+        "apps/web/components/security/ChangePasswordSection.tsx",
+        "apps/web/components/security/DisableTwoFactorModal.tsx",
+        "apps/web/components/security/EnableTwoFactorModal.tsx",
+        "apps/web/components/settings/DisableTwoFactorModal.tsx",
+        "apps/web/components/settings/EnableTwoFactorModal.tsx",
+        "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+        "apps/web/pages/auth/login.tsx",
+        "apps/web/playwright/availability.e2e.ts",
+        "apps/web/playwright/fixtures/users.ts",
+        "apps/web/playwright/manage-booking-questions.e2e.ts",
+        "apps/web/test/jest-setup.js",
+        "apps/web/test/lib/next-config.test.ts",
+        "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+        "packages/app-store/typeform/playwright/tests/basic.e2e.ts",
+        "packages/prisma/migrations/20210605225044_init/migration.sql",
+        "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+        "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+        "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+        "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql",
+        "packages/ui/components/form/inputs/input.test.tsx"
+      ],
+      "definitions": 9,
+      "estimated_context_tokens": 8148,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 172,
+      "evidence_rows_clipped_during_render": 29,
+      "evidence_rows_omitted_due_to_render_budget": 66,
+      "evidence_rows_rendered": 106,
+      "hypotheses": 0,
+      "imports": 30,
+      "largest_prompt_budget": 2165,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 48,
+        "max_symbols_per_chunk": 8,
+        "prompt_render_budget": 13
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 66,
+        "source_read_budget": 0,
+        "symbol_config_limit": 178,
+        "symbol_search_budget": 193
+      },
+      "packet_metrics": {
+        "f0000:c0000-2b6380075b86": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "apps/web/components/AddToHomescreen.tsx",
+            "apps/web/components/auth/BackupCode.tsx",
+            "apps/web/components/auth/TwoFactor.tsx"
+          ],
+          "context_files_exposed_to_model_count": 5,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "apps/web/components/AddToHomescreen.tsx",
+            "apps/web/components/auth/TwoFactor.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 4,
+          "estimated_context_tokens": 521,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "apps/web/components/AddToHomescreen.tsx",
+            "apps/web/components/auth/BackupCode.tsx",
+            "apps/web/components/auth/TwoFactor.tsx"
+          ],
+          "evidence_rows_available_to_render": 13,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 6,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2165,
+          "prompt_budget_utilization": 0.961662817551963,
+          "prompt_chars": 2082,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2096,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 35,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 11,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0001:c0000-2d3e6508be31": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "README.md",
+            "apps/web/components/auth/BackupCode.tsx",
+            "apps/web/components/auth/TwoFactor.tsx",
+            "apps/web/components/security/DisableTwoFactorModal.tsx"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "README.md",
+            "apps/web/components/auth/BackupCode.tsx",
+            "apps/web/components/security/DisableTwoFactorModal.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 527,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "README.md",
+            "apps/web/components/auth/BackupCode.tsx",
+            "apps/web/components/auth/TwoFactor.tsx",
+            "apps/web/components/security/DisableTwoFactorModal.tsx"
+          ],
+          "evidence_rows_available_to_render": 11,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 9,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2165,
+          "prompt_budget_utilization": 0.9727482678983834,
+          "prompt_chars": 2106,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2124,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0002:c0000-7f0dd600dd27": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/security/DisableTwoFactorModal.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/security/DisableTwoFactorModal.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 534,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/security/DisableTwoFactorModal.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx"
+          ],
+          "evidence_rows_available_to_render": 14,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 9,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2165,
+          "prompt_budget_utilization": 0.9852193995381062,
+          "prompt_chars": 2133,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2143,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 41,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 17,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0003:c0000-b83055655352": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/security/ChangePasswordSection.tsx",
+            "apps/web/components/security/EnableTwoFactorModal.tsx",
+            "apps/web/components/settings/EnableTwoFactorModal.tsx"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/security/ChangePasswordSection.tsx",
+            "apps/web/components/security/EnableTwoFactorModal.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 517,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/security/ChangePasswordSection.tsx",
+            "apps/web/components/security/EnableTwoFactorModal.tsx"
+          ],
+          "evidence_rows_available_to_render": 13,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 7,
+          "evidence_rows_rendered": 6,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2165,
+          "prompt_budget_utilization": 0.9547344110854503,
+          "prompt_chars": 2067,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2079,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 78,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 54,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0004:c0000-f45711913bea": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".env.example",
+            ".github/workflows/release-docker.yaml",
+            ".snaplet/transform.ts",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/settings/TwoFactorAuthAPI.ts"
+          ],
+          "context_files_exposed_to_model_count": 5,
+          "cross_file_context_files_exposed_to_model": [
+            ".env.example",
+            ".github/workflows/release-docker.yaml",
+            ".snaplet/transform.ts",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 4,
+          "estimated_context_tokens": 531,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".env.example",
+            ".github/workflows/release-docker.yaml",
+            ".snaplet/transform.ts",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs"
+          ],
+          "evidence_rows_available_to_render": 10,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2165,
+          "prompt_budget_utilization": 0.9810623556581987,
+          "prompt_chars": 2124,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2138,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0005:c0000-a66ff2c873bb": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/matchers/tsc-absolute.json",
+            ".github/workflows/lint.yml",
+            ".github/workflows/release-docker.yaml",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/pages/api/auth/two-factor/totp/disable.ts"
+          ],
+          "context_files_exposed_to_model_count": 5,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/matchers/tsc-absolute.json",
+            ".github/workflows/lint.yml",
+            ".github/workflows/release-docker.yaml",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 4,
+          "estimated_context_tokens": 521,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/matchers/tsc-absolute.json",
+            ".github/workflows/lint.yml",
+            ".github/workflows/release-docker.yaml",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/pages/api/auth/two-factor/totp/disable.ts"
+          ],
+          "evidence_rows_available_to_render": 10,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2165,
+          "prompt_budget_utilization": 0.9621247113163972,
+          "prompt_chars": 2083,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2097,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 48,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 24,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0006:c0000-05652423e3fe": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/api/test/jest-setup.js",
+            "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+            "apps/web/test/jest-setup.js"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/api/test/jest-setup.js",
+            "apps/web/test/jest-setup.js"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 537,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/api/test/jest-setup.js",
+            "apps/web/pages/api/auth/two-factor/totp/setup.ts",
+            "apps/web/test/jest-setup.js"
+          ],
+          "evidence_rows_available_to_render": 14,
+          "evidence_rows_clipped_during_render": 4,
+          "evidence_rows_omitted_due_to_render_budget": 9,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2165,
+          "prompt_budget_utilization": 0.9912240184757506,
+          "prompt_chars": 2146,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2156,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 22,
+          "symbol_candidates_discovered": 22,
+          "symbol_candidates_extracted": 22,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 18
+        },
+        "f0007:c0000-1a93fbf4a7ee": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/auth/TwoFactor.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx",
+            "apps/web/pages/auth/login.tsx"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/auth/TwoFactor.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 540,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/auth/TwoFactor.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx"
+          ],
+          "evidence_rows_available_to_render": 12,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 6,
+          "evidence_rows_rendered": 6,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.9981515711645101,
+          "prompt_chars": 2160,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2172,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 34,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 10,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0008:c0000-fc05c6816428": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "apps/web/playwright/availability.e2e.ts",
+            "apps/web/playwright/fixtures/users.ts",
+            "apps/web/playwright/login.2fa.e2e.ts",
+            "apps/web/playwright/manage-booking-questions.e2e.ts",
+            "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+            "packages/app-store/typeform/playwright/tests/basic.e2e.ts"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            "apps/web/playwright/availability.e2e.ts",
+            "apps/web/playwright/fixtures/users.ts",
+            "apps/web/playwright/manage-booking-questions.e2e.ts",
+            "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+            "packages/app-store/typeform/playwright/tests/basic.e2e.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 537,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "apps/web/playwright/availability.e2e.ts",
+            "apps/web/playwright/fixtures/users.ts",
+            "apps/web/playwright/login.2fa.e2e.ts",
+            "apps/web/playwright/manage-booking-questions.e2e.ts",
+            "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+            "packages/app-store/typeform/playwright/tests/basic.e2e.ts"
+          ],
+          "evidence_rows_available_to_render": 15,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 7,
+          "evidence_rows_rendered": 8,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.9916820702402958,
+          "prompt_chars": 2146,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2162,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 51,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 27,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0009:c0000-563947cbaf34": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/actions/cache-db/action.yml",
+            ".github/workflows/lint.yml",
+            "apps/web/components/auth/BackupCode.tsx",
+            "apps/web/public/static/locales/en/common.json"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/actions/cache-db/action.yml",
+            ".github/workflows/lint.yml",
+            "apps/web/components/auth/BackupCode.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 384,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/actions/cache-db/action.yml",
+            ".github/workflows/lint.yml",
+            "apps/web/components/auth/BackupCode.tsx",
+            "apps/web/public/static/locales/en/common.json"
+          ],
+          "evidence_rows_available_to_render": 6,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 6,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.7097966728280961,
+          "prompt_chars": 1536,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 1548,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 31,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 7,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0010:c0000-59a1788ce115": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "apps/web/components/security/ChangePasswordSection.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx",
+            "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+            "apps/web/pages/auth/login.tsx",
+            "packages/features/auth/lib/ErrorCode.ts"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "apps/web/components/security/ChangePasswordSection.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx",
+            "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+            "apps/web/pages/auth/login.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 536,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/releases/yarn-3.4.1.cjs",
+            "apps/web/components/security/ChangePasswordSection.tsx",
+            "apps/web/components/settings/DisableTwoFactorModal.tsx",
+            "apps/web/pages/api/auth/two-factor/totp/disable.ts",
+            "apps/web/pages/auth/login.tsx"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 7,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.9907578558225508,
+          "prompt_chars": 2144,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2158,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0011:c0000-f554c59e3665": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/test/lib/next-config.test.ts",
+            "packages/features/auth/lib/next-auth-options.ts"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/test/lib/next-config.test.ts"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 541,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/test/lib/next-config.test.ts",
+            "packages/features/auth/lib/next-auth-options.ts"
+          ],
+          "evidence_rows_available_to_render": 15,
+          "evidence_rows_clipped_during_render": 4,
+          "evidence_rows_omitted_due_to_render_budget": 10,
+          "evidence_rows_rendered": 5,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.9986136783733827,
+          "prompt_chars": 2161,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2171,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 52,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 28,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0012:c0000-bb0a24e007e5": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "apps/web/components/settings/EnableTwoFactorModal.tsx",
+            "packages/lib/test/builder.ts"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "apps/web/components/settings/EnableTwoFactorModal.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 519,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "apps/web/components/settings/EnableTwoFactorModal.tsx",
+            "packages/lib/test/builder.ts"
+          ],
+          "evidence_rows_available_to_render": 9,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 8,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.9579482439926063,
+          "prompt_chars": 2073,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2089,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 1,
+          "symbol_candidates_discovered": 1,
+          "symbol_candidates_extracted": 1,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 1,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0013:c0000-b89f6aed4ccd": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "packages/prisma/migrations/20210605225044_init/migration.sql",
+            "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+            "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+            "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+            "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql",
+            "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            "packages/prisma/migrations/20210605225044_init/migration.sql",
+            "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+            "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+            "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+            "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 374,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "packages/prisma/migrations/20210605225044_init/migration.sql",
+            "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+            "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+            "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+            "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql"
+          ],
+          "evidence_rows_available_to_render": 6,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 6,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.6908502772643254,
+          "prompt_chars": 1495,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 1507,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 84,
+          "source_excerpt_truncated": false,
+          "source_excerpt_utf8_bytes": 84,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0014:c0000-b0b38db5ad45": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/workflows/apply-issue-labels-to-pr.yml",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/settings/EnableTwoFactorModal.tsx",
+            "packages/prisma/schema.prisma"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/workflows/apply-issue-labels-to-pr.yml",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/settings/EnableTwoFactorModal.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 507,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/workflows/apply-issue-labels-to-pr.yml",
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "apps/web/components/settings/EnableTwoFactorModal.tsx"
+          ],
+          "evidence_rows_available_to_render": 6,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 6,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.9357670979667283,
+          "prompt_chars": 2025,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2037,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 2,
+          "symbol_candidates_discovered": 2,
+          "symbol_candidates_extracted": 2,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0015:c0000-4ae944ceec75": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "packages/ui/components/form/inputs/Input.tsx",
+            "packages/ui/components/form/inputs/input.test.tsx"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "packages/ui/components/form/inputs/input.test.tsx"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 522,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+            "packages/ui/components/form/inputs/Input.tsx",
+            "packages/ui/components/form/inputs/input.test.tsx"
+          ],
+          "evidence_rows_available_to_render": 11,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 8,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 2164,
+          "prompt_budget_utilization": 0.9639556377079482,
+          "prompt_chars": 2086,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 2102,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 517,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 517,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 7,
+          "symbol_candidates_discovered": 7,
+          "symbol_candidates_extracted": 7,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 4,
+          "symbol_searches_skipped_due_to_budget": 3
+        }
+      },
+      "packets_hitting_symbol_config_limit": 8,
+      "packets_hitting_symbol_render_budget_limit": 13,
+      "prompt_budget_chars": 34631,
+      "prompt_budget_utilization": 0.9404002194565563,
+      "prompt_truncated_packets": 14,
+      "smallest_prompt_budget": 2164,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 15,
+      "symbol_candidates_after_config_limit": 252,
+      "symbol_candidates_discovered": 430,
+      "symbol_candidates_omitted_by_config_limit": 178,
+      "symbol_searches_skipped_due_to_budget": 193,
+      "symbols": 59,
+      "tests": 7,
+      "tree_files": 3726,
+      "truncated_packets": 15,
+      "unchanged_context_files_exposed_to_model": [
+        ".env.example",
+        ".github/actions/cache-db/action.yml",
+        ".github/matchers/tsc-absolute.json",
+        ".github/workflows/apply-issue-labels-to-pr.yml",
+        ".github/workflows/lint.yml",
+        ".github/workflows/release-docker.yaml",
+        ".snaplet/transform.ts",
+        ".yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs",
+        ".yarn/releases/yarn-3.4.1.cjs",
+        "README.md",
+        "apps/api/test/jest-setup.js",
+        "apps/web/components/AddToHomescreen.tsx",
+        "apps/web/components/security/ChangePasswordSection.tsx",
+        "apps/web/components/security/DisableTwoFactorModal.tsx",
+        "apps/web/components/security/EnableTwoFactorModal.tsx",
+        "apps/web/playwright/availability.e2e.ts",
+        "apps/web/playwright/fixtures/users.ts",
+        "apps/web/playwright/manage-booking-questions.e2e.ts",
+        "apps/web/test/jest-setup.js",
+        "apps/web/test/lib/next-config.test.ts",
+        "packages/app-store/routing-forms/playwright/tests/basic.e2e.ts",
+        "packages/app-store/typeform/playwright/tests/basic.e2e.ts",
+        "packages/prisma/migrations/20210605225044_init/migration.sql",
+        "packages/prisma/migrations/20210605225507_added_bookings/migration.sql",
+        "packages/prisma/migrations/20210615142134_added_custom_event_name/migration.sql",
+        "packages/prisma/migrations/20210615153546_added_buffer_time/migration.sql",
+        "packages/prisma/migrations/20210615153759_add_email_verification_column/migration.sql",
+        "packages/ui/components/form/inputs/input.test.tsx"
+      ],
+      "unique_changed_context_files_exposed_to_model": 16,
+      "unique_context_files_exposed_to_model": 44,
+      "unique_cross_file_context_files_exposed_to_model": 34,
+      "unique_unchanged_context_files_exposed_to_model": 28,
+      "usages": 79,
+      "whole_repo_grep_cache_hits": 8,
+      "whole_repo_grep_calls": 51,
+      "whole_repo_grep_calls_returning_configured_limit": 48
+    },
+    "unique_changed_context_files_exposed_to_model": 16,
+    "unique_effective_context_files_exposed_to_model": 48,
+    "unique_unchanged_context_files_exposed_to_model": 32,
+    "verification_batches": [],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": false,
+    "completed_hunks": [],
+    "coverage_ratio": 0.0,
+    "eligible_files": 16,
+    "eligible_hunks": 31,
+    "excluded_files": [],
+    "failed_hunks": [
+      "apps/web/components/auth/BackupCode.tsx:0:1:h000",
+      "apps/web/components/auth/TwoFactor.tsx:1:1:h000",
+      "apps/web/components/auth/TwoFactor.tsx:31:31:h001",
+      "apps/web/components/settings/DisableTwoFactorModal.tsx:1:1:h000",
+      "apps/web/components/settings/EnableTwoFactorModal.tsx:1:1:h000",
+      "apps/web/components/settings/EnableTwoFactorModal.tsx:45:46:h001",
+      "apps/web/components/settings/EnableTwoFactorModal.tsx:104:123:h002",
+      "apps/web/components/settings/EnableTwoFactorModal.tsx:132:151:h003",
+      "apps/web/components/settings/EnableTwoFactorModal.tsx:164:188:h004",
+      "apps/web/components/settings/EnableTwoFactorModal.tsx:209:249:h005",
+      "apps/web/components/settings/TwoFactorAuthAPI.ts:10:10:h000",
+      "apps/web/pages/api/auth/two-factor/totp/disable.ts:34:34:h000",
+      "apps/web/pages/api/auth/two-factor/totp/disable.ts:73:95:h001",
+      "apps/web/pages/api/auth/two-factor/totp/setup.ts:1:1:h000",
+      "apps/web/pages/api/auth/two-factor/totp/setup.ts:47:48:h001",
+      "apps/web/pages/auth/login.tsx:12:12:h000",
+      "apps/web/pages/auth/login.tsx:56:58:h001",
+      "apps/web/pages/auth/login.tsx:89:92:h002",
+      "apps/web/pages/auth/login.tsx:185:209:h003",
+      "apps/web/playwright/login.2fa.e2e.ts:1:1:h000",
+      "apps/web/playwright/login.2fa.e2e.ts:36:38:h001",
+      "apps/web/playwright/login.2fa.e2e.ts:94:98:h002",
+      "apps/web/public/static/locales/en/common.json:2001:2001:h000",
+      "packages/features/auth/lib/ErrorCode.ts:1:1:h000",
+      "packages/features/auth/lib/next-auth-options.ts:2:2:h000",
+      "packages/features/auth/lib/next-auth-options.ts:53:53:h001",
+      "packages/features/auth/lib/next-auth-options.ts:117:119:h002",
+      "packages/lib/test/builder.ts:180:180:h000",
+      "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql:0:1:h000",
+      "packages/prisma/schema.prisma:193:193:h000",
+      "packages/ui/components/form/inputs/Input.tsx:35:35:h000"
+    ],
+    "total_files": 16,
+    "total_hunks": 31
+  },
+  "diagnostics": [
+    {
+      "batch_id": "b0000-c6d3d9ff3da5",
+      "chunk_ids": [
+        "f0000:c0000-2b6380075b86",
+        "f0001:c0000-2d3e6508be31",
+        "f0002:c0000-7f0dd600dd27",
+        "f0003:c0000-b83055655352",
+        "f0004:c0000-f45711913bea",
+        "f0005:c0000-a66ff2c873bb",
+        "f0006:c0000-05652423e3fe",
+        "f0007:c0000-1a93fbf4a7ee",
+        "f0008:c0000-fc05c6816428",
+        "f0009:c0000-563947cbaf34",
+        "f0010:c0000-59a1788ce115",
+        "f0011:c0000-f554c59e3665",
+        "f0012:c0000-bb0a24e007e5",
+        "f0013:c0000-b89f6aed4ccd",
+        "f0014:c0000-b0b38db5ad45",
+        "f0015:c0000-4ae944ceec75"
+      ],
+      "code": "gateway_error",
+      "stage": "context_selection"
+    },
+    {
+      "batch_id": "b0000-c6d3d9ff3da5",
+      "chunk_ids": [
+        "f0000:c0000-2b6380075b86",
+        "f0001:c0000-2d3e6508be31",
+        "f0002:c0000-7f0dd600dd27",
+        "f0003:c0000-b83055655352",
+        "f0004:c0000-f45711913bea",
+        "f0005:c0000-a66ff2c873bb",
+        "f0006:c0000-05652423e3fe",
+        "f0007:c0000-1a93fbf4a7ee",
+        "f0008:c0000-fc05c6816428",
+        "f0009:c0000-563947cbaf34",
+        "f0010:c0000-59a1788ce115",
+        "f0011:c0000-f554c59e3665",
+        "f0012:c0000-bb0a24e007e5",
+        "f0013:c0000-b89f6aed4ccd",
+        "f0014:c0000-b0b38db5ad45",
+        "f0015:c0000-4ae944ceec75"
+      ],
+      "error": "model-directed context selection failed",
+      "stage": "context_selection"
+    }
+  ],
+  "diff": {
+    "additions": 280,
+    "bytes": 50327,
+    "chunk_plan_complete": true,
+    "chunks": 16,
+    "commentable_ranges": {
+      "LEFT": {
+        "apps/web/components/auth/BackupCode.tsx": [],
+        "apps/web/components/auth/TwoFactor.tsx": [
+          [
+            8,
+            8
+          ],
+          [
+            43,
+            43
+          ]
+        ],
+        "apps/web/components/settings/DisableTwoFactorModal.tsx": [
+          [
+            40,
+            40
+          ],
+          [
+            48,
+            48
+          ],
+          [
+            57,
+            58
+          ],
+          [
+            60,
+            61
+          ],
+          [
+            88,
+            88
+          ]
+        ],
+        "apps/web/components/settings/EnableTwoFactorModal.tsx": [
+          [
+            8,
+            8
+          ],
+          [
+            116,
+            116
+          ],
+          [
+            146,
+            146
+          ],
+          [
+            150,
+            150
+          ],
+          [
+            189,
+            191
+          ]
+        ],
+        "apps/web/components/settings/TwoFactorAuthAPI.ts": [
+          [
+            22,
+            22
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "apps/web/pages/api/auth/two-factor/totp/disable.ts": [
+          [
+            46,
+            47
+          ]
+        ],
+        "apps/web/pages/api/auth/two-factor/totp/setup.ts": [
+          [
+            73,
+            73
+          ]
+        ],
+        "apps/web/pages/auth/login.tsx": [
+          [
+            24,
+            24
+          ],
+          [
+            101,
+            109
+          ],
+          [
+            133,
+            133
+          ],
+          [
+            197,
+            197
+          ]
+        ],
+        "apps/web/playwright/login.2fa.e2e.ts": [],
+        "apps/web/public/static/locales/en/common.json": [],
+        "packages/features/auth/lib/ErrorCode.ts": [],
+        "packages/features/auth/lib/next-auth-options.ts": [
+          [
+            14,
+            14
+          ],
+          [
+            129,
+            129
+          ]
+        ],
+        "packages/lib/test/builder.ts": [],
+        "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql": [],
+        "packages/prisma/schema.prisma": [],
+        "packages/ui/components/form/inputs/Input.tsx": [
+          [
+            47,
+            47
+          ]
+        ]
+      },
+      "RIGHT": {
+        "apps/web/components/auth/BackupCode.tsx": [
+          [
+            1,
+            29
+          ]
+        ],
+        "apps/web/components/auth/TwoFactor.tsx": [
+          [
+            8,
+            8
+          ],
+          [
+            43,
+            43
+          ]
+        ],
+        "apps/web/components/settings/DisableTwoFactorModal.tsx": [
+          [
+            8,
+            8
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            38,
+            38
+          ],
+          [
+            43,
+            50
+          ],
+          [
+            58,
+            58
+          ],
+          [
+            60,
+            61
+          ],
+          [
+            69,
+            69
+          ],
+          [
+            71,
+            71
+          ],
+          [
+            73,
+            76
+          ],
+          [
+            95,
+            95
+          ],
+          [
+            103,
+            107
+          ],
+          [
+            113,
+            121
+          ]
+        ],
+        "apps/web/components/settings/EnableTwoFactorModal.tsx": [
+          [
+            8,
+            8
+          ],
+          [
+            31,
+            31
+          ],
+          [
+            58,
+            58
+          ],
+          [
+            64,
+            65
+          ],
+          [
+            71,
+            76
+          ],
+          [
+            92,
+            100
+          ],
+          [
+            135,
+            135
+          ],
+          [
+            163,
+            164
+          ],
+          [
+            167,
+            170
+          ],
+          [
+            174,
+            174
+          ],
+          [
+            200,
+            208
+          ],
+          [
+            222,
+            231
+          ],
+          [
+            261,
+            289
+          ]
+        ],
+        "apps/web/components/settings/TwoFactorAuthAPI.ts": [
+          [
+            22,
+            22
+          ],
+          [
+            25,
+            25
+          ]
+        ],
+        "apps/web/pages/api/auth/two-factor/totp/disable.ts": [
+          [
+            46,
+            69
+          ],
+          [
+            107,
+            107
+          ]
+        ],
+        "apps/web/pages/api/auth/two-factor/totp/setup.ts": [
+          [
+            1,
+            1
+          ],
+          [
+            60,
+            62
+          ],
+          [
+            68,
+            68
+          ],
+          [
+            78,
+            78
+          ]
+        ],
+        "apps/web/pages/auth/login.tsx": [
+          [
+            24,
+            24
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            43,
+            43
+          ],
+          [
+            70,
+            70
+          ],
+          [
+            104,
+            132
+          ],
+          [
+            157,
+            158
+          ],
+          [
+            221,
+            221
+          ]
+        ],
+        "apps/web/playwright/login.2fa.e2e.ts": [
+          [
+            12,
+            13
+          ],
+          [
+            50,
+            51
+          ],
+          [
+            110,
+            126
+          ]
+        ],
+        "apps/web/public/static/locales/en/common.json": [
+          [
+            2013,
+            2019
+          ]
+        ],
+        "packages/features/auth/lib/ErrorCode.ts": [
+          [
+            11,
+            12
+          ]
+        ],
+        "packages/features/auth/lib/next-auth-options.ts": [
+          [
+            14,
+            14
+          ],
+          [
+            65,
+            65
+          ],
+          [
+            89,
+            89
+          ],
+          [
+            131,
+            157
+          ]
+        ],
+        "packages/lib/test/builder.ts": [
+          [
+            192,
+            192
+          ]
+        ],
+        "packages/prisma/migrations/20230804153419_add_backup_codes/migration.sql": [
+          [
+            1,
+            2
+          ]
+        ],
+        "packages/prisma/schema.prisma": [
+          [
+            205,
+            205
+          ]
+        ],
+        "packages/ui/components/form/inputs/Input.tsx": [
+          [
+            47,
+            51
+          ]
+        ]
+      }
+    },
+    "deletions": 36,
+    "files": 16,
+    "generation_batches": 1,
+    "hunks": 31,
+    "merge_base_sha": "efa6d464a38e60ceeeb88f40668c1c4ac4bfaf54",
+    "sha256": "06e3e753da1d48c0114491e7c5fe099f862dbd6dcc1454c0e6a2f8e329cfadf6"
+  },
+  "duration_ms": 80200,
+  "findings": [],
+  "pr": {
+    "base_ref": "main",
+    "base_sha": "efa6d464a38e60ceeeb88f40668c1c4ac4bfaf54",
+    "body": "## What does this PR do?\r\n\r\n- generate and display backup codes during 2fa setup\r\n- enable their use during 2fa login flow\r\n- fix 2fa setup test to include new backup code screen\r\n\r\n[backup-codes-setup.webm](https://github.com/calcom/cal.com/assets/55853254/3bebfb21-f7ef-4717-9135-ac30387cfb18)\r\n\r\n[backup-codes-login.webm](https://github.com/calcom/cal.com/assets/55853254/71ef61b1-af6f-4e32-bf1e-455e52560535)\r\n\r\nFixes #9910\r\n/claim #9910\r\n\r\n## Type of change\r\n\r\n- [x] New feature (non-breaking change which adds functionality)\r\n\r\n## How should this be tested?\r\n\r\n1. Setup 2fa to see the generated backup codes\r\n2. Try to login with them by clicking on \"Lost access\"\r\n\r\n## Mandatory Tasks\r\n\r\n- [x] Make sure you have self-reviewed the code. A decent size PR without self-review might be rejected.\r\n\r\n## Checklist\r\n\r\n- I haven't added tests that prove my fix is effective or that my feature works\r\n",
+    "clone_url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR10600__20260122.git",
+    "head_ref": "pr-10600",
+    "head_sha": "54486a059cd2032042189bb565646ba4e0f6bd61",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "cal_dot_com__cal.com__augment__PR10600__20260122",
+    "resolved_at": "2026-08-24T04:12:23.744183Z",
+    "title": "feat: 2fa backup codes",
+    "url": "https://github.com/code-review-benchmark/cal_dot_com__cal.com__augment__PR10600__20260122/pull/1"
+  },
+  "raw_findings": [],
+  "rejected_findings": [],
+  "run_id": "c2866c7691715a8d0fae037d",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-fable-5",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T05:43:11.967344Z",
+  "status": "failed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": []
+}

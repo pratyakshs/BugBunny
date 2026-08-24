@@ -1,0 +1,315 @@
+{
+  "schema_version": "bugbunny-result-bundle-v1",
+  "experiment_id": "codereviewbench-2026-08-24-claude-family",
+  "completed_at": "2026-08-24T12:22:38.606162Z",
+  "primary_track": "balanced",
+  "source": {
+    "bugbunny_repository": "https://github.com/pratyakshs/BugBunny",
+    "bugbunny_version": "0.7.2",
+    "bugbunny_commit": "91eb604de7576b219267ab4beb6674f77c959780",
+    "codereviewbench_repository": "https://github.com/code-review-benchmark/code-review-benchmark",
+    "codereviewbench_commit": "2b092b670f7d6cae6d429babaaee18948b4bdacb",
+    "benchmark_path": "offline/results/benchmark_data.json",
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "case_count": 50,
+    "golden_issue_count": 173,
+    "fixture_selection": "auto"
+  },
+  "environment": {
+    "operating_system": "macOS Darwin 24.4.0 arm64",
+    "python": "3.11.6",
+    "martian_python_client": "0.28.1",
+    "timezone": "America/Los_Angeles",
+    "artifact_timestamps": "UTC"
+  },
+  "treatment": {
+    "generation_models": [
+      "anthropic/claude-sonnet-5",
+      "anthropic/claude-opus-5",
+      "anthropic/claude-opus-4-8",
+      "anthropic/claude-fable-5"
+    ],
+    "generation_reasoning_effort_requested": "high",
+    "generation_reasoning_effort_transport_sent": true,
+    "generation_temperature_transport_sent": false,
+    "generation_max_output_tokens": 50000,
+    "generation_context_window_tokens": {
+      "anthropic/claude-sonnet-5": 200000,
+      "anthropic/claude-opus-5": 200000,
+      "anthropic/claude-opus-4-8": 200000,
+      "anthropic/claude-fable-5": 200000
+    },
+    "context_capacity_basis": "Equal conservative declaration; the Martian catalog snapshot did not report input context capacity."
+  },
+  "fixed_pipeline": {
+    "gateway": "https://api.withmartian.com/v1",
+    "profile": "balanced",
+    "review_policy": "codereviewbench",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "context_mode": "agentic",
+    "context_selection_rounds": 2,
+    "context_requests_per_round": 16,
+    "max_context_files": 64,
+    "context_read_lines": 240,
+    "context_read_chars": 48000,
+    "context_blob_read_bytes": 16000000,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "repository_index_chars": 120000,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort_requested": "low",
+    "verifier_reasoning_effort_transport_sent": false,
+    "verifier_temperature": 0.0,
+    "verifier_temperature_transport_sent": true,
+    "verifier_max_output_tokens": 32768,
+    "verifier_context_window_tokens": 200000,
+    "operating_point_file": "calibration/opus-4-5-low-v1.json",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "min_verifier_confidence": 0.92,
+    "judge_model": "anthropic/claude-opus-4-5",
+    "finding_stages": ["generator", "balanced", "family"],
+    "bootstrap_samples": 5000,
+    "bootstrap_seed": 17042,
+    "bootstrap_unit": "pull_request"
+  },
+  "scheduling": {
+    "llm_concurrency_per_review": 1,
+    "active_reviews": 4,
+    "global_llm_concurrency": 4,
+    "github_concurrency": 16,
+    "git_concurrency": 4,
+    "model_timeout_seconds": 900,
+    "judge_final": {
+      "judge_concurrency": 10,
+      "review_concurrency": 5,
+      "call_timeout_seconds": 60,
+      "review_timeout_seconds": 1800,
+      "max_retries": 5,
+      "explicit_tool_filter": true,
+      "tool_count": 12
+    },
+    "discarded_judge_attempt": {
+      "reason": "The first command omitted the explicit tool filter and therefore expanded beyond this experiment's scope.",
+      "published": false,
+      "used_in_metrics": false,
+      "clean_final_run_started_from_fresh_evaluations_file": true
+    }
+  },
+  "generation_recovery": {
+    "initial_pass": {"completed": 187, "failed": 13},
+    "initial_failures_by_model": {
+      "anthropic/claude-fable-5": 6,
+      "anthropic/claude-opus-5": 5,
+      "anthropic/claude-opus-4-8": 1,
+      "anthropic/claude-sonnet-5": 1
+    },
+    "initial_failures_by_class": {
+      "http_529_overload": 8,
+      "reasoning_without_json": 3,
+      "structured_schema_invalid": 1,
+      "read_timeout_after_retries": 1
+    },
+    "resume_passes": [
+      {"pass": 1, "resumed": 187, "newly_completed": 11, "failed": 2},
+      {"pass": 2, "resumed": 198, "newly_completed": 0, "failed": 2},
+      {"pass": 3, "resumed": 198, "newly_completed": 0, "failed": 2},
+      {"pass": 4, "resumed": 198, "newly_completed": 0, "failed": 2},
+      {"pass": 5, "resumed": 198, "newly_completed": 2, "failed": 0}
+    ],
+    "settings_changed_during_resume": false,
+    "final_completed": 200,
+    "final_failed": 0,
+    "final_partial": 0
+  },
+  "reproduction": {
+    "path_variables": {
+      "BENCHMARK_DATA": "<code-review-benchmark>/offline/results/benchmark_data.json",
+      "CACHE_DIR": "<cache>/codereviewbench",
+      "RUN_DIR": "<runs>/claude-family",
+      "RESULTS_DIR": "<judge-results>/claude-family"
+    },
+    "benchmark_run_argv": [
+      "bugbunny", "benchmark", "run",
+      "--benchmark-data", "$BENCHMARK_DATA",
+      "--fixture-tool", "auto",
+      "--model", "anthropic/claude-sonnet-5",
+      "--model", "anthropic/claude-opus-5",
+      "--model", "anthropic/claude-opus-4-8",
+      "--model", "anthropic/claude-fable-5",
+      "--profile", "balanced",
+      "--review-policy", "codereviewbench",
+      "--verifier-model", "anthropic/claude-opus-4-5",
+      "--reasoning-effort", "high",
+      "--verifier-reasoning-effort", "low",
+      "--context-mode", "agentic",
+      "--model-context-window", "anthropic/claude-sonnet-5=200000",
+      "--model-context-window", "anthropic/claude-opus-5=200000",
+      "--model-context-window", "anthropic/claude-opus-4-8=200000",
+      "--model-context-window", "anthropic/claude-fable-5=200000",
+      "--verifier-context-window-tokens", "200000",
+      "--max-output-tokens", "50000",
+      "--verifier-max-output-tokens", "32768",
+      "--context-selection-rounds", "2",
+      "--context-requests-per-round", "16",
+      "--max-context-files", "64",
+      "--context-read-lines", "240",
+      "--context-read-chars", "48000",
+      "--context-blob-read-bytes", "16000000",
+      "--context-search-hits", "24",
+      "--context-search-max-offset", "100000",
+      "--repository-index-chars", "120000",
+      "--operating-point", "calibration/opus-4-5-low-v1.json",
+      "--llm-concurrency", "1",
+      "--active-reviews", "4",
+      "--global-llm-concurrency", "4",
+      "--github-concurrency", "16",
+      "--git-concurrency", "4",
+      "--timeout", "900",
+      "--cache-dir", "$CACHE_DIR",
+      "--run-dir", "$RUN_DIR",
+      "--env-file", ".env"
+    ],
+    "benchmark_export_argv": [
+      "bugbunny", "benchmark", "export",
+      "--benchmark-data", "$BENCHMARK_DATA",
+      "--run-dir", "$RUN_DIR",
+      "--judge-model", "anthropic/claude-opus-4-5",
+      "--finding-stage", "generator",
+      "--finding-stage", "balanced",
+      "--finding-stage", "family",
+      "--output-dir", "$RESULTS_DIR"
+    ],
+    "judge_argv": [
+      "bugbunny", "benchmark", "judge",
+      "--results-dir", "$RESULTS_DIR",
+      "--judge-model", "anthropic/claude-opus-4-5",
+      "--tool", "bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe",
+      "--tool", "bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92",
+      "--tool", "bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a",
+      "--tool", "bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622",
+      "--tool", "bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8",
+      "--tool", "bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac",
+      "--tool", "bugbunny-generator-anthropic-claude-opus-5-d5b411f53853",
+      "--tool", "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774",
+      "--tool", "bugbunny-family-anthropic-claude-opus-5-c31790f5671b",
+      "--tool", "bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d",
+      "--tool", "bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061",
+      "--tool", "bugbunny-family-anthropic-claude-sonnet-5-167809a84058",
+      "--judge-concurrency", "10",
+      "--review-concurrency", "5",
+      "--call-timeout", "60",
+      "--review-timeout", "1800",
+      "--max-retries", "5",
+      "--env-file", ".env"
+    ],
+    "analyze_argv": [
+      "bugbunny", "benchmark", "analyze",
+      "--run-dir", "$RUN_DIR",
+      "--results-dir", "$RESULTS_DIR",
+      "--judge-model", "anthropic/claude-opus-4-5",
+      "--bootstrap-samples", "5000",
+      "--bootstrap-seed", "17042"
+    ]
+  },
+  "validation": {
+    "generation_jobs_expected": 200,
+    "generation_artifacts_completed": 200,
+    "generation_json_artifacts": 200,
+    "generation_markdown_artifacts": 200,
+    "unique_model_case_keys": 200,
+    "exported_tracks": 12,
+    "review_tool_matrices": 600,
+    "judge_pair_decisions": 3007,
+    "judge_errors_final": 0,
+    "judge_timeouts_final": 0,
+    "judge_tool_ids": 12,
+    "non_experiment_tool_ids": 0,
+    "portable_analysis_verified": true,
+    "bootstrap_tracks": 12,
+    "paired_comparisons": 18
+  },
+  "metrics": {
+    "balanced": {
+      "anthropic/claude-fable-5": {"precision": 0.8333333333333334, "recall": 0.17341040462427745, "f1": 0.2870813397129187, "f1_ci95": [0.18811067726490957, 0.38095238095238093], "tp": 30, "fp": 6, "fn": 143, "candidates": 34},
+      "anthropic/claude-opus-4-8": {"precision": 0.8, "recall": 0.20809248554913296, "f1": 0.33027522935779824, "f1_ci95": [0.24489795918367346, 0.41474654377880177], "tp": 36, "fp": 9, "fn": 137, "candidates": 40},
+      "anthropic/claude-opus-5": {"precision": 0.7857142857142857, "recall": 0.1907514450867052, "f1": 0.30697674418604654, "f1_ci95": [0.2164937296380595, 0.3923086124401914], "tp": 33, "fp": 9, "fn": 140, "candidates": 40},
+      "anthropic/claude-sonnet-5": {"precision": 0.7906976744186046, "recall": 0.19653179190751446, "f1": 0.3148148148148148, "f1_ci95": [0.21696897490760553, 0.40930786267995556], "tp": 34, "fp": 9, "fn": 139, "candidates": 41}
+    },
+    "generator": {
+      "anthropic/claude-fable-5": {"precision": 0.35327635327635326, "recall": 0.7167630057803468, "f1": 0.4732824427480916, "tp": 124, "fp": 227, "fn": 49, "candidates": 354},
+      "anthropic/claude-opus-4-8": {"precision": 0.4587628865979381, "recall": 0.5144508670520231, "f1": 0.4850136239782017, "tp": 89, "fp": 105, "fn": 84, "candidates": 189},
+      "anthropic/claude-opus-5": {"precision": 0.2515090543259557, "recall": 0.7225433526011561, "f1": 0.3731343283582089, "tp": 125, "fp": 372, "fn": 48, "candidates": 495},
+      "anthropic/claude-sonnet-5": {"precision": 0.3438735177865613, "recall": 0.5028901734104047, "f1": 0.4084507042253521, "tp": 87, "fp": 166, "fn": 86, "candidates": 253}
+    },
+    "family": {
+      "anthropic/claude-fable-5": {"precision": 0.8333333333333334, "recall": 0.17341040462427745, "f1": 0.2870813397129187, "tp": 30, "fp": 6, "fn": 143, "candidates": 34},
+      "anthropic/claude-opus-4-8": {"precision": 0.8372093023255814, "recall": 0.20809248554913296, "f1": 0.3333333333333333, "tp": 36, "fp": 7, "fn": 137, "candidates": 38},
+      "anthropic/claude-opus-5": {"precision": 0.7906976744186046, "recall": 0.19653179190751446, "f1": 0.3148148148148148, "tp": 34, "fp": 9, "fn": 139, "candidates": 40},
+      "anthropic/claude-sonnet-5": {"precision": 0.85, "recall": 0.19653179190751446, "f1": 0.31924882629107976, "tp": 34, "fp": 6, "fn": 139, "candidates": 36}
+    }
+  },
+  "balanced_paired_comparisons": {
+    "fable_5_minus_opus_4_8": {"f1_delta": -0.043193889644879524, "f1_delta_ci95": [-0.11625413328096117, 0.02738626199178297], "probability_left_gt_right": 0.1084},
+    "fable_5_minus_opus_5": {"f1_delta": -0.01989540447312782, "f1_delta_ci95": [-0.07879008432325968, 0.04131903798381727], "probability_left_gt_right": 0.2604},
+    "fable_5_minus_sonnet_5": {"f1_delta": -0.02773347510189611, "f1_delta_ci95": [-0.09288137954162218, 0.04022002484469876], "probability_left_gt_right": 0.2064},
+    "opus_4_8_minus_opus_5": {"f1_delta": 0.023298485171751704, "f1_delta_ci95": [-0.051071363358737756, 0.10084453757842501], "probability_left_gt_right": 0.7292},
+    "opus_4_8_minus_sonnet_5": {"f1_delta": 0.015460414542983414, "f1_delta_ci95": [-0.05301535805612019, 0.08489009249252731], "probability_left_gt_right": 0.6724},
+    "opus_5_minus_sonnet_5": {"f1_delta": -0.00783807062876829, "f1_delta_ci95": [-0.0780893326198889, 0.06629070969478223], "probability_left_gt_right": 0.4118}
+  },
+  "context_telemetry": {
+    "anthropic/claude-fable-5": {"context_files_mean": 66.0, "context_files_max": 342, "generation_input_tokens_mean": 67874.38, "generation_budget_utilization_mean": 0.46010900318670517, "generation_budget_utilization_max": 0.8507430681716651, "reviews_hitting_prompt_or_evidence_bound": 4, "reviews_hitting_discovery_bound": 22},
+    "anthropic/claude-opus-4-8": {"context_files_mean": 56.56, "context_files_max": 293, "generation_input_tokens_mean": 53843.26, "generation_budget_utilization_mean": 0.29073449087172765, "generation_budget_utilization_max": 0.48134735086517555, "reviews_hitting_prompt_or_evidence_bound": 1, "reviews_hitting_discovery_bound": 47},
+    "anthropic/claude-opus-5": {"context_files_mean": 73.36, "context_files_max": 374, "generation_input_tokens_mean": 70942.1, "generation_budget_utilization_mean": 0.5032652113053578, "generation_budget_utilization_max": 0.7708193108377759, "reviews_hitting_prompt_or_evidence_bound": 5, "reviews_hitting_discovery_bound": 31},
+    "anthropic/claude-sonnet-5": {"context_files_mean": 63.94, "context_files_max": 325, "generation_input_tokens_mean": 61096.1, "generation_budget_utilization_mean": 0.38017845549036544, "generation_budget_utilization_max": 0.7956339160735026, "reviews_hitting_prompt_or_evidence_bound": 3, "reviews_hitting_discovery_bound": 40}
+  },
+  "runtime_and_cost": {
+    "scope": "Candidate generation plus fixed verifier calls recorded in final and failed-attempt artifacts; judge usage is not exposed in evaluations and is excluded.",
+    "known_cost_usd_total": 424.083002,
+    "by_candidate_model_including_recovery": {
+      "anthropic/claude-fable-5": {"artifact_attempts": 64, "calls": 254, "attempts": 268, "input_tokens": 12559446, "output_tokens": 1067754, "cached_input_tokens": 323169, "known_cost_usd": 193.175261},
+      "anthropic/claude-opus-4-8": {"artifact_attempts": 51, "calls": 227, "attempts": 237, "input_tokens": 9764942, "output_tokens": 726249, "cached_input_tokens": 442276, "known_cost_usd": 76.643669},
+      "anthropic/claude-opus-5": {"artifact_attempts": 55, "calls": 238, "attempts": 239, "input_tokens": 11889807, "output_tokens": 1173464, "cached_input_tokens": 0, "known_cost_usd": 103.647309},
+      "anthropic/claude-sonnet-5": {"artifact_attempts": 51, "calls": 229, "attempts": 231, "input_tokens": 10333544, "output_tokens": 1848322, "cached_input_tokens": 0, "known_cost_usd": 50.616763}
+    },
+    "final_artifact_review_latency_ms": {
+      "anthropic/claude-fable-5": {"mean": 274754.92, "median": 249632.5, "p95": 501265},
+      "anthropic/claude-opus-4-8": {"mean": 225641.38, "median": 174185.0, "p95": 367438},
+      "anthropic/claude-opus-5": {"mean": 320327.66, "median": 266569.5, "p95": 516481},
+      "anthropic/claude-sonnet-5": {"mean": 389112.82, "median": 320690.0, "p95": 714260}
+    },
+    "generation_job_plan_created_at": "2026-08-24T04:12:25.044064Z",
+    "generation_final_manifest_created_at": "2026-08-24T08:53:59.489173Z",
+    "analysis_created_at": "2026-08-24T12:22:38.606162Z"
+  },
+  "archived_artifacts": {
+    "run_directory": "run",
+    "judge_directory": "export/anthropic_claude-opus-4-5",
+    "recovery_directory": "recovery",
+    "run_manifest_sha256": "bbcd1ba10ee61f3454c6b2a24636eb38a8258cf8e1d814968069f03a4c061566",
+    "job_plan_sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3",
+    "export_index_sha256": "568eef83064a53729184d2db3cf7f0c6b0928e88023de3b32342f82f021aedd9",
+    "evaluations_sha256": "e846d6355bea72edccbd0bb8140c7378c4d463de794eef9cd4a6904a13de55de",
+    "evaluation_audit_sha256": "798866e9a20ed32396ba29bb2426926f6bedd274cde48e71bb65c4041a9fe553",
+    "filtered_candidates_sha256": "04b4e298bbd1e46b0baeeb1abd86c036766abd38ae3e53546aba6cd5c9eb9723",
+    "filtered_dedup_groups_sha256": "d3dd911b446b29030a6335d4ebc956c6b63a16a9644f7c792efb14e711da1748",
+    "generated_export_benchmark_archived": false,
+    "discarded_unfiltered_judge_artifact_archived": false
+  },
+  "interpretation_limits": [
+    "CodeReviewBench golden comments may be incomplete, so false positives are benchmark-relative.",
+    "Bootstrap confidence intervals resample pull requests and do not model judge-model uncertainty.",
+    "All balanced paired F1 intervals overlap zero; point-estimate ordering is not a resolved ranking.",
+    "The calibrated verifier compresses the much larger generator-stage spread; generator and threshold-curve diagnostics remain important.",
+    "Prompt/evidence bounds were uncommon, but discovery pagination and round-limit signals remain a possible harness constraint.",
+    "The four candidates share a conservative 200000-token declared context window; the Martian catalog did not report their input capacity.",
+    "The earlier GPT-5.6 bundle used a different declared context window and is not perfectly controlled against this sweep.",
+    "Recorded cost excludes judge calls because the evaluation format does not expose judge usage."
+  ],
+  "secrets": {
+    "required_environment_variable": "MARTIAN_API_KEY",
+    "credential_archived": false
+  }
+}

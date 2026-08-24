@@ -1,0 +1,4662 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "fa7501185f4b29fc65c2a495862836183e79c220276a580b91319697f00f857a",
+    "golden_url": "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/7",
+    "review_url": "https://github.com/code-review-benchmark/discourse__discourse-graphite__augment__PR7__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-5e77722b5948",
+      "cost_usd": 0.9430475,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 65856,
+      "latency_ms": 38935,
+      "output_tokens": 2397,
+      "request_sha256": "7472189e07d094fa66f6bcf8ddbecf9c284125314daf9d5a083dcab0307f6367",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "219827a462adaffd715155f64d77f8502749f4dcba512c11fad3f9f49da75c4e",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-5e77722b5948",
+      "cost_usd": 0.9002725,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 67918,
+      "latency_ms": 20235,
+      "output_tokens": 1026,
+      "request_sha256": "d9e571f6976f9c05eb4b8881a21654db89af7fd2d0a07c5dab1b6cdf0ac44c26",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "0969a90d748fcbfc259ddff67a5bed7476acc6d3257dd1e86ad34da9dc983dba",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-5e77722b5948",
+      "cost_usd": 1.1635475,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 67540,
+      "latency_ms": 71711,
+      "output_tokens": 6386,
+      "request_sha256": "1e9161b2d946f4c515764080d88d463bbff85f32a457bb3add20739f237948a8",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "7a2e911a55847452aa34fda4ebf72f7b3fc9bcd105196c72558a5b54ea15293d",
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "candidates-0-4",
+      "cost_usd": 0.15436625,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 22191,
+      "latency_ms": 9916,
+      "output_tokens": 627,
+      "request_sha256": "acd4b8c06a2f984d7eaf528fe5b36b352277daf306a169e2c3928b731b64c897",
+      "requested_model": "anthropic/claude-opus-4-5",
+      "resolved_model": "anthropic/claude-opus-4-5",
+      "response_sha256": "f061d8e89579bd0951e1aadc898fa625c2293c9148cb015ce57d6fcef6d76557",
+      "retry_errors": [],
+      "schema_sha256": "4f0c55f0b3b361fe2e31f7433e4f531d14d9dff4c97f0ccc17814ccd9ba1a5a1",
+      "stage": "verification"
+    }
+  ],
+  "completed_at": "2026-08-24T05:26:06.014272Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-fable-5",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.23737081931083778,
+      "largest_verifier_input_char_budget_utilization": 0.19990682620635544,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 0,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 0,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 51,
+      "verifier_generation_context_files_available": 51
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      "LICENSE.txt",
+      "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+      "app/assets/stylesheets/common/admin/admin_base.scss",
+      "app/assets/stylesheets/common/base/_topic-list.scss",
+      "app/assets/stylesheets/common/base/discourse.scss",
+      "app/assets/stylesheets/common/base/header.scss",
+      "app/assets/stylesheets/common/base/login.scss",
+      "app/assets/stylesheets/common/base/notification-options.scss",
+      "app/assets/stylesheets/common/base/search.scss",
+      "app/assets/stylesheets/common/base/share_link.scss",
+      "app/assets/stylesheets/common/base/topic-post.scss",
+      "app/assets/stylesheets/common/base/user-badges.scss",
+      "app/assets/stylesheets/common/base/user.scss",
+      "app/assets/stylesheets/common/components/badges.css.scss",
+      "app/assets/stylesheets/common/components/buttons.css.scss",
+      "app/assets/stylesheets/common/foundation/colors.scss",
+      "app/assets/stylesheets/common/foundation/variables.scss",
+      "app/assets/stylesheets/desktop/compose.scss",
+      "app/assets/stylesheets/desktop/header.scss",
+      "app/assets/stylesheets/desktop/login.scss",
+      "app/assets/stylesheets/desktop/modal.scss",
+      "app/assets/stylesheets/desktop/queued-posts.scss",
+      "app/assets/stylesheets/desktop/topic-list.scss",
+      "app/assets/stylesheets/desktop/topic-post.scss",
+      "app/assets/stylesheets/desktop/topic.scss",
+      "app/assets/stylesheets/desktop/upload.scss",
+      "app/assets/stylesheets/desktop/user.scss",
+      "app/assets/stylesheets/embed.css.scss",
+      "app/assets/stylesheets/mobile/compose.scss",
+      "app/assets/stylesheets/mobile/login.scss",
+      "app/assets/stylesheets/mobile/modal.scss",
+      "app/assets/stylesheets/mobile/topic-list.scss",
+      "app/assets/stylesheets/mobile/topic-post.scss",
+      "app/assets/stylesheets/mobile/topic.scss",
+      "app/assets/stylesheets/mobile/upload.scss",
+      "app/assets/stylesheets/mobile/user.scss",
+      "lib/sass/discourse_sass_importer.rb",
+      "plugins/poll/spec/controllers/posts_controller_spec.rb",
+      "spec/components/admin_user_index_query_spec.rb",
+      "spec/components/category_list_spec.rb",
+      "spec/components/composer_messages_finder_spec.rb",
+      "spec/components/cooked_post_processor_spec.rb",
+      "spec/components/discourse_diff_spec.rb",
+      "spec/components/search_spec.rb",
+      "spec/components/suggested_topics_builder_spec.rb",
+      "spec/controllers/admin/badges_controller_spec.rb",
+      "spec/controllers/embed_controller_spec.rb",
+      "spec/controllers/uploads_controller_spec.rb",
+      "spec/fabricators/incoming_link_fabricator.rb",
+      "spec/fabricators/notification_fabricator.rb",
+      "test/stylesheets/test_helper.css"
+    ],
+    "generation_batches": {
+      "b0000-5e77722b5948": {
+        "chunk_ids": [
+          "f0000:c0000-aab312d99028",
+          "f0001:c0000-18c699fe469a",
+          "f0002:c0000-c03d17a1f317",
+          "f0003:c0000-3b33c7731180",
+          "f0004:c0000-42a0c7c4c99d",
+          "f0005:c0000-6baa64b005fb",
+          "f0006:c0000-5128a2722c26",
+          "f0007:c0000-83819f7d0c66",
+          "f0008:c0000-0ed167ac4562",
+          "f0009:c0000-ca4276c41dd5",
+          "f0010:c0000-0e0081446211",
+          "f0011:c0000-0830e3636472",
+          "f0012:c0000-eef74171158a",
+          "f0013:c0000-10da74a8fb57",
+          "f0014:c0000-2a9c0a43d095",
+          "f0015:c0000-804db5c48e63",
+          "f0016:c0000-40597e0fa21b",
+          "f0017:c0000-52c2c0a40d73",
+          "f0018:c0000-c209cbc9d604",
+          "f0019:c0000-631c31359fde",
+          "f0020:c0000-27482c2b8757",
+          "f0021:c0000-db46c238174a",
+          "f0022:c0000-7789b3f44c21",
+          "f0023:c0000-f37079910564",
+          "f0024:c0000-fa0b12f74f71",
+          "f0025:c0000-8dc383a398fd",
+          "f0026:c0000-dc6802943492",
+          "f0027:c0000-642a37315ab3",
+          "f0028:c0000-804e10d9a12b",
+          "f0029:c0000-06d5b4a0b641",
+          "f0030:c0000-574853e96850",
+          "f0031:c0000-88e296481526"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.23737081931083778,
+        "context_chars": 39851,
+        "context_files_available_before_generation_prompt_fit": [
+          "LICENSE.txt",
+          "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+          "app/assets/stylesheets/common/admin/admin_base.scss",
+          "app/assets/stylesheets/common/base/_topic-list.scss",
+          "app/assets/stylesheets/common/base/discourse.scss",
+          "app/assets/stylesheets/common/base/header.scss",
+          "app/assets/stylesheets/common/base/login.scss",
+          "app/assets/stylesheets/common/base/notification-options.scss",
+          "app/assets/stylesheets/common/base/search.scss",
+          "app/assets/stylesheets/common/base/share_link.scss",
+          "app/assets/stylesheets/common/base/topic-post.scss",
+          "app/assets/stylesheets/common/base/user-badges.scss",
+          "app/assets/stylesheets/common/base/user.scss",
+          "app/assets/stylesheets/common/components/badges.css.scss",
+          "app/assets/stylesheets/common/components/buttons.css.scss",
+          "app/assets/stylesheets/common/foundation/colors.scss",
+          "app/assets/stylesheets/common/foundation/variables.scss",
+          "app/assets/stylesheets/desktop/compose.scss",
+          "app/assets/stylesheets/desktop/header.scss",
+          "app/assets/stylesheets/desktop/login.scss",
+          "app/assets/stylesheets/desktop/modal.scss",
+          "app/assets/stylesheets/desktop/queued-posts.scss",
+          "app/assets/stylesheets/desktop/topic-list.scss",
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/topic.scss",
+          "app/assets/stylesheets/desktop/upload.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/embed.css.scss",
+          "app/assets/stylesheets/mobile/compose.scss",
+          "app/assets/stylesheets/mobile/login.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-list.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/topic.scss",
+          "app/assets/stylesheets/mobile/upload.scss",
+          "app/assets/stylesheets/mobile/user.scss",
+          "lib/sass/discourse_sass_importer.rb",
+          "plugins/poll/spec/controllers/posts_controller_spec.rb",
+          "spec/components/admin_user_index_query_spec.rb",
+          "spec/components/category_list_spec.rb",
+          "spec/components/composer_messages_finder_spec.rb",
+          "spec/components/cooked_post_processor_spec.rb",
+          "spec/components/discourse_diff_spec.rb",
+          "spec/components/search_spec.rb",
+          "spec/components/suggested_topics_builder_spec.rb",
+          "spec/controllers/admin/badges_controller_spec.rb",
+          "spec/controllers/embed_controller_spec.rb",
+          "spec/controllers/uploads_controller_spec.rb",
+          "spec/fabricators/incoming_link_fabricator.rb",
+          "spec/fabricators/notification_fabricator.rb",
+          "test/stylesheets/test_helper.css"
+        ],
+        "context_files_exposed_to_model": [
+          "LICENSE.txt",
+          "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+          "app/assets/stylesheets/common/admin/admin_base.scss",
+          "app/assets/stylesheets/common/base/_topic-list.scss",
+          "app/assets/stylesheets/common/base/discourse.scss",
+          "app/assets/stylesheets/common/base/header.scss",
+          "app/assets/stylesheets/common/base/login.scss",
+          "app/assets/stylesheets/common/base/notification-options.scss",
+          "app/assets/stylesheets/common/base/search.scss",
+          "app/assets/stylesheets/common/base/share_link.scss",
+          "app/assets/stylesheets/common/base/topic-post.scss",
+          "app/assets/stylesheets/common/base/user-badges.scss",
+          "app/assets/stylesheets/common/base/user.scss",
+          "app/assets/stylesheets/common/components/badges.css.scss",
+          "app/assets/stylesheets/common/components/buttons.css.scss",
+          "app/assets/stylesheets/common/foundation/colors.scss",
+          "app/assets/stylesheets/common/foundation/variables.scss",
+          "app/assets/stylesheets/desktop/compose.scss",
+          "app/assets/stylesheets/desktop/header.scss",
+          "app/assets/stylesheets/desktop/login.scss",
+          "app/assets/stylesheets/desktop/modal.scss",
+          "app/assets/stylesheets/desktop/queued-posts.scss",
+          "app/assets/stylesheets/desktop/topic-list.scss",
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/topic.scss",
+          "app/assets/stylesheets/desktop/upload.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/embed.css.scss",
+          "app/assets/stylesheets/mobile/compose.scss",
+          "app/assets/stylesheets/mobile/login.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-list.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/topic.scss",
+          "app/assets/stylesheets/mobile/upload.scss",
+          "app/assets/stylesheets/mobile/user.scss",
+          "lib/sass/discourse_sass_importer.rb",
+          "plugins/poll/spec/controllers/posts_controller_spec.rb",
+          "spec/components/admin_user_index_query_spec.rb",
+          "spec/components/category_list_spec.rb",
+          "spec/components/composer_messages_finder_spec.rb",
+          "spec/components/cooked_post_processor_spec.rb",
+          "spec/components/discourse_diff_spec.rb",
+          "spec/components/search_spec.rb",
+          "spec/components/suggested_topics_builder_spec.rb",
+          "spec/controllers/admin/badges_controller_spec.rb",
+          "spec/controllers/embed_controller_spec.rb",
+          "spec/controllers/uploads_controller_spec.rb",
+          "spec/fabricators/incoming_link_fabricator.rb",
+          "spec/fabricators/notification_fabricator.rb",
+          "test/stylesheets/test_helper.css"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "ac8bb8967eb955a8c9b535eb83d10c27bcf4391ed84263139d980c334b27e3fa",
+        "context_truncated": true,
+        "context_utf8_bytes": 40027,
+        "estimated_context_tokens": 9963,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 291808,
+        "generation_input_char_budget_utilization": 0.518546441495778,
+        "generation_prompt_chars": 151316,
+        "generation_prompt_utf8_bytes": 151496,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 51
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 32,
+    "packets": {
+      "f0000:c0000-aab312d99028": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "6cf453b592c0305fc3a81ef2ab388b1dd78583c5d2ac28a226fcfe027b0bf393",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0001:c0000-18c699fe469a": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "247ecead2e576a810b5c292ee004daf07d92d5e29642ef9f919510c3c5ed4186",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0002:c0000-c03d17a1f317": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "6d22f4f8e803fa895770b12af6ba5934e0d950dab3d1b9a0b6660d1f69336b74",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0003:c0000-3b33c7731180": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "926ee38b9903a7747ffb342806ae40614cbf990b1d393b23b82b54c66299de22",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0004:c0000-42a0c7c4c99d": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "5953c5af349d0c2d3256653b22e9c7399d21cae4c87a2ac555f9ed873feb3144",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0005:c0000-6baa64b005fb": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "46ab4f75875078d58448d51e938999aa36ca47e617873457103f6bf3b3f17203",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0006:c0000-5128a2722c26": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "f1334027fb3a96bb75a9a81bbb5a37439953e8e8f0148de8d99e4cf976bcc045",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0007:c0000-83819f7d0c66": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "01b1a3128cbbef41ff4fef97129f5ae724ce4ac7b9e622b3be92525a6a4c5fa4",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0008:c0000-0ed167ac4562": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "166cff02cd108ce0dc2251915eab02f734a93226e0ecc32d57de372ea528329f",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0009:c0000-ca4276c41dd5": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "b55aa06a213fd482da1d4df7de4153ab77cdd36c38d2fc95738884f8fe8487b9",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0010:c0000-0e0081446211": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "d4652f8ed2723a1910ccb44b6a3c0a3560547e1df98ca80b34fb87efbc0dd6a5",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0011:c0000-0830e3636472": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "9a585ae01f6119c5386f1b7f553509b5e51befbe27f6d26afe29e799a86a08b3",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0012:c0000-eef74171158a": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "50cce1bfebbbfdd758124d9ba5a6d9334d9c7d1bd48b10650498dde1d1d96232",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0013:c0000-10da74a8fb57": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "d7939b99aef40d74f23f2cc42341aff7f1b9b8f215e66655b1e641969d2851d5",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0014:c0000-2a9c0a43d095": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "c91406ebb460bfe667dbb577a39636f24ff9ccb268617f12645d737cef9d2b84",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0015:c0000-804db5c48e63": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "4a78313bdc3555e0d4c4235b05185eadb272a673dd86f1205db7341f66a7fa81",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0016:c0000-40597e0fa21b": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "c1f15c5911a5de30477dd7a05b348f6baa0df16546a78b83b95677a0c389e720",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0017:c0000-52c2c0a40d73": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "0e21d2135aacf9b744a15cb370a37b751c6f0be440b1e97329671d2ef6f0212a",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0018:c0000-c209cbc9d604": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "72b70d246664a879403f693b97f05f7264a535533ae7e67191529d74a54edba2",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0019:c0000-631c31359fde": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "edf1076c6ef4f3aae5f3be870faa595ca9b3d605a3cea93f175eef2ac7a116af",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0020:c0000-27482c2b8757": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "4acc694f95105f41e5226c3476904d06e980b357e7854152879cfff24c9f8fd5",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0021:c0000-db46c238174a": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "0ad61da8e4bdcb11d9e037fff6d88d57ee190340cbccfb87ab34541fad484ecc",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0022:c0000-7789b3f44c21": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "cf45be44c917f76f91fd36ec37e83e32e609a428d5ad21b029a47bba107e7012",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0023:c0000-f37079910564": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "67ae7293f54929c46e73e7d95a3682eb94b6f6fe0c381dc64c80377c09be53a2",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0024:c0000-fa0b12f74f71": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "39a7cc9769bfb029dd30d005b0dfea98e8a69c2a3d992594b4dda545cfc4311b",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0025:c0000-8dc383a398fd": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "fb77f1cce87282e2678e3bd8809f9f5cd82aeb759f6d80049ccb9b657e1ce0de",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0026:c0000-dc6802943492": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 796,
+        "prompt_sha256": "e42a8e6dda27f33b2e01e17195ecda53c054cdf0ee2db9d9ab1f768c54cdeac1",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0027:c0000-642a37315ab3": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "7d0547c231f5cb5de50515584137c74116f4d3cfc176da3ea00e1532976a296c",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0028:c0000-804e10d9a12b": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "f009c557b6b52470f940a7d21e14e3b92b14884aaacdf735a0e2edcd2b39e6a7",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0029:c0000-06d5b4a0b641": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "cf39fd0a3a7d15d756e84c7450c0bf2096da71d509095ab40d931adfe4ed2a4a",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0030:c0000-574853e96850": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "934efd39c08b0292d25d3738938cfd7512c802c6678875f7fba59cdcf88e12bb",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0031:c0000-88e296481526": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 925,
+        "prompt_sha256": "514fa30ed2b0c00d35743cc2c4da74875aced273c9b5c3c63262572ceceb7253",
+        "symbols": [
+          "choose",
+          "color"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 6,
+        "serialized_chars": 8,
+        "serialized_limit_chars": 6000,
+        "sha256": "4a67196f3c4a35c9b1eb8eb0c9d37b4dcf727ea162290db28b57631258c30838",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 58,
+        "serialized_chars": 60,
+        "serialized_limit_chars": 1000,
+        "sha256": "dc602c45d22587cd0b5d81a53dd1f51013cded6913e3c9bda8b3119b3210a679",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 28568,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 133774
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 67540
+      },
+      "verification": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 22191
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-5e77722b5948": {
+          "action_counts": {
+            "list": 2,
+            "read": 5,
+            "search": 6
+          },
+          "actions_executed": 13,
+          "actions_failed": 0,
+          "additional_context_files_selected": 5,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "app/assets/stylesheets/common/foundation/colors.scss",
+            "app/assets/stylesheets/common/foundation/variables.scss",
+            "app/assets/stylesheets/embed.css.scss",
+            "lib/sass/discourse_sass_importer.rb",
+            "test/stylesheets/test_helper.css"
+          ],
+          "context_files_exposed_to_model": [
+            "app/assets/stylesheets/common/foundation/colors.scss",
+            "app/assets/stylesheets/common/foundation/variables.scss",
+            "app/assets/stylesheets/embed.css.scss",
+            "lib/sass/discourse_sass_importer.rb",
+            "test/stylesheets/test_helper.css"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 9963,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 39851,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 291808,
+          "generation_input_char_budget_utilization": 0.518546441495778,
+          "generation_prompt_chars": 151316,
+          "generation_prompt_utf8_bytes": 151496,
+          "hypotheses_final": 4,
+          "hypotheses_open_final": 3,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 1,
+          "hypotheses_returned": 8,
+          "hypothesis_linked_actions": 13,
+          "largest_selector_input_char_budget_utilization": 0.5154793562890668,
+          "list_hits": 6,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 171,
+          "repository_files": 7575,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 7575,
+          "repository_index_chars": 3315,
+          "repository_index_chars_by_round": [
+            3315,
+            3315
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 829,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": false,
+          "request_limit_hit": false,
+          "requests_accepted": 13,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 0,
+          "requests_returned": 13,
+          "round_limit": 2,
+          "round_limit_hit": false,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 7,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 31365,
+          "seed_context_chars_original": 31365,
+          "seed_context_truncated": false,
+          "selected_context_chars": 8484,
+          "selection_done": true,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            145619,
+            150421
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 5
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 224,
+      "callers": 0,
+      "changed_context_files_exposed_to_model": [
+        "app/assets/stylesheets/common/admin/admin_base.scss",
+        "app/assets/stylesheets/common/base/_topic-list.scss",
+        "app/assets/stylesheets/common/base/discourse.scss",
+        "app/assets/stylesheets/common/base/header.scss",
+        "app/assets/stylesheets/common/base/login.scss",
+        "app/assets/stylesheets/common/base/notification-options.scss",
+        "app/assets/stylesheets/common/base/search.scss",
+        "app/assets/stylesheets/common/base/share_link.scss",
+        "app/assets/stylesheets/common/base/topic-post.scss",
+        "app/assets/stylesheets/common/base/user-badges.scss",
+        "app/assets/stylesheets/common/base/user.scss",
+        "app/assets/stylesheets/common/components/badges.css.scss",
+        "app/assets/stylesheets/common/components/buttons.css.scss",
+        "app/assets/stylesheets/desktop/compose.scss",
+        "app/assets/stylesheets/desktop/header.scss",
+        "app/assets/stylesheets/desktop/login.scss",
+        "app/assets/stylesheets/desktop/modal.scss",
+        "app/assets/stylesheets/desktop/queued-posts.scss",
+        "app/assets/stylesheets/desktop/topic-list.scss",
+        "app/assets/stylesheets/desktop/topic-post.scss",
+        "app/assets/stylesheets/desktop/topic.scss",
+        "app/assets/stylesheets/desktop/upload.scss",
+        "app/assets/stylesheets/desktop/user.scss",
+        "app/assets/stylesheets/embed.css.scss",
+        "app/assets/stylesheets/mobile/compose.scss",
+        "app/assets/stylesheets/mobile/login.scss",
+        "app/assets/stylesheets/mobile/modal.scss",
+        "app/assets/stylesheets/mobile/topic-list.scss",
+        "app/assets/stylesheets/mobile/topic-post.scss",
+        "app/assets/stylesheets/mobile/topic.scss",
+        "app/assets/stylesheets/mobile/upload.scss",
+        "app/assets/stylesheets/mobile/user.scss"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 32,
+      "context_chars": 28568,
+      "context_files_exposed_to_model": [
+        "LICENSE.txt",
+        "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+        "app/assets/stylesheets/common/admin/admin_base.scss",
+        "app/assets/stylesheets/common/base/_topic-list.scss",
+        "app/assets/stylesheets/common/base/discourse.scss",
+        "app/assets/stylesheets/common/base/header.scss",
+        "app/assets/stylesheets/common/base/login.scss",
+        "app/assets/stylesheets/common/base/notification-options.scss",
+        "app/assets/stylesheets/common/base/search.scss",
+        "app/assets/stylesheets/common/base/share_link.scss",
+        "app/assets/stylesheets/common/base/topic-post.scss",
+        "app/assets/stylesheets/common/base/user-badges.scss",
+        "app/assets/stylesheets/common/base/user.scss",
+        "app/assets/stylesheets/common/components/badges.css.scss",
+        "app/assets/stylesheets/common/components/buttons.css.scss",
+        "app/assets/stylesheets/desktop/compose.scss",
+        "app/assets/stylesheets/desktop/header.scss",
+        "app/assets/stylesheets/desktop/login.scss",
+        "app/assets/stylesheets/desktop/modal.scss",
+        "app/assets/stylesheets/desktop/queued-posts.scss",
+        "app/assets/stylesheets/desktop/topic-list.scss",
+        "app/assets/stylesheets/desktop/topic-post.scss",
+        "app/assets/stylesheets/desktop/topic.scss",
+        "app/assets/stylesheets/desktop/upload.scss",
+        "app/assets/stylesheets/desktop/user.scss",
+        "app/assets/stylesheets/embed.css.scss",
+        "app/assets/stylesheets/mobile/compose.scss",
+        "app/assets/stylesheets/mobile/login.scss",
+        "app/assets/stylesheets/mobile/modal.scss",
+        "app/assets/stylesheets/mobile/topic-list.scss",
+        "app/assets/stylesheets/mobile/topic-post.scss",
+        "app/assets/stylesheets/mobile/topic.scss",
+        "app/assets/stylesheets/mobile/upload.scss",
+        "app/assets/stylesheets/mobile/user.scss",
+        "plugins/poll/spec/controllers/posts_controller_spec.rb",
+        "spec/components/admin_user_index_query_spec.rb",
+        "spec/components/category_list_spec.rb",
+        "spec/components/composer_messages_finder_spec.rb",
+        "spec/components/cooked_post_processor_spec.rb",
+        "spec/components/discourse_diff_spec.rb",
+        "spec/components/search_spec.rb",
+        "spec/components/suggested_topics_builder_spec.rb",
+        "spec/controllers/admin/badges_controller_spec.rb",
+        "spec/controllers/embed_controller_spec.rb",
+        "spec/controllers/uploads_controller_spec.rb",
+        "spec/fabricators/incoming_link_fabricator.rb",
+        "spec/fabricators/notification_fabricator.rb"
+      ],
+      "context_utf8_bytes": 28744,
+      "cross_file_context_files_exposed_to_model": [
+        "LICENSE.txt",
+        "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+        "plugins/poll/spec/controllers/posts_controller_spec.rb",
+        "spec/components/admin_user_index_query_spec.rb",
+        "spec/components/category_list_spec.rb",
+        "spec/components/composer_messages_finder_spec.rb",
+        "spec/components/cooked_post_processor_spec.rb",
+        "spec/components/discourse_diff_spec.rb",
+        "spec/components/search_spec.rb",
+        "spec/components/suggested_topics_builder_spec.rb",
+        "spec/controllers/admin/badges_controller_spec.rb",
+        "spec/controllers/embed_controller_spec.rb",
+        "spec/controllers/uploads_controller_spec.rb",
+        "spec/fabricators/incoming_link_fabricator.rb",
+        "spec/fabricators/notification_fabricator.rb"
+      ],
+      "definitions": 0,
+      "estimated_context_tokens": 7160,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 88,
+      "evidence_rows_clipped_during_render": 24,
+      "evidence_rows_omitted_due_to_render_budget": 0,
+      "evidence_rows_rendered": 88,
+      "hypotheses": 0,
+      "imports": 0,
+      "largest_prompt_budget": 1038,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 2,
+        "max_symbols_per_chunk": 0,
+        "prompt_render_budget": 32
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 0,
+        "source_read_budget": 0,
+        "symbol_config_limit": 0,
+        "symbol_search_budget": 224
+      },
+      "packet_metrics": {
+        "f0000:c0000-aab312d99028": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/admin/admin_base.scss",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 15,
+          "symbol_candidates_discovered": 15,
+          "symbol_candidates_extracted": 15,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 13
+        },
+        "f0001:c0000-18c699fe469a": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/_topic-list.scss",
+            "spec/components/category_list_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/category_list_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/category_list_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0002:c0000-c03d17a1f317": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/discourse.scss",
+            "spec/components/discourse_diff_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/discourse_diff_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/discourse_diff_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0003:c0000-3b33c7731180": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/header.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.766859344894027,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0004:c0000-42a0c7c4c99d": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/login.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.766859344894027,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0005:c0000-6baa64b005fb": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/notification-options.scss",
+            "spec/fabricators/notification_fabricator.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/fabricators/notification_fabricator.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/fabricators/notification_fabricator.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0006:c0000-5128a2722c26": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/search.scss",
+            "spec/components/search_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/search_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/search_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0007:c0000-83819f7d0c66": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/share_link.scss",
+            "spec/fabricators/incoming_link_fabricator.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/fabricators/incoming_link_fabricator.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/fabricators/incoming_link_fabricator.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0008:c0000-0ed167ac4562": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/topic-post.scss",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0009:c0000-ca4276c41dd5": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/user-badges.scss",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0010:c0000-0e0081446211": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/base/user.scss",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0011:c0000-0830e3636472": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/components/badges.css.scss",
+            "spec/controllers/admin/badges_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/admin/badges_controller_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/admin/badges_controller_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0012:c0000-eef74171158a": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/common/components/buttons.css.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.766859344894027,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0013:c0000-10da74a8fb57": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/compose.scss",
+            "spec/components/composer_messages_finder_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/composer_messages_finder_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/composer_messages_finder_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0014:c0000-2a9c0a43d095": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/header.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.766859344894027,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0015:c0000-804db5c48e63": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/login.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.766859344894027,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0016:c0000-40597e0fa21b": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/modal.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.766859344894027,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0017:c0000-52c2c0a40d73": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/queued-posts.scss",
+            "plugins/poll/spec/controllers/posts_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "plugins/poll/spec/controllers/posts_controller_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "plugins/poll/spec/controllers/posts_controller_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0018:c0000-c209cbc9d604": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/topic-list.scss",
+            "spec/components/category_list_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/category_list_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/category_list_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1038,
+          "prompt_budget_utilization": 0.8911368015414258,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 14,
+          "symbol_candidates_discovered": 14,
+          "symbol_candidates_extracted": 14,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 12
+        },
+        "f0019:c0000-631c31359fde": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/topic-post.scss",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 17,
+          "symbol_candidates_discovered": 17,
+          "symbol_candidates_extracted": 17,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 15
+        },
+        "f0020:c0000-27482c2b8757": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/topic.scss",
+            "spec/components/suggested_topics_builder_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/suggested_topics_builder_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/suggested_topics_builder_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0021:c0000-db46c238174a": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/upload.scss",
+            "spec/controllers/uploads_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/uploads_controller_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/uploads_controller_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0022:c0000-7789b3f44c21": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/desktop/user.scss",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0023:c0000-f37079910564": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/embed.css.scss",
+            "spec/controllers/embed_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/embed_controller_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/embed_controller_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0024:c0000-fa0b12f74f71": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/compose.scss",
+            "spec/components/composer_messages_finder_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/composer_messages_finder_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/composer_messages_finder_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0025:c0000-8dc383a398fd": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/login.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.7675988428158148,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0026:c0000-dc6802943492": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/modal.scss"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 199,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.7675988428158148,
+          "prompt_chars": 796,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 800,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0027:c0000-642a37315ab3": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/topic-list.scss",
+            "spec/components/category_list_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/category_list_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/category_list_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0028:c0000-804e10d9a12b": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/topic-post.scss",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/cooked_post_processor_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0029:c0000-06d5b4a0b641": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/topic.scss",
+            "spec/components/suggested_topics_builder_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/suggested_topics_builder_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/suggested_topics_builder_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 11,
+          "symbol_candidates_discovered": 11,
+          "symbol_candidates_extracted": 11,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 9
+        },
+        "f0030:c0000-574853e96850": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/upload.scss",
+            "spec/controllers/uploads_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/uploads_controller_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/controllers/uploads_controller_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0031:c0000-88e296481526": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "app/assets/stylesheets/mobile/user.scss",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 232,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "LICENSE.txt",
+            "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+            "spec/components/admin_user_index_query_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 1037,
+          "prompt_budget_utilization": 0.8919961427193829,
+          "prompt_chars": 925,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 931,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 235,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 235,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        }
+      },
+      "packets_hitting_symbol_config_limit": 0,
+      "packets_hitting_symbol_render_budget_limit": 32,
+      "prompt_budget_chars": 33203,
+      "prompt_budget_utilization": 0.8604041803451495,
+      "prompt_truncated_packets": 32,
+      "smallest_prompt_budget": 1037,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 32,
+      "symbol_candidates_after_config_limit": 288,
+      "symbol_candidates_discovered": 288,
+      "symbol_candidates_omitted_by_config_limit": 0,
+      "symbol_searches_skipped_due_to_budget": 224,
+      "symbols": 64,
+      "tests": 24,
+      "tree_files": 7575,
+      "truncated_packets": 32,
+      "unchanged_context_files_exposed_to_model": [
+        "LICENSE.txt",
+        "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+        "plugins/poll/spec/controllers/posts_controller_spec.rb",
+        "spec/components/admin_user_index_query_spec.rb",
+        "spec/components/category_list_spec.rb",
+        "spec/components/composer_messages_finder_spec.rb",
+        "spec/components/cooked_post_processor_spec.rb",
+        "spec/components/discourse_diff_spec.rb",
+        "spec/components/search_spec.rb",
+        "spec/components/suggested_topics_builder_spec.rb",
+        "spec/controllers/admin/badges_controller_spec.rb",
+        "spec/controllers/embed_controller_spec.rb",
+        "spec/controllers/uploads_controller_spec.rb",
+        "spec/fabricators/incoming_link_fabricator.rb",
+        "spec/fabricators/notification_fabricator.rb"
+      ],
+      "unique_changed_context_files_exposed_to_model": 32,
+      "unique_context_files_exposed_to_model": 47,
+      "unique_cross_file_context_files_exposed_to_model": 15,
+      "unique_unchanged_context_files_exposed_to_model": 15,
+      "usages": 64,
+      "whole_repo_grep_cache_hits": 62,
+      "whole_repo_grep_calls": 2,
+      "whole_repo_grep_calls_returning_configured_limit": 2
+    },
+    "unique_changed_context_files_exposed_to_model": 32,
+    "unique_effective_context_files_exposed_to_model": 51,
+    "unique_unchanged_context_files_exposed_to_model": 19,
+    "verification_batches": [
+      {
+        "candidate_count": 5,
+        "candidate_offset": 0,
+        "candidate_payload_chars": 9446,
+        "context_budget_chars": 167885,
+        "context_budget_clipped": false,
+        "context_chars": 46180,
+        "context_chars_available": 46180,
+        "context_chars_before_prompt_fit": 46180,
+        "context_chars_omitted_by_evidence_budget": 0,
+        "context_chars_omitted_by_prompt_fit": 0,
+        "context_chars_rendered": 46180,
+        "context_clipped_to_any_budget": false,
+        "context_clipped_to_prompt_budget": false,
+        "evidence_budget_clipped": false,
+        "evidence_clipped_to_any_budget": false,
+        "generation_context_blocks_available": 1,
+        "generation_context_blocks_rendered": 1,
+        "generation_context_chars_available": 39900,
+        "generation_context_chars_omitted": 0,
+        "generation_context_chars_rendered": 39900,
+        "generation_context_files_after_prompt_fit": [
+          "LICENSE.txt",
+          "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+          "app/assets/stylesheets/common/admin/admin_base.scss",
+          "app/assets/stylesheets/common/base/_topic-list.scss",
+          "app/assets/stylesheets/common/base/discourse.scss",
+          "app/assets/stylesheets/common/base/header.scss",
+          "app/assets/stylesheets/common/base/login.scss",
+          "app/assets/stylesheets/common/base/notification-options.scss",
+          "app/assets/stylesheets/common/base/search.scss",
+          "app/assets/stylesheets/common/base/share_link.scss",
+          "app/assets/stylesheets/common/base/topic-post.scss",
+          "app/assets/stylesheets/common/base/user-badges.scss",
+          "app/assets/stylesheets/common/base/user.scss",
+          "app/assets/stylesheets/common/components/badges.css.scss",
+          "app/assets/stylesheets/common/components/buttons.css.scss",
+          "app/assets/stylesheets/common/foundation/colors.scss",
+          "app/assets/stylesheets/common/foundation/variables.scss",
+          "app/assets/stylesheets/desktop/compose.scss",
+          "app/assets/stylesheets/desktop/header.scss",
+          "app/assets/stylesheets/desktop/login.scss",
+          "app/assets/stylesheets/desktop/modal.scss",
+          "app/assets/stylesheets/desktop/queued-posts.scss",
+          "app/assets/stylesheets/desktop/topic-list.scss",
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/topic.scss",
+          "app/assets/stylesheets/desktop/upload.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/embed.css.scss",
+          "app/assets/stylesheets/mobile/compose.scss",
+          "app/assets/stylesheets/mobile/login.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-list.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/topic.scss",
+          "app/assets/stylesheets/mobile/upload.scss",
+          "app/assets/stylesheets/mobile/user.scss",
+          "lib/sass/discourse_sass_importer.rb",
+          "plugins/poll/spec/controllers/posts_controller_spec.rb",
+          "spec/components/admin_user_index_query_spec.rb",
+          "spec/components/category_list_spec.rb",
+          "spec/components/composer_messages_finder_spec.rb",
+          "spec/components/cooked_post_processor_spec.rb",
+          "spec/components/discourse_diff_spec.rb",
+          "spec/components/search_spec.rb",
+          "spec/components/suggested_topics_builder_spec.rb",
+          "spec/controllers/admin/badges_controller_spec.rb",
+          "spec/controllers/embed_controller_spec.rb",
+          "spec/controllers/uploads_controller_spec.rb",
+          "spec/fabricators/incoming_link_fabricator.rb",
+          "spec/fabricators/notification_fabricator.rb",
+          "test/stylesheets/test_helper.css"
+        ],
+        "generation_context_files_available": [
+          "LICENSE.txt",
+          "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+          "app/assets/stylesheets/common/admin/admin_base.scss",
+          "app/assets/stylesheets/common/base/_topic-list.scss",
+          "app/assets/stylesheets/common/base/discourse.scss",
+          "app/assets/stylesheets/common/base/header.scss",
+          "app/assets/stylesheets/common/base/login.scss",
+          "app/assets/stylesheets/common/base/notification-options.scss",
+          "app/assets/stylesheets/common/base/search.scss",
+          "app/assets/stylesheets/common/base/share_link.scss",
+          "app/assets/stylesheets/common/base/topic-post.scss",
+          "app/assets/stylesheets/common/base/user-badges.scss",
+          "app/assets/stylesheets/common/base/user.scss",
+          "app/assets/stylesheets/common/components/badges.css.scss",
+          "app/assets/stylesheets/common/components/buttons.css.scss",
+          "app/assets/stylesheets/common/foundation/colors.scss",
+          "app/assets/stylesheets/common/foundation/variables.scss",
+          "app/assets/stylesheets/desktop/compose.scss",
+          "app/assets/stylesheets/desktop/header.scss",
+          "app/assets/stylesheets/desktop/login.scss",
+          "app/assets/stylesheets/desktop/modal.scss",
+          "app/assets/stylesheets/desktop/queued-posts.scss",
+          "app/assets/stylesheets/desktop/topic-list.scss",
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/topic.scss",
+          "app/assets/stylesheets/desktop/upload.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/embed.css.scss",
+          "app/assets/stylesheets/mobile/compose.scss",
+          "app/assets/stylesheets/mobile/login.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-list.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/topic.scss",
+          "app/assets/stylesheets/mobile/upload.scss",
+          "app/assets/stylesheets/mobile/user.scss",
+          "lib/sass/discourse_sass_importer.rb",
+          "plugins/poll/spec/controllers/posts_controller_spec.rb",
+          "spec/components/admin_user_index_query_spec.rb",
+          "spec/components/category_list_spec.rb",
+          "spec/components/composer_messages_finder_spec.rb",
+          "spec/components/cooked_post_processor_spec.rb",
+          "spec/components/discourse_diff_spec.rb",
+          "spec/components/search_spec.rb",
+          "spec/components/suggested_topics_builder_spec.rb",
+          "spec/controllers/admin/badges_controller_spec.rb",
+          "spec/controllers/embed_controller_spec.rb",
+          "spec/controllers/uploads_controller_spec.rb",
+          "spec/fabricators/incoming_link_fabricator.rb",
+          "spec/fabricators/notification_fabricator.rb",
+          "test/stylesheets/test_helper.css"
+        ],
+        "generation_context_files_omitted": [],
+        "generation_context_files_rendered": [
+          "LICENSE.txt",
+          "app/assets/javascripts/discourse/components/category-chooser.js.es6",
+          "app/assets/stylesheets/common/admin/admin_base.scss",
+          "app/assets/stylesheets/common/base/_topic-list.scss",
+          "app/assets/stylesheets/common/base/discourse.scss",
+          "app/assets/stylesheets/common/base/header.scss",
+          "app/assets/stylesheets/common/base/login.scss",
+          "app/assets/stylesheets/common/base/notification-options.scss",
+          "app/assets/stylesheets/common/base/search.scss",
+          "app/assets/stylesheets/common/base/share_link.scss",
+          "app/assets/stylesheets/common/base/topic-post.scss",
+          "app/assets/stylesheets/common/base/user-badges.scss",
+          "app/assets/stylesheets/common/base/user.scss",
+          "app/assets/stylesheets/common/components/badges.css.scss",
+          "app/assets/stylesheets/common/components/buttons.css.scss",
+          "app/assets/stylesheets/common/foundation/colors.scss",
+          "app/assets/stylesheets/common/foundation/variables.scss",
+          "app/assets/stylesheets/desktop/compose.scss",
+          "app/assets/stylesheets/desktop/header.scss",
+          "app/assets/stylesheets/desktop/login.scss",
+          "app/assets/stylesheets/desktop/modal.scss",
+          "app/assets/stylesheets/desktop/queued-posts.scss",
+          "app/assets/stylesheets/desktop/topic-list.scss",
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/topic.scss",
+          "app/assets/stylesheets/desktop/upload.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/embed.css.scss",
+          "app/assets/stylesheets/mobile/compose.scss",
+          "app/assets/stylesheets/mobile/login.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-list.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/topic.scss",
+          "app/assets/stylesheets/mobile/upload.scss",
+          "app/assets/stylesheets/mobile/user.scss",
+          "lib/sass/discourse_sass_importer.rb",
+          "plugins/poll/spec/controllers/posts_controller_spec.rb",
+          "spec/components/admin_user_index_query_spec.rb",
+          "spec/components/category_list_spec.rb",
+          "spec/components/composer_messages_finder_spec.rb",
+          "spec/components/cooked_post_processor_spec.rb",
+          "spec/components/discourse_diff_spec.rb",
+          "spec/components/search_spec.rb",
+          "spec/components/suggested_topics_builder_spec.rb",
+          "spec/controllers/admin/badges_controller_spec.rb",
+          "spec/controllers/embed_controller_spec.rb",
+          "spec/controllers/uploads_controller_spec.rb",
+          "spec/fabricators/incoming_link_fabricator.rb",
+          "spec/fabricators/notification_fabricator.rb",
+          "test/stylesheets/test_helper.css"
+        ],
+        "input_char_budget": 326272,
+        "input_char_budget_utilization": 0.19990682620635544,
+        "patch_blocks_available": 5,
+        "patch_blocks_rendered": 5,
+        "patch_budget_chars": 111923,
+        "patch_budget_clipped": false,
+        "patch_chars": 7095,
+        "patch_chars_available": 7095,
+        "patch_chars_omitted_by_evidence_budget": 0,
+        "patch_chars_rendered": 7095,
+        "prompt_chars": 65224,
+        "prompt_utf8_bytes": 65400,
+        "source_blocks_available": 5,
+        "source_blocks_rendered": 5,
+        "source_context_chars_available": 6278,
+        "source_context_chars_omitted": 0,
+        "source_context_chars_rendered": 6278,
+        "source_files_after_prompt_fit": [
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/user.scss"
+        ],
+        "source_files_available": [
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/user.scss"
+        ],
+        "source_files_omitted": [],
+        "source_files_rendered": [
+          "app/assets/stylesheets/desktop/topic-post.scss",
+          "app/assets/stylesheets/desktop/user.scss",
+          "app/assets/stylesheets/mobile/modal.scss",
+          "app/assets/stylesheets/mobile/topic-post.scss",
+          "app/assets/stylesheets/mobile/user.scss"
+        ]
+      }
+    ],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": true,
+    "completed_hunks": [
+      "app/assets/stylesheets/common/admin/admin_base.scss:373:373:h000",
+      "app/assets/stylesheets/common/admin/admin_base.scss:494:494:h001",
+      "app/assets/stylesheets/common/admin/admin_base.scss:565:565:h002",
+      "app/assets/stylesheets/common/admin/admin_base.scss:714:714:h003",
+      "app/assets/stylesheets/common/admin/admin_base.scss:1282:1282:h004",
+      "app/assets/stylesheets/common/admin/admin_base.scss:1319:1319:h005",
+      "app/assets/stylesheets/common/base/_topic-list.scss:36:36:h000",
+      "app/assets/stylesheets/common/base/_topic-list.scss:234:234:h001",
+      "app/assets/stylesheets/common/base/_topic-list.scss:289:289:h002",
+      "app/assets/stylesheets/common/base/discourse.scss:64:64:h000",
+      "app/assets/stylesheets/common/base/header.scss:141:141:h000",
+      "app/assets/stylesheets/common/base/header.scss:183:183:h001",
+      "app/assets/stylesheets/common/base/header.scss:289:289:h002",
+      "app/assets/stylesheets/common/base/header.scss:320:320:h003",
+      "app/assets/stylesheets/common/base/login.scss:27:27:h000",
+      "app/assets/stylesheets/common/base/notification-options.scss:1:1:h000",
+      "app/assets/stylesheets/common/base/search.scss:19:19:h000",
+      "app/assets/stylesheets/common/base/share_link.scss:50:50:h000",
+      "app/assets/stylesheets/common/base/topic-post.scss:3:3:h000",
+      "app/assets/stylesheets/common/base/topic-post.scss:43:43:h001",
+      "app/assets/stylesheets/common/base/topic-post.scss:147:147:h002",
+      "app/assets/stylesheets/common/base/user-badges.scss:50:50:h000",
+      "app/assets/stylesheets/common/base/user-badges.scss:85:85:h001",
+      "app/assets/stylesheets/common/base/user.scss:107:107:h000",
+      "app/assets/stylesheets/common/components/badges.css.scss:227:227:h000",
+      "app/assets/stylesheets/common/components/badges.css.scss:273:273:h001",
+      "app/assets/stylesheets/common/components/buttons.css.scss:48:48:h000",
+      "app/assets/stylesheets/desktop/compose.scss:328:328:h000",
+      "app/assets/stylesheets/desktop/header.scss:41:41:h000",
+      "app/assets/stylesheets/desktop/login.scss:5:5:h000",
+      "app/assets/stylesheets/desktop/login.scss:36:36:h001",
+      "app/assets/stylesheets/desktop/modal.scss:38:38:h000",
+      "app/assets/stylesheets/desktop/modal.scss:82:82:h001",
+      "app/assets/stylesheets/desktop/queued-posts.scss:2:2:h000",
+      "app/assets/stylesheets/desktop/topic-list.scss:27:27:h000",
+      "app/assets/stylesheets/desktop/topic-list.scss:123:123:h001",
+      "app/assets/stylesheets/desktop/topic-list.scss:211:211:h002",
+      "app/assets/stylesheets/desktop/topic-post.scss:22:22:h000",
+      "app/assets/stylesheets/desktop/topic-post.scss:69:69:h001",
+      "app/assets/stylesheets/desktop/topic-post.scss:101:101:h002",
+      "app/assets/stylesheets/desktop/topic-post.scss:266:266:h003",
+      "app/assets/stylesheets/desktop/topic-post.scss:309:309:h004",
+      "app/assets/stylesheets/desktop/topic-post.scss:370:370:h005",
+      "app/assets/stylesheets/desktop/topic-post.scss:404:404:h006",
+      "app/assets/stylesheets/desktop/topic-post.scss:884:884:h007",
+      "app/assets/stylesheets/desktop/topic-post.scss:929:929:h008",
+      "app/assets/stylesheets/desktop/topic.scss:49:49:h000",
+      "app/assets/stylesheets/desktop/upload.scss:8:8:h000",
+      "app/assets/stylesheets/desktop/user.scss:47:47:h000",
+      "app/assets/stylesheets/desktop/user.scss:161:161:h001",
+      "app/assets/stylesheets/desktop/user.scss:502:502:h002",
+      "app/assets/stylesheets/desktop/user.scss:591:591:h003",
+      "app/assets/stylesheets/embed.css.scss:77:77:h000",
+      "app/assets/stylesheets/mobile/compose.scss:24:24:h000",
+      "app/assets/stylesheets/mobile/compose.scss:156:156:h001",
+      "app/assets/stylesheets/mobile/login.scss:5:5:h000",
+      "app/assets/stylesheets/mobile/login.scss:33:33:h001",
+      "app/assets/stylesheets/mobile/modal.scss:90:90:h000",
+      "app/assets/stylesheets/mobile/topic-list.scss:63:63:h000",
+      "app/assets/stylesheets/mobile/topic-list.scss:134:134:h001",
+      "app/assets/stylesheets/mobile/topic-list.scss:197:197:h002",
+      "app/assets/stylesheets/mobile/topic-post.scss:37:37:h000",
+      "app/assets/stylesheets/mobile/topic-post.scss:139:139:h001",
+      "app/assets/stylesheets/mobile/topic-post.scss:170:170:h002",
+      "app/assets/stylesheets/mobile/topic-post.scss:235:235:h003",
+      "app/assets/stylesheets/mobile/topic-post.scss:430:430:h004",
+      "app/assets/stylesheets/mobile/topic-post.scss:486:486:h005",
+      "app/assets/stylesheets/mobile/topic.scss:22:22:h000",
+      "app/assets/stylesheets/mobile/upload.scss:1:1:h000",
+      "app/assets/stylesheets/mobile/user.scss:103:103:h000",
+      "app/assets/stylesheets/mobile/user.scss:477:477:h001",
+      "app/assets/stylesheets/mobile/user.scss:568:568:h002"
+    ],
+    "coverage_ratio": 1.0,
+    "eligible_files": 32,
+    "eligible_hunks": 72,
+    "excluded_files": [],
+    "failed_hunks": [],
+    "total_files": 32,
+    "total_hunks": 72
+  },
+  "diagnostics": [],
+  "diff": {
+    "additions": 115,
+    "bytes": 66954,
+    "chunk_plan_complete": true,
+    "chunks": 32,
+    "commentable_ranges": {
+      "LEFT": {
+        "app/assets/stylesheets/common/admin/admin_base.scss": [
+          [
+            385,
+            385
+          ],
+          [
+            506,
+            506
+          ],
+          [
+            524,
+            524
+          ],
+          [
+            577,
+            577
+          ],
+          [
+            600,
+            600
+          ],
+          [
+            726,
+            726
+          ],
+          [
+            1294,
+            1294
+          ],
+          [
+            1331,
+            1331
+          ]
+        ],
+        "app/assets/stylesheets/common/base/_topic-list.scss": [
+          [
+            48,
+            48
+          ],
+          [
+            51,
+            51
+          ],
+          [
+            55,
+            55
+          ],
+          [
+            69,
+            69
+          ],
+          [
+            246,
+            246
+          ],
+          [
+            301,
+            301
+          ]
+        ],
+        "app/assets/stylesheets/common/base/discourse.scss": [
+          [
+            76,
+            76
+          ],
+          [
+            79,
+            79
+          ],
+          [
+            82,
+            82
+          ]
+        ],
+        "app/assets/stylesheets/common/base/header.scss": [
+          [
+            153,
+            153
+          ],
+          [
+            195,
+            196
+          ],
+          [
+            301,
+            301
+          ],
+          [
+            332,
+            332
+          ]
+        ],
+        "app/assets/stylesheets/common/base/login.scss": [
+          [
+            39,
+            39
+          ],
+          [
+            54,
+            54
+          ]
+        ],
+        "app/assets/stylesheets/common/base/notification-options.scss": [
+          [
+            2,
+            2
+          ]
+        ],
+        "app/assets/stylesheets/common/base/search.scss": [
+          [
+            31,
+            31
+          ],
+          [
+            33,
+            33
+          ],
+          [
+            37,
+            37
+          ]
+        ],
+        "app/assets/stylesheets/common/base/share_link.scss": [
+          [
+            62,
+            62
+          ]
+        ],
+        "app/assets/stylesheets/common/base/topic-post.scss": [
+          [
+            15,
+            15
+          ],
+          [
+            21,
+            21
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            55,
+            55
+          ],
+          [
+            71,
+            71
+          ],
+          [
+            159,
+            159
+          ]
+        ],
+        "app/assets/stylesheets/common/base/user-badges.scss": [
+          [
+            62,
+            62
+          ],
+          [
+            97,
+            97
+          ]
+        ],
+        "app/assets/stylesheets/common/base/user.scss": [
+          [
+            119,
+            119
+          ],
+          [
+            124,
+            124
+          ],
+          [
+            129,
+            129
+          ]
+        ],
+        "app/assets/stylesheets/common/components/badges.css.scss": [
+          [
+            239,
+            239
+          ],
+          [
+            285,
+            285
+          ]
+        ],
+        "app/assets/stylesheets/common/components/buttons.css.scss": [
+          [
+            60,
+            60
+          ]
+        ],
+        "app/assets/stylesheets/desktop/compose.scss": [
+          [
+            340,
+            340
+          ]
+        ],
+        "app/assets/stylesheets/desktop/header.scss": [
+          [
+            53,
+            53
+          ],
+          [
+            59,
+            59
+          ]
+        ],
+        "app/assets/stylesheets/desktop/login.scss": [
+          [
+            17,
+            17
+          ],
+          [
+            48,
+            48
+          ]
+        ],
+        "app/assets/stylesheets/desktop/modal.scss": [
+          [
+            50,
+            50
+          ],
+          [
+            67,
+            67
+          ],
+          [
+            94,
+            94
+          ],
+          [
+            117,
+            117
+          ],
+          [
+            121,
+            121
+          ],
+          [
+            131,
+            131
+          ]
+        ],
+        "app/assets/stylesheets/desktop/queued-posts.scss": [
+          [
+            14,
+            14
+          ]
+        ],
+        "app/assets/stylesheets/desktop/topic-list.scss": [
+          [
+            39,
+            40
+          ],
+          [
+            42,
+            42
+          ],
+          [
+            54,
+            54
+          ],
+          [
+            135,
+            135
+          ],
+          [
+            144,
+            144
+          ],
+          [
+            223,
+            223
+          ],
+          [
+            227,
+            227
+          ]
+        ],
+        "app/assets/stylesheets/desktop/topic-post.scss": [
+          [
+            34,
+            34
+          ],
+          [
+            81,
+            81
+          ],
+          [
+            113,
+            113
+          ],
+          [
+            126,
+            126
+          ],
+          [
+            278,
+            278
+          ],
+          [
+            291,
+            291
+          ],
+          [
+            294,
+            294
+          ],
+          [
+            321,
+            321
+          ],
+          [
+            329,
+            329
+          ],
+          [
+            342,
+            342
+          ],
+          [
+            382,
+            382
+          ],
+          [
+            416,
+            416
+          ],
+          [
+            896,
+            897
+          ],
+          [
+            941,
+            941
+          ],
+          [
+            958,
+            958
+          ]
+        ],
+        "app/assets/stylesheets/desktop/topic.scss": [
+          [
+            61,
+            61
+          ],
+          [
+            69,
+            69
+          ]
+        ],
+        "app/assets/stylesheets/desktop/upload.scss": [
+          [
+            20,
+            20
+          ]
+        ],
+        "app/assets/stylesheets/desktop/user.scss": [
+          [
+            59,
+            59
+          ],
+          [
+            173,
+            173
+          ],
+          [
+            514,
+            514
+          ],
+          [
+            522,
+            522
+          ],
+          [
+            527,
+            527
+          ],
+          [
+            603,
+            603
+          ]
+        ],
+        "app/assets/stylesheets/embed.css.scss": [
+          [
+            89,
+            89
+          ]
+        ],
+        "app/assets/stylesheets/mobile/compose.scss": [
+          [
+            36,
+            36
+          ],
+          [
+            51,
+            51
+          ],
+          [
+            168,
+            168
+          ],
+          [
+            172,
+            172
+          ]
+        ],
+        "app/assets/stylesheets/mobile/login.scss": [
+          [
+            17,
+            17
+          ],
+          [
+            45,
+            45
+          ]
+        ],
+        "app/assets/stylesheets/mobile/modal.scss": [
+          [
+            102,
+            102
+          ]
+        ],
+        "app/assets/stylesheets/mobile/topic-list.scss": [
+          [
+            75,
+            75
+          ],
+          [
+            95,
+            95
+          ],
+          [
+            146,
+            146
+          ],
+          [
+            209,
+            209
+          ]
+        ],
+        "app/assets/stylesheets/mobile/topic-post.scss": [
+          [
+            49,
+            49
+          ],
+          [
+            151,
+            151
+          ],
+          [
+            182,
+            182
+          ],
+          [
+            190,
+            190
+          ],
+          [
+            247,
+            247
+          ],
+          [
+            270,
+            270
+          ],
+          [
+            442,
+            442
+          ],
+          [
+            498,
+            498
+          ]
+        ],
+        "app/assets/stylesheets/mobile/topic.scss": [
+          [
+            34,
+            34
+          ]
+        ],
+        "app/assets/stylesheets/mobile/upload.scss": [
+          [
+            10,
+            10
+          ]
+        ],
+        "app/assets/stylesheets/mobile/user.scss": [
+          [
+            115,
+            115
+          ],
+          [
+            489,
+            489
+          ],
+          [
+            497,
+            497
+          ],
+          [
+            503,
+            503
+          ],
+          [
+            580,
+            580
+          ]
+        ]
+      },
+      "RIGHT": {
+        "app/assets/stylesheets/common/admin/admin_base.scss": [
+          [
+            385,
+            385
+          ],
+          [
+            506,
+            506
+          ],
+          [
+            524,
+            524
+          ],
+          [
+            577,
+            577
+          ],
+          [
+            600,
+            600
+          ],
+          [
+            726,
+            726
+          ],
+          [
+            1294,
+            1294
+          ],
+          [
+            1331,
+            1331
+          ]
+        ],
+        "app/assets/stylesheets/common/base/_topic-list.scss": [
+          [
+            48,
+            48
+          ],
+          [
+            51,
+            51
+          ],
+          [
+            55,
+            55
+          ],
+          [
+            69,
+            69
+          ],
+          [
+            246,
+            246
+          ],
+          [
+            301,
+            301
+          ]
+        ],
+        "app/assets/stylesheets/common/base/discourse.scss": [
+          [
+            76,
+            76
+          ],
+          [
+            79,
+            79
+          ],
+          [
+            82,
+            82
+          ]
+        ],
+        "app/assets/stylesheets/common/base/header.scss": [
+          [
+            153,
+            153
+          ],
+          [
+            195,
+            196
+          ],
+          [
+            301,
+            301
+          ],
+          [
+            332,
+            332
+          ]
+        ],
+        "app/assets/stylesheets/common/base/login.scss": [
+          [
+            39,
+            39
+          ],
+          [
+            54,
+            54
+          ]
+        ],
+        "app/assets/stylesheets/common/base/notification-options.scss": [
+          [
+            2,
+            2
+          ]
+        ],
+        "app/assets/stylesheets/common/base/search.scss": [
+          [
+            31,
+            31
+          ],
+          [
+            33,
+            33
+          ],
+          [
+            37,
+            37
+          ]
+        ],
+        "app/assets/stylesheets/common/base/share_link.scss": [
+          [
+            62,
+            62
+          ]
+        ],
+        "app/assets/stylesheets/common/base/topic-post.scss": [
+          [
+            15,
+            15
+          ],
+          [
+            21,
+            21
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            55,
+            55
+          ],
+          [
+            71,
+            71
+          ],
+          [
+            159,
+            159
+          ]
+        ],
+        "app/assets/stylesheets/common/base/user-badges.scss": [
+          [
+            62,
+            62
+          ],
+          [
+            97,
+            97
+          ]
+        ],
+        "app/assets/stylesheets/common/base/user.scss": [
+          [
+            119,
+            119
+          ],
+          [
+            124,
+            124
+          ],
+          [
+            129,
+            129
+          ]
+        ],
+        "app/assets/stylesheets/common/components/badges.css.scss": [
+          [
+            239,
+            239
+          ],
+          [
+            285,
+            285
+          ]
+        ],
+        "app/assets/stylesheets/common/components/buttons.css.scss": [
+          [
+            60,
+            60
+          ]
+        ],
+        "app/assets/stylesheets/desktop/compose.scss": [
+          [
+            340,
+            340
+          ]
+        ],
+        "app/assets/stylesheets/desktop/header.scss": [
+          [
+            53,
+            53
+          ],
+          [
+            59,
+            59
+          ]
+        ],
+        "app/assets/stylesheets/desktop/login.scss": [
+          [
+            17,
+            17
+          ],
+          [
+            48,
+            48
+          ]
+        ],
+        "app/assets/stylesheets/desktop/modal.scss": [
+          [
+            50,
+            50
+          ],
+          [
+            67,
+            67
+          ],
+          [
+            94,
+            94
+          ],
+          [
+            117,
+            117
+          ],
+          [
+            121,
+            121
+          ],
+          [
+            131,
+            131
+          ]
+        ],
+        "app/assets/stylesheets/desktop/queued-posts.scss": [
+          [
+            14,
+            14
+          ]
+        ],
+        "app/assets/stylesheets/desktop/topic-list.scss": [
+          [
+            39,
+            40
+          ],
+          [
+            42,
+            42
+          ],
+          [
+            54,
+            54
+          ],
+          [
+            135,
+            135
+          ],
+          [
+            144,
+            144
+          ],
+          [
+            223,
+            223
+          ],
+          [
+            227,
+            227
+          ]
+        ],
+        "app/assets/stylesheets/desktop/topic-post.scss": [
+          [
+            34,
+            34
+          ],
+          [
+            81,
+            81
+          ],
+          [
+            113,
+            113
+          ],
+          [
+            126,
+            126
+          ],
+          [
+            278,
+            278
+          ],
+          [
+            291,
+            291
+          ],
+          [
+            294,
+            294
+          ],
+          [
+            321,
+            321
+          ],
+          [
+            329,
+            329
+          ],
+          [
+            342,
+            342
+          ],
+          [
+            382,
+            382
+          ],
+          [
+            416,
+            416
+          ],
+          [
+            896,
+            897
+          ],
+          [
+            941,
+            941
+          ],
+          [
+            958,
+            958
+          ]
+        ],
+        "app/assets/stylesheets/desktop/topic.scss": [
+          [
+            61,
+            61
+          ],
+          [
+            69,
+            69
+          ]
+        ],
+        "app/assets/stylesheets/desktop/upload.scss": [
+          [
+            20,
+            20
+          ]
+        ],
+        "app/assets/stylesheets/desktop/user.scss": [
+          [
+            59,
+            59
+          ],
+          [
+            173,
+            173
+          ],
+          [
+            514,
+            514
+          ],
+          [
+            522,
+            522
+          ],
+          [
+            527,
+            527
+          ],
+          [
+            603,
+            603
+          ]
+        ],
+        "app/assets/stylesheets/embed.css.scss": [
+          [
+            89,
+            89
+          ]
+        ],
+        "app/assets/stylesheets/mobile/compose.scss": [
+          [
+            36,
+            36
+          ],
+          [
+            51,
+            51
+          ],
+          [
+            168,
+            168
+          ],
+          [
+            172,
+            172
+          ]
+        ],
+        "app/assets/stylesheets/mobile/login.scss": [
+          [
+            17,
+            17
+          ],
+          [
+            45,
+            45
+          ]
+        ],
+        "app/assets/stylesheets/mobile/modal.scss": [
+          [
+            102,
+            102
+          ]
+        ],
+        "app/assets/stylesheets/mobile/topic-list.scss": [
+          [
+            75,
+            75
+          ],
+          [
+            95,
+            95
+          ],
+          [
+            146,
+            146
+          ],
+          [
+            209,
+            209
+          ]
+        ],
+        "app/assets/stylesheets/mobile/topic-post.scss": [
+          [
+            49,
+            49
+          ],
+          [
+            151,
+            151
+          ],
+          [
+            182,
+            182
+          ],
+          [
+            190,
+            190
+          ],
+          [
+            247,
+            247
+          ],
+          [
+            270,
+            270
+          ],
+          [
+            442,
+            442
+          ],
+          [
+            498,
+            498
+          ]
+        ],
+        "app/assets/stylesheets/mobile/topic.scss": [
+          [
+            34,
+            34
+          ]
+        ],
+        "app/assets/stylesheets/mobile/upload.scss": [
+          [
+            10,
+            10
+          ]
+        ],
+        "app/assets/stylesheets/mobile/user.scss": [
+          [
+            115,
+            115
+          ],
+          [
+            489,
+            489
+          ],
+          [
+            497,
+            497
+          ],
+          [
+            503,
+            503
+          ],
+          [
+            580,
+            580
+          ]
+        ]
+      }
+    },
+    "deletions": 115,
+    "files": 32,
+    "generation_batches": 1,
+    "hunks": 72,
+    "merge_base_sha": "7554b5e3c458dc79b591d5e874e79ab10cf30c2f",
+    "sha256": "292b9e4bedc5067fb1b2d3d19523b66aa2d9b4cae7d13eaebdcad14e4fa97439"
+  },
+  "duration_ms": 145221,
+  "findings": [
+    {
+      "body": "The link color changes from scale-color($primary, 50%... originally 30%) to 70%, producing a near-white, low-contrast, barely readable username link on light themes; the dark-theme value also deviates from the (100% - lightness) complement convention used by every other conversion in this patch (30% -> 70%).",
+      "category": "bug",
+      "chunk_id": "f0019:c0000-631c31359fde",
+      "confidence": 0.9,
+      "end_line": 291,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%));",
+      "failure_mode": "Visual regression: topic author name links become nearly invisible on light color schemes, unlike all sibling conversions which preserve the original light-theme color.",
+      "finding_id": "bb-3f8cc0d753125bfbe6b3",
+      "fingerprint": "a24352d901a3490a24f12c310e43ad068494ae2e0c5b229eb5c34d7f5ed99c67",
+      "fix_scope": "local",
+      "impact": "The link color changes from scale-color($primary, 50%... originally 30%) to 70%, producing a near-white, low-contrast, barely readable username link on light themes; the dark-theme value also deviates from the (100% - lightness) complement convention used by every other conversion in this patch (30% -> 70%).",
+      "line": 291,
+      "path": "app/assets/stylesheets/desktop/topic-post.scss",
+      "root_cause": "The mechanical scale-color -> dark-light-choose conversion swapped the lightness percentages: the original 30% light-theme value was replaced with 70% and the dark-theme complement 70% was replaced with 30%.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original light-theme value and follow the complement convention for dark themes.",
+      "title": "Light-theme color regressed and arguments inverted for .topic-meta-data h5 a",
+      "trigger": "Render any topic post with a light color scheme (default: $primary #222 on $secondary #fff) and view the poster name link in .topic-meta-data h5.",
+      "verifier_confidence": 0.95,
+      "verifier_family_key": "inverted_lightness_arguments",
+      "verifier_reason": "Patch confirms L291 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%)). The light-theme value changed from 30% to 70%, which is inverted - lighter text on light backgrounds reduces contrast. The claim is accurate and grounded in the diff."
+    },
+    {
+      "body": "Light themes get scale-color($primary, 30%) instead of the original 70%, making the counter noticeably darker than before and inconsistent with the desktop equivalent (desktop/modal.scss line 94 uses primary 70% / secondary 30%); dark themes get secondary 70% instead of the 30% complement.",
+      "category": "bug",
+      "chunk_id": "f0026:c0000-dc6802943492",
+      "confidence": 0.9,
+      "end_line": 102,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%));",
+      "failure_mode": "Visual regression and desktop/mobile inconsistency for the same selector: hint text darkens on light themes on mobile only.",
+      "finding_id": "bb-9141c5d47fa705019aeb",
+      "fingerprint": "1b94844ba521647c225bfb2e35beb823ce45af2d63ed1d14696049e2b0efbb6a",
+      "fix_scope": "local",
+      "impact": "Light themes get scale-color($primary, 30%) instead of the original 70%, making the counter noticeably darker than before and inconsistent with the desktop equivalent (desktop/modal.scss line 94 uses primary 70% / secondary 30%); dark themes get secondary 70% instead of the 30% complement.",
+      "line": 102,
+      "path": "app/assets/stylesheets/mobile/modal.scss",
+      "root_cause": "The two lightness percentages were swapped between the light-theme and dark-theme arguments during the conversion, unlike the original value of 70% and the identical desktop rule.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Change to dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%)) to preserve the original light-theme value and match desktop/modal.scss.",
+      "title": ".custom-message-length arguments inverted, darkening the hint on light themes",
+      "trigger": "Open the flag modal on mobile with a light color scheme (brightness($primary) < brightness($secondary)) and view the .custom-message-length counter.",
+      "verifier_confidence": 0.95,
+      "verifier_family_key": "inverted_lightness_arguments",
+      "verifier_reason": "Patch confirms L102 changed from scale-color($primary, $lightness: 70%) to dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)). The light-theme value changed from 70% to 30%, making text darker. This is a valid regression where the arguments appear swapped."
+    }
+  ],
+  "pr": {
+    "base_ref": "theme-color-scheme-pre",
+    "base_sha": "7554b5e3c458dc79b591d5e874e79ab10cf30c2f",
+    "body": "Test 7",
+    "clone_url": "https://github.com/code-review-benchmark/discourse__discourse-graphite__augment__PR7__20260122.git",
+    "head_ref": "pr-7",
+    "head_sha": "d38c4d5f7443223c81529c22470293771baf9f38",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "discourse__discourse-graphite__augment__PR7__20260122",
+    "resolved_at": "2026-08-24T04:12:23.229836Z",
+    "title": "scale-color $lightness must use $secondary for dark themes",
+    "url": "https://github.com/code-review-benchmark/discourse__discourse-graphite__augment__PR7__20260122/pull/1"
+  },
+  "raw_findings": [
+    {
+      "body": "The link color changes from scale-color($primary, 50%... originally 30%) to 70%, producing a near-white, low-contrast, barely readable username link on light themes; the dark-theme value also deviates from the (100% - lightness) complement convention used by every other conversion in this patch (30% -> 70%).",
+      "category": "bug",
+      "chunk_id": "f0019:c0000-631c31359fde",
+      "confidence": 0.9,
+      "end_line": 291,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%));",
+      "failure_mode": "Visual regression: topic author name links become nearly invisible on light color schemes, unlike all sibling conversions which preserve the original light-theme color.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The link color changes from scale-color($primary, 50%... originally 30%) to 70%, producing a near-white, low-contrast, barely readable username link on light themes; the dark-theme value also deviates from the (100% - lightness) complement convention used by every other conversion in this patch (30% -> 70%).",
+      "line": 291,
+      "path": "app/assets/stylesheets/desktop/topic-post.scss",
+      "root_cause": "The mechanical scale-color -> dark-light-choose conversion swapped the lightness percentages: the original 30% light-theme value was replaced with 70% and the dark-theme complement 70% was replaced with 30%.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original light-theme value and follow the complement convention for dark themes.",
+      "title": "Light-theme color regressed and arguments inverted for .topic-meta-data h5 a",
+      "trigger": "Render any topic post with a light color scheme (default: $primary #222 on $secondary #fff) and view the poster name link in .topic-meta-data h5.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "Light themes get scale-color($primary, 30%) instead of the original 70%, making the counter noticeably darker than before and inconsistent with the desktop equivalent (desktop/modal.scss line 94 uses primary 70% / secondary 30%); dark themes get secondary 70% instead of the 30% complement.",
+      "category": "bug",
+      "chunk_id": "f0026:c0000-dc6802943492",
+      "confidence": 0.9,
+      "end_line": 102,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%));",
+      "failure_mode": "Visual regression and desktop/mobile inconsistency for the same selector: hint text darkens on light themes on mobile only.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "Light themes get scale-color($primary, 30%) instead of the original 70%, making the counter noticeably darker than before and inconsistent with the desktop equivalent (desktop/modal.scss line 94 uses primary 70% / secondary 30%); dark themes get secondary 70% instead of the 30% complement.",
+      "line": 102,
+      "path": "app/assets/stylesheets/mobile/modal.scss",
+      "root_cause": "The two lightness percentages were swapped between the light-theme and dark-theme arguments during the conversion, unlike the original value of 70% and the identical desktop rule.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Change to dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%)) to preserve the original light-theme value and match desktop/modal.scss.",
+      "title": ".custom-message-length arguments inverted, darkening the hint on light themes",
+      "trigger": "Open the flag modal on mobile with a light color scheme (brightness($primary) < brightness($secondary)) and view the .custom-message-length counter.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, making it lighter/lower contrast than before; this conversion was supposed to be behavior-preserving for light themes, and the dark value 50% also breaks the (100% - lightness) = 70% complement convention used everywhere else in the patch.",
+      "category": "bug",
+      "chunk_id": "f0022:c0000-7789b3f44c21",
+      "confidence": 0.8,
+      "end_line": 522,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+      "failure_mode": "Unintended light-theme visual change (reduced contrast of group member names) hidden inside an otherwise mechanical refactor.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, making it lighter/lower contrast than before; this conversion was supposed to be behavior-preserving for light themes, and the dark value 50% also breaks the (100% - lightness) = 70% complement convention used everywhere else in the patch.",
+      "line": 522,
+      "path": "app/assets/stylesheets/desktop/user.scss",
+      "root_cause": "The original 30% lightness was silently replaced with the 50%/50% pair instead of the 30%/70% pair during the mechanical conversion.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original 30% light-theme value.",
+      "title": "group-member-info .name light-theme lightness changed from 30% to 50%",
+      "trigger": "View a group members list on desktop with a light color scheme.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The h3 heading changes from scale-color($primary, 20%) to 50% on light themes, noticeably lighter than before and inconsistent with the desktop equivalent (desktop/topic-post.scss topic-map h3 was converted to primary 20% / secondary 80%); the 50% dark value also breaks the 100%-complement convention (expected 80%).",
+      "category": "bug",
+      "chunk_id": "f0028:c0000-804e10d9a12b",
+      "confidence": 0.8,
+      "end_line": 182,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+      "failure_mode": "Unintended light-theme visual change on mobile only, diverging from the identical desktop rule converted correctly in this same patch.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "The h3 heading changes from scale-color($primary, 20%) to 50% on light themes, noticeably lighter than before and inconsistent with the desktop equivalent (desktop/topic-post.scss topic-map h3 was converted to primary 20% / secondary 80%); the 50% dark value also breaks the 100%-complement convention (expected 80%).",
+      "line": 182,
+      "path": "app/assets/stylesheets/mobile/topic-post.scss",
+      "root_cause": "The original 20% lightness was replaced with a 50%/50% pair instead of the behavior-preserving 20%/80% pair.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 20%), scale-color($secondary, $lightness: 80%)) to preserve the original value and match the desktop conversion.",
+      "title": "topic-map h3 light-theme lightness changed from 20% to 50% on mobile",
+      "trigger": "View a topic map on mobile with a light color scheme.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, reducing contrast versus the pre-patch rendering; the dark-theme value 50% also breaks the (100% - 30%) = 70% complement convention followed by the other conversions in this patch.",
+      "category": "bug",
+      "chunk_id": "f0031:c0000-88e296481526",
+      "confidence": 0.8,
+      "end_line": 497,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+      "failure_mode": "Unintended light-theme visual change (lighter group member names) introduced by an otherwise mechanical refactor.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "repeated_pattern",
+      "impact": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, reducing contrast versus the pre-patch rendering; the dark-theme value 50% also breaks the (100% - 30%) = 70% complement convention followed by the other conversions in this patch.",
+      "line": 497,
+      "path": "app/assets/stylesheets/mobile/user.scss",
+      "root_cause": "The original 30% lightness was replaced with the 50%/50% pair instead of the behavior-preserving 30%/70% pair, repeating the same slip made in desktop/user.scss.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original 30% light-theme value.",
+      "title": "mobile group-member-info .name light-theme lightness changed from 30% to 50%",
+      "trigger": "View a group members list on mobile with a light color scheme.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    }
+  ],
+  "rejected_findings": [
+    {
+      "finding": {
+        "body": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, making it lighter/lower contrast than before; this conversion was supposed to be behavior-preserving for light themes, and the dark value 50% also breaks the (100% - lightness) = 70% complement convention used everywhere else in the patch.",
+        "category": "bug",
+        "chunk_id": "f0022:c0000-7789b3f44c21",
+        "confidence": 0.8,
+        "end_line": 522,
+        "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+        "failure_mode": "Unintended light-theme visual change (reduced contrast of group member names) hidden inside an otherwise mechanical refactor.",
+        "finding_id": "bb-3cdc2550930faf4b7390",
+        "fingerprint": "6de6f7c98bdceda71783d7c6017f46e8383fb66cbaf4b3996e42353bdb702a8d",
+        "fix_scope": "local",
+        "impact": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, making it lighter/lower contrast than before; this conversion was supposed to be behavior-preserving for light themes, and the dark value 50% also breaks the (100% - lightness) = 70% complement convention used everywhere else in the patch.",
+        "line": 522,
+        "path": "app/assets/stylesheets/desktop/user.scss",
+        "root_cause": "The original 30% lightness was silently replaced with the 50%/50% pair instead of the 30%/70% pair during the mechanical conversion.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original 30% light-theme value.",
+        "title": "group-member-info .name light-theme lightness changed from 30% to 50%",
+        "trigger": "View a group members list on desktop with a light color scheme.",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "incorrect_lightness_value",
+        "verifier_reason": "Patch confirms L522 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). The light-theme value changed from 30% to 50%, altering the original appearance. This is a valid regression in the mechanical conversion."
+      },
+      "reason": "0.900 is below 0.920: Patch confirms L522 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). The light-theme value changed from 30% to 50%, altering the original appearance. This is a valid regression in the mechanical conversion.",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "The h3 heading changes from scale-color($primary, 20%) to 50% on light themes, noticeably lighter than before and inconsistent with the desktop equivalent (desktop/topic-post.scss topic-map h3 was converted to primary 20% / secondary 80%); the 50% dark value also breaks the 100%-complement convention (expected 80%).",
+        "category": "bug",
+        "chunk_id": "f0028:c0000-804e10d9a12b",
+        "confidence": 0.8,
+        "end_line": 182,
+        "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+        "failure_mode": "Unintended light-theme visual change on mobile only, diverging from the identical desktop rule converted correctly in this same patch.",
+        "finding_id": "bb-39c4d96edab8efddc896",
+        "fingerprint": "6dbc0e5ef06c89b1843ac05b5f7f52bbb3df5f0833c413c5bfd9130854cf6490",
+        "fix_scope": "local",
+        "impact": "The h3 heading changes from scale-color($primary, 20%) to 50% on light themes, noticeably lighter than before and inconsistent with the desktop equivalent (desktop/topic-post.scss topic-map h3 was converted to primary 20% / secondary 80%); the 50% dark value also breaks the 100%-complement convention (expected 80%).",
+        "line": 182,
+        "path": "app/assets/stylesheets/mobile/topic-post.scss",
+        "root_cause": "The original 20% lightness was replaced with a 50%/50% pair instead of the behavior-preserving 20%/80% pair.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 20%), scale-color($secondary, $lightness: 80%)) to preserve the original value and match the desktop conversion.",
+        "title": "topic-map h3 light-theme lightness changed from 20% to 50% on mobile",
+        "trigger": "View a topic map on mobile with a light color scheme.",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "incorrect_lightness_value",
+        "verifier_reason": "Patch confirms L182 changed from scale-color($primary, $lightness: 20%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). The light-theme value changed from 20% to 50%, significantly altering the heading color. This is a valid regression."
+      },
+      "reason": "0.900 is below 0.920: Patch confirms L182 changed from scale-color($primary, $lightness: 20%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). The light-theme value changed from 20% to 50%, significantly altering the heading color. This is a valid regression.",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, reducing contrast versus the pre-patch rendering; the dark-theme value 50% also breaks the (100% - 30%) = 70% complement convention followed by the other conversions in this patch.",
+        "category": "bug",
+        "chunk_id": "f0031:c0000-88e296481526",
+        "confidence": 0.8,
+        "end_line": 497,
+        "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+        "failure_mode": "Unintended light-theme visual change (lighter group member names) introduced by an otherwise mechanical refactor.",
+        "finding_id": "bb-eaaa517c379e9a5b5217",
+        "fingerprint": "5cce8c060280d2ef74a48582ec9e51bfd207a200732bf24d19e978436f75fd22",
+        "fix_scope": "repeated_pattern",
+        "impact": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, reducing contrast versus the pre-patch rendering; the dark-theme value 50% also breaks the (100% - 30%) = 70% complement convention followed by the other conversions in this patch.",
+        "line": 497,
+        "path": "app/assets/stylesheets/mobile/user.scss",
+        "root_cause": "The original 30% lightness was replaced with the 50%/50% pair instead of the behavior-preserving 30%/70% pair, repeating the same slip made in desktop/user.scss.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original 30% light-theme value.",
+        "title": "mobile group-member-info .name light-theme lightness changed from 30% to 50%",
+        "trigger": "View a group members list on mobile with a light color scheme.",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "incorrect_lightness_value",
+        "verifier_reason": "Patch confirms L497 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). Same pattern as candidate 2 but in mobile/user.scss - different file, independently fixable location. Not a duplicate despite same root cause pattern."
+      },
+      "reason": "0.900 is below 0.920: Patch confirms L497 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). Same pattern as candidate 2 but in mobile/user.scss - different file, independently fixable location. Not a duplicate despite same root cause pattern.",
+      "stage": "verifier_confidence"
+    }
+  ],
+  "run_id": "5de1f3b9a15c3fa2d30c3e41",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-fable-5",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T05:23:40.793450Z",
+  "status": "completed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": [
+    {
+      "body": "The link color changes from scale-color($primary, 50%... originally 30%) to 70%, producing a near-white, low-contrast, barely readable username link on light themes; the dark-theme value also deviates from the (100% - lightness) complement convention used by every other conversion in this patch (30% -> 70%).",
+      "category": "bug",
+      "chunk_id": "f0019:c0000-631c31359fde",
+      "confidence": 0.9,
+      "end_line": 291,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%));",
+      "failure_mode": "Visual regression: topic author name links become nearly invisible on light color schemes, unlike all sibling conversions which preserve the original light-theme color.",
+      "finding_id": "bb-3f8cc0d753125bfbe6b3",
+      "fingerprint": "a24352d901a3490a24f12c310e43ad068494ae2e0c5b229eb5c34d7f5ed99c67",
+      "fix_scope": "local",
+      "impact": "The link color changes from scale-color($primary, 50%... originally 30%) to 70%, producing a near-white, low-contrast, barely readable username link on light themes; the dark-theme value also deviates from the (100% - lightness) complement convention used by every other conversion in this patch (30% -> 70%).",
+      "line": 291,
+      "path": "app/assets/stylesheets/desktop/topic-post.scss",
+      "root_cause": "The mechanical scale-color -> dark-light-choose conversion swapped the lightness percentages: the original 30% light-theme value was replaced with 70% and the dark-theme complement 70% was replaced with 30%.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original light-theme value and follow the complement convention for dark themes.",
+      "title": "Light-theme color regressed and arguments inverted for .topic-meta-data h5 a",
+      "trigger": "Render any topic post with a light color scheme (default: $primary #222 on $secondary #fff) and view the poster name link in .topic-meta-data h5.",
+      "verifier_confidence": 0.95,
+      "verifier_family_key": "inverted_lightness_arguments",
+      "verifier_reason": "Patch confirms L291 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%)). The light-theme value changed from 30% to 70%, which is inverted - lighter text on light backgrounds reduces contrast. The claim is accurate and grounded in the diff."
+    },
+    {
+      "body": "Light themes get scale-color($primary, 30%) instead of the original 70%, making the counter noticeably darker than before and inconsistent with the desktop equivalent (desktop/modal.scss line 94 uses primary 70% / secondary 30%); dark themes get secondary 70% instead of the 30% complement.",
+      "category": "bug",
+      "chunk_id": "f0026:c0000-dc6802943492",
+      "confidence": 0.9,
+      "end_line": 102,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%));",
+      "failure_mode": "Visual regression and desktop/mobile inconsistency for the same selector: hint text darkens on light themes on mobile only.",
+      "finding_id": "bb-9141c5d47fa705019aeb",
+      "fingerprint": "1b94844ba521647c225bfb2e35beb823ce45af2d63ed1d14696049e2b0efbb6a",
+      "fix_scope": "local",
+      "impact": "Light themes get scale-color($primary, 30%) instead of the original 70%, making the counter noticeably darker than before and inconsistent with the desktop equivalent (desktop/modal.scss line 94 uses primary 70% / secondary 30%); dark themes get secondary 70% instead of the 30% complement.",
+      "line": 102,
+      "path": "app/assets/stylesheets/mobile/modal.scss",
+      "root_cause": "The two lightness percentages were swapped between the light-theme and dark-theme arguments during the conversion, unlike the original value of 70% and the identical desktop rule.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Change to dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%)) to preserve the original light-theme value and match desktop/modal.scss.",
+      "title": ".custom-message-length arguments inverted, darkening the hint on light themes",
+      "trigger": "Open the flag modal on mobile with a light color scheme (brightness($primary) < brightness($secondary)) and view the .custom-message-length counter.",
+      "verifier_confidence": 0.95,
+      "verifier_family_key": "inverted_lightness_arguments",
+      "verifier_reason": "Patch confirms L102 changed from scale-color($primary, $lightness: 70%) to dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)). The light-theme value changed from 70% to 30%, making text darker. This is a valid regression where the arguments appear swapped."
+    },
+    {
+      "body": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, making it lighter/lower contrast than before; this conversion was supposed to be behavior-preserving for light themes, and the dark value 50% also breaks the (100% - lightness) = 70% complement convention used everywhere else in the patch.",
+      "category": "bug",
+      "chunk_id": "f0022:c0000-7789b3f44c21",
+      "confidence": 0.8,
+      "end_line": 522,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+      "failure_mode": "Unintended light-theme visual change (reduced contrast of group member names) hidden inside an otherwise mechanical refactor.",
+      "finding_id": "bb-3cdc2550930faf4b7390",
+      "fingerprint": "6de6f7c98bdceda71783d7c6017f46e8383fb66cbaf4b3996e42353bdb702a8d",
+      "fix_scope": "local",
+      "impact": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, making it lighter/lower contrast than before; this conversion was supposed to be behavior-preserving for light themes, and the dark value 50% also breaks the (100% - lightness) = 70% complement convention used everywhere else in the patch.",
+      "line": 522,
+      "path": "app/assets/stylesheets/desktop/user.scss",
+      "root_cause": "The original 30% lightness was silently replaced with the 50%/50% pair instead of the 30%/70% pair during the mechanical conversion.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original 30% light-theme value.",
+      "title": "group-member-info .name light-theme lightness changed from 30% to 50%",
+      "trigger": "View a group members list on desktop with a light color scheme.",
+      "verifier_confidence": 0.9,
+      "verifier_family_key": "incorrect_lightness_value",
+      "verifier_reason": "Patch confirms L522 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). The light-theme value changed from 30% to 50%, altering the original appearance. This is a valid regression in the mechanical conversion."
+    },
+    {
+      "body": "The h3 heading changes from scale-color($primary, 20%) to 50% on light themes, noticeably lighter than before and inconsistent with the desktop equivalent (desktop/topic-post.scss topic-map h3 was converted to primary 20% / secondary 80%); the 50% dark value also breaks the 100%-complement convention (expected 80%).",
+      "category": "bug",
+      "chunk_id": "f0028:c0000-804e10d9a12b",
+      "confidence": 0.8,
+      "end_line": 182,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+      "failure_mode": "Unintended light-theme visual change on mobile only, diverging from the identical desktop rule converted correctly in this same patch.",
+      "finding_id": "bb-39c4d96edab8efddc896",
+      "fingerprint": "6dbc0e5ef06c89b1843ac05b5f7f52bbb3df5f0833c413c5bfd9130854cf6490",
+      "fix_scope": "local",
+      "impact": "The h3 heading changes from scale-color($primary, 20%) to 50% on light themes, noticeably lighter than before and inconsistent with the desktop equivalent (desktop/topic-post.scss topic-map h3 was converted to primary 20% / secondary 80%); the 50% dark value also breaks the 100%-complement convention (expected 80%).",
+      "line": 182,
+      "path": "app/assets/stylesheets/mobile/topic-post.scss",
+      "root_cause": "The original 20% lightness was replaced with a 50%/50% pair instead of the behavior-preserving 20%/80% pair.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 20%), scale-color($secondary, $lightness: 80%)) to preserve the original value and match the desktop conversion.",
+      "title": "topic-map h3 light-theme lightness changed from 20% to 50% on mobile",
+      "trigger": "View a topic map on mobile with a light color scheme.",
+      "verifier_confidence": 0.9,
+      "verifier_family_key": "incorrect_lightness_value",
+      "verifier_reason": "Patch confirms L182 changed from scale-color($primary, $lightness: 20%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). The light-theme value changed from 20% to 50%, significantly altering the heading color. This is a valid regression."
+    },
+    {
+      "body": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, reducing contrast versus the pre-patch rendering; the dark-theme value 50% also breaks the (100% - 30%) = 70% complement convention followed by the other conversions in this patch.",
+      "category": "bug",
+      "chunk_id": "f0031:c0000-88e296481526",
+      "confidence": 0.8,
+      "end_line": 497,
+      "evidence": "color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));",
+      "failure_mode": "Unintended light-theme visual change (lighter group member names) introduced by an otherwise mechanical refactor.",
+      "finding_id": "bb-eaaa517c379e9a5b5217",
+      "fingerprint": "5cce8c060280d2ef74a48582ec9e51bfd207a200732bf24d19e978436f75fd22",
+      "fix_scope": "repeated_pattern",
+      "impact": "The member name color changes from scale-color($primary, 30%) to 50% on light themes, reducing contrast versus the pre-patch rendering; the dark-theme value 50% also breaks the (100% - 30%) = 70% complement convention followed by the other conversions in this patch.",
+      "line": 497,
+      "path": "app/assets/stylesheets/mobile/user.scss",
+      "root_cause": "The original 30% lightness was replaced with the 50%/50% pair instead of the behavior-preserving 30%/70% pair, repeating the same slip made in desktop/user.scss.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use dark-light-choose(scale-color($primary, $lightness: 30%), scale-color($secondary, $lightness: 70%)) to preserve the original 30% light-theme value.",
+      "title": "mobile group-member-info .name light-theme lightness changed from 30% to 50%",
+      "trigger": "View a group members list on mobile with a light color scheme.",
+      "verifier_confidence": 0.9,
+      "verifier_family_key": "incorrect_lightness_value",
+      "verifier_reason": "Patch confirms L497 changed from scale-color($primary, $lightness: 30%) to dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%)). Same pattern as candidate 2 but in mobile/user.scss - different file, independently fixable location. Not a duplicate despite same root cause pattern."
+    }
+  ]
+}

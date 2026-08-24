@@ -34,4 +34,4 @@ and `family` tracks are diagnostic views and should not silently replace it.
 ## Experiments
 
 - [`codereviewbench-2026-08-23-gpt-5.6-luna-terra-sol`](codereviewbench-2026-08-23-gpt-5.6-luna-terra-sol/README.md)
-
+- [`codereviewbench-2026-08-24-claude-family`](codereviewbench-2026-08-24-claude-family/README.md)

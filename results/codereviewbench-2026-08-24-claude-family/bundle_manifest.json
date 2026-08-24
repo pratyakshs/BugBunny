@@ -1,0 +1,2495 @@
+{
+  "file_count": 497,
+  "files": [
+    {
+      "bytes": 8979,
+      "path": "README.md",
+      "sha256": "2a903c3e1c590802472b80cec084ea74938a3f2430dac550c85edc75d2a9d722"
+    },
+    {
+      "bytes": 28843,
+      "path": "calibration/opus-4-5-low-v1.json",
+      "sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30"
+    },
+    {
+      "bytes": 17874,
+      "path": "experiment.json",
+      "sha256": "0cedc79371f78fa72e8459af99826bfaa31b8ed4655c48380e9ad5f06bc11b4e"
+    },
+    {
+      "bytes": 28540,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92_candidate_audit.json",
+      "sha256": "e4dfee9ac0a390fa8dcf1fd360e65cdc6e4378c390127f1bea188f3e61fff089"
+    },
+    {
+      "bytes": 7925,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-fable-5-b5894ad1dd92_export_manifest.json",
+      "sha256": "b698e7a64bada9248cef07755e052da98ad626c6df584fd711779d89bf98f567"
+    },
+    {
+      "bytes": 33036,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8_candidate_audit.json",
+      "sha256": "3ab3aa603807c3a5c8e2e9b0048fe4512da5915aa1d361cfb577f2a400ef7fb9"
+    },
+    {
+      "bytes": 7928,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-opus-4-8-cf794a6599a8_export_manifest.json",
+      "sha256": "456bd65884f1b42d1d70f7b1908ec4377f0923991bac2baa0ae0bea2fc1f418a"
+    },
+    {
+      "bytes": 33019,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774_candidate_audit.json",
+      "sha256": "3653b41f904357beaedb608b46706f6acc9b85fe40c64daa34289d8ac30b89f1"
+    },
+    {
+      "bytes": 7922,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774_export_manifest.json",
+      "sha256": "ca4d5b0ae6457628dbe375e75ac028736f2064245c3920e9565fa30e6e6f9f94"
+    },
+    {
+      "bytes": 34017,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061_candidate_audit.json",
+      "sha256": "0278771b853105c227bea7563b1cec1af1025ca4645b43b48ceb9ef40f260203"
+    },
+    {
+      "bytes": 7928,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-balanced-anthropic-claude-sonnet-5-8f7cae84e061_export_manifest.json",
+      "sha256": "f818383efb5ea005efa784d4822caecd2078831abeeb7a58fbd75a57238d9895"
+    },
+    {
+      "bytes": 28468,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a_candidate_audit.json",
+      "sha256": "ca41b05b87dc9085686bce9b525af5eb2248c021d2c186a8de1db0052cf5947b"
+    },
+    {
+      "bytes": 7925,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-fable-5-ba5a1a7dbe2a_export_manifest.json",
+      "sha256": "9e28a16a321dff4eceff4beeeb4e5a0ef356e0d58d700c1656e0070c8607fe46"
+    },
+    {
+      "bytes": 31557,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac_candidate_audit.json",
+      "sha256": "98127e55e549dbb311c2e6d3279ddb46ed0143c7d4e2c62c8fe7f8c9015936f3"
+    },
+    {
+      "bytes": 7928,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-opus-4-8-b8d6163097ac_export_manifest.json",
+      "sha256": "412918f60ebf04e11ecfb3bf7cdbd68c610a4e580e4f99df678590f0506bc4de"
+    },
+    {
+      "bytes": 32935,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-opus-5-c31790f5671b_candidate_audit.json",
+      "sha256": "d9f6f274070d235900127cd12ea1941ffa731a2fd1b93ad776b23710c8eaba84"
+    },
+    {
+      "bytes": 7922,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-opus-5-c31790f5671b_export_manifest.json",
+      "sha256": "a6688016d5f3d9900814987e992a21d9a90a66f702b689736d5eae3ac69a81a5"
+    },
+    {
+      "bytes": 30453,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-sonnet-5-167809a84058_candidate_audit.json",
+      "sha256": "59450c687f8afdbe2a4b2ab24fa2ab5a65ad9887adad950552fc4290f785b047"
+    },
+    {
+      "bytes": 7928,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-family-anthropic-claude-sonnet-5-167809a84058_export_manifest.json",
+      "sha256": "a596dd02c66da0ce3ed7b130616e10c4550ce3a3985bbba6ca26e4eb6aeeb104"
+    },
+    {
+      "bytes": 265369,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe_candidate_audit.json",
+      "sha256": "cce4ebc3df5e81e3ddf170a5e5b98d6531a63592fb7b601bfb02ffe944b50b2a"
+    },
+    {
+      "bytes": 7929,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-fable-5-ff909bcdbdbe_export_manifest.json",
+      "sha256": "f30c41ce022502866d721de9732a241c92aa31fec823753906dc76e2c9d849a0"
+    },
+    {
+      "bytes": 143182,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622_candidate_audit.json",
+      "sha256": "d200d7dd455bd7f687a13dac7f016325489c5609c01bb01df2da25c8144822f0"
+    },
+    {
+      "bytes": 7932,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-opus-4-8-35cce7f6b622_export_manifest.json",
+      "sha256": "2d08c9f3eb6806ab14d7362b9a778dbd59ffdcc1e9fb17b90c1b34e2364eb806"
+    },
+    {
+      "bytes": 369006,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-opus-5-d5b411f53853_candidate_audit.json",
+      "sha256": "e6784a1add5b412c181d58603cb84861bda9f3714649133655ab6579f23af5ac"
+    },
+    {
+      "bytes": 7926,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-opus-5-d5b411f53853_export_manifest.json",
+      "sha256": "325917bd746fdaab066f4fe444896a621fd1b5f9b583116ef67443f1721b3214"
+    },
+    {
+      "bytes": 190798,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d_candidate_audit.json",
+      "sha256": "a72570ab3909cff3928fafeb9b39bbf5a4f9c3febd7ca66894dbe6ebeb13193a"
+    },
+    {
+      "bytes": 7932,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny-generator-anthropic-claude-sonnet-5-92d69af11c8d_export_manifest.json",
+      "sha256": "875002663050963fa2ce544b58a66887d4e6f6b73e07a99ae128ef3ac63042ff"
+    },
+    {
+      "bytes": 48919,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny_evaluation_audit.json",
+      "sha256": "798866e9a20ed32396ba29bb2426926f6bedd274cde48e71bb65c4041a9fe553"
+    },
+    {
+      "bytes": 2166,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny_evaluation_audit.md",
+      "sha256": "e532b4331d6f81acc11cb6137fcc091952c7f85e79b2270e876c51b0fcad422b"
+    },
+    {
+      "bytes": 9541,
+      "path": "export/anthropic_claude-opus-4-5/bugbunny_export_index.json",
+      "sha256": "568eef83064a53729184d2db3cf7f0c6b0928e88023de3b32342f82f021aedd9"
+    },
+    {
+      "bytes": 1728005,
+      "path": "export/anthropic_claude-opus-4-5/candidates.json",
+      "sha256": "04b4e298bbd1e46b0baeeb1abd86c036766abd38ae3e53546aba6cd5c9eb9723"
+    },
+    {
+      "bytes": 88157,
+      "path": "export/anthropic_claude-opus-4-5/dedup_groups.json",
+      "sha256": "d3dd911b446b29030a6335d4ebc956c6b63a16a9644f7c792efb14e711da1748"
+    },
+    {
+      "bytes": 15182298,
+      "path": "export/anthropic_claude-opus-4-5/evaluations.json",
+      "sha256": "e846d6355bea72edccbd0bb8140c7378c4d463de794eef9cd4a6904a13de55de"
+    },
+    {
+      "bytes": 1142,
+      "path": "model_catalog_snapshot.json",
+      "sha256": "17d8a584b2b773f67ba017cb6e568376ac5fb6449644619b68e75b130f77cc18"
+    },
+    {
+      "bytes": 143722,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "sha256": "28f981c0bb9a402422ef86166b06337abb63bb1f95f8b8e16c62d38f36c0b476"
+    },
+    {
+      "bytes": 398,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.md",
+      "sha256": "ff62dee8ad7a2ddadd41cdcabfef29721fe392618a440f002a8e40eb4cb8c00d"
+    },
+    {
+      "bytes": 95423,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "sha256": "1c5570828ab44ed3967bd3f26f18a4e83d5fae7845af429439f551c99ed7cf80"
+    },
+    {
+      "bytes": 392,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.md",
+      "sha256": "4d62ec24dbffa379d5e395a6d44a08d95540c48d4bb0aa3e6024d256de40de9a"
+    },
+    {
+      "bytes": 58163,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "4b5d97f7df565d2d984de35c32c28110bce17314235fe1707eeb9b05dbd8718b"
+    },
+    {
+      "bytes": 382,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "188df6fce434188db39cc1e403dfcd403637b4db1f264962859569d8a8350284"
+    },
+    {
+      "bytes": 80588,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "6dab16728ce9943fc32a6b83131a908b2afa6c43f2bc18c4979d58d86fd2db7b"
+    },
+    {
+      "bytes": 383,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "abdfb7b2178781fd842b31dd11e2f0277cd3204762316636428927a0dc47062a"
+    },
+    {
+      "bytes": 94567,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10600-98442a0665.json",
+      "sha256": "4bb943f263b5f18a0a1a7b724055dcbc495fd3408ef29693ec72ebf03171d388"
+    },
+    {
+      "bytes": 385,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10600-98442a0665.md",
+      "sha256": "1ecaac9956752a5e57912762e77b4cd4f9850c95ba34b46b4e8d00b37d2a3478"
+    },
+    {
+      "bytes": 95527,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr38446-d522975328.json",
+      "sha256": "1c5b24212a58700826571fd0c573b7a849c2ef77f977ca55b71a430023d138d8"
+    },
+    {
+      "bytes": 381,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr38446-d522975328.md",
+      "sha256": "1da20d0d2c7669569d20cc85230a82ec716a6e26f228833cde6783c31368c802"
+    },
+    {
+      "bytes": 51590,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "sha256": "70352346f7739d6bfc48f4011c05dc4b8753cf93c9023371cf5a32738c495076"
+    },
+    {
+      "bytes": 377,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr80329-a24dbb3cc0.md",
+      "sha256": "e7354237b358295344f720c50e3e70efc9629aa7a98803749201b456909c67ca"
+    },
+    {
+      "bytes": 70008,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "sha256": "94585dd533744268aed77fdba69da352fd0dcecef744647cd587aee23a6ff09c"
+    },
+    {
+      "bytes": 372,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr77754-eaf4b87db9.md",
+      "sha256": "8c58090bfcf4f42e693c8e6ec56898c6797a7787bb9df481d74721f622138e00"
+    },
+    {
+      "bytes": 63429,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr93824-36dbd11db8.json",
+      "sha256": "bd54ba86bf8f84487fb9ae03cfca14dab1de8073d79efc987bf996f6c21a150a"
+    },
+    {
+      "bytes": 371,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr93824-36dbd11db8.md",
+      "sha256": "1ab3ec98331d778ed7ffa89310eb605de10b92235cc991ba68c7c55094c4357b"
+    },
+    {
+      "bytes": 53676,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr103633-1ccdfad177.json",
+      "sha256": "fe38fda97a933f949a0153c3df420ef424deb54b972546b58a433e330f113a8f"
+    },
+    {
+      "bytes": 378,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr103633-1ccdfad177.md",
+      "sha256": "f450cb9295903293a7309de380a5f44a3e7f86a3506050b8b74cea59841acc1d"
+    },
+    {
+      "bytes": 72268,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr76186-74710117cb.json",
+      "sha256": "583835566b73a6cade6bc0c79d1cbb9fb45458309a87d7638fb0f90ea90a595d"
+    },
+    {
+      "bytes": 376,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr76186-74710117cb.md",
+      "sha256": "3b93180d8a8c36f986475500366b7a74b033a4f1a5d01ec21fe38971bb98dcbb"
+    },
+    {
+      "bytes": 89746,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "sha256": "589ff0c1fbab6484dc77b660047e2453a0b5ed1fbbfbc5a9c50794cdbd786e4e"
+    },
+    {
+      "bytes": 380,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36882-b7f567acb6.md",
+      "sha256": "a3e8521c4b9b826deed0986f777bab7189ac005df06411b4452aea77c28bae4c"
+    },
+    {
+      "bytes": 108928,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "sha256": "648a072120013af90df8171b7271410e989496688eda947bae0b18b24dda5ea3"
+    },
+    {
+      "bytes": 398,
+      "path": "recovery/first-pass/failed-artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.md",
+      "sha256": "5c5cd508d77968764326839924003f330b855a8d9ea722dd07959fd7f0d65055"
+    },
+    {
+      "bytes": 95470,
+      "path": "recovery/first-pass/job_plan.json",
+      "sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3"
+    },
+    {
+      "bytes": 75491,
+      "path": "recovery/first-pass/run_checkpoint.json",
+      "sha256": "21a1ac8a21bc80a7458f69e30e207956b04517d3ec3285384e78ce039040950a"
+    },
+    {
+      "bytes": 107385,
+      "path": "recovery/first-pass/run_manifest.json",
+      "sha256": "135b537d0e4c62877bb3613dbb1cc11c1c180ebe7b0d1a80aee8c0e923ff4d76"
+    },
+    {
+      "bytes": 57780,
+      "path": "recovery/pass-1/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "9199cd6579a6c6011afb6917a76b4c7c6efc49c2af26fc0d5fc06ef23e95214f"
+    },
+    {
+      "bytes": 383,
+      "path": "recovery/pass-1/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "ea4341bacd232b6f044a08221222b1c1d22395bc160406c3457fca833704437a"
+    },
+    {
+      "bytes": 80411,
+      "path": "recovery/pass-1/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "8cf8bb86d933e5de2460ca8ee65f1b593e34693ba17d2116cd5568a9e792e92a"
+    },
+    {
+      "bytes": 383,
+      "path": "recovery/pass-1/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "b762368d76a63cfffac9e383dcee976a894ac2df8272c6cca6457ea488a37d4a"
+    },
+    {
+      "bytes": 95470,
+      "path": "recovery/pass-1/job_plan.json",
+      "sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3"
+    },
+    {
+      "bytes": 71223,
+      "path": "recovery/pass-1/run_checkpoint.json",
+      "sha256": "e3625014adfb821d3a73eb928ba351a056209227ca3c84d1a7078ac2d003bc72"
+    },
+    {
+      "bytes": 103136,
+      "path": "recovery/pass-1/run_manifest.json",
+      "sha256": "20e69da98112aa3fe3e82bee4a2a293cbfc78a04f833229b483251d05b83f663"
+    },
+    {
+      "bytes": 54747,
+      "path": "recovery/pass-2/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "b8043380199086fcc96a9d2e3d3c89e3534173664313bca0d649266466b9a023"
+    },
+    {
+      "bytes": 382,
+      "path": "recovery/pass-2/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "41945642b6880abd14af5a41e34b6bfd29ecaaff39a23c69dd7e83ce1caf98c9"
+    },
+    {
+      "bytes": 82410,
+      "path": "recovery/pass-2/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "1dec7ce184143a90641db6e704d5b30a09324ebaea96060e68b955186e16e2e5"
+    },
+    {
+      "bytes": 383,
+      "path": "recovery/pass-2/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "501cc7a8bf1fa3d19059dea4aa548d6bb9cb04298812042e2e22bc760985a753"
+    },
+    {
+      "bytes": 95470,
+      "path": "recovery/pass-2/job_plan.json",
+      "sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3"
+    },
+    {
+      "bytes": 70970,
+      "path": "recovery/pass-2/run_checkpoint.json",
+      "sha256": "3cda38521bf6d95f4485821b145e37280df28d520d97db31bd0ee8f2a91a3328"
+    },
+    {
+      "bytes": 102861,
+      "path": "recovery/pass-2/run_manifest.json",
+      "sha256": "2a15395ce43b67cb24e5ba9c28ec69aa5aee47d4d82aa3f8a2794f5a332402e0"
+    },
+    {
+      "bytes": 57944,
+      "path": "recovery/pass-3/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "6074226f8a16069dc742b346efb7be13fcaf05eb6e40c10cdc084743eff4aff0"
+    },
+    {
+      "bytes": 382,
+      "path": "recovery/pass-3/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "b1eadca7c43c37ac7a4de7536ef40dd40e5923d6237f8e28e06b4c5f49e22ed4"
+    },
+    {
+      "bytes": 80580,
+      "path": "recovery/pass-3/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "2f1c64016cc3e959e66f3fb5f5c791b874b4c31b368415a642d3bf28d5a7de3b"
+    },
+    {
+      "bytes": 383,
+      "path": "recovery/pass-3/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "eaeb7acd74a7e7d83a0ffbbeba104aaae5dfb953ea6f15a6c224839cd63378db"
+    },
+    {
+      "bytes": 95470,
+      "path": "recovery/pass-3/job_plan.json",
+      "sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3"
+    },
+    {
+      "bytes": 70970,
+      "path": "recovery/pass-3/run_checkpoint.json",
+      "sha256": "feafe047fe23e6076b31db6c0fab8447ebb9ca8ff4c521ed4e98b5fd6b259da6"
+    },
+    {
+      "bytes": 102861,
+      "path": "recovery/pass-3/run_manifest.json",
+      "sha256": "d9dad2868bf5419878027e2c12f1b36cf051d09b78288b310fef346a5ef1407d"
+    },
+    {
+      "bytes": 56359,
+      "path": "recovery/pass-4/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "304732b5f2d29a49dcf813c7f20dc83392949bd19c35c40ef66f584500a4f336"
+    },
+    {
+      "bytes": 382,
+      "path": "recovery/pass-4/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "e8ea2592641d837ae21286fc2217be2a823814ef6d11bc6547f1e9526d8a7781"
+    },
+    {
+      "bytes": 80588,
+      "path": "recovery/pass-4/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "3f0bd619db49002384cfadfbab2d1d9f4d169dd5f124e7871986cafcb6df2be5"
+    },
+    {
+      "bytes": 383,
+      "path": "recovery/pass-4/failed-artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "8d0c2d8780cba06cb4aff303df5495475b78d1cc5c50736b59db9b611f03d25c"
+    },
+    {
+      "bytes": 95470,
+      "path": "recovery/pass-4/job_plan.json",
+      "sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3"
+    },
+    {
+      "bytes": 70970,
+      "path": "recovery/pass-4/run_checkpoint.json",
+      "sha256": "fca2b5dc34a36dd85480204b1d944c17bbf13cc002fd5adb4ebf98184b8d2fe1"
+    },
+    {
+      "bytes": 102861,
+      "path": "recovery/pass-4/run_manifest.json",
+      "sha256": "b785749411ec7a47353012cf40d89f222baeb702577ac437dbafac9ef52d19d2"
+    },
+    {
+      "bytes": 95470,
+      "path": "recovery/pass-5/job_plan.json",
+      "sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3"
+    },
+    {
+      "bytes": 70976,
+      "path": "recovery/pass-5/run_checkpoint.json",
+      "sha256": "29926c88670852b38cf1f2692cc8b2733d13ebde1918d604fa6c933e385b4e43"
+    },
+    {
+      "bytes": 102870,
+      "path": "recovery/pass-5/run_manifest.json",
+      "sha256": "bbcd1ba10ee61f3454c6b2a24636eb38a8258cf8e1d814968069f03a4c061566"
+    },
+    {
+      "bytes": 124389,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "sha256": "a8268496252771585260aef7e2a7e7130dceab15e7ee1a797b5dc5af59d366e4"
+    },
+    {
+      "bytes": 2853,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.md",
+      "sha256": "33137920b44d04bd69b6ebe879d5d85fd106409ca5ef77adcbba7ed5667340fc"
+    },
+    {
+      "bytes": 239151,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "sha256": "7c5e9199d1aa292e67e7e73834a27cc129d12517e79e28288c6faf8fdea37923"
+    },
+    {
+      "bytes": 488,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.md",
+      "sha256": "459ccb7d3e59db910dea0d80db1cb49772dcff66a993f616f1c394c0a12c3472"
+    },
+    {
+      "bytes": 178180,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "sha256": "036d0c3a138f0d3ebdde3c2f37824efc1c59bf23e265c5b9e5de6cd9bd172cbb"
+    },
+    {
+      "bytes": 1232,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.md",
+      "sha256": "cd4b54615a607f6c8b5ab45b96f8c44bf893faf83f6f476fd127921192b21a89"
+    },
+    {
+      "bytes": 133733,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "sha256": "474686cbb07cb3878168e69d4ccbe031909d1c0954ec27f7465338baedbe1c0e"
+    },
+    {
+      "bytes": 485,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.md",
+      "sha256": "22f30b52c290a1fd59198de54f41fb984f2b8a8a7cf74f2ccea88c26a91a3004"
+    },
+    {
+      "bytes": 200159,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "sha256": "c6b3413b99d63f4a2bb8cd36578f5d3f644b27116fab9753ed560e3ca604f829"
+    },
+    {
+      "bytes": 1093,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.md",
+      "sha256": "7ee9190c4e30aec740c497569c67b9e9a890304c2861b693f5a6bbc48ebea906"
+    },
+    {
+      "bytes": 118862,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "sha256": "a61152dce2e88fa8e1fb71626489d62a34a6b3e4aa44d90baa0ca71d338c4602"
+    },
+    {
+      "bytes": 483,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.md",
+      "sha256": "307445b0f2afce02089e782810fc147f740010776f6654bbbd79f932c71286ce"
+    },
+    {
+      "bytes": 94937,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "sha256": "3478fe2367f686f8c1f1a37885d23d4290028a8bfe0888dd1b254d0094656288"
+    },
+    {
+      "bytes": 1307,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.md",
+      "sha256": "dca8b847f079114629bfec5e47886e5595e2da7db5f9e8fea718a4836807f7f8"
+    },
+    {
+      "bytes": 194507,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "sha256": "4f14731503ae97786a673a41135269707707b705eaac38f2cc4dd03e1ff6606a"
+    },
+    {
+      "bytes": 2412,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.md",
+      "sha256": "d81cbf41e85dc39b79c253b9e8758d9ba3a671395d1fefbb94f7a4ffe783d752"
+    },
+    {
+      "bytes": 166284,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "sha256": "ef82cf608622ab1a648f42053dcb77a0560e18fd26d10990afd958613b64da3f"
+    },
+    {
+      "bytes": 485,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.md",
+      "sha256": "505865782107a407c77ffda348b2f76a5f17100086178d2662310c689762130b"
+    },
+    {
+      "bytes": 98519,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "sha256": "b926e3ffbff49d8e30834a34d4504f47ca6c675935ae6adea9cf129bf5118139"
+    },
+    {
+      "bytes": 483,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.md",
+      "sha256": "417d51d039cd6ba638e0c64cb95c0ac997c455aee768e44169e048a430d41b19"
+    },
+    {
+      "bytes": 142131,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "sha256": "76890c4c26b22c4b829c20519608ae098e58de10d2fc58b139ea00743d4ccbfe"
+    },
+    {
+      "bytes": 1423,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.md",
+      "sha256": "79886853218a8accc2ca0e027cc02169b59069ae5bf18fc7d144a3006f51b1b9"
+    },
+    {
+      "bytes": 143559,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "40079d7a2129541eae4ddd548d0bb59c13709beb46e079457ce7985c6eaae5ec"
+    },
+    {
+      "bytes": 1606,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "eae5cd237507ddba3e1c20fec02660b96f4c9c9e867ed7c81e94586e989a3e71"
+    },
+    {
+      "bytes": 176456,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "784f33b8bccb173ad49647878db2ad1538c610901bf4b2e1069473fe76ce3d37"
+    },
+    {
+      "bytes": 474,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "a59850d81ce80978df5f1df03a9bfd765c58d1dc2dfff49a96c734afe83d9fee"
+    },
+    {
+      "bytes": 130764,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "sha256": "4679fe5aac43d679ef7d9891375555aa843be7848c6be197efd8c87622cfb1a2"
+    },
+    {
+      "bytes": 473,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.md",
+      "sha256": "bbf0e921eb969fb30be2460e154a4d02d09b58ba5d83ad0bd3f1cf76777a01ce"
+    },
+    {
+      "bytes": 850339,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "sha256": "466d952bdf9bf9c118fab465a58146b3bd6e7300e2fd6bf87310377320dba59b"
+    },
+    {
+      "bytes": 1106,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.md",
+      "sha256": "ace70f5e7e77ca72046a3450f9c9b59b0791d45111039a83725dae6035166cc7"
+    },
+    {
+      "bytes": 159223,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10600-98442a0665.json",
+      "sha256": "692619d8ac6a0a17208548c36bbbea65ad11253a8b94c6d259b68b742b17dc34"
+    },
+    {
+      "bytes": 475,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10600-98442a0665.md",
+      "sha256": "b27ad894ecdca27be09e6e476d1c0d5d90d0d679dad8d5376e559dd23f47a6a9"
+    },
+    {
+      "bytes": 276723,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "sha256": "9b7780cd56e03b71addc0653cc1a7fec3dd4ac45a129c37b7244ac0b69cfe2ef"
+    },
+    {
+      "bytes": 3354,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr10967-e0f66e47c7.md",
+      "sha256": "387e4ba269ec270f68a71bcbce26b56b6508db245b3e3458bdbbbd3b7ccad891"
+    },
+    {
+      "bytes": 265840,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr11059-edc4826515.json",
+      "sha256": "737ad76b9207590707524eec45eafbfdce872d83eb3c4ea9b3afa4c8d2d330b3"
+    },
+    {
+      "bytes": 1478,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr11059-edc4826515.md",
+      "sha256": "63cdb9fcf48b20d82a89cfe77b2deca217f2d923892f26525968629157f76be4"
+    },
+    {
+      "bytes": 175165,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr14740-454655f78e.json",
+      "sha256": "4f7efa9c669843f818df65ffd439fe1882985d4505f955f118cf3738b514a797"
+    },
+    {
+      "bytes": 1362,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr14740-454655f78e.md",
+      "sha256": "a204d8c6d1bc28003ceef0d3206eff6313409d70bed20be8378b1364cbad89be"
+    },
+    {
+      "bytes": 109012,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "sha256": "ce77c39dc28191c2b869a779f2e8e8ade1201a684b2c0e114d59e6fb9f77ad0b"
+    },
+    {
+      "bytes": 473,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr14943-77f0b97fa3.md",
+      "sha256": "41050168998426b86d20d2059d3853191726b4156356005078cd63f51a4f929b"
+    },
+    {
+      "bytes": 76133,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "sha256": "1a52d479e4853b0abde8659226001d589003c325b8579850837cff1a90dd88d0"
+    },
+    {
+      "bytes": 473,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr22345-e55cdc5b2e.md",
+      "sha256": "9282a3f0577e054735a4ec0cbd3ae54ab931656d09db23d08b3ea393ff6bbaf7"
+    },
+    {
+      "bytes": 191302,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr22532-56a2f3185b.json",
+      "sha256": "bcbe107c558f2219b6cbb053b17c979882d7d0b716cddcf7dd510a6a62a64ce6"
+    },
+    {
+      "bytes": 475,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr22532-56a2f3185b.md",
+      "sha256": "8c3c854d0a9a5545969ef6a8771eaf64c2ba7337b26bd51a3f9dfb4b2c3f7392"
+    },
+    {
+      "bytes": 161024,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr7232-532a700f35.json",
+      "sha256": "9e188920b9c3c48a68ee414418ec187b7d7493b02a11f416646626038a9c0548"
+    },
+    {
+      "bytes": 473,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr7232-532a700f35.md",
+      "sha256": "a159bb464ff1f1b6521f6ab09268ed7fdf9a8c921a1d721bd73a67016f3ef106"
+    },
+    {
+      "bytes": 140599,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr8087-9c23e8296f.json",
+      "sha256": "7808c0331535fc660794597d89bd3569572ca9409077d46df8c6e49adb24bc7f"
+    },
+    {
+      "bytes": 2661,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr8087-9c23e8296f.md",
+      "sha256": "db2377471fc8abfea95f220eac8d3aa3b90f08ddadc16cd6c4470629e1177034"
+    },
+    {
+      "bytes": 125029,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr8330-800af76fcf.json",
+      "sha256": "d73df9ef0a53fb858a775b5288b396fa6fcb08e80a7053754415766905a039d0"
+    },
+    {
+      "bytes": 3027,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/calcom-cal-com-pr8330-800af76fcf.md",
+      "sha256": "c6338edaf624a1f91029ffb1d4cecbdd8c1b6d0ac83afd4b0c74586bdbc04db3"
+    },
+    {
+      "bytes": 109780,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr67876-f0a5b21040.json",
+      "sha256": "c0ea0f68ce03ddffc66ed4f01b90d9e39807d1da0620b4a2298e01c45df17c8f"
+    },
+    {
+      "bytes": 463,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr67876-f0a5b21040.md",
+      "sha256": "d7c8e3e055cee95229ad7b0c063a9a7e9798a4a75bed667a0232d4981c1453e2"
+    },
+    {
+      "bytes": 125733,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "sha256": "68f1ec8dbe687e6ba716a043f22728c41fb6c48376300057c5dd5a84af0ac5d1"
+    },
+    {
+      "bytes": 1404,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr77754-eaf4b87db9.md",
+      "sha256": "27c3a8a5712fa92b7c66af1a528ccb20133db50b5febeb01fe024169063dfc62"
+    },
+    {
+      "bytes": 102902,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr80168-731fa28972.json",
+      "sha256": "b9f7d814fb90eb0aa4faf3231cf62fd867d6be089b287dd3cfb8f1e2dee5bb31"
+    },
+    {
+      "bytes": 463,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr80168-731fa28972.md",
+      "sha256": "cb1b8e2e07ae1812e913aeba92dd81feb745225d1d55f3ce6aa3f91a4672d9d8"
+    },
+    {
+      "bytes": 66965,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr80528-5c5505e00a.json",
+      "sha256": "416998ea8077c052c106c21963f64761fe2c3c78ead1f89186356de5010d9c66"
+    },
+    {
+      "bytes": 375,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr80528-5c5505e00a.md",
+      "sha256": "9bd932f482d6a613db03fa81b4246d57457f5987e220333c467163bb6c3e51a0"
+    },
+    {
+      "bytes": 116750,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr93824-36dbd11db8.json",
+      "sha256": "f067fa7b62f4aa2bd64a00cae61ee4c0ba6b8d631eefa9cedecccd1e8f688c15"
+    },
+    {
+      "bytes": 461,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr93824-36dbd11db8.md",
+      "sha256": "d43a8f34e4a89e469a8029587fd8096e9e0fe1dd3a9361e301272ce8701b67f1"
+    },
+    {
+      "bytes": 116161,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr95633-118c8d30ab.json",
+      "sha256": "451f2f1ca272f07d619e30990d8d607095063340fc36c3b4fcd9c66f391d0230"
+    },
+    {
+      "bytes": 461,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/getsentry-sentry-pr95633-118c8d30ab.md",
+      "sha256": "65a2c3bba37d8c5bc4eeb34e52684233c43cd07248660108049b4bdfdcd66e4c"
+    },
+    {
+      "bytes": 112565,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr103633-1ccdfad177.json",
+      "sha256": "bae709233f7adb83b46a5ad44e4763daaa8af7eace29a781713e4d7cb1f08e89"
+    },
+    {
+      "bytes": 469,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr103633-1ccdfad177.md",
+      "sha256": "c1bd2b39ba61aa449942f1bf015ee3596daf79093a0cc91c773b0af9dbc0c9f4"
+    },
+    {
+      "bytes": 182073,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr106778-24d4677828.json",
+      "sha256": "48fd0839c3f8f8226f58044e917a5c1d8927eab79175e83b39939b515814fda8"
+    },
+    {
+      "bytes": 1231,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr106778-24d4677828.md",
+      "sha256": "ee4949d838475c7056889302bb801eddda99ed91962676e446aa2207b72a3fbd"
+    },
+    {
+      "bytes": 99731,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr107534-d0d4422f9e.json",
+      "sha256": "bf55874c22e3124ee72ab9065c44de396e1cdefa344c4a08f0af8e246789c796"
+    },
+    {
+      "bytes": 467,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr107534-d0d4422f9e.md",
+      "sha256": "fa1f07bb1ca606c25e0ef6d03f8ec3fa9cf89d6e8342772dc1659355266b9f2d"
+    },
+    {
+      "bytes": 129893,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr76186-74710117cb.json",
+      "sha256": "3f2f38605633971a5fed581222a13a1aa2963220dc58a1e9a38f4c8ce4a693da"
+    },
+    {
+      "bytes": 467,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr76186-74710117cb.md",
+      "sha256": "f989cc29ab7df61226b95049b1788219dfb97e6369646f3e577a310e578b70d6"
+    },
+    {
+      "bytes": 150546,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "sha256": "116db61bfc98382706d1164bf095f84f285fc08379731aaa8cfc88db1ecf17d5"
+    },
+    {
+      "bytes": 467,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr79265-1ff10dc6e2.md",
+      "sha256": "b42c85037a26e663f8b3f463140161e6c13242019f35f3e10aa9348d64dfdfdf"
+    },
+    {
+      "bytes": 93514,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "sha256": "d75a2837fd6549abbe3d2ffbedb137c80a2f6de9f96cd685653fec91cd448129"
+    },
+    {
+      "bytes": 2313,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr80329-a24dbb3cc0.md",
+      "sha256": "5481cd934a3b1ce32666a373a0c5feb8a66d6ed5bab1111b0a4cac7a4aaa080f"
+    },
+    {
+      "bytes": 112925,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr90045-80de62a20a.json",
+      "sha256": "2af28a41574fdcca80b4d61346a41544595a53007139295d01914e8aff91e565"
+    },
+    {
+      "bytes": 3341,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr90045-80de62a20a.md",
+      "sha256": "56cd50c09d7bc5bddcbd0a329a226c880d8f1cbb88323bcc15827c98e8581071"
+    },
+    {
+      "bytes": 60727,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr90939-086eb48f48.json",
+      "sha256": "c23f11bd146e14f61b5de485df0ac03199a91ebcaa3c6c17cd8f92e1105feceb"
+    },
+    {
+      "bytes": 464,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr90939-086eb48f48.md",
+      "sha256": "a524542ccc40f8df05709136580dd3fef278985c3608e1e463615a728c3ec2e1"
+    },
+    {
+      "bytes": 84398,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr94942-03516b9766.json",
+      "sha256": "07a65ff01acb3a6d53590c00e8d66754b79a4a3fa7ec324dcb89c3e2eb01a58e"
+    },
+    {
+      "bytes": 1758,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr94942-03516b9766.md",
+      "sha256": "7a5322038409f5fde7a7dc55c8156a739b2c3ef9439cbc38322388723188ddc9"
+    },
+    {
+      "bytes": 113126,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr97529-b30a8ea395.json",
+      "sha256": "fade69eafaeb8afbb9d5f4178dd6e4a6305ccfa588a6a305a893fcc8e5c5b06f"
+    },
+    {
+      "bytes": 467,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/grafana-grafana-pr97529-b30a8ea395.md",
+      "sha256": "75cbeea6943dd44835d4df8cda33487a5e2e05f03e5aee58bb850b23331148a2"
+    },
+    {
+      "bytes": 151504,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr32918-e125545e1c.json",
+      "sha256": "6f9be465a4aae4c53ad382c813b88984a14a146ae4f9fb95f4494878a9c8ac9b"
+    },
+    {
+      "bytes": 469,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr32918-e125545e1c.md",
+      "sha256": "5c092bd03e9d2bf0d276c47c86dda1a62401f6c92df6b21c3db6cab9f7931ee7"
+    },
+    {
+      "bytes": 174459,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "sha256": "5f439daa04e579f0719119910aaeb2b8e7330171c5c033ed6029a534f7e9bdcc"
+    },
+    {
+      "bytes": 1312,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr33832-fb78fbfca4.md",
+      "sha256": "94089c6ac2a400fdbd7fadab8c18e3dcc0e68ed1f08ae4cce3d4aa254e9cc66c"
+    },
+    {
+      "bytes": 299185,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "sha256": "219a612110940f5514a8c3c5ba2ce2e0cb8a58fde2a2ad10b68968f3133989a4"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr36880-3c6bf37b7f.md",
+      "sha256": "3d94db6a2c3767a84bd3dedabca3a9d9463e3fa15200ee91193e1ea83cf99608"
+    },
+    {
+      "bytes": 160651,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "sha256": "569876bf2f6b987321a68b46dd5da8ae3b6c06657e6dda4b0fb5e09b8dbfa5f3"
+    },
+    {
+      "bytes": 471,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr36882-b7f567acb6.md",
+      "sha256": "d2a6999b0f206fe1e49a080b9fe3b96a0441766bb66ea8a5fe9e020c2e1eb320"
+    },
+    {
+      "bytes": 305667,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "sha256": "4dfbd3f810f7109594e371b3825b3f59247a39c2b237efc389932e9d0104e728"
+    },
+    {
+      "bytes": 1118,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37038-e30cc1b5ff.md",
+      "sha256": "39baaa14963c28dbde40e0203c6de3e8e8a09d29f05fc45030d2bbcc1ae55c1e"
+    },
+    {
+      "bytes": 353209,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37429-9694dc5640.json",
+      "sha256": "786bd70ac0d7f0885929f714067be3803975459274264c5110cf5fefdb09b5b2"
+    },
+    {
+      "bytes": 1217,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37429-9694dc5640.md",
+      "sha256": "8f4de148e35038c2a41bb6ff94160345b8674f2a5f28fd794fa6a6adf2287c8a"
+    },
+    {
+      "bytes": 205714,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37634-2979e65c20.json",
+      "sha256": "0342a180d150e4e3a0427de8d592cb24dd30c0c84382b19bc1585ff8d8565807"
+    },
+    {
+      "bytes": 2189,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr37634-2979e65c20.md",
+      "sha256": "6e858c2b73f411a5c3f80ca6533344fcd36a8aed4b2b07d35f0ac244d29fd081"
+    },
+    {
+      "bytes": 170810,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr38446-d522975328.json",
+      "sha256": "1b938cddfe2c8f0d836f20ff060df37addfc217101a04ea6f2d34a414ca812d9"
+    },
+    {
+      "bytes": 471,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr38446-d522975328.md",
+      "sha256": "880bec27527e365d1dba4188cdd8f67044102ea2565b3196a4f664f88d20cf46"
+    },
+    {
+      "bytes": 104341,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "sha256": "c122149509b565462214b489c9a7a3d8873465345ff270d9b372ad61430d6b33"
+    },
+    {
+      "bytes": 469,
+      "path": "run/artifacts/anthropic_claude-fable-5--86c0c8bf10/keycloak-keycloak-pr40940-c3b1c314ee.md",
+      "sha256": "5b449e928cdb6e07aa273c81b220d9a7fa8ed1be535a39c12db8f96a432676e5"
+    },
+    {
+      "bytes": 99279,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "sha256": "9758da7be6645f6e50227c5bfae1f70d44c68542ca0f5a4e0bf03bec9ff9b4cb"
+    },
+    {
+      "bytes": 1439,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.md",
+      "sha256": "4b688523c3d6b4a414df1f9c3234f735516b40df3218f58614a4f6d5e36dc27e"
+    },
+    {
+      "bytes": 170451,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "sha256": "93e396a1233372208658fbf9f4385a34b817e00b4ddc73122ed38e00b538ef4d"
+    },
+    {
+      "bytes": 488,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.md",
+      "sha256": "d9a344564d448924951171f581a8cbfa4d62c84ba9e34bca09000ef3cc3b75d5"
+    },
+    {
+      "bytes": 149099,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "sha256": "50190886d7bf0e253286d3432bb896be9b4d3563a640344f82ab07fca4a7f90d"
+    },
+    {
+      "bytes": 1113,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.md",
+      "sha256": "fa700068949a849f3462035f4ddf76a868679e10dde716339af999fe7211a35b"
+    },
+    {
+      "bytes": 122276,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "sha256": "b93b19810b35e10b7797fcd36c59622517e14328505334f65d4279dc61e2b3a8"
+    },
+    {
+      "bytes": 486,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.md",
+      "sha256": "7897a270b94f3a38a11de129b0316d2ffde6993ecc06c89b3946e595c3ae1990"
+    },
+    {
+      "bytes": 148151,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "sha256": "67f29920058c83c7e5b42f6a01c49480cba04a85f37cb6e9eba46ac92913ba12"
+    },
+    {
+      "bytes": 1138,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.md",
+      "sha256": "2df843b74d3801048759ed879c66bfbd52a062724ff4bf95a3e331d32226e9f8"
+    },
+    {
+      "bytes": 94745,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "sha256": "2ca463027cab94cc42c9366b1174680457db0a1a9bee55351537fd48f30be393"
+    },
+    {
+      "bytes": 484,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.md",
+      "sha256": "9bee01b080265b6e12895f7215bf852a76e18ac58bcb5a711329203273cdf0b1"
+    },
+    {
+      "bytes": 82864,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "sha256": "4f276b4d434fb3a6c35fb5c44e3f8a1e2780ee70e9c2e82197079eaa5fb37b21"
+    },
+    {
+      "bytes": 484,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.md",
+      "sha256": "e21b4ffd9bfcbf2c6936d38e4d2f368e5b665a5c726372d1bf4edb1f4022f179"
+    },
+    {
+      "bytes": 188405,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "sha256": "2f62ed06f4c6a4fbf292f9f93e9caaec4aa97e573a58e8e591ea6b9396749344"
+    },
+    {
+      "bytes": 2031,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.md",
+      "sha256": "4ca3d8dba43f6ed4c60fa3fa875b9be0edabbf1b6cac323d37ad186ff57b399d"
+    },
+    {
+      "bytes": 131634,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "sha256": "d5192050aa71d76d19b87a551faffd52028eff447874f64d8da123cb7a8201cd"
+    },
+    {
+      "bytes": 1248,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.md",
+      "sha256": "954b1408994b111b934a572ead55b0b16076668872c01728a1b473c09d6188c9"
+    },
+    {
+      "bytes": 83464,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "sha256": "a64e8108a9ad6269e08c6463be17a2168858054294942deafe2138ca4f19d705"
+    },
+    {
+      "bytes": 484,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.md",
+      "sha256": "86830816c318b85f799a36048c0d1c711c796b7c97f60a1791a573cdc2396daf"
+    },
+    {
+      "bytes": 121230,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "sha256": "4bdaa0c1293b912e49903c5fbc9d888aa4fc7c26a020d89bae6d14846f76b9c6"
+    },
+    {
+      "bytes": 1230,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.md",
+      "sha256": "5569f981cef92dc825a77b2fbe92e18de31160c71c546dfa4a92482db2fb3421"
+    },
+    {
+      "bytes": 97427,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "5bc4441ca0772d8ba3c11fed87c55e936e7eed129ffba45ac606f25a9d4ea9d4"
+    },
+    {
+      "bytes": 1412,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "38b7e6e7e982acf4d3186d714a619534bc516541d39e6f2e6d1e1a8d71601067"
+    },
+    {
+      "bytes": 130697,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "42ce8545fe62b53628733f5338cfcffc9a06a8cf23f21eb05703857184590ab9"
+    },
+    {
+      "bytes": 1363,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "ceb94db77a27a8344352d7b3676ab40025644d1f770e70acac4a3c6d8276c6ed"
+    },
+    {
+      "bytes": 106032,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "sha256": "81b6c136b457b60eb287ae4ed0870fa92528309aabf195aae7809c7539610b35"
+    },
+    {
+      "bytes": 474,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.md",
+      "sha256": "4e59d94de64c34f39aed5ed18be2bc885fc5d9a8768fb9691f454493bd65e460"
+    },
+    {
+      "bytes": 706230,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "sha256": "91ce5f874fa0b14a59c307a21eb4594021cb3de3364f9e453d6c901cf595d567"
+    },
+    {
+      "bytes": 1560,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.md",
+      "sha256": "b5c333728a3d837b9038e031e702d4c7e374897cbdb15f1a8448b30a8ecdc9cd"
+    },
+    {
+      "bytes": 123165,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr10600-98442a0665.json",
+      "sha256": "073cdf37979eddc7b8d4a555ea1cf1c8e92e7aada2b88e4c334dc1665a9df789"
+    },
+    {
+      "bytes": 476,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr10600-98442a0665.md",
+      "sha256": "d69251f9b1512d700aa100f5a94726181d77304479b6456d7f44167fdf121060"
+    },
+    {
+      "bytes": 192762,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "sha256": "097f0b6da803a768cab71b21af105fb2359ed9dc27c650c78a026f78854d8edb"
+    },
+    {
+      "bytes": 2190,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr10967-e0f66e47c7.md",
+      "sha256": "bc77d63eec5b10760e39e1a95204e93888dfc2a0a8d0eacc784c067e0581e864"
+    },
+    {
+      "bytes": 189452,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr11059-edc4826515.json",
+      "sha256": "ef7b1f783c26a4e51749017a69650c091cdeab7cce2392a6ebf0058d8949f419"
+    },
+    {
+      "bytes": 1436,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr11059-edc4826515.md",
+      "sha256": "61bdc71ad4f9ea5ae2759afd90a1ea70f91392024e76594e97698398101fd57e"
+    },
+    {
+      "bytes": 133896,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr14740-454655f78e.json",
+      "sha256": "86a1a52d6592c765d39f1f8493c9feb51132251af9cf64ad15c235dd7f6932bd"
+    },
+    {
+      "bytes": 1923,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr14740-454655f78e.md",
+      "sha256": "7d635a39cb4aad202f3122bb58ede24a04ddb649d663bd13e8fb4ffb591a36bd"
+    },
+    {
+      "bytes": 86110,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "sha256": "ea3988075726b7efca413b4ab83192b5ec553cd54c5f5d2975dd2d5a64155ee7"
+    },
+    {
+      "bytes": 1216,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr14943-77f0b97fa3.md",
+      "sha256": "f42976fcabe3df1d33657383f87d5cb9dc46a7a1f17dba64a3e625090224c7e9"
+    },
+    {
+      "bytes": 85532,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "sha256": "9774b01e5a5693dbbc7df490043c3717ef00b16641f25d4ef34c20eaf5efe449"
+    },
+    {
+      "bytes": 474,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr22345-e55cdc5b2e.md",
+      "sha256": "728836289793518c86b6c1dbf038f6e8eb449de5fd20ae8790b56cdd56da98e3"
+    },
+    {
+      "bytes": 155011,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr22532-56a2f3185b.json",
+      "sha256": "a803a733ba92575541864bda42b53bb79af79f350c6dad23e82ad6b32c71d35b"
+    },
+    {
+      "bytes": 476,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr22532-56a2f3185b.md",
+      "sha256": "7e5194d416bb5dfcee67e974c41030b52707b69d3a664776ab2f611c7a3e981d"
+    },
+    {
+      "bytes": 134573,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr7232-532a700f35.json",
+      "sha256": "1363318ce0ef7b67a24c22f292d7fc472f15857d82a5de1ea2fcfec8c7d37e1a"
+    },
+    {
+      "bytes": 474,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr7232-532a700f35.md",
+      "sha256": "6c9fa958e91e254d0ce1789007cfb9350134bece4452a9b87bf37a31c0767e45"
+    },
+    {
+      "bytes": 111361,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr8087-9c23e8296f.json",
+      "sha256": "d888230db26938e234ae3a152a691d271276599b6045054563ebcb9b9e4ddf6c"
+    },
+    {
+      "bytes": 2150,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr8087-9c23e8296f.md",
+      "sha256": "be818369406fd856c78fb36f9fbad024d327d04e41130382806542ae7fb667ec"
+    },
+    {
+      "bytes": 87713,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr8330-800af76fcf.json",
+      "sha256": "3a345f5391078fee45382bcd4d8aeb7071ac528837ead1f5bf320dbe93d8d306"
+    },
+    {
+      "bytes": 2130,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/calcom-cal-com-pr8330-800af76fcf.md",
+      "sha256": "f26771c4a8b53e47b26caba1463568364ccb0b7ab2ee14faeb308ccc839c6f55"
+    },
+    {
+      "bytes": 96229,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr67876-f0a5b21040.json",
+      "sha256": "cc02768d8a17ba4bf452d7720b0588a64208695151d89b299ed9a90637f848a0"
+    },
+    {
+      "bytes": 464,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr67876-f0a5b21040.md",
+      "sha256": "ca2f65a0bce5d63da6325df22498ac8129d622ccbc81869747c220c9b5f781c7"
+    },
+    {
+      "bytes": 103721,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "sha256": "f894e671a3ad737dcfed9c7002baeab9d5786e176172d8ebca9020fee803d13a"
+    },
+    {
+      "bytes": 1227,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr77754-eaf4b87db9.md",
+      "sha256": "4636832dc17ca3956b93dc6f1651db2fefc09f042928c34651905ef2ad951322"
+    },
+    {
+      "bytes": 95134,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr80168-731fa28972.json",
+      "sha256": "ea4423170498e2e3a13edf3f94a39a0722d84e2b2fbdb80a8004152150b25e7d"
+    },
+    {
+      "bytes": 1361,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr80168-731fa28972.md",
+      "sha256": "16387e130c5e5b5851b7d08064c2bf21321ce570e58b58bb03f17bd98e07efee"
+    },
+    {
+      "bytes": 66496,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr80528-5c5505e00a.json",
+      "sha256": "1aef9f6b49cd994d445f3c1e8c79c6d8af24721507a838d486ea4b47e3bbf07e"
+    },
+    {
+      "bytes": 376,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr80528-5c5505e00a.md",
+      "sha256": "2dd1ce559243936b23659c9cc9701fbcc6477c123c2aa84275f820d29c9ec4a4"
+    },
+    {
+      "bytes": 104548,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr93824-36dbd11db8.json",
+      "sha256": "5d333796a8d8af399956eeec8a8437b6845893b2b55ba54bd0bfed10eec0e7f2"
+    },
+    {
+      "bytes": 462,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr93824-36dbd11db8.md",
+      "sha256": "4e514f9c47440d1709dab6b881f5e68f9eb35272b7fd8d856585589a84ec7bcd"
+    },
+    {
+      "bytes": 89155,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr95633-118c8d30ab.json",
+      "sha256": "5ac8e145c1237b217c1dbaaf811e3e9a4bafcd0abe596e11afd0f82137e3ae56"
+    },
+    {
+      "bytes": 462,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/getsentry-sentry-pr95633-118c8d30ab.md",
+      "sha256": "bd71a9b5935393b075b70f1ea530446c9988ba5cf1f2983362c8797170fc264b"
+    },
+    {
+      "bytes": 82102,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr103633-1ccdfad177.json",
+      "sha256": "90fea42bc347e4ccf2d4cc875a5f713ce2635a0521649054508c260d72cc431a"
+    },
+    {
+      "bytes": 471,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr103633-1ccdfad177.md",
+      "sha256": "b88a4210b94c3935094ce39b444641937ab8c86f0af86da687106ee1cb8b53e1"
+    },
+    {
+      "bytes": 134014,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr106778-24d4677828.json",
+      "sha256": "f822a156c7aa9cb405ed866c72e977c9930e154486a1f0d2f5f1bc2e15c01e48"
+    },
+    {
+      "bytes": 1119,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr106778-24d4677828.md",
+      "sha256": "3f8abf1ffa4440693a9d52fb880851c196f09eb2cca0c0258063e608e278a0df"
+    },
+    {
+      "bytes": 86230,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr107534-d0d4422f9e.json",
+      "sha256": "4e6b91a857a8431fdf732532af9017d704cf5ad7d544cda50d57e352d6887c49"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr107534-d0d4422f9e.md",
+      "sha256": "f5e8a8c2031175344a354d78fa413c85ea98dbe323010af9ef3aaaf2c11eb854"
+    },
+    {
+      "bytes": 103618,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr76186-74710117cb.json",
+      "sha256": "8120d15012b391bf876c56542e1c827cd82a16ceb0840f06cf3d0795981ec76d"
+    },
+    {
+      "bytes": 1283,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr76186-74710117cb.md",
+      "sha256": "0eaebb1df52365b6a08442265b93ef459d9f1a3c3bdeaa135f573a193d6c7b14"
+    },
+    {
+      "bytes": 108974,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "sha256": "20b70a28151920291904ecb070651df842d3bfe0e0da1c7cdd9051f98766328e"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr79265-1ff10dc6e2.md",
+      "sha256": "087d0a8bbdee4af86bcbc0111b70580d6c81e9f7af1a62055ff9e6b13db31d95"
+    },
+    {
+      "bytes": 83185,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "sha256": "4542c9ba766e0025551adc4b696328627c4ee681ce4e0a6a0063a7c2f299d956"
+    },
+    {
+      "bytes": 1979,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr80329-a24dbb3cc0.md",
+      "sha256": "a3d810a1c0af25fe1b9efe5ccf225d9fc041b53cb2c2e2ba7a897741b9b47b1a"
+    },
+    {
+      "bytes": 87609,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr90045-80de62a20a.json",
+      "sha256": "7de383f7c933a286cba4a2be1a2beeb3eaca149dc0a91c6cd7c09fcf19a4800b"
+    },
+    {
+      "bytes": 2926,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr90045-80de62a20a.md",
+      "sha256": "bea637277ae1094d1c6306e572d7bac3d187a793c5056a8d02914a7d03e14464"
+    },
+    {
+      "bytes": 58900,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr90939-086eb48f48.json",
+      "sha256": "1951922e9b5620054aa8fff89f94c00e1c48b9f2c63ba7adacd60693f55b5b28"
+    },
+    {
+      "bytes": 465,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr90939-086eb48f48.md",
+      "sha256": "48dc4bcf04cbdc0a34610b895cddc03c83a26a7406f4d821382a73ed3b468ece"
+    },
+    {
+      "bytes": 82538,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr94942-03516b9766.json",
+      "sha256": "716477bd123b5807a3f4701a332e6c1c1b186688fbaf252fe82cb51200e1772d"
+    },
+    {
+      "bytes": 1191,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr94942-03516b9766.md",
+      "sha256": "20428ca1261b59168c1b59c7e23431d07128108c1fc495a63a34ddc0fe2e09a8"
+    },
+    {
+      "bytes": 95213,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr97529-b30a8ea395.json",
+      "sha256": "724d9e6a13c6b94ba9135ee66424b89122a67f9945eee848c54acd24b1c4212a"
+    },
+    {
+      "bytes": 1100,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/grafana-grafana-pr97529-b30a8ea395.md",
+      "sha256": "29711729994ed8669959b07403f3234260be221b57ecc0ad2b68574c3d840704"
+    },
+    {
+      "bytes": 123158,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr32918-e125545e1c.json",
+      "sha256": "2e9142cefcc44a867680ca333cf41b107738581b46e10b5204d5ac2d08705a69"
+    },
+    {
+      "bytes": 1288,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr32918-e125545e1c.md",
+      "sha256": "2c14765fabe8e16e8ea96f29695450070f09b13d882b3e3f0cdf2f2e994ef7d4"
+    },
+    {
+      "bytes": 140342,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "sha256": "d340f0b1352a38b60bb4bec20ea11ff9d6df0391752fc5d49dceb64a2113f36a"
+    },
+    {
+      "bytes": 1228,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr33832-fb78fbfca4.md",
+      "sha256": "e9e659240dc810047c47bad7f809ae6cd2805d8f45234c8780da32625cc0aa18"
+    },
+    {
+      "bytes": 220527,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "sha256": "039acdf4ef61c8e2a4f3c1263b1267ea8ed1eb607a3439c0bf5babe79c376aec"
+    },
+    {
+      "bytes": 1231,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr36880-3c6bf37b7f.md",
+      "sha256": "b612c01a06b718226d84fa422b5efbc200d393162691bbc9f7c9778327f58871"
+    },
+    {
+      "bytes": 135885,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "sha256": "cbedce33ad5537ca0ed97a63f8b6cea1c04e721138553ceab54d6934067f606e"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr36882-b7f567acb6.md",
+      "sha256": "9303e149bbf42e10c0f77cfe5b718fb1d381a6c4951fdea8b83d886bbd40186a"
+    },
+    {
+      "bytes": 216925,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "sha256": "5652a1bc0ea6974ff96f723731864d467c0e35f45671c2bb7458f63070a5dd0e"
+    },
+    {
+      "bytes": 1045,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37038-e30cc1b5ff.md",
+      "sha256": "5b442fdcbe671345ba2b561809785056bc0c3088f8cf1d573aa0803919e7d127"
+    },
+    {
+      "bytes": 284185,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37429-9694dc5640.json",
+      "sha256": "3d67badcbdb1ffdcd2c1d64587909b941f7141cdf0f3ee2d12846191b2e52e99"
+    },
+    {
+      "bytes": 1972,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37429-9694dc5640.md",
+      "sha256": "3548a2f21e07eb89ba9a88aeff36d494ff39566f213e05d519816e1f8a4eaab6"
+    },
+    {
+      "bytes": 170037,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37634-2979e65c20.json",
+      "sha256": "1a71fdf32a3c0a42182b26f3f263a962b9c08dc93ce335dac5451765f13d25df"
+    },
+    {
+      "bytes": 2260,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr37634-2979e65c20.md",
+      "sha256": "bc78b99bf34ff59b3589b2c0b62c0038f9c2bdf7fbf4011dcbead8f30248c298"
+    },
+    {
+      "bytes": 135097,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr38446-d522975328.json",
+      "sha256": "6e9d2a33735ac97ac97515c5feef9117d8470ea2c4e135d7b8bf685875789ba2"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr38446-d522975328.md",
+      "sha256": "2a719eb6497157459a0a47a3aadd43ef8f981c36505d387c07aa136fc747727e"
+    },
+    {
+      "bytes": 95904,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "sha256": "0595a066e9fbb6fd9db4b3cea83aad32de853a8617d86b7a12efb1428009b642"
+    },
+    {
+      "bytes": 470,
+      "path": "run/artifacts/anthropic_claude-opus-4-8--cccbc1ce30/keycloak-keycloak-pr40940-c3b1c314ee.md",
+      "sha256": "31b8d1f1b2dd03440ce6765da7511d24e73debf29fa894176c7854d06b7c5602"
+    },
+    {
+      "bytes": 121585,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "sha256": "cf34d1a623a3fb65220b3c5ba52e9adabb6016801d8a0e58253212abf0107eba"
+    },
+    {
+      "bytes": 1351,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.md",
+      "sha256": "ab7755b45308c822df7101472e90be9d212c47b823d7d6c555d81b1cbfb103fc"
+    },
+    {
+      "bytes": 268513,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "sha256": "61f7961a7ab7542b6649e20700877a17b4ee8ba956003370c9622a46f2b5ec37"
+    },
+    {
+      "bytes": 487,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.md",
+      "sha256": "7b59013aafb7e5e7e330aa6c3dcc61dd1c8af32b74e236ee2117f551cb3c92c0"
+    },
+    {
+      "bytes": 208990,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "sha256": "e192097678d19e155fc2c27eaae798515c7f4f3911397f436550ab56f6772b1d"
+    },
+    {
+      "bytes": 1386,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.md",
+      "sha256": "1f47a122621b85c8ce4fb6a05d5c0e657f08de6d152067599de47e5d2427ceb0"
+    },
+    {
+      "bytes": 141564,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "sha256": "120eab2fb4d95763e086f0ada7add40882389f213c318afe053470bf98f32283"
+    },
+    {
+      "bytes": 484,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.md",
+      "sha256": "7f903c2d506202fcd03be7623fa516cc9709689486ab80742cc5f905099a811c"
+    },
+    {
+      "bytes": 248452,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "sha256": "7f723d4aca89ccb0d40425ac318f720a01c104918259f4dddc26aa254a32547d"
+    },
+    {
+      "bytes": 1052,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.md",
+      "sha256": "7c40de1663e42d8609858554c26015eaaa88eb2bb09108d25d0de4eea26803f9"
+    },
+    {
+      "bytes": 132168,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "sha256": "a90b3720b94064fae1e5b4a0cd76c6ecf531b2742fc075db0807a37cbfe30879"
+    },
+    {
+      "bytes": 482,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.md",
+      "sha256": "b2a94d0fc8cdf47536da64f6095ce7d8cf97c19805965b627f077d138791ea1d"
+    },
+    {
+      "bytes": 114201,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "sha256": "87921e3263d42f412766b48f3c3d17191467606c105db95fb0dfb5aaf5ecd822"
+    },
+    {
+      "bytes": 2273,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.md",
+      "sha256": "20de9e02b265f768910cfe4da14b91d4a65d0d5b0f58c601ba4f4ebef611c9e3"
+    },
+    {
+      "bytes": 192901,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "sha256": "6869d62779d357c68f31e8ff10ff8905e281f2616a578a4c6794c56887e8c401"
+    },
+    {
+      "bytes": 3019,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.md",
+      "sha256": "93e859c332a21e882a800f00164889247253c04b3894a0aa895fc85001916eb6"
+    },
+    {
+      "bytes": 218562,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "sha256": "897e33ba2966b64e9ad4c14cdb2d0b1cacaea175880afb6e0732fce627e6a1bb"
+    },
+    {
+      "bytes": 485,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.md",
+      "sha256": "dc76b2c773cae22c212d955d2c1f98a6ad3a7f861035c86825d7564702ac9331"
+    },
+    {
+      "bytes": 118078,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "sha256": "1bf878abcac88a46cb03348b2683d87fe0dd41ebb758d38ce8fe30888267ab22"
+    },
+    {
+      "bytes": 482,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.md",
+      "sha256": "58fad32f0c49532165710682f3b8891a4324b799591eda719a693914aa62452d"
+    },
+    {
+      "bytes": 161212,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "sha256": "c02558124334fb5ab618c6dd3c7b356d982c70edc09b8d1405af6115d0cfaff1"
+    },
+    {
+      "bytes": 1642,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.md",
+      "sha256": "1616c1c074cc7f26271ff7c71d055ca520543476b3b2dbf4f33a5e93fde27628"
+    },
+    {
+      "bytes": 139549,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "d7052521e88bdef00c548b6b1736692c65820335d2e5f2596ff079bc784df9ea"
+    },
+    {
+      "bytes": 1532,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "843c30ade1323d26e91b28cc1b6ab1e9bb1bc68b52763ced28e1bb2462a4a6cd"
+    },
+    {
+      "bytes": 198597,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "002b8db9e746257da7b34cca2c0064cb4acdf4257f7b2757e6debce8b040723d"
+    },
+    {
+      "bytes": 1510,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "ce5cfbdfc95e73850ae6f017dda6e36050fb2eaf425f28a8f949f51fa8584dab"
+    },
+    {
+      "bytes": 173744,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "sha256": "de22d75d9d2cd9637b7d74867f5e77fc0bfabd6f29539c69d0ec4a6bd35a3978"
+    },
+    {
+      "bytes": 473,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.md",
+      "sha256": "1bed2a6cd03c748b4cf15472f3e59d0f948a2a9e2eb7b8b3ae7d53e9aa52aae9"
+    },
+    {
+      "bytes": 1021449,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "sha256": "e10ea763fd9235e7d547b0dbf0f4a2a97c52b8b3dd7e9ca58bccbc3c9398babd"
+    },
+    {
+      "bytes": 2019,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.md",
+      "sha256": "4e44069ebbeb12eda02bf359bf76a392ac728022ab04c358428bf329b3db0eab"
+    },
+    {
+      "bytes": 176168,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr10600-98442a0665.json",
+      "sha256": "4ee73be71bca9eff6c3e37993ae1d3984657283ad22f237d0f5a47adbe502f41"
+    },
+    {
+      "bytes": 475,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr10600-98442a0665.md",
+      "sha256": "eb86e591b6b4256da75726ff6726afdf4977d38d556a05c87daa92d1471062f1"
+    },
+    {
+      "bytes": 300576,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "sha256": "7db791aacffab6493956f23cdcdd8969aa0a50a5ee4adf4f708efb0c43560ad3"
+    },
+    {
+      "bytes": 3102,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr10967-e0f66e47c7.md",
+      "sha256": "4db34713c167e8acd1bb443708e6e4798c2e4658464635957e3e5d8ece9c6e1a"
+    },
+    {
+      "bytes": 237749,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr11059-edc4826515.json",
+      "sha256": "b930741fcc6dd6ecca4a5c1da137adb2705e5d911eabd81aa65e8761a742d461"
+    },
+    {
+      "bytes": 2490,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr11059-edc4826515.md",
+      "sha256": "88142c3b38d1ab8b22d1c6434e6701c7ac070570c7bec8cd85a010c5307309ca"
+    },
+    {
+      "bytes": 214790,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr14740-454655f78e.json",
+      "sha256": "4c90172a8d5d8305877b933e89580bfb71f5301be027c5b5452cdb538e3d7df4"
+    },
+    {
+      "bytes": 1311,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr14740-454655f78e.md",
+      "sha256": "1006ed92c0e494f93f3a8a90ea33e120eba142d3fa9e8911ca78e2a014564bfd"
+    },
+    {
+      "bytes": 122721,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "sha256": "20353a5c928f3b5268ad370563215a15f1377011be5494e57b11a978171b2227"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr14943-77f0b97fa3.md",
+      "sha256": "9c3160cfaba286b11115a860e50a9679a757b7b08489873dff2cb3761155aeeb"
+    },
+    {
+      "bytes": 105544,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "sha256": "2bf34a050e301353204723e2bba271880e3333fc8212e3356fcdd87985bc065d"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr22345-e55cdc5b2e.md",
+      "sha256": "06489db18e04b6c04a9ef4474cc26c4ac98d86b77fd54de41731e89ab9af0e04"
+    },
+    {
+      "bytes": 241517,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr22532-56a2f3185b.json",
+      "sha256": "364d09762852e70ad29ab1635fff3ee63d293365faed87386dc42b4129e174c3"
+    },
+    {
+      "bytes": 475,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr22532-56a2f3185b.md",
+      "sha256": "7ed533224cbb7a2069bb7d82079cae9bf9ca50320f1ab095bc66413c6d55ab5b"
+    },
+    {
+      "bytes": 178215,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr7232-532a700f35.json",
+      "sha256": "bb85b3f7adda4a8160834bc29aa84ccf2c396a4dec98a8186a45171458a8983a"
+    },
+    {
+      "bytes": 473,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr7232-532a700f35.md",
+      "sha256": "fce720594eda07229bd0f92223c7dcd336e08f7c2794346809c33172cc63f4b8"
+    },
+    {
+      "bytes": 147964,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr8087-9c23e8296f.json",
+      "sha256": "e6a6affdec699c029c214b895996f422ca841679da38e6fa903c9539a5200f7e"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr8087-9c23e8296f.md",
+      "sha256": "61e17fca22eacb2ae06b316d04a484c3599087ec1f03624f7b4181ff271f775e"
+    },
+    {
+      "bytes": 139149,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr8330-800af76fcf.json",
+      "sha256": "ef98021878ef6e8a7cecfb418bf9628e75e1c1126cfa746c921b8f0271aebbc9"
+    },
+    {
+      "bytes": 2012,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/calcom-cal-com-pr8330-800af76fcf.md",
+      "sha256": "0463c9871f53dd806cbbb3e3d4659e865fd9c56a06d5041b6cbd31c135985955"
+    },
+    {
+      "bytes": 134714,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr67876-f0a5b21040.json",
+      "sha256": "3475491cf3b03986fbf1513e69525e680a97c1c0150a4347baa947d33d328866"
+    },
+    {
+      "bytes": 462,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr67876-f0a5b21040.md",
+      "sha256": "8654c92bab21fe5a8f9e141200e90d51fdadd32dbc41b9fe9fc40068e67daabc"
+    },
+    {
+      "bytes": 126401,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "sha256": "a86e01e9abd1d2d469179d66ab6d0ec5cb689b848e8f6e5f7fad9c97c38ac636"
+    },
+    {
+      "bytes": 1684,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr77754-eaf4b87db9.md",
+      "sha256": "1eac312677904354337f100f9a7f45fbf9e5d1ab7436155a0e943ab82683bee7"
+    },
+    {
+      "bytes": 113017,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr80168-731fa28972.json",
+      "sha256": "d8baed4e8060912c37f95a69daf0862e267ab978483e3696585987290744cb4c"
+    },
+    {
+      "bytes": 1596,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr80168-731fa28972.md",
+      "sha256": "f43307c780d70e4893a51e583a5ef05bab320005de64e94caa8daeb56ded4645"
+    },
+    {
+      "bytes": 93519,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr80528-5c5505e00a.json",
+      "sha256": "37a7804b55577a8a3e0897e50e08ce21069370df19f13b1224bd1a3557ee1062"
+    },
+    {
+      "bytes": 1308,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr80528-5c5505e00a.md",
+      "sha256": "93aab8f99ff21bcaac9d291c97043162ade52fd60ceb55c33a726118ff085a9f"
+    },
+    {
+      "bytes": 147291,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr93824-36dbd11db8.json",
+      "sha256": "65054f9d9bfcff32accf5704c39710721caa4220e4e5984a5952b80d5de94c43"
+    },
+    {
+      "bytes": 461,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr93824-36dbd11db8.md",
+      "sha256": "91023a24baa57f4072a0b780cbed3adf7d9cb6969d49ba6ac91165e67dd85993"
+    },
+    {
+      "bytes": 58725,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr95633-118c8d30ab.json",
+      "sha256": "3f8b30761408894202ea566895cd106c67f8057e9411e407ebdf2bdd531820a7"
+    },
+    {
+      "bytes": 375,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/getsentry-sentry-pr95633-118c8d30ab.md",
+      "sha256": "1e8ad481f093556409f7857dd82779f75659e000811f87b4a4b3e5c7b4ca7a47"
+    },
+    {
+      "bytes": 117316,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr103633-1ccdfad177.json",
+      "sha256": "8933d1e57ced8f33ec5fa36e6b523236e13492d9ad046dec28646945c0ae6267"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr103633-1ccdfad177.md",
+      "sha256": "30448ece2b5ec11bb36c42c06bada46b854797191c7d31740276163a9bde4c1d"
+    },
+    {
+      "bytes": 183194,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr106778-24d4677828.json",
+      "sha256": "691f96ed037c77cd2c0f8cabc3a85667368c24ed878a6c7ca97cb26659e861ce"
+    },
+    {
+      "bytes": 1252,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr106778-24d4677828.md",
+      "sha256": "b158bc010e95f779a75e4084b94169878a44a1638cac70b8c2e392348921eda7"
+    },
+    {
+      "bytes": 93047,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr107534-d0d4422f9e.json",
+      "sha256": "bdd5528cda3d7d7adbd753d8b2307beb84f95bf526e6d7d955483c56c2af6aa1"
+    },
+    {
+      "bytes": 466,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr107534-d0d4422f9e.md",
+      "sha256": "32ac15fc7372fa060b3d05f27eff04764e36b291fc4b5c186673d5e14fafd964"
+    },
+    {
+      "bytes": 144021,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr76186-74710117cb.json",
+      "sha256": "8a367b11e65f793bab0f2d1b0bc16823ddb1f4ba3d01d0f068d3a314418385b9"
+    },
+    {
+      "bytes": 1373,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr76186-74710117cb.md",
+      "sha256": "72cfe9ca74febb3718043bc711377f5f20a74b5b994c8d870c6181004db83d2e"
+    },
+    {
+      "bytes": 173945,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "sha256": "70a9175f6af300b14554d3b880958421a8ed76a89f925c002e9ea7e1c2683556"
+    },
+    {
+      "bytes": 467,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr79265-1ff10dc6e2.md",
+      "sha256": "715abeda94d6f7e1a727861d268222645053caa295c9f2d092fc15e04b6586bd"
+    },
+    {
+      "bytes": 133523,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "sha256": "049328dd446a43b5a08bb04d70fd8bcace0175a3ba78b157fdcb98f5be5c8e02"
+    },
+    {
+      "bytes": 2254,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr80329-a24dbb3cc0.md",
+      "sha256": "2341729b6517771c3aec34cdfe2cf95af8a03e03f4636d11ba0c10aecdfd7f0f"
+    },
+    {
+      "bytes": 125008,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr90045-80de62a20a.json",
+      "sha256": "72ff487a26f9c2114f76e0313ea83c092689335a621e70bd7631bddecfc8a84a"
+    },
+    {
+      "bytes": 3387,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr90045-80de62a20a.md",
+      "sha256": "3b636f83457631cd308c4ccb0bf4e93a92d05122e4d5d5b6997ea4a0f6baebc0"
+    },
+    {
+      "bytes": 68657,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr90939-086eb48f48.json",
+      "sha256": "81623f219cdd93787b5cf0981642d30885ffa66570b7f72d9ba6ee19f3231854"
+    },
+    {
+      "bytes": 463,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr90939-086eb48f48.md",
+      "sha256": "6b16719ec87542b895655a57f4abc4aa3f155c5331b02af37eec143578e8c444"
+    },
+    {
+      "bytes": 108732,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr94942-03516b9766.json",
+      "sha256": "0b8bd43b6545376e1b514b5df7f3617d9d709e3967893efb9f4d33f1075a184b"
+    },
+    {
+      "bytes": 1466,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr94942-03516b9766.md",
+      "sha256": "55e5f5fe981e15a117189a7653deaf6d9ed6c6837baf83e8802672cd4c7ada99"
+    },
+    {
+      "bytes": 111527,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr97529-b30a8ea395.json",
+      "sha256": "8e28ee29bc992c65fa63305fa8d3e0af6e1762e15a10566692637916d7a73061"
+    },
+    {
+      "bytes": 466,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/grafana-grafana-pr97529-b30a8ea395.md",
+      "sha256": "dd8c4afcecf8e3c8a602ad8e7a6771e7d5ddcf0d37dd71d2df6a0547e4a1d00e"
+    },
+    {
+      "bytes": 151398,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr32918-e125545e1c.json",
+      "sha256": "cc0be9198cb9e3b9ee7f9515afeb4b4588510c155e915f9f45d9c948832ed57e"
+    },
+    {
+      "bytes": 1456,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr32918-e125545e1c.md",
+      "sha256": "4841c59aa571ec9568655b1944ec66ddd35651d3cb887bd7754ac25fb4817441"
+    },
+    {
+      "bytes": 193424,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "sha256": "2fc8f7a092af1e2ee84f529334e16982ff59ac6ea7315a0165eaf10af1f50006"
+    },
+    {
+      "bytes": 470,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr33832-fb78fbfca4.md",
+      "sha256": "49b0cd5fa90969419a29005a5e1eb1c5b142224a9c613c235d9570b97da42668"
+    },
+    {
+      "bytes": 287907,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "sha256": "589843770176789c760aa1feb3c0196204eadfa4d151831ad25c6ea2398fa16d"
+    },
+    {
+      "bytes": 471,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36880-3c6bf37b7f.md",
+      "sha256": "45d0e74316b139d35db4a1d523ac428c19a26628b96e5c954fdd4d36b8ba9463"
+    },
+    {
+      "bytes": 175075,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "sha256": "08e624a596134d44c52d8dd739fd9b69949d0a8579df31aee0b7fee7b0314c13"
+    },
+    {
+      "bytes": 471,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr36882-b7f567acb6.md",
+      "sha256": "557c55108a42c9db5c19202a469c8eaec1d34bb82669b77f218eff429a81ba15"
+    },
+    {
+      "bytes": 299938,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "sha256": "8b312a137e3f473cd4770f5db7c2ed550d2a0375a425046acb79cadb71de06ec"
+    },
+    {
+      "bytes": 1122,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37038-e30cc1b5ff.md",
+      "sha256": "d4be4feb045a07360885ad5bcf5efe98bb18a192e2e22ce7520eea80f040ee99"
+    },
+    {
+      "bytes": 380262,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37429-9694dc5640.json",
+      "sha256": "7f3efc601793e3a4c4c1e6f18daaf4914560635571b12726884e7a0efe12d99a"
+    },
+    {
+      "bytes": 1933,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37429-9694dc5640.md",
+      "sha256": "1a745122365e629a085813659bbe79479fcd80081845107cd4cb2e0b18990bd0"
+    },
+    {
+      "bytes": 244214,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37634-2979e65c20.json",
+      "sha256": "6da773857f3e56679b0532c4814fffb782e8b696d1e55692df99385fd65b42dc"
+    },
+    {
+      "bytes": 1951,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr37634-2979e65c20.md",
+      "sha256": "bfef7d9a1d2d9d112bc5ca09da5556bae770646f23da2b6472677f758ac5dc8e"
+    },
+    {
+      "bytes": 203424,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr38446-d522975328.json",
+      "sha256": "c7a50c53e0d3ae17e8dd3682a25ef4e1ec64db45b0f24a73a0941e216d86dc46"
+    },
+    {
+      "bytes": 471,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr38446-d522975328.md",
+      "sha256": "746c36b9f7fdc82e99d194b155dc56d4a610fdc6f90281866728125bc1ab015b"
+    },
+    {
+      "bytes": 121137,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "sha256": "51525139917d7521dfad11c90eab2ed315c402e713cf9382d3604f7e23551da7"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-opus-5--568e0eb3a9/keycloak-keycloak-pr40940-c3b1c314ee.md",
+      "sha256": "ad715af9187deb176475c02c1923b39e8cefda2e75d6ee47bb8940f5cc316cf8"
+    },
+    {
+      "bytes": 106914,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.json",
+      "sha256": "6acc3f712121422240311ad40c2a4e9363f9955acd08e87ee0c73c8c47bad9ab"
+    },
+    {
+      "bytes": 1572,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr1-0f4dee8155.md",
+      "sha256": "791cf8c90a9a641935d1295015b56a8f79d71f1250893141673cd90b85dd108e"
+    },
+    {
+      "bytes": 209443,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.json",
+      "sha256": "2d9030981cbc20881af391042dbc538fbf50d13d35f80b8eaeeb2bf057852030"
+    },
+    {
+      "bytes": 488,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f.md",
+      "sha256": "cbad3208496fdc39bb1d7df12bc26cdc8559cbe7d606141586aed02bf3db459b"
+    },
+    {
+      "bytes": 150387,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.json",
+      "sha256": "2f250f4ba4c9818660f09de847916f6627a2c86826b04e041c2a0b092a8bb51e"
+    },
+    {
+      "bytes": 1316,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr2-5fbe961619.md",
+      "sha256": "80e4d6cfac0f099974b55bf6ff669598fe18df3bbbe6c46b69a556076f06a4fb"
+    },
+    {
+      "bytes": 148344,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.json",
+      "sha256": "ffd40c6a85b04b548d2ae8c00004331675c295885a33eaf0086ff296baa388dc"
+    },
+    {
+      "bytes": 486,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr3-735a5f3ab0.md",
+      "sha256": "6703679af9a4280032c64414c68efc496003351b066495b8a93a07aff662dce0"
+    },
+    {
+      "bytes": 181975,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.json",
+      "sha256": "7a40b2798fb7e796a4a03dfe4ce58fec157d549be5ee2bf29509b3ee4db7493e"
+    },
+    {
+      "bytes": 1172,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr4-84957e2bf0.md",
+      "sha256": "5e31899bf7591428c119e462b013e31ee7f18201ec5f8cd09e0daa5a96385c99"
+    },
+    {
+      "bytes": 105739,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.json",
+      "sha256": "8d4431626fc9b0722b474b335ff88b8b3b440997eef88c7c4ce3a9213e78ae34"
+    },
+    {
+      "bytes": 484,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr5-9a950d90c1.md",
+      "sha256": "f35350aa8e7b9dd646e5cddbd19d14ed458255266d388d77a9c20d2f1a1b0a2b"
+    },
+    {
+      "bytes": 100546,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.json",
+      "sha256": "624c6ac6d73cffd42e6ab499468d7cbf05c69396eb31828aee41f5c9f1174f70"
+    },
+    {
+      "bytes": 484,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr6-97eebca1b1.md",
+      "sha256": "36e7bda0b6c5f80d447a10000e2d05d5261dd0423a0b8ae5a9f4665d1bc787ed"
+    },
+    {
+      "bytes": 191749,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.json",
+      "sha256": "0e34de9db7917e181677b9916218056163d1ab1a1eccee78082d6e2bbbbd71bf"
+    },
+    {
+      "bytes": 4994,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr7-a04e7253d9.md",
+      "sha256": "1f184821ffc34a1f75e6f38fb5f82098751db455eaa96c43465608e7ea0d33d3"
+    },
+    {
+      "bytes": 148114,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.json",
+      "sha256": "bb88269902986e8aac077a9ead982aa4db89da4f749be23eb0b352642afb3f1f"
+    },
+    {
+      "bytes": 486,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr8-a4e3386385.md",
+      "sha256": "4226a83e330e23fffb39e19b041cabd2f33997c25438a79f6fe2a8f22f24fabb"
+    },
+    {
+      "bytes": 98658,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.json",
+      "sha256": "4c4c39af58d37d34fb02e2a814aa1111fa2bc9e0928dd5a93ee4677f927dd681"
+    },
+    {
+      "bytes": 484,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-discourse-graphite-pr9-6a3e69fb75.md",
+      "sha256": "c6f3096baed10d28a9828dbf00c00318e08c3b62d4f0eb8ecb53f490e40a0072"
+    },
+    {
+      "bytes": 144888,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.json",
+      "sha256": "6f6a198f6fa9e3f7c23e05f74a5080d6107725090625b7bd9dddec5fcf1a7f68"
+    },
+    {
+      "bytes": 482,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0.md",
+      "sha256": "ca780eb70d82fc34a1f455e4b868250a9ec804f049bc660ee2b547ed9772e2f4"
+    },
+    {
+      "bytes": 121658,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.json",
+      "sha256": "31fecc2f6385678aab69fc42284493a5afc1db5c61ad853e2cfaa4d6bc299716"
+    },
+    {
+      "bytes": 1825,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr1-93109beb71.md",
+      "sha256": "8b6bd3b4a7a753600e0452e22be9855c542fa42e4760d8b32f3e470e8921675c"
+    },
+    {
+      "bytes": 148078,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.json",
+      "sha256": "948d89d98d2056eb5ebee283d37f05b14f70bcc5862506749a9ea03706dba621"
+    },
+    {
+      "bytes": 1515,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr2-dc17f088e2.md",
+      "sha256": "48256f584088a5c47019c0f2b56f155478db497dae673c9ac3bf35c38c0c6f8d"
+    },
+    {
+      "bytes": 109049,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.json",
+      "sha256": "cb4e9dadf21a5de41dd4f4f3a534990effbd1b7fb9bbb6c294c8e8ed78fb6bf3"
+    },
+    {
+      "bytes": 474,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr3-5fefa30274.md",
+      "sha256": "2626d0f3c371b51b653bd1121c59cfddf8a3e6f3092637085f037e512ade5f5d"
+    },
+    {
+      "bytes": 753689,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.json",
+      "sha256": "9d8e483059c0bad6c293d4541ce365595703ba8d4d883019104f888bee2997da"
+    },
+    {
+      "bytes": 479,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/ai-code-review-evaluation-sentry-greptile-pr5-4b01575d75.md",
+      "sha256": "e03e1f02e6f911b899e5937d7024f575bc62d341326885e19588d2f14c54e6ee"
+    },
+    {
+      "bytes": 148487,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr10600-98442a0665.json",
+      "sha256": "6e288809b6ace6204af0259271317c268dd39b70f6eba46dc35756b5e12b3171"
+    },
+    {
+      "bytes": 476,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr10600-98442a0665.md",
+      "sha256": "95410e052770746344b6c13aa12ac61ef36ce6c16b83f17ae77d86bfb9cdaf5a"
+    },
+    {
+      "bytes": 231635,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr10967-e0f66e47c7.json",
+      "sha256": "5dcf0c323ea96539f0b051a817d64582778aa3f5d123ae370daff5ff0202c9a1"
+    },
+    {
+      "bytes": 2995,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr10967-e0f66e47c7.md",
+      "sha256": "3c7edac6093fa68d0a1c335ee21a1c0aa3abf5a6a081e60ba86518b14cb6a3f3"
+    },
+    {
+      "bytes": 206171,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr11059-edc4826515.json",
+      "sha256": "f2ecbf79709106d42e2c22e5f7fc6810a5b352d89af961c922d5458be7cb9975"
+    },
+    {
+      "bytes": 477,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr11059-edc4826515.md",
+      "sha256": "7b1036d74b277dc9fad67cac557b18dde7e646fb6c88aec1be0cf1184ca8512a"
+    },
+    {
+      "bytes": 163939,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr14740-454655f78e.json",
+      "sha256": "aa50598625824a061006912b20da821b99375ec97aeda008ffa40074655e7e19"
+    },
+    {
+      "bytes": 1476,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr14740-454655f78e.md",
+      "sha256": "86f316a97a672f4b8d97f2a5ed41db9cd103d501afd22d0d50657e9af24510dc"
+    },
+    {
+      "bytes": 91218,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr14943-77f0b97fa3.json",
+      "sha256": "9ec2e1ec40e0347384995b12912293dbfdf405d7f0b5a1624fee58bcdc48f4d0"
+    },
+    {
+      "bytes": 1412,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr14943-77f0b97fa3.md",
+      "sha256": "743cd47e699b192d4b52220fb2f9ecf3486ce9eec9fc0841a26b0d5193227246"
+    },
+    {
+      "bytes": 81525,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr22345-e55cdc5b2e.json",
+      "sha256": "8116227798bed8d697eb64658dc36882b34b9511e99d2fdf2d5d34dbb3f8a1ad"
+    },
+    {
+      "bytes": 474,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr22345-e55cdc5b2e.md",
+      "sha256": "18caccd3fbd705ffe2b6ef0b9f14a1162dc6af1fd0dfba2bf9e15b6814ac24cc"
+    },
+    {
+      "bytes": 182199,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr22532-56a2f3185b.json",
+      "sha256": "aba1536b4a9a0e1ef132ebadea7c388eb39ed9c1034d2408a6b28db422658a5d"
+    },
+    {
+      "bytes": 476,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr22532-56a2f3185b.md",
+      "sha256": "ce65d2df563af47d026ef43bbe4d9d0efad8ccf03ca0b4dc92e9461f998250fe"
+    },
+    {
+      "bytes": 156987,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr7232-532a700f35.json",
+      "sha256": "a1edd7afaa632fb6b48a2293a48e86e33c873c9858c53a60e01950d0cd476dcf"
+    },
+    {
+      "bytes": 474,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr7232-532a700f35.md",
+      "sha256": "235c22e93c40ef51088681179503d64b53b99175e178f59855bb8fb06fb9f856"
+    },
+    {
+      "bytes": 124489,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr8087-9c23e8296f.json",
+      "sha256": "52db2c61d726b57829b4a40c7d9fcf932fe4fbff21e596165ad5935d2ddd80a9"
+    },
+    {
+      "bytes": 2665,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr8087-9c23e8296f.md",
+      "sha256": "06f4df00487fecbd8cb429e81493401e5e8bed0da5620deff9f4a2ff50f0f6bc"
+    },
+    {
+      "bytes": 88122,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr8330-800af76fcf.json",
+      "sha256": "137cd595f600c9f47a083927b82024e6c91f189fbc40d9ddb9afccfa4edbc8ec"
+    },
+    {
+      "bytes": 2259,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/calcom-cal-com-pr8330-800af76fcf.md",
+      "sha256": "93541fefd9178a85bf58d61ca45f919fb28b2e86bc8cea31c0af6e0db115f2c5"
+    },
+    {
+      "bytes": 107185,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr67876-f0a5b21040.json",
+      "sha256": "d620a4de5426b64283ac18b46fdeea79b05c611cbb0e7601cd8ceac6bacffb3d"
+    },
+    {
+      "bytes": 464,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr67876-f0a5b21040.md",
+      "sha256": "7c50115444508890b6c08dcd0cef18564886ce92a8f165c728966f66c4e63e89"
+    },
+    {
+      "bytes": 121693,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr77754-eaf4b87db9.json",
+      "sha256": "715ae68e9865a8ef6ecd0024b774af60d73a437faab815446014158b519b22bb"
+    },
+    {
+      "bytes": 1369,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr77754-eaf4b87db9.md",
+      "sha256": "1b33a6211378366fd24dd1db22b177821454bd4cf4ab1874536f861b223bcb95"
+    },
+    {
+      "bytes": 93574,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr80168-731fa28972.json",
+      "sha256": "69a3903e0dfdeeb1f2de931a0319885c7c22e256092c3c0a0bd682a5b3480fcd"
+    },
+    {
+      "bytes": 1518,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr80168-731fa28972.md",
+      "sha256": "330724d4cb32bc60c7901b8dd0e4f9de2395c5cbdbaad493b11c35d6145e582c"
+    },
+    {
+      "bytes": 93999,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr80528-5c5505e00a.json",
+      "sha256": "61132f4900b8427ee8765e25c181d186595d8ffbc480653439e93b5fc60600a7"
+    },
+    {
+      "bytes": 462,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr80528-5c5505e00a.md",
+      "sha256": "24ed14fa8717a242a49a7ee5049264026f2491b5c70cc705ba53ffafc6451653"
+    },
+    {
+      "bytes": 115979,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr93824-36dbd11db8.json",
+      "sha256": "fc6a8cbe00547d96028c57c8e8fcb90b9f282c4d4e212295a0fea3329d22676a"
+    },
+    {
+      "bytes": 1473,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr93824-36dbd11db8.md",
+      "sha256": "e51c04ae02a92509284015ffd6993d846d6c5dfd88d2d1f9b3a177e5735b1672"
+    },
+    {
+      "bytes": 105732,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr95633-118c8d30ab.json",
+      "sha256": "1559bae31e2be0dd0df7ad099838d6ef642079e67c11bbcd038fcbada2ad8bf4"
+    },
+    {
+      "bytes": 462,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/getsentry-sentry-pr95633-118c8d30ab.md",
+      "sha256": "4cc9eefdcea2df10607ac6ddf06efc15db08f0010c8f050226bf88234249f8b8"
+    },
+    {
+      "bytes": 90673,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr103633-1ccdfad177.json",
+      "sha256": "efc2781d3d171f739ccf8bc58cd69891e8ed40419e245b69ba8ea122bf48335f"
+    },
+    {
+      "bytes": 470,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr103633-1ccdfad177.md",
+      "sha256": "b54295cc0ecd70de32c4654d006d841e0c25e539724415013b18db5d315d4abe"
+    },
+    {
+      "bytes": 147097,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr106778-24d4677828.json",
+      "sha256": "f478bf6d659d9c660af5231d54bfff3bd49169d21fc630e4e49215f7cb1e016d"
+    },
+    {
+      "bytes": 1325,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr106778-24d4677828.md",
+      "sha256": "1bff56ed235afd2654528095168e7d3bd657217c615828eed0c6b9789a2c5399"
+    },
+    {
+      "bytes": 92975,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr107534-d0d4422f9e.json",
+      "sha256": "af0512dd2953b5e64b1c226b6cf2eac155ba28ecd05d9d458783274e2d89bf9f"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr107534-d0d4422f9e.md",
+      "sha256": "624e59cffc06c53c97e568bb70c5cf2dd90a40af05ef13e6debc25a7f435889b"
+    },
+    {
+      "bytes": 123142,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr76186-74710117cb.json",
+      "sha256": "d3d1d6c8b586daaae6999af858c56a29fe33e61e1e4da42743068ccf962ef97f"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr76186-74710117cb.md",
+      "sha256": "148ec870f6cf1371d689a1da8b9d0cff064b27daac245b857777cc96bd0bd223"
+    },
+    {
+      "bytes": 131231,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr79265-1ff10dc6e2.json",
+      "sha256": "c1a9d637cdcfd6b82155f25bf6f636a44be5c7100df7fa56d2afa27a937580e2"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr79265-1ff10dc6e2.md",
+      "sha256": "f42ca537652c3990afef1cb18453b6c127f40756eedce0a3fe275119ff4977ff"
+    },
+    {
+      "bytes": 108973,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr80329-a24dbb3cc0.json",
+      "sha256": "ef7868f15ca24aa28bd2721dcc1bf108b1f7e8816e8237c6b95ed6509eda8b9d"
+    },
+    {
+      "bytes": 1429,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr80329-a24dbb3cc0.md",
+      "sha256": "a99b32694c191053d833c21a66ce9d3218acaf94133a54311d50cd3a6a5cfdf0"
+    },
+    {
+      "bytes": 115115,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr90045-80de62a20a.json",
+      "sha256": "aff5323f2c05430d914fe091e102f6bb4697d08b0e644cda277bcec813b8911a"
+    },
+    {
+      "bytes": 3153,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr90045-80de62a20a.md",
+      "sha256": "c4fd5d464e6ed5f0069518392c90431b9251484055265ba6d63b60f434c7a4d2"
+    },
+    {
+      "bytes": 66534,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr90939-086eb48f48.json",
+      "sha256": "9e5a9f12be6a39078250e12318391a43860d686f6c026ddd9d20bbdab78798b0"
+    },
+    {
+      "bytes": 466,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr90939-086eb48f48.md",
+      "sha256": "4b0e6a265fef3df8f1312d2850781caa632d02f613003c258c4ed4629630ed02"
+    },
+    {
+      "bytes": 81644,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr94942-03516b9766.json",
+      "sha256": "5c4b050f34955099ebe4b2c6d9819d2f587576d4de0e5c1f3bfb34a5599dd286"
+    },
+    {
+      "bytes": 1595,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr94942-03516b9766.md",
+      "sha256": "42821159d500230d5755c54cea9c9dd1958dbb3d03c9245b114f8829830ab5ea"
+    },
+    {
+      "bytes": 107833,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr97529-b30a8ea395.json",
+      "sha256": "974e796e2135746731f1ca2f93426d940e3ec1bb96cda3cedd7d733d1f8ce6a6"
+    },
+    {
+      "bytes": 468,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/grafana-grafana-pr97529-b30a8ea395.md",
+      "sha256": "d20068f5c7044f6ac929a7fd29b4e433bc0f5a86202e044cb0dfa0206efe1af9"
+    },
+    {
+      "bytes": 137680,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr32918-e125545e1c.json",
+      "sha256": "e951373a4e5eb0751015d93d33ebb3c1a18be71f9e25e9a5dd5fac8b1bb2d0b0"
+    },
+    {
+      "bytes": 1423,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr32918-e125545e1c.md",
+      "sha256": "714490f13a2bf7e204974274d6e3daad417557e905367a3425d937d1954a2a49"
+    },
+    {
+      "bytes": 160178,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr33832-fb78fbfca4.json",
+      "sha256": "09b568a8367b37b2dcc4e0d08fce13c91c246c575430f22ca648e3a23a2d07f5"
+    },
+    {
+      "bytes": 2184,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr33832-fb78fbfca4.md",
+      "sha256": "bfefda51146feb7916ef863accd06bef441ca74a2e908224146588b87c4a633d"
+    },
+    {
+      "bytes": 231491,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr36880-3c6bf37b7f.json",
+      "sha256": "db1c27da3d1f880900c49612253080799e189d26f385abeb4f76858f05adff57"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr36880-3c6bf37b7f.md",
+      "sha256": "64b8e8e7e0c514df976ee88bb0f65407f39df15a8b72960b7e58a5f8ed627b81"
+    },
+    {
+      "bytes": 143374,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr36882-b7f567acb6.json",
+      "sha256": "2168d19c2f0218cea8d94cb5489c5504d47d4504e580b069c607f81079b06354"
+    },
+    {
+      "bytes": 472,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr36882-b7f567acb6.md",
+      "sha256": "b4dd65055ca3885aec40ce96ac23863087fee65ecd6c1b523d27be04443a5472"
+    },
+    {
+      "bytes": 246089,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37038-e30cc1b5ff.json",
+      "sha256": "ff2b1923242cd045f1075d6d8f8b32585e3d019b0754b595d8032ce4af5e9354"
+    },
+    {
+      "bytes": 3428,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37038-e30cc1b5ff.md",
+      "sha256": "a9e6139f7c4ea5e2136d49ca05df385fddd32953c5221353a0238537782b9d98"
+    },
+    {
+      "bytes": 317449,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37429-9694dc5640.json",
+      "sha256": "1a6299bfcfcedcbe87a1a985899ca55b6b829cd71afa27ec6490beaddbaa6b03"
+    },
+    {
+      "bytes": 1917,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37429-9694dc5640.md",
+      "sha256": "cd59e5268b22ea224f7a14e8d2ad0a0223a9cace3e5fd1f8d34da7ba31e14d7c"
+    },
+    {
+      "bytes": 194318,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37634-2979e65c20.json",
+      "sha256": "9a2fb8e0e2767b523198640308d2f015353ac19a0f5e8c6a771633b6ff75aad5"
+    },
+    {
+      "bytes": 2423,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr37634-2979e65c20.md",
+      "sha256": "c10e0acf5ccdc98b0044d5a827e0e26ddfccd87f86267acca3f1f3eba309380b"
+    },
+    {
+      "bytes": 156412,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr38446-d522975328.json",
+      "sha256": "2c28aa9cfef6e49f76e40fc956956e3b14aa45abc5b6d9ea192ddf556b10c5f3"
+    },
+    {
+      "bytes": 1509,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr38446-d522975328.md",
+      "sha256": "cd9417cb6482b2df8e7ef7c713e52562b089af470510279c94d64316476f278f"
+    },
+    {
+      "bytes": 99263,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr40940-c3b1c314ee.json",
+      "sha256": "128401049da6fabf7e28be3806a1eea3fde62f012be5e5545c50e7a7f6a5b7db"
+    },
+    {
+      "bytes": 470,
+      "path": "run/artifacts/anthropic_claude-sonnet-5--2cd37409a4/keycloak-keycloak-pr40940-c3b1c314ee.md",
+      "sha256": "e69ae4063b18cd4efd0aa05020824e5fec9fdac82acc3fd6e25f858166ad2bfb"
+    },
+    {
+      "bytes": 95470,
+      "path": "run/job_plan.json",
+      "sha256": "aefbff3763a064e9a0da14e9a8a6af31d723f3b7cd28cf7a005d95714dba2fb3"
+    },
+    {
+      "bytes": 70976,
+      "path": "run/run_checkpoint.json",
+      "sha256": "29926c88670852b38cf1f2692cc8b2733d13ebde1918d604fa6c933e385b4e43"
+    },
+    {
+      "bytes": 102870,
+      "path": "run/run_manifest.json",
+      "sha256": "bbcd1ba10ee61f3454c6b2a24636eb38a8258cf8e1d814968069f03a4c061566"
+    }
+  ],
+  "hash_algorithm": "sha256",
+  "root": ".",
+  "schema_version": "bugbunny-bundle-manifest-v1",
+  "self_excluded": true,
+  "total_bytes": 54192296
+}

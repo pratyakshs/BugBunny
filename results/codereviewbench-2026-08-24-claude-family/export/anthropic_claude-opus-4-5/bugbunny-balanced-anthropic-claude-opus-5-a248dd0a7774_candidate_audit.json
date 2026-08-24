@@ -1,0 +1,843 @@
+{
+  "cases": {
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/1": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "8fa74568f04400f0c754728d1d72e1fcb05fc4964868df1d6ac6518c161ee40c",
+        "category": "bug",
+        "end_line": 149,
+        "family_member_ids": [
+          "bb-3007251c86b5f89df528"
+        ],
+        "finding_id": "bb-3007251c86b5f89df528",
+        "fingerprint": "c2e019aafb2bfebe0c5332372d6d65b2b42cad8b27780dcbc6a0c464a86285f5",
+        "generator_confidence": 0.93,
+        "line": 149,
+        "path": "app/models/optimized_image.rb",
+        "severity": "critical",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "duplicate_downsize_method"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/10": [],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/2": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "2fc7b2254b07a602ef06b0dd6672d01fd85b20a23221af1b533b978f797e3a92",
+        "category": "bug",
+        "end_line": 107,
+        "family_member_ids": [
+          "bb-e2ba5fdc7ff9e28bbbc9"
+        ],
+        "finding_id": "bb-e2ba5fdc7ff9e28bbbc9",
+        "fingerprint": "d166ac37726bfce83e125ac230de5a0d6d1a9c23198a901740540f8d5580eace",
+        "generator_confidence": 0.85,
+        "line": 105,
+        "path": "app/controllers/topics_controller.rb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "nil_topic_user_dereference"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/3": [],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/4": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "c400c4273787ae30cdbc4a0e0cea7581d12ae52a8335d9a6f3721f06f74d1d97",
+        "category": "bug",
+        "end_line": 6,
+        "family_member_ids": [
+          "bb-d53f5ac3aac8470834e1"
+        ],
+        "finding_id": "bb-d53f5ac3aac8470834e1",
+        "fingerprint": "a4880419bf10e634cdf6c4b637fac4c93148525538e4eed84bae443369961e92",
+        "generator_confidence": 0.82,
+        "line": 6,
+        "path": "app/views/embed/best.html.erb",
+        "severity": "critical",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "erb_syntax_error"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/5": [],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/6": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "36a5efc5621e85174fab0ce42dddbb582cce93c6ee2c0a9d99078cfdec3fccc6",
+        "category": "security",
+        "end_line": 43,
+        "family_member_ids": [
+          "bb-700dee3d018f99892d3b"
+        ],
+        "finding_id": "bb-700dee3d018f99892d3b",
+        "fingerprint": "c56a7849e0fa70e036472437a247072194985e84a424002edb8d6d3be77db455",
+        "generator_confidence": 0.83,
+        "line": 43,
+        "path": "app/serializers/user_serializer.rb",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "website_name_untrusted_bypass"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "9da7496c8630f8ff16a6f237277f6d4d3ea2080ff3420acfd8e75c06d8d1cec0",
+        "category": "api",
+        "end_line": 153,
+        "family_member_ids": [
+          "bb-499e970f024a7b6f78f5"
+        ],
+        "finding_id": "bb-499e970f024a7b6f78f5",
+        "fingerprint": "fe8a0064d4cf2401ebc07045339a919899698f4ff3899d91ad47d6fd8e8865c9",
+        "generator_confidence": 0.87,
+        "line": 153,
+        "path": "app/serializers/user_serializer.rb",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "missing_question_mark_include_method"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/7": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "7a712cac4cc4314f8b3f232437b0bb68d3abd95d3d37db3358406ee943a235f2",
+        "category": "bug",
+        "end_line": 291,
+        "family_member_ids": [
+          "bb-e53169991cc9028870a7"
+        ],
+        "finding_id": "bb-e53169991cc9028870a7",
+        "fingerprint": "8c278f91c76e0ff256e3567b9d445b0ee0e6264272ccce8340b2b5cd47b10492",
+        "generator_confidence": 0.83,
+        "line": 291,
+        "path": "app/assets/stylesheets/desktop/topic-post.scss",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "dark_light_choose_lightness_swap"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "c145bc968ba59c05bfbae0253522c5bd504ee12f03c1b3703af0135dad641f67",
+        "category": "bug",
+        "end_line": 102,
+        "family_member_ids": [
+          "bb-9c8771e3f4d3106921a8"
+        ],
+        "finding_id": "bb-9c8771e3f4d3106921a8",
+        "fingerprint": "cb0b86b12cd3d11e216eb7b0c12002e1cdeaabd290c29eb85be8c01c0f168ec4",
+        "generator_confidence": 0.8,
+        "line": 102,
+        "path": "app/assets/stylesheets/mobile/modal.scss",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "dark_light_choose_lightness_swap"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "4c54f3c7b112a555585ddcbf9a72db35ee631781f2685cb5e32598644c7a07b8",
+        "category": "bug",
+        "end_line": 182,
+        "family_member_ids": [
+          "bb-a91abffd0823f066d60d"
+        ],
+        "finding_id": "bb-a91abffd0823f066d60d",
+        "fingerprint": "552ba17f259a57d60d001a23fa83feb649e11d123c4973b343f9251b26f77771",
+        "generator_confidence": 0.8,
+        "line": 182,
+        "path": "app/assets/stylesheets/mobile/topic-post.scss",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "dark_light_choose_lightness_mismatch"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/8": [],
+    "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/9": [],
+    "https://github.com/ai-code-review-evaluation/keycloak-greptile/pull/1": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "51fd0da634e8b864d1090efbcbbdc079838a797fbb492e0844d46f1971247063",
+        "category": "bug",
+        "end_line": 47,
+        "family_member_ids": [
+          "bb-6c4338a448a8b4649440"
+        ],
+        "finding_id": "bb-6c4338a448a8b4649440",
+        "fingerprint": "ee359707487d894557ecb6d1d18f562ef22bb06472816309e1a801bb46e785e1",
+        "generator_confidence": 0.8,
+        "line": 47,
+        "path": "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+        "severity": "critical",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "missing_no_arg_overload"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/1": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "5f0cc5ab2c79f841ff8f8be881c70f85b07cea6afe75665efc43db28b69823db",
+        "category": "bug",
+        "end_line": 71,
+        "family_member_ids": [
+          "bb-f4267ca49b3689452d29"
+        ],
+        "finding_id": "bb-f4267ca49b3689452d29",
+        "fingerprint": "5dacf4a14f87bd2b3489e804d52161d636666cd5cc97c8e4dcc0da5eb70a1f8f",
+        "generator_confidence": 0.82,
+        "line": 71,
+        "path": "src/sentry/api/endpoints/organization_auditlogs.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "member_none_dereference"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/2": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "d45f6858c29a554b110e63a6b9a22fe581fc26ad9b28e41beace4ea5fd00ccb1",
+        "category": "bug",
+        "end_line": 71,
+        "family_member_ids": [
+          "bb-d5625b4f0be0ea99b16c"
+        ],
+        "finding_id": "bb-d5625b4f0be0ea99b16c",
+        "fingerprint": "7f2534404907e8543361c8671406ee26f849ddb4442bd0c80d85dceeab3581ad",
+        "generator_confidence": 0.58,
+        "line": 71,
+        "path": "src/sentry/api/endpoints/organization_auditlogs.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "member_none_dereference"
+      }
+    ],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/3": [],
+    "https://github.com/ai-code-review-evaluation/sentry-greptile/pull/5": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "3e3ee89e728ad1a3528c4a6bfa91d7b3e4ecf0905e27ae685a878cda75f4c3d9",
+        "category": "doc_defect",
+        "end_line": 27,
+        "family_member_ids": [
+          "bb-ec2f491b8f2cc2197ac1"
+        ],
+        "finding_id": "bb-ec2f491b8f2cc2197ac1",
+        "fingerprint": "1361a3aed48c94c62eb966094ff4085fa4f36200ef05803de52d07326784eb63",
+        "generator_confidence": 0.6,
+        "line": 27,
+        "path": "static/app/views/dashboards/widgets/tableWidget/tableWidgetVisualization.stories.tsx",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "doc_typo"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "72f9374b9ab3a064932d4b8bd1ecb2853b692ec2f4238e9f33599c6985a05bc4",
+        "category": "bug",
+        "end_line": 67,
+        "family_member_ids": [
+          "bb-d15d47f7366aab6f1e77"
+        ],
+        "finding_id": "bb-d15d47f7366aab6f1e77",
+        "fingerprint": "80e093fb71f4fa3ab23316ec22ad9ad7022934ab8a74dc23d00b8f974f5262a6",
+        "generator_confidence": 0.9,
+        "line": 67,
+        "path": "static/app/views/performance/newTraceDetails/traceDrawer/details/span/eapSections/attributes.tsx",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "hidden_attributes_filter"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/10600": [],
+    "https://github.com/calcom/cal.com/pull/10967": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "265ed445f1d7170ff7477d223316d431d54598ff1445c2b192395b66dcd42de7",
+        "category": "bug",
+        "end_line": 256,
+        "family_member_ids": [
+          "bb-934fcfbfc2a01433b2e8"
+        ],
+        "finding_id": "bb-934fcfbfc2a01433b2e8",
+        "fingerprint": "588fa6a671d6eec17340abf6163ed132eacdd7e5d7bbb2f4e4f4be2a7550e1c5",
+        "generator_confidence": 0.85,
+        "line": 256,
+        "path": "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "google_calendar_falsy_externalid_lookup"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "e2c55246f18da33e6e916a45d7d4e82b77681b0bf36fba4f9f2e98714c01a275",
+        "category": "bug",
+        "end_line": 119,
+        "family_member_ids": [
+          "bb-7e9c4e4817f1c630bb1b"
+        ],
+        "finding_id": "bb-7e9c4e4817f1c630bb1b",
+        "fingerprint": "c482d858b348c0714b83899a2f731f4fb00cb7e33529743459ebf2d87860b2a8",
+        "generator_confidence": 0.9,
+        "line": 119,
+        "path": "packages/core/EventManager.ts",
+        "severity": "critical",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "unguarded_destination_calendar_access"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "d84d5ed8629566774a3b60591493e71de7ba375dbbf9adbf4c990312c2971d94",
+        "category": "bug",
+        "end_line": 151,
+        "family_member_ids": [
+          "bb-15294314a027a21158dc"
+        ],
+        "finding_id": "bb-15294314a027a21158dc",
+        "fingerprint": "4d7d5b9181685ac96a84c886ad47dcfd35ab9b362708718c13da4f38d22da214",
+        "generator_confidence": 0.8,
+        "line": 151,
+        "path": "packages/trpc/server/routers/viewer/organizations/create.handler.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "org_slug_billing_condition_inverted"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/11059": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "9b980e1f2aabba0966f7301f5e6d22bc411b1760603a3b4567b404c623bf6b88",
+        "category": "bug",
+        "end_line": 10,
+        "family_member_ids": [
+          "bb-a9cf6cdf4d21dad0b784"
+        ],
+        "finding_id": "bb-a9cf6cdf4d21dad0b784",
+        "fingerprint": "ca7478dfc6f7b3c017ec310d698a546a38345ba97118bb4d8701c34db02a309a",
+        "generator_confidence": 0.86,
+        "line": 8,
+        "path": "packages/app-store/_utils/oauth/parseRefreshTokenResponse.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "zod_computed_key_collision"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "9bb9e52f9fd86ffd866db9802005c8229ebe242a898eaed295f02042d970ee3d",
+        "category": "data",
+        "end_line": 97,
+        "family_member_ids": [
+          "bb-3c1b43394ce31d00e604"
+        ],
+        "finding_id": "bb-3c1b43394ce31d00e604",
+        "fingerprint": "1e221639c057d28526046ea94332915ce067fcfd71d8746a40aef09859ae1d91",
+        "generator_confidence": 0.9,
+        "line": 97,
+        "path": "packages/app-store/googlecalendar/lib/CalendarService.ts",
+        "severity": "critical",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.93,
+        "verifier_family_key": "safeparse_wrapper_stored"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/14740": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "22c4637fb67a0522d10069acb5b1855176af004afeea16b89b968ec7c684e25a",
+        "category": "bug",
+        "end_line": 48,
+        "family_member_ids": [
+          "bb-7be96c0d3c464e705978"
+        ],
+        "finding_id": "bb-7be96c0d3c464e705978",
+        "fingerprint": "ba4cba1e5ee749a280d70ec2b90c17642eb641062a194dad0121f3b26924abc3",
+        "generator_confidence": 0.85,
+        "line": 46,
+        "path": "packages/trpc/server/routers/viewer/bookings/addGuests.handler.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "team_permission_and_vs_or"
+      }
+    ],
+    "https://github.com/calcom/cal.com/pull/14943": [],
+    "https://github.com/calcom/cal.com/pull/22345": [],
+    "https://github.com/calcom/cal.com/pull/22532": [],
+    "https://github.com/calcom/cal.com/pull/7232": [],
+    "https://github.com/calcom/cal.com/pull/8087": [],
+    "https://github.com/calcom/cal.com/pull/8330": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "8777fc47dcae27a834f5babecb23ae1e04c74d1d79a509df489fe189d364921e",
+        "category": "bug",
+        "end_line": 135,
+        "family_member_ids": [
+          "bb-1c4faad44462bfaae9b1"
+        ],
+        "finding_id": "bb-1c4faad44462bfaae9b1",
+        "fingerprint": "5cfdbc7cb24497c69af5e8dae8d0a5a84ab0b2cbc73a9b7c934f132068d17b99",
+        "generator_confidence": 0.85,
+        "line": 133,
+        "path": "packages/trpc/server/routers/viewer/slots.ts",
+        "severity": "critical",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "date_override_skips_busy_check"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "c9d23db42df06ac9fe5110d2c70203792aa3226698d4548158e8594a10cf47a5",
+        "category": "bug",
+        "end_line": 142,
+        "family_member_ids": [
+          "bb-8e40f088d177889b043a"
+        ],
+        "finding_id": "bb-8e40f088d177889b043a",
+        "fingerprint": "e1649d99aafd88dbd872cc3f10fa5a13227ca37b9c93bcf941ed55bd92336785",
+        "generator_confidence": 0.8,
+        "line": 142,
+        "path": "packages/trpc/server/routers/viewer/slots.ts",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "slot_end_copy_paste_error"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/67876": [],
+    "https://github.com/getsentry/sentry/pull/77754": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "b47b817c2360d0fd2703ac4373041b7e05bd97fa0431d0c8dd6a13b93f0cc8e9",
+        "category": "bug",
+        "end_line": 18,
+        "family_member_ids": [
+          "bb-3645b105dffa6fa023aa"
+        ],
+        "finding_id": "bb-3645b105dffa6fa023aa",
+        "fingerprint": "8d3b1849d99804d625b7b8d2ad487ce504292cd6e4a3aa0ea0bdd3cca0854a04",
+        "generator_confidence": 0.88,
+        "line": 18,
+        "path": "src/sentry/integrations/services/assignment_source.py",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "dataclass_mutable_default"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "b867124c66e4ef6c8f603913e30e18457a6b398ba408513285bf61fc16fa26bb",
+        "category": "style",
+        "end_line": 13,
+        "family_member_ids": [
+          "bb-98b78a29a698853a9c76"
+        ],
+        "finding_id": "bb-98b78a29a698853a9c76",
+        "fingerprint": "e84245318b9fb96bd8ba26da70bca3554a1259325831e016609db9297a2fcc3a",
+        "generator_confidence": 0.9,
+        "line": 13,
+        "path": "tests/sentry/integrations/services/test_assignment_source.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "typo_in_identifier"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/80168": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "2216aed6fcb15d97deac2b0ce4d54e8038b8a656681b62cd0e2a55b9f5b23fe2",
+        "category": "bug",
+        "end_line": 12,
+        "family_member_ids": [
+          "bb-96de8f31d601aa7010d4"
+        ],
+        "finding_id": "bb-96de8f31d601aa7010d4",
+        "fingerprint": "e67605b5beafee7f4ae7312c6853862cbe778f82753370a5714f1509b9d0476a",
+        "generator_confidence": 0.85,
+        "line": 11,
+        "path": "src/sentry/incidents/grouptype.py",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "abstract_class_instantiation"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/80528": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "5a0f3a8bdbd18345002ca19a65c02250e350d56dfa7f0a93ecf0c7128f75e943",
+        "category": "bug",
+        "end_line": 168,
+        "family_member_ids": [
+          "bb-d700d57e78d93d2add73"
+        ],
+        "finding_id": "bb-d700d57e78d93d2add73",
+        "fingerprint": "33cdc3271990ae9fd41393c7726744f87f281176bc8e7258bb3fe4f9defe43c3",
+        "generator_confidence": 0.42,
+        "line": 168,
+        "path": "src/sentry/monitors/logic/incident_occurrence.py",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "unused_humanized_config_copy"
+      }
+    ],
+    "https://github.com/getsentry/sentry/pull/93824": [],
+    "https://github.com/getsentry/sentry/pull/95633": [],
+    "https://github.com/grafana/grafana/pull/103633": [],
+    "https://github.com/grafana/grafana/pull/106778": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "047ebfaf3b1546ba828232e42da2c514a20d562f5e5b4a1ceb08fa7db7b01844",
+        "category": "bug",
+        "end_line": 158,
+        "family_member_ids": [
+          "bb-7cc3fd7f88fd44eefab3"
+        ],
+        "finding_id": "bb-7cc3fd7f88fd44eefab3",
+        "fingerprint": "94921656d81f99e12520c22e9ecaaccdc69210c742722a4ebe66098ec6a61f65",
+        "generator_confidence": 0.92,
+        "line": 157,
+        "path": "public/app/features/alerting/unified/rule-list/FilterView.tsx",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "missing_react_key"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/107534": [],
+    "https://github.com/grafana/grafana/pull/76186": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "d88a584e56f98760e2b8ce3fbd362e1bd283f87ebee6d0cdda8617e100b9d177",
+        "category": "test_gap",
+        "end_line": 48,
+        "family_member_ids": [
+          "bb-ebc0cfc65e555bd7b043"
+        ],
+        "finding_id": "bb-ebc0cfc65e555bd7b043",
+        "fingerprint": "a00258c617eaa6c0f54650d19c44c2cb4c61cdee8037b97199e150afaa62c182",
+        "generator_confidence": 0.62,
+        "line": 46,
+        "path": "pkg/plugins/log/fake.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "test_logger_from_context_discards_receiver"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/79265": [],
+    "https://github.com/grafana/grafana/pull/80329": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "56b22edab4b56f9b2c0dd5058369d05191a000532ef0d47ff995f6e18123a08a",
+        "category": "bug",
+        "end_line": 534,
+        "family_member_ids": [
+          "bb-de665f487e11d170dd3e"
+        ],
+        "finding_id": "bb-de665f487e11d170dd3e",
+        "fingerprint": "b5353803af9cf11dfe2a9f84cad8b27c5c06e07e3b4b6c3687e3e5e1551347c8",
+        "generator_confidence": 0.82,
+        "line": 534,
+        "path": "pkg/services/annotations/annotationsimpl/xorm_store.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "debug_log_at_error_level"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "a620774b4dd7e746a69aea5c18441a109ed528de91b1d98ad5b24054e037d6a4",
+        "category": "bug",
+        "end_line": 77,
+        "family_member_ids": [
+          "bb-727740ec4706325b7c66"
+        ],
+        "finding_id": "bb-727740ec4706325b7c66",
+        "fingerprint": "a7a4feef3ded91806aa4ab08cab989048c9048d98a5be1e6b17347678c802064",
+        "generator_confidence": 0.85,
+        "line": 77,
+        "path": "pkg/services/cleanup/cleanup.go",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "cleanup_ticker_interval"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/90045": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "62a9b9147cdd75c3da6090db818a7ee53d652b8b01a6385227edb5bf96fe6a60",
+        "category": "bug",
+        "end_line": 45,
+        "family_member_ids": [
+          "bb-2bafbddfdf9086c0ff05"
+        ],
+        "finding_id": "bb-2bafbddfdf9086c0ff05",
+        "fingerprint": "b4f27ae529d73f7140e7ba50b0b1e51449ba2868f4938074e56e3355daee044d",
+        "generator_confidence": 0.9,
+        "line": 45,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "wrong_metric_recorder"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "754dcedd3fcdfdb383177b6093f56118ea5617f254e92cb345ca6b3c68223d9c",
+        "category": "performance",
+        "end_line": 106,
+        "family_member_ids": [
+          "bb-3e6a27aa899a9e6d9b93"
+        ],
+        "finding_id": "bb-3e6a27aa899a9e6d9b93",
+        "fingerprint": "e9e0fbc12bda73b19b49ec039ea436f62a0e2292cc4ee1520e5acb1f54311bfc",
+        "generator_confidence": 0.85,
+        "line": 106,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "metric_label_mismatch"
+      },
+      {
+        "candidate_index": 2,
+        "candidate_sha256": "f09636b182f6d67b3dd37182c180e8c6e707c3d851a9af09aae8937c4fcac8dd",
+        "category": "bug",
+        "end_line": 129,
+        "family_member_ids": [
+          "bb-9f5177a19a4c85dfaa77"
+        ],
+        "finding_id": "bb-9f5177a19a4c85dfaa77",
+        "fingerprint": "22f4edb7f0572925eb93cdd173c64c64ed71a8089f52708e59194e5b57dedacc",
+        "generator_confidence": 0.9,
+        "line": 129,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "wrong_metric_recorder"
+      },
+      {
+        "candidate_index": 3,
+        "candidate_sha256": "9abcc998a854845900f4b8594e63b03bc6d29df42a4a8bef08b82461526c68db",
+        "category": "bug",
+        "end_line": 166,
+        "family_member_ids": [
+          "bb-05b9c9f003d3b17c7458"
+        ],
+        "finding_id": "bb-05b9c9f003d3b17c7458",
+        "fingerprint": "f29fb02596b48ea2b5c9886fd6fc4918ea61655b594f3f718221d079b8864513",
+        "generator_confidence": 0.9,
+        "line": 166,
+        "path": "pkg/apiserver/rest/dualwriter_mode3.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "wrong_metric_recorder"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/90939": [],
+    "https://github.com/grafana/grafana/pull/94942": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "2321fa0c48b78a0faee73350a40f512827d42291713ff2d131374957601bd52d",
+        "category": "bug",
+        "end_line": 199,
+        "family_member_ids": [
+          "bb-afa183010990c6f5ff7c"
+        ],
+        "finding_id": "bb-afa183010990c6f5ff7c",
+        "fingerprint": "d501b624077f79952c8e8f28837165dfa91812b0287c9dccc03171051430384e",
+        "generator_confidence": 0.75,
+        "line": 195,
+        "path": "pkg/expr/reader.go",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "dead_inverted_flag_check"
+      }
+    ],
+    "https://github.com/grafana/grafana/pull/97529": [],
+    "https://github.com/keycloak/keycloak/pull/32918": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "144d3253fb2101a1bff2ef4934e3d99eae04c71334b679e8ecc0fb3e75dc490f",
+        "category": "test_gap",
+        "end_line": 381,
+        "family_member_ids": [
+          "bb-d459aeebea2b3b9056aa"
+        ],
+        "finding_id": "bb-d459aeebea2b3b9056aa",
+        "fingerprint": "3f347174ff3d13b10b89206adacde5c8929dce637fbfa682b234528e2b26d348",
+        "generator_confidence": 0.83,
+        "line": 381,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/organization/cache/OrganizationCacheTest.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "test_cleanup_wrong_alias"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/33832": [],
+    "https://github.com/keycloak/keycloak/pull/36880": [],
+    "https://github.com/keycloak/keycloak/pull/36882": [],
+    "https://github.com/keycloak/keycloak/pull/37038": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "9bb89ad0a46db80aad53ff90aad89dffdc40dfca25e3e7605a55dc4da539457d",
+        "category": "style",
+        "end_line": 68,
+        "family_member_ids": [
+          "bb-00fdfb7b5860c36cea07"
+        ],
+        "finding_id": "bb-00fdfb7b5860c36cea07",
+        "fingerprint": "2037a55d3c21d63f16a768b2b7636d0cd923d3e19d8468c7b03cbe6421b77a49",
+        "generator_confidence": 0.9,
+        "line": 68,
+        "path": "tests/base/src/test/java/org/keycloak/tests/admin/authz/fgap/GroupResourceTypeEvaluationTest.java",
+        "severity": "low",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "double_semicolon_typo"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/37429": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "9ac9aa9141ed46814b5b2b71bc38921809fb11bc14801558b50347336486fe1e",
+        "category": "data",
+        "end_line": 101,
+        "family_member_ids": [
+          "bb-bebb3971578837fa4a5b"
+        ],
+        "finding_id": "bb-bebb3971578837fa4a5b",
+        "fingerprint": "f9fb9e25454f6fce7d95cb8cadd0e7b027585468dcd63098f0d03401a2fe555d",
+        "generator_confidence": 0.93,
+        "line": 101,
+        "path": "themes/src/main/resources-community/theme/base/account/messages/messages_lt.properties",
+        "severity": "high",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "wrong_language_translation"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "e91e76fba8c91745496776264ddae004f200e7aa52bcba501575733f3f079978",
+        "category": "data",
+        "end_line": 112,
+        "family_member_ids": [
+          "bb-18e61cfc37317b5161e7"
+        ],
+        "finding_id": "bb-18e61cfc37317b5161e7",
+        "fingerprint": "58e9847f512ad98bf011e1c9e31ce89668e17f5f09c16ca435c422bd4b974b9a",
+        "generator_confidence": 0.8,
+        "line": 112,
+        "path": "themes/src/main/resources-community/theme/base/account/messages/messages_zh_CN.properties",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "wrong_script_translation"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/37634": [
+      {
+        "candidate_index": 0,
+        "candidate_sha256": "48565798390fff7fa30ef7c3db8a6c6067cd5b883ab10a0710aacb52465ac783",
+        "category": "bug",
+        "end_line": 73,
+        "family_member_ids": [
+          "bb-b00193f5166ccb7f4d7e"
+        ],
+        "finding_id": "bb-b00193f5166ccb7f4d7e",
+        "fingerprint": "321511fd2b69c6d2fa6ef8b0585f592bddf721efa56901937c509bc10232acf4",
+        "generator_confidence": 0.93,
+        "line": 73,
+        "path": "services/src/main/java/org/keycloak/protocol/oidc/encode/AccessTokenContext.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.95,
+        "verifier_family_key": "rawtoken_null_check_copypaste"
+      },
+      {
+        "candidate_index": 1,
+        "candidate_sha256": "a7d574b49f797c994e7c3e7dd7bd047bd3ff210d07557d88eccad10a1d64518f",
+        "category": "test_gap",
+        "end_line": 483,
+        "family_member_ids": [
+          "bb-443c58128a3d1c848209"
+        ],
+        "finding_id": "bb-443c58128a3d1c848209",
+        "fingerprint": "8375c31c1220e59885180760dc28a10e75bb56316d39a2687965a9a1bfa4c730",
+        "generator_confidence": 0.88,
+        "line": 483,
+        "path": "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AssertEvents.java",
+        "severity": "medium",
+        "side": "RIGHT",
+        "source": "balanced-verified",
+        "verifier_confidence": 0.92,
+        "verifier_family_key": "access_token_id_matcher_logic"
+      }
+    ],
+    "https://github.com/keycloak/keycloak/pull/38446": [],
+    "https://github.com/keycloak/keycloak/pull/40940": []
+  },
+  "finding_stage": "balanced",
+  "review_model": "anthropic/claude-opus-5",
+  "schema_version": "bugbunny-candidate-audit-v1",
+  "tool_id": "bugbunny-balanced-anthropic-claude-opus-5-a248dd0a7774"
+}

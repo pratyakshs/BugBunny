@@ -1,0 +1,4117 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "ai-code-review-evaluation-discourse-graphite-pr10-3beb48df8f",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "184c33923aa700693d11145676340a95048c26fc434f83d183a572dc864638c8",
+    "golden_url": "https://github.com/ai-code-review-evaluation/discourse-graphite/pull/10",
+    "review_url": "https://github.com/code-review-benchmark/discourse__discourse-graphite__augment__PR10__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-712b568bf937",
+      "cost_usd": 0.3746925,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 49183,
+      "latency_ms": 38487,
+      "output_tokens": 2692,
+      "request_sha256": "c568e386dce21e3562da2b95c9e6e8890cd71e91b9e4f1108406b9e345f2a715",
+      "requested_model": "anthropic/claude-opus-4-8",
+      "resolved_model": "anthropic/claude-opus-4-8",
+      "response_sha256": "9b53ceab55107d4ff8948967056209ad8c7390940c3b9a45b3566e87f733ff51",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-712b568bf937",
+      "cost_usd": 0.347255,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 53221,
+      "latency_ms": 9434,
+      "output_tokens": 585,
+      "request_sha256": "f5bf0134918d86dc419b6c159b67e647e812d3742858219fc66cadce15d4750d",
+      "requested_model": "anthropic/claude-opus-4-8",
+      "resolved_model": "anthropic/claude-opus-4-8",
+      "response_sha256": "62afe39f5b4ded3ab0917a89edcd0a69bbc9294c763a2fe18320998089dcff67",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-712b568bf937",
+      "cost_usd": 0.52432375,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 51576,
+      "latency_ms": 105508,
+      "output_tokens": 8079,
+      "request_sha256": "fdff2ec785dd372450ea9d32f2897ac97a76f1a9f29dc6de00310e9124dc67a0",
+      "requested_model": "anthropic/claude-opus-4-8",
+      "resolved_model": "anthropic/claude-opus-4-8",
+      "response_sha256": "188b1520333f4b524fa69d21cca8583d445fdffe853b98dc0bebaa22c7c774e8",
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "candidates-0-4",
+      "cost_usd": 0.14457875,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 20989,
+      "latency_ms": 12222,
+      "output_tokens": 536,
+      "request_sha256": "ab2c2442703678a69d3ab00837f397133a534eba228246ad021b078a9ebcfa32",
+      "requested_model": "anthropic/claude-opus-4-5",
+      "resolved_model": "anthropic/claude-opus-4-5",
+      "response_sha256": "df4689171e5ea2f322dde53c48e9a7d4cdb4408e73e6b0b10307193678ff6a77",
+      "retry_errors": [],
+      "schema_sha256": "4f0c55f0b3b361fe2e31f7433e4f531d14d9dff4c97f0ccc17814ccd9ba1a5a1",
+      "stage": "verification"
+    }
+  ],
+  "completed_at": "2026-08-24T05:39:57.119935Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-opus-4-8",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.251952229204515,
+      "largest_verifier_input_char_budget_utilization": 0.19025843468026676,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 0,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 1,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 37,
+      "verifier_generation_context_files_available": 37
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      ".codeclimate.yml",
+      ".eslintignore",
+      ".eslintrc",
+      "CONTRIBUTING.md",
+      "Gemfile",
+      "Gemfile.lock",
+      "LICENSE.txt",
+      "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+      "app/assets/javascripts/admin/models/flagged_post.js",
+      "app/assets/javascripts/discourse/models/rest.js.es6",
+      "app/assets/javascripts/discourse/models/store.js.es6",
+      "app/controllers/admin/admin_controller.rb",
+      "app/controllers/admin/api_controller.rb",
+      "app/jobs/regular/retrieve_topic.rb",
+      "app/jobs/regular/test_email.rb",
+      "app/models/concerns/has_custom_fields.rb",
+      "app/models/embeddable_host.rb",
+      "app/models/site_setting.rb",
+      "app/models/topic.rb",
+      "app/models/topic_embed.rb",
+      "config/locales/client.en.yml",
+      "config/locales/server.en.yml",
+      "config/routes.rb",
+      "config/site_settings.yml",
+      "lib/post_creator.rb",
+      "lib/site_setting_extension.rb",
+      "lib/topic_creator.rb",
+      "lib/topic_retriever.rb",
+      "plugins/poll/spec/controllers/polls_controller_spec.rb",
+      "script/test_email_settings.rb",
+      "spec/components/topic_creator_spec.rb",
+      "spec/components/topic_retriever_spec.rb",
+      "spec/fabricators/api_key_fabricator.rb",
+      "spec/models/site_setting_spec.rb",
+      "spec/models/topic_embed_spec.rb",
+      "spec/models/topic_spec.rb",
+      "test/javascripts/helpers/create-pretender.js.es6"
+    ],
+    "generation_batches": {
+      "b0000-712b568bf937": {
+        "chunk_ids": [
+          "f0000:c0000-4d9771ce7648",
+          "f0001:c0000-765ce1b00d6f",
+          "f0002:c0000-ea4b7cf90b2a",
+          "f0003:c0000-1a0010b2ef22",
+          "f0004:c0000-f8585ddf4780",
+          "f0005:c0000-d0a9459add37",
+          "f0006:c0000-0e215dba26c0",
+          "f0007:c0000-1b3acb797df5",
+          "f0008:c0000-39ed2ba3948b",
+          "f0009:c0000-62c72ecfd661",
+          "f0010:c0000-395765764aea",
+          "f0011:c0000-2b96ad7ddc14",
+          "f0012:c0000-b78cc6d9c2a5",
+          "f0013:c0000-8456aa32d44f",
+          "f0014:c0000-91c591dd1823",
+          "f0015:c0000-98186d1e48a0",
+          "f0016:c0000-3e816f19dd67",
+          "f0017:c0000-3cb49ce0da10",
+          "f0018:c0000-441dcea2e9d2",
+          "f0019:c0000-9d547c519180",
+          "f0020:c0000-c4d06fc2b8bf",
+          "f0021:c0000-8084e740ebf9",
+          "f0022:c0000-e08d1258af85",
+          "f0023:c0000-bd54798a0944",
+          "f0024:c0000-f9158c0f3c03",
+          "f0025:c0000-50fa89e6d533",
+          "f0026:c0000-41ab25a1d328",
+          "f0027:c0000-08afa5307f56",
+          "f0028:c0000-a3b6e5f80214",
+          "f0029:c0000-0b1e5f71dcee",
+          "f0030:c0000-feaa2d55d45d",
+          "f0031:c0000-5c8a95986192",
+          "f0032:c0000-37ab209ed4c4",
+          "f0033:c0000-e69a27d9381f",
+          "f0034:c0000-3feeb124c03f",
+          "f0035:c0000-4cb54756f7d5"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.251952229204515,
+        "context_chars": 42299,
+        "context_files_available_before_generation_prompt_fit": [
+          ".codeclimate.yml",
+          ".eslintignore",
+          ".eslintrc",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "Gemfile.lock",
+          "LICENSE.txt",
+          "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+          "app/assets/javascripts/admin/adapters/embedding.js.es6",
+          "app/assets/javascripts/admin/components/embeddable-host.js.es6",
+          "app/assets/javascripts/admin/controllers/admin-embedding.js.es6",
+          "app/assets/javascripts/admin/models/api_key.js",
+          "app/assets/javascripts/admin/models/flagged_post.js",
+          "app/assets/javascripts/admin/routes/admin-embedding.js.es6",
+          "app/assets/javascripts/admin/routes/admin-route-map.js.es6",
+          "app/assets/javascripts/admin/templates/components/embeddable-host.hbs",
+          "app/assets/javascripts/admin/templates/customize.hbs",
+          "app/assets/javascripts/admin/templates/embedding.hbs",
+          "app/assets/javascripts/discourse/adapters/rest.js.es6",
+          "app/assets/javascripts/discourse/models/rest.js.es6",
+          "app/assets/javascripts/discourse/models/store.js.es6",
+          "app/controllers/admin/admin_controller.rb",
+          "app/controllers/admin/api_controller.rb",
+          "app/controllers/admin/embeddable_hosts_controller.rb",
+          "app/controllers/admin/embedding_controller.rb",
+          "app/controllers/embed_controller.rb",
+          "app/jobs/regular/retrieve_topic.rb",
+          "app/jobs/regular/test_email.rb",
+          "app/models/concerns/has_custom_fields.rb",
+          "app/models/embeddable_host.rb",
+          "app/models/site_setting.rb",
+          "app/models/topic.rb",
+          "app/models/topic_embed.rb",
+          "app/serializers/embeddable_host_serializer.rb",
+          "app/serializers/embedding_serializer.rb",
+          "config/locales/client.en.yml",
+          "config/locales/server.en.yml",
+          "config/routes.rb",
+          "config/site_settings.yml",
+          "db/migrate/20150818190757_create_embeddable_hosts.rb",
+          "lib/post_creator.rb",
+          "lib/site_setting_extension.rb",
+          "lib/topic_creator.rb",
+          "lib/topic_retriever.rb",
+          "plugins/poll/spec/controllers/polls_controller_spec.rb",
+          "script/test_email_settings.rb",
+          "spec/components/topic_creator_spec.rb",
+          "spec/components/topic_retriever_spec.rb",
+          "spec/controllers/admin/embeddable_hosts_controller_spec.rb",
+          "spec/controllers/admin/embedding_controller_spec.rb",
+          "spec/controllers/embed_controller_spec.rb",
+          "spec/fabricators/api_key_fabricator.rb",
+          "spec/fabricators/category_fabricator.rb",
+          "spec/fabricators/embeddable_host_fabricator.rb",
+          "spec/models/embeddable_host_spec.rb",
+          "spec/models/site_setting_spec.rb",
+          "spec/models/topic_embed_spec.rb",
+          "spec/models/topic_spec.rb",
+          "test/javascripts/helpers/create-pretender.js.es6",
+          "test/javascripts/models/store-test.js.es6"
+        ],
+        "context_files_exposed_to_model": [
+          ".codeclimate.yml",
+          ".eslintignore",
+          ".eslintrc",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "Gemfile.lock",
+          "LICENSE.txt",
+          "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+          "app/assets/javascripts/admin/models/flagged_post.js",
+          "app/assets/javascripts/discourse/models/rest.js.es6",
+          "app/assets/javascripts/discourse/models/store.js.es6",
+          "app/controllers/admin/admin_controller.rb",
+          "app/controllers/admin/api_controller.rb",
+          "app/jobs/regular/retrieve_topic.rb",
+          "app/jobs/regular/test_email.rb",
+          "app/models/concerns/has_custom_fields.rb",
+          "app/models/embeddable_host.rb",
+          "app/models/site_setting.rb",
+          "app/models/topic.rb",
+          "app/models/topic_embed.rb",
+          "config/locales/client.en.yml",
+          "config/locales/server.en.yml",
+          "config/routes.rb",
+          "config/site_settings.yml",
+          "lib/post_creator.rb",
+          "lib/site_setting_extension.rb",
+          "lib/topic_creator.rb",
+          "lib/topic_retriever.rb",
+          "plugins/poll/spec/controllers/polls_controller_spec.rb",
+          "script/test_email_settings.rb",
+          "spec/components/topic_creator_spec.rb",
+          "spec/components/topic_retriever_spec.rb",
+          "spec/fabricators/api_key_fabricator.rb",
+          "spec/models/site_setting_spec.rb",
+          "spec/models/topic_embed_spec.rb",
+          "spec/models/topic_spec.rb",
+          "test/javascripts/helpers/create-pretender.js.es6"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [
+          "app/assets/javascripts/admin/adapters/embedding.js.es6",
+          "app/assets/javascripts/admin/components/embeddable-host.js.es6",
+          "app/assets/javascripts/admin/controllers/admin-embedding.js.es6",
+          "app/assets/javascripts/admin/models/api_key.js",
+          "app/assets/javascripts/admin/routes/admin-embedding.js.es6",
+          "app/assets/javascripts/admin/routes/admin-route-map.js.es6",
+          "app/assets/javascripts/admin/templates/components/embeddable-host.hbs",
+          "app/assets/javascripts/admin/templates/customize.hbs",
+          "app/assets/javascripts/admin/templates/embedding.hbs",
+          "app/assets/javascripts/discourse/adapters/rest.js.es6",
+          "app/controllers/admin/embeddable_hosts_controller.rb",
+          "app/controllers/admin/embedding_controller.rb",
+          "app/controllers/embed_controller.rb",
+          "app/serializers/embeddable_host_serializer.rb",
+          "app/serializers/embedding_serializer.rb",
+          "db/migrate/20150818190757_create_embeddable_hosts.rb",
+          "spec/controllers/admin/embeddable_hosts_controller_spec.rb",
+          "spec/controllers/admin/embedding_controller_spec.rb",
+          "spec/controllers/embed_controller_spec.rb",
+          "spec/fabricators/category_fabricator.rb",
+          "spec/fabricators/embeddable_host_fabricator.rb",
+          "spec/models/embeddable_host_spec.rb",
+          "test/javascripts/models/store-test.js.es6"
+        ],
+        "context_sha256": "f657c088a3d67a87b1b0e7e43e528b1a97b2aefa7d89e56363080baf2bd513a2",
+        "context_truncated": true,
+        "context_utf8_bytes": 42507,
+        "estimated_context_tokens": 10575,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 291808,
+        "generation_input_char_budget_utilization": 0.40627398837591844,
+        "generation_prompt_chars": 118554,
+        "generation_prompt_utf8_bytes": 118766,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 37
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 36,
+    "packets": {
+      "f0000:c0000-4d9771ce7648": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 902,
+        "prompt_sha256": "fe48fec2d505cdaf3e88e28a0cbab6d65b9cf40940f14f921d24b9c1d508a607",
+        "symbols": [
+          "extend",
+          "pathFor"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0001:c0000-765ce1b00d6f": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 902,
+        "prompt_sha256": "17cc88d3aaefd5c409a28e22beb5249af31e04b9f565f0424d88976e79c7124e",
+        "symbols": [
+          "extend",
+          "bufferedProperty"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0002:c0000-ea4b7cf90b2a": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 902,
+        "prompt_sha256": "333a9d861876249b60e0a981523648e7f1d96b80f87bb711bed7d78453be0d67",
+        "symbols": [
+          "extend",
+          "saveChanges"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0003:c0000-1a0010b2ef22": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 888,
+        "prompt_sha256": "919fc621c536bd9705ccc83fb8a6828446bdc1f27428f5c9bf64946a8741843a",
+        "symbols": [
+          "extend",
+          "model"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0004:c0000-f8585ddf4780": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "bf47270bad7de3353c9338e0e0704c5f14aa49e1da2bb0662bf37b17e1a52c3f",
+        "symbols": [
+          "resource",
+          "adminEmbedding"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0005:c0000-d0a9459add37": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "c2e449f09362dc7d6b64c03d032cce7ae394787d43dfb6ef113b0368ff2c16d9",
+        "symbols": [
+          "editing",
+          "input"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0006:c0000-0e215dba26c0": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 643,
+        "prompt_sha256": "4d6cea5c352634043d11f8b5ea788ffe0bbdf449dda1c8923aca7f8bbc3b49b8",
+        "symbols": [
+          "nav",
+          "item"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0007:c0000-1b3acb797df5": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "4f192bde2fe2fa2adc0d1700825050b2cf239fbf20500e36b5ff00c4d5fd8f0a",
+        "symbols": [
+          "embeddable_hosts",
+          "add_host"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0008:c0000-39ed2ba3948b": {
+        "callers": 2,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 852,
+        "prompt_sha256": "3e57f7d7f71c0f8f10f8740ed60aec3045e42689368728b7cd62c52cdd160d82",
+        "symbols": [
+          "Result",
+          "indexOf"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0009:c0000-62c72ecfd661": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 839,
+        "prompt_sha256": "f6af65827f3b0653d32acf100b0104c118a2449a8e32691f8298df67c177c9ee",
+        "symbols": [
+          "_id",
+          "exec"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0010:c0000-395765764aea": {
+        "callers": 1,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "161f28a2590161c9fcf46e22fe1f45485a41e90d7eaf81ece88ac15bf4c527bd",
+        "symbols": [
+          "Admin",
+          "create"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0011:c0000-2b96ad7ddc14": {
+        "callers": 0,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "9fd28acd57b1b009628d3549b56df2f06530199f48e9b1a0cd7a3290476dc5a2",
+        "symbols": [
+          "Admin",
+          "show"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0012:c0000-b78cc6d9c2a5": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 743,
+        "prompt_sha256": "2fbc00842d69d2a487cac4f47afd6bd516b78f5e20526d6b1617daaca50f061f",
+        "symbols": [
+          "Discourse",
+          "InvalidAccess"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0013:c0000-8456aa32d44f": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 814,
+        "prompt_sha256": "64cfe62c38d268a5fa465d2b66047f500363cbede9b61dcdbc87f0e4c921e261",
+        "symbols": [
+          "EmbeddableHost",
+          "record_for_host"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0014:c0000-91c591dd1823": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 624,
+        "prompt_sha256": "fd2f01b483f781c054186d661cc543751561b9c45367eb05a876c6a0977874fc",
+        "symbols": [],
+        "tests": 1,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0015:c0000-98186d1e48a0": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 1,
+        "prompt_chars": 852,
+        "prompt_sha256": "039a003fd16b1ea9a78c4d4ba46966fb3c71acc6c7bbe779035061c5d82f3bdb",
+        "symbols": [
+          "SiteSetting",
+          "embed_truncate"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0016:c0000-3e816f19dd67": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 814,
+        "prompt_sha256": "75f993ed9f317ac9e0011ac96ec61be37dceec99e05c66636e17cbe2bf1a5b6b",
+        "symbols": [
+          "TopicEmbed",
+          "record_for_host"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0017:c0000-3cb49ce0da10": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "b3317088bd7cfe404daf880f83591d3591b81c423b6d3476ca2bb810d96bd2f2",
+        "symbols": [
+          "EmbeddableHostSerializer",
+          "host"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0018:c0000-441dcea2e9d2": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "b6bf92c472235bdaaae07faad2086663cec64728e3b99a58e4c9ba411e6d15f9",
+        "symbols": [
+          "EmbeddingSerializer",
+          "ApplicationSerializer"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0019:c0000-9d547c519180": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 738,
+        "prompt_sha256": "4ee6730216df2fb8f2ff110f65973520b49f79cab5a29ba087eb8a2c9d2b26c0",
+        "symbols": [
+          "confirm_delete",
+          "Are"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0020:c0000-c4d06fc2b8bf": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 481,
+        "prompt_sha256": "7b13ee01b650dd9925199f390a1012f3851286204ea358e088b93a852e7efad2",
+        "symbols": [],
+        "tests": 0,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0021:c0000-8084e740ebf9": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 735,
+        "prompt_sha256": "c1e745f7b02b1dd4f0ff0743144aebd289fd4ee5a1ad66a5647f22290601ef17",
+        "symbols": [
+          "AdminConstraint",
+          "embeddable_hosts"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0022:c0000-e08d1258af85": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 624,
+        "prompt_sha256": "2854944316c8756b9543aa360ec676bd278f6c961be3468b037e57ae97acb9a4",
+        "symbols": [],
+        "tests": 1,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0023:c0000-bd54798a0944": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 852,
+        "prompt_sha256": "426467fe18296ac72e8a6ef849d731ce1511fcdc523d3b97e9617ff37516e5ea",
+        "symbols": [
+          "CreateEmbeddableHosts",
+          "change"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0024:c0000-f9158c0f3c03": {
+        "callers": 0,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 914,
+        "prompt_sha256": "bf89aa1617fa9a7f4f606eb563bbe4e042cebc2255f5bffdd314cb4ad131cf7b",
+        "symbols": [
+          "TopicRetriever",
+          "initialize"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0025:c0000-50fa89e6d533": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 776,
+        "prompt_sha256": "80b0a1bf76557692996ed6a14e51d393ded5c88340dc517517cfd577fc4c5bf5",
+        "symbols": [
+          "expect",
+          "spec_helper"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0026:c0000-41ab25a1d328": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 776,
+        "prompt_sha256": "e26c784abe5ec75aa47a6569b9b84f1f94497fabc84b9cbc6815f8772f884238",
+        "symbols": [
+          "expect",
+          "spec_helper"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0027:c0000-08afa5307f56": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 838,
+        "prompt_sha256": "5dc6818c6fc267fa7e1441169e6e55780a9771c2ba3f10326ab3bcd5506d95ed",
+        "symbols": [
+          "Fabricate",
+          "embeddable_host"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0028:c0000-a3b6e5f80214": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 725,
+        "prompt_sha256": "b37c672ec051450f6812bb6cc35308342bbfa844198eec5c1a90ab92e2b448fa",
+        "symbols": [
+          "Fabricator",
+          "embeddable_host"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0029:c0000-0b1e5f71dcee": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 829,
+        "prompt_sha256": "72db3772904265cdbdf11479a487a4a649011685b39947013718d975b6f350aa",
+        "symbols": [
+          "Fabricator",
+          "sequence"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0030:c0000-feaa2d55d45d": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 884,
+        "prompt_sha256": "6e9e93ac88cea5e98eabf8f675a9442254983891b8c277f45bd30a76f32f6d9e",
+        "symbols": [
+          "expect",
+          "Fabricate"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0031:c0000-5c8a95986192": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 624,
+        "prompt_sha256": "c9af0fa8e74ef1c0339278325ea45dd438eb8630c5db9a16a4d464111d9e8eb2",
+        "symbols": [],
+        "tests": 1,
+        "truncated": true,
+        "usages": 0
+      },
+      "f0032:c0000-37ab209ed4c4": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 884,
+        "prompt_sha256": "23ed0483c78db1ff7fd3a27a0dc0c7dc70b4c0f861f6a65b54368d343fc3a98d",
+        "symbols": [
+          "Fabricate",
+          "expect"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0033:c0000-e69a27d9381f": {
+        "callers": 2,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 838,
+        "prompt_sha256": "d3a9817e0922803886ffac6665fce7773338051ab81c184e24a3c44a4a36a328",
+        "symbols": [
+          "Fabricate",
+          "build"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0034:c0000-3feeb124c03f": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 823,
+        "prompt_sha256": "c655e3723ba4ac8d2a24f6b0136a1c59432416c84c5488b0c490fa8412a12038",
+        "symbols": [
+          "parsePostData",
+          "response"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      },
+      "f0035:c0000-4cb54756f7d5": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 0,
+        "prompt_chars": 730,
+        "prompt_sha256": "2048df93c1b40da9c83db20e8936099d372c1aefc06fb71b8964bb04d3dbd76d",
+        "symbols": [
+          "test",
+          "find"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 2
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 7,
+        "serialized_chars": 9,
+        "serialized_limit_chars": 6000,
+        "sha256": "972023fba82503e9d4aa5f7729b9f5d26e8b736ecef7a90e5d2f0331bdf67c4d",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 59,
+        "serialized_chars": 61,
+        "serialized_limit_chars": 1000,
+        "sha256": "8d80d4893f2e249ba06926bb62c97865bc1b20576b86c1ac947f6f945e635957",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 28810,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 102404
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 51576
+      },
+      "verification": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 1,
+        "provider_reported_input_tokens": 20989
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-712b568bf937": {
+          "action_counts": {
+            "list": 0,
+            "read": 2,
+            "search": 5
+          },
+          "actions_executed": 7,
+          "actions_failed": 0,
+          "additional_context_files_selected": 5,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "app/assets/javascripts/discourse/models/rest.js.es6",
+            "app/assets/javascripts/discourse/models/store.js.es6",
+            "lib/post_creator.rb",
+            "lib/site_setting_extension.rb",
+            "lib/topic_creator.rb"
+          ],
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/discourse/models/rest.js.es6",
+            "app/assets/javascripts/discourse/models/store.js.es6",
+            "lib/post_creator.rb",
+            "lib/site_setting_extension.rb",
+            "lib/topic_creator.rb"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 10575,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 42299,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 291808,
+          "generation_input_char_budget_utilization": 0.40627398837591844,
+          "generation_prompt_chars": 118554,
+          "generation_prompt_utf8_bytes": 118766,
+          "hypotheses_final": 2,
+          "hypotheses_open_final": 2,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 0,
+          "hypotheses_returned": 6,
+          "hypothesis_linked_actions": 7,
+          "largest_selector_input_char_budget_utilization": 0.4146527853931352,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 232,
+          "repository_files": 7592,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 7592,
+          "repository_index_chars": 3315,
+          "repository_index_chars_by_round": [
+            3315,
+            3315
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 829,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": false,
+          "request_limit_hit": false,
+          "requests_accepted": 7,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 0,
+          "requests_returned": 7,
+          "round_limit": 2,
+          "round_limit_hit": true,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 11,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 31825,
+          "seed_context_chars_original": 31825,
+          "seed_context_truncated": false,
+          "selected_context_chars": 10472,
+          "selection_done": false,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            110867,
+            120999
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 5
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 387,
+      "callers": 23,
+      "changed_context_files_exposed_to_model": [
+        "app/assets/javascripts/admin/adapters/embedding.js.es6",
+        "app/assets/javascripts/admin/components/embeddable-host.js.es6",
+        "app/assets/javascripts/admin/controllers/admin-embedding.js.es6",
+        "app/assets/javascripts/admin/routes/admin-embedding.js.es6",
+        "app/assets/javascripts/admin/routes/admin-route-map.js.es6",
+        "app/assets/javascripts/admin/templates/components/embeddable-host.hbs",
+        "app/assets/javascripts/admin/templates/customize.hbs",
+        "app/assets/javascripts/admin/templates/embedding.hbs",
+        "app/assets/javascripts/discourse/adapters/rest.js.es6",
+        "app/assets/javascripts/discourse/models/store.js.es6",
+        "app/controllers/admin/embeddable_hosts_controller.rb",
+        "app/controllers/admin/embedding_controller.rb",
+        "app/controllers/embed_controller.rb",
+        "app/models/embeddable_host.rb",
+        "app/models/site_setting.rb",
+        "app/models/topic.rb",
+        "app/models/topic_embed.rb",
+        "app/serializers/embeddable_host_serializer.rb",
+        "app/serializers/embedding_serializer.rb",
+        "config/locales/client.en.yml",
+        "config/locales/server.en.yml",
+        "config/routes.rb",
+        "config/site_settings.yml",
+        "db/migrate/20150818190757_create_embeddable_hosts.rb",
+        "lib/topic_retriever.rb",
+        "spec/controllers/admin/embeddable_hosts_controller_spec.rb",
+        "spec/controllers/admin/embedding_controller_spec.rb",
+        "spec/controllers/embed_controller_spec.rb",
+        "spec/fabricators/category_fabricator.rb",
+        "spec/fabricators/embeddable_host_fabricator.rb",
+        "spec/models/embeddable_host_spec.rb",
+        "spec/models/site_setting_spec.rb",
+        "spec/models/topic_embed_spec.rb",
+        "spec/models/topic_spec.rb",
+        "test/javascripts/helpers/create-pretender.js.es6",
+        "test/javascripts/models/store-test.js.es6"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 36,
+      "context_chars": 28810,
+      "context_files_exposed_to_model": [
+        ".codeclimate.yml",
+        ".eslintignore",
+        ".eslintrc",
+        "CONTRIBUTING.md",
+        "Gemfile",
+        "Gemfile.lock",
+        "LICENSE.txt",
+        "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+        "app/assets/javascripts/admin/adapters/embedding.js.es6",
+        "app/assets/javascripts/admin/components/embeddable-host.js.es6",
+        "app/assets/javascripts/admin/controllers/admin-embedding.js.es6",
+        "app/assets/javascripts/admin/models/api_key.js",
+        "app/assets/javascripts/admin/models/flagged_post.js",
+        "app/assets/javascripts/admin/routes/admin-embedding.js.es6",
+        "app/assets/javascripts/admin/routes/admin-route-map.js.es6",
+        "app/assets/javascripts/admin/templates/components/embeddable-host.hbs",
+        "app/assets/javascripts/admin/templates/customize.hbs",
+        "app/assets/javascripts/admin/templates/embedding.hbs",
+        "app/assets/javascripts/discourse/adapters/rest.js.es6",
+        "app/assets/javascripts/discourse/models/store.js.es6",
+        "app/controllers/admin/admin_controller.rb",
+        "app/controllers/admin/api_controller.rb",
+        "app/controllers/admin/embeddable_hosts_controller.rb",
+        "app/controllers/admin/embedding_controller.rb",
+        "app/controllers/embed_controller.rb",
+        "app/jobs/regular/retrieve_topic.rb",
+        "app/jobs/regular/test_email.rb",
+        "app/models/concerns/has_custom_fields.rb",
+        "app/models/embeddable_host.rb",
+        "app/models/site_setting.rb",
+        "app/models/topic.rb",
+        "app/models/topic_embed.rb",
+        "app/serializers/embeddable_host_serializer.rb",
+        "app/serializers/embedding_serializer.rb",
+        "config/locales/client.en.yml",
+        "config/locales/server.en.yml",
+        "config/routes.rb",
+        "config/site_settings.yml",
+        "db/migrate/20150818190757_create_embeddable_hosts.rb",
+        "lib/topic_retriever.rb",
+        "plugins/poll/spec/controllers/polls_controller_spec.rb",
+        "script/test_email_settings.rb",
+        "spec/components/topic_creator_spec.rb",
+        "spec/components/topic_retriever_spec.rb",
+        "spec/controllers/admin/embeddable_hosts_controller_spec.rb",
+        "spec/controllers/admin/embedding_controller_spec.rb",
+        "spec/controllers/embed_controller_spec.rb",
+        "spec/fabricators/api_key_fabricator.rb",
+        "spec/fabricators/category_fabricator.rb",
+        "spec/fabricators/embeddable_host_fabricator.rb",
+        "spec/models/embeddable_host_spec.rb",
+        "spec/models/site_setting_spec.rb",
+        "spec/models/topic_embed_spec.rb",
+        "spec/models/topic_spec.rb",
+        "test/javascripts/helpers/create-pretender.js.es6",
+        "test/javascripts/models/store-test.js.es6"
+      ],
+      "context_utf8_bytes": 29018,
+      "cross_file_context_files_exposed_to_model": [
+        ".codeclimate.yml",
+        ".eslintignore",
+        ".eslintrc",
+        "CONTRIBUTING.md",
+        "Gemfile",
+        "Gemfile.lock",
+        "LICENSE.txt",
+        "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+        "app/assets/javascripts/admin/models/api_key.js",
+        "app/assets/javascripts/admin/models/flagged_post.js",
+        "app/controllers/admin/admin_controller.rb",
+        "app/controllers/admin/api_controller.rb",
+        "app/jobs/regular/retrieve_topic.rb",
+        "app/jobs/regular/test_email.rb",
+        "app/models/concerns/has_custom_fields.rb",
+        "app/models/embeddable_host.rb",
+        "plugins/poll/spec/controllers/polls_controller_spec.rb",
+        "script/test_email_settings.rb",
+        "spec/components/topic_creator_spec.rb",
+        "spec/components/topic_retriever_spec.rb",
+        "spec/fabricators/api_key_fabricator.rb"
+      ],
+      "definitions": 9,
+      "estimated_context_tokens": 7211,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 129,
+      "evidence_rows_clipped_during_render": 64,
+      "evidence_rows_omitted_due_to_render_budget": 25,
+      "evidence_rows_rendered": 104,
+      "hypotheses": 0,
+      "imports": 4,
+      "largest_prompt_budget": 917,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 46,
+        "max_symbols_per_chunk": 7,
+        "prompt_render_budget": 32
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 25,
+        "source_read_budget": 0,
+        "symbol_config_limit": 76,
+        "symbol_search_budget": 387
+      },
+      "packet_metrics": {
+        "f0000:c0000-4d9771ce7648": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+            "app/assets/javascripts/admin/adapters/embedding.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 226,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9836423118865867,
+          "prompt_chars": 902,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 910,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0001:c0000-765ce1b00d6f": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+            "app/assets/javascripts/admin/components/embeddable-host.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 226,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "evidence_rows_available_to_render": 7,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9836423118865867,
+          "prompt_chars": 902,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 910,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 58,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 34,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0002:c0000-ea4b7cf90b2a": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+            "app/assets/javascripts/admin/controllers/admin-embedding.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 226,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9836423118865867,
+          "prompt_chars": 902,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 910,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 17,
+          "symbol_candidates_discovered": 17,
+          "symbol_candidates_extracted": 17,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 15
+        },
+        "f0003:c0000-1a0010b2ef22": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "LICENSE.txt",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+            "app/assets/javascripts/admin/routes/admin-embedding.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "LICENSE.txt",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 222,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "LICENSE.txt",
+            "app/assets/javascripts/admin/adapters/build-plugin.js.es6"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9683751363140676,
+          "prompt_chars": 888,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 896,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 10,
+          "symbol_candidates_discovered": 10,
+          "symbol_candidates_extracted": 10,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 8
+        },
+        "f0004:c0000-f8585ddf4780": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/admin/routes/admin-route-map.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9291166848418757,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 4,
+          "symbol_candidates_discovered": 4,
+          "symbol_candidates_extracted": 4,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 2
+        },
+        "f0005:c0000-d0a9459add37": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/admin/templates/components/embeddable-host.hbs"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9291166848418757,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 30,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 6,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0006:c0000-0e215dba26c0": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "Gemfile",
+            "Gemfile.lock",
+            "app/assets/javascripts/admin/templates/customize.hbs"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "Gemfile",
+            "Gemfile.lock"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 161,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "Gemfile",
+            "Gemfile.lock"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.7011995637949836,
+          "prompt_chars": 643,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 649,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 8,
+          "symbol_candidates_discovered": 8,
+          "symbol_candidates_extracted": 8,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 6
+        },
+        "f0007:c0000-1b3acb797df5": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/admin/templates/embedding.hbs"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9291166848418757,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 22,
+          "symbol_candidates_discovered": 22,
+          "symbol_candidates_extracted": 22,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0008:c0000-39ed2ba3948b": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/discourse/adapters/rest.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 917,
+          "prompt_budget_utilization": 0.9291166848418757,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 10,
+          "symbol_candidates_discovered": 10,
+          "symbol_candidates_extracted": 10,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 8
+        },
+        "f0009:c0000-62c72ecfd661": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/discourse/models/store.js.es6",
+            "app/models/concerns/has_custom_fields.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "app/models/concerns/has_custom_fields.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 210,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "app/assets/javascripts/discourse/models/store.js.es6",
+            "app/models/concerns/has_custom_fields.rb"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.915938864628821,
+          "prompt_chars": 839,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 845,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0010:c0000-395765764aea": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/controllers/admin/admin_controller.rb",
+            "app/controllers/admin/embeddable_hosts_controller.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "app/controllers/admin/admin_controller.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "app/controllers/admin/admin_controller.rb"
+          ],
+          "evidence_rows_available_to_render": 6,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9301310043668122,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 31,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 7,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0011:c0000-2b96ad7ddc14": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/controllers/admin/admin_controller.rb",
+            "app/controllers/admin/api_controller.rb",
+            "app/controllers/admin/embedding_controller.rb"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "app/controllers/admin/admin_controller.rb",
+            "app/controllers/admin/api_controller.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "app/controllers/admin/admin_controller.rb",
+            "app/controllers/admin/api_controller.rb"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9301310043668122,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 22,
+          "symbol_candidates_discovered": 22,
+          "symbol_candidates_extracted": 22,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0012:c0000-b78cc6d9c2a5": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "CONTRIBUTING.md",
+            "app/controllers/embed_controller.rb"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "CONTRIBUTING.md"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 186,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "CONTRIBUTING.md"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.8111353711790393,
+          "prompt_chars": 743,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 749,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 10,
+          "symbol_candidates_discovered": 10,
+          "symbol_candidates_extracted": 10,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 8
+        },
+        "f0013:c0000-8456aa32d44f": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/models/embeddable_host.rb"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 204,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "app/models/embeddable_host.rb"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.888646288209607,
+          "prompt_chars": 814,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 820,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 22,
+          "symbol_candidates_discovered": 22,
+          "symbol_candidates_extracted": 22,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 20
+        },
+        "f0014:c0000-91c591dd1823": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/models/site_setting.rb"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 156,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 1,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 1,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.6812227074235808,
+          "prompt_chars": 624,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 626,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0015:c0000-98186d1e48a0": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/models/topic.rb"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9301310043668122,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0016:c0000-3e816f19dd67": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/models/embeddable_host.rb",
+            "app/models/topic_embed.rb",
+            "spec/components/topic_creator_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            "app/models/embeddable_host.rb",
+            "spec/components/topic_creator_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 204,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "app/models/embeddable_host.rb",
+            "spec/components/topic_creator_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.888646288209607,
+          "prompt_chars": 814,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 820,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 6,
+          "symbol_candidates_discovered": 6,
+          "symbol_candidates_extracted": 6,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0017:c0000-3cb49ce0da10": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/serializers/embeddable_host_serializer.rb"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9301310043668122,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 7,
+          "symbol_candidates_discovered": 7,
+          "symbol_candidates_extracted": 7,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 5
+        },
+        "f0018:c0000-441dcea2e9d2": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/serializers/embedding_serializer.rb"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9301310043668122,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 11,
+          "symbol_candidates_discovered": 11,
+          "symbol_candidates_extracted": 11,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 9
+        },
+        "f0019:c0000-9d547c519180": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "config/locales/client.en.yml"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 185,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "config/locales/client.en.yml"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.8056768558951966,
+          "prompt_chars": 738,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 742,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 19,
+          "symbol_candidates_discovered": 19,
+          "symbol_candidates_extracted": 19,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 17
+        },
+        "f0020:c0000-c4d06fc2b8bf": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "config/locales/server.en.yml"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 121,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 0,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 0,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.5251091703056768,
+          "prompt_chars": 481,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 481,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0021:c0000-8084e740ebf9": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "config/routes.rb"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 184,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "config/routes.rb"
+          ],
+          "evidence_rows_available_to_render": 2,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 2,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.8024017467248908,
+          "prompt_chars": 735,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 739,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 10,
+          "symbol_candidates_discovered": 10,
+          "symbol_candidates_extracted": 10,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 8
+        },
+        "f0022:c0000-e08d1258af85": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "config/site_settings.yml",
+            "script/test_email_settings.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "script/test_email_settings.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 156,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "script/test_email_settings.rb"
+          ],
+          "evidence_rows_available_to_render": 1,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 1,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.6812227074235808,
+          "prompt_chars": 624,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 626,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0023:c0000-bd54798a0944": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "CONTRIBUTING.md",
+            "db/migrate/20150818190757_create_embeddable_hosts.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "CONTRIBUTING.md"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 213,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "CONTRIBUTING.md"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 3,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9301310043668122,
+          "prompt_chars": 852,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 858,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 37,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 13,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0024:c0000-f9158c0f3c03": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/admin/models/api_key.js",
+            "app/jobs/regular/retrieve_topic.rb",
+            "lib/topic_retriever.rb",
+            "spec/components/topic_retriever_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "app/assets/javascripts/admin/models/api_key.js",
+            "app/jobs/regular/retrieve_topic.rb",
+            "spec/components/topic_retriever_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 229,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "app/assets/javascripts/admin/models/api_key.js",
+            "app/jobs/regular/retrieve_topic.rb",
+            "lib/topic_retriever.rb",
+            "spec/components/topic_retriever_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9978165938864629,
+          "prompt_chars": 914,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 922,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 5,
+          "symbol_candidates_discovered": 5,
+          "symbol_candidates_extracted": 5,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 3
+        },
+        "f0025:c0000-50fa89e6d533": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "plugins/poll/spec/controllers/polls_controller_spec.rb",
+            "spec/controllers/admin/embeddable_hosts_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "plugins/poll/spec/controllers/polls_controller_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 194,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "plugins/poll/spec/controllers/polls_controller_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.8471615720524017,
+          "prompt_chars": 776,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 782,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0026:c0000-41ab25a1d328": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "plugins/poll/spec/controllers/polls_controller_spec.rb",
+            "spec/controllers/admin/embedding_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "plugins/poll/spec/controllers/polls_controller_spec.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 194,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "plugins/poll/spec/controllers/polls_controller_spec.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.8471615720524017,
+          "prompt_chars": 776,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 782,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0027:c0000-08afa5307f56": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "Gemfile",
+            "spec/controllers/embed_controller_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "Gemfile"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 210,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "Gemfile"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 1,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9148471615720524,
+          "prompt_chars": 838,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 844,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 9,
+          "symbol_candidates_discovered": 9,
+          "symbol_candidates_extracted": 9,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 7
+        },
+        "f0028:c0000-a3b6e5f80214": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "spec/fabricators/api_key_fabricator.rb",
+            "spec/fabricators/category_fabricator.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "spec/fabricators/api_key_fabricator.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 182,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "spec/fabricators/api_key_fabricator.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.7914847161572053,
+          "prompt_chars": 725,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 731,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 101,
+          "source_excerpt_truncated": false,
+          "source_excerpt_utf8_bytes": 101,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 6,
+          "symbol_candidates_discovered": 6,
+          "symbol_candidates_extracted": 6,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0029:c0000-0b1e5f71dcee": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "spec/fabricators/api_key_fabricator.rb",
+            "spec/fabricators/embeddable_host_fabricator.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "spec/fabricators/api_key_fabricator.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 208,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "spec/fabricators/api_key_fabricator.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9050218340611353,
+          "prompt_chars": 829,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 835,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 31,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 7,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0030:c0000-feaa2d55d45d": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "Gemfile",
+            "spec/models/embeddable_host_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "Gemfile"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 221,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "Gemfile"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9650655021834061,
+          "prompt_chars": 884,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 892,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 26,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 2,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        },
+        "f0031:c0000-5c8a95986192": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "spec/models/site_setting_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 1,
+          "cross_file_context_files_exposed_to_model": [],
+          "cross_file_context_files_exposed_to_model_count": 0,
+          "estimated_context_tokens": 156,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [],
+          "evidence_rows_available_to_render": 1,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 1,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.6812227074235808,
+          "prompt_chars": 624,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 626,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 0,
+          "symbol_candidates_discovered": 0,
+          "symbol_candidates_extracted": 0,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 0,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0032:c0000-37ab209ed4c4": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".eslintrc",
+            "Gemfile",
+            "spec/models/topic_embed_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 3,
+          "cross_file_context_files_exposed_to_model": [
+            ".eslintrc",
+            "Gemfile"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 2,
+          "estimated_context_tokens": 221,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".eslintrc",
+            "Gemfile"
+          ],
+          "evidence_rows_available_to_render": 4,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 4,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9650655021834061,
+          "prompt_chars": 884,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 892,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 6,
+          "symbol_candidates_discovered": 6,
+          "symbol_candidates_extracted": 6,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 4
+        },
+        "f0033:c0000-e69a27d9381f": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "Gemfile",
+            "spec/models/topic_spec.rb"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "Gemfile"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 210,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "Gemfile"
+          ],
+          "evidence_rows_available_to_render": 5,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 2,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.9148471615720524,
+          "prompt_chars": 838,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 844,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 23,
+          "symbol_candidates_discovered": 23,
+          "symbol_candidates_extracted": 23,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 21
+        },
+        "f0034:c0000-3feeb124c03f": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "app/assets/javascripts/admin/models/flagged_post.js",
+            "test/javascripts/helpers/create-pretender.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 2,
+          "cross_file_context_files_exposed_to_model": [
+            "app/assets/javascripts/admin/models/flagged_post.js"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 1,
+          "estimated_context_tokens": 206,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "app/assets/javascripts/admin/models/flagged_post.js",
+            "test/javascripts/helpers/create-pretender.js.es6"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.898471615720524,
+          "prompt_chars": 823,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 829,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 17,
+          "symbol_candidates_discovered": 17,
+          "symbol_candidates_extracted": 17,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 15
+        },
+        "f0035:c0000-4cb54756f7d5": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".codeclimate.yml",
+            ".eslintignore",
+            "app/jobs/regular/test_email.rb",
+            "test/javascripts/models/store-test.js.es6"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            ".codeclimate.yml",
+            ".eslintignore",
+            "app/jobs/regular/test_email.rb"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 183,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".codeclimate.yml",
+            ".eslintignore",
+            "app/jobs/regular/test_email.rb"
+          ],
+          "evidence_rows_available_to_render": 3,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 3,
+          "final_packet_truncated": false,
+          "header_truncated": true,
+          "prompt_budget_chars": 916,
+          "prompt_budget_utilization": 0.7969432314410481,
+          "prompt_chars": 730,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 736,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 205,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 205,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 31,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 7,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 2,
+          "symbol_searches_skipped_due_to_budget": 22
+        }
+      },
+      "packets_hitting_symbol_config_limit": 7,
+      "packets_hitting_symbol_render_budget_limit": 32,
+      "prompt_budget_chars": 32985,
+      "prompt_budget_utilization": 0.873427315446415,
+      "prompt_truncated_packets": 36,
+      "smallest_prompt_budget": 916,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 35,
+      "symbol_candidates_after_config_limit": 451,
+      "symbol_candidates_discovered": 527,
+      "symbol_candidates_omitted_by_config_limit": 76,
+      "symbol_searches_skipped_due_to_budget": 387,
+      "symbols": 64,
+      "tests": 31,
+      "tree_files": 7592,
+      "truncated_packets": 36,
+      "unchanged_context_files_exposed_to_model": [
+        ".codeclimate.yml",
+        ".eslintignore",
+        ".eslintrc",
+        "CONTRIBUTING.md",
+        "Gemfile",
+        "Gemfile.lock",
+        "LICENSE.txt",
+        "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+        "app/assets/javascripts/admin/models/api_key.js",
+        "app/assets/javascripts/admin/models/flagged_post.js",
+        "app/controllers/admin/admin_controller.rb",
+        "app/controllers/admin/api_controller.rb",
+        "app/jobs/regular/retrieve_topic.rb",
+        "app/jobs/regular/test_email.rb",
+        "app/models/concerns/has_custom_fields.rb",
+        "plugins/poll/spec/controllers/polls_controller_spec.rb",
+        "script/test_email_settings.rb",
+        "spec/components/topic_creator_spec.rb",
+        "spec/components/topic_retriever_spec.rb",
+        "spec/fabricators/api_key_fabricator.rb"
+      ],
+      "unique_changed_context_files_exposed_to_model": 36,
+      "unique_context_files_exposed_to_model": 56,
+      "unique_cross_file_context_files_exposed_to_model": 21,
+      "unique_unchanged_context_files_exposed_to_model": 20,
+      "usages": 62,
+      "whole_repo_grep_cache_hits": 15,
+      "whole_repo_grep_calls": 49,
+      "whole_repo_grep_calls_returning_configured_limit": 46
+    },
+    "unique_changed_context_files_exposed_to_model": 14,
+    "unique_effective_context_files_exposed_to_model": 37,
+    "unique_unchanged_context_files_exposed_to_model": 23,
+    "verification_batches": [
+      {
+        "candidate_count": 5,
+        "candidate_offset": 0,
+        "candidate_payload_chars": 6708,
+        "context_budget_chars": 167885,
+        "context_budget_clipped": false,
+        "context_chars": 46820,
+        "context_chars_available": 46820,
+        "context_chars_before_prompt_fit": 46820,
+        "context_chars_omitted_by_evidence_budget": 0,
+        "context_chars_omitted_by_prompt_fit": 0,
+        "context_chars_rendered": 46820,
+        "context_clipped_to_any_budget": false,
+        "context_clipped_to_prompt_budget": false,
+        "evidence_budget_clipped": false,
+        "evidence_clipped_to_any_budget": false,
+        "generation_context_blocks_available": 1,
+        "generation_context_blocks_rendered": 1,
+        "generation_context_chars_available": 42348,
+        "generation_context_chars_omitted": 0,
+        "generation_context_chars_rendered": 42348,
+        "generation_context_files_after_prompt_fit": [
+          ".codeclimate.yml",
+          ".eslintignore",
+          ".eslintrc",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "Gemfile.lock",
+          "LICENSE.txt",
+          "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+          "app/assets/javascripts/admin/models/flagged_post.js",
+          "app/assets/javascripts/discourse/models/rest.js.es6",
+          "app/assets/javascripts/discourse/models/store.js.es6",
+          "app/controllers/admin/admin_controller.rb",
+          "app/controllers/admin/api_controller.rb",
+          "app/jobs/regular/retrieve_topic.rb",
+          "app/jobs/regular/test_email.rb",
+          "app/models/concerns/has_custom_fields.rb",
+          "app/models/embeddable_host.rb",
+          "app/models/site_setting.rb",
+          "app/models/topic.rb",
+          "app/models/topic_embed.rb",
+          "config/locales/client.en.yml",
+          "config/locales/server.en.yml",
+          "config/routes.rb",
+          "config/site_settings.yml",
+          "lib/post_creator.rb",
+          "lib/site_setting_extension.rb",
+          "lib/topic_creator.rb",
+          "lib/topic_retriever.rb",
+          "plugins/poll/spec/controllers/polls_controller_spec.rb",
+          "script/test_email_settings.rb",
+          "spec/components/topic_creator_spec.rb",
+          "spec/components/topic_retriever_spec.rb",
+          "spec/fabricators/api_key_fabricator.rb",
+          "spec/models/site_setting_spec.rb",
+          "spec/models/topic_embed_spec.rb",
+          "spec/models/topic_spec.rb",
+          "test/javascripts/helpers/create-pretender.js.es6"
+        ],
+        "generation_context_files_available": [
+          ".codeclimate.yml",
+          ".eslintignore",
+          ".eslintrc",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "Gemfile.lock",
+          "LICENSE.txt",
+          "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+          "app/assets/javascripts/admin/models/flagged_post.js",
+          "app/assets/javascripts/discourse/models/rest.js.es6",
+          "app/assets/javascripts/discourse/models/store.js.es6",
+          "app/controllers/admin/admin_controller.rb",
+          "app/controllers/admin/api_controller.rb",
+          "app/jobs/regular/retrieve_topic.rb",
+          "app/jobs/regular/test_email.rb",
+          "app/models/concerns/has_custom_fields.rb",
+          "app/models/embeddable_host.rb",
+          "app/models/site_setting.rb",
+          "app/models/topic.rb",
+          "app/models/topic_embed.rb",
+          "config/locales/client.en.yml",
+          "config/locales/server.en.yml",
+          "config/routes.rb",
+          "config/site_settings.yml",
+          "lib/post_creator.rb",
+          "lib/site_setting_extension.rb",
+          "lib/topic_creator.rb",
+          "lib/topic_retriever.rb",
+          "plugins/poll/spec/controllers/polls_controller_spec.rb",
+          "script/test_email_settings.rb",
+          "spec/components/topic_creator_spec.rb",
+          "spec/components/topic_retriever_spec.rb",
+          "spec/fabricators/api_key_fabricator.rb",
+          "spec/models/site_setting_spec.rb",
+          "spec/models/topic_embed_spec.rb",
+          "spec/models/topic_spec.rb",
+          "test/javascripts/helpers/create-pretender.js.es6"
+        ],
+        "generation_context_files_omitted": [],
+        "generation_context_files_rendered": [
+          ".codeclimate.yml",
+          ".eslintignore",
+          ".eslintrc",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "Gemfile.lock",
+          "LICENSE.txt",
+          "app/assets/javascripts/admin/adapters/build-plugin.js.es6",
+          "app/assets/javascripts/admin/models/flagged_post.js",
+          "app/assets/javascripts/discourse/models/rest.js.es6",
+          "app/assets/javascripts/discourse/models/store.js.es6",
+          "app/controllers/admin/admin_controller.rb",
+          "app/controllers/admin/api_controller.rb",
+          "app/jobs/regular/retrieve_topic.rb",
+          "app/jobs/regular/test_email.rb",
+          "app/models/concerns/has_custom_fields.rb",
+          "app/models/embeddable_host.rb",
+          "app/models/site_setting.rb",
+          "app/models/topic.rb",
+          "app/models/topic_embed.rb",
+          "config/locales/client.en.yml",
+          "config/locales/server.en.yml",
+          "config/routes.rb",
+          "config/site_settings.yml",
+          "lib/post_creator.rb",
+          "lib/site_setting_extension.rb",
+          "lib/topic_creator.rb",
+          "lib/topic_retriever.rb",
+          "plugins/poll/spec/controllers/polls_controller_spec.rb",
+          "script/test_email_settings.rb",
+          "spec/components/topic_creator_spec.rb",
+          "spec/components/topic_retriever_spec.rb",
+          "spec/fabricators/api_key_fabricator.rb",
+          "spec/models/site_setting_spec.rb",
+          "spec/models/topic_embed_spec.rb",
+          "spec/models/topic_spec.rb",
+          "test/javascripts/helpers/create-pretender.js.es6"
+        ],
+        "input_char_budget": 326272,
+        "input_char_budget_utilization": 0.19025843468026676,
+        "patch_blocks_available": 5,
+        "patch_blocks_rendered": 5,
+        "patch_budget_chars": 111923,
+        "patch_budget_clipped": false,
+        "patch_chars": 6045,
+        "patch_chars_available": 6045,
+        "patch_chars_omitted_by_evidence_budget": 0,
+        "patch_chars_rendered": 6045,
+        "prompt_chars": 62076,
+        "prompt_utf8_bytes": 62284,
+        "source_blocks_available": 5,
+        "source_blocks_rendered": 5,
+        "source_context_chars_available": 4470,
+        "source_context_chars_omitted": 0,
+        "source_context_chars_rendered": 4470,
+        "source_files_after_prompt_fit": [
+          "app/controllers/admin/embeddable_hosts_controller.rb",
+          "app/models/embeddable_host.rb",
+          "db/migrate/20150818190757_create_embeddable_hosts.rb",
+          "spec/fabricators/category_fabricator.rb"
+        ],
+        "source_files_available": [
+          "app/controllers/admin/embeddable_hosts_controller.rb",
+          "app/models/embeddable_host.rb",
+          "db/migrate/20150818190757_create_embeddable_hosts.rb",
+          "spec/fabricators/category_fabricator.rb"
+        ],
+        "source_files_omitted": [],
+        "source_files_rendered": [
+          "app/controllers/admin/embeddable_hosts_controller.rb",
+          "app/models/embeddable_host.rb",
+          "db/migrate/20150818190757_create_embeddable_hosts.rb",
+          "spec/fabricators/category_fabricator.rb"
+        ]
+      }
+    ],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": true,
+    "completed_hunks": [
+      "app/assets/javascripts/admin/adapters/embedding.js.es6:0:1:h000",
+      "app/assets/javascripts/admin/components/embeddable-host.js.es6:0:1:h000",
+      "app/assets/javascripts/admin/controllers/admin-embedding.js.es6:0:1:h000",
+      "app/assets/javascripts/admin/routes/admin-embedding.js.es6:0:1:h000",
+      "app/assets/javascripts/admin/routes/admin-route-map.js.es6:18:18:h000",
+      "app/assets/javascripts/admin/templates/components/embeddable-host.hbs:0:1:h000",
+      "app/assets/javascripts/admin/templates/customize.hbs:1:1:h000",
+      "app/assets/javascripts/admin/templates/embedding.hbs:0:1:h000",
+      "app/assets/javascripts/discourse/adapters/rest.js.es6:1:1:h000",
+      "app/assets/javascripts/discourse/models/store.js.es6:180:180:h000",
+      "app/controllers/admin/embeddable_hosts_controller.rb:0:1:h000",
+      "app/controllers/admin/embedding_controller.rb:0:1:h000",
+      "app/controllers/embed_controller.rb:49:49:h000",
+      "app/models/embeddable_host.rb:0:1:h000",
+      "app/models/site_setting.rb:59:59:h000",
+      "app/models/topic.rb:857:857:h000",
+      "app/models/topic_embed.rb:24:24:h000",
+      "app/serializers/embeddable_host_serializer.rb:0:1:h000",
+      "app/serializers/embedding_serializer.rb:0:1:h000",
+      "config/locales/client.en.yml:2482:2482:h000",
+      "config/locales/server.en.yml:1155:1155:h000",
+      "config/routes.rb:126:126:h000",
+      "config/site_settings.yml:750:750:h000",
+      "db/migrate/20150818190757_create_embeddable_hosts.rb:0:1:h000",
+      "lib/topic_retriever.rb:4:4:h000",
+      "spec/controllers/admin/embeddable_hosts_controller_spec.rb:0:1:h000",
+      "spec/controllers/admin/embedding_controller_spec.rb:0:1:h000",
+      "spec/controllers/embed_controller_spec.rb:2:2:h000",
+      "spec/controllers/embed_controller_spec.rb:59:56:h001",
+      "spec/fabricators/category_fabricator.rb:1:1:h000",
+      "spec/fabricators/embeddable_host_fabricator.rb:0:1:h000",
+      "spec/models/embeddable_host_spec.rb:0:1:h000",
+      "spec/models/site_setting_spec.rb:1:1:h000",
+      "spec/models/topic_embed_spec.rb:3:3:h000",
+      "spec/models/topic_spec.rb:1229:1229:h000",
+      "spec/models/topic_spec.rb:1388:1388:h001",
+      "test/javascripts/helpers/create-pretender.js.es6:30:30:h000",
+      "test/javascripts/helpers/create-pretender.js.es6:212:216:h001",
+      "test/javascripts/models/store-test.js.es6:97:97:h000"
+    ],
+    "coverage_ratio": 1.0,
+    "eligible_files": 36,
+    "eligible_hunks": 39,
+    "excluded_files": [],
+    "failed_hunks": [],
+    "total_files": 36,
+    "total_hunks": 39
+  },
+  "diagnostics": [],
+  "diff": {
+    "additions": 449,
+    "bytes": 50761,
+    "chunk_plan_complete": true,
+    "chunks": 36,
+    "commentable_ranges": {
+      "LEFT": {
+        "app/assets/javascripts/admin/adapters/embedding.js.es6": [],
+        "app/assets/javascripts/admin/components/embeddable-host.js.es6": [],
+        "app/assets/javascripts/admin/controllers/admin-embedding.js.es6": [],
+        "app/assets/javascripts/admin/routes/admin-embedding.js.es6": [],
+        "app/assets/javascripts/admin/routes/admin-route-map.js.es6": [],
+        "app/assets/javascripts/admin/templates/components/embeddable-host.hbs": [],
+        "app/assets/javascripts/admin/templates/customize.hbs": [],
+        "app/assets/javascripts/admin/templates/embedding.hbs": [],
+        "app/assets/javascripts/discourse/adapters/rest.js.es6": [
+          [
+            1,
+            1
+          ],
+          [
+            22,
+            22
+          ]
+        ],
+        "app/assets/javascripts/discourse/models/store.js.es6": [
+          [
+            192,
+            192
+          ],
+          [
+            195,
+            197
+          ]
+        ],
+        "app/controllers/admin/embeddable_hosts_controller.rb": [],
+        "app/controllers/admin/embedding_controller.rb": [],
+        "app/controllers/embed_controller.rb": [
+          [
+            61,
+            62
+          ]
+        ],
+        "app/models/embeddable_host.rb": [],
+        "app/models/site_setting.rb": [
+          [
+            71,
+            84
+          ]
+        ],
+        "app/models/topic.rb": [
+          [
+            869,
+            869
+          ]
+        ],
+        "app/models/topic_embed.rb": [
+          [
+            41,
+            41
+          ]
+        ],
+        "app/serializers/embeddable_host_serializer.rb": [],
+        "app/serializers/embedding_serializer.rb": [],
+        "config/locales/client.en.yml": [],
+        "config/locales/server.en.yml": [
+          [
+            1167,
+            1167
+          ],
+          [
+            1173,
+            1173
+          ]
+        ],
+        "config/routes.rb": [],
+        "config/site_settings.yml": [
+          [
+            762,
+            764
+          ],
+          [
+            771,
+            771
+          ]
+        ],
+        "db/migrate/20150818190757_create_embeddable_hosts.rb": [],
+        "lib/topic_retriever.rb": [
+          [
+            16,
+            16
+          ]
+        ],
+        "spec/controllers/admin/embeddable_hosts_controller_spec.rb": [],
+        "spec/controllers/admin/embedding_controller_spec.rb": [],
+        "spec/controllers/embed_controller_spec.rb": [
+          [
+            14,
+            14
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            34,
+            36
+          ],
+          [
+            71,
+            71
+          ]
+        ],
+        "spec/fabricators/category_fabricator.rb": [
+          [
+            1,
+            26
+          ]
+        ],
+        "spec/fabricators/embeddable_host_fabricator.rb": [],
+        "spec/models/embeddable_host_spec.rb": [],
+        "spec/models/site_setting_spec.rb": [
+          [
+            7,
+            36
+          ]
+        ],
+        "spec/models/topic_embed_spec.rb": [],
+        "spec/models/topic_spec.rb": [
+          [
+            1241,
+            1241
+          ],
+          [
+            1250,
+            1250
+          ],
+          [
+            1400,
+            1406
+          ],
+          [
+            1408,
+            1410
+          ],
+          [
+            1413,
+            1413
+          ],
+          [
+            1417,
+            1420
+          ],
+          [
+            1422,
+            1424
+          ]
+        ],
+        "test/javascripts/helpers/create-pretender.js.es6": [
+          [
+            42,
+            44
+          ],
+          [
+            224,
+            225
+          ],
+          [
+            229,
+            229
+          ]
+        ],
+        "test/javascripts/models/store-test.js.es6": [
+          [
+            109,
+            109
+          ],
+          [
+            111,
+            113
+          ],
+          [
+            117,
+            117
+          ],
+          [
+            120,
+            122
+          ]
+        ]
+      },
+      "RIGHT": {
+        "app/assets/javascripts/admin/adapters/embedding.js.es6": [
+          [
+            1,
+            7
+          ]
+        ],
+        "app/assets/javascripts/admin/components/embeddable-host.js.es6": [
+          [
+            1,
+            63
+          ]
+        ],
+        "app/assets/javascripts/admin/controllers/admin-embedding.js.es6": [
+          [
+            1,
+            18
+          ]
+        ],
+        "app/assets/javascripts/admin/routes/admin-embedding.js.es6": [
+          [
+            1,
+            9
+          ]
+        ],
+        "app/assets/javascripts/admin/routes/admin-route-map.js.es6": [
+          [
+            30,
+            30
+          ]
+        ],
+        "app/assets/javascripts/admin/templates/components/embeddable-host.hbs": [
+          [
+            1,
+            19
+          ]
+        ],
+        "app/assets/javascripts/admin/templates/customize.hbs": [
+          [
+            8,
+            8
+          ]
+        ],
+        "app/assets/javascripts/admin/templates/embedding.hbs": [
+          [
+            1,
+            15
+          ]
+        ],
+        "app/assets/javascripts/discourse/adapters/rest.js.es6": [
+          [
+            1,
+            1
+          ],
+          [
+            22,
+            22
+          ]
+        ],
+        "app/assets/javascripts/discourse/models/store.js.es6": [
+          [
+            192,
+            192
+          ],
+          [
+            195,
+            200
+          ],
+          [
+            202,
+            207
+          ],
+          [
+            209,
+            209
+          ]
+        ],
+        "app/controllers/admin/embeddable_hosts_controller.rb": [
+          [
+            1,
+            34
+          ]
+        ],
+        "app/controllers/admin/embedding_controller.rb": [
+          [
+            1,
+            21
+          ]
+        ],
+        "app/controllers/embed_controller.rb": [
+          [
+            61,
+            61
+          ]
+        ],
+        "app/models/embeddable_host.rb": [
+          [
+            1,
+            24
+          ]
+        ],
+        "app/models/site_setting.rb": [],
+        "app/models/topic.rb": [
+          [
+            869,
+            869
+          ]
+        ],
+        "app/models/topic_embed.rb": [
+          [
+            36,
+            37
+          ],
+          [
+            43,
+            43
+          ]
+        ],
+        "app/serializers/embeddable_host_serializer.rb": [
+          [
+            1,
+            16
+          ]
+        ],
+        "app/serializers/embedding_serializer.rb": [
+          [
+            1,
+            8
+          ]
+        ],
+        "config/locales/client.en.yml": [
+          [
+            2494,
+            2501
+          ]
+        ],
+        "config/locales/server.en.yml": [],
+        "config/routes.rb": [
+          [
+            138,
+            139
+          ],
+          [
+            153,
+            153
+          ]
+        ],
+        "config/site_settings.yml": [],
+        "db/migrate/20150818190757_create_embeddable_hosts.rb": [
+          [
+            1,
+            33
+          ]
+        ],
+        "lib/topic_retriever.rb": [
+          [
+            16,
+            16
+          ]
+        ],
+        "spec/controllers/admin/embeddable_hosts_controller_spec.rb": [
+          [
+            1,
+            9
+          ]
+        ],
+        "spec/controllers/admin/embedding_controller_spec.rb": [
+          [
+            1,
+            9
+          ]
+        ],
+        "spec/controllers/embed_controller_spec.rb": [
+          [
+            21,
+            21
+          ],
+          [
+            33,
+            33
+          ],
+          [
+            68,
+            70
+          ]
+        ],
+        "spec/fabricators/category_fabricator.rb": [
+          [
+            1,
+            3
+          ]
+        ],
+        "spec/fabricators/embeddable_host_fabricator.rb": [
+          [
+            1,
+            27
+          ]
+        ],
+        "spec/models/embeddable_host_spec.rb": [
+          [
+            1,
+            40
+          ]
+        ],
+        "spec/models/site_setting_spec.rb": [],
+        "spec/models/topic_embed_spec.rb": [
+          [
+            15,
+            15
+          ],
+          [
+            37,
+            38
+          ]
+        ],
+        "spec/models/topic_spec.rb": [
+          [
+            1241,
+            1241
+          ],
+          [
+            1250,
+            1250
+          ],
+          [
+            1401,
+            1401
+          ],
+          [
+            1407,
+            1412
+          ],
+          [
+            1414,
+            1425
+          ],
+          [
+            1427,
+            1427
+          ]
+        ],
+        "test/javascripts/helpers/create-pretender.js.es6": [
+          [
+            42,
+            44
+          ],
+          [
+            49,
+            52
+          ],
+          [
+            228,
+            228
+          ],
+          [
+            232,
+            232
+          ]
+        ],
+        "test/javascripts/models/store-test.js.es6": [
+          [
+            109,
+            109
+          ],
+          [
+            111,
+            119
+          ],
+          [
+            123,
+            123
+          ],
+          [
+            126,
+            134
+          ]
+        ]
+      }
+    },
+    "deletions": 127,
+    "files": 36,
+    "generation_batches": 1,
+    "hunks": 39,
+    "merge_base_sha": "913c3d6f636d02b3dd6c2c022ca1af2bec95d752",
+    "sha256": "2c03d615ae4405e8da5104ce4d29397b6ff898a3c16bc9563ceb179f907c416f"
+  },
+  "duration_ms": 171560,
+  "findings": [],
+  "pr": {
+    "base_ref": "rest-serializer-enhancement-pre",
+    "base_sha": "913c3d6f636d02b3dd6c2c022ca1af2bec95d752",
+    "body": "Test 10",
+    "clone_url": "https://github.com/code-review-benchmark/discourse__discourse-graphite__augment__PR10__20260122.git",
+    "head_ref": "pr-10",
+    "head_sha": "d1c69189f3c90ecf56013a8da904da9bff9a8e19",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "discourse__discourse-graphite__augment__PR10__20260122",
+    "resolved_at": "2026-08-24T04:12:23.182106Z",
+    "title": "FEATURE: Can edit category/host relationships for embedding",
+    "url": "https://github.com/code-review-benchmark/discourse__discourse-graphite__augment__PR10__20260122/pull/1"
+  },
+  "raw_findings": [
+    {
+      "body": "`execute(...)[0]` is nil and `nil['id']` raises NoMethodError, aborting the migration and blocking the upgrade.",
+      "category": "bug",
+      "chunk_id": "f0023:c0000-bd54798a0944",
+      "confidence": 0.8,
+      "end_line": 11,
+      "evidence": "WHERE s.name = 'embed_category'\")[0]['id'].to_i",
+      "failure_mode": "Migration raises at runtime and the schema change never completes.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "`execute(...)[0]` is nil and `nil['id']` raises NoMethodError, aborting the migration and blocking the upgrade.",
+      "line": 11,
+      "path": "db/migrate/20150818190757_create_embeddable_hosts.rb",
+      "root_cause": "Chaining `[0]['id']` on the query result assumes at least one row is always returned.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Capture the result set, guard for an empty result (e.g. `row = execute(...).first; category_id = row ? row['id'].to_i : 0`) before dereferencing, then fall back to uncategorized.",
+      "title": "Migration crashes when embed_category setting has no matching category row",
+      "trigger": "Running the migration on any install where the `embed_category` site setting is unset (its default is '') or does not match an existing category name, so the SELECT returns zero rows.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "`lower(host)` is compared against a non-downcased parameter, so a stored host never matches a mixed-case incoming host and embedding is incorrectly rejected.",
+      "category": "bug",
+      "chunk_id": "f0013:c0000-8456aa32d44f",
+      "confidence": 0.6,
+      "end_line": 17,
+      "evidence": "where(\"lower(host) = ?\", host).first",
+      "failure_mode": "Legitimate embed requests are denied for hosts referenced with any uppercase letters.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "`lower(host)` is compared against a non-downcased parameter, so a stored host never matches a mixed-case incoming host and embedding is incorrectly rejected.",
+      "line": 17,
+      "path": "app/models/embeddable_host.rb",
+      "root_cause": "The SQL lowercases the column but the Ruby-side value is left in its original case, defeating the intended case-insensitive comparison.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Downcase the parameter: `where(\"lower(host) = ?\", host.downcase).first`.",
+      "title": "record_for_host lowercases the column but not the bind value",
+      "trigger": "A referer/embed URL whose host contains uppercase characters (e.g. `http://EvilTrout.com`).",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "`category_fabricator.rb` now defines `:embeddable_host` while `embeddable_host_fabricator.rb` defines the category fabricators, so the file names no longer describe their contents and future edits land in the wrong file.",
+      "category": "style",
+      "chunk_id": "f0028:c0000-a3b6e5f80214",
+      "confidence": 0.7,
+      "end_line": 3,
+      "evidence": "Fabricator(:embeddable_host) do",
+      "failure_mode": "Maintainability/discoverability degrades; edits are applied to misleadingly named files.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "`category_fabricator.rb` now defines `:embeddable_host` while `embeddable_host_fabricator.rb` defines the category fabricators, so the file names no longer describe their contents and future edits land in the wrong file.",
+      "line": 1,
+      "path": "spec/fabricators/category_fabricator.rb",
+      "root_cause": "The fabricator definitions were written into files whose names describe the opposite fabricator.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Move the `:embeddable_host` fabricator into `embeddable_host_fabricator.rb` and keep the category fabricators in `category_fabricator.rb`.",
+      "title": "Category and embeddable-host fabricators placed in swapped files",
+      "trigger": "A developer opening `category_fabricator.rb` to edit the category fabricator, or `embeddable_host_fabricator.rb` to edit the embeddable-host fabricator.",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "`EmbeddableHost.where(...).first` returns nil and `host.destroy` raises NoMethodError producing a 500 instead of a graceful error.",
+      "category": "bug",
+      "chunk_id": "f0010:c0000-395765764aea",
+      "confidence": 0.5,
+      "end_line": 16,
+      "evidence": "host.destroy",
+      "failure_mode": "Unhandled exception yields a 500 response for a missing record.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "`EmbeddableHost.where(...).first` returns nil and `host.destroy` raises NoMethodError producing a 500 instead of a graceful error.",
+      "line": 16,
+      "path": "app/controllers/admin/embeddable_hosts_controller.rb",
+      "root_cause": "The looked-up record is dereferenced without checking for nil.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use `find_by`/guard for nil and return a 404 or error json when the record is missing before calling `destroy`.",
+      "title": "destroy raises NoMethodError when host id is not found",
+      "trigger": "A DELETE request with an `id` that does not correspond to an existing EmbeddableHost (stale UI, concurrent delete, or crafted request).",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    },
+    {
+      "body": "`nil.sub!` raises NoMethodError before the format validation can report the blank host as invalid.",
+      "category": "bug",
+      "chunk_id": "f0013:c0000-8456aa32d44f",
+      "confidence": 0.4,
+      "end_line": 6,
+      "evidence": "self.host.sub!(/^https?:\\/\\//, '')",
+      "failure_mode": "Validation raises instead of returning a validation error.",
+      "finding_id": "",
+      "fingerprint": "",
+      "fix_scope": "local",
+      "impact": "`nil.sub!` raises NoMethodError before the format validation can report the blank host as invalid.",
+      "line": 6,
+      "path": "app/models/embeddable_host.rb",
+      "root_cause": "The callback calls `sub!` directly on `self.host` without ensuring it is non-nil.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Guard the callback (e.g. `return if host.blank?`) before mutating `self.host`.",
+      "title": "before_validation raises when host is nil",
+      "trigger": "Validating an EmbeddableHost whose `host` attribute is nil (e.g. `EmbeddableHost.new.valid?` or a create request with no `host` param).",
+      "verifier_confidence": null,
+      "verifier_family_key": null,
+      "verifier_reason": null
+    }
+  ],
+  "rejected_findings": [
+    {
+      "finding": {
+        "body": "`execute(...)[0]` is nil and `nil['id']` raises NoMethodError, aborting the migration and blocking the upgrade.",
+        "category": "bug",
+        "chunk_id": "f0023:c0000-bd54798a0944",
+        "confidence": 0.8,
+        "end_line": 11,
+        "evidence": "WHERE s.name = 'embed_category'\")[0]['id'].to_i",
+        "failure_mode": "Migration raises at runtime and the schema change never completes.",
+        "finding_id": "bb-eec01ca82ebee0ad1bd7",
+        "fingerprint": "1032606f978f65da98f8d5fcdacd2b3e288e10dd7a0b26545bc3555e99e1b3d3",
+        "fix_scope": "local",
+        "impact": "`execute(...)[0]` is nil and `nil['id']` raises NoMethodError, aborting the migration and blocking the upgrade.",
+        "line": 11,
+        "path": "db/migrate/20150818190757_create_embeddable_hosts.rb",
+        "root_cause": "Chaining `[0]['id']` on the query result assumes at least one row is always returned.",
+        "severity": "high",
+        "side": "RIGHT",
+        "suggested_fix": "Capture the result set, guard for an empty result (e.g. `row = execute(...).first; category_id = row ? row['id'].to_i : 0`) before dereferencing, then fall back to uncategorized.",
+        "title": "Migration crashes when embed_category setting has no matching category row",
+        "trigger": "Running the migration on any install where the `embed_category` site setting is unset (its default is '') or does not match an existing category name, so the SELECT returns zero rows.",
+        "verifier_confidence": 0.85,
+        "verifier_family_key": "migration_nil_dereference",
+        "verifier_reason": "Line R11 verbatim shows `execute(...)[0]['id'].to_i` with no nil guard. If embed_category setting is unset or doesn't match a category, the SELECT returns zero rows, making `[0]` return nil, and `nil['id']` raises NoMethodError. The trigger is realistic for fresh installs or misconfigured settings."
+      },
+      "reason": "0.850 is below 0.920: Line R11 verbatim shows `execute(...)[0]['id'].to_i` with no nil guard. If embed_category setting is unset or doesn't match a category, the SELECT returns zero rows, making `[0]` return nil, and `nil['id']` raises NoMethodError. The trigger is realistic for fresh installs or misconfigured settings.",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "`lower(host)` is compared against a non-downcased parameter, so a stored host never matches a mixed-case incoming host and embedding is incorrectly rejected.",
+        "category": "bug",
+        "chunk_id": "f0013:c0000-8456aa32d44f",
+        "confidence": 0.6,
+        "end_line": 17,
+        "evidence": "where(\"lower(host) = ?\", host).first",
+        "failure_mode": "Legitimate embed requests are denied for hosts referenced with any uppercase letters.",
+        "finding_id": "bb-92edad29ad8fcde5f6f6",
+        "fingerprint": "caec229283730470c2dff290ec59aaa31e380b5bf445a53aaf6d57070d4d1a7f",
+        "fix_scope": "local",
+        "impact": "`lower(host)` is compared against a non-downcased parameter, so a stored host never matches a mixed-case incoming host and embedding is incorrectly rejected.",
+        "line": 17,
+        "path": "app/models/embeddable_host.rb",
+        "root_cause": "The SQL lowercases the column but the Ruby-side value is left in its original case, defeating the intended case-insensitive comparison.",
+        "severity": "medium",
+        "side": "RIGHT",
+        "suggested_fix": "Downcase the parameter: `where(\"lower(host) = ?\", host.downcase).first`.",
+        "title": "record_for_host lowercases the column but not the bind value",
+        "trigger": "A referer/embed URL whose host contains uppercase characters (e.g. `http://EvilTrout.com`).",
+        "verifier_confidence": 0.8,
+        "verifier_family_key": "case_insensitive_comparison_mismatch",
+        "verifier_reason": "Line R17 shows `where(\"lower(host) = ?\", host).first` where the column is lowercased but the bind parameter `host` (from line R14) is not downcased. If the incoming URL has uppercase characters, the comparison fails. The code path and trigger are realistic."
+      },
+      "reason": "0.800 is below 0.920: Line R17 shows `where(\"lower(host) = ?\", host).first` where the column is lowercased but the bind parameter `host` (from line R14) is not downcased. If the incoming URL has uppercase characters, the comparison fails. The code path and trigger are realistic.",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "`category_fabricator.rb` now defines `:embeddable_host` while `embeddable_host_fabricator.rb` defines the category fabricators, so the file names no longer describe their contents and future edits land in the wrong file.",
+        "category": "style",
+        "chunk_id": "f0028:c0000-a3b6e5f80214",
+        "confidence": 0.7,
+        "end_line": 3,
+        "evidence": "Fabricator(:embeddable_host) do",
+        "failure_mode": "Maintainability/discoverability degrades; edits are applied to misleadingly named files.",
+        "finding_id": "bb-11b4d8f37ca74745d16b",
+        "fingerprint": "5436e7720c088af7ad8186e14b4235af4a75971693d918e3d61a6c87e67f3892",
+        "fix_scope": "local",
+        "impact": "`category_fabricator.rb` now defines `:embeddable_host` while `embeddable_host_fabricator.rb` defines the category fabricators, so the file names no longer describe their contents and future edits land in the wrong file.",
+        "line": 1,
+        "path": "spec/fabricators/category_fabricator.rb",
+        "root_cause": "The fabricator definitions were written into files whose names describe the opposite fabricator.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Move the `:embeddable_host` fabricator into `embeddable_host_fabricator.rb` and keep the category fabricators in `category_fabricator.rb`.",
+        "title": "Category and embeddable-host fabricators placed in swapped files",
+        "trigger": "A developer opening `category_fabricator.rb` to edit the category fabricator, or `embeddable_host_fabricator.rb` to edit the embeddable-host fabricator.",
+        "verifier_confidence": 0.9,
+        "verifier_family_key": "fabricator_file_naming",
+        "verifier_reason": "This is a stylistic/maintainability concern about file naming conventions, which the instructions explicitly exclude. The finding is categorized as 'style' and does not represent a functional defect."
+      },
+      "reason": "This is a stylistic/maintainability concern about file naming conventions, which the instructions explicitly exclude. The finding is categorized as 'style' and does not represent a functional defect.",
+      "stage": "verifier"
+    },
+    {
+      "finding": {
+        "body": "`EmbeddableHost.where(...).first` returns nil and `host.destroy` raises NoMethodError producing a 500 instead of a graceful error.",
+        "category": "bug",
+        "chunk_id": "f0010:c0000-395765764aea",
+        "confidence": 0.5,
+        "end_line": 16,
+        "evidence": "host.destroy",
+        "failure_mode": "Unhandled exception yields a 500 response for a missing record.",
+        "finding_id": "bb-23cbeb318b13bc9bc2bb",
+        "fingerprint": "2306f250544cf1a74c57bae75e34ec0d88eb4e8747430e6c4d23e37f758db047",
+        "fix_scope": "local",
+        "impact": "`EmbeddableHost.where(...).first` returns nil and `host.destroy` raises NoMethodError producing a 500 instead of a graceful error.",
+        "line": 16,
+        "path": "app/controllers/admin/embeddable_hosts_controller.rb",
+        "root_cause": "The looked-up record is dereferenced without checking for nil.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Use `find_by`/guard for nil and return a 404 or error json when the record is missing before calling `destroy`.",
+        "title": "destroy raises NoMethodError when host id is not found",
+        "trigger": "A DELETE request with an `id` that does not correspond to an existing EmbeddableHost (stale UI, concurrent delete, or crafted request).",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "nil_record_dereference",
+        "verifier_reason": "Lines R15-R16 show `host = EmbeddableHost.where(id: params[:id]).first` followed by `host.destroy` with no nil check. If the record doesn't exist, `host` is nil and `nil.destroy` raises NoMethodError. Trigger is realistic (stale UI, concurrent delete, crafted request)."
+      },
+      "reason": "0.750 is below 0.920: Lines R15-R16 show `host = EmbeddableHost.where(id: params[:id]).first` followed by `host.destroy` with no nil check. If the record doesn't exist, `host` is nil and `nil.destroy` raises NoMethodError. Trigger is realistic (stale UI, concurrent delete, crafted request).",
+      "stage": "verifier_confidence"
+    },
+    {
+      "finding": {
+        "body": "`nil.sub!` raises NoMethodError before the format validation can report the blank host as invalid.",
+        "category": "bug",
+        "chunk_id": "f0013:c0000-8456aa32d44f",
+        "confidence": 0.4,
+        "end_line": 6,
+        "evidence": "self.host.sub!(/^https?:\\/\\//, '')",
+        "failure_mode": "Validation raises instead of returning a validation error.",
+        "finding_id": "bb-9a1aaf7d2d7dbf3c437f",
+        "fingerprint": "d0353dbdb900838948b0b469fcbe26723eeb2a2109d6815f5b97cb56d86ef500",
+        "fix_scope": "local",
+        "impact": "`nil.sub!` raises NoMethodError before the format validation can report the blank host as invalid.",
+        "line": 6,
+        "path": "app/models/embeddable_host.rb",
+        "root_cause": "The callback calls `sub!` directly on `self.host` without ensuring it is non-nil.",
+        "severity": "low",
+        "side": "RIGHT",
+        "suggested_fix": "Guard the callback (e.g. `return if host.blank?`) before mutating `self.host`.",
+        "title": "before_validation raises when host is nil",
+        "trigger": "Validating an EmbeddableHost whose `host` attribute is nil (e.g. `EmbeddableHost.new.valid?` or a create request with no `host` param).",
+        "verifier_confidence": 0.75,
+        "verifier_family_key": "nil_attribute_mutation",
+        "verifier_reason": "Lines R5-R6 show `before_validation do self.host.sub!(...)` with no nil guard. If `host` attribute is nil (e.g., `EmbeddableHost.new.valid?`), `nil.sub!` raises NoMethodError before format validation can report the error gracefully."
+      },
+      "reason": "0.750 is below 0.920: Lines R5-R6 show `before_validation do self.host.sub!(...)` with no nil guard. If `host` attribute is nil (e.g., `EmbeddableHost.new.valid?`), `nil.sub!` raises NoMethodError before format validation can report the error gracefully.",
+      "stage": "verifier_confidence"
+    }
+  ],
+  "run_id": "bfa7b447bde1fda9494f5bde",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-opus-4-8",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T05:37:05.561204Z",
+  "status": "completed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": [
+    {
+      "body": "`execute(...)[0]` is nil and `nil['id']` raises NoMethodError, aborting the migration and blocking the upgrade.",
+      "category": "bug",
+      "chunk_id": "f0023:c0000-bd54798a0944",
+      "confidence": 0.8,
+      "end_line": 11,
+      "evidence": "WHERE s.name = 'embed_category'\")[0]['id'].to_i",
+      "failure_mode": "Migration raises at runtime and the schema change never completes.",
+      "finding_id": "bb-eec01ca82ebee0ad1bd7",
+      "fingerprint": "1032606f978f65da98f8d5fcdacd2b3e288e10dd7a0b26545bc3555e99e1b3d3",
+      "fix_scope": "local",
+      "impact": "`execute(...)[0]` is nil and `nil['id']` raises NoMethodError, aborting the migration and blocking the upgrade.",
+      "line": 11,
+      "path": "db/migrate/20150818190757_create_embeddable_hosts.rb",
+      "root_cause": "Chaining `[0]['id']` on the query result assumes at least one row is always returned.",
+      "severity": "high",
+      "side": "RIGHT",
+      "suggested_fix": "Capture the result set, guard for an empty result (e.g. `row = execute(...).first; category_id = row ? row['id'].to_i : 0`) before dereferencing, then fall back to uncategorized.",
+      "title": "Migration crashes when embed_category setting has no matching category row",
+      "trigger": "Running the migration on any install where the `embed_category` site setting is unset (its default is '') or does not match an existing category name, so the SELECT returns zero rows.",
+      "verifier_confidence": 0.85,
+      "verifier_family_key": "migration_nil_dereference",
+      "verifier_reason": "Line R11 verbatim shows `execute(...)[0]['id'].to_i` with no nil guard. If embed_category setting is unset or doesn't match a category, the SELECT returns zero rows, making `[0]` return nil, and `nil['id']` raises NoMethodError. The trigger is realistic for fresh installs or misconfigured settings."
+    },
+    {
+      "body": "`lower(host)` is compared against a non-downcased parameter, so a stored host never matches a mixed-case incoming host and embedding is incorrectly rejected.",
+      "category": "bug",
+      "chunk_id": "f0013:c0000-8456aa32d44f",
+      "confidence": 0.6,
+      "end_line": 17,
+      "evidence": "where(\"lower(host) = ?\", host).first",
+      "failure_mode": "Legitimate embed requests are denied for hosts referenced with any uppercase letters.",
+      "finding_id": "bb-92edad29ad8fcde5f6f6",
+      "fingerprint": "caec229283730470c2dff290ec59aaa31e380b5bf445a53aaf6d57070d4d1a7f",
+      "fix_scope": "local",
+      "impact": "`lower(host)` is compared against a non-downcased parameter, so a stored host never matches a mixed-case incoming host and embedding is incorrectly rejected.",
+      "line": 17,
+      "path": "app/models/embeddable_host.rb",
+      "root_cause": "The SQL lowercases the column but the Ruby-side value is left in its original case, defeating the intended case-insensitive comparison.",
+      "severity": "medium",
+      "side": "RIGHT",
+      "suggested_fix": "Downcase the parameter: `where(\"lower(host) = ?\", host.downcase).first`.",
+      "title": "record_for_host lowercases the column but not the bind value",
+      "trigger": "A referer/embed URL whose host contains uppercase characters (e.g. `http://EvilTrout.com`).",
+      "verifier_confidence": 0.8,
+      "verifier_family_key": "case_insensitive_comparison_mismatch",
+      "verifier_reason": "Line R17 shows `where(\"lower(host) = ?\", host).first` where the column is lowercased but the bind parameter `host` (from line R14) is not downcased. If the incoming URL has uppercase characters, the comparison fails. The code path and trigger are realistic."
+    },
+    {
+      "body": "`category_fabricator.rb` now defines `:embeddable_host` while `embeddable_host_fabricator.rb` defines the category fabricators, so the file names no longer describe their contents and future edits land in the wrong file.",
+      "category": "style",
+      "chunk_id": "f0028:c0000-a3b6e5f80214",
+      "confidence": 0.7,
+      "end_line": 3,
+      "evidence": "Fabricator(:embeddable_host) do",
+      "failure_mode": "Maintainability/discoverability degrades; edits are applied to misleadingly named files.",
+      "finding_id": "bb-11b4d8f37ca74745d16b",
+      "fingerprint": "5436e7720c088af7ad8186e14b4235af4a75971693d918e3d61a6c87e67f3892",
+      "fix_scope": "local",
+      "impact": "`category_fabricator.rb` now defines `:embeddable_host` while `embeddable_host_fabricator.rb` defines the category fabricators, so the file names no longer describe their contents and future edits land in the wrong file.",
+      "line": 1,
+      "path": "spec/fabricators/category_fabricator.rb",
+      "root_cause": "The fabricator definitions were written into files whose names describe the opposite fabricator.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Move the `:embeddable_host` fabricator into `embeddable_host_fabricator.rb` and keep the category fabricators in `category_fabricator.rb`.",
+      "title": "Category and embeddable-host fabricators placed in swapped files",
+      "trigger": "A developer opening `category_fabricator.rb` to edit the category fabricator, or `embeddable_host_fabricator.rb` to edit the embeddable-host fabricator.",
+      "verifier_confidence": 0.9,
+      "verifier_family_key": "fabricator_file_naming",
+      "verifier_reason": "This is a stylistic/maintainability concern about file naming conventions, which the instructions explicitly exclude. The finding is categorized as 'style' and does not represent a functional defect."
+    },
+    {
+      "body": "`EmbeddableHost.where(...).first` returns nil and `host.destroy` raises NoMethodError producing a 500 instead of a graceful error.",
+      "category": "bug",
+      "chunk_id": "f0010:c0000-395765764aea",
+      "confidence": 0.5,
+      "end_line": 16,
+      "evidence": "host.destroy",
+      "failure_mode": "Unhandled exception yields a 500 response for a missing record.",
+      "finding_id": "bb-23cbeb318b13bc9bc2bb",
+      "fingerprint": "2306f250544cf1a74c57bae75e34ec0d88eb4e8747430e6c4d23e37f758db047",
+      "fix_scope": "local",
+      "impact": "`EmbeddableHost.where(...).first` returns nil and `host.destroy` raises NoMethodError producing a 500 instead of a graceful error.",
+      "line": 16,
+      "path": "app/controllers/admin/embeddable_hosts_controller.rb",
+      "root_cause": "The looked-up record is dereferenced without checking for nil.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Use `find_by`/guard for nil and return a 404 or error json when the record is missing before calling `destroy`.",
+      "title": "destroy raises NoMethodError when host id is not found",
+      "trigger": "A DELETE request with an `id` that does not correspond to an existing EmbeddableHost (stale UI, concurrent delete, or crafted request).",
+      "verifier_confidence": 0.75,
+      "verifier_family_key": "nil_record_dereference",
+      "verifier_reason": "Lines R15-R16 show `host = EmbeddableHost.where(id: params[:id]).first` followed by `host.destroy` with no nil check. If the record doesn't exist, `host` is nil and `nil.destroy` raises NoMethodError. Trigger is realistic (stale UI, concurrent delete, crafted request)."
+    },
+    {
+      "body": "`nil.sub!` raises NoMethodError before the format validation can report the blank host as invalid.",
+      "category": "bug",
+      "chunk_id": "f0013:c0000-8456aa32d44f",
+      "confidence": 0.4,
+      "end_line": 6,
+      "evidence": "self.host.sub!(/^https?:\\/\\//, '')",
+      "failure_mode": "Validation raises instead of returning a validation error.",
+      "finding_id": "bb-9a1aaf7d2d7dbf3c437f",
+      "fingerprint": "d0353dbdb900838948b0b469fcbe26723eeb2a2109d6815f5b97cb56d86ef500",
+      "fix_scope": "local",
+      "impact": "`nil.sub!` raises NoMethodError before the format validation can report the blank host as invalid.",
+      "line": 6,
+      "path": "app/models/embeddable_host.rb",
+      "root_cause": "The callback calls `sub!` directly on `self.host` without ensuring it is non-nil.",
+      "severity": "low",
+      "side": "RIGHT",
+      "suggested_fix": "Guard the callback (e.g. `return if host.blank?`) before mutating `self.host`.",
+      "title": "before_validation raises when host is nil",
+      "trigger": "Validating an EmbeddableHost whose `host` attribute is nil (e.g. `EmbeddableHost.new.valid?` or a create request with no `host` param).",
+      "verifier_confidence": 0.75,
+      "verifier_family_key": "nil_attribute_mutation",
+      "verifier_reason": "Lines R5-R6 show `before_validation do self.host.sub!(...)` with no nil guard. If `host` attribute is nil (e.g., `EmbeddableHost.new.valid?`), `nil.sub!` raises NoMethodError before format validation can report the error gracefully."
+    }
+  ]
+}

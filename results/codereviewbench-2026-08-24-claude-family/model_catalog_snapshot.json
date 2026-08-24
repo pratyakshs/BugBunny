@@ -1,0 +1,30 @@
+{
+  "schema_version": "bugbunny-model-catalog-snapshot-v1",
+  "observed_on_utc_date": "2026-08-24",
+  "source": "https://api.withmartian.com/v1/models",
+  "input_context_capacity_reported_by_catalog": false,
+  "run_declared_context_window_tokens": 200000,
+  "routes": {
+    "anthropic/claude-sonnet-5": {
+      "max_completion_tokens": 128000,
+      "reliability_tier": 1
+    },
+    "anthropic/claude-opus-5": {
+      "max_completion_tokens": 128000,
+      "reliability_tier": 0
+    },
+    "anthropic/claude-opus-4-8": {
+      "max_completion_tokens": 128000,
+      "reliability_tier": 1
+    },
+    "anthropic/claude-fable-5": {
+      "max_completion_tokens": 128000,
+      "reliability_tier": 0
+    }
+  },
+  "notes": [
+    "This is the route metadata selected from the Martian model catalog before the publication run, not a complete raw catalog response.",
+    "The catalog did not report an input context capacity for these routes, so BugBunny used the same conservative declared 200000-token context window for all four candidates.",
+    "The generation output cap was 50000 tokens; the fixed verifier output cap was 32768 tokens."
+  ]
+}

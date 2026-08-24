@@ -1,0 +1,1757 @@
+{
+  "benchmark": {
+    "benchmark_sha256": "60fe361f1430ce3d55bf85d2ceba30205c6a207eb2c49447a2b527e23718d5ed",
+    "case_id": "ai-code-review-evaluation-keycloak-greptile-pr1-af324109a0",
+    "dataset_golden_sha256": "e7838f447b938bc3c5cb704eb619a4395cfea2757597e5fb659397ca3b0674d0",
+    "fixture_tool": "augment",
+    "golden_sha256": "a1182975b22fbf5160799e471b8abc75bfda5bd04404efc6a6e76c5d220aaaa9",
+    "golden_url": "https://github.com/ai-code-review-evaluation/keycloak-greptile/pull/1",
+    "review_url": "https://github.com/code-review-benchmark/keycloak__keycloak-greptile__augment__PR1__20260122/pull/1",
+    "suite": "CodeReviewBench"
+  },
+  "calls": [
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-da7f12003cc8",
+      "cost_usd": 0.702035,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 45575,
+      "latency_ms": 37671,
+      "output_tokens": 2647,
+      "request_sha256": "280fa83fe8b6c93c1d016f23033dd03caa19ebd97d974d589416e4a16690f84e",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "29e6b985cf0496646853dd5d8ce129b3d8812551af5af0228741c43b84a7ce45",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": 0,
+      "chunk_id": "b0000-da7f12003cc8",
+      "cost_usd": 0.9757975,
+      "error": null,
+      "gateway": "martian_http",
+      "input_tokens": 64080,
+      "latency_ms": 53651,
+      "output_tokens": 3496,
+      "request_sha256": "341b41bbaa246f34e0c484d41d151febac34ad9a6d08355b3d82b2bab43d5c68",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": "anthropic/claude-fable-5",
+      "response_sha256": "f2b3e96e4f59410a30f13890018bc40148fc50227bb4a6bdfc702ed9397d7c79",
+      "retry_errors": [],
+      "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+      "stage": "context_selection"
+    },
+    {
+      "attempt_count": 1,
+      "cached_input_tokens": null,
+      "chunk_id": "b0000-da7f12003cc8",
+      "cost_usd": null,
+      "error": "_BackendFailure: Martian Gateway returned HTTP 529: Service temporarily overloaded. Please try again later.",
+      "gateway": "martian_http",
+      "input_tokens": null,
+      "latency_ms": 7981,
+      "output_tokens": null,
+      "request_sha256": "0d44911a63e409ceeeedf871888c34251de3077771e22b2bfc9dfcf46dcec590",
+      "requested_model": "anthropic/claude-fable-5",
+      "resolved_model": null,
+      "response_sha256": null,
+      "retry_errors": [],
+      "schema_sha256": "9fde6856b8173c57f0a5ca9489910a99c0d6241f9b2d31316e0f7317bcf8d444",
+      "stage": "generation"
+    }
+  ],
+  "completed_at": "2026-08-24T05:47:54.702935Z",
+  "config": {
+    "context_blob_read_bytes": 16000000,
+    "context_budget_source": "declared_window",
+    "context_mode": "agentic",
+    "context_read_chars": 48000,
+    "context_read_lines": 240,
+    "context_requests_per_round": 16,
+    "context_search_hits": 24,
+    "context_search_max_offset": 100000,
+    "context_selection_rounds": 2,
+    "context_window_tokens": 200000,
+    "diff_context_lines": 12,
+    "generation_input_char_budget": 291808,
+    "include_categories": [
+      "bug",
+      "security",
+      "concurrency",
+      "data",
+      "api",
+      "performance",
+      "test_gap",
+      "doc_defect",
+      "style",
+      "speculative"
+    ],
+    "initial_context_chars": 36000,
+    "llm_concurrency": 1,
+    "max_chunk_chars": 111923,
+    "max_context_chars": 167885,
+    "max_context_files": 64,
+    "max_hits_per_symbol": 10,
+    "max_output_tokens": 50000,
+    "max_symbols_per_chunk": 24,
+    "min_verifier_confidence": 0.92,
+    "model": "anthropic/claude-fable-5",
+    "operating_point_id": "bugbunny-op-43df334528999a9c",
+    "operating_point_sha256": "a7a61a7c76e899ae9a71defc829981563fdcec5da3616928620a680df2d3fe30",
+    "profile": "balanced",
+    "reasoning_effort": "high",
+    "repository_index_chars": 120000,
+    "review_policy": "codereviewbench",
+    "review_policy_sha256": "b916680466de249909b0679b41ce9e323f80f877e47c85f0b6c2686d4a13379f",
+    "review_policy_version": "bugbunny-codereviewbench-policy-v1",
+    "source_context_lines": 100,
+    "timeout_seconds": 900,
+    "verification_batch_chars": 48000,
+    "verification_batch_size": 20,
+    "verification_semantic_retries": 2,
+    "verifier_context_window_tokens": 200000,
+    "verifier_input_char_budget": 326272,
+    "verifier_max_output_tokens": 32768,
+    "verifier_model": "anthropic/claude-opus-4-5",
+    "verifier_reasoning_effort": "low"
+  },
+  "context": {
+    "budget": {
+      "declared_model_context_window_tokens": 200000,
+      "declared_verifier_context_window_tokens": 200000,
+      "declared_verifier_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_verifier_window_reserve_tokens": 4096,
+      "declared_window_input_character_assumption": "2 Unicode characters/token (planning estimate, not a tokenizer or hard token guarantee; provider usage is authoritative)",
+      "declared_window_reserve_tokens": 4096,
+      "generation_input_char_budget": 291808,
+      "initial_context_chars_per_generation_call": 36000,
+      "max_chunk_chars_per_generation_call": 111923,
+      "max_context_chars_per_generation_call": 167885,
+      "max_output_tokens_per_call": 50000,
+      "source": "declared_window",
+      "verifier_input_char_budget": 326272,
+      "verifier_max_output_tokens_per_call": 32768,
+      "verifier_source": "declared_window"
+    },
+    "context_pressure": {
+      "batches_at_or_above_95_percent_of_context_budget": 0,
+      "batches_marked_truncated": 1,
+      "generation_batches": 1,
+      "generation_contexts_clipped_to_prompt_budget": 0,
+      "largest_context_budget_utilization": 0.5958066533639098,
+      "largest_verifier_input_char_budget_utilization": 0.0,
+      "selection_batches_encountering_page_caps": 0,
+      "selection_batches_encountering_request_caps": 0,
+      "selection_batches_hitting_any_bound": 1,
+      "selection_batches_with_inventory_omissions": 0,
+      "selection_batches_with_selector_observation_clipping": 0,
+      "selection_bound_hits": {
+        "blob_read_limit_hit": 0,
+        "context_limit_hit": 0,
+        "file_limit_hit": 0,
+        "list_page_limit_hit": 0,
+        "list_pagination_unresolved": 0,
+        "repository_index_truncated": 1,
+        "repository_inventory_omission_hit": 0,
+        "request_limit_hit": 0,
+        "round_limit_hit": 0,
+        "search_hit_limit_hit": 0,
+        "search_offset_limit_hit": 0,
+        "search_pagination_unresolved": 0,
+        "search_scan_limit_hit": 0,
+        "selector_observations_truncated": 0
+      },
+      "selector_inventory_files_omitted": 0,
+      "verifier_contexts_clipped_to_evidence_budget": 0,
+      "verifier_contexts_clipped_to_prompt_budget": 0,
+      "verifier_evidence_batches_clipped_to_any_budget": 0,
+      "verifier_generation_context_files_after_prompt_fit": 0,
+      "verifier_generation_context_files_available": 0
+    },
+    "context_selection_prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+    "context_selection_prompt_version": "bugbunny-context-selection-v7",
+    "context_selection_schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+    "context_selection_schema_version": "bugbunny-context-actions-v6",
+    "effective_context_files_exposed_to_model": [
+      ".github/ISSUE_TEMPLATE/bug.yml",
+      ".github/scripts/ansible/roles/aws_ec2/README.md",
+      "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+      "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+      "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+      "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+      "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+      "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+      "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+      "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+      "docs/documentation/authorization_services/topics/permission-overview.adoc",
+      "docs/documentation/server_development/topics/auth-spi.adoc",
+      "docs/guides/templates/options.adoc",
+      "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+      "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+      "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+      "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+      "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnPasswordlessAuthenticator.java",
+      "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+      "services/src/main/java/org/keycloak/organization/authentication/authenticators/browser/OrganizationAuthenticator.java",
+      "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+      "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java",
+      "themes/src/main/resources/theme/base/login/login-passkeys-conditional-authenticate.ftl",
+      "themes/src/main/resources/theme/base/login/passkeys.ftl",
+      "themes/src/main/resources/theme/base/login/resources/js/passkeysConditionalAuth.js",
+      "themes/src/main/resources/theme/base/login/resources/js/webauthnAuthenticate.js",
+      "themes/src/main/resources/theme/base/login/webauthn-authenticate.ftl",
+      "themes/src/main/resources/theme/keycloak.v2/login/webauthn-authenticate.ftl"
+    ],
+    "generation_batches": {
+      "b0000-da7f12003cc8": {
+        "chunk_ids": [
+          "f0000:c0000-3609959d92ef",
+          "f0001:c0000-bbcae6883453",
+          "f0002:c0000-0c5cf07ebc35",
+          "f0003:c0000-81f0f7c36018",
+          "f0004:c0000-95c9d3608ff0",
+          "f0005:c0000-72a33adbb446",
+          "f0006:c0000-70de717751b1",
+          "f0007:c0000-b3072b75f1b9",
+          "f0008:c0000-b79339fcf886"
+        ],
+        "context_budget_chars": 167885,
+        "context_budget_utilization": 0.5958066533639098,
+        "context_chars": 100027,
+        "context_files_available_before_generation_prompt_fit": [
+          ".github/ISSUE_TEMPLATE/bug.yml",
+          ".github/scripts/ansible/roles/aws_ec2/README.md",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+          "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+          "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+          "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+          "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+          "docs/documentation/authorization_services/topics/permission-overview.adoc",
+          "docs/documentation/server_development/topics/auth-spi.adoc",
+          "docs/guides/templates/options.adoc",
+          "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+          "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+          "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnPasswordlessAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+          "services/src/main/java/org/keycloak/organization/authentication/authenticators/browser/OrganizationAuthenticator.java",
+          "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+          "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java",
+          "themes/src/main/resources/theme/base/login/login-passkeys-conditional-authenticate.ftl",
+          "themes/src/main/resources/theme/base/login/passkeys.ftl",
+          "themes/src/main/resources/theme/base/login/resources/js/passkeysConditionalAuth.js",
+          "themes/src/main/resources/theme/base/login/resources/js/webauthnAuthenticate.js",
+          "themes/src/main/resources/theme/base/login/webauthn-authenticate.ftl",
+          "themes/src/main/resources/theme/keycloak.v2/login/webauthn-authenticate.ftl"
+        ],
+        "context_files_exposed_to_model": [
+          ".github/ISSUE_TEMPLATE/bug.yml",
+          ".github/scripts/ansible/roles/aws_ec2/README.md",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+          "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+          "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+          "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+          "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+          "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+          "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+          "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+          "docs/documentation/authorization_services/topics/permission-overview.adoc",
+          "docs/documentation/server_development/topics/auth-spi.adoc",
+          "docs/guides/templates/options.adoc",
+          "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+          "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+          "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+          "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+          "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnPasswordlessAuthenticator.java",
+          "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+          "services/src/main/java/org/keycloak/organization/authentication/authenticators/browser/OrganizationAuthenticator.java",
+          "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+          "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java",
+          "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java",
+          "themes/src/main/resources/theme/base/login/login-passkeys-conditional-authenticate.ftl",
+          "themes/src/main/resources/theme/base/login/passkeys.ftl",
+          "themes/src/main/resources/theme/base/login/resources/js/passkeysConditionalAuth.js",
+          "themes/src/main/resources/theme/base/login/resources/js/webauthnAuthenticate.js",
+          "themes/src/main/resources/theme/base/login/webauthn-authenticate.ftl",
+          "themes/src/main/resources/theme/keycloak.v2/login/webauthn-authenticate.ftl"
+        ],
+        "context_files_omitted_by_generation_prompt_fit": [],
+        "context_sha256": "c20cb3bfcdfc94da87a41b28cb941346aed2e04979dabd7b00822d7950244ebd",
+        "context_truncated": true,
+        "context_utf8_bytes": 100219,
+        "estimated_context_tokens": 25007,
+        "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+        "generation_context_clipped_to_prompt_budget": false,
+        "generation_input_char_budget": 291808,
+        "generation_input_char_budget_utilization": 0.5812760445224257,
+        "generation_prompt_chars": 169621,
+        "generation_prompt_utf8_bytes": 169817,
+        "seed_packets_truncated": true,
+        "unique_context_files_exposed_to_model": 43
+      }
+    },
+    "generation_prompt_sha256": "0c7b257e7fdcb66cefec9fb6bdbccd8d315ed3ce42c9646e2f363cd5baf624eb",
+    "generation_prompt_version": "bugbunny-generation-v5",
+    "mode": "agentic",
+    "packet_count": 9,
+    "packets": {
+      "f0000:c0000-3609959d92ef": {
+        "callers": 3,
+        "definitions": 2,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 4,
+        "prompt_chars": 3781,
+        "prompt_sha256": "cedcfe0945459be0c1b2a736d88d6103aef60cfa878c6de4320ad1b4c97cf1c8",
+        "symbols": [
+          "setupReauthenticationInUsernamePasswordFormError",
+          "String",
+          "USER_SET_BEFORE_USERNAME_PASSWORD_AUTH",
+          "AuthenticatorUtils",
+          "public",
+          "final"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 11
+      },
+      "f0001:c0000-bbcae6883453": {
+        "callers": 8,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 3811,
+        "prompt_sha256": "20c3b1a74c01f805f997641637f54fe139f7a2fd81297a3338e4ae660b948831",
+        "symbols": [
+          "getUser",
+          "isConditionalPasskeysEnabled",
+          "context"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 4
+      },
+      "f0002:c0000-0c5cf07ebc35": {
+        "callers": 11,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 3,
+        "prompt_chars": 3827,
+        "prompt_sha256": "a84d7323e7dffb12195fc5b18de1cb55a4d2e31a25c13e9190af16b35b1d5ca9",
+        "symbols": [
+          "isConditionalPasskeysEnabled",
+          "getUser",
+          "fillContextForm",
+          "isPasskeysEnabled",
+          "UserModel",
+          "setup"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 5
+      },
+      "f0003:c0000-81f0f7c36018": {
+        "callers": 7,
+        "definitions": 1,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 3720,
+        "prompt_sha256": "4f247c9d2b4b23bec32df51c7b420302f18dbc5aae8e1ae3fcceac4c9f9a899b",
+        "symbols": [
+          "WebAuthnAuthenticator",
+          "shouldShowWebAuthnAuthenticators",
+          "getUser",
+          "Typically",
+          "AuthenticationFlowContext",
+          "context"
+        ],
+        "tests": 1,
+        "truncated": true,
+        "usages": 10
+      },
+      "f0004:c0000-95c9d3608ff0": {
+        "callers": 6,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 4,
+        "prompt_chars": 3792,
+        "prompt_sha256": "c6fbe49deb6e400cc5770197f09f2cf7a305134f6de220ba4d3f95a60816fcc4",
+        "symbols": [
+          "setupReauthenticationInUsernamePasswordFormError",
+          "passkeys",
+          "shouldShowWebAuthnAuthenticators",
+          "AuthenticatorUtils",
+          "AuthenticationFlowContext",
+          "org"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 10
+      },
+      "f0005:c0000-72a33adbb446": {
+        "callers": 11,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 3841,
+        "prompt_sha256": "9b1b64498b965b2d0c811b1a59bb0a8f3136a4b608c3a891ec0d7b1c48f25b94",
+        "symbols": [
+          "setupReauthenticationInUsernamePasswordFormError",
+          "getAuthenticationSession",
+          "getAuthNote",
+          "parseBoolean",
+          "form",
+          "setAttribute"
+        ],
+        "tests": 0,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0006:c0000-70de717751b1": {
+        "callers": 1,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 5,
+        "prompt_chars": 3261,
+        "prompt_sha256": "7560c869977d2c672c1e947c37f4cc26f2575930dde450b6cde25dd3ff0017f3",
+        "symbols": [
+          "assertThat",
+          "findElement",
+          "xpath",
+          "notNullValue",
+          "authentication",
+          "webauthnLoginWithDiscoverableKey_reauthentication"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0007:c0000-b3072b75f1b9": {
+        "callers": 3,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 3304,
+        "prompt_sha256": "b0ceeaf52834d220bcf1b8baf81cc570649bb510603a444dc5fc5af06c954f9e",
+        "symbols": [
+          "authentication",
+          "webauthnLoginWithDiscoverableKey_reauthentication",
+          "getVirtualAuthManager",
+          "useAuthenticator",
+          "getOptions",
+          "getWebAuthnRealmUpdater"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 3
+      },
+      "f0008:c0000-b79339fcf886": {
+        "callers": 0,
+        "definitions": 0,
+        "diagnostics": [],
+        "hypotheses": 0,
+        "imports": 2,
+        "prompt_chars": 3341,
+        "prompt_sha256": "26cfb28bf69c4cb9e99124a8a080ac96bcc5c9f801a4acd3abd8a2cc4b2bce5e",
+        "symbols": [
+          "configureTestRealm",
+          "assertThat",
+          "getPasswordInputError",
+          "nullValue",
+          "detail",
+          "logout"
+        ],
+        "tests": 2,
+        "truncated": true,
+        "usages": 6
+      }
+    },
+    "pr_metadata": {
+      "body": {
+        "included_limit_chars": 4000,
+        "original_chars": 6,
+        "serialized_chars": 8,
+        "serialized_limit_chars": 6000,
+        "sha256": "26ea0ae294881f1260ecafec008426894e80bc4d7dc1cd6557ab9169e1a803ee",
+        "truncated": false
+      },
+      "title": {
+        "included_limit_chars": 500,
+        "original_chars": 38,
+        "serialized_chars": 40,
+        "serialized_limit_chars": 1000,
+        "sha256": "0b9971731cda8ab02c3c377580b0d91769c71b9bf821a47a438ef6a7fcc6338b",
+        "truncated": false
+      }
+    },
+    "prompt_chars": 32678,
+    "provider_reported_prompt_usage_by_stage": {
+      "context_selection": {
+        "calls": 2,
+        "calls_missing_provider_reported_input_tokens": 0,
+        "calls_with_provider_reported_input_tokens": 2,
+        "provider_reported_input_tokens": 109655
+      },
+      "generation": {
+        "calls": 1,
+        "calls_missing_provider_reported_input_tokens": 1,
+        "calls_with_provider_reported_input_tokens": 0,
+        "provider_reported_input_tokens": 0
+      }
+    },
+    "selection": {
+      "batches": {
+        "b0000-da7f12003cc8": {
+          "action_counts": {
+            "list": 0,
+            "read": 11,
+            "search": 6
+          },
+          "actions_executed": 17,
+          "actions_failed": 0,
+          "additional_context_files_selected": 14,
+          "blob_read_bytes_limit": 16000000,
+          "blob_read_limit_hit": false,
+          "context_files_before_generation_prompt_fit": [
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnPasswordlessAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+            "services/src/main/java/org/keycloak/organization/authentication/authenticators/browser/OrganizationAuthenticator.java",
+            "themes/src/main/resources/theme/base/login/login-passkeys-conditional-authenticate.ftl",
+            "themes/src/main/resources/theme/base/login/passkeys.ftl",
+            "themes/src/main/resources/theme/base/login/resources/js/passkeysConditionalAuth.js",
+            "themes/src/main/resources/theme/base/login/resources/js/webauthnAuthenticate.js",
+            "themes/src/main/resources/theme/base/login/webauthn-authenticate.ftl",
+            "themes/src/main/resources/theme/keycloak.v2/login/webauthn-authenticate.ftl"
+          ],
+          "context_files_exposed_to_model": [
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnPasswordlessAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+            "services/src/main/java/org/keycloak/organization/authentication/authenticators/browser/OrganizationAuthenticator.java",
+            "themes/src/main/resources/theme/base/login/login-passkeys-conditional-authenticate.ftl",
+            "themes/src/main/resources/theme/base/login/passkeys.ftl",
+            "themes/src/main/resources/theme/base/login/resources/js/passkeysConditionalAuth.js",
+            "themes/src/main/resources/theme/base/login/resources/js/webauthnAuthenticate.js",
+            "themes/src/main/resources/theme/base/login/webauthn-authenticate.ftl",
+            "themes/src/main/resources/theme/keycloak.v2/login/webauthn-authenticate.ftl"
+          ],
+          "context_files_omitted_by_generation_prompt_fit": [],
+          "context_limit_hit": false,
+          "context_tokens_estimated": 25007,
+          "context_truncated": false,
+          "cursor_requests_rejected": 0,
+          "failed": false,
+          "file_limit_hit": false,
+          "file_limit_scope": "agentic additions; curated seed files are measured separately",
+          "final_context_chars": 100027,
+          "generation_context_clipped_to_prompt_budget": false,
+          "generation_input_char_budget": 291808,
+          "generation_input_char_budget_utilization": 0.5812760445224257,
+          "generation_prompt_chars": 169621,
+          "generation_prompt_utf8_bytes": 169817,
+          "hypotheses_final": 6,
+          "hypotheses_open_final": 4,
+          "hypotheses_rejected_final": 0,
+          "hypotheses_rejected_invalid": 0,
+          "hypotheses_resolved_final": 2,
+          "hypotheses_returned": 11,
+          "hypothesis_linked_actions": 17,
+          "largest_selector_input_char_budget_utilization": 0.528916273714223,
+          "list_hits": 0,
+          "list_page_limit_hit": false,
+          "list_pagination_unresolved": 0,
+          "max_additional_context_files": 64,
+          "mode": "agentic",
+          "prompt_sha256": "f1660a9f3d7e0c03ef01437c84cc3330f369c58cb0d3759349c4b6583b60041a",
+          "prompt_version": "bugbunny-context-selection-v7",
+          "read_lines": 1074,
+          "repository_files": 10621,
+          "repository_files_omitted_from_selector_inventory": 0,
+          "repository_files_total": 10621,
+          "repository_index_chars": 4874,
+          "repository_index_chars_by_round": [
+            4874,
+            4874
+          ],
+          "repository_index_strategy": "hierarchical_summary_v1",
+          "repository_index_tokens_estimated": 1219,
+          "repository_index_truncated": true,
+          "repository_inventory_omission_hit": false,
+          "request_cap_reached": false,
+          "request_limit_hit": false,
+          "requests_accepted": 17,
+          "requests_deduplicated": 0,
+          "requests_omitted_by_execution_cap": 0,
+          "requests_rejected": 0,
+          "requests_returned": 17,
+          "round_limit": 2,
+          "round_limit_hit": false,
+          "rounds_completed": 2,
+          "schema_sha256": "50af709cb869cc4bd1b38cd013477be274b597758a20c189c935670c50fef7b7",
+          "schema_version": "bugbunny-context-actions-v6",
+          "search_hit_limit_hit": false,
+          "search_hits": 38,
+          "search_max_offset": 100000,
+          "search_offset_limit_hit": false,
+          "search_pagination_unresolved": 0,
+          "search_scan_limit_hit": false,
+          "seed_context_chars": 34081,
+          "seed_context_chars_original": 34081,
+          "seed_context_truncated": false,
+          "selected_context_chars": 65944,
+          "selection_done": true,
+          "selector_input_char_budget": 291808,
+          "selector_input_chars_by_round": [
+            108043,
+            154342
+          ],
+          "selector_observations_truncated": false,
+          "selector_output_tokens": 16384,
+          "unique_context_files": 14
+        }
+      },
+      "failed_batches": []
+    },
+    "stats": {
+      "budget_skipped_searches": 113,
+      "callers": 50,
+      "changed_context_files_exposed_to_model": [
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+      ],
+      "chunk_coverage_complete": true,
+      "chunks": 9,
+      "context_chars": 32678,
+      "context_files_exposed_to_model": [
+        ".github/ISSUE_TEMPLATE/bug.yml",
+        ".github/scripts/ansible/roles/aws_ec2/README.md",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+        "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+        "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+        "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+        "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+        "docs/documentation/authorization_services/topics/permission-overview.adoc",
+        "docs/documentation/server_development/topics/auth-spi.adoc",
+        "docs/guides/templates/options.adoc",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+        "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+        "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+        "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+        "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+      ],
+      "context_utf8_bytes": 32870,
+      "cross_file_context_files_exposed_to_model": [
+        ".github/ISSUE_TEMPLATE/bug.yml",
+        ".github/scripts/ansible/roles/aws_ec2/README.md",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+        "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+        "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+        "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+        "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+        "docs/documentation/authorization_services/topics/permission-overview.adoc",
+        "docs/documentation/server_development/topics/auth-spi.adoc",
+        "docs/guides/templates/options.adoc",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+        "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+        "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+        "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+        "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java",
+        "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+      ],
+      "definitions": 3,
+      "estimated_context_tokens": 8173,
+      "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+      "evidence_rows_available_to_render": 143,
+      "evidence_rows_clipped_during_render": 7,
+      "evidence_rows_omitted_due_to_render_budget": 47,
+      "evidence_rows_rendered": 96,
+      "hypotheses": 0,
+      "imports": 26,
+      "largest_prompt_budget": 3845,
+      "limit_hit_counts_by_reason": {
+        "max_hits_per_symbol": 38,
+        "max_symbols_per_chunk": 4,
+        "prompt_render_budget": 8
+      },
+      "omission_counts_by_reason": {
+        "evidence_render_budget": 47,
+        "source_read_budget": 0,
+        "symbol_config_limit": 325,
+        "symbol_search_budget": 113
+      },
+      "packet_metrics": {
+        "f0000:c0000-3609959d92ef": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 946,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+            "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+            "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "evidence_rows_available_to_render": 20,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 9,
+          "evidence_rows_rendered": 11,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3845,
+          "prompt_budget_utilization": 0.9833550065019506,
+          "prompt_chars": 3781,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3803,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 7,
+          "symbol_candidates_discovered": 7,
+          "symbol_candidates_extracted": 7,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 1
+        },
+        "f0001:c0000-bbcae6883453": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 953,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "docs/documentation/server_development/topics/auth-spi.adoc",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java"
+          ],
+          "evidence_rows_available_to_render": 15,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 3,
+          "evidence_rows_rendered": 12,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.9914151925078044,
+          "prompt_chars": 3811,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3835,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 3,
+          "symbol_candidates_discovered": 3,
+          "symbol_candidates_extracted": 3,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [],
+          "symbol_render_budget_limit_hit": false,
+          "symbol_searches_selected": 3,
+          "symbol_searches_skipped_due_to_budget": 0
+        },
+        "f0002:c0000-0c5cf07ebc35": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 957,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+          ],
+          "evidence_rows_available_to_render": 20,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 8,
+          "evidence_rows_rendered": 12,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.9955775234131113,
+          "prompt_chars": 3827,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3851,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 17,
+          "symbol_candidates_discovered": 17,
+          "symbol_candidates_extracted": 17,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 11
+        },
+        "f0003:c0000-81f0f7c36018": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java"
+          ],
+          "context_files_exposed_to_model_count": 4,
+          "cross_file_context_files_exposed_to_model": [
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 3,
+          "estimated_context_tokens": 930,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java"
+          ],
+          "evidence_rows_available_to_render": 21,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 11,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.967741935483871,
+          "prompt_chars": 3720,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3740,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 20,
+          "symbol_candidates_discovered": 20,
+          "symbol_candidates_extracted": 20,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 14
+        },
+        "f0004:c0000-95c9d3608ff0": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "context_files_exposed_to_model_count": 5,
+          "cross_file_context_files_exposed_to_model": [
+            "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 4,
+          "estimated_context_tokens": 948,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "evidence_rows_available_to_render": 20,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 10,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.9864724245577523,
+          "prompt_chars": 3792,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3812,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 21,
+          "symbol_candidates_discovered": 21,
+          "symbol_candidates_extracted": 21,
+          "symbol_candidates_omitted_by_config_limit": 0,
+          "symbol_config_limit_hit": false,
+          "symbol_limit_hit_reasons": [
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 15
+        },
+        "f0005:c0000-72a33adbb446": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+            "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "context_files_exposed_to_model_count": 8,
+          "cross_file_context_files_exposed_to_model": [
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+            "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 7,
+          "estimated_context_tokens": 961,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+            "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+            "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java",
+            "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java"
+          ],
+          "evidence_rows_available_to_render": 16,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 6,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.9992195629552549,
+          "prompt_chars": 3841,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3861,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 36,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 12,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 18
+        },
+        "f0006:c0000-70de717751b1": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            ".github/scripts/ansible/roles/aws_ec2/README.md",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+            "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+            "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java"
+          ],
+          "context_files_exposed_to_model_count": 6,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            ".github/scripts/ansible/roles/aws_ec2/README.md",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+            "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+            "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 5,
+          "estimated_context_tokens": 816,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            ".github/scripts/ansible/roles/aws_ec2/README.md",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+            "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+            "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java"
+          ],
+          "evidence_rows_available_to_render": 11,
+          "evidence_rows_clipped_during_render": 0,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 11,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.8483350676378772,
+          "prompt_chars": 3261,
+          "prompt_truncated": false,
+          "prompt_utf8_bytes": 3283,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 102,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 78,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 18
+        },
+        "f0007:c0000-b3072b75f1b9": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            ".github/scripts/ansible/roles/aws_ec2/README.md",
+            "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+            "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+            "docs/guides/templates/options.adoc",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java"
+          ],
+          "context_files_exposed_to_model_count": 7,
+          "cross_file_context_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            ".github/scripts/ansible/roles/aws_ec2/README.md",
+            "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+            "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+            "docs/guides/templates/options.adoc",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 6,
+          "estimated_context_tokens": 826,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            ".github/scripts/ansible/roles/aws_ec2/README.md",
+            "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+            "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+            "docs/guides/templates/options.adoc",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java"
+          ],
+          "evidence_rows_available_to_render": 10,
+          "evidence_rows_clipped_during_render": 2,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.8595213319458896,
+          "prompt_chars": 3304,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3324,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 112,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 88,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 18
+        },
+        "f0008:c0000-b79339fcf886": {
+          "changed_file_context_exposed_to_model": true,
+          "context_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+            "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+            "docs/documentation/authorization_services/topics/permission-overview.adoc",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+          ],
+          "context_files_exposed_to_model_count": 7,
+          "cross_file_context_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+            "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+            "docs/documentation/authorization_services/topics/permission-overview.adoc",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java"
+          ],
+          "cross_file_context_files_exposed_to_model_count": 6,
+          "estimated_context_tokens": 836,
+          "estimated_context_tokens_method": "ceil(Unicode characters / 4); estimate, not tokenizer output",
+          "evidence_files_exposed_to_model": [
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+            "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+            "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+            "docs/documentation/authorization_services/topics/permission-overview.adoc",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java",
+            "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java"
+          ],
+          "evidence_rows_available_to_render": 10,
+          "evidence_rows_clipped_during_render": 1,
+          "evidence_rows_omitted_due_to_render_budget": 0,
+          "evidence_rows_rendered": 10,
+          "final_packet_truncated": false,
+          "header_truncated": false,
+          "prompt_budget_chars": 3844,
+          "prompt_budget_utilization": 0.869146722164412,
+          "prompt_chars": 3341,
+          "prompt_truncated": true,
+          "prompt_utf8_bytes": 3361,
+          "risk_section_truncated": false,
+          "source_content_chars_rendered": 937,
+          "source_excerpt_truncated": true,
+          "source_excerpt_utf8_bytes": 937,
+          "source_read_skipped_due_to_budget": false,
+          "source_section_truncated": false,
+          "symbol_candidates_after_config_limit": 24,
+          "symbol_candidates_discovered": 171,
+          "symbol_candidates_extracted": 24,
+          "symbol_candidates_omitted_by_config_limit": 147,
+          "symbol_config_limit_hit": true,
+          "symbol_limit_hit_reasons": [
+            "max_symbols_per_chunk",
+            "prompt_render_budget"
+          ],
+          "symbol_render_budget_limit_hit": true,
+          "symbol_searches_selected": 6,
+          "symbol_searches_skipped_due_to_budget": 18
+        }
+      },
+      "packets_hitting_symbol_config_limit": 4,
+      "packets_hitting_symbol_render_budget_limit": 8,
+      "prompt_budget_chars": 34597,
+      "prompt_budget_utilization": 0.9445327629563257,
+      "prompt_truncated_packets": 8,
+      "smallest_prompt_budget": 3844,
+      "source_reads_skipped_due_to_budget": 0,
+      "source_section_truncated_packets": 0,
+      "source_truncated_packets": 9,
+      "symbol_candidates_after_config_limit": 164,
+      "symbol_candidates_discovered": 489,
+      "symbol_candidates_omitted_by_config_limit": 325,
+      "symbol_searches_skipped_due_to_budget": 113,
+      "symbols": 51,
+      "tests": 9,
+      "tree_files": 10621,
+      "truncated_packets": 9,
+      "unchanged_context_files_exposed_to_model": [
+        ".github/ISSUE_TEMPLATE/bug.yml",
+        ".github/scripts/ansible/roles/aws_ec2/README.md",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlAuthenticationError.java",
+        "adapters/saml/core-public/src/main/java/org/keycloak/adapters/saml/SamlPrincipal.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/SamlDeployment.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/descriptor/parsers/SamlDescriptorIDPKeysExtractor.java",
+        "adapters/saml/core/src/main/java/org/keycloak/adapters/saml/profile/AbstractSamlAuthenticationHandler.java",
+        "adapters/saml/core/src/test/java/org/keycloak/adapters/cloned/HttpAdapterUtilsTest.java",
+        "authz/policy/common/src/main/java/org/keycloak/authorization/policy/provider/user/UserPolicyProviderFactory.java",
+        "core/src/main/java/org/keycloak/representations/docker/DockerError.java",
+        "core/src/main/java/org/keycloak/representations/idm/ConfigPropertyRepresentation.java",
+        "core/src/main/java/org/keycloak/representations/idm/UserFederationProviderFactoryRepresentation.java",
+        "docs/documentation/authorization_services/topics/permission-overview.adoc",
+        "docs/documentation/server_development/topics/auth-spi.adoc",
+        "docs/guides/templates/options.adoc",
+        "federation/ldap/src/main/java/org/keycloak/storage/ldap/mappers/msad/MSADUserAccountControlStorageMapper.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/AuthenticationSessionAdapter.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/RootAuthenticationSessionAdapter.java",
+        "model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/changes/remote/updater/authsession/RootAuthenticationSessionUpdater.java",
+        "model/jpa/src/main/java/org/keycloak/models/jpa/RealmAdapter.java",
+        "server-spi-private/src/main/java/org/keycloak/broker/provider/AbstractIdentityProvider.java",
+        "services/src/main/java/org/keycloak/authentication/DefaultAuthenticationFlow.java",
+        "test-framework/ui/src/main/java/org/keycloak/testframework/ui/page/LoginPage.java",
+        "testsuite/integration-arquillian/tests/base/src/main/java/org/keycloak/testsuite/webauthn/pages/WebAuthnAuthenticatorsList.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractChangeImportedUserPasswordsTest.java",
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/AbstractTestRealmKeycloakTest.java"
+      ],
+      "unique_changed_context_files_exposed_to_model": 9,
+      "unique_context_files_exposed_to_model": 35,
+      "unique_cross_file_context_files_exposed_to_model": 35,
+      "unique_unchanged_context_files_exposed_to_model": 26,
+      "usages": 55,
+      "whole_repo_grep_cache_hits": 12,
+      "whole_repo_grep_calls": 39,
+      "whole_repo_grep_calls_returning_configured_limit": 38
+    },
+    "unique_changed_context_files_exposed_to_model": 9,
+    "unique_effective_context_files_exposed_to_model": 43,
+    "unique_unchanged_context_files_exposed_to_model": 34,
+    "verification_batches": [],
+    "verifier_prompt_sha256": "117b6316e677942c00fce84879a8df98831d77156c94034d75def10e6431f5d1",
+    "verifier_prompt_version": "bugbunny-verifier-v4"
+  },
+  "coverage": {
+    "complete": false,
+    "completed_hunks": [],
+    "coverage_ratio": 0.0,
+    "eligible_files": 9,
+    "eligible_hunks": 16,
+    "excluded_files": [],
+    "failed_hunks": [
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java:46:46:h000",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java:210:210:h001",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java:35:35:h000",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java:101:101:h000",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java:88:88:h000",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java:11:11:h000",
+      "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java:39:40:h001",
+      "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java:14:14:h000",
+      "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java:107:110:h001",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java:23:23:h000",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java:184:185:h001",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java:254:255:h002",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java:25:25:h000",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java:245:246:h001",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java:14:14:h000",
+      "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java:131:140:h001"
+    ],
+    "total_files": 9,
+    "total_hunks": 16
+  },
+  "diagnostics": [
+    {
+      "batch_id": "b0000-da7f12003cc8",
+      "chunk_ids": [
+        "f0000:c0000-3609959d92ef",
+        "f0001:c0000-bbcae6883453",
+        "f0002:c0000-0c5cf07ebc35",
+        "f0003:c0000-81f0f7c36018",
+        "f0004:c0000-95c9d3608ff0",
+        "f0005:c0000-72a33adbb446",
+        "f0006:c0000-70de717751b1",
+        "f0007:c0000-b3072b75f1b9",
+        "f0008:c0000-b79339fcf886"
+      ],
+      "error": "_BackendFailure: Martian Gateway returned HTTP 529: Service temporarily overloaded. Please try again later.",
+      "stage": "generation"
+    }
+  ],
+  "diff": {
+    "additions": 407,
+    "bytes": 48658,
+    "chunk_plan_complete": true,
+    "chunks": 9,
+    "commentable_ranges": {
+      "LEFT": {
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java": [
+          [
+            58,
+            58
+          ],
+          [
+            222,
+            226
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java": [
+          [
+            47,
+            47
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java": [
+          [
+            113,
+            116
+          ],
+          [
+            137,
+            138
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java": [
+          [
+            100,
+            100
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java": [],
+        "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java": [],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java": [
+          [
+            196,
+            196
+          ],
+          [
+            199,
+            199
+          ],
+          [
+            210,
+            210
+          ]
+        ],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java": [],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java": [
+          [
+            143,
+            143
+          ],
+          [
+            156,
+            156
+          ],
+          [
+            168,
+            171
+          ],
+          [
+            182,
+            182
+          ]
+        ]
+      },
+      "RIGHT": {
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/AbstractUsernameFormAuthenticator.java": [
+          [
+            58,
+            58
+          ],
+          [
+            222,
+            222
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernameForm.java": [
+          [
+            47,
+            47
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/UsernamePasswordForm.java": [
+          [
+            113,
+            116
+          ],
+          [
+            137,
+            138
+          ],
+          [
+            160,
+            163
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnAuthenticator.java": [
+          [
+            100,
+            101
+          ],
+          [
+            124,
+            131
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/browser/WebAuthnConditionalUIAuthenticator.java": [
+          [
+            23,
+            23
+          ],
+          [
+            52,
+            54
+          ],
+          [
+            63,
+            67
+          ]
+        ],
+        "services/src/main/java/org/keycloak/authentication/authenticators/util/AuthenticatorUtils.java": [
+          [
+            26,
+            26
+          ],
+          [
+            35,
+            36
+          ],
+          [
+            122,
+            134
+          ]
+        ],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysOrganizationAuthenticationTest.java": [
+          [
+            35,
+            35
+          ],
+          [
+            197,
+            197
+          ],
+          [
+            200,
+            200
+          ],
+          [
+            211,
+            211
+          ],
+          [
+            267,
+            321
+          ]
+        ],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernameFormTest.java": [
+          [
+            37,
+            37
+          ],
+          [
+            258,
+            321
+          ]
+        ],
+        "testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/webauthn/passwordless/PasskeysUsernamePasswordFormTest.java": [
+          [
+            26,
+            26
+          ],
+          [
+            35,
+            35
+          ],
+          [
+            37,
+            37
+          ],
+          [
+            41,
+            41
+          ],
+          [
+            51,
+            54
+          ],
+          [
+            73,
+            73
+          ],
+          [
+            152,
+            152
+          ],
+          [
+            165,
+            165
+          ],
+          [
+            167,
+            168
+          ],
+          [
+            177,
+            279
+          ],
+          [
+            282,
+            282
+          ],
+          [
+            285,
+            344
+          ],
+          [
+            366,
+            389
+          ],
+          [
+            396,
+            419
+          ],
+          [
+            423,
+            432
+          ]
+        ]
+      }
+    },
+    "deletions": 24,
+    "files": 9,
+    "generation_batches": 1,
+    "hunks": 16,
+    "merge_base_sha": "30f804af450dec523909a52f2a4b97302d27f5cc",
+    "sha256": "6287a15221c9f5fe60c2816e7284e0396a2c68dd7e06a7a4984c52e28afabfaa"
+  },
+  "duration_ms": 111513,
+  "findings": [],
+  "pr": {
+    "base_ref": "improve-auth-user-experience",
+    "base_sha": "30f804af450dec523909a52f2a4b97302d27f5cc",
+    "body": "Test 1",
+    "clone_url": "https://github.com/code-review-benchmark/keycloak__keycloak-greptile__augment__PR1__20260122.git",
+    "head_ref": "pr-1",
+    "head_sha": "3214b188de808fdb0fff335556b686f1b0a63218",
+    "number": 1,
+    "owner": "code-review-benchmark",
+    "repo": "keycloak__keycloak-greptile__augment__PR1__20260122",
+    "resolved_at": "2026-08-24T04:12:23.260427Z",
+    "title": "Fixing Re-authentication with passkeys",
+    "url": "https://github.com/code-review-benchmark/keycloak__keycloak-greptile__augment__PR1__20260122/pull/1"
+  },
+  "raw_findings": [],
+  "rejected_findings": [],
+  "run_id": "d99d9436300a00929fbd86c5",
+  "runtime": {
+    "generation": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 50000,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": true,
+        "temperature": 0.0,
+        "temperature_applied": false,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": true,
+      "requested_model": "anthropic/claude-fable-5",
+      "requested_reasoning_effort": "high",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    },
+    "verification": {
+      "api_base": {
+        "configured": true,
+        "host": "api.withmartian.com",
+        "sha256": "f9f8d704b5ab712a7a6374e56341147475deed4a88e359afbc04b63f942762fb"
+      },
+      "auth_mode": "martian_dotenv",
+      "credential_configured": true,
+      "limits": {
+        "max_output_tokens": 32768,
+        "max_output_tokens_per_call_override": true,
+        "max_output_tokens_transport_applied": true,
+        "max_retries": 1,
+        "reasoning_effort_parameter_will_be_sent": false,
+        "temperature": 0.0,
+        "temperature_applied": true,
+        "timeout_seconds": 900
+      },
+      "provider": "anthropic",
+      "reasoning_effort_parameter_will_be_sent": false,
+      "requested_model": "anthropic/claude-opus-4-5",
+      "requested_reasoning_effort": "low",
+      "transport": "martian_http",
+      "transport_version": "0.28.1"
+    }
+  },
+  "schema_version": "bugbunny-review-v2",
+  "started_at": "2026-08-24T05:46:03.190593Z",
+  "status": "failed",
+  "tool": "bugbunny",
+  "tool_version": "0.7.2",
+  "validated_findings": []
+}
