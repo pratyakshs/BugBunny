@@ -28,6 +28,7 @@ from typing import Any, Literal, Protocol
 from bugbunny.gateway import GatewayError, GatewayResult
 from bugbunny.models import CallRecord
 from bugbunny.repository import GrepHit, RepositoryLimitError
+from bugbunny.util import git_lines
 
 EXPLORATION_PROMPT_VERSION = "bugbunny-context-selection-v7"
 EXPLORATION_SCHEMA_VERSION = "bugbunny-context-actions-v6"
@@ -50,6 +51,19 @@ _DEFAULT_MAX_SEARCH_OFFSET = 100_000
 _MAX_SELECTOR_OUTPUT_TOKENS = 16_384
 _MAX_SELECTOR_RESPONSE_ACTIONS = 64
 _MAX_BLOB_READ_BYTES = 256_000_000
+# Statuses that make re-requesting the same action futile.  Transient failures
+# ("action_timeout", "read_failed", "search_failed") are deliberately absent so
+# the selector may retry the identical action in a later round.
+_PERMANENT_ACTION_FAILURES = frozenset(
+    {
+        "path_not_in_inventory",
+        "line_limit",
+        "binary_content",
+        "blob_limit",
+        "file_limit",
+        "observation_limit",
+    }
+)
 ActionName = Literal["list", "read", "search"]
 
 
@@ -110,7 +124,10 @@ class ExplorationAction:
     hypothesis_id: str | None = None
 
     @property
-    def key(self) -> tuple[str, str, str, int, int, str]:
+    def key(self) -> tuple[str, str, str, int, int]:
+        # The hypothesis link is planning metadata, not retrieval semantics:
+        # two otherwise-identical retrievals must deduplicate regardless of
+        # which hypothesis motivated them.
         canonical_start = 1 if self.action == "search" and self.start_line is None else 0
         return (
             self.action,
@@ -118,7 +135,6 @@ class ExplorationAction:
             self.query,
             self.start_line or canonical_start,
             self.end_line or 0,
-            self.hypothesis_id or "",
         )
 
 
@@ -394,7 +410,13 @@ def _safe_path(value: str, *, allow_empty: bool) -> str:
         if allow_empty:
             return ""
         raise ExplorationError("action path must not be empty")
-    if len(value) > _MAX_ACTION_PATH_CHARS or "\x00" in value or "\\" in value:
+    # Control characters (including newlines and DEL) could forge or corrupt
+    # observation header lines, so hostile file names are rejected outright.
+    if (
+        len(value) > _MAX_ACTION_PATH_CHARS
+        or "\\" in value
+        or any(ord(char) < 0x20 or ord(char) == 0x7F for char in value)
+    ):
         raise ExplorationError("action path is unsafe")
     path = PurePosixPath(value)
     if path.is_absolute() or ".." in path.parts or not path.parts:
@@ -543,7 +565,10 @@ def _selector_payload(
         )
 
     accepted: list[ExplorationAction] = []
-    rejected = max(0, len(requests) - request_limit)
+    # Requests beyond the execution cap are reported separately as
+    # requests_omitted_by_execution_cap; counting them here as rejections
+    # would double-count them in the request arithmetic.
+    rejected = 0
     for raw in requests[:request_limit]:
         try:
             if (
@@ -816,7 +841,6 @@ async def explore_repository_context(
         inventory, index_limit
     )
     selector_output_tokens = min(max_output_tokens, _MAX_SELECTOR_OUTPUT_TOKENS)
-    selector_output_chars = selector_output_tokens * 4
     schema = exploration_action_schema(requests_per_round, search_max_offset)
 
     metrics = _Metrics()
@@ -826,7 +850,7 @@ async def explore_repository_context(
     observations: list[str] = []
     selected_evidence: list[str] = []
     selected_files: set[str] = set()
-    seen_actions: set[tuple[str, str, str, int, int, str]] = set()
+    seen_actions: set[tuple[str, str, str, int, int]] = set()
     hypothesis_state: list[dict[str, str]] = []
     hypotheses_returned = 0
     hypotheses_rejected = 0
@@ -851,6 +875,7 @@ async def explore_repository_context(
     list_next_cursors: dict[str, str | None] = {}
     search_offset_limit_hit = False
     search_scan_limit_hit = False
+    blob_bytes_read = 0
     seed_separator_chars = 2 if bounded_seed else 0
     index_chars_by_round: list[int] = []
     selector_input_chars_by_round: list[int] = []
@@ -977,29 +1002,28 @@ async def explore_repository_context(
                 failed = True
                 break
         selector_input_chars_by_round.append(selector_input_chars)
+        # Deliberately no outer timer here: an outer wait_for would also time
+        # the wait for the engine's per-review semaphore, the global gateway
+        # semaphore, and the transport's internal bounded retries, so a merely
+        # queued selector under benchmark load would burn its budget and fail
+        # the whole batch as a spurious timeout.  The gateway's own per-attempt
+        # HTTP timeouts and finite retry/backoff already bound this await.
         try:
-            result = await asyncio.wait_for(
-                gateway.complete_json(
-                    prompt,
-                    model=model,
-                    stage="context_selection",
-                    schema_name="bugbunny_context_selection",
-                    schema=schema,
-                    chunk_id=batch_id,
-                    reasoning_effort=reasoning_effort,
-                    system_prompt=EXPLORATION_SYSTEM_PROMPT,
-                    max_output_tokens=selector_output_tokens,
-                ),
-                timeout=timeout_seconds,
+            result = await gateway.complete_json(
+                prompt,
+                model=model,
+                stage="context_selection",
+                schema_name="bugbunny_context_selection",
+                schema=schema,
+                chunk_id=batch_id,
+                reasoning_effort=reasoning_effort,
+                system_prompt=EXPLORATION_SYSTEM_PROMPT,
+                max_output_tokens=selector_output_tokens,
             )
             calls.append(result.call)
         except GatewayError as exc:
             calls.append(exc.call)
             diagnostics.append({"stage": "context_selection", "code": "gateway_error"})
-            failed = True
-            break
-        except TimeoutError:
-            diagnostics.append({"stage": "context_selection", "code": "timeout"})
             failed = True
             break
         except Exception:
@@ -1008,16 +1032,10 @@ async def explore_repository_context(
             break
 
         rounds_completed += 1
-        serialized_payload = json.dumps(
-            result.payload,
-            ensure_ascii=False,
-            sort_keys=True,
-            separators=(",", ":"),
-        )
-        if len(serialized_payload) > selector_output_chars:
-            diagnostics.append({"stage": "context_selection", "code": "output_limit"})
-            failed = True
-            break
+        # No serialized-size heuristic here: the transport already caps
+        # max_output_tokens and the schema caps maxItems, so a crude
+        # chars-per-token guess would only reject valid, schema-conforming
+        # responses.
         try:
             (
                 actions,
@@ -1048,7 +1066,7 @@ async def explore_repository_context(
         request_cap_reached = (
             request_cap_reached or len(result.payload["requests"]) >= requests_per_round
         )
-        request_limit_hit = (
+        request_limit_hit = request_limit_hit or (
             len(result.payload["requests"]) >= requests_per_round and not selection_done
         )
         round_search_cursors = dict(search_next_cursors)
@@ -1081,10 +1099,17 @@ async def explore_repository_context(
                     metrics.cursor_requests_rejected += 1
                     diagnostics.append({"stage": "context_action", "code": "invalid_list_cursor"})
                     continue
-            seen_actions.add(action.key)
             metrics.requests_accepted += 1
+            # Reserve the "\n\n" separator that will join this evidence to the
+            # blocks already selected, so the assembled context cannot exceed
+            # max_context_chars and trigger the defensive final clip.
+            evidence_separator_chars = 2 if selected_evidence else 0
             remaining_chars = (
-                max_context_chars - len(bounded_seed) - seed_separator_chars - selected_chars
+                max_context_chars
+                - len(bounded_seed)
+                - seed_separator_chars
+                - selected_chars
+                - evidence_separator_chars
             )
             if remaining_chars <= 0:
                 context_truncated = True
@@ -1101,13 +1126,19 @@ async def explore_repository_context(
                 read_lines=read_lines,
                 read_chars=min(read_chars, remaining_chars),
                 blob_read_bytes=blob_read_bytes,
+                blob_bytes_read=blob_bytes_read,
                 search_hits=search_hits,
                 search_max_offset=search_max_offset,
                 timeout_seconds=timeout_seconds,
             )
+            blob_bytes_read += operation_metrics.get("blob_bytes", 0)
             if status != "ok":
                 metrics.actions_failed += 1
-                metrics.requests_rejected += 1
+                # A transient failure ("action_timeout", "read_failed",
+                # "search_failed") leaves the key retryable in later rounds;
+                # only completed or permanently futile actions are recorded.
+                if status in _PERMANENT_ACTION_FAILURES:
+                    seen_actions.add(action.key)
                 diagnostics.append({"stage": "context_action", "code": status})
                 if status == "file_limit":
                     file_limit_hit = True
@@ -1117,6 +1148,7 @@ async def explore_repository_context(
                     context_truncated = True
                     context_limit_hit = True
                 continue
+            seen_actions.add(action.key)
             metrics.actions_executed += 1
             action_counts[action.action] += 1
             metrics.read_lines += operation_metrics.get("read_lines", 0)
@@ -1288,6 +1320,7 @@ async def explore_repository_context(
         "search_offset_limit_hit": search_offset_limit_hit,
         "search_scan_limit_hit": search_scan_limit_hit,
         "blob_read_limit_hit": blob_read_limit_hit,
+        "blob_bytes_read": blob_bytes_read,
         "selection_done": selection_done,
         "failed": failed,
     }
@@ -1305,6 +1338,7 @@ async def _execute_action(
     read_lines: int,
     read_chars: int,
     blob_read_bytes: int,
+    blob_bytes_read: int,
     search_hits: int,
     search_max_offset: int,
     timeout_seconds: int,
@@ -1357,6 +1391,10 @@ async def _execute_action(
         assert action.start_line is not None and action.end_line is not None
         if action.end_line - action.start_line + 1 > read_lines:
             return "", set(), {}, "line_limit"
+        # context_blob_read_bytes is a cumulative budget for the whole
+        # exploration; refuse further reads once it is spent.
+        if blob_bytes_read >= blob_read_bytes:
+            return "", set(), {}, "blob_limit"
         try:
             source = await asyncio.wait_for(
                 asyncio.to_thread(
@@ -1373,9 +1411,12 @@ async def _execute_action(
             return "", set(), {}, "blob_limit"
         except Exception:
             return "", set(), {}, "read_failed"
+        read_bytes = len(source.encode("utf-8"))
+        if blob_bytes_read + read_bytes > blob_read_bytes:
+            return "", set(), {"blob_bytes": read_bytes}, "blob_limit"
         if "\x00" in source:
-            return "", set(), {}, "binary_content"
-        rows = source.splitlines()
+            return "", set(), {"blob_bytes": read_bytes}, "binary_content"
+        rows = git_lines(source)
         start = action.start_line
         end = min(action.end_line, len(rows))
         if start > len(rows):
@@ -1389,7 +1430,11 @@ async def _execute_action(
         return (
             rendered,
             {action.path} if included_source_lines else set(),
-            {"read_lines": included_source_lines, "truncated": int(truncated)},
+            {
+                "read_lines": included_source_lines,
+                "truncated": int(truncated),
+                "blob_bytes": read_bytes,
+            },
             "ok",
         )
 

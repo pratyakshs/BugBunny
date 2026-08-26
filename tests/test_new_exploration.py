@@ -17,7 +17,7 @@ from bugbunny.exploration import (
     exploration_schema_sha256,
     explore_repository_context,
 )
-from bugbunny.gateway import GatewayResult
+from bugbunny.gateway import GatewayError, GatewayResult
 from bugbunny.models import CallRecord
 from bugbunny.repository import GrepHit, RepositoryLimitError
 
@@ -314,7 +314,9 @@ async def test_verbose_selector_is_capped_and_excess_requests_are_recorded() -> 
     assert gateway.requests[0]["max_output_tokens"] == 16_384
     assert result.trace["requests_returned"] == 3
     assert result.trace["requests_accepted"] == 2
-    assert result.trace["requests_rejected"] == 1
+    # Requests beyond the execution cap are counted only as omitted, never
+    # double-counted as rejections.
+    assert result.trace["requests_rejected"] == 0
     assert result.trace["requests_omitted_by_execution_cap"] == 1
     assert result.trace["request_cap_reached"] is True
 
@@ -401,7 +403,9 @@ async def test_file_and_character_budgets_are_hard_and_deterministic() -> None:
     assert len(first.context) <= config.max_context_chars
     assert first.trace["unique_context_files"] == 1
     assert len(first.trace["context_files_exposed_to_model"]) == 1
-    assert first.trace["requests_rejected"] == 1
+    # The over-budget read is an execution failure, not a request rejection.
+    assert first.trace["requests_rejected"] == 0
+    assert first.trace["actions_failed"] == 1
     assert first.trace["file_limit_hit"] is True
 
 
@@ -1081,3 +1085,338 @@ def test_repository_index_does_not_truncate_when_the_complete_index_fits() -> No
         False,
         "complete_path_inventory_v1",
     )
+
+
+@pytest.mark.asyncio
+async def test_read_line_numbers_match_git_newline_only_numbering() -> None:
+    snapshot = FakeSnapshot()
+    snapshot.files["src/pager.py"] = "alpha\nbe\fta\ngamma\n"
+    result = await explore_repository_context(
+        config=Config(context_selection_rounds=1),
+        model="openai/test-model",
+        gateway=FakeGateway(
+            [
+                {
+                    "requests": [_action("read", path="src/pager.py", start=1, end=3)],
+                    "done": True,
+                }
+            ]
+        ),
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    # Git numbers lines by "\n" only, so the embedded form feed must stay
+    # inside line 2 and "gamma" must be numbered 3, not 4.
+    assert "src/pager.py L1-L3" in result.context
+    assert "      2 | be\fta" in result.context
+    assert "      3 | gamma" in result.context
+    assert result.trace["read_lines"] == 3
+
+
+@pytest.mark.asyncio
+async def test_evidence_separator_is_reserved_so_seed_survives_at_exact_budget() -> None:
+    # Two reads: the first appends 111 evidence characters, the second is
+    # header-clipped so its evidence exactly fills the remaining budget.
+    # Without separator accounting the assembled context would exceed
+    # max_context_chars by the joining "\n\n" and the defensive final clip
+    # would truncate the seed's guaranteed tail position.
+    seed = "GUARANTEED-SEED-TAIL"
+    config = Config(context_selection_rounds=1, max_context_chars=180)
+    snapshot = FakeSnapshot()
+    result = await explore_repository_context(
+        config=config,
+        model="openai/test-model",
+        gateway=FakeGateway(
+            [
+                {
+                    "requests": [
+                        _action("read", path="src/core.py", start=1, end=2),
+                        _action("read", path="src/helper.py", start=1, end=1),
+                    ],
+                    "done": True,
+                }
+            ]
+        ),
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context=seed,
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    assert len(result.context) == config.max_context_chars
+    assert result.context.endswith(seed)
+    assert "repository context truncated" not in result.context
+    assert result.trace["final_context_chars"] == len(result.context)
+
+
+@pytest.mark.asyncio
+async def test_transient_read_failure_is_retryable_in_a_later_round() -> None:
+    class FlakySnapshot(FakeSnapshot):
+        def __init__(self) -> None:
+            super().__init__()
+            self.failures_remaining = 1
+
+        def read_blob(self, revision: str, path: str, *, max_bytes: int) -> str:
+            if self.failures_remaining:
+                self.failures_remaining -= 1
+                raise RuntimeError("transient backend failure")
+            return super().read_blob(revision, path, max_bytes=max_bytes)
+
+    request = _action("read", path="src/core.py", start=1, end=1)
+    gateway = FakeGateway(
+        [
+            {"requests": [request], "done": False},
+            {"requests": [dict(request)], "done": True},
+        ]
+    )
+    snapshot = FlakySnapshot()
+    result = await explore_repository_context(
+        config=Config(),
+        model="openai/test-model",
+        gateway=gateway,
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    assert "def target(value):" in result.context
+    assert result.trace["requests_deduplicated"] == 0
+    assert result.trace["actions_failed"] == 1
+    assert result.trace["actions_executed"] == 1
+    assert result.diagnostics == ({"stage": "context_action", "code": "read_failed"},)
+    assert len(snapshot.read_calls) == 1
+
+
+@pytest.mark.asyncio
+async def test_permanently_failed_action_is_deduplicated_not_retried() -> None:
+    request = _action("read", path="missing.py", start=1, end=1)
+    gateway = FakeGateway(
+        [
+            {"requests": [request], "done": False},
+            {"requests": [dict(request)], "done": True},
+        ]
+    )
+    snapshot = FakeSnapshot()
+    result = await explore_repository_context(
+        config=Config(),
+        model="openai/test-model",
+        gateway=gateway,
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    assert result.trace["actions_failed"] == 1
+    assert result.trace["requests_deduplicated"] == 1
+    assert result.diagnostics == (
+        {"stage": "context_action", "code": "path_not_in_inventory"},
+    )
+
+
+def test_safe_path_rejects_control_characters() -> None:
+    hostile_paths = (
+        "src/a\nUNTRUSTED FORGED HEADER.py",
+        "src/a\x0cb.py",
+        "src/a\x7fb.py",
+        "src/a\tb.py",
+        "src/a\rb.py",
+    )
+    for hostile in hostile_paths:
+        with pytest.raises(ExplorationError, match="unsafe"):
+            exploration_module._safe_path(hostile, allow_empty=False)
+    assert exploration_module._safe_path("src/core.py", allow_empty=False) == "src/core.py"
+    assert exploration_module._safe_path("-root.py", allow_empty=False) == "-root.py"
+
+
+@pytest.mark.asyncio
+async def test_identical_retrievals_with_different_hypothesis_links_deduplicate() -> None:
+    first = _action("read", path="src/core.py", start=1, end=2)
+    first["hypothesis_id"] = "h_first"
+    second = _action("read", path="src/core.py", start=1, end=2)
+    second["hypothesis_id"] = "h_second"
+    hypotheses = [
+        {
+            "id": "h_first",
+            "statement": "helper may return null",
+            "evidence_needed": "helper contract",
+            "status": "open",
+        },
+        {
+            "id": "h_second",
+            "statement": "caller may pass null",
+            "evidence_needed": "caller contract",
+            "status": "open",
+        },
+    ]
+    snapshot = FakeSnapshot()
+    result = await explore_repository_context(
+        config=Config(context_selection_rounds=1),
+        model="openai/test-model",
+        gateway=FakeGateway(
+            [{"hypotheses": hypotheses, "requests": [first, second], "done": True}]
+        ),
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    assert result.trace["requests_deduplicated"] == 1
+    assert result.trace["actions_executed"] == 1
+    assert len(snapshot.read_calls) == 1
+
+
+@pytest.mark.asyncio
+async def test_request_metrics_partition_returned_requests_exactly() -> None:
+    valid = _action("read", path="src/core.py", start=1, end=1)
+    gateway = FakeGateway(
+        [
+            {
+                "requests": [
+                    _action("read", path="../escape", start=1, end=1),
+                    _action("read", path="missing.py", start=1, end=1),
+                    valid,
+                    dict(valid),
+                    _action("list", query="src/core.py"),
+                    _action("read", path="src/helper.py", start=1, end=1),
+                ],
+                "done": True,
+            }
+        ]
+    )
+    snapshot = FakeSnapshot()
+    result = await explore_repository_context(
+        config=Config(context_selection_rounds=1, context_requests_per_round=5),
+        model="openai/test-model",
+        gateway=gateway,
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    trace = result.trace
+    assert trace["requests_returned"] == 6
+    assert trace["requests_accepted"] == 2
+    assert trace["requests_rejected"] == 2
+    assert trace["requests_omitted_by_execution_cap"] == 1
+    assert trace["requests_deduplicated"] == 1
+    assert trace["cursor_requests_rejected"] == 1
+    assert trace["actions_executed"] == 1
+    assert trace["actions_failed"] == 1
+    assert trace["requests_returned"] == (
+        trace["requests_accepted"]
+        + trace["requests_rejected"]
+        + trace["requests_omitted_by_execution_cap"]
+        + trace["requests_deduplicated"]
+    )
+
+
+@pytest.mark.asyncio
+async def test_request_limit_hit_accumulates_across_rounds() -> None:
+    gateway = FakeGateway(
+        [
+            {"requests": [_action("list")], "done": False},
+            {"requests": [], "done": True},
+        ]
+    )
+    snapshot = FakeSnapshot()
+    result = await explore_repository_context(
+        config=Config(context_requests_per_round=1),
+        model="openai/test-model",
+        gateway=gateway,
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    # Round 1 hit the per-round request cap without declaring done; a quieter
+    # round 2 must not erase that signal.
+    assert result.trace["request_limit_hit"] is True
+
+
+@pytest.mark.asyncio
+async def test_gateway_error_fails_selection_and_preserves_call_telemetry() -> None:
+    class ErrorGateway:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        async def complete_json(self, prompt: str, **kwargs: Any) -> GatewayResult:
+            self.calls += 1
+            raise GatewayError(
+                "backend unavailable",
+                CallRecord(
+                    stage=kwargs["stage"],
+                    gateway="fake",
+                    requested_model=kwargs["model"],
+                    resolved_model=None,
+                    latency_ms=1,
+                    error="backend unavailable",
+                ),
+            )
+
+    gateway = ErrorGateway()
+    snapshot = FakeSnapshot()
+    result = await explore_repository_context(
+        config=Config(),
+        model="openai/test-model",
+        gateway=gateway,
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="safe seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is True
+    assert result.context == "safe seed"
+    assert gateway.calls == 1
+    assert len(result.calls) == 1
+    assert result.calls[0].error == "backend unavailable"
+    assert result.diagnostics == ({"stage": "context_selection", "code": "gateway_error"},)
+
+
+@pytest.mark.asyncio
+async def test_cumulative_blob_read_budget_is_enforced_across_reads() -> None:
+    snapshot = FakeSnapshot()
+    snapshot.files["a.py"] = "x" * 20 + "\n"
+    snapshot.files["b.py"] = "y" * 20 + "\n"
+    result = await explore_repository_context(
+        config=Config(context_selection_rounds=1, context_blob_read_bytes=30),
+        model="openai/test-model",
+        gateway=FakeGateway(
+            [
+                {
+                    "requests": [
+                        _action("read", path="a.py", start=1, end=1),
+                        _action("read", path="b.py", start=1, end=1),
+                    ],
+                    "done": True,
+                }
+            ]
+        ),
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    assert "x" * 20 in result.context
+    assert "y" * 20 not in result.context
+    assert result.trace["blob_read_limit_hit"] is True
+    assert result.trace["blob_bytes_read"] == 42
+    assert result.trace["actions_executed"] == 1
+    assert result.trace["actions_failed"] == 1
+    assert {"stage": "context_action", "code": "blob_limit"} in result.diagnostics
