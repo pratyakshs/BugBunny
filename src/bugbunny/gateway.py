@@ -11,7 +11,7 @@ import subprocess
 import tempfile
 import time
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
@@ -181,19 +181,40 @@ def _dotenv_value(path: Path, name: str) -> str | None:
         if not separator or key.strip() != name:
             continue
         value = raw_value.strip()
-        if value[:1] == value[-1:] and value[:1] in {"'", '"'}:
+        if value[:1] in {"'", '"'}:
             if value.startswith('"'):
+                # Scan past backslash escapes so json.loads parses exactly the
+                # quoted span; a trailing comment must not join the value.
+                end = None
+                index = 1
+                while index < len(value):
+                    if value[index] == "\\":
+                        index += 2
+                        continue
+                    if value[index] == '"':
+                        end = index
+                        break
+                    index += 1
+                if end is None:
+                    raise RuntimeError(f"invalid quoted {name} in {path} at line {line_number}")
                 try:
-                    parsed = json.loads(value)
+                    parsed = json.loads(value[: end + 1])
                 except json.JSONDecodeError as exc:
                     raise RuntimeError(
                         f"invalid quoted {name} in {path} at line {line_number}"
                     ) from exc
                 if not isinstance(parsed, str):
                     raise RuntimeError(f"invalid {name} in {path} at line {line_number}")
-                value = parsed
+                unquoted = parsed
             else:
-                value = value[1:-1]
+                end = value.find("'", 1)
+                if end < 0:
+                    raise RuntimeError(f"invalid quoted {name} in {path} at line {line_number}")
+                unquoted = value[1:end]
+            remainder = value[end + 1 :]
+            if remainder.strip() and not re.fullmatch(r"\s+#.*", remainder):
+                raise RuntimeError(f"invalid quoted {name} in {path} at line {line_number}")
+            value = unquoted
         else:
             value = re.split(r"\s+#", value, maxsplit=1)[0].rstrip()
         if not value:
@@ -239,8 +260,8 @@ class GatewayConfig:
     def resolved_api_key(self) -> str | None:
         if self.api_key is not None:
             return self.api_key
-        if self.api_key_env:
-            return os.environ.get(self.api_key_env)
+        if self.api_key_env and (value := os.environ.get(self.api_key_env)):
+            return value
         if value := os.environ.get(MARTIAN_API_KEY_ENV):
             return value
         if self.dotenv_path is not None:
@@ -267,7 +288,7 @@ class GatewayConfig:
         else:
             if self.api_key is not None:
                 auth_mode = "explicit_api_key"
-            elif self.api_key_env:
+            elif self.api_key_env and os.environ.get(self.api_key_env):
                 auth_mode = "configured_environment"
             elif os.environ.get(MARTIAN_API_KEY_ENV):
                 auth_mode = "martian_environment"
@@ -471,6 +492,11 @@ def _validate_json_schema(value: Any, schema: Mapping[str, Any], *, path: str = 
             raise ResponseFormatError(f"{path} is shorter than minLength")
         if isinstance(maximum, int) and len(value) > maximum:
             raise ResponseFormatError(f"{path} is longer than maxLength")
+        pattern = schema.get("pattern")
+        # JSON-Schema pattern semantics are a search; schemas that mean a full
+        # match anchor themselves.
+        if isinstance(pattern, str) and not re.search(pattern, value):
+            raise ResponseFormatError(f"{path} does not match required pattern")
     elif isinstance(value, (int, float)) and not isinstance(value, bool):
         if not math.isfinite(float(value)):
             raise ResponseFormatError(f"{path} must be finite")
@@ -621,9 +647,14 @@ def _martian_retry_delay(response: httpx.Response, attempt: int) -> float:
     retry_after = response.headers.get("Retry-After")
     if retry_after:
         try:
-            return min(max(float(retry_after), 0.0), 30.0)
+            parsed = float(retry_after)
         except ValueError:
-            pass
+            parsed = None
+        # float() accepts "nan"/"inf" and NaN survives the min/max clamp, so a
+        # non-finite header would become an unbounded asyncio.sleep holding a
+        # global concurrency slot.
+        if parsed is not None and math.isfinite(parsed):
+            return min(max(parsed, 0.0), 30.0)
     return float(min(2**attempt, 8))
 
 
@@ -1096,32 +1127,55 @@ class ModelGateway:
     ) -> _BackendResult:
         combined_prompt = f"{system_prompt.rstrip()}\n\n{prompt}" if system_prompt else prompt
         last_error: BaseException | None = None
+        failure_backend: _BackendResult | None = None
+        failure_sha256: str | None = None
         retry_errors: list[str] = []
         for attempt in range(self.config.max_retries + 1):
             try:
-                result = await self._codex_attempt(
+                result, response_sha256 = await self._codex_attempt(
                     combined_prompt,
                     model=model,
                     schema=schema,
                     reasoning_effort=reasoning_effort,
                 )
-                _validate_json_schema(result.payload, schema)
+            except _BackendFailure as exc:
+                last_error = exc.error
+                failure_backend = exc.backend
+                failure_sha256 = exc.response_sha256
+                retry_errors.append(_safe_error(exc.error, ()))
+                continue
             except (OSError, TimeoutError, ResponseFormatError, RuntimeError) as exc:
                 last_error = exc
+                failure_backend = None
+                failure_sha256 = None
                 retry_errors.append(_safe_error(exc, ()))
-            else:
-                return _BackendResult(
-                    payload=result.payload,
-                    resolved_model=result.resolved_model,
-                    input_tokens=result.input_tokens,
-                    output_tokens=result.output_tokens,
-                    cached_input_tokens=result.cached_input_tokens,
-                    cost_usd=result.cost_usd,
-                    attempt_count=attempt + 1,
-                    retry_errors=tuple(retry_errors),
-                )
+                continue
+            try:
+                _validate_json_schema(result.payload, schema)
+            except ResponseFormatError as exc:
+                last_error = exc
+                failure_backend = replace(result, payload={})
+                failure_sha256 = response_sha256
+                retry_errors.append(_safe_error(exc, ()))
+                continue
+            return _BackendResult(
+                payload=result.payload,
+                resolved_model=result.resolved_model,
+                input_tokens=result.input_tokens,
+                output_tokens=result.output_tokens,
+                cached_input_tokens=result.cached_input_tokens,
+                cost_usd=result.cost_usd,
+                attempt_count=attempt + 1,
+                retry_errors=tuple(retry_errors),
+            )
         assert last_error is not None
-        raise _BackendFailure(last_error, self.config.max_retries + 1, retry_errors) from last_error
+        raise _BackendFailure(
+            last_error,
+            self.config.max_retries + 1,
+            retry_errors,
+            backend=failure_backend,
+            response_sha256=failure_sha256,
+        ) from last_error
 
     async def _codex_attempt(
         self,
@@ -1130,7 +1184,7 @@ class ModelGateway:
         model: str,
         schema: Mapping[str, Any],
         reasoning_effort: str,
-    ) -> _BackendResult:
+    ) -> tuple[_BackendResult, str]:
         with tempfile.TemporaryDirectory(prefix="bugbunny-codex-") as temporary:
             root = Path(temporary)
             work = root / "work"
@@ -1184,6 +1238,12 @@ class ModelGateway:
                 raise TimeoutError(
                     f"codex exec timed out after {self.config.timeout_seconds:g}s"
                 ) from None
+            except asyncio.CancelledError:
+                # Cancellation of the awaiting task must not orphan the agent
+                # subprocess.
+                process.kill()
+                await process.wait()
+                raise
             if process.returncode != 0:
                 detail = stderr.decode("utf-8", errors="replace").strip()
                 if not detail:
@@ -1192,16 +1252,35 @@ class ModelGateway:
                     f"codex exec exited with status {process.returncode}: {detail[:2000]}"
                 )
 
+            # Usage, resolved model, and the response fingerprint are parsed
+            # before payload extraction so a malformed final message still
+            # surfaces the telemetry the Martian path preserves on failure.
+            events = _codex_events(stdout)
+            input_tokens, output_tokens, cached_tokens = _codex_usage(events)
+            resolved_model = _codex_model(events) or model
             output = ""
             if output_path.is_file():
                 output = output_path.read_text(encoding="utf-8")
-            events = _codex_events(stdout)
-            if not output:
-                output = _last_codex_message(events)
-            payload = extract_json_object(output)
-            input_tokens, output_tokens, cached_tokens = _codex_usage(events)
-            resolved_model = _codex_model(events) or model
-            return _BackendResult(
+            try:
+                if not output:
+                    output = _last_codex_message(events)
+                payload = extract_json_object(output)
+            except ResponseFormatError as exc:
+                raise _BackendFailure(
+                    exc,
+                    1,
+                    (),
+                    backend=_BackendResult(
+                        payload={},
+                        resolved_model=resolved_model,
+                        input_tokens=input_tokens,
+                        output_tokens=output_tokens,
+                        cached_input_tokens=cached_tokens,
+                        cost_usd=None,
+                    ),
+                    response_sha256=hashlib.sha256(output.encode("utf-8")).hexdigest(),
+                ) from exc
+            backend = _BackendResult(
                 payload=payload,
                 resolved_model=resolved_model,
                 input_tokens=input_tokens,
@@ -1211,6 +1290,7 @@ class ModelGateway:
                 # per-call API charge. None is more exact than an invented cost.
                 cost_usd=None,
             )
+            return backend, hashlib.sha256(output.encode("utf-8")).hexdigest()
 
 
 def _codex_events(stdout: bytes) -> list[dict[str, Any]]:

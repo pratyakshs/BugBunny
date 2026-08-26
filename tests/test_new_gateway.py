@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
+import os
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -14,8 +16,12 @@ from bugbunny.gateway import (
     GatewayError,
     ModelGateway,
     ResponseFormatError,
+    _dotenv_value,
+    _martian_retry_delay,
+    _validate_json_schema,
     extract_json_object,
 )
+from bugbunny.schemas import VERIFIER_SCHEMA
 
 SCHEMA = {
     "type": "object",
@@ -676,3 +682,177 @@ async def test_model_names_must_be_provider_prefixed():
             schema_name="findings",
             schema=SCHEMA,
         )
+
+
+@pytest.mark.parametrize("header", ["nan", "NaN", "inf", "-inf", "Infinity"])
+def test_retry_after_nan_and_inf_fall_back_to_exponential_delay(header: str):
+    response = httpx.Response(429, headers={"Retry-After": header})
+
+    assert _martian_retry_delay(response, 0) == 1.0
+    assert _martian_retry_delay(response, 2) == 4.0
+    assert _martian_retry_delay(httpx.Response(429, headers={"Retry-After": "2.5"}), 0) == 2.5
+
+
+def test_dotenv_quoted_value_followed_by_comment_returns_bare_secret(tmp_path: Path):
+    dotenv = tmp_path / ".env"
+
+    dotenv.write_text('MARTIAN_API_KEY="secret-value" # production key\n', encoding="utf-8")
+    assert _dotenv_value(dotenv, "MARTIAN_API_KEY") == "secret-value"
+
+    dotenv.write_text("MARTIAN_API_KEY='secret-value' # production key\n", encoding="utf-8")
+    assert _dotenv_value(dotenv, "MARTIAN_API_KEY") == "secret-value"
+
+    dotenv.write_text('MARTIAN_API_KEY="sec\\"ret" # escaped closing quote\n', encoding="utf-8")
+    assert _dotenv_value(dotenv, "MARTIAN_API_KEY") == 'sec"ret'
+
+
+def test_dotenv_quoted_value_keeps_comment_marker_inside_quotes(tmp_path: Path):
+    dotenv = tmp_path / ".env"
+    dotenv.write_text('MARTIAN_API_KEY="secret # not a comment"\n', encoding="utf-8")
+
+    assert _dotenv_value(dotenv, "MARTIAN_API_KEY") == "secret # not a comment"
+
+
+def test_dotenv_trailing_garbage_after_closing_quote_raises(tmp_path: Path):
+    dotenv = tmp_path / ".env"
+    dotenv.write_text('MARTIAN_API_KEY="secret-value" trailing\n', encoding="utf-8")
+
+    with pytest.raises(RuntimeError, match="invalid quoted MARTIAN_API_KEY"):
+        _dotenv_value(dotenv, "MARTIAN_API_KEY")
+
+
+def test_verifier_schema_pattern_rejects_invalid_family_key():
+    decision = {
+        "candidate_index": 0,
+        "decision": "keep",
+        "confidence": 0.5,
+        "reason": "canonical representative",
+        "canonical_index": None,
+        "family_key": "NOT VALID!!",
+    }
+
+    with pytest.raises(ResponseFormatError, match="pattern"):
+        _validate_json_schema({"decisions": [decision]}, VERIFIER_SCHEMA)
+    _validate_json_schema(
+        {"decisions": [dict(decision, family_key="null_deref_family")]}, VERIFIER_SCHEMA
+    )
+
+
+@pytest.mark.asyncio
+async def test_codex_cancellation_kills_orphaned_subprocess(tmp_path: Path):
+    pid_file = tmp_path / "codex.pid"
+    script = tmp_path / "fake-codex"
+    script.write_text(f'#!/bin/sh\necho $$ > "{pid_file}"\nexec sleep 30\n', encoding="utf-8")
+    script.chmod(0o755)
+
+    gateway = ModelGateway(GatewayConfig(codex_executable=str(script), max_retries=0))
+    task = asyncio.create_task(
+        gateway.complete_json(
+            "review",
+            model="codex/gpt-test",
+            stage="verification",
+            schema_name="findings",
+            schema=SCHEMA,
+        )
+    )
+    for _ in range(500):
+        if pid_file.is_file() and pid_file.read_text(encoding="utf-8").strip():
+            break
+        await asyncio.sleep(0.01)
+    pid = int(pid_file.read_text(encoding="utf-8").strip())
+    os.kill(pid, 0)
+
+    task.cancel()
+    with pytest.raises(asyncio.CancelledError):
+        await task
+
+    for _ in range(200):
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            break
+        await asyncio.sleep(0.01)
+    else:
+        pytest.fail("codex subprocess was left running after cancellation")
+
+
+def test_resolved_api_key_falls_through_when_configured_env_is_absent(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+):
+    monkeypatch.delenv("CUSTOM_PROVIDER_API_KEY", raising=False)
+    monkeypatch.setenv("MARTIAN_API_KEY", "martian-env-secret")
+    config = GatewayConfig(api_key_env="CUSTOM_PROVIDER_API_KEY")
+    assert config.resolved_api_key() == "martian-env-secret"
+    assert config.runtime_provenance("openai/gpt-test")["auth_mode"] == "martian_environment"
+
+    monkeypatch.setenv("CUSTOM_PROVIDER_API_KEY", "configured-secret")
+    assert config.resolved_api_key() == "configured-secret"
+    assert config.runtime_provenance("openai/gpt-test")["auth_mode"] == "configured_environment"
+
+    monkeypatch.delenv("CUSTOM_PROVIDER_API_KEY")
+    monkeypatch.delenv("MARTIAN_API_KEY")
+    dotenv = tmp_path / ".env"
+    dotenv.write_text("MARTIAN_API_KEY=dotenv-secret\n", encoding="utf-8")
+    fallthrough = GatewayConfig(api_key_env="CUSTOM_PROVIDER_API_KEY", dotenv_path=dotenv)
+    assert fallthrough.resolved_api_key() == "dotenv-secret"
+    assert fallthrough.runtime_provenance("openai/gpt-test")["auth_mode"] == "martian_dotenv"
+
+    missing = GatewayConfig(api_key_env="CUSTOM_PROVIDER_API_KEY")
+    assert missing.resolved_api_key() is None
+    assert missing.runtime_provenance("openai/gpt-test")["auth_mode"] == "missing"
+
+
+@pytest.mark.asyncio
+async def test_codex_failure_preserves_usage_model_and_response_hash():
+    invalid_output = "this is not the requested JSON"
+    capture: dict[str, list[str]] = {}
+
+    class FakeProcess:
+        returncode = 0
+
+        async def communicate(self, input):
+            args = capture["args"]
+            output = Path(args[args.index("--output-last-message") + 1])
+            output.write_text(invalid_output, encoding="utf-8")
+            event = {
+                "type": "turn.completed",
+                "model": "gpt-test-resolved",
+                "usage": {
+                    "input_tokens": 41,
+                    "cached_input_tokens": 13,
+                    "output_tokens": 5,
+                },
+            }
+            return (json.dumps(event).encode("utf-8") + b"\n", b"")
+
+        def kill(self):
+            raise AssertionError("completed process must not be killed")
+
+        async def wait(self):
+            return self.returncode
+
+    async def spawn(*args, **kwargs):
+        capture["args"] = list(args)
+        return FakeProcess()
+
+    gateway = ModelGateway(GatewayConfig(max_retries=0))
+    with (
+        patch("bugbunny.gateway.asyncio.create_subprocess_exec", new=spawn),
+        pytest.raises(GatewayError) as caught,
+    ):
+        await gateway.complete_json(
+            "review",
+            model="codex/gpt-test",
+            stage="verification",
+            schema_name="findings",
+            schema=SCHEMA,
+        )
+
+    call = caught.value.call
+    assert call.resolved_model == "gpt-test-resolved"
+    assert call.input_tokens == 41
+    assert call.output_tokens == 5
+    assert call.cached_input_tokens == 13
+    assert call.attempt_count == 1
+    assert call.response_sha256 == hashlib.sha256(invalid_output.encode("utf-8")).hexdigest()
+    assert "could not parse model JSON" in (call.error or "")
