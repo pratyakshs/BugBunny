@@ -83,7 +83,9 @@ def select_operating_point(
     for item in observations:
         confidence = item.get("confidence")
         if isinstance(confidence, (int, float)) and math.isfinite(float(confidence)):
-            candidates.add(round(float(confidence), 6))
+            # The exact observed value: rounding here would create thresholds
+            # that sit on the wrong side of the >= comparison below.
+            candidates.add(float(confidence))
     rows: list[dict[str, Any]] = []
     for threshold in sorted(candidates):
         tp = fp = fn = 0
@@ -110,7 +112,12 @@ def select_operating_point(
                 "f1": f1,
             }
         )
-    eligible = [row for row in rows if row["precision"] >= minimum_precision]
+    # A threshold that keeps nothing has vacuous precision; letting it satisfy
+    # the floor would silently freeze a recall-0 operating point whenever no
+    # real threshold qualifies, instead of failing loudly below.
+    eligible = [
+        row for row in rows if row["tp"] + row["fp"] > 0 and row["precision"] >= minimum_precision
+    ]
     if not eligible:
         raise CalibrationError("no threshold satisfies the required calibration precision")
     # Recall is the first-order objective under a precision floor. F1 breaks
@@ -253,6 +260,49 @@ def load_operating_point(path: Path) -> tuple[dict[str, Any], str]:
         raise CalibrationError("operating point was produced with a different verifier prompt")
     if value.get("verifier_schema_sha256") != sha256_text(canonical_json(VERIFIER_SCHEMA)):
         raise CalibrationError("operating point was produced with a different verifier schema")
+
+    # The threshold is the operative number, so hashing the observations is not
+    # enough: rebind it by re-deriving the selection from those observations
+    # and by recomputing the identity embedded in operating_point_id. A file
+    # whose threshold no longer derives from its own labeled responses fails
+    # closed here instead of silently changing the balanced stage.
+    selection = value.get("selection")
+    if not isinstance(selection, Mapping) or not isinstance(selection.get("selected"), Mapping):
+        raise CalibrationError("operating point has no bound selection record")
+    selection_floor = selection.get("minimum_precision")
+    if (
+        not isinstance(selection_floor, (int, float))
+        or isinstance(selection_floor, bool)
+        or not 0 <= float(selection_floor) <= 1
+    ):
+        raise CalibrationError("operating point selection has no valid minimum_precision")
+    rederived = select_operating_point(
+        [item for item in observations if isinstance(item, Mapping)],
+        minimum_precision=float(selection_floor),
+    )["selected"]
+    if dict(selection["selected"]) != rederived or float(value["threshold"]) != float(
+        rederived["threshold"]
+    ):
+        raise CalibrationError(
+            "operating point threshold does not derive from its bound observations"
+        )
+    corpus_sha256 = corpus.get("sha256")
+    if not isinstance(corpus_sha256, str) or not corpus_sha256:
+        raise CalibrationError("operating point corpus hash is missing")
+    identity = sha256_text(
+        canonical_json(
+            {
+                "corpus_sha256": corpus_sha256,
+                "verifier_model": value["verifier_model"],
+                "reasoning_effort": value["reasoning_effort"],
+                "verifier_prompt_sha256": value["verifier_prompt_sha256"],
+                "observation_sha256": value["observation_sha256"],
+                "selection": rederived,
+            }
+        )
+    )
+    if value["operating_point_id"] != f"bugbunny-op-{identity[:16]}":
+        raise CalibrationError("operating point identity does not match its bound contents")
     return value, sha256_bytes(raw)
 
 
