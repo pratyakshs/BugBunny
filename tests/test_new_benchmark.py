@@ -548,3 +548,133 @@ def test_export_verifier_rejects_post_commit_candidate_tampering(tmp_path: Path)
 
     with pytest.raises(ValueError, match="do not match the export manifest"):
         verify_codereviewbench_export_manifest(exported.manifest_path)
+
+
+def test_loader_rejects_case_id_collisions_from_url_variants(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "benchmark_data.json"
+    value = {
+        GOLDEN_ONE: _entry(7, secondary=True),
+        GOLDEN_ONE + "?tab=files": _entry(8, secondary=False),
+    }
+    benchmark_path.write_text(json.dumps(value), encoding="utf-8")
+    with pytest.raises(ValueError, match="collide on case ID"):
+        load_codereviewbench_dataset(benchmark_path)
+
+
+def test_candidate_text_keeps_evidence_quoted_inside_the_body(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    artifact = _artifact(benchmark_path)
+    # A model that quotes its evidence inside the body must not lose the code
+    # grounding from the judge-facing candidate text.
+    for finding in artifact["findings"]:
+        finding["body"] = f"The added {finding['evidence']} block swallows the error."
+    export = export_codereviewbench_results(
+        benchmark_path,
+        [artifact],
+        output_dir=tmp_path / "results",
+        judge_model="anthropic/judge",
+    )
+    candidates = json.loads(export.candidates_path.read_text(encoding="utf-8"))
+    texts = [item["text"] for item in candidates[GOLDEN_ONE][export.tool_id]]
+    assert any("Evidence: catch (_) {}" in text for text in texts)
+
+
+def test_cumulative_export_rejects_diverged_case_inputs(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+
+    moved = _artifact(benchmark_path, model="openai/gpt-5.6-terra")
+    moved["pr"]["head_sha"] = "c" * 40
+    with pytest.raises(ValueError, match="identical fixture commits"):
+        export_codereviewbench_results(
+            benchmark_path,
+            [moved],
+            output_dir=output_dir,
+            judge_model="anthropic/judge",
+        )
+
+    matching = _artifact(benchmark_path, model="openai/gpt-5.6-terra")
+    result = export_codereviewbench_results(
+        benchmark_path,
+        [matching],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    manifest = json.loads(result.manifest_path.read_text(encoding="utf-8"))
+    assert manifest["case_identity"][GOLDEN_ONE]["head_sha"] == "b" * 40
+
+
+def test_export_preserves_foreign_tool_reviews_committed_earlier(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    # A colleague's tool commits rows into the shared bundle out of band.
+    shared = json.loads((output_dir / "benchmark_data.json").read_text(encoding="utf-8"))
+    shared[GOLDEN_ONE]["reviews"].append(
+        {"tool": "othertool", "repo_name": "repo", "pr_url": "https://github.com/x/y/pull/1",
+         "review_comments": [{"path": "a", "line": 1, "body": "keep me"}]}
+    )
+    (output_dir / "benchmark_data.json").write_text(json.dumps(shared), encoding="utf-8")
+
+    export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path, model="openai/gpt-5.6-terra")],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    refreshed = json.loads((output_dir / "benchmark_data.json").read_text(encoding="utf-8"))
+    tools = {review["tool"] for review in refreshed[GOLDEN_ONE]["reviews"]}
+    assert "othertool" in tools
+
+
+def test_verify_rejects_phantom_bugbunny_rows_without_a_manifest(tmp_path: Path) -> None:
+    import hashlib as _hashlib
+
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    export = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    assert verify_codereviewbench_export_manifest(export.manifest_path)["ok"] is True
+
+    # Simulate an interrupted second export: rows committed, manifest never
+    # written, and the surviving manifest already refreshed to the new bytes.
+    candidates_path = export.candidates_path
+    payload = json.loads(candidates_path.read_text(encoding="utf-8"))
+    payload[GOLDEN_ONE]["bugbunny-balanced-phantom-" + "0" * 12] = [{"text": "phantom"}]
+    candidates_path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    manifest = json.loads(export.manifest_path.read_text(encoding="utf-8"))
+    for relative in list(manifest["output_files_sha256"]):
+        target = output_dir / relative
+        manifest["output_files_sha256"][relative] = _hashlib.sha256(
+            target.read_bytes()
+        ).hexdigest()
+    export.manifest_path.write_text(
+        json.dumps(manifest, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    with pytest.raises(ValueError, match="no committed manifest"):
+        verify_codereviewbench_export_manifest(export.manifest_path)

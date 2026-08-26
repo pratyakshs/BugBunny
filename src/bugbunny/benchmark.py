@@ -21,7 +21,7 @@ from typing import Any, Literal
 from bugbunny import __version__
 from bugbunny.families import group_finding_families
 from bugbunny.schemas import CATEGORIES, SEVERITIES
-from bugbunny.util import atomic_write_json, canonical_json, sha256_bytes, sha256_text
+from bugbunny.util import atomic_write_json, canonical_json, file_lock, sha256_bytes, sha256_text
 from bugbunny.validation import artifact_location_is_commentable
 
 STANDARD_CASE_COUNT = 50
@@ -268,6 +268,7 @@ def load_codereviewbench_dataset(
     cases: list[CodeReviewBenchCase] = []
     fixture_counts: dict[str, int] = {}
     seen_fixture_urls: set[str] = set()
+    seen_case_ids: set[str] = set()
     golden_issue_count = 0
     for golden_url, entry in sorted(data.items()):
         if not isinstance(golden_url, str) or not isinstance(entry, Mapping):
@@ -291,6 +292,10 @@ def load_codereviewbench_dataset(
         if review_url in seen_fixture_urls:
             raise ValueError(f"fixture PR is selected for multiple cases: {review_url}")
         seen_fixture_urls.add(review_url)
+        case_id = case_id_for_url(golden_url)
+        if case_id in seen_case_ids:
+            raise ValueError(f"benchmark cases collide on case ID {case_id}: {golden_url}")
+        seen_case_ids.add(case_id)
         fixture_counts[fixture_tool] = fixture_counts.get(fixture_tool, 0) + 1
         golden_issue_count += len(comments)
         cases.append(
@@ -358,7 +363,7 @@ def _artifact_golden_url(
         raise ValueError("export requires CodeReviewBench provenance metadata")
     value = benchmark.get("golden_url")
     if not isinstance(value, str) or value not in benchmark_data:
-        raise KeyError("artifact.benchmark.golden_url is not present in benchmark data")
+        raise ValueError("artifact.benchmark.golden_url is not present in benchmark data")
     if supplied_key is not None and supplied_key != value:
         raise ValueError("artifact mapping key does not match benchmark.golden_url")
     return value
@@ -492,11 +497,17 @@ def _render_candidate_text(finding: Mapping[str, Any]) -> str:
         ("", body if not trigger and not impact else ""),
         ("Trigger", trigger),
         ("Impact", impact),
-        ("Evidence", evidence if evidence not in body else ""),
-        ("Suggested fix", fix),
     ):
         if value:
             sections.append(f"{label}: {value}" if label else value)
+    # Suppress the evidence quote only when it already appears in the text
+    # actually rendered above. Testing membership against the (usually
+    # unrendered) body used to drop the code grounding from the judge-facing
+    # candidate whenever a model quoted its evidence inside the body.
+    if evidence and evidence not in "\n\n".join(sections):
+        sections.append(f"Evidence: {evidence}")
+    if fix:
+        sections.append(f"Suggested fix: {fix}")
     related = finding.get("related_locations")
     if isinstance(related, list) and related:
         sections.append("Related locations: " + ", ".join(str(value) for value in related))
@@ -730,6 +741,92 @@ def _refresh_prior_export_manifests(
         atomic_write_json(path, value)
 
 
+def _refresh_sibling_judge_manifests(
+    results_root: Path,
+    *,
+    current_judge_dir: Path,
+    benchmark_data_sha256: str,
+) -> None:
+    """Rebind other judge directories' manifests to the rewritten shared file.
+
+    Every judge directory's manifests bind the one shared
+    ``benchmark_data.json``; rewriting it for the current judge directory would
+    otherwise silently invalidate every committed manifest elsewhere. Only the
+    shared file's hash changes here — each sibling's own candidates/dedup
+    hashes are preserved.
+    """
+
+    for manifest_path in sorted(results_root.glob("*/*_export_manifest.json")):
+        if manifest_path.parent == current_judge_dir:
+            continue
+        value = _read_optional_object(manifest_path)
+        if value.get("schema_version") != "bugbunny-codereviewbench-export-v1":
+            continue
+        hashes = value.get("output_files_sha256")
+        if not isinstance(hashes, Mapping) or "benchmark_data.json" not in hashes:
+            continue
+        updated = dict(hashes)
+        updated["benchmark_data.json"] = benchmark_data_sha256
+        value["output_files_sha256"] = dict(sorted(updated.items()))
+        atomic_write_json(manifest_path, value)
+
+
+def _case_identity(artifact: Mapping[str, Any]) -> dict[str, Any]:
+    """The immutable inputs one exported case claims to have reviewed."""
+
+    benchmark = artifact.get("benchmark") if isinstance(artifact.get("benchmark"), Mapping) else {}
+    pr = artifact.get("pr") if isinstance(artifact.get("pr"), Mapping) else {}
+    diff = artifact.get("diff") if isinstance(artifact.get("diff"), Mapping) else {}
+    return {
+        "review_url": str(benchmark.get("review_url") or pr.get("url") or ""),
+        "base_sha": str(pr.get("base_sha") or "").lower(),
+        "head_sha": str(pr.get("head_sha") or "").lower(),
+        "diff_sha256": diff.get("sha256"),
+    }
+
+
+def _require_bundle_case_identity(
+    judge_dir: Path,
+    *,
+    current_manifest: Path,
+    case_identity: Mapping[str, Mapping[str, Any]],
+) -> None:
+    """Enforce invariant 12 across export invocations, not just within one.
+
+    Cumulative exports add models to a shared bundle one invocation at a time.
+    Every committed BugBunny manifest that records case identity must agree
+    with the new export on the case population and each case's fixture URL,
+    base/head SHAs, and diff hash — otherwise the judge would compare models
+    that reviewed different code. Manifests from before identity recording
+    cannot be checked and are skipped.
+    """
+
+    if not judge_dir.is_dir():
+        return
+    for path in sorted(judge_dir.glob("*_export_manifest.json")):
+        if path == current_manifest:
+            continue
+        value = _read_optional_object(path)
+        if value.get("schema_version") != "bugbunny-codereviewbench-export-v1":
+            continue
+        existing = value.get("case_identity")
+        if not isinstance(existing, Mapping):
+            continue
+        if set(existing) != set(case_identity):
+            raise ValueError(
+                f"export case population differs from committed manifest {path.name}; "
+                "a model sweep must review identical case sets (use a fresh output "
+                "directory for a different selection)"
+            )
+        for golden_url, identity in case_identity.items():
+            if dict(existing[golden_url]) != dict(identity):
+                raise ValueError(
+                    f"export inputs for {golden_url} differ from committed manifest "
+                    f"{path.name}; a model sweep must review identical fixture "
+                    "commits and diffs"
+                )
+
+
 def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[str, Any]:
     """Verify one committed BugBunny export bundle without invoking a judge.
 
@@ -869,6 +966,38 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
     ):
         raise ValueError("candidate audit sidecar population is inconsistent")
 
+    # An interrupted export can leave rows for a BugBunny tool ID that never
+    # reached its manifest commit point. Such phantom rows would be judged as
+    # if they were a committed submission, so their presence fails the bundle.
+    bugbunny_tool_shape = re.compile(r".+-[0-9a-f]{12}\Z")
+    manifest_tools = {
+        manifest_path.name.removesuffix("_export_manifest.json")
+        for manifest_path in path.parent.glob("*_export_manifest.json")
+    }
+    phantom_tools: set[str] = set()
+    for per_case in (*candidates.values(), *groups.values()):
+        if isinstance(per_case, Mapping):
+            phantom_tools.update(
+                str(candidate_tool)
+                for candidate_tool in per_case
+                if bugbunny_tool_shape.fullmatch(str(candidate_tool))
+                and str(candidate_tool) not in manifest_tools
+            )
+    for entry in benchmark_data.values():
+        if isinstance(entry, Mapping):
+            phantom_tools.update(
+                str(review.get("tool"))
+                for review in entry.get("reviews", [])
+                if isinstance(review, Mapping)
+                and bugbunny_tool_shape.fullmatch(str(review.get("tool") or ""))
+                and str(review.get("tool")) not in manifest_tools
+            )
+    if phantom_tools:
+        raise ValueError(
+            "bundle contains BugBunny tool rows with no committed manifest "
+            f"(interrupted export?): {', '.join(sorted(phantom_tools))}"
+        )
+
     return {
         "ok": True,
         "manifest": str(path),
@@ -899,8 +1028,39 @@ def export_codereviewbench_results(
     singleton dedup groups go under ``<sanitized-judge-model>/``. Existing
     tools are preserved and the deterministic BugBunny tool/model entry is
     replaced for each supplied case.
+
+    The whole read-modify-write of the shared bundle happens under one
+    cross-process file lock: two concurrent exports would otherwise both read
+    the same base state and the second commit would silently drop the first
+    model's rows.
     """
 
+    results_root = Path(output_dir).expanduser().resolve()
+    results_root.mkdir(parents=True, exist_ok=True)
+    with file_lock(results_root / ".bugbunny-export.lock"):
+        return _export_codereviewbench_results_locked(
+            base_benchmark_data_path,
+            artifacts,
+            output_dir=output_dir,
+            judge_model=judge_model,
+            tool=tool,
+            review_model=review_model,
+            expected_case_count=expected_case_count,
+            finding_stage=finding_stage,
+        )
+
+
+def _export_codereviewbench_results_locked(
+    base_benchmark_data_path: Path | str,
+    artifacts: Mapping[str, Any] | Iterable[Any],
+    *,
+    output_dir: Path | str,
+    judge_model: str,
+    tool: str = "bugbunny",
+    review_model: str | None = None,
+    expected_case_count: int | None = None,
+    finding_stage: FindingStage = "balanced",
+) -> CodeReviewBenchExport:
     if finding_stage not in {"generator", "balanced", "family"}:
         raise ValueError("finding_stage must be generator, balanced, or family")
     source, raw, source_data = _load_json_object(base_benchmark_data_path)
@@ -977,11 +1137,14 @@ def export_codereviewbench_results(
             target_entry = benchmark_data.get(url)
             if not isinstance(existing_entry, Mapping) or not isinstance(target_entry, dict):
                 continue
+            # Carry over every committed review row the fresh source copy does
+            # not already contain — restricting this to bugbunny-prefixed tools
+            # used to drop other tools' review rows while their candidates
+            # survived, leaving the shared Step 3 bundle inconsistent.
             prior = [
                 deepcopy(review)
                 for review in existing_entry.get("reviews", [])
-                if isinstance(review, Mapping)
-                and str(review.get("tool") or "").startswith(f"{tool}-")
+                if isinstance(review, Mapping) and review.get("tool")
             ]
             target_reviews = target_entry.get("reviews", [])
             if isinstance(target_reviews, list):
@@ -1011,6 +1174,14 @@ def export_codereviewbench_results(
     for per_case in dedup_groups.values():
         if isinstance(per_case, dict):
             per_case.pop(tool_id, None)
+    case_identity = {
+        golden_url: _case_identity(artifact) for golden_url, artifact in sorted(normalized.items())
+    }
+    _require_bundle_case_identity(
+        judge_dir,
+        current_manifest=manifest_output,
+        case_identity=case_identity,
+    )
     candidate_count = 0
     artifact_hashes: dict[str, str] = {}
     candidate_audit: dict[str, list[dict[str, Any]]] = {}
@@ -1078,6 +1249,11 @@ def export_codereviewbench_results(
         current_manifest=manifest_output,
         output_files_sha256=output_files_sha256,
     )
+    _refresh_sibling_judge_manifests(
+        results_root,
+        current_judge_dir=judge_dir,
+        benchmark_data_sha256=output_files_sha256["benchmark_data.json"],
+    )
     manifest = {
         "schema_version": "bugbunny-codereviewbench-export-v1",
         "tool": tool,
@@ -1100,6 +1276,7 @@ def export_codereviewbench_results(
         # Export accepts in-memory mappings as well as files, so this hashes the
         # canonical JSON value. Run manifests separately bind exact file bytes.
         "artifact_canonical_sha256": dict(sorted(artifact_hashes.items())),
+        "case_identity": case_identity,
         "candidate_audit_file": candidate_audit_output.name,
         "candidate_audit_sha256": sha256_bytes(candidate_audit_output.read_bytes()),
         "output_files_sha256": output_files_sha256,
