@@ -247,3 +247,56 @@ def test_merge_into_keep_below_operating_point_filters_without_failing_batch() -
     )
     assert kept == []
     assert {item.stage for item in rejected} == {"verifier_confidence", "verifier_merge"}
+
+
+def test_line_numbering_follows_git_not_python_splitlines() -> None:
+    # A form feed is an ordinary source byte for git; str.splitlines() would
+    # split on it and shift every subsequent line number.
+    source = "x\fy\nitems.forEach(async (item) => {\n"
+    accepted, rejected = validate_findings(
+        [finding(line=2, end_line=2)],
+        changed_lines={"src/cleanup.ts": {2}},
+        read_source=lambda _path: source,
+        config=config(),
+        base_sha="a" * 40,
+        head_sha="b" * 40,
+    )
+
+    assert not rejected
+    assert len(accepted) == 1
+
+
+def test_semantic_fingerprint_distinguishes_diff_sides() -> None:
+    right = finding(line=12, end_line=12)
+    left = finding(side="LEFT", line=12, end_line=12)
+    accepted, rejected = validate_findings(
+        [right, left],
+        changed_lines={"src/cleanup.ts": {12}},
+        read_source=lambda _path: source_at_line_12("items.forEach(async (item) => {"),
+        deleted_lines={"src/cleanup.ts": {12}},
+        read_base_source=lambda _path: source_at_line_12("items.forEach(async (item) => {"),
+        config=config(),
+        base_sha="a" * 40,
+        head_sha="b" * 40,
+    )
+
+    assert len(accepted) == 2
+    assert not rejected
+    assert accepted[0].fingerprint != accepted[1].fingerprint
+    assert accepted[0].finding_id != accepted[1].finding_id
+
+
+def test_left_side_rejections_name_the_base_revision() -> None:
+    accepted, rejected = validate_findings(
+        [finding(side="LEFT", line=999, end_line=999)],
+        changed_lines={},
+        read_source=lambda _path: "",
+        deleted_lines={"src/cleanup.ts": {999}},
+        read_base_source=lambda _path: source_at_line_12("items.forEach(async (item) => {"),
+        config=config(),
+        base_sha="a" * 40,
+        head_sha="b" * 40,
+    )
+
+    assert not accepted
+    assert rejected[0].reason == "line is beyond the base file"

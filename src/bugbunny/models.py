@@ -342,10 +342,16 @@ class Coverage:
     eligible_hunks: int
     completed_hunks: list[str]
     failed_hunks: list[str]
+    eligible_hunk_ids: list[str] = field(default_factory=list)
 
     @property
     def complete(self) -> bool:
-        return self.eligible_hunks == len(set(self.completed_hunks)) and not self.failed_hunks
+        completed = set(self.completed_hunks)
+        if self.eligible_hunk_ids:
+            # Identity by exact hunk-ID set: a count match cannot prove that
+            # the completed hunks are the eligible ones.
+            return completed == set(self.eligible_hunk_ids) and not self.failed_hunks
+        return self.eligible_hunks == len(completed) and not self.failed_hunks
 
     def to_dict(self) -> dict[str, Any]:
         value = asdict(self)

@@ -9,6 +9,7 @@ from pathlib import PurePosixPath
 from typing import Any
 
 from bugbunny.models import Finding, RejectedFinding, ReviewConfig
+from bugbunny.util import git_lines
 
 VALID_SEVERITIES = {"critical", "high", "medium", "low"}
 VALID_CATEGORIES = {
@@ -85,7 +86,7 @@ def _normalized_source_with_line_map(source: str) -> tuple[str, tuple[int, ...]]
     output: list[str] = []
     line_map: list[int] = []
     previous_line: int | None = None
-    for line_number, line in enumerate(source.splitlines(), start=1):
+    for line_number, line in enumerate(git_lines(source), start=1):
         for token in line.split():
             if output:
                 output.append(" ")
@@ -162,13 +163,18 @@ def _semantic_fingerprint(finding: Finding) -> str:
     evidence = _normalized_space(finding.evidence).lower()
     # Location is part of identity: two independently fixable occurrences of
     # the same buggy expression must remain two benchmark candidates. The
-    # verifier can still merge paraphrases that describe one site.
-    raw = f"{finding.path}\0{finding.line}\0{finding.end_line}\0{semantic}\0{evidence}"
+    # verifier can still merge paraphrases that describe one site. The side is
+    # part of the location: a deleted-line and an added-line finding at equal
+    # coordinates are distinct sites.
+    raw = (
+        f"{finding.path}\0{finding.side}\0{finding.line}\0{finding.end_line}"
+        f"\0{semantic}\0{evidence}"
+    )
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
 def _finding_id(base_sha: str, head_sha: str, fingerprint: str) -> str:
-    raw = f"bugbunny-v1\0{base_sha}\0{head_sha}\0{fingerprint}"
+    raw = f"bugbunny-v2\0{base_sha}\0{head_sha}\0{fingerprint}"
     return "bb-" + hashlib.sha256(raw.encode()).hexdigest()[:20]
 
 
@@ -294,13 +300,17 @@ def validate_findings(
                 )
             )
             continue
-        source_lines = source.splitlines()
+        # Git counts only "\n" as a line terminator; splitting on anything more
+        # would desynchronize these indices from the diff's changed-line ledger.
+        source_lines = git_lines(source)
         if finding.line > len(source_lines):
-            rejected.append(RejectedFinding(finding, "validation", "line is beyond the head file"))
+            rejected.append(
+                RejectedFinding(finding, "validation", f"line is beyond the {revision_label} file")
+            )
             continue
         if finding.end_line > len(source_lines):
             rejected.append(
-                RejectedFinding(finding, "validation", "end_line is beyond the head file")
+                RejectedFinding(finding, "validation", f"end_line is beyond the {revision_label} file")
             )
             continue
         if finding.end_line not in allowed_lines[path]:
@@ -318,7 +328,7 @@ def validate_findings(
                 RejectedFinding(
                     finding,
                     "validation",
-                    "evidence does not contain the complete added anchor line",
+                    f"evidence does not contain the complete {side_label} anchor line",
                 )
             )
             continue

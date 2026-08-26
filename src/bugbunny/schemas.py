@@ -247,10 +247,13 @@ def _exact_keys(value: Mapping[str, Any], expected: set[str], *, label: str) -> 
         raise PayloadValidationError(f"{label} has " + "; ".join(details))
 
 
-def _text(value: Any, *, label: str) -> str:
+def _text(value: Any, *, label: str, max_length: int | None = None) -> str:
     if not isinstance(value, str) or not value.strip():
         raise PayloadValidationError(f"{label} must be a non-empty string")
-    return value.strip()
+    result = value.strip()
+    if max_length is not None and len(result) > max_length:
+        raise PayloadValidationError(f"{label} is longer than {max_length} characters")
+    return result
 
 
 def _positive_int(value: Any, *, label: str) -> int:
@@ -327,12 +330,26 @@ def findings_from_payload(
         end_line = _positive_int(item["end_line"], label=f"findings[{index}].end_line")
         if end_line < line:
             raise PayloadValidationError(f"findings[{index}].end_line must be at or after line")
-        severity = _text(item["severity"], label=f"findings[{index}].severity")
+        # Side and severity receive the same case-normalization courtesy as the
+        # category aliases: a provider that emits "right" or "High" made a
+        # formatting mistake, not a semantic one.
+        severity = _text(item["severity"], label=f"findings[{index}].severity").lower()
         if severity not in SEVERITIES:
             raise PayloadValidationError(f"findings[{index}].severity is not an allowed value")
+        side = _text(item["side"], label=f"findings[{index}].side").upper()
+        if side not in {"RIGHT", "LEFT"}:
+            raise PayloadValidationError(f"findings[{index}].side is not an allowed value")
         category = _category(item["category"], label=f"findings[{index}].category")
-        trigger = _text(item["trigger"], label=f"findings[{index}].trigger")
-        impact = _text(item["impact"], label=f"findings[{index}].impact")
+        trigger = _text(
+            item["trigger"],
+            label=f"findings[{index}].trigger",
+            max_length=MAX_FINDING_EXPLANATION_CHARS,
+        )
+        impact = _text(
+            item["impact"],
+            label=f"findings[{index}].impact",
+            max_length=MAX_FINDING_EXPLANATION_CHARS,
+        )
         fix_scope = _text(item["fix_scope"], label=f"findings[{index}].fix_scope")
         if fix_scope not in {"local", "repeated_pattern", "systemic"}:
             raise PayloadValidationError(
@@ -340,29 +357,44 @@ def findings_from_payload(
             )
         result.append(
             Finding(
-                title=_text(item["title"], label=f"findings[{index}].title"),
+                title=_text(
+                    item["title"],
+                    label=f"findings[{index}].title",
+                    max_length=MAX_FINDING_TITLE_CHARS,
+                ),
                 body=impact,
-                path=_text(item["path"], label=f"findings[{index}].path"),
-                side=_text(item["side"], label=f"findings[{index}].side"),  # type: ignore[arg-type]
+                path=_text(
+                    item["path"],
+                    label=f"findings[{index}].path",
+                    max_length=MAX_FINDING_PATH_CHARS,
+                ),
+                side=side,  # type: ignore[arg-type]
                 line=line,
                 end_line=end_line,
                 severity=severity,  # type: ignore[arg-type]
                 category=category,  # type: ignore[arg-type]
                 confidence=_confidence(item["confidence"], label=f"findings[{index}].confidence"),
-                evidence=_text(item["evidence"], label=f"findings[{index}].evidence"),
+                evidence=_text(
+                    item["evidence"],
+                    label=f"findings[{index}].evidence",
+                    max_length=MAX_FINDING_EVIDENCE_CHARS,
+                ),
                 trigger=trigger,
                 impact=impact,
                 suggested_fix=_text(
                     item["suggested_fix"],
                     label=f"findings[{index}].suggested_fix",
+                    max_length=MAX_FINDING_EXPLANATION_CHARS,
                 ),
                 root_cause=_text(
                     item["root_cause"],
                     label=f"findings[{index}].root_cause",
+                    max_length=MAX_FINDING_EXPLANATION_CHARS,
                 ),
                 failure_mode=_text(
                     item["failure_mode"],
                     label=f"findings[{index}].failure_mode",
+                    max_length=MAX_FINDING_EXPLANATION_CHARS,
                 ),
                 fix_scope=fix_scope,
                 chunk_id=chunk_id,

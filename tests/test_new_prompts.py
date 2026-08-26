@@ -254,3 +254,22 @@ def test_verifier_payload_requires_complete_independent_decisions_and_safe_merge
     }
     with pytest.raises(PayloadValidationError, match="non-kept"):
         validate_verifier_payload(merge_into_drop, candidate_count=2)
+
+
+def test_generation_payload_normalizes_side_and_severity_case():
+    finding = findings_from_payload(
+        {"findings": [_wire_finding(side="right", severity="High")]},
+        chunk_id="chunk-1",
+    )[0]
+    assert finding.side == "RIGHT"
+    assert finding.severity == "high"
+
+
+def test_generation_payload_quarantines_oversized_fields_per_item():
+    oversized = _wire_finding(evidence="x" * 8_001)
+    valid = _wire_finding()
+    findings, invalid_count = findings_from_payload_tolerant(
+        {"findings": [oversized, valid]}, chunk_id="chunk-1"
+    )
+    assert invalid_count == 1
+    assert len(findings) == 1
