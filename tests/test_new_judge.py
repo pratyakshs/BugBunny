@@ -187,3 +187,119 @@ async def test_runner_judges_tools_together_checkpoints_and_resumes(tmp_path: Pa
     )
     assert forced["evaluated"] == 1
     assert len(forced_judge.calls) == 1
+
+
+def _single_case_fixture(tmp_path: Path, candidate_text: str) -> tuple[Path, Path, str]:
+    results_dir = tmp_path / "results"
+    model_dir = results_dir / "anthropic_judge"
+    model_dir.mkdir(parents=True, exist_ok=True)
+    golden_url = "https://github.com/upstream/repo/pull/1"
+    benchmark = {
+        golden_url: {
+            "golden_comments": [
+                {"comment": "the cache is stale", "severity": "High", "category": "bug"}
+            ],
+            "reviews": [{"tool": "tool-a", "repo_name": "repo", "pr_url": "fixture-a"}],
+        }
+    }
+    candidates = {golden_url: {"tool-a": [{"text": candidate_text}]}}
+    groups = {golden_url: {"tool-a": [[0]]}}
+    (results_dir / "benchmark_data.json").write_text(json.dumps(benchmark), encoding="utf-8")
+    (model_dir / "candidates.json").write_text(json.dumps(candidates), encoding="utf-8")
+    (model_dir / "dedup_groups.json").write_text(json.dumps(groups), encoding="utf-8")
+    return results_dir, model_dir, golden_url
+
+
+class _RecordingJudge:
+    def __init__(self, *, error: bool = False) -> None:
+        self.calls: list[tuple[str, str]] = []
+        self.error = error
+
+    async def match_comment(self, golden: str, candidate: str) -> dict[str, Any]:
+        self.calls.append((golden, candidate))
+        if self.error:
+            return {"error": "boom", "attempt_count": 1, "retry_errors": []}
+        return {"match": golden == candidate, "confidence": 0.9, "reasoning": "r"}
+
+
+@pytest.mark.asyncio
+async def test_resume_is_bound_to_the_judged_candidate_content(tmp_path: Path) -> None:
+    results_dir, model_dir, golden_url = _single_case_fixture(tmp_path, "the cache is stale")
+    first = await run_codereviewbench_judge(
+        results_dir=results_dir,
+        judge_model="anthropic/judge",
+        api_key="unused-in-test",
+        judge=_RecordingJudge(),
+    )
+    assert first["evaluated"] == 1
+
+    # A same-tool re-export replaces the candidates; the old evaluation must
+    # not be silently resumed against content it never judged.
+    replaced = {golden_url: {"tool-a": [{"text": "an entirely different finding"}]}}
+    (model_dir / "candidates.json").write_text(json.dumps(replaced), encoding="utf-8")
+    rejudge = _RecordingJudge()
+    second = await run_codereviewbench_judge(
+        results_dir=results_dir,
+        judge_model="anthropic/judge",
+        api_key="unused-in-test",
+        judge=rejudge,
+    )
+    assert second["evaluated"] == 1
+    assert second["resumed"] == 0
+    assert rejudge.calls == [("the cache is stale", "an entirely different finding")]
+    stored = json.loads((model_dir / "evaluations.json").read_text(encoding="utf-8"))
+    assert stored[golden_url]["tool-a"]["false_positives"] == [
+        {"candidate": "an entirely different finding"}
+    ]
+
+    third = await run_codereviewbench_judge(
+        results_dir=results_dir,
+        judge_model="anthropic/judge",
+        api_key="unused-in-test",
+        judge=_RecordingJudge(),
+    )
+    assert third["evaluated"] == 0
+    assert third["resumed"] == 1
+
+
+@pytest.mark.asyncio
+async def test_error_degraded_records_are_rejudged_not_resumed(tmp_path: Path) -> None:
+    results_dir, _model_dir, _golden_url = _single_case_fixture(tmp_path, "the cache is stale")
+    errored = await run_codereviewbench_judge(
+        results_dir=results_dir,
+        judge_model="anthropic/judge",
+        api_key="unused-in-test",
+        judge=_RecordingJudge(error=True),
+    )
+    assert errored["metrics"]["tool-a"]["errors"] == 1
+
+    clean_judge = _RecordingJudge()
+    clean = await run_codereviewbench_judge(
+        results_dir=results_dir,
+        judge_model="anthropic/judge",
+        api_key="unused-in-test",
+        judge=clean_judge,
+    )
+    assert clean["evaluated"] == 1
+    assert clean["resumed"] == 0
+    assert clean_judge.calls != []
+    assert clean["metrics"]["tool-a"]["errors"] == 0
+
+
+@pytest.mark.asyncio
+async def test_reported_metrics_cover_only_the_current_tool_population(tmp_path: Path) -> None:
+    results_dir, model_dir, golden_url = _single_case_fixture(tmp_path, "the cache is stale")
+    stale = {
+        golden_url: {
+            "tool-retired": {"tp": 0, "fp": 9, "fn": 9, "errors_count": 0, "skipped": False}
+        }
+    }
+    (model_dir / "evaluations.json").write_text(json.dumps(stale), encoding="utf-8")
+    report = await run_codereviewbench_judge(
+        results_dir=results_dir,
+        judge_model="anthropic/judge",
+        api_key="unused-in-test",
+        judge=_RecordingJudge(),
+    )
+    assert "tool-retired" not in report["metrics"]
+    assert report["metrics"]["tool-a"]["f1"] == 1.0

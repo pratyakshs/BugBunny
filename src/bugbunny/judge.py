@@ -19,7 +19,13 @@ import httpx
 
 from bugbunny.benchmark import sanitize_model_name
 from bugbunny.gateway import MARTIAN_API_BASE
-from bugbunny.util import atomic_write_json, load_json
+from bugbunny.util import (
+    atomic_write_json,
+    atomic_write_text,
+    canonical_json,
+    load_json,
+    sha256_text,
+)
 
 JUDGE_PROMPT = """You are evaluating AI code review tools.
 Determine if the candidate issue matches the golden (expected) comment.
@@ -67,15 +73,49 @@ class JudgeConfig:
             raise ValueError("judge max attempts must be positive")
 
 
+def judged_inputs_sha256(
+    golden_comments: Sequence[Mapping[str, Any]],
+    candidates: Sequence[str],
+    dedup_groups: Any,
+) -> str:
+    """Bind one evaluation to the exact inputs the judge compared.
+
+    Completion keyed on (golden_url, tool) alone is not an identity: a
+    same-configuration re-review exports different candidates under the same
+    tool ID, and resuming against them would silently report the old export's
+    metrics. Hashing the judged texts makes such records visibly stale.
+    """
+
+    return sha256_text(
+        canonical_json(
+            {
+                "golden_comments": [
+                    str(comment.get("comment"))
+                    for comment in golden_comments
+                    if isinstance(comment, Mapping)
+                ],
+                "candidates": list(candidates),
+                "dedup_groups": dedup_groups,
+            }
+        )
+    )
+
+
 @dataclass
 class EvaluationState:
     """CodeReviewBench-compatible evaluation records with atomic persistence."""
 
     completed: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
 
-    def is_done(self, golden_url: str, tool: str) -> bool:
+    def is_done(self, golden_url: str, tool: str, inputs_sha256: str | None = None) -> bool:
         result = self.completed.get(golden_url, {}).get(tool)
-        return isinstance(result, Mapping) and result.get("errors_count", 0) == 0
+        if not isinstance(result, Mapping) or result.get("errors_count", 0) != 0:
+            return False
+        if inputs_sha256 is None:
+            return True
+        # Records from before input binding carry no hash and are treated as
+        # stale rather than silently trusted against unknown candidates.
+        return result.get("judged_inputs_sha256") == inputs_sha256
 
     def mark_done(self, golden_url: str, tool: str, result: dict[str, Any]) -> None:
         self.completed.setdefault(golden_url, {})[tool] = result
@@ -460,10 +500,21 @@ def _load_object(path: Path, *, required: bool) -> dict[str, Any]:
     return value
 
 
-def aggregate_metrics(state: EvaluationState) -> dict[str, dict[str, Any]]:
+def aggregate_metrics(
+    state: EvaluationState, *, tools: set[str] | None = None
+) -> dict[str, dict[str, Any]]:
+    """Reduce evaluation rows to per-tool totals.
+
+    ``tools`` restricts the aggregate to the tool population of the current
+    invocation; without it, stale rows for tools no longer present in the
+    benchmark data would silently join the reported metrics and exit code.
+    """
+
     totals: dict[str, dict[str, Any]] = {}
     for per_tool in state.completed.values():
         for tool, result in per_tool.items():
+            if tools is not None and tool not in tools:
+                continue
             if result.get("skipped"):
                 continue
             metric = totals.setdefault(tool, {"tp": 0, "fp": 0, "fn": 0, "errors": 0, "reviews": 0})
@@ -520,7 +571,10 @@ async def run_codereviewbench_judge(
         state.clear_tools(selected_tools)
         state.save(output_path)
 
-    work_items: list[tuple[str, dict[str, Any], list[dict[str, Any]], dict[str, Any], str]] = []
+    work_items: list[
+        tuple[str, list[dict[str, Any]], dict[str, Any], str, list[str], Any, str]
+    ] = []
+    scope_tools: set[str] = set()
     skipped = 0
     for golden_url, raw_entry in benchmark_data.items():
         if not isinstance(golden_url, str) or not isinstance(raw_entry, Mapping):
@@ -537,20 +591,25 @@ async def run_codereviewbench_judge(
             tool = review["tool"]
             if selected_tools is not None and tool not in selected_tools:
                 continue
-            if not force and state.is_done(golden_url, tool):
+            scope_tools.add(tool)
+            candidates = get_candidates(review, all_candidates, golden_url)
+            per_url_groups = all_dedup_groups.get(golden_url)
+            groups = per_url_groups.get(tool) if isinstance(per_url_groups, Mapping) else None
+            if groups is not None and not isinstance(groups, list):
+                raise JudgeError(f"dedup groups are invalid for {golden_url} / {tool}")
+            inputs_sha256 = judged_inputs_sha256(golden_comments, candidates, groups)
+            if not force and state.is_done(golden_url, tool, inputs_sha256):
                 skipped += 1
                 continue
-            work_items.append((golden_url, entry, golden_comments, review, tool))
+            work_items.append(
+                (golden_url, golden_comments, review, tool, candidates, groups, inputs_sha256)
+            )
 
     # Start expensive reviews first. This changes only queue order; each
     # review's comparison order and metric reduction remain unchanged.
-    def comparison_count(
-        item: tuple[str, dict[str, Any], list[dict[str, Any]], dict[str, Any], str],
-    ) -> int:
-        golden_url, _entry, golden_comments, review, _tool = item
-        return len(golden_comments) * len(get_candidates(review, all_candidates, golden_url))
-
-    work_items.sort(key=lambda item: (-comparison_count(item), item[0], item[4]))
+    work_items.sort(
+        key=lambda item: (-(len(item[1]) * len(item[4])), item[0], item[3])
+    )
     owns_judge = judge is None
     if judge is None:
         judge = MartianJudge(
@@ -567,17 +626,43 @@ async def run_codereviewbench_judge(
     state_lock = asyncio.Lock()
     evaluated = 0
     timed_out = 0
+    save_running = False
+    save_pending = False
+
+    async def persist_state() -> None:
+        """Coalesce full-state checkpoint writes.
+
+        Every save persists the complete state, so concurrent completions only
+        need the latest snapshot to reach disk — one writer drains a pending
+        flag instead of every completion serializing an O(N) rewrite. Rows
+        completed after the final snapshot of a crashed run are simply
+        re-judged on resume, exactly as before.
+        """
+
+        nonlocal save_running, save_pending
+        if save_running:
+            save_pending = True
+            return
+        save_running = True
+        try:
+            while True:
+                save_pending = False
+                async with state_lock:
+                    snapshot = (
+                        json.dumps(state.completed, indent=2, sort_keys=True, ensure_ascii=False)
+                        + "\n"
+                    )
+                await asyncio.to_thread(atomic_write_text, output_path, snapshot)
+                if not save_pending:
+                    return
+        finally:
+            save_running = False
 
     async def evaluate_item(
-        item: tuple[str, dict[str, Any], list[dict[str, Any]], dict[str, Any], str],
+        item: tuple[str, list[dict[str, Any]], dict[str, Any], str, list[str], Any, str],
     ) -> None:
         nonlocal evaluated, timed_out
-        golden_url, _entry, golden_comments, review, tool = item
-        candidates = get_candidates(review, all_candidates, golden_url)
-        per_url_groups = all_dedup_groups.get(golden_url)
-        groups = per_url_groups.get(tool) if isinstance(per_url_groups, Mapping) else None
-        if groups is not None and not isinstance(groups, list):
-            raise JudgeError(f"dedup groups are invalid for {golden_url} / {tool}")
+        golden_url, golden_comments, review, tool, candidates, groups, inputs_sha256 = item
         try:
             async with review_semaphore:
                 result = await asyncio.wait_for(
@@ -591,18 +676,20 @@ async def run_codereviewbench_judge(
         result["tool"] = tool
         result["repo_name"] = review.get("repo_name")
         result["pr_url"] = review.get("pr_url")
+        result["judged_inputs_sha256"] = inputs_sha256
         async with state_lock:
             state.mark_done(golden_url, tool, result)
-            await asyncio.to_thread(state.save, output_path)
             evaluated += 1
+        await persist_state()
 
     try:
         await asyncio.gather(*(evaluate_item(item) for item in work_items))
+        await persist_state()
     finally:
         if owns_judge:
             await judge.aclose()
 
-    metrics = aggregate_metrics(state)
+    metrics = aggregate_metrics(state, tools=scope_tools)
     return {
         "evaluations_file": str(output_path),
         "judge_model": judge_model,
@@ -622,5 +709,6 @@ __all__ = [
     "aggregate_metrics",
     "evaluate_review",
     "get_candidates",
+    "judged_inputs_sha256",
     "run_codereviewbench_judge",
 ]
