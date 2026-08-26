@@ -224,6 +224,33 @@ class NewRepositoryTests(unittest.TestCase):
 
             self.assertEqual(["src/[literal].py"], [hit.path for hit in hits])
 
+    def test_git_grep_matches_containing_control_bytes_do_not_abort_the_search(self) -> None:
+        # git grep -z -n terminates records with LF only; a matched line
+        # containing \r, \f, or another str.splitlines separator must stay a
+        # single record instead of fragmenting and failing the 3-field parse.
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            repo, _, previous_head = make_repository(root)
+            (repo / "src" / "control.txt").write_bytes(
+                b"first line\nSEARCHME cr\rTAIL\nSEARCHME ff\x0cTAIL2\nlast line\n"
+            )
+            git(repo, "add", ".")
+            git(repo, "commit", "-qm", "add control-byte fixture")
+            head = git(repo, "rev-parse", "HEAD")
+
+            with GitRepositoryCache(root / "cache").from_local(
+                repo, base_sha=previous_head, head_sha=head
+            ) as snapshot:
+                hits = snapshot.git_grep("SEARCHME")
+
+            self.assertEqual(
+                [
+                    ("src/control.txt", 2, "SEARCHME cr\rTAIL"),
+                    ("src/control.txt", 3, "SEARCHME ff\x0cTAIL2"),
+                ],
+                [(hit.path, hit.line, hit.text) for hit in hits],
+            )
+
     def test_git_grep_accepts_a_matching_line_larger_than_the_old_output_floor(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

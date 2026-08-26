@@ -500,7 +500,14 @@ class RepositorySnapshot:
             raise RepositoryError(f"git grep failed ({result.returncode}): {result.stderr.strip()}")
         hits: list[GrepHit] = []
         prefix = f"{revision}:"
-        for record in result.stdout.splitlines():
+        # ``git grep -z -n`` terminates records with LF only. ``splitlines``
+        # would also break on \f, \v, \x1c-\x1e, \x85, U+2028/29, and lone \r,
+        # fragmenting a matched source line that contains one of those bytes
+        # and aborting the whole search on the 3-field parse below.
+        records = result.stdout.split("\n")
+        if records and not records[-1]:
+            records.pop()
+        for record in records:
             fields = record.split("\0", 2)
             if len(fields) != 3 or not fields[1].isdigit():
                 raise RepositoryError("could not parse NUL-delimited git grep output")

@@ -102,9 +102,13 @@ def _split_physical_lines(raw: str) -> list[tuple[str, str]]:
 
 
 def _decode_git_quoted(value: str) -> str:
-    """Decode the C-style path quoting emitted by Git's ``core.quotePath``."""
+    """Decode the C-style path quoting emitted by Git's ``core.quotePath``.
 
-    value = value.strip()
+    The token is taken verbatim: Git header filenames may legitimately begin
+    or end with blanks (``rename from x ``), so trimming belongs to callers
+    whose surrounding syntax requires it, never to the decoder.
+    """
+
     if not (len(value) >= 2 and value[0] == '"' and value[-1] == '"'):
         return value
     source = value[1:-1]
@@ -140,7 +144,14 @@ def _decode_git_quoted(value: str) -> str:
             end = index
             while end < min(len(source), index + 3) and source[end] in "01234567":
                 end += 1
-            output.append(int(source[index:end], 8))
+            code = int(source[index:end], 8)
+            if code > 0xFF:
+                # Git never emits an octal escape above \377; keep a hostile
+                # over-range sequence as literal text instead of crashing.
+                output.append(92)
+                output.extend(source[index:end].encode("utf-8"))
+            else:
+                output.append(code)
             index = end
             continue
         output.extend(escaped.encode("utf-8"))
@@ -808,11 +819,18 @@ def _render_candidate(file_header: str, segments: list[DiffSegment], trailer: st
 
 
 def _segments_for_hunk(file_diff: FileDiff, hunk: Hunk, max_chars: int) -> list[DiffSegment]:
-    file_header = "".join(file_diff.header_lines)
+    # A candidate segment's annotated rendering is the hunk header plus each
+    # line's annotated rendering, so its length can be tracked incrementally:
+    # re-rendering the accumulated candidate for every appended line would be
+    # quadratic in hunk size. Each line's annotated length is computed once.
+    file_header_length = sum(len(header_line) for header_line in file_diff.header_lines)
+    hunk_header_length = len(hunk.raw_header) + len(hunk.header_ending)
     segments: list[DiffSegment] = []
     current: list[DiffLine] = []
+    current_length = hunk_header_length
 
     def emit() -> None:
+        nonlocal current_length
         if not current:
             return
         index = len(segments)
@@ -828,37 +846,19 @@ def _segments_for_hunk(file_diff: FileDiff, hunk: Hunk, max_chars: int) -> list[
             )
         )
         current.clear()
+        current_length = hunk_header_length
 
     for line in hunk.lines:
-        candidate = DiffSegment(
-            segment_id="candidate",
-            hunk_id=hunk.hunk_id,
-            path=hunk.path,
-            segment_index=len(segments),
-            raw_header=hunk.raw_header,
-            header_ending=hunk.header_ending,
-            lines=tuple([*current, line]),
-        )
-        if len(file_header + candidate.render_annotated()) <= max_chars:
-            current.append(line)
-            continue
-        if current:
+        line_length = len(line.render_annotated())
+        if file_header_length + current_length + line_length > max_chars:
             emit()
-            candidate = DiffSegment(
-                segment_id="candidate",
-                hunk_id=hunk.hunk_id,
-                path=hunk.path,
-                segment_index=len(segments),
-                raw_header=hunk.raw_header,
-                header_ending=hunk.header_ending,
-                lines=(line,),
-            )
-        if len(file_header + candidate.render_annotated()) > max_chars:
-            raise DiffChunkingError(
-                f"one diff line in {hunk.hunk_id} cannot fit "
-                f"max_chars={max_chars}; increase the cap (the line was not truncated)"
-            )
+            if file_header_length + current_length + line_length > max_chars:
+                raise DiffChunkingError(
+                    f"one diff line in {hunk.hunk_id} cannot fit "
+                    f"max_chars={max_chars}; increase the cap (the line was not truncated)"
+                )
         current.append(line)
+        current_length += line_length
     emit()
     return segments
 
@@ -878,12 +878,13 @@ def chunk_diff(parsed: ParsedDiff, *, max_chars: int, include_excluded: bool = F
     expected: list[str] = []
 
     for file_diff in parsed.files:
-        if file_diff.exclusion is not None and not include_excluded:
+        if file_diff.exclusion is not None:
+            # The typed exclusion record is reported even when the excluded
+            # file's hunks are chunked anyway under ``include_excluded``.
             exclusions.append(file_diff.exclusion)
-            continue
+            if not include_excluded:
+                continue
         if not file_diff.hunks:
-            if file_diff.exclusion is not None:
-                exclusions.append(file_diff.exclusion)
             continue
         file_header = "".join(file_diff.header_lines)
         if len(file_header) >= max_chars:
