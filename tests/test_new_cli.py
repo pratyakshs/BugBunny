@@ -954,7 +954,10 @@ def test_benchmark_export_rejects_incomparable_model_snapshots(
         cli._benchmark_export(args)
 
 
-def test_model_sweep_accepts_legacy_diff_hash_abbreviation_variance() -> None:
+def test_model_sweep_rejects_any_diff_hash_divergence() -> None:
+    # The diff hash is part of the immutable input identity. The former
+    # "semantic fields" fallback let two models with different raw diffs pass
+    # as comparable; identical metadata must no longer excuse a hash mismatch.
     semantic_diff = {
         "merge_base_sha": "c" * 40,
         "additions": 2,
@@ -981,6 +984,11 @@ def test_model_sweep_accepts_legacy_diff_hash_abbreviation_variance() -> None:
             }
         ]
 
+    with pytest.raises(cli.CliError, match="fixture snapshot differs"):
+        cli._require_comparable_model_sweep(artifacts)
+
+    for model in artifacts:
+        artifacts[model][0]["diff"]["sha256"] = "e" * 64
     cli._require_comparable_model_sweep(artifacts)
 
 
@@ -1050,3 +1058,73 @@ def test_main_redacts_direct_api_key_from_runtime_errors(
     assert api_base not in endpoint_error
     assert "password" not in endpoint_error
     assert "private-token" not in endpoint_error
+
+
+@pytest.mark.asyncio
+async def test_benchmark_run_failure_path_records_redacted_error_and_exits_nonzero(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    _Engine.instances.clear()
+    _Client.resolved.clear()
+    secret = "sk-benchmark-failure-secret"
+    monkeypatch.setenv("MARTIAN_API_KEY", secret)
+
+    class _FailingEngine(_Engine):
+        async def review(self, _pr: Any) -> _Artifact:
+            raise RuntimeError(f"provider rejected token {secret}")
+
+    case = SimpleNamespace(
+        case_id="alpha",
+        repository="upstream/alpha",
+        golden_url="https://github.com/upstream/alpha/pull/10",
+        review_url="https://github.com/fixture/alpha/pull/1",
+        fixture_repo_name="fixture-alpha",
+        fixture_tool="primarytool",
+        golden_sha256="1" * 64,
+    )
+    manifest = SimpleNamespace(
+        benchmark_sha256="b" * 64,
+        golden_sha256="g" * 64,
+        to_dict=lambda: {
+            "case_count": 1,
+            "benchmark_sha256": "b" * 64,
+            "golden_sha256": "g" * 64,
+        },
+    )
+    dataset = SimpleNamespace(cases=(case,), manifest=manifest)
+    monkeypatch.setattr(
+        cli,
+        "_benchmark_api",
+        lambda: (
+            lambda *_a, **_k: dataset,
+            object(),
+            lambda model: model.replace("/", "_"),
+            lambda model: model.replace("/", "_"),
+        ),
+    )
+    monkeypatch.setattr(cli, "_engine_types", lambda: (_FailingEngine, _writer))
+    monkeypatch.setattr(cli, "_repository_type", lambda: _Cache)
+    monkeypatch.setattr(cli, "_github_types", lambda: (_Client, object))
+    run_dir = tmp_path / "run"
+    args = cli.build_parser().parse_args(
+        [
+            "benchmark",
+            "run",
+            "--benchmark-data",
+            str(tmp_path / "benchmark_data.json"),
+            "--model",
+            "codex/a",
+            "--run-dir",
+            str(run_dir),
+        ]
+    )
+
+    assert await cli._benchmark_run(args) == 1
+    output = capsys.readouterr().out
+    assert secret not in output
+    run_manifest = json.loads((run_dir / "run_manifest.json").read_text(encoding="utf-8"))
+    assert run_manifest["status_counts"] == {"failed": 1}
+    record = run_manifest["records"][0]
+    assert record["status"] == "failed"
+    assert secret not in json.dumps(run_manifest)
+    assert "[REDACTED]" in record["error"]

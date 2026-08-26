@@ -15,7 +15,9 @@ import os
 import shutil
 import subprocess
 import sys
-from collections.abc import Iterable, Mapping, Sequence
+import threading
+from collections.abc import Iterable, Iterator, Mapping, Sequence
+from contextlib import contextmanager
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
 from typing import Any
@@ -423,6 +425,11 @@ def build_parser() -> argparse.ArgumentParser:
     analyze.add_argument("--output-json", type=Path, default=None)
     analyze.add_argument("--bootstrap-samples", type=_positive_int, default=2_000)
     analyze.add_argument("--bootstrap-seed", type=int, default=17_042)
+    analyze.add_argument(
+        "--allow-judge-errors",
+        action="store_true",
+        help="exclude (rather than fail on) judge-error-degraded evaluations",
+    )
 
     publish = subparsers.add_parser(
         "publish", help="explicitly publish a completed artifact as one GitHub review"
@@ -714,7 +721,7 @@ def _gateway_config(
         raise CliError("--api-key-env must not be empty")
     if api_key_env is not None and not os.environ.get(api_key_env):
         raise CliError(f"model API key environment variable is not set: {api_key_env}")
-    return GatewayConfig(
+    config = GatewayConfig(
         api_key=getattr(args, "api_key", None),
         api_key_env=api_key_env,
         api_base=getattr(args, "api_base", None),
@@ -723,6 +730,9 @@ def _gateway_config(
         max_output_tokens=max_output_tokens or args.max_output_tokens,
         codex_executable=args.codex_executable,
     )
+    _register_runtime_secret(config.resolved_api_key())
+    _register_runtime_secret(config.api_base)
+    return config
 
 
 def _safe_mapping(value: Any) -> dict[str, Any]:
@@ -750,6 +760,18 @@ def _redact_text(value: str, secrets: Iterable[str | None]) -> str:
     return redacted
 
 
+# Secrets resolved at runtime (for example from an ignored .env file) never
+# appear on the command line, so the argv scan below cannot recover them.
+# Credential-resolving call sites register them here for the final redaction
+# boundary in main().
+_RUNTIME_SECRETS: set[str] = set()
+
+
+def _register_runtime_secret(value: str | None) -> None:
+    if value:
+        _RUNTIME_SECRETS.add(value)
+
+
 def _argument_secrets(argv: Sequence[str]) -> list[str]:
     secrets = [
         os.environ.get("MARTIAN_API_KEY"),
@@ -758,20 +780,26 @@ def _argument_secrets(argv: Sequence[str]) -> list[str]:
         os.environ.get("GEMINI_API_KEY"),
         os.environ.get("GITHUB_TOKEN"),
         os.environ.get("GH_TOKEN"),
+        *_RUNTIME_SECRETS,
     ]
+
+    sensitive_flags = ("--api-key", "--api-base", "--api-key-env", "--github-token-env")
+
     for index, item in enumerate(argv):
-        if item == "--api-key" and index + 1 < len(argv):
-            secrets.append(argv[index + 1])
-        elif item.startswith("--api-key="):
-            secrets.append(item.partition("=")[2])
-        elif item == "--api-base" and index + 1 < len(argv):
-            secrets.append(argv[index + 1])
-        elif item.startswith("--api-base="):
-            secrets.append(item.partition("=")[2])
-        elif item in {"--api-key-env", "--github-token-env"} and index + 1 < len(argv):
-            secrets.append(os.environ.get(argv[index + 1]))
-        elif item.startswith(("--api-key-env=", "--github-token-env=")):
-            secrets.append(os.environ.get(item.partition("=")[2]))
+        flag, separator, inline_value = item.partition("=")
+        # argparse accepts unambiguous prefix abbreviations ("--api-k"), so an
+        # exact-string scan would leave abbreviated secret flags unredacted.
+        # Redacting both the literal value and its environment lookup for any
+        # prefix match over-approximates harmlessly.
+        if len(flag) < 6 or not any(name.startswith(flag) for name in sensitive_flags):
+            continue
+        value = inline_value if separator else (
+            argv[index + 1] if index + 1 < len(argv) else None
+        )
+        if value is None:
+            continue
+        secrets.append(value)
+        secrets.append(os.environ.get(value))
     return [secret for secret in secrets if secret]
 
 
@@ -865,12 +893,8 @@ def _doctor(args: argparse.Namespace) -> int:
         except (OSError, subprocess.TimeoutExpired):
             pass
 
-    env_names = args.check_env or [
-        MARTIAN_API_KEY_ENV,
-        "GITHUB_TOKEN",
-        "GH_TOKEN",
-    ]
-    env_present = {name: bool(os.environ.get(name)) for name in sorted(set(env_names))}
+    env_names = {MARTIAN_API_KEY_ENV, "GITHUB_TOKEN", "GH_TOKEN"} | set(args.check_env or [])
+    env_present = {name: bool(os.environ.get(name)) for name in sorted(env_names)}
     martian_key_configured = GatewayConfig(dotenv_path=args.env_file).resolved_api_key() is not None
     model_auth_available = codex_logged_in or martian_key_configured
     report = {
@@ -1016,7 +1040,11 @@ def _completed_artifact(
             and pr.get("base_sha") == base_sha
             and pr.get("head_sha") == head_sha
             and isinstance(context, Mapping)
-            and context.get("generation_prompt_sha256") == generation_prompt_sha256()
+            # Accept the legacy policy-blind value for artifacts recorded before
+            # prompt identity became policy-aware; the policy itself is bound
+            # separately through the config equality check above.
+            and context.get("generation_prompt_sha256")
+            in {generation_prompt_sha256(config.review_policy), generation_prompt_sha256()}
             and context.get("verifier_prompt_sha256") == verifier_prompt_sha256()
             and context.get("context_selection_prompt_sha256") == exploration_prompt_sha256()
             and context.get("context_selection_schema_sha256")
@@ -1034,7 +1062,59 @@ def _completed_artifact(
         return False
 
 
+class _BoundedAcquireCache:
+    """Apply --git-concurrency to review-phase acquisitions as well.
+
+    Prewarming honors the git semaphore, but a case whose preparation failed
+    (or was skipped) re-fetches inside the review job through the engine's
+    ``asyncio.to_thread`` boundary; a threading semaphore bounds those too.
+    """
+
+    def __init__(self, cache: Any, limit: int) -> None:
+        self._cache = cache
+        self._semaphore = threading.Semaphore(limit)
+
+    def acquire(self, pr: Any) -> Any:
+        with self._semaphore:
+            return self._cache.acquire(pr)
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._cache, name)
+
+
+@contextmanager
+def _run_dir_lock(run_root: Path) -> Iterator[None]:
+    """Hold an exclusive run-directory lock for the whole benchmark run.
+
+    Two concurrent runs (for example an accidental double resume) would
+    interleave checkpoint rewrites and silently lose completed records.
+    """
+
+    import fcntl
+
+    run_root.mkdir(parents=True, exist_ok=True)
+    with (run_root / ".bugbunny-run.lock").open("a+") as handle:
+        try:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as exc:
+            raise CliError(
+                f"run directory is already in use by another BugBunny process: {run_root}"
+            ) from exc
+        try:
+            yield
+        finally:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
 async def _benchmark_run(args: argparse.Namespace) -> int:
+    default_run_name = utc_now().replace("-", "").replace(":", "").replace(".", "-")
+    run_dir = args.run_dir or (DEFAULT_RUNS_DIR / default_run_name)
+    run_root = run_dir.expanduser().resolve()
+    with _run_dir_lock(run_root):
+        return await _benchmark_run_locked(args, run_root)
+
+
+async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int:
     load_dataset, _export, _sanitize_model_name, artifact_model_directory = _benchmark_api()
     ReviewEngine, write_review_artifact = _engine_types()
     GitRepositoryCache = _repository_type()
@@ -1057,9 +1137,6 @@ async def _benchmark_run(args: argparse.Namespace) -> int:
     _validate_context_window_models(args, models)
 
     active_reviews = args.concurrency or args.active_reviews
-    default_run_name = utc_now().replace("-", "").replace(":", "").replace(".", "-")
-    run_dir = args.run_dir or (DEFAULT_RUNS_DIR / default_run_name)
-    run_root = run_dir.expanduser().resolve()
     cache = GitRepositoryCache(args.cache_dir, shard_by_remote=True)
     selected_configs = {model: _review_config(args, model=model) for model in models}
     review_configs = {model: config.to_dict() for model, config in selected_configs.items()}
@@ -1147,7 +1224,14 @@ async def _benchmark_run(args: argparse.Namespace) -> int:
                         f"cannot resolve benchmark case {case.case_id}: {message}"
                     ) from exc
 
-            await asyncio.gather(*(resolve_case(case) for case in cases))
+            # Let every resolution settle before the client closes; a fail-fast
+            # gather would abandon in-flight tasks against a closing client.
+            outcomes = await asyncio.gather(
+                *(resolve_case(case) for case in cases), return_exceptions=True
+            )
+            failures = [item for item in outcomes if isinstance(item, BaseException)]
+            if failures:
+                raise failures[0]
         plan = {
             "schema_version": "bugbunny-benchmark-plan-v1",
             "created_at": utc_now(),
@@ -1277,7 +1361,10 @@ async def _benchmark_run(args: argparse.Namespace) -> int:
 
     await asyncio.gather(*(prepare_case(case) for case in cases_to_prepare))
 
-    engines = {model: ReviewEngine(selected_configs[model], gateway, cache) for model in models}
+    review_cache = _BoundedAcquireCache(cache, args.git_concurrency)
+    engines = {
+        model: ReviewEngine(selected_configs[model], gateway, review_cache) for model in models
+    }
     ordered_cases = sorted(
         cases,
         key=lambda case: (-preparation_hints.get(case.case_id, 0), case.case_id),
@@ -1326,7 +1413,9 @@ async def _benchmark_run(args: argparse.Namespace) -> int:
                     "model": model,
                     "status": "resumed",
                     "artifact": str(artifact_path.relative_to(run_root)),
-                    "artifact_sha256": sha256_bytes(artifact_path.read_bytes()),
+                    "artifact_sha256": await asyncio.to_thread(
+                        lambda: sha256_bytes(artifact_path.read_bytes())
+                    ),
                 }
             else:
                 artifact.benchmark = {
@@ -1351,7 +1440,9 @@ async def _benchmark_run(args: argparse.Namespace) -> int:
                     "status": artifact.status,
                     "artifact": str(artifact_path.relative_to(run_root)),
                     "findings": len(artifact.findings),
-                    "artifact_sha256": sha256_bytes(artifact_path.read_bytes()),
+                    "artifact_sha256": await asyncio.to_thread(
+                        lambda: sha256_bytes(artifact_path.read_bytes())
+                    ),
                 }
         except Exception as exc:
             record = {
@@ -1644,15 +1735,9 @@ def _require_comparable_model_sweep(
 
     if len(by_model) < 2:
         return
-    snapshots: dict[
-        str,
-        dict[str, tuple[tuple[str, str, str, str], str, str | None]],
-    ] = {}
+    snapshots: dict[str, dict[str, tuple[tuple[str, str, str, str], str]]] = {}
     for model, artifacts in sorted(by_model.items()):
-        model_snapshots: dict[
-            str,
-            tuple[tuple[str, str, str, str], str, str | None],
-        ] = {}
+        model_snapshots: dict[str, tuple[tuple[str, str, str, str], str]] = {}
         for artifact in artifacts:
             benchmark = artifact.get("benchmark")
             pr = artifact.get("pr")
@@ -1679,34 +1764,7 @@ def _require_comparable_model_sweep(
                 )
             if case_id in model_snapshots:
                 raise CliError(f"model {model!r} duplicates benchmark case {case_id!r}")
-            semantic_diff = None
-            if isinstance(diff, Mapping):
-                semantic_fields = {
-                    key: diff.get(key)
-                    for key in (
-                        "merge_base_sha",
-                        "additions",
-                        "deletions",
-                        "files",
-                        "hunks",
-                        "commentable_ranges",
-                    )
-                }
-                if (
-                    isinstance(semantic_fields["merge_base_sha"], str)
-                    and semantic_fields["merge_base_sha"]
-                    and all(
-                        isinstance(semantic_fields[key], int)
-                        for key in ("additions", "deletions", "files", "hunks")
-                    )
-                    and isinstance(semantic_fields["commentable_ranges"], Mapping)
-                ):
-                    semantic_diff = json.dumps(
-                        semantic_fields,
-                        sort_keys=True,
-                        separators=(",", ":"),
-                    )
-            model_snapshots[case_id] = (identity, diff_sha, semantic_diff)  # type: ignore[arg-type]
+            model_snapshots[case_id] = (identity, diff_sha)  # type: ignore[arg-type]
         snapshots[model] = model_snapshots
 
     baseline_model = sorted(snapshots)[0]
@@ -1717,16 +1775,10 @@ def _require_comparable_model_sweep(
                 f"model sweep case population differs between {baseline_model!r} and {model!r}"
             )
         for case_id in sorted(baseline):
-            baseline_identity, baseline_diff_sha, baseline_semantic_diff = baseline[case_id]
-            identity, diff_sha, semantic_diff = snapshots[model][case_id]
-            same_legacy_diff = (
-                baseline_semantic_diff is not None
-                and semantic_diff is not None
-                and semantic_diff == baseline_semantic_diff
-            )
-            if identity != baseline_identity or (
-                diff_sha != baseline_diff_sha and not same_legacy_diff
-            ):
+            # The diff hash is part of the immutable input identity; there is
+            # deliberately no semantic-field fallback that would let differing
+            # raw diffs pass as comparable.
+            if snapshots[model][case_id] != baseline[case_id]:
                 raise CliError(
                     f"model sweep fixture snapshot differs for case {case_id!r} between "
                     f"{baseline_model!r} and {model!r}"
@@ -1897,6 +1949,7 @@ def _benchmark_analyze(args: argparse.Namespace) -> int:
         output_json=output_json,
         bootstrap_samples=args.bootstrap_samples,
         bootstrap_seed=args.bootstrap_seed,
+        allow_judge_errors=args.allow_judge_errors,
     )
     markdown_path = output_json.with_suffix(".md")
     atomic_write_text(markdown_path, render_analysis_markdown(report))
@@ -1958,8 +2011,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     except KeyboardInterrupt:
         print("BugBunny interrupted", file=sys.stderr)
         return 130
-    except (RuntimeError, FileNotFoundError, ValueError) as exc:
-        message = _redact_text(str(exc), _argument_secrets(arguments))
+    except Exception as exc:
+        # A single redacting boundary: any escaping failure class would
+        # otherwise print an unredacted traceback and skip the exit contract.
+        rendered = (
+            str(exc)
+            if isinstance(exc, (RuntimeError, FileNotFoundError, ValueError))
+            else f"{type(exc).__name__}: {exc}"
+        )
+        message = _redact_text(rendered, _argument_secrets(arguments))
         print(f"bugbunny: {message}", file=sys.stderr)
         return 2
 
