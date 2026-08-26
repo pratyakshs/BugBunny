@@ -216,9 +216,17 @@ def test_exact_verifier_prompt_budget_retains_patch_and_clips_context() -> None:
 
 
 class FakeSnapshot:
-    def __init__(self, diff: str, sources: dict[str, str]) -> None:
+    def __init__(
+        self,
+        diff: str,
+        sources: dict[str, str],
+        base_sources: dict[str, str] | None = None,
+    ) -> None:
         self.raw_diff = diff
         self.sources = sources
+        # When base sources are supplied, base and head content genuinely
+        # differ so a wrong-revision read fails instead of silently passing.
+        self.base_sources = base_sources
         self.head_sha = "2" * 40
         self.assert_clean_calls = 0
         self.close_calls = 0
@@ -230,8 +238,11 @@ class FakeSnapshot:
     def read_text(self, path: str) -> str:
         return self.sources[path]
 
-    def read_blob(self, _revision: str, path: str, *, max_bytes: int = 8_000_000) -> str:
+    def read_blob(self, revision: str, path: str, *, max_bytes: int = 8_000_000) -> str:
         assert max_bytes > 0
+        if self.base_sources is not None:
+            assert revision != self.head_sha, "base-revision read routed to head"
+            return self.base_sources[path]
         return self.sources[path]
 
     def list_files(self, _revision: str) -> list[str]:
@@ -639,7 +650,8 @@ async def test_deletion_only_defect_is_grounded_on_the_left_side(
     payload["end_line"] = 1
     snapshot = FakeSnapshot(
         DELETION_ONLY_DIFF,
-        {"guard.py": "if user is None:\n    return forbidden()\nhandle(user)\n"},
+        {"guard.py": "handle(user)\n"},
+        base_sources={"guard.py": "if user is None:\n    return forbidden()\nhandle(user)\n"},
     )
     artifact = await ReviewEngine(
         config,
@@ -662,7 +674,8 @@ async def test_renamed_file_left_finding_accepts_old_path_then_normalizes_to_rev
     payload["side"] = "LEFT"
     snapshot = FakeSnapshot(
         RENAMED_DELETION_DIFF,
-        {"old.py": "guard()\nkeep()\n", "new.py": "keep()\n"},
+        {"new.py": "keep()\n"},
+        base_sources={"old.py": "guard()\nkeep()\n"},
     )
 
     artifact = await ReviewEngine(
@@ -1413,3 +1426,21 @@ async def test_artifact_writer_persists_native_json_and_markdown(
     assert markdown.startswith("# BugBunny review\n")
     assert "Persisted finding" in markdown
     assert "Coverage: 1/1 eligible hunks" in markdown
+
+
+def test_anchor_patch_excerpt_matches_exact_coordinates_not_substrings() -> None:
+    diff = (
+        "diff --git a/R2D2.py b/R2D2.py\n"
+        "--- a/R2D2.py\n"
+        "+++ b/R2D2.py\n"
+        "@@ -1,0 +2,1 @@\n"
+        "+new = 1\n"
+    )
+    chunk = parse_unified_diff(diff).chunk(4_096).chunks[0]
+
+    excerpt = engine_module._anchor_patch_excerpt(chunk, 2, "RIGHT", radius=0, max_chars=None)
+
+    # The excerpt must center on the R2 payload row, not the file header whose
+    # path merely contains the substring "R2".
+    assert "+new = 1" in excerpt
+    assert "diff --git" not in excerpt

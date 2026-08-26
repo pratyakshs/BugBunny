@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import threading
 from collections.abc import Mapping, Sequence
 from dataclasses import asdict, dataclass, is_dataclass, replace
 from pathlib import Path
@@ -19,6 +20,8 @@ from bugbunny.exploration import (
 from bugbunny.families import consolidate_semantic_duplicates
 from bugbunny.gateway import GatewayError, ModelGateway
 from bugbunny.models import (
+    DECLARED_WINDOW_CHARS_PER_TOKEN,
+    DECLARED_WINDOW_PROTOCOL_RESERVE_TOKENS,
     CallRecord,
     Coverage,
     Finding,
@@ -326,7 +329,12 @@ def _fit_generation_prompt(
     clipped_context = batch.context[:low] + marker
     prompt = render(clipped_context)
     if len(prompt) > max_input_chars:
-        raise ReviewEngineError("generation prompt fitting failed to honor its character plan")
+        # Reachable only when the headroom is smaller than the truncation
+        # marker itself. The earlier render("") check proved an empty context
+        # fits, so degrade to that instead of failing a fittable batch; the
+        # omission is still recorded through the clipped flag.
+        clipped_context = ""
+        prompt = render(clipped_context)
     return prompt, replace(batch, context=clipped_context), True
 
 
@@ -467,10 +475,10 @@ def _verifier_generation_context(context: str) -> str:
     return "\n".join(lines[:first_source])
 
 
-def _context_summary(bundle: Any) -> dict[str, Any]:
+def _context_summary(bundle: Any, *, review_policy: str = "production") -> dict[str, Any]:
     summary: dict[str, Any] = {
         "generation_prompt_version": GENERATION_PROMPT_VERSION,
-        "generation_prompt_sha256": generation_prompt_sha256(),
+        "generation_prompt_sha256": generation_prompt_sha256(review_policy),
         "verifier_prompt_version": VERIFIER_PROMPT_VERSION,
         "verifier_prompt_sha256": verifier_prompt_sha256(),
         "context_selection_prompt_version": EXPLORATION_PROMPT_VERSION,
@@ -614,6 +622,19 @@ def _render_fair_blocks(blocks: Sequence[str], budget: int) -> str:
     )
 
 
+def _coordinate_matches(prefix: str, line: int, side: str) -> bool:
+    """Match the exact annotated gutter coordinate for one changed line.
+
+    Substring matching would let ``R2`` anchor to an ``R2D2.py`` file header or
+    an ``R21`` row and center the verifier's evidence on the wrong code.
+    """
+
+    coordinate = prefix.strip()
+    if side == "RIGHT":
+        return coordinate == f"R{line}" or coordinate.startswith(f"R{line}/")
+    return coordinate == f"L{line}" or coordinate.endswith(f"/L{line}")
+
+
 def _anchor_patch_excerpt(
     chunk: DiffChunk,
     line: int,
@@ -622,8 +643,11 @@ def _anchor_patch_excerpt(
     max_chars: int | None = None,
 ) -> str:
     rows = chunk.annotated_patch.splitlines()
-    needle = f"{'R' if side == 'RIGHT' else 'L'}{line}"
-    matches = [index for index, row in enumerate(rows) if needle in row.split(" | ", 1)[0]]
+    matches = []
+    for index, row in enumerate(rows):
+        prefix, separator, _rest = row.partition(" | ")
+        if separator and _coordinate_matches(prefix, line, side):
+            matches.append(index)
     if not matches:
         limit = 8_000 if max_chars is None else max(0, max_chars)
         return chunk.annotated_patch[:limit]
@@ -876,6 +900,30 @@ class ReviewEngine:
         self.gateway = gateway
         self.repository_cache = repository_cache
 
+    async def _acquire_snapshot(self, pr: PRInfo) -> RepositorySnapshot:
+        """Acquire the worktree without leaking it on task cancellation.
+
+        ``asyncio.to_thread`` keeps running after the awaiting task is
+        cancelled; a snapshot materialized by that orphaned thread would never
+        be closed. The done-callback disposes it on its own thread instead.
+        """
+
+        acquire = asyncio.ensure_future(
+            asyncio.to_thread(self.repository_cache.acquire, pr)
+        )
+        try:
+            return await acquire
+        except asyncio.CancelledError:
+
+            def _dispose(task: asyncio.Future) -> None:
+                if task.cancelled() or task.exception() is not None:
+                    return
+                snapshot = task.result()
+                threading.Thread(target=snapshot.close, daemon=True).start()
+
+            acquire.add_done_callback(_dispose)
+            raise
+
     async def review(self, pr: PRInfo) -> ReviewArtifact:
         started_at = utc_now()
         started_ms = monotonic_ms()
@@ -925,7 +973,7 @@ class ReviewEngine:
         fatal = False
 
         try:
-            snapshot = await asyncio.to_thread(self.repository_cache.acquire, pr)
+            snapshot = await self._acquire_snapshot(pr)
             raw_diff = await asyncio.to_thread(snapshot.diff, self.config.diff_context_lines)
             parsed = parse_unified_diff(raw_diff)
             plan = parsed.chunk(self.config.max_chunk_chars)
@@ -1272,7 +1320,10 @@ class ReviewEngine:
             for chunk in plan.chunks:
                 eligible_changed_lines.setdefault(chunk.path, set()).update(chunk.added_lines)
                 eligible_deleted_lines.setdefault(chunk.path, set()).update(chunk.deleted_lines)
-            validated, validation_rejections = validate_findings(
+            # Deterministic grounding reads sources through git subprocesses;
+            # run it off the event loop so concurrent reviews keep flowing.
+            validated, validation_rejections = await asyncio.to_thread(
+                validate_findings,
                 raw_findings,
                 changed_lines=eligible_changed_lines,
                 read_source=snapshot.read_text,
@@ -1328,7 +1379,8 @@ class ReviewEngine:
                                 self.config.max_context_chars,
                                 max(1, evidence_chars - verifier_patch_budget),
                             )
-                        patch, context, evidence_metrics = _verification_evidence(
+                        patch, context, evidence_metrics = await asyncio.to_thread(
+                            _verification_evidence,
                             batch,
                             chunks_by_id,
                             contexts,
@@ -1503,7 +1555,7 @@ class ReviewEngine:
             else:
                 findings = validated
 
-            snapshot.assert_clean()
+            await asyncio.to_thread(snapshot.assert_clean)
         except Exception as exc:
             fatal = True
             diagnostics.append({"stage": "engine", "error": _safe_error(exc)})
@@ -1557,6 +1609,7 @@ class ReviewEngine:
             eligible_hunks=len(eligible_hunks),
             completed_hunks=completed_hunks,
             failed_hunks=failed_hunks,
+            eligible_hunk_ids=list(eligible_hunks),
         )
         if fatal:
             status = "failed"
@@ -1569,11 +1622,11 @@ class ReviewEngine:
 
         completed_at = utc_now()
         context_summary = (
-            _context_summary(bundle)
+            _context_summary(bundle, review_policy=self.config.review_policy)
             if bundle is not None
             else {
                 "generation_prompt_version": GENERATION_PROMPT_VERSION,
-                "generation_prompt_sha256": generation_prompt_sha256(),
+                "generation_prompt_sha256": generation_prompt_sha256(self.config.review_policy),
                 "verifier_prompt_version": VERIFIER_PROMPT_VERSION,
                 "verifier_prompt_sha256": verifier_prompt_sha256(),
                 "context_selection_prompt_version": EXPLORATION_PROMPT_VERSION,
@@ -1607,20 +1660,26 @@ class ReviewEngine:
             "verifier_input_char_budget": self.config.verifier_input_char_budget,
             "verifier_max_output_tokens_per_call": (self.config.verifier_max_output_tokens),
             "declared_window_reserve_tokens": (
-                4_096 if self.config.context_window_tokens is not None else None
+                DECLARED_WINDOW_PROTOCOL_RESERVE_TOKENS
+                if self.config.context_window_tokens is not None
+                else None
             ),
             "declared_window_input_character_assumption": (
-                "2 Unicode characters/token (planning estimate, not a tokenizer or hard token "
-                "guarantee; provider usage is authoritative)"
+                f"{DECLARED_WINDOW_CHARS_PER_TOKEN} Unicode characters/token (planning "
+                "estimate, not a tokenizer or hard token guarantee; provider usage is "
+                "authoritative)"
                 if self.config.context_window_tokens is not None
                 else None
             ),
             "declared_verifier_window_reserve_tokens": (
-                4_096 if self.config.verifier_context_window_tokens is not None else None
+                DECLARED_WINDOW_PROTOCOL_RESERVE_TOKENS
+                if self.config.verifier_context_window_tokens is not None
+                else None
             ),
             "declared_verifier_window_input_character_assumption": (
-                "2 Unicode characters/token (planning estimate, not a tokenizer or hard token "
-                "guarantee; provider usage is authoritative)"
+                f"{DECLARED_WINDOW_CHARS_PER_TOKEN} Unicode characters/token (planning "
+                "estimate, not a tokenizer or hard token guarantee; provider usage is "
+                "authoritative)"
                 if self.config.verifier_context_window_tokens is not None
                 else None
             ),
