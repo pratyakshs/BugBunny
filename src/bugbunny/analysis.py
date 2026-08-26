@@ -243,6 +243,15 @@ def _threshold_case(
     decisions: Mapping[str, tuple[str, float]],
     threshold: float,
 ) -> dict[str, int]:
+    """Re-reduce one judged case at a hypothetical verifier threshold.
+
+    This mirrors the judge's greedy reduction exactly: a pair credits its
+    candidate only when it strictly improves the golden's best confidence, and
+    goldens/candidates are keyed by text the way ``evaluate_review`` keys them.
+    Counting every judged match instead would systematically understate false
+    positives relative to the official scoring.
+    """
+
     selected = {
         int(item["candidate_index"])
         for item in audit
@@ -250,20 +259,34 @@ def _threshold_case(
         and decisions.get(str(item.get("finding_id") or ""), ("drop", 0.0))[0] == "keep"
         and decisions.get(str(item.get("finding_id") or ""), ("drop", 0.0))[1] >= threshold
     }
-    matched_candidates: set[int] = set()
-    matched_golden: set[int] = set()
+    candidate_text: dict[int, str] = {}
+    for pair in evaluation.get("pair_matches", []):
+        if isinstance(pair, Mapping) and isinstance(pair.get("candidate_index"), int):
+            candidate_text[pair["candidate_index"]] = str(pair.get("candidate") or "")
+    best_by_golden: dict[str, float] = {}
+    matched_texts: set[str] = set()
+    matched_golden: set[str] = set()
     for pair in evaluation.get("pair_matches", []):
         if not isinstance(pair, Mapping) or pair.get("error") or not pair.get("match"):
             continue
         candidate_index = pair.get("candidate_index")
-        golden_index = pair.get("golden_index")
-        if candidate_index in selected and isinstance(golden_index, int):
-            matched_candidates.add(int(candidate_index))
-            matched_golden.add(golden_index)
+        if candidate_index not in selected:
+            continue
+        golden_key = str(pair.get("golden") or pair.get("golden_index"))
+        confidence = pair.get("confidence", 0)
+        if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
+            confidence = 0.0
+        if float(confidence) > best_by_golden.get(golden_key, 0.0):
+            best_by_golden[golden_key] = float(confidence)
+            matched_golden.add(golden_key)
+            matched_texts.add(candidate_text.get(int(candidate_index), str(candidate_index)))
+    selected_texts = {
+        candidate_text.get(index, str(index)) for index in selected
+    }
     total_golden = int(evaluation.get("total_golden", 0))
     return {
         "tp": len(matched_golden),
-        "fp": len(selected - matched_candidates),
+        "fp": len(selected_texts - matched_texts),
         "fn": total_golden - len(matched_golden),
     }
 
@@ -276,8 +299,15 @@ def analyze_evaluation(
     output_json: Path,
     bootstrap_samples: int = 2_000,
     bootstrap_seed: int = 17_042,
+    allow_judge_errors: bool = False,
 ) -> dict[str, Any]:
-    """Create a reproducible audit report from immutable run/evaluation outputs."""
+    """Create a reproducible audit report from immutable run/evaluation outputs.
+
+    Judge-skipped rows never enter metrics. Rows whose pair judgments contain
+    errors were scored with errored pairs defaulted to non-matches, so pooling
+    them silently deflates recall; they fail the analysis unless
+    ``allow_judge_errors`` is set, in which case they are excluded and counted.
+    """
 
     run_root = run_dir.expanduser().resolve()
     results_root = results_dir.expanduser().resolve()
@@ -313,6 +343,7 @@ def analyze_evaluation(
     case_rows_by_tool: dict[str, dict[str, Mapping[str, Any]]] = {}
     audit_by_tool: dict[str, dict[str, list[dict[str, Any]]]] = {}
     export_by_model_stage: dict[tuple[str, str], str] = {}
+    row_hygiene: dict[str, dict[str, Any]] = {}
     for raw_export in exports:
         if not isinstance(raw_export, Mapping):
             raise AnalysisError("export index contains a malformed track")
@@ -331,11 +362,34 @@ def analyze_evaluation(
             for url, values in cases.items()
             if isinstance(values, list)
         }
-        rows = {
-            str(url): per_tool[tool]
-            for url, per_tool in evaluations.items()
-            if isinstance(per_tool, Mapping)
-            and isinstance(per_tool.get(tool), Mapping)
+        rows: dict[str, Mapping[str, Any]] = {}
+        skipped_rows = 0
+        error_rows: list[str] = []
+        for url, per_tool in evaluations.items():
+            if not isinstance(per_tool, Mapping) or not isinstance(per_tool.get(tool), Mapping):
+                continue
+            result = per_tool[tool]
+            # Mirror the judge's own aggregation hygiene: skipped rows carry no
+            # judgments, and error-degraded rows scored failed pairs as
+            # non-matches, so neither may enter published metrics.
+            if result.get("skipped"):
+                skipped_rows += 1
+                continue
+            if int(result.get("errors_count") or 0) > 0:
+                error_rows.append(str(url))
+                continue
+            rows[str(url)] = result
+        if error_rows and not allow_judge_errors:
+            raise AnalysisError(
+                f"tool {tool} has judge-error-degraded evaluations for "
+                f"{', '.join(sorted(error_rows))}; re-judge them or pass "
+                "allow_judge_errors to exclude them explicitly"
+            )
+        row_hygiene[tool] = {
+            "rows_used": len(rows),
+            "rows_skipped_excluded": skipped_rows,
+            "rows_error_excluded": len(error_rows),
+            "error_excluded_cases": sorted(error_rows),
         }
         case_rows_by_tool[tool] = rows
         metric = _metrics(rows.values())
@@ -385,18 +439,47 @@ def analyze_evaluation(
             if isinstance(item.get("config"), Mapping)
             and isinstance(item["config"].get("min_verifier_confidence"), (int, float))
         )
+        # Bind the three-way statistical join before attributing any decision:
+        # every audited candidate must exist in the run artifact it claims to
+        # come from, and the audit population must match what was judged. A
+        # stale export or artifact otherwise misattributes judgments silently.
+        for golden_url, evaluation in case_rows_by_tool[generator_tool].items():
+            artifact = case_artifacts.get(golden_url)
+            if artifact is None:
+                raise AnalysisError("generator evaluation has no matching run artifact")
+            artifact_finding_ids = {
+                str(item.get("finding_id"))
+                for stream in ("validated_findings", "findings")
+                for item in artifact.get(stream, [])
+                if isinstance(item, Mapping) and item.get("finding_id")
+            }
+            case_audit = audit_by_tool[generator_tool].get(golden_url, [])
+            foreign = [
+                str(item.get("finding_id"))
+                for item in case_audit
+                if str(item.get("finding_id") or "") not in artifact_finding_ids
+            ]
+            if foreign:
+                raise AnalysisError(
+                    f"candidate audit for {golden_url} references findings absent "
+                    f"from the run artifact: {', '.join(sorted(foreign)[:5])}"
+                )
+            judged_candidates = evaluation.get("total_candidates")
+            if isinstance(judged_candidates, int) and judged_candidates != len(case_audit):
+                raise AnalysisError(
+                    f"candidate audit for {golden_url} lists {len(case_audit)} candidates "
+                    f"but the judge evaluated {judged_candidates}; the export and "
+                    "evaluations are out of sync"
+                )
         curve: list[dict[str, Any]] = []
         for threshold in sorted(thresholds):
             rows = []
             for golden_url, evaluation in case_rows_by_tool[generator_tool].items():
-                artifact = case_artifacts.get(golden_url)
-                if artifact is None:
-                    raise AnalysisError("generator evaluation has no matching run artifact")
                 rows.append(
                     _threshold_case(
                         evaluation,
                         audit_by_tool[generator_tool].get(golden_url, []),
-                        _decision_by_finding(artifact),
+                        _decision_by_finding(case_artifacts[golden_url]),
                         threshold,
                     )
                 )
@@ -430,6 +513,7 @@ def analyze_evaluation(
             "judge_model": judge_model,
         },
         "bootstrap": {"samples": bootstrap_samples, "seed": bootstrap_seed, "unit": "pull_request"},
+        "judge_row_hygiene": dict(sorted(row_hygiene.items())),
         "stage_counts": stage_counts,
         "tracks": dict(sorted(tracks.items())),
         "paired_model_comparisons": pairwise,
