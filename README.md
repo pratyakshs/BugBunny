@@ -11,8 +11,8 @@ See [architecture](docs/architecture.md) for the pipeline invariants and
 
 ## Highlights
 
-- Lossless diff chunking records complete, partial, or failed hunk coverage; a
-  failed shard is never reported as a clean review.
+- Lossless diff chunking records the exact eligible and completed hunk-ID sets,
+  not only counts; a failed shard is never reported as a clean review.
 - Configurable whole-repository context defaults to generous deterministic
   evidence and can optionally let the review model choose additional bounded,
   read-only file reads and literal searches.
@@ -20,15 +20,37 @@ See [architecture](docs/architecture.md) for the pipeline invariants and
   `balanced` adds a batched precision verifier.
 - Benchmark runs resolve inputs once, prewarm per-repository Git caches, start
   larger diffs first, and schedule every case/model pair through shared global
-  review and model-call limits.
+  review and model-call limits. An exclusive run-directory lock prevents two
+  processes from interleaving checkpoint updates.
 - Deterministic gates check path, changed side/line, cited base-or-head evidence, category, and
   exact duplicates before a finding can be final.
 - Raw proposals, deterministic candidates, rejected proposals, final findings, exclusions, exact refs,
   diff hash, model calls, token usage, latency, and available cost are preserved
   in one JSON artifact. There is no early finding cap.
+- Export, judge resume, and analysis are bound to the exact code and candidate
+  inputs they consume; stale or interrupted bundle state fails verification
+  instead of being silently reused.
 - API-backed models route directly through the Martian Gateway, making provider
   and model sweeps a CLI setting. A narrow `codex/*` adapter reuses an existing
   ChatGPT/Codex login.
+
+## Current audit status
+
+The 2026-08-26 hardening review fixed the 70 implementation findings from the
+first pass, then scored and implemented all 18 second-pass architectural
+findings (every one scored at least 5/10 fix confidence). Integration review
+added regressions for stale judge rows, duplicate judge JSON keys and duplicate
+comment text, exact Git filenames, cancellation races, bounded agentic reads,
+and pre-write export identity checks. The package is now `0.8.0`; review,
+benchmark, export, judge, and analysis artifacts carry a path-independent hash
+of the installed BugBunny Python source in addition to their versioned schema.
+The live evidence and deferred design questions are recorded in
+[`AUDIT_TODO.md`](AUDIT_TODO.md).
+
+The two committed benchmark result bundles remain valid records for their
+pinned historical commits, but `0.8.0` has not been rerun. Do not present their
+scores as current-version results; a new claim still requires a fresh frozen
+run/export/judge/analyze cycle.
 
 ## Install
 
@@ -124,8 +146,9 @@ bugbunny benchmark run \
 ```
 
 The operating point binds the corpus bytes, labels, verifier responses, model,
-reasoning setting, prompt, schema, objective, and threshold. A run rejects a
-file produced by a different verifier contract. A manual
+reasoning setting, prompt, schema, objective, and threshold. Loading it
+re-derives the selected threshold from the hash-bound observations and rejects
+threshold, selection, observation, or operating-point-ID tampering. A manual
 `--min-verifier-confidence` remains available for diagnosis, but should not be
 tuned on the canonical 50 cases.
 
@@ -198,7 +221,9 @@ All bounds are explicit CLI options, including `--max-chunk-chars`,
 `--max-context-files`, `--context-blob-read-bytes`, and the per-read/search
 limits shown by `--help`. `--max-context-files` limits distinct files added by
 agentic actions; files already represented by the curated seed are measured
-separately in the artifact.
+separately in the artifact. The blob-read budget is cumulative across agentic
+reads for the review, and returned, omitted, failed, rejected, and deduplicated
+requests have separate telemetry.
 For example, a single model can use a user-verified 200,000-token window:
 
 ```bash
@@ -307,13 +332,16 @@ requires the standard 50-case source file before applying the smoke selection,
 and refuses to reuse a run directory for a different experiment. Each finished
 case/model record is committed to `run_checkpoint.json`; a final
 `run_manifest.json` commits the complete run. Fully resumed cases skip Git
-prewarming.
+prewarming. One process holds a nonblocking exclusive lock on the run directory
+for the complete invocation; an accidental concurrent run or resume fails
+before either process can lose checkpoint records.
 
 The defaults permit 10 active reviews, four model calls inside each review, and
 16 model calls globally. Repository preparation uses four independent
 per-remote Git caches over HTTP/1.1, while authenticated GitHub metadata
 resolution permits 16 requests. Larger prepared diffs enter the review queue
-first. The optional balanced verifier remains sequential within each review.
+first. `--git-concurrency` also bounds any review-phase acquisition or re-fetch,
+not just prewarming. The optional balanced verifier remains sequential within each review.
 `--concurrency` is retained as a deprecated alias for `--active-reviews`.
 
 Export one or more explicitly named candidate tracks directly to the files
@@ -353,10 +381,15 @@ includes the location in candidate text because the official judge compares
 text. The exporter accepts only current,
 completed, fully covered fixture artifacts whose dataset and per-case golden
 hashes match. For multi-model exports it also requires identical case sets and
-identical golden URL, fixture URL, base, head, and diff hash for every case.
+identical golden URL, fixture URL, base, head, and diff hash for every case,
+including models added in separate export invocations.
 Original golden fields are hash-checked before and after export. Each
 model-qualified manifest binds the exact bytes of all three shared Step 3
-inputs. Verify the bundle after copying it and before invoking the judge:
+inputs. The shared bundle update is cross-process locked, preserves existing
+foreign-tool review rows, refreshes manifests in every judge directory that
+binds the shared `benchmark_data.json`, and rejects unmanifested BugBunny rows
+left by an interrupted export. Verify the bundle after copying it and before
+invoking the judge:
 
 ```bash
 bugbunny benchmark verify-export \
@@ -380,10 +413,13 @@ bugbunny benchmark judge \
 
 The judge keeps the benchmark prompt and metric reduction unchanged, sends all
 selected tools through one bounded Martian request queue, atomically
-checkpoints each completed review to `evaluations.json`, and prints aggregate
-precision, recall, and F1. It also retains every golden/candidate pair decision,
-confidence, retry count, and safe retry reason for audit. A rerun resumes
-error-free records automatically.
+checkpoints completed reviews to `evaluations.json`, and prints aggregate
+precision, recall, and F1 only for the tools in the current invocation. It also
+retains every golden/candidate pair decision, confidence, retry count, and safe
+retry reason for audit. A rerun resumes an error-free record only when its hash
+of the exact golden text, candidate text, and dedup groups still matches;
+legacy hashless or changed-input records are re-judged. Concurrent completions
+coalesce full-state checkpoint writes without changing the file format.
 
 Balanced reviews also retry a structurally valid verifier response when its
 dynamic decision relationships are invalid (for example, a merge that points
@@ -408,8 +444,11 @@ bugbunny benchmark analyze \
 ```
 
 The analyzer never changes scores or makes new model calls. Threshold curves
-are diagnostic only; the reported operating point remains the externally frozen
-one used during the run.
+use the judge's greedy reduction and are diagnostic only; the reported
+operating point remains the externally frozen one used during the run. Skipped
+rows are excluded. Judge-error-degraded rows fail analysis by default; use
+`--allow-judge-errors` only for an explicit diagnostic that excludes and reports
+those rows rather than publishing them as normal results.
 
 See [CodeReviewBench integration](docs/codereviewbench.md) for the fixture
 layout, reuse decision, exact judge workflow, and why publishing requires
@@ -421,7 +460,7 @@ Every case records:
 
 - exact PR URL, base/head and merge-base SHAs, diff hash, changed-line ledger,
   changed-file statistics, and config;
-- eligible, excluded, completed, and failed file/hunk coverage;
+- exact eligible and completed hunk IDs plus excluded and failed file/hunk coverage;
 - exact context characters, UTF-8 bytes, file paths and counts; changed,
   unchanged, and cross-file coverage; budget utilization; truncation and
   omission reasons; clearly labeled token estimates; agentic action/round and
@@ -455,12 +494,29 @@ an explicit user action and validates the artifact against the resolved PR.
   arbitrary existing working clones into its cache.
 - Findings anchor to RIGHT-side additions or LEFT-side deletions. Binary,
   generated, vendored, lockfile, combined-diff, and metadata-only changes are
-  excluded and reported.
+  excluded and reported. Added source comments such as `@generated` are not
+  trusted as exclusion provenance; the breadth of name/path-based vendor and
+  generated policies remains a deliberate, deferred policy choice.
+- Control characters in model-selected paths are rejected because they can
+  forge the line-oriented evidence protocol. Other Git-significant characters,
+  including leading/trailing/all-space names and literal backslashes, are
+  preserved exactly.
+- Export and judge writers are serialized between local processes and partial
+  bundle state fails verification. Filesystems do not provide one atomic
+  rename spanning every file in a CodeReviewBench bundle, so a machine crash
+  can still require rerunning export; it must not be judged without successful
+  manifest/index verification.
+- Publication idempotency uses a durable local lock plus GitHub marker lookup.
+  It cannot coordinate two different hosts perfectly because GitHub does not
+  expose a server-side idempotency key for review creation.
+- Current schemas reject legacy/unbound artifacts instead of migrating them in
+  place. Re-run from the frozen inputs when exact comparability is required.
 - No project code is executed, so defects provable only through builds, tests,
   generated artifacts, or runtime behavior may be missed.
 - Model quality, cost, and latency remain provider- and prompt-dependent. The
-  repository does not claim a benchmark score or full-suite timing until such a
-  run is recorded reproducibly.
+  committed [`results/`](results/README.md) bundles report reproducible
+  full-suite scores for their pinned historical commits; they have not been
+  rerun for `0.8.0` and must not be presented as measurements of current code.
 - CodeReviewBench itself is static, its golden set may be incomplete, and its
   LLM judge is model-dependent. Report the review model, verifier model, judge
   model, profile, and artifact manifest with every result.
@@ -474,4 +530,4 @@ pytest
 ```
 
 Tests use fake model transports and local Git fixtures unless a test explicitly
-states otherwise. The project is MIT licensed.
+states otherwise. The current suite contains 358 tests. The project is MIT licensed.
