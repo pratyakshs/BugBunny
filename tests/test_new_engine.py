@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import threading
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
@@ -9,6 +10,7 @@ from typing import Any
 import pytest
 
 import bugbunny.engine as engine_module
+from bugbunny.build import REVIEW_SCHEMA_VERSION, implementation_identity
 from bugbunny.diff import parse_unified_diff
 from bugbunny.engine import ReviewEngine, write_review_artifact
 from bugbunny.gateway import GatewayConfig, GatewayError, GatewayResult, ModelGateway
@@ -277,6 +279,156 @@ class FakeCache:
         return self.snapshot
 
 
+@pytest.mark.asyncio
+async def test_review_local_gateway_queue_obeys_and_forwards_one_deadline() -> None:
+    semaphore = asyncio.Semaphore(1)
+    await semaphore.acquire()
+
+    class Gateway:
+        def __init__(self) -> None:
+            self.calls: list[dict[str, Any]] = []
+
+        async def complete_json(self, _prompt: str, **kwargs: Any) -> str:
+            self.calls.append(kwargs)
+            return "ok"
+
+    gateway = Gateway()
+    bounded = engine_module._SemaphoreGateway(gateway, semaphore)
+    with pytest.raises(ValueError, match="finite and positive"):
+        await bounded.complete_json("prompt", queue_timeout_seconds=float("inf"))
+    with pytest.raises(TimeoutError, match=r"review-local.*queue wait exceeded"):
+        await bounded.complete_json("prompt", queue_timeout_seconds=0.01)
+    assert gateway.calls == []
+
+    async def release_later() -> None:
+        await asyncio.sleep(0.02)
+        semaphore.release()
+
+    release = asyncio.create_task(release_later())
+    assert await bounded.complete_json("prompt", queue_timeout_seconds=0.2) == "ok"
+    await release
+    assert 0 < gateway.calls[0]["queue_timeout_seconds"] < 0.2
+
+
+@pytest.mark.asyncio
+async def test_cancelled_snapshot_acquisition_closes_late_materialized_snapshot() -> None:
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+    started = threading.Event()
+    release = threading.Event()
+    closed = threading.Event()
+    original_close = snapshot.close
+
+    def close() -> None:
+        original_close()
+        closed.set()
+
+    snapshot.close = close  # type: ignore[method-assign]
+
+    class BlockingCache:
+        def acquire(self, _pr_info: PRInfo) -> FakeSnapshot:
+            started.set()
+            assert release.wait(timeout=2)
+            return snapshot
+
+    engine = ReviewEngine(
+        _fast_config(),
+        FakeGateway(generation={"*": {"findings": []}}),
+        BlockingCache(),  # type: ignore[arg-type]
+    )
+    acquisition = asyncio.create_task(engine._acquire_snapshot(_pr()))
+    assert await asyncio.to_thread(started.wait, 2)
+
+    acquisition.cancel()
+    with pytest.raises(asyncio.CancelledError):
+        await acquisition
+    release.set()
+
+    assert await asyncio.to_thread(closed.wait, 2)
+    assert snapshot.close_calls == 1
+
+
+def test_snapshot_cleanup_survives_event_loop_shutdown_after_cancellation() -> None:
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+    started = threading.Event()
+    cancelled = threading.Event()
+    release = threading.Event()
+    closed = threading.Event()
+    original_close = snapshot.close
+
+    def close() -> None:
+        original_close()
+        closed.set()
+
+    snapshot.close = close  # type: ignore[method-assign]
+
+    class BlockingCache:
+        def acquire(self, _pr_info: PRInfo) -> FakeSnapshot:
+            started.set()
+            assert release.wait(timeout=2)
+            return snapshot
+
+    engine = ReviewEngine(
+        _fast_config(),
+        FakeGateway(generation={"*": {"findings": []}}),
+        BlockingCache(),  # type: ignore[arg-type]
+    )
+
+    def release_after_loop_starts_shutdown() -> None:
+        assert cancelled.wait(timeout=2)
+        # Let asyncio.run cancel its remaining inner task before the worker
+        # returns the snapshot.
+        threading.Event().wait(0.05)
+        release.set()
+
+    releaser = threading.Thread(target=release_after_loop_starts_shutdown)
+    releaser.start()
+
+    async def cancel_and_return() -> None:
+        acquisition = asyncio.create_task(engine._acquire_snapshot(_pr()))
+        assert await asyncio.to_thread(started.wait, 2)
+        acquisition.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await acquisition
+        cancelled.set()
+
+    asyncio.run(cancel_and_return())
+    releaser.join(timeout=2)
+
+    assert closed.wait(timeout=2)
+    assert snapshot.close_calls == 1
+
+
+@pytest.mark.asyncio
+async def test_materialized_snapshot_is_closed_before_cancellation_returns(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+    materialized = asyncio.Event()
+    deliver = asyncio.Event()
+    original_shield = asyncio.shield
+
+    async def delay_delivery(awaitable: Any) -> Any:
+        value = await original_shield(awaitable)
+        materialized.set()
+        await deliver.wait()
+        return value
+
+    monkeypatch.setattr(engine_module.asyncio, "shield", delay_delivery)
+    engine = ReviewEngine(
+        _fast_config(),
+        FakeGateway(generation={"*": {"findings": []}}),
+        FakeCache(snapshot),
+    )
+    acquisition = asyncio.create_task(engine._acquire_snapshot(_pr()))
+    await materialized.wait()
+
+    acquisition.cancel()
+    with pytest.raises(asyncio.CancelledError):
+        await acquisition
+
+    assert snapshot.close_calls == 1
+
+
 class FakeContextBuilder:
     def __init__(self, snapshot: FakeSnapshot, config: ReviewConfig, *, pr: PRInfo) -> None:
         self.snapshot = snapshot
@@ -357,6 +509,23 @@ def test_line_source_cap_expands_from_the_finding_anchor() -> None:
     assert len(excerpt) <= 100
     assert "    50 | TARGET_ANCHOR" in excerpt
     assert "    32 |" not in excerpt
+
+
+def test_line_source_uses_git_line_boundaries_for_control_characters() -> None:
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "x\fy\nTARGET\n"})
+    finding = Finding.from_dict(
+        _finding_payload("app.py", 2, "TARGET", title="Git line anchor"),
+        chunk_id="chunk",
+    )
+
+    excerpt = engine_module._line_source(
+        snapshot,
+        finding,
+        base_sha="1" * 40,
+        radius=0,
+    )
+
+    assert excerpt == "     2 | TARGET"
 
 
 def test_verifier_evidence_fairly_preserves_sources_and_generation_contexts() -> None:
@@ -456,6 +625,42 @@ async def test_small_multifile_diff_is_packed_into_one_generation_call(
     assert artifact.diff["chunks"] == 2
     assert artifact.diff["generation_batches"] == 1
     assert len([call for call in gateway.calls if call["stage"] == "generation"]) == 1
+
+
+@pytest.mark.asyncio
+async def test_finding_citing_another_generation_batch_is_rejected(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_context(monkeypatch)
+    config = _fast_config(max_chunk_chars=256)
+    plan = parse_unified_diff(TWO_FILE_DIFF).chunk(config.max_chunk_chars)
+    chunks = {chunk.path: chunk for chunk in plan.chunks}
+    gateway = FakeGateway(
+        generation={
+            chunks["a.py"].chunk_id: {
+                "findings": [
+                    _finding_payload("b.py", 1, "new_b = 1", title="Finding from the wrong batch")
+                ]
+            },
+            chunks["b.py"].chunk_id: {"findings": []},
+        }
+    )
+    snapshot = FakeSnapshot(
+        TWO_FILE_DIFF,
+        {"a.py": "new_a = 1\n", "b.py": "new_b = 1\n"},
+    )
+
+    artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
+
+    assert artifact.status == "completed"
+    assert len(artifact.raw_findings) == 1
+    assert artifact.validated_findings == []
+    assert artifact.findings == []
+    assert any(
+        item.stage == "validation"
+        and item.reason == "location is not attributable to the finding's source chunk"
+        for item in artifact.rejected_findings
+    )
 
 
 @pytest.mark.asyncio
@@ -582,9 +787,7 @@ async def test_malformed_generation_sibling_is_quarantined_without_losing_covera
     chunk = parse_unified_diff(TWO_FINDING_DIFF).chunk(config.max_chunk_chars).chunks[0]
     valid = _finding_payload("app.py", 1, "new_a = 1", title="Valid finding")
     malformed = dict(valid, title="Malformed finding", category="unknown-domain")
-    gateway = FakeGateway(
-        generation={chunk.chunk_id: {"findings": [valid, malformed]}}
-    )
+    gateway = FakeGateway(generation={chunk.chunk_id: {"findings": [valid, malformed]}})
     snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
 
     artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
@@ -593,9 +796,7 @@ async def test_malformed_generation_sibling_is_quarantined_without_losing_covera
     assert artifact.coverage.complete is True
     assert [finding.title for finding in artifact.raw_findings] == ["Valid finding"]
     diagnostic = next(
-        item
-        for item in artifact.diagnostics
-        if item.get("code") == "invalid_findings_quarantined"
+        item for item in artifact.diagnostics if item.get("code") == "invalid_findings_quarantined"
     )
     assert diagnostic["stage"] == "generation_payload"
     assert diagnostic["count"] == "1"
@@ -971,9 +1172,7 @@ async def test_optional_agentic_search_failure_keeps_seed_and_reviews_full_diff(
         ],
         generation={"*": {"findings": []}},
     )
-    snapshot = SearchFailingSnapshot(
-        TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"}
-    )
+    snapshot = SearchFailingSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
 
     artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
 
@@ -1163,43 +1362,64 @@ async def test_semantically_invalid_verifier_response_is_retried_and_audited(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     _patch_context(monkeypatch)
-    config = _balanced_config(verification_semantic_retries=2)
+
+    class SaturatingContextBuilder(FakeContextBuilder):
+        def build(self, parsed: Any, plan: Any) -> SimpleNamespace:
+            return SimpleNamespace(
+                by_chunk={
+                    item.chunk_id: SimpleNamespace(prompt="G" * 100_000) for item in plan.chunks
+                },
+                stats={"packets": len(plan.chunks)},
+            )
+
+    monkeypatch.setattr(engine_module, "ContextBuilder", SaturatingContextBuilder)
+    config = _balanced_config(
+        verification_semantic_retries=2,
+        verifier_context_window_tokens=64_000,
+        verifier_input_char_budget=54_272,
+    )
     chunk = parse_unified_diff(TWO_FINDING_DIFF).chunk(config.max_chunk_chars).chunks[0]
 
     class RepairingGateway(FakeGateway):
         verification_calls = 0
 
+        def __init__(self, **kwargs: Any) -> None:
+            super().__init__(**kwargs)
+            self.verification_prompts: list[str] = []
+
         async def complete_json(self, prompt: str, **kwargs: Any) -> GatewayResult:
             if kwargs["stage"] == "generation":
                 return await super().complete_json(prompt, **kwargs)
             self.verification_calls += 1
+            self.verification_prompts.append(prompt)
             invalid = self.verification_calls == 1
+            decision = {
+                "candidate_index": 0,
+                "decision": "keep",
+                "confidence": 0.99,
+                "reason": "The assignment is present.",
+                "canonical_index": None,
+                "family_key": "assignment_invariant",
+            }
+            if invalid:
+                # Force the semantic error text close to its audited cap so a
+                # retry notice cannot fit merely by relying on incidental
+                # headroom in the first prompt.
+                decision.update({f"unknown_{index:04d}": index for index in range(300)})
             return GatewayResult(
-                payload={
-                    "decisions": [
-                        {
-                            "candidate_index": 0,
-                            "decision": "merge" if invalid else "keep",
-                            "confidence": 0.99,
-                            "reason": "The assignment is present.",
-                            "canonical_index": 0 if invalid else None,
-                            "family_key": "assignment_invariant",
-                        }
-                    ]
-                },
+                payload={"decisions": [decision]},
                 call=_call("verification", str(kwargs.get("chunk_id"))),
             )
 
     gateway = RepairingGateway(
         generation={
             chunk.chunk_id: {
-                "findings": [
-                    _finding_payload("app.py", 1, "new_a = 1", title="Valid candidate")
-                ]
+                "findings": [_finding_payload("app.py", 1, "new_a = 1", title="Valid candidate")]
             }
         }
     )
-    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": "new_a = 1\nnew_b = 1\n"})
+    source = "new_a = 1\n" + "\n".join("x" * 4_000 for _ in range(20)) + "\n"
+    snapshot = FakeSnapshot(TWO_FINDING_DIFF, {"app.py": source})
 
     artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
 
@@ -1209,10 +1429,26 @@ async def test_semantically_invalid_verifier_response_is_retried_and_audited(
     assert len(verification_calls) == 2
     assert verification_calls[0].error is not None
     assert verification_calls[1].error is None
+    assert all(
+        len(prompt) <= config.verifier_input_char_budget for prompt in gateway.verification_prompts
+    )
+    metrics = artifact.context["verification_batches"][0]
+    attempts = metrics["attempts"]
+    assert [attempt["semantic_attempt"] for attempt in attempts] == [0, 1]
+    assert [attempt["prompt_chars"] for attempt in attempts] == [
+        len(prompt) for prompt in gateway.verification_prompts
+    ]
+    assert attempts[1]["retry_notice_chars"] > 0
+    assert attempts[1]["context_chars"] < attempts[0]["context_chars"]
+    assert metrics["prompt_chars"] == attempts[-1]["prompt_chars"]
+    assert metrics["context_chars"] == attempts[-1]["context_chars"]
+    assert (
+        metrics["generation_context_files_after_prompt_fit"]
+        == attempts[-1]["generation_context_files_after_prompt_fit"]
+    )
+    assert metrics["source_files_after_prompt_fit"] == attempts[-1]["source_files_after_prompt_fit"]
     retry = next(
-        item
-        for item in artifact.diagnostics
-        if item.get("stage") == "verification_semantic_retry"
+        item for item in artifact.diagnostics if item.get("stage") == "verification_semantic_retry"
     )
     assert retry["retry_count"] == 1
     assert retry["recovered"] is True
@@ -1240,9 +1476,7 @@ async def test_exhausted_semantic_verifier_retries_remain_fail_closed(
     gateway = FakeGateway(
         generation={
             chunk.chunk_id: {
-                "findings": [
-                    _finding_payload("app.py", 1, "new_a = 1", title="Candidate")
-                ]
+                "findings": [_finding_payload("app.py", 1, "new_a = 1", title="Candidate")]
             }
         },
         verification=invalid_decision,
@@ -1256,9 +1490,7 @@ async def test_exhausted_semantic_verifier_retries_remain_fail_closed(
     verification_calls = [call for call in artifact.calls if call.stage == "verification"]
     assert len(verification_calls) == 2
     assert all(call.error is not None for call in verification_calls)
-    failure = next(
-        item for item in artifact.diagnostics if item.get("stage") == "verification"
-    )
+    failure = next(item for item in artifact.diagnostics if item.get("stage") == "verification")
     assert failure["semantic_attempt_count"] == 2
     assert failure["semantic_retry_count"] == 1
     assert failure["failure_policy"] == "fail_closed"
@@ -1419,7 +1651,8 @@ async def test_artifact_writer_persists_native_json_and_markdown(
     assert returned_json == json_path.resolve()
     assert returned_markdown == markdown_path.resolve()
     payload = json.loads(json_path.read_text(encoding="utf-8"))
-    assert payload["schema_version"] == "bugbunny-review-v2"
+    assert payload["schema_version"] == REVIEW_SCHEMA_VERSION
+    assert payload["implementation"] == implementation_identity()
     assert payload["status"] == "completed"
     assert payload["findings"][0]["title"] == "Persisted finding"
     markdown = markdown_path.read_text(encoding="utf-8")
@@ -1430,11 +1663,7 @@ async def test_artifact_writer_persists_native_json_and_markdown(
 
 def test_anchor_patch_excerpt_matches_exact_coordinates_not_substrings() -> None:
     diff = (
-        "diff --git a/R2D2.py b/R2D2.py\n"
-        "--- a/R2D2.py\n"
-        "+++ b/R2D2.py\n"
-        "@@ -1,0 +2,1 @@\n"
-        "+new = 1\n"
+        "diff --git a/R2D2.py b/R2D2.py\n--- a/R2D2.py\n+++ b/R2D2.py\n@@ -1,0 +2,1 @@\n+new = 1\n"
     )
     chunk = parse_unified_diff(diff).chunk(4_096).chunks[0]
 

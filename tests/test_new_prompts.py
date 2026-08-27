@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import pytest
 
+from bugbunny.models import Finding
 from bugbunny.prompts import (
     MAX_PR_BODY_CHARS,
     MAX_PR_BODY_JSON_CHARS,
@@ -59,9 +60,7 @@ def test_generation_schema_has_no_finding_cap_and_requires_grounding_fields():
         "suggested_fix",
     } <= required
     assert findings["items"]["additionalProperties"] is False
-    assert GENERATION_TRANSPORT_SCHEMA["properties"]["findings"]["items"] == {
-        "type": "object"
-    }
+    assert GENERATION_TRANSPORT_SCHEMA["properties"]["findings"]["items"] == {"type": "object"}
 
 
 def test_generation_prompt_marks_code_untrusted_and_demands_all_atomic_defects():
@@ -123,6 +122,15 @@ def test_generation_payload_preserves_trigger_impact_and_atomic_finding():
     assert finding.trigger == "The account lookup returns None."
     assert finding.impact.startswith("The request raises")
     assert finding.body == finding.impact
+
+
+@pytest.mark.parametrize("path", ["src/service.py ", " "])
+def test_generation_and_artifact_models_preserve_exact_git_path(path: str):
+    finding = findings_from_payload({"findings": [_wire_finding(path=path)]}, chunk_id="chunk-1")[0]
+    hydrated = Finding.from_dict(finding.to_dict())
+
+    assert finding.path == path
+    assert hydrated.path == path
 
 
 @pytest.mark.parametrize(

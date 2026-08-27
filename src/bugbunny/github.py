@@ -23,8 +23,9 @@ from typing import Any
 import httpx
 
 from bugbunny import __version__
+from bugbunny.build import REVIEW_SCHEMA_VERSION, implementation_identity
 from bugbunny.models import PRInfo
-from bugbunny.util import atomic_write_json, canonical_json, utc_now
+from bugbunny.util import atomic_write_json, canonical_json, file_lock, utc_now
 from bugbunny.validation import artifact_location_is_commentable
 
 _PR_URL = re.compile(
@@ -387,6 +388,15 @@ def _lock_for(marker: str) -> threading.Lock:
         return _PUBLISH_LOCKS.setdefault(marker, threading.Lock())
 
 
+def _default_publication_coordination_dir() -> Path:
+    configured = os.environ.get("BUGBUNNY_PUBLISH_COORDINATION_DIR")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    cache_home = os.environ.get("XDG_CACHE_HOME")
+    root = Path(cache_home).expanduser() if cache_home else Path.home() / ".cache"
+    return (root / "bugbunny" / "publication-locks").resolve()
+
+
 class GitHubReviewPublisher:
     """Publish a completed BugBunny artifact as one atomic GitHub review.
 
@@ -395,10 +405,32 @@ class GitHubReviewPublisher:
     repository-name parser misattribute BugBunny's comments and can also mix
     two bots' output. Existing fixtures are safe to reuse only for read-only/
     local runs; publish into ``__bugbunny-<model>__`` fixtures.
+
+    Threads and processes that share ``coordination_dir`` are serialized around
+    the remote GET-then-POST critical section. This is intentionally described
+    as local-filesystem coordination: GitHub's review-create API has no
+    conditional create/idempotency key, so simultaneous publishers on different
+    hosts without a shared filesystem can still both observe no marker and post.
     """
 
-    def __init__(self, client: GitHubClient) -> None:
+    coordination_scope = "shared-local-filesystem"
+
+    def __init__(
+        self,
+        client: GitHubClient,
+        *,
+        coordination_dir: Path | str | None = None,
+    ) -> None:
         self.client = client
+        self.coordination_dir = (
+            Path(coordination_dir).expanduser().resolve()
+            if coordination_dir is not None
+            else _default_publication_coordination_dir()
+        )
+
+    def _coordination_lock_path(self, marker: str) -> Path:
+        digest = hashlib.sha256(marker.encode("utf-8")).hexdigest()
+        return self.coordination_dir / f"{digest}.lock"
 
     def _existing_review(self, pr: PRInfo, marker: str) -> Mapping[str, Any] | None:
         page = 1
@@ -419,10 +451,12 @@ class GitHubReviewPublisher:
 
     @staticmethod
     def _validate_target(pr: PRInfo, artifact: Mapping[str, Any]) -> list[dict[str, Any]]:
-        if artifact.get("schema_version") != "bugbunny-review-v2":
+        if artifact.get("schema_version") != REVIEW_SCHEMA_VERSION:
             raise ValueError("only a native BugBunny review artifact can be published")
-        if artifact.get("tool") != "bugbunny" or not artifact.get("tool_version"):
-            raise ValueError("review artifact lacks BugBunny tool identity")
+        if artifact.get("tool") != "bugbunny" or artifact.get("tool_version") != __version__:
+            raise ValueError("review artifact does not match this BugBunny version")
+        if artifact.get("implementation") != implementation_identity():
+            raise ValueError("review artifact was produced by a different BugBunny implementation")
         if artifact.get("status") != "completed":
             raise ValueError("only a completed review artifact can be published")
         coverage = artifact.get("coverage")
@@ -506,7 +540,11 @@ class GitHubReviewPublisher:
         *,
         publish_clean: bool = False,
     ) -> PublishResult:
-        """Publish all final findings exactly once, or return a no-op status."""
+        """Publish once per shared local coordination filesystem.
+
+        The marker check also recovers an ambiguous local POST, but it cannot be
+        an atomic server-side uniqueness constraint across independent hosts.
+        """
 
         if not self.client.can_write:
             raise GitHubPermissionError("a GitHub token is required to publish a review")
@@ -531,7 +569,10 @@ class GitHubReviewPublisher:
         if not comments and not publish_clean:
             return PublishResult("clean_not_published", marker, 0)
 
-        with _lock_for(marker):
+        # The in-process lock covers platforms whose flock semantics do not
+        # contend between two descriptors in one process; the durable file lock
+        # extends the same critical section across local processes.
+        with _lock_for(marker), file_lock(self._coordination_lock_path(marker)):
             existing = self._existing_review(pr, marker)
             if existing is not None:
                 return PublishResult(

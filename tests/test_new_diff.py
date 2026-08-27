@@ -25,12 +25,7 @@ def _crlf_mixed_diff() -> str:
 
 def _uniform_add_diff() -> str:
     lines = "".join(f"+x{index:03d}\n" for index in range(20))
-    return (
-        "diff --git a/b.txt b/b.txt\n"
-        "--- a/b.txt\n"
-        "+++ b/b.txt\n"
-        "@@ -0,0 +1,20 @@\n" + lines
-    )
+    return "diff --git a/b.txt b/b.txt\n--- a/b.txt\n+++ b/b.txt\n@@ -0,0 +1,20 @@\n" + lines
 
 
 _MULTI_HUNK_DIFF = (
@@ -234,6 +229,24 @@ index 1111111..2222222 100644
         self.assertEqual(raw, parsed.files[0].render_raw())
         self.assertTrue(parsed.chunk(2_000).complete)
 
+    def test_git_paths_with_trailing_spaces_are_not_trimmed(self) -> None:
+        raw = (
+            "diff --git a/src/trailing.py  b/src/trailing.py " + "\n"
+            "index 1111111..2222222 100644\n"
+            "--- a/src/trailing.py " + "\n"
+            "+++ b/src/trailing.py " + "\n"
+            "@@ -1 +1 @@\n"
+            "-old = 1\n"
+            "+new = 2\n"
+        )
+
+        parsed = parse_unified_diff(raw)
+
+        self.assertEqual("src/trailing.py ", parsed.files[0].old_path)
+        self.assertEqual("src/trailing.py ", parsed.files[0].new_path)
+        self.assertEqual({"src/trailing.py ": {1}}, parsed.changed_line_map())
+        self.assertEqual("src/trailing.py ", parsed.chunk(2_000).chunks[0].path)
+
     def test_oversized_hunk_is_losslessly_segmented_with_repeated_headers(self) -> None:
         body = "".join(f"+const value{index} = compute({index});\n" for index in range(30))
         raw = (
@@ -318,6 +331,21 @@ diff --git a/src/real.ts b/src/real.ts
         self.assertIsNone(parsed.files[0].exclusion)
         self.assertEqual(["src/report.py"], [chunk.path for chunk in parsed.chunk(2_000).chunks])
 
+    def test_new_generated_marker_cannot_exclude_handwritten_file(self) -> None:
+        parsed = parse_unified_diff(
+            """diff --git a/src/auth.py b/src/auth.py
+--- a/src/auth.py
++++ b/src/auth.py
+@@ -1 +1,2 @@
+-ALLOW_ALL = False
++# @generated
++ALLOW_ALL = True
+"""
+        )
+
+        self.assertIsNone(parsed.files[0].exclusion)
+        self.assertEqual(["src/auth.py"], [chunk.path for chunk in parsed.chunk(2_000).chunks])
+
     def test_rename_paths_and_deleted_side_map_are_unambiguous(self) -> None:
         parsed = parse_unified_diff(
             """diff --git a/old.py b/new.py
@@ -384,11 +412,7 @@ rename to new.py
                 self.assertEqual(expected_chunks, observed)
                 self.assertEqual(
                     list(plan.expected_source_line_ids),
-                    [
-                        source_id
-                        for chunk in plan.chunks
-                        for source_id in chunk.source_line_ids
-                    ],
+                    [source_id for chunk in plan.chunks for source_id in chunk.source_line_ids],
                 )
                 annotated = "".join(chunk.annotated_patch for chunk in plan.chunks)
                 digest = hashlib.sha256(annotated.encode("utf-8")).hexdigest()

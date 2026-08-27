@@ -420,9 +420,7 @@ deleted file mode 100644
     def test_deletion_only_chunk_focuses_head_coordinates(self) -> None:
         base_lines = [f"line {n}" for n in range(1, 301)]
         head_lines = [
-            line
-            for n, line in enumerate(base_lines, 1)
-            if not (10 <= n <= 109 or 200 <= n <= 204)
+            line for n, line in enumerate(base_lines, 1) if not (10 <= n <= 109 or 200 <= n <= 204)
         ]
         base = {"src/large.py": "\n".join(base_lines) + "\n"}
         head = {"src/large.py": "\n".join(head_lines) + "\n"}
@@ -461,9 +459,7 @@ deleted file mode 100644
 
     def test_line_numbers_follow_git_newline_only_counting(self) -> None:
         base = {"src/ff.py": 'page = "\f"\nimport helpers\nvalue = 1\n'}
-        head = {
-            "src/ff.py": 'page = "\f"\nimport helpers\nvalue = 1\nvalue = helpers.compute()\n'
-        }
+        head = {"src/ff.py": 'page = "\f"\nimport helpers\nvalue = 1\nvalue = helpers.compute()\n'}
         parsed = parse_unified_diff(
             "diff --git a/src/ff.py b/src/ff.py\n"
             "--- a/src/ff.py\n"

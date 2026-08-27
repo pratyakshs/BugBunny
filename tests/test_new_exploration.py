@@ -1217,9 +1217,7 @@ async def test_permanently_failed_action_is_deduplicated_not_retried() -> None:
     assert result.failed is False
     assert result.trace["actions_failed"] == 1
     assert result.trace["requests_deduplicated"] == 1
-    assert result.diagnostics == (
-        {"stage": "context_action", "code": "path_not_in_inventory"},
-    )
+    assert result.diagnostics == ({"stage": "context_action", "code": "path_not_in_inventory"},)
 
 
 def test_safe_path_rejects_control_characters() -> None:
@@ -1235,6 +1233,9 @@ def test_safe_path_rejects_control_characters() -> None:
             exploration_module._safe_path(hostile, allow_empty=False)
     assert exploration_module._safe_path("src/core.py", allow_empty=False) == "src/core.py"
     assert exploration_module._safe_path("-root.py", allow_empty=False) == "-root.py"
+    assert exploration_module._safe_path("src/literal\\name.py", allow_empty=False) == (
+        "src/literal\\name.py"
+    )
 
 
 @pytest.mark.asyncio
@@ -1416,7 +1417,59 @@ async def test_cumulative_blob_read_budget_is_enforced_across_reads() -> None:
     assert "x" * 20 in result.context
     assert "y" * 20 not in result.context
     assert result.trace["blob_read_limit_hit"] is True
-    assert result.trace["blob_bytes_read"] == 42
+    # The second bounded read hit its 9-byte output cap, so that remaining
+    # allowance is conservatively charged even though no content was returned.
+    assert result.trace["blob_bytes_read"] == 30
     assert result.trace["actions_executed"] == 1
     assert result.trace["actions_failed"] == 1
+    assert snapshot.read_calls[-1] == (snapshot.head_sha, "b.py", 9)
+    assert {"stage": "context_action", "code": "blob_limit"} in result.diagnostics
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("failure", "expected_code"),
+    [
+        (RepositoryLimitError("oversized"), "blob_limit"),
+        (TimeoutError(), "action_timeout"),
+    ],
+)
+async def test_failed_bounded_read_exhausts_budget_and_prevents_repeated_io(
+    failure: BaseException,
+    expected_code: str,
+) -> None:
+    class FailingSnapshot(FakeSnapshot):
+        read_attempts = 0
+
+        def read_blob(self, revision: str, path: str, *, max_bytes: int) -> str:
+            self.read_attempts += 1
+            raise failure
+
+    snapshot = FailingSnapshot()
+    snapshot.files["other.py"] = "content\n"
+    result = await explore_repository_context(
+        config=Config(context_selection_rounds=1, context_blob_read_bytes=30),
+        model="openai/test-model",
+        gateway=FakeGateway(
+            [
+                {
+                    "requests": [
+                        _action("read", path="src/core.py", start=1, end=1),
+                        _action("read", path="other.py", start=1, end=1),
+                    ],
+                    "done": True,
+                }
+            ]
+        ),
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert snapshot.read_attempts == 1
+    assert result.trace["blob_bytes_read"] == 30
+    assert result.trace["blob_read_limit_hit"] is True
+    assert result.trace["actions_failed"] == 2
+    assert {"stage": "context_action", "code": expected_code} in result.diagnostics
     assert {"stage": "context_action", "code": "blob_limit"} in result.diagnostics

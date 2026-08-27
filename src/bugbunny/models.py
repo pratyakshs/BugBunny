@@ -278,7 +278,10 @@ class Finding:
         return cls(
             title=str(value.get("title", "")).strip(),
             body=str(value.get("body", "")).strip(),
-            path=str(value.get("path", "")).strip(),
+            # Git paths may legitimately end in spaces. Preserve the artifact
+            # byte-for-byte here; safety and diff-membership checks belong to
+            # deterministic validation rather than lossy model hydration.
+            path=str(value.get("path", "")),
             line=int(value.get("line", 0) or 0),
             end_line=int(value.get("end_line", value.get("line", 0)) or 0),
             severity=str(value.get("severity", "medium")).lower(),  # type: ignore[arg-type]
@@ -367,6 +370,7 @@ class ReviewArtifact:
     schema_version: str
     tool: str
     tool_version: str
+    implementation: dict[str, Any]
     run_id: str
     status: Literal["completed", "partial", "failed"]
     started_at: str
@@ -391,6 +395,7 @@ class ReviewArtifact:
             "schema_version": self.schema_version,
             "tool": self.tool,
             "tool_version": self.tool_version,
+            "implementation": dict(self.implementation),
             "run_id": self.run_id,
             "status": self.status,
             "started_at": self.started_at,

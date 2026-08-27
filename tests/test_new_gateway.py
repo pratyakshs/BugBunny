@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 from types import SimpleNamespace
+from typing import Any
 from unittest.mock import patch
 
 import httpx
@@ -78,6 +79,77 @@ async def test_gateway_enforces_one_limit_across_concurrent_reviews() -> None:
 
     assert maximum == 3
     assert len(results) == 12
+
+
+@pytest.mark.asyncio
+async def test_gateway_bounds_queue_wait_without_releasing_an_unacquired_slot() -> None:
+    gateway = ModelGateway(
+        GatewayConfig(api_key="test-key", max_retries=0),
+        max_concurrency=1,
+    )
+    assert gateway._request_semaphore is not None
+    await gateway._request_semaphore.acquire()
+    try:
+        with pytest.raises(GatewayError, match="queue wait exceeded"):
+            await gateway.complete_json(
+                "review",
+                model="openai/gpt-test",
+                stage="context_selection",
+                schema_name="findings",
+                schema=SCHEMA,
+                queue_timeout_seconds=0.01,
+            )
+        assert gateway._request_semaphore.locked()
+    finally:
+        gateway._request_semaphore.release()
+
+
+@pytest.mark.asyncio
+async def test_gateway_bounds_execution_after_queue_acquisition(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    gateway = ModelGateway(
+        GatewayConfig(api_key="test-key", max_retries=0),
+        max_concurrency=1,
+    )
+
+    async def blocked(*_args, **_kwargs):
+        await asyncio.Event().wait()
+
+    monkeypatch.setattr(gateway, "_complete_martian", blocked)
+    with pytest.raises(GatewayError, match="execution exceeded"):
+        await gateway.complete_json(
+            "review",
+            model="openai/gpt-test",
+            stage="context_selection",
+            schema_name="findings",
+            schema=SCHEMA,
+            queue_timeout_seconds=1,
+            operation_timeout_seconds=0.01,
+        )
+
+    assert gateway._request_semaphore is not None
+    assert not gateway._request_semaphore.locked()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), float("-inf"), 0.0, -1.0, True, "1"])
+@pytest.mark.parametrize("field", ["queue_timeout_seconds", "operation_timeout_seconds"])
+async def test_gateway_rejects_nonfinite_or_nonpositive_operation_bounds(
+    value: Any,
+    field: str,
+) -> None:
+    gateway = ModelGateway(GatewayConfig(api_key="test-key", max_retries=0))
+
+    with pytest.raises(ValueError, match="finite and positive"):
+        await gateway.complete_json(
+            "review",
+            model="openai/gpt-test",
+            stage="context_selection",
+            schema_name="findings",
+            schema=SCHEMA,
+            **{field: value},
+        )
 
 
 @pytest.mark.asyncio

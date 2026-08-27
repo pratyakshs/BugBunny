@@ -207,7 +207,7 @@ def _validate_object_id(value: str, label: str) -> str:
 
 
 def _safe_relative_path(value: str) -> str:
-    if not value or "\x00" in value or "\\" in value:
+    if not value or "\x00" in value:
         raise RepositorySafetyError(f"unsafe repository path: {value!r}")
     path = PurePosixPath(value)
     if path.is_absolute() or ".." in path.parts or not path.parts:

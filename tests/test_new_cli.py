@@ -11,6 +11,12 @@ from typing import Any, ClassVar
 import pytest
 
 from bugbunny import cli
+from bugbunny.build import (
+    BENCHMARK_RUN_SCHEMA_VERSION,
+    EXPORT_MANIFEST_SCHEMA_VERSION,
+    REVIEW_SCHEMA_VERSION,
+    implementation_identity,
+)
 
 
 class _Client:
@@ -64,7 +70,8 @@ class _Artifact:
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "schema_version": "bugbunny-review-v2",
+            "schema_version": REVIEW_SCHEMA_VERSION,
+            "implementation": implementation_identity(),
             "status": self.status,
             "run_id": self.run_id,
             "config": {"model": self.model},
@@ -131,6 +138,23 @@ def test_config_defaults_and_does_not_serialize_credentials() -> None:
         ]
     )
     assert cli._review_config(no_semantic_retry).verification_semantic_retries == 0
+
+
+def test_custom_api_key_environment_falls_back_to_default(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.delenv("CUSTOM_PROVIDER_API_KEY", raising=False)
+    monkeypatch.setenv("MARTIAN_API_KEY", "default-secret")
+    args = cli.build_parser().parse_args(
+        [
+            "review-pr",
+            "https://github.com/o/r/pull/1",
+            "--api-key-env",
+            "CUSTOM_PROVIDER_API_KEY",
+        ]
+    )
+
+    assert cli._gateway_config(args).resolved_api_key() == "default-secret"
 
 
 def test_fast_profile_rejects_explicit_verifier() -> None:
@@ -341,8 +365,9 @@ def test_resume_requires_exact_dataset_snapshot_config_and_prompt_identity(
     )
     path = tmp_path / "review.json"
     payload = {
-        "schema_version": "bugbunny-review-v2",
+        "schema_version": REVIEW_SCHEMA_VERSION,
         "tool_version": __version__,
+        "implementation": implementation_identity(),
         "status": "completed",
         "config": config.to_dict(),
         "pr": {
@@ -387,6 +412,19 @@ def test_resume_requires_exact_dataset_snapshot_config_and_prompt_identity(
     assert cli._completed_artifact(path, **expected)
     assert not cli._completed_artifact(path, **{**expected, "head_sha": "x" * 40})
     assert not cli._completed_artifact(path, **{**expected, "benchmark_sha256": "x" * 64})
+    payload["implementation"] = {
+        **implementation_identity(),
+        "source_sha256": "0" * 64,
+    }
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    assert not cli._completed_artifact(
+        path,
+        **{
+            **expected,
+            "expected_sha256": cli.sha256_bytes(path.read_bytes()),
+        },
+    )
+    payload["implementation"] = implementation_identity()
     payload["findings"] = [{"title": "tampered"}]
     path.write_text(json.dumps(payload), encoding="utf-8")
     assert not cli._completed_artifact(path, **expected)
@@ -432,7 +470,8 @@ def test_run_dir_export_requires_complete_checksum_bound_population(tmp_path: Pa
         "verification": None,
     }
     artifact = {
-        "schema_version": "bugbunny-review-v2",
+        "schema_version": REVIEW_SCHEMA_VERSION,
+        "implementation": implementation_identity(),
         "status": "completed",
         "config": config,
         "runtime": runtime,
@@ -453,7 +492,8 @@ def test_run_dir_export_requires_complete_checksum_bound_population(tmp_path: Pa
         "artifact_sha256": cli.sha256_bytes(artifact_path.read_bytes()),
     }
     manifest = {
-        "schema_version": "bugbunny-benchmark-run-v1",
+        "schema_version": BENCHMARK_RUN_SCHEMA_VERSION,
+        "implementation": implementation_identity(),
         "benchmark": benchmark_identity,
         "fixture_tool": "auto",
         "models": ["provider/a"],
@@ -826,7 +866,7 @@ def test_benchmark_export_groups_model_sweeps_and_preserves_previous_output(
     def export_results(base: Path, _artifacts: Any, **kwargs: Any) -> Any:
         calls.append((Path(base), kwargs["review_model"]))
         output = Path(kwargs["output_dir"])
-        judge = output / "judge"
+        judge = output / kwargs["judge_model"].replace("/", "_")
         judge.mkdir(parents=True, exist_ok=True)
         benchmark_output = output / "benchmark_data.json"
         candidates_output = judge / "candidates.json"
@@ -838,12 +878,29 @@ def test_benchmark_export_groups_model_sweeps_and_preserves_previous_output(
             "judge/candidates.json": cli.sha256_bytes(candidates_output.read_bytes()),
             "judge/dedup_groups.json": cli.sha256_bytes(groups_output.read_bytes()),
         }
-        manifest_path = judge / f"{kwargs['review_model'].replace('/', '_')}_manifest.json"
+        tool_id = f"bugbunny-{kwargs['review_model'].replace('/', '_')}"
+        audit_name = f"{tool_id}_candidate_audit.json"
+        (judge / audit_name).write_text("{}\n", encoding="utf-8")
+        manifest_path = judge / f"{tool_id}_export_manifest.json"
         manifest_path.write_text(
-            json.dumps({"output_files_sha256": output_hashes}), encoding="utf-8"
+            json.dumps(
+                {
+                    "schema_version": EXPORT_MANIFEST_SCHEMA_VERSION,
+                    "implementation": implementation_identity(),
+                    "judge_model": kwargs["judge_model"],
+                    "review_model": kwargs["review_model"],
+                    "finding_stage": kwargs["finding_stage"],
+                    "tool_id": tool_id,
+                    "review_count": 1,
+                    "candidate_count": 0,
+                    "candidate_audit_file": audit_name,
+                    "output_files_sha256": output_hashes,
+                }
+            ),
+            encoding="utf-8",
         )
         return SimpleNamespace(
-            tool_id=f"bugbunny-{kwargs['review_model']}",
+            tool_id=tool_id,
             review_count=1,
             candidate_count=0,
             benchmark_data_path=benchmark_output,
@@ -865,7 +922,7 @@ def test_benchmark_export_groups_model_sweeps_and_preserves_previous_output(
     )
     output = tmp_path / "export"
     source = tmp_path / "benchmark_data.json"
-    args = cli.build_parser().parse_args(
+    first_args = cli.build_parser().parse_args(
         [
             "benchmark",
             "export",
@@ -873,7 +930,6 @@ def test_benchmark_export_groups_model_sweeps_and_preserves_previous_output(
             str(source),
             "--artifacts",
             str(first),
-            str(second),
             "--judge-model",
             "judge/model",
             "--output-dir",
@@ -881,8 +937,26 @@ def test_benchmark_export_groups_model_sweeps_and_preserves_previous_output(
         ]
     )
 
-    assert cli._benchmark_export(args) == 0
-    assert [model for _base, model in calls] == ["provider/a", "provider/z"]
+    assert cli._benchmark_export(first_args) == 0
+    first_report = json.loads(capsys.readouterr().out)
+    assert len(first_report["exports"]) == 1
+
+    second_args = cli.build_parser().parse_args(
+        [
+            "benchmark",
+            "export",
+            "--benchmark-data",
+            str(source),
+            "--artifacts",
+            str(second),
+            "--judge-model",
+            "judge/model",
+            "--output-dir",
+            str(output),
+        ]
+    )
+    assert cli._benchmark_export(second_args) == 0
+    assert [model for _base, model in calls] == ["provider/z", "provider/a"]
     assert calls[0][0] == source
     assert calls[1][0] == source
     report = json.loads(capsys.readouterr().out)
@@ -893,10 +967,10 @@ def test_benchmark_export_groups_model_sweeps_and_preserves_previous_output(
     assert index["output_files_sha256"] == {
         "benchmark_data.json": cli.sha256_bytes((output / "benchmark_data.json").read_bytes()),
         "judge/candidates.json": cli.sha256_bytes(
-            (output / "judge" / "candidates.json").read_bytes()
+            (output / "judge_model" / "candidates.json").read_bytes()
         ),
         "judge/dedup_groups.json": cli.sha256_bytes(
-            (output / "judge" / "dedup_groups.json").read_bytes()
+            (output / "judge_model" / "dedup_groups.json").read_bytes()
         ),
     }
 
@@ -952,6 +1026,20 @@ def test_benchmark_export_rejects_incomparable_model_snapshots(
 
     with pytest.raises(cli.CliError, match="fixture snapshot differs"):
         cli._benchmark_export(args)
+
+
+def test_export_bundle_preflight_rejects_legacy_index(tmp_path: Path) -> None:
+    output = tmp_path / "results"
+    judge_dir = output / "judge_model"
+    judge_dir.mkdir(parents=True)
+    index_path = judge_dir / "bugbunny_export_index.json"
+    index_path.write_text(
+        json.dumps({"schema_version": "bugbunny-codereviewbench-export-index-v2"}),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(cli.CliError, match="legacy BugBunny export metadata"):
+        cli._require_export_bundle_identity(output)
 
 
 def test_model_sweep_rejects_any_diff_hash_divergence() -> None:

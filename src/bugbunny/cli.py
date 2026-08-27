@@ -22,6 +22,14 @@ from dataclasses import asdict, is_dataclass
 from pathlib import Path
 from typing import Any
 
+from bugbunny.build import (
+    BENCHMARK_PLAN_SCHEMA_VERSION,
+    BENCHMARK_RUN_SCHEMA_VERSION,
+    EXPORT_INDEX_SCHEMA_VERSION,
+    EXPORT_MANIFEST_SCHEMA_VERSION,
+    REVIEW_SCHEMA_VERSION,
+    implementation_identity,
+)
 from bugbunny.gateway import MARTIAN_API_BASE, MARTIAN_API_KEY_ENV, GatewayConfig, ModelGateway
 from bugbunny.models import (
     DECLARED_GENERATION_FRAMING_CHARS,
@@ -30,7 +38,7 @@ from bugbunny.models import (
     PRInfo,
     ReviewConfig,
 )
-from bugbunny.util import atomic_write_json, load_json, sha256_bytes, utc_now
+from bugbunny.util import atomic_write_json, file_lock, load_json, sha256_bytes, utc_now
 
 DEFAULT_MODEL = "openai/gpt-5.6-luna"
 DEFAULT_CACHE_DIR = Path(".bugbunny-cache")
@@ -268,9 +276,7 @@ def build_parser() -> argparse.ArgumentParser:
     calibrate.add_argument(
         "--verifier-model", default="anthropic/claude-opus-4-5", metavar="PROVIDER/MODEL"
     )
-    calibrate.add_argument(
-        "--reasoning-effort", choices=("low", "medium", "high"), default="low"
-    )
+    calibrate.add_argument("--reasoning-effort", choices=("low", "medium", "high"), default="low")
     calibrate.add_argument("--concurrency", type=_positive_int, default=8)
     calibrate.add_argument("--minimum-precision", type=float, default=0.80)
     calibrate.add_argument("--max-output-tokens", type=_positive_int, default=4_096)
@@ -374,10 +380,7 @@ def build_parser() -> argparse.ArgumentParser:
         action="append",
         choices=("generator", "balanced", "family"),
         default=None,
-        help=(
-            "candidate track to export; repeat for multiple tracks "
-            "(default: balanced)"
-        ),
+        help=("candidate track to export; repeat for multiple tracks (default: balanced)"),
     )
 
     verify_export = benchmark_commands.add_parser(
@@ -719,8 +722,6 @@ def _gateway_config(
     api_key_env = getattr(args, "api_key_env", None)
     if api_key_env is not None and not api_key_env.strip():
         raise CliError("--api-key-env must not be empty")
-    if api_key_env is not None and not os.environ.get(api_key_env):
-        raise CliError(f"model API key environment variable is not set: {api_key_env}")
     config = GatewayConfig(
         api_key=getattr(args, "api_key", None),
         api_key_env=api_key_env,
@@ -793,9 +794,7 @@ def _argument_secrets(argv: Sequence[str]) -> list[str]:
         # prefix match over-approximates harmlessly.
         if len(flag) < 6 or not any(name.startswith(flag) for name in sensitive_flags):
             continue
-        value = inline_value if separator else (
-            argv[index + 1] if index + 1 < len(argv) else None
-        )
+        value = inline_value if separator else (argv[index + 1] if index + 1 < len(argv) else None)
         if value is None:
             continue
         secrets.append(value)
@@ -1023,8 +1022,9 @@ def _completed_artifact(
         return bool(
             isinstance(value, Mapping)
             and value.get("status") == "completed"
-            and value.get("schema_version") == "bugbunny-review-v2"
+            and value.get("schema_version") == REVIEW_SCHEMA_VERSION
             and value.get("tool_version") == __version__
+            and value.get("implementation") == implementation_identity()
             and isinstance(value.get("config"), Mapping)
             and dict(value["config"]) == config.to_dict()
             and isinstance(value.get("runtime"), Mapping)
@@ -1040,11 +1040,8 @@ def _completed_artifact(
             and pr.get("base_sha") == base_sha
             and pr.get("head_sha") == head_sha
             and isinstance(context, Mapping)
-            # Accept the legacy policy-blind value for artifacts recorded before
-            # prompt identity became policy-aware; the policy itself is bound
-            # separately through the config equality check above.
             and context.get("generation_prompt_sha256")
-            in {generation_prompt_sha256(config.review_policy), generation_prompt_sha256()}
+            == generation_prompt_sha256(config.review_policy)
             and context.get("verifier_prompt_sha256") == verifier_prompt_sha256()
             and context.get("context_selection_prompt_sha256") == exploration_prompt_sha256()
             and context.get("context_selection_schema_sha256")
@@ -1167,6 +1164,7 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
 
     plan_path = run_root / "job_plan.json"
     plan_identity = {
+        "implementation": implementation_identity(),
         "benchmark": dataset.manifest.to_dict(),
         "models": models,
         "review_configs": review_configs,
@@ -1181,7 +1179,7 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
             raise CliError(f"cannot read frozen job plan: {exc}") from exc
         if not (
             isinstance(plan, Mapping)
-            and plan.get("schema_version") == "bugbunny-benchmark-plan-v1"
+            and plan.get("schema_version") == BENCHMARK_PLAN_SCHEMA_VERSION
             and all(plan.get(key) == value for key, value in plan_identity.items())
         ):
             raise CliError("run directory belongs to a different frozen benchmark job plan")
@@ -1233,7 +1231,7 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
             if failures:
                 raise failures[0]
         plan = {
-            "schema_version": "bugbunny-benchmark-plan-v1",
+            "schema_version": BENCHMARK_PLAN_SCHEMA_VERSION,
             "created_at": utc_now(),
             **plan_identity,
             "resolved_prs": {
@@ -1263,7 +1261,7 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
             raise CliError(f"cannot safely reuse run directory: {exc}") from exc
         if not (
             isinstance(existing_manifest, Mapping)
-            and existing_manifest.get("schema_version") == "bugbunny-benchmark-run-v1"
+            and existing_manifest.get("schema_version") == BENCHMARK_RUN_SCHEMA_VERSION
             and existing_manifest.get("job_plan_sha256") == plan_sha256
             and existing_manifest.get("models") == models
         ):
@@ -1476,8 +1474,9 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
         status = str(record["status"])
         status_counts[status] = status_counts.get(status, 0) + 1
     manifest = {
-        "schema_version": "bugbunny-benchmark-run-v1",
+        "schema_version": BENCHMARK_RUN_SCHEMA_VERSION,
         "created_at": utc_now(),
+        "implementation": implementation_identity(),
         "job_plan": str(plan_path.relative_to(run_root)),
         "job_plan_sha256": plan_sha256,
         "benchmark": dataset.manifest.to_dict(),
@@ -1527,10 +1526,13 @@ def _run_manifest_artifact_paths(args: argparse.Namespace, load_dataset: Any) ->
         manifest = load_json(manifest_path)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         raise CliError(f"cannot read run manifest {manifest_path}: {exc}") from exc
-    if not isinstance(manifest, Mapping) or manifest.get("schema_version") != (
-        "bugbunny-benchmark-run-v1"
+    if (
+        not isinstance(manifest, Mapping)
+        or manifest.get("schema_version") != BENCHMARK_RUN_SCHEMA_VERSION
     ):
         raise CliError("run directory has an unsupported benchmark manifest")
+    if manifest.get("implementation") != implementation_identity():
+        raise CliError("run manifest was produced by a different BugBunny implementation")
 
     fixture_tool = manifest.get("fixture_tool")
     if not isinstance(fixture_tool, str) or not fixture_tool:
@@ -1785,6 +1787,53 @@ def _require_comparable_model_sweep(
                 )
 
 
+def _require_export_bundle_identity(output_root: Path) -> None:
+    """Preflight current-schema export metadata before invoking an exporter.
+
+    The production exporter repeats this check while holding its write lock.
+    Keeping a CLI boundary check also prevents custom or test exporters from
+    touching a bundle that already declares a different source build.
+    """
+
+    expected = implementation_identity()
+    with file_lock(output_root / ".bugbunny-export.lock"):
+        metadata = [
+            *(
+                (path, EXPORT_MANIFEST_SCHEMA_VERSION)
+                for path in sorted(output_root.glob("*/*_export_manifest.json"))
+            ),
+            *(
+                (path, EXPORT_INDEX_SCHEMA_VERSION)
+                for path in sorted(output_root.glob("*/bugbunny_export_index.json"))
+            ),
+        ]
+        for path, schema in metadata:
+            try:
+                value = load_json(path)
+            except (OSError, json.JSONDecodeError) as exc:
+                raise CliError(f"cannot read existing export metadata {path}: {exc}") from exc
+            if not isinstance(value, Mapping):
+                raise CliError(f"existing export metadata is not an object: {path}")
+            if path.name == "bugbunny_export_index.json":
+                native = True
+            else:
+                actual_schema = value.get("schema_version")
+                native = (
+                    value.get("tool") == "bugbunny"
+                    or str(value.get("tool_id") or "").startswith("bugbunny-")
+                    or (
+                        isinstance(actual_schema, str)
+                        and actual_schema.startswith("bugbunny-codereviewbench-export-")
+                    )
+                )
+            if not native:
+                continue
+            if value.get("schema_version") != schema:
+                raise CliError(f"legacy BugBunny export metadata is unsupported: {path}")
+            if value.get("implementation") != expected:
+                raise CliError(f"export metadata belongs to another implementation: {path}")
+
+
 def _benchmark_export(args: argparse.Namespace) -> int:
     load_dataset, export_results, sanitize_model_name, _artifact_model_directory = _benchmark_api()
     artifacts = _load_artifacts(_artifact_paths(args, load_dataset=load_dataset))
@@ -1798,6 +1847,7 @@ def _benchmark_export(args: argparse.Namespace) -> int:
     _require_comparable_model_sweep(by_model)
 
     output_root = args.output_dir.expanduser().resolve()
+    _require_export_bundle_identity(output_root)
     exports: list[dict[str, Any]] = []
     export_results_by_model: list[Any] = []
     finding_stages = tuple(dict.fromkeys(args.finding_stage or ["balanced"]))
@@ -1831,34 +1881,97 @@ def _benchmark_export(args: argparse.Namespace) -> int:
                     ),
                 }
             )
-    # Individual model exporters share the same physical judge inputs. The last
-    # export refreshes every prior manifest to this final bundle; bind those
-    # final manifest bytes in the index instead of retaining an earlier return
-    # value that a later model necessarily invalidated.
-    final_output_hashes = dict(export_results_by_model[-1].output_files_sha256)
-    for entry, result in zip(exports, export_results_by_model, strict=True):
-        manifest = load_json(result.manifest_path)
-        if not isinstance(manifest, Mapping) or manifest.get("output_files_sha256") != (
-            final_output_hashes
-        ):
-            raise CliError("export manifests do not identify one final Step 3 bundle")
-        entry["manifest_sha256"] = sha256_bytes(result.manifest_path.read_bytes())
     index_path = (
         args.output_dir.expanduser().resolve()
         / sanitize_model_name(args.judge_model)
         / "bugbunny_export_index.json"
     )
-    atomic_write_json(
-        index_path,
-        {
-            "schema_version": "bugbunny-codereviewbench-export-index-v2",
-            "created_at": utc_now(),
-            "judge_model": args.judge_model,
-            "output_files_sha256": final_output_hashes,
-            "exports": exports,
-        },
-    )
-    _print_json({"exports": exports, "index": str(index_path)})
+    # Exporters commit under this same bundle lock. Reacquire it after the
+    # per-model calls and derive the index from every committed manifest instead
+    # of overwriting it with only this invocation's tracks. This also closes the
+    # window where another process can extend the bundle between the last export
+    # and the index commit.
+    with file_lock(output_root / ".bugbunny-export.lock"):
+        final_manifest = load_json(export_results_by_model[-1].manifest_path)
+        final_output_hashes = (
+            dict(final_manifest.get("output_files_sha256", {}))
+            if isinstance(final_manifest, Mapping)
+            else {}
+        )
+        if not final_output_hashes:
+            # Test doubles and older custom exporters may expose the committed
+            # hashes only on their return value.
+            final_output_hashes = dict(export_results_by_model[-1].output_files_sha256)
+
+        merged: dict[str, dict[str, Any]] = {}
+        for entry, result in zip(exports, export_results_by_model, strict=True):
+            manifest = load_json(result.manifest_path)
+            if not isinstance(manifest, Mapping) or manifest.get("output_files_sha256") != (
+                final_output_hashes
+            ):
+                raise CliError("export manifests do not identify one final Step 3 bundle")
+            entry["manifest_sha256"] = sha256_bytes(result.manifest_path.read_bytes())
+            merged[str(entry["tool_id"])] = entry
+
+        judge_dir = index_path.parent
+        for manifest_path in sorted(judge_dir.glob("*_export_manifest.json")):
+            manifest = load_json(manifest_path)
+            if not isinstance(manifest, Mapping):
+                raise CliError(f"export manifest is not an object: {manifest_path}")
+            if manifest.get("schema_version") != EXPORT_MANIFEST_SCHEMA_VERSION:
+                continue
+            if manifest.get("implementation") != implementation_identity():
+                raise CliError(
+                    f"export manifest belongs to another implementation: {manifest_path}"
+                )
+            if manifest.get("judge_model") != args.judge_model:
+                raise CliError(f"export manifest belongs to another judge: {manifest_path}")
+            if manifest.get("output_files_sha256") != final_output_hashes:
+                raise CliError("committed export manifests identify different Step 3 bundles")
+            tool_id = str(manifest.get("tool_id") or "")
+            model = str(manifest.get("review_model") or "")
+            finding_stage = str(manifest.get("finding_stage") or "")
+            audit_name = manifest.get("candidate_audit_file")
+            if not tool_id or not model or not finding_stage or not isinstance(audit_name, str):
+                raise CliError(f"export manifest lacks index identity: {manifest_path}")
+            merged[tool_id] = {
+                "model": model,
+                "finding_stage": finding_stage,
+                "tool_id": tool_id,
+                "reviews": int(manifest.get("review_count") or 0),
+                "candidates": int(manifest.get("candidate_count") or 0),
+                "benchmark_data": str(
+                    (output_root / "benchmark_data.json").relative_to(output_root)
+                ),
+                "candidates_path": str((judge_dir / "candidates.json").relative_to(output_root)),
+                "dedup_groups_path": str(
+                    (judge_dir / "dedup_groups.json").relative_to(output_root)
+                ),
+                "manifest": str(manifest_path.relative_to(output_root)),
+                "candidate_audit": str((judge_dir / audit_name).relative_to(output_root)),
+                "manifest_sha256": sha256_bytes(manifest_path.read_bytes()),
+            }
+
+        cumulative_exports = sorted(
+            merged.values(),
+            key=lambda entry: (
+                str(entry.get("model") or ""),
+                str(entry.get("finding_stage") or ""),
+                str(entry.get("tool_id") or ""),
+            ),
+        )
+        atomic_write_json(
+            index_path,
+            {
+                "schema_version": EXPORT_INDEX_SCHEMA_VERSION,
+                "created_at": utc_now(),
+                "implementation": implementation_identity(),
+                "judge_model": args.judge_model,
+                "output_files_sha256": final_output_hashes,
+                "exports": cumulative_exports,
+            },
+        )
+    _print_json({"exports": cumulative_exports, "index": str(index_path)})
     return 0
 
 

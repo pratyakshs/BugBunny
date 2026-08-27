@@ -16,6 +16,11 @@ from bugbunny.benchmark import (
     tool_model_id,
     verify_codereviewbench_export_manifest,
 )
+from bugbunny.build import (
+    EXPORT_INDEX_SCHEMA_VERSION,
+    REVIEW_SCHEMA_VERSION,
+    implementation_identity,
+)
 from bugbunny.prompts import generation_prompt_sha256, verifier_prompt_sha256
 
 GOLDEN_ONE = "https://github.com/acme/widget/pull/7"
@@ -124,12 +129,13 @@ def _artifact(
             },
         ]
     return {
-        "schema_version": "bugbunny-review-v2",
+        "schema_version": REVIEW_SCHEMA_VERSION,
         "tool": "bugbunny",
         "tool_version": __version__,
+        "implementation": implementation_identity(),
         "status": "completed",
         "completed_at": "2026-08-21T01:02:03Z",
-        "config": {"model": model},
+        "config": {"model": model, "profile": "balanced", "verifier_model": "same"},
         "pr": {
             "url": FIXTURE_SECONDARY_ONE,
             "base_sha": "a" * 40,
@@ -294,6 +300,45 @@ def test_export_is_schema_compatible_lossless_and_deterministic(tmp_path: Path) 
     assert verified["ok"] is True
     assert verified["manifest_sha256"] == exported.manifest_sha256
     assert verified["candidate_count"] == 2
+
+
+@pytest.mark.parametrize("exact_path", [" src/a\\b.ts ", " "])
+def test_export_preserves_exact_git_path_bytes(tmp_path: Path, exact_path: str) -> None:
+    benchmark_path = tmp_path / "benchmark_data.json"
+    _write_benchmark(benchmark_path)
+    artifact = _artifact(benchmark_path)
+    artifact["findings"][1]["path"] = exact_path
+    right_ranges = artifact["diff"]["commentable_ranges"]["RIGHT"]
+    right_ranges[exact_path] = right_ranges.pop("src/a.ts")
+
+    exported = export_codereviewbench_results(
+        benchmark_path,
+        [artifact],
+        output_dir=tmp_path / "results",
+        judge_model="judge/model",
+    )
+
+    benchmark_data = json.loads(exported.benchmark_data_path.read_text(encoding="utf-8"))
+    candidates = json.loads(exported.candidates_path.read_text(encoding="utf-8"))
+    audit = json.loads(exported.candidate_audit_path.read_text(encoding="utf-8"))
+    comments = next(
+        review["review_comments"]
+        for review in benchmark_data[GOLDEN_ONE]["reviews"]
+        if review["tool"] == exported.tool_id
+    )
+    exact_comment = next(comment for comment in comments if comment["path"] == exact_path)
+    exact_candidate = next(
+        candidate
+        for candidate in candidates[GOLDEN_ONE][exported.tool_id]
+        if candidate["path"] == exact_path
+    )
+    exact_audit = next(row for row in audit["cases"][GOLDEN_ONE] if row["path"] == exact_path)
+    assert exact_comment["body"].startswith(f"Location: {exact_path}:12")
+    assert exact_candidate["text"] == exact_comment["body"]
+    assert (
+        exact_audit["candidate_sha256"]
+        == hashlib.sha256(exact_candidate["text"].encode()).hexdigest()
+    )
 
 
 def test_export_accepts_original_fixture_when_an_existing_tool_reuses_its_url(
@@ -614,6 +659,84 @@ def test_cumulative_export_rejects_diverged_case_inputs(tmp_path: Path) -> None:
     assert manifest["case_identity"][GOLDEN_ONE]["head_sha"] == "b" * 40
 
 
+def test_export_rejects_foreign_current_manifest_before_mutating_bundle(
+    tmp_path: Path,
+) -> None:
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    first = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    manifest["implementation"] = {
+        **manifest["implementation"],
+        "source_sha256": "f" * 64,
+    }
+    first.manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    before = {
+        path.relative_to(output_dir): path.read_bytes()
+        for path in output_dir.rglob("*")
+        if path.is_file()
+    }
+
+    with pytest.raises(ValueError, match="another implementation"):
+        export_codereviewbench_results(
+            benchmark_path,
+            [_artifact(benchmark_path, model="openai/gpt-5.6-terra")],
+            output_dir=output_dir,
+            judge_model="anthropic/judge",
+        )
+
+    after = {
+        path.relative_to(output_dir): path.read_bytes()
+        for path in output_dir.rglob("*")
+        if path.is_file()
+    }
+    assert after == before
+
+
+def test_export_rejects_legacy_native_manifest_before_mutating_bundle(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    first = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    manifest["schema_version"] = "bugbunny-codereviewbench-export-v1"
+    manifest.pop("implementation")
+    first.manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    before = {
+        path.relative_to(output_dir): path.read_bytes()
+        for path in output_dir.rglob("*")
+        if path.is_file()
+    }
+
+    with pytest.raises(ValueError, match="legacy BugBunny export manifest"):
+        export_codereviewbench_results(
+            benchmark_path,
+            [_artifact(benchmark_path, model="openai/gpt-5.6-terra")],
+            output_dir=output_dir,
+            judge_model="anthropic/judge",
+        )
+
+    after = {
+        path.relative_to(output_dir): path.read_bytes()
+        for path in output_dir.rglob("*")
+        if path.is_file()
+    }
+    assert after == before
+
+
 def test_export_preserves_foreign_tool_reviews_committed_earlier(tmp_path: Path) -> None:
     benchmark_path = tmp_path / "source" / "benchmark_data.json"
     benchmark_path.parent.mkdir()
@@ -628,8 +751,12 @@ def test_export_preserves_foreign_tool_reviews_committed_earlier(tmp_path: Path)
     # A colleague's tool commits rows into the shared bundle out of band.
     shared = json.loads((output_dir / "benchmark_data.json").read_text(encoding="utf-8"))
     shared[GOLDEN_ONE]["reviews"].append(
-        {"tool": "othertool", "repo_name": "repo", "pr_url": "https://github.com/x/y/pull/1",
-         "review_comments": [{"path": "a", "line": 1, "body": "keep me"}]}
+        {
+            "tool": "othertool",
+            "repo_name": "repo",
+            "pr_url": "https://github.com/x/y/pull/1",
+            "review_comments": [{"path": "a", "line": 1, "body": "keep me"}],
+        }
     )
     (output_dir / "benchmark_data.json").write_text(json.dumps(shared), encoding="utf-8")
 
@@ -670,11 +797,176 @@ def test_verify_rejects_phantom_bugbunny_rows_without_a_manifest(tmp_path: Path)
     manifest = json.loads(export.manifest_path.read_text(encoding="utf-8"))
     for relative in list(manifest["output_files_sha256"]):
         target = output_dir / relative
-        manifest["output_files_sha256"][relative] = _hashlib.sha256(
-            target.read_bytes()
-        ).hexdigest()
+        manifest["output_files_sha256"][relative] = _hashlib.sha256(target.read_bytes()).hexdigest()
     export.manifest_path.write_text(
         json.dumps(manifest, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     with pytest.raises(ValueError, match="no committed manifest"):
         verify_codereviewbench_export_manifest(export.manifest_path)
+
+
+@pytest.mark.parametrize("finding_stage", ["balanced", "family"])
+@pytest.mark.parametrize(
+    "config_update",
+    [
+        {"profile": "fast", "verifier_model": "none"},
+        {"profile": "balanced", "verifier_model": None},
+    ],
+)
+def test_verified_tracks_reject_fast_or_verifier_disabled_artifacts(
+    tmp_path: Path,
+    finding_stage: str,
+    config_update: dict[str, object],
+) -> None:
+    benchmark_path = tmp_path / "benchmark_data.json"
+    _write_benchmark(benchmark_path)
+    artifact = _artifact(benchmark_path)
+    artifact["config"].update(config_update)
+
+    with pytest.raises(ValueError, match="requires verifier-enabled artifacts"):
+        export_codereviewbench_results(
+            benchmark_path,
+            [artifact],
+            output_dir=tmp_path / "results",
+            judge_model="judge/model",
+            finding_stage=finding_stage,
+        )
+
+    # The generator track accurately labels the same non-verified artifact.
+    result = export_codereviewbench_results(
+        benchmark_path,
+        [artifact],
+        output_dir=tmp_path / f"generator-{finding_stage}",
+        judge_model="judge/model",
+        finding_stage="generator",
+    )
+    assert result.finding_stage == "generator"
+
+
+def test_multi_judge_exports_share_identity_and_verify_without_phantoms(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "benchmark_data.json"
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    first = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path, model="provider/a")],
+        output_dir=output_dir,
+        judge_model="judge/a",
+    )
+
+    divergent = _artifact(benchmark_path, model="provider/b")
+    divergent["pr"]["head_sha"] = "c" * 40
+    with pytest.raises(ValueError, match="identical fixture commits"):
+        export_codereviewbench_results(
+            benchmark_path,
+            [divergent],
+            output_dir=output_dir,
+            judge_model="judge/b",
+        )
+
+    # Model the CLI index written after the first low-level export.  A later
+    # judge directory refreshes the shared benchmark hash and therefore must
+    # also refresh this manifest hash binding.
+    first_index = first.manifest_path.parent / "bugbunny_export_index.json"
+    first_index.write_text(
+        json.dumps(
+            {
+                "schema_version": EXPORT_INDEX_SCHEMA_VERSION,
+                "implementation": implementation_identity(),
+                "judge_model": "judge/a",
+                "output_files_sha256": first.output_files_sha256,
+                "exports": [
+                    {
+                        "model": "provider/a",
+                        "finding_stage": "balanced",
+                        "tool_id": first.tool_id,
+                        "reviews": first.review_count,
+                        "candidates": first.candidate_count,
+                        "manifest": str(first.manifest_path.relative_to(output_dir)),
+                        "manifest_sha256": first.manifest_sha256,
+                        "candidate_audit": str(first.candidate_audit_path.relative_to(output_dir)),
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    second = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path, model="provider/b")],
+        output_dir=output_dir,
+        judge_model="judge/b",
+    )
+
+    assert verify_codereviewbench_export_manifest(first.manifest_path)["ok"] is True
+    assert verify_codereviewbench_export_manifest(second.manifest_path)["ok"] is True
+    refreshed_index = json.loads(first_index.read_text(encoding="utf-8"))
+    assert (
+        refreshed_index["output_files_sha256"]["benchmark_data.json"]
+        == (second.output_files_sha256["benchmark_data.json"])
+    )
+    assert (
+        refreshed_index["exports"][0]["manifest_sha256"]
+        == hashlib.sha256(first.manifest_path.read_bytes()).hexdigest()
+    )
+
+
+def test_export_verifier_binds_candidate_audit_indexes_and_text(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "benchmark_data.json"
+    _write_benchmark(benchmark_path)
+    exported = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=tmp_path / "results",
+        judge_model="judge/model",
+    )
+    audit = json.loads(exported.candidate_audit_path.read_text(encoding="utf-8"))
+    audit["cases"][GOLDEN_ONE][0]["candidate_index"] = 99
+    exported.candidate_audit_path.write_text(json.dumps(audit), encoding="utf-8")
+    manifest = json.loads(exported.manifest_path.read_text(encoding="utf-8"))
+    manifest["candidate_audit_sha256"] = hashlib.sha256(
+        exported.candidate_audit_path.read_bytes()
+    ).hexdigest()
+    exported.manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="candidate audit indexes"):
+        verify_codereviewbench_export_manifest(exported.manifest_path)
+
+
+@pytest.mark.asyncio
+async def test_judge_verifies_low_level_native_manifest_without_cli_index(tmp_path: Path) -> None:
+    from bugbunny.judge import JudgeError, run_codereviewbench_judge
+
+    benchmark_path = tmp_path / "benchmark_data.json"
+    _write_benchmark(benchmark_path)
+    exported = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=tmp_path / "results",
+        judge_model="judge/model",
+    )
+
+    class Judge:
+        async def match_comment(self, golden: str, candidate: str) -> dict:
+            return {"match": golden == candidate, "confidence": 0.9, "reasoning": "exact"}
+
+    report = await run_codereviewbench_judge(
+        results_dir=tmp_path / "results",
+        judge_model="judge/model",
+        api_key="unused-in-test",
+        tools=[exported.tool_id],
+        judge=Judge(),
+    )
+    assert report["evaluated"] == 1
+
+    candidates = json.loads(exported.candidates_path.read_text(encoding="utf-8"))
+    candidates[GOLDEN_ONE][exported.tool_id][0]["text"] = "torn after manifest commit"
+    exported.candidates_path.write_text(json.dumps(candidates), encoding="utf-8")
+    with pytest.raises(JudgeError, match="export verification failed"):
+        await run_codereviewbench_judge(
+            results_dir=tmp_path / "results",
+            judge_model="judge/model",
+            api_key="unused-in-test",
+            tools=[exported.tool_id],
+            judge=Judge(),
+        )

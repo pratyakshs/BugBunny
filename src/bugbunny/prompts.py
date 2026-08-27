@@ -147,11 +147,7 @@ def build_generation_prompt(
 ) -> str:
     """Build the complete trusted instruction and untrusted evidence prompt."""
 
-    policy = (
-        get_review_policy(review_policy)
-        if isinstance(review_policy, str)
-        else review_policy
-    )
+    policy = get_review_policy(review_policy) if isinstance(review_policy, str) else review_policy
     categories = _allowed_categories(allowed_categories or policy.categories)
     if not set(categories) <= set(policy.categories):
         raise ValueError("allowed_categories exceed the selected review policy")

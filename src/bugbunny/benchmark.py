@@ -19,6 +19,13 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Literal
 
 from bugbunny import __version__
+from bugbunny.build import (
+    CANDIDATE_AUDIT_SCHEMA_VERSION,
+    EXPORT_INDEX_SCHEMA_VERSION,
+    EXPORT_MANIFEST_SCHEMA_VERSION,
+    REVIEW_SCHEMA_VERSION,
+    implementation_identity,
+)
 from bugbunny.families import group_finding_families
 from bugbunny.schemas import CATEGORIES, SEVERITIES
 from bugbunny.util import atomic_write_json, canonical_json, file_lock, sha256_bytes, sha256_text
@@ -385,10 +392,12 @@ def _normalize_artifacts(
     normalized: dict[str, dict[str, Any]] = {}
     for supplied_key, raw in values:
         artifact = _artifact_mapping(raw)
-        if artifact.get("schema_version") != "bugbunny-review-v2":
+        if artifact.get("schema_version") != REVIEW_SCHEMA_VERSION:
             raise ValueError("only native BugBunny ReviewArtifacts can be exported")
         if artifact.get("tool") != "bugbunny" or artifact.get("tool_version") != __version__:
             raise ValueError("artifact tool identity/version does not match this BugBunny build")
+        if artifact.get("implementation") != implementation_identity():
+            raise ValueError("artifact implementation identity does not match this BugBunny build")
         if artifact.get("status") != "completed":
             raise ValueError("only completed ReviewArtifacts can be exported")
         golden_url = _artifact_golden_url(
@@ -536,16 +545,18 @@ def _direct_outputs_for_findings(
     diff = artifact.get("diff")
     for index, finding in enumerate(ordered):
         raw_path = finding.get("path")
-        if not isinstance(raw_path, str) or not raw_path.strip():
+        if not isinstance(raw_path, str) or not raw_path:
             raise ValueError(f"final finding {index} has an empty or non-string path")
-        path = raw_path.strip()
+        # Git paths are byte-significant and may legally begin or end with a
+        # space.  Trimming here detached the exported comment/audit anchor from
+        # both the artifact and its exact changed-line ledger.
+        path = raw_path
         parsed_path = PurePosixPath(path)
         if (
             parsed_path.is_absolute()
             or ".." in parsed_path.parts
             or "." in parsed_path.parts
             or str(parsed_path) != path
-            or "\\" in path
             or any(character in path for character in ("\x00", "\n", "\r"))
         ):
             raise ValueError(f"final finding {index} has an unsafe path")
@@ -627,9 +638,7 @@ def _direct_outputs_for_findings(
                 "verifier_confidence": finding.get("verifier_confidence"),
                 "verifier_family_key": finding.get("verifier_family_key"),
                 "family_member_ids": (
-                    list(family_members)
-                    if isinstance(family_members, list)
-                    else [finding_id]
+                    list(family_members) if isinstance(family_members, list) else [finding_id]
                 ),
                 "candidate_sha256": sha256_text(text),
             }
@@ -659,9 +668,7 @@ def _direct_outputs(
     # Validate every atomic member before presenting a family representative.
     _direct_outputs_for_findings(artifact, raw, source="balanced-verified")
     family_findings: list[dict[str, Any]] = []
-    for family in group_finding_families(
-        value for value in raw if isinstance(value, Mapping)
-    ):
+    for family in group_finding_families(value for value in raw if isinstance(value, Mapping)):
         primary = dict(family.primary)
         primary["related_locations"] = [
             f"{member.get('path')}:{member.get('line')} ({member.get('side', 'RIGHT')})"
@@ -672,6 +679,33 @@ def _direct_outputs(
         ]
         family_findings.append(primary)
     return _direct_outputs_for_findings(artifact, family_findings, source="verified-family")
+
+
+def _require_stage_eligibility(
+    artifacts: Mapping[str, Mapping[str, Any]], *, finding_stage: FindingStage
+) -> None:
+    """Require verifier provenance before labelling output as verified.
+
+    Fast-profile reviews deliberately skip the verifier.  Their ``findings``
+    array is useful output, but exporting it under the balanced/family tracks
+    would mislabel generator-only findings as verifier-approved.  The
+    generator track remains available for both fast and balanced artifacts.
+    """
+
+    if finding_stage == "generator":
+        return
+    for golden_url, artifact in artifacts.items():
+        config = artifact.get("config")
+        if not isinstance(config, Mapping):
+            raise ValueError(f"artifact for {golden_url} lacks review configuration")
+        profile = str(config.get("profile") or "").strip().lower()
+        raw_verifier = config.get("verifier_model")
+        verifier = str(raw_verifier or "").strip().lower()
+        if profile == "fast" or verifier in {"", "none"}:
+            raise ValueError(
+                f"{finding_stage} export requires verifier-enabled artifacts; "
+                f"{golden_url} was produced with a fast or disabled-verifier configuration"
+            )
 
 
 def _read_optional_object(path: Path) -> dict[str, Any]:
@@ -712,6 +746,39 @@ def _hash_export_outputs(paths: Mapping[str, Path]) -> dict[str, str]:
     return dict(sorted(hashes.items()))
 
 
+def _require_current_bundle_implementation(results_root: Path) -> None:
+    """Reject current-schema bundle metadata from any other implementation.
+
+    This check runs under the bundle lock and before the first shared-file
+    write.  Detecting a foreign source build only while refreshing manifests
+    would leave a rejected invocation with partially mutated Step 3 inputs.
+    Legacy schemas are left untouched and remain unusable by the current
+    verifier; only metadata claiming the current schema participates here.
+    """
+
+    expected = implementation_identity()
+    for path in sorted(results_root.glob("*/*_export_manifest.json")):
+        value = _read_optional_object(path)
+        schema = value.get("schema_version")
+        native = (
+            value.get("tool") == "bugbunny"
+            or str(value.get("tool_id") or "").startswith("bugbunny-")
+            or (isinstance(schema, str) and schema.startswith("bugbunny-codereviewbench-export-"))
+        )
+        if not native:
+            continue
+        if schema != EXPORT_MANIFEST_SCHEMA_VERSION:
+            raise ValueError(f"legacy BugBunny export manifest is unsupported: {path}")
+        if value.get("implementation") != expected:
+            raise ValueError(f"export manifest belongs to another implementation: {path}")
+    for path in sorted(results_root.glob("*/bugbunny_export_index.json")):
+        value = _read_optional_object(path)
+        if value.get("schema_version") != EXPORT_INDEX_SCHEMA_VERSION:
+            raise ValueError(f"legacy BugBunny export index is unsupported: {path}")
+        if value.get("implementation") != expected:
+            raise ValueError(f"export index belongs to another implementation: {path}")
+
+
 def _refresh_prior_export_manifests(
     judge_dir: Path,
     *,
@@ -733,8 +800,10 @@ def _refresh_prior_export_manifests(
         if path == current_manifest:
             continue
         value = _read_optional_object(path)
-        if value.get("schema_version") != "bugbunny-codereviewbench-export-v1":
+        if value.get("schema_version") != EXPORT_MANIFEST_SCHEMA_VERSION:
             continue
+        if value.get("implementation") != implementation_identity():
+            raise ValueError(f"export manifest belongs to another implementation: {path}")
         if value.get("judge_model_directory") != judge_dir.name:
             raise ValueError(f"existing export manifest has the wrong judge directory: {path}")
         value["output_files_sha256"] = dict(sorted(output_files_sha256.items()))
@@ -756,12 +825,15 @@ def _refresh_sibling_judge_manifests(
     hashes are preserved.
     """
 
+    refreshed_directories: set[Path] = set()
     for manifest_path in sorted(results_root.glob("*/*_export_manifest.json")):
         if manifest_path.parent == current_judge_dir:
             continue
         value = _read_optional_object(manifest_path)
-        if value.get("schema_version") != "bugbunny-codereviewbench-export-v1":
+        if value.get("schema_version") != EXPORT_MANIFEST_SCHEMA_VERSION:
             continue
+        if value.get("implementation") != implementation_identity():
+            raise ValueError(f"export manifest belongs to another implementation: {manifest_path}")
         hashes = value.get("output_files_sha256")
         if not isinstance(hashes, Mapping) or "benchmark_data.json" not in hashes:
             continue
@@ -769,6 +841,44 @@ def _refresh_sibling_judge_manifests(
         updated["benchmark_data.json"] = benchmark_data_sha256
         value["output_files_sha256"] = dict(sorted(updated.items()))
         atomic_write_json(manifest_path, value)
+        refreshed_directories.add(manifest_path.parent)
+
+    # A sibling CLI index binds both the shared output hash and the exact
+    # manifest bytes.  Refreshing only the manifests would make that index
+    # immediately stale when another judge model is exported into the same
+    # results root.
+    for judge_dir in sorted(refreshed_directories):
+        index_path = judge_dir / "bugbunny_export_index.json"
+        if not index_path.is_file():
+            continue
+        index = _read_optional_object(index_path)
+        if index.get("schema_version") != EXPORT_INDEX_SCHEMA_VERSION:
+            continue
+        if index.get("implementation") != implementation_identity():
+            raise ValueError(f"export index belongs to another implementation: {index_path}")
+        exports = index.get("exports")
+        hashes = index.get("output_files_sha256")
+        if not isinstance(exports, list) or not isinstance(hashes, Mapping):
+            raise ValueError(f"existing export index is malformed: {index_path}")
+        updated_hashes = dict(hashes)
+        updated_hashes["benchmark_data.json"] = benchmark_data_sha256
+        index["output_files_sha256"] = dict(sorted(updated_hashes.items()))
+        for raw_export in exports:
+            if not isinstance(raw_export, dict) or not isinstance(raw_export.get("manifest"), str):
+                raise ValueError(f"existing export index has a malformed track: {index_path}")
+            manifest_path = (results_root / raw_export["manifest"]).resolve()
+            try:
+                manifest_path.relative_to(results_root)
+            except ValueError as exc:
+                raise ValueError(
+                    f"existing export index escapes its results root: {index_path}"
+                ) from exc
+            if manifest_path.parent != judge_dir or not manifest_path.is_file():
+                raise ValueError(
+                    f"existing export index references a missing manifest: {index_path}"
+                )
+            raw_export["manifest_sha256"] = sha256_bytes(manifest_path.read_bytes())
+        atomic_write_json(index_path, index)
 
 
 def _case_identity(artifact: Mapping[str, Any]) -> dict[str, Any]:
@@ -786,7 +896,7 @@ def _case_identity(artifact: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _require_bundle_case_identity(
-    judge_dir: Path,
+    results_root: Path,
     *,
     current_manifest: Path,
     case_identity: Mapping[str, Mapping[str, Any]],
@@ -801,13 +911,13 @@ def _require_bundle_case_identity(
     cannot be checked and are skipped.
     """
 
-    if not judge_dir.is_dir():
+    if not results_root.is_dir():
         return
-    for path in sorted(judge_dir.glob("*_export_manifest.json")):
+    for path in sorted(results_root.glob("*/*_export_manifest.json")):
         if path == current_manifest:
             continue
         value = _read_optional_object(path)
-        if value.get("schema_version") != "bugbunny-codereviewbench-export-v1":
+        if value.get("schema_version") != EXPORT_MANIFEST_SCHEMA_VERSION:
             continue
         existing = value.get("case_identity")
         if not isinstance(existing, Mapping):
@@ -841,8 +951,10 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
     if not path.is_file():
         raise FileNotFoundError(f"export manifest does not exist: {path}")
     manifest = _read_optional_object(path)
-    if manifest.get("schema_version") != "bugbunny-codereviewbench-export-v1":
+    if manifest.get("schema_version") != EXPORT_MANIFEST_SCHEMA_VERSION:
         raise ValueError("unsupported CodeReviewBench export manifest")
+    if manifest.get("implementation") != implementation_identity():
+        raise ValueError("export manifest belongs to a different BugBunny implementation")
     tool_id = manifest.get("tool_id")
     judge_directory = manifest.get("judge_model_directory")
     if not isinstance(tool_id, str) or not tool_id:
@@ -957,7 +1069,8 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
         raise ValueError("candidate audit sidecar does not match the export manifest")
     audit = _read_optional_object(audit_path)
     if (
-        audit.get("schema_version") != "bugbunny-candidate-audit-v1"
+        audit.get("schema_version") != CANDIDATE_AUDIT_SCHEMA_VERSION
+        or audit.get("implementation") != implementation_identity()
         or audit.get("tool_id") != tool_id
         or not isinstance(audit.get("cases"), Mapping)
         or set(audit["cases"]) != review_urls
@@ -966,13 +1079,52 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
     ):
         raise ValueError("candidate audit sidecar population is inconsistent")
 
+    # Bind every audit row to the exact ordered candidate bytes consumed by
+    # the judge.  A signed sidecar with merely the right row count can still
+    # misattribute verifier decisions if its indexes or hashes are stale.
+    for golden_url in sorted(review_urls):
+        raw_audit_rows = audit["cases"].get(golden_url)
+        per_case_candidates = candidates.get(golden_url)
+        direct = (
+            per_case_candidates.get(tool_id) if isinstance(per_case_candidates, Mapping) else None
+        )
+        if not isinstance(raw_audit_rows, list) or not isinstance(direct, list):
+            raise ValueError(f"candidate audit rows are missing for {golden_url}")
+        if len(raw_audit_rows) != len(direct):
+            raise ValueError(f"candidate audit rows do not match candidates for {golden_url}")
+        seen_indexes: set[int] = set()
+        for raw_audit in raw_audit_rows:
+            if not isinstance(raw_audit, Mapping):
+                raise ValueError(f"candidate audit row is malformed for {golden_url}")
+            candidate_index = raw_audit.get("candidate_index")
+            if (
+                not isinstance(candidate_index, int)
+                or isinstance(candidate_index, bool)
+                or candidate_index < 0
+                or candidate_index >= len(direct)
+                or candidate_index in seen_indexes
+            ):
+                raise ValueError(f"candidate audit indexes are invalid for {golden_url}")
+            seen_indexes.add(candidate_index)
+            candidate = direct[candidate_index]
+            assert isinstance(candidate, Mapping)  # validated above
+            candidate_text = str(candidate["text"])
+            if raw_audit.get("candidate_sha256") != sha256_text(candidate_text):
+                raise ValueError(f"candidate audit text hash differs for {golden_url}")
+        if seen_indexes != set(range(len(direct))):
+            raise ValueError(f"candidate audit indexes are incomplete for {golden_url}")
+
     # An interrupted export can leave rows for a BugBunny tool ID that never
     # reached its manifest commit point. Such phantom rows would be judged as
     # if they were a committed submission, so their presence fails the bundle.
     bugbunny_tool_shape = re.compile(r".+-[0-9a-f]{12}\Z")
-    manifest_tools = {
+    judge_manifest_tools = {
         manifest_path.name.removesuffix("_export_manifest.json")
         for manifest_path in path.parent.glob("*_export_manifest.json")
+    }
+    bundle_manifest_tools = {
+        manifest_path.name.removesuffix("_export_manifest.json")
+        for manifest_path in results_root.glob("*/*_export_manifest.json")
     }
     phantom_tools: set[str] = set()
     for per_case in (*candidates.values(), *groups.values()):
@@ -981,7 +1133,7 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
                 str(candidate_tool)
                 for candidate_tool in per_case
                 if bugbunny_tool_shape.fullmatch(str(candidate_tool))
-                and str(candidate_tool) not in manifest_tools
+                and str(candidate_tool) not in judge_manifest_tools
             )
     for entry in benchmark_data.values():
         if isinstance(entry, Mapping):
@@ -990,7 +1142,7 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
                 for review in entry.get("reviews", [])
                 if isinstance(review, Mapping)
                 and bugbunny_tool_shape.fullmatch(str(review.get("tool") or ""))
-                and str(review.get("tool")) not in manifest_tools
+                and str(review.get("tool")) not in bundle_manifest_tools
             )
     if phantom_tools:
         raise ValueError(
@@ -1076,6 +1228,7 @@ def _export_codereviewbench_results_locked(
         benchmark_sha256=input_benchmark_sha256,
         golden_sha256=input_golden_sha256,
     )
+    _require_stage_eligibility(normalized, finding_stage=finding_stage)
 
     inferred_models = {
         model for artifact in normalized.values() if (model := _artifact_model(artifact))
@@ -1095,6 +1248,7 @@ def _export_codereviewbench_results_locked(
             {
                 "schema_version": artifact.get("schema_version"),
                 "tool_version": artifact.get("tool_version"),
+                "implementation": artifact.get("implementation"),
                 "config": artifact.get("config"),
                 "context": {
                     key: artifact.get("context", {}).get(key)
@@ -1127,6 +1281,8 @@ def _export_codereviewbench_results_locked(
     dedup_output = judge_dir / "dedup_groups.json"
     manifest_output = judge_dir / f"{tool_id}_export_manifest.json"
     candidate_audit_output = judge_dir / f"{tool_id}_candidate_audit.json"
+
+    _require_current_bundle_implementation(results_root)
 
     benchmark_data: dict[str, Any] = deepcopy(source_data)
     if benchmark_output.is_file():
@@ -1178,7 +1334,7 @@ def _export_codereviewbench_results_locked(
         golden_url: _case_identity(artifact) for golden_url, artifact in sorted(normalized.items())
     }
     _require_bundle_case_identity(
-        judge_dir,
+        results_root,
         current_manifest=manifest_output,
         case_identity=case_identity,
     )
@@ -1236,7 +1392,8 @@ def _export_codereviewbench_results_locked(
     atomic_write_json(
         candidate_audit_output,
         {
-            "schema_version": "bugbunny-candidate-audit-v1",
+            "schema_version": CANDIDATE_AUDIT_SCHEMA_VERSION,
+            "implementation": implementation_identity(),
             "tool_id": tool_id,
             "review_model": review_model,
             "finding_stage": finding_stage,
@@ -1255,7 +1412,8 @@ def _export_codereviewbench_results_locked(
         benchmark_data_sha256=output_files_sha256["benchmark_data.json"],
     )
     manifest = {
-        "schema_version": "bugbunny-codereviewbench-export-v1",
+        "schema_version": EXPORT_MANIFEST_SCHEMA_VERSION,
+        "implementation": implementation_identity(),
         "tool": tool,
         "tool_id": tool_id,
         "review_model": review_model,

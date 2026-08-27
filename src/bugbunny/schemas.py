@@ -256,6 +256,16 @@ def _text(value: Any, *, label: str, max_length: int | None = None) -> str:
     return result
 
 
+def _path_text(value: Any, *, label: str, max_length: int) -> str:
+    """Validate a model path without discarding Git-significant spaces."""
+
+    if not isinstance(value, str) or not value:
+        raise PayloadValidationError(f"{label} must be a non-empty string")
+    if len(value) > max_length:
+        raise PayloadValidationError(f"{label} is longer than {max_length} characters")
+    return value
+
+
 def _positive_int(value: Any, *, label: str) -> int:
     if not isinstance(value, int) or isinstance(value, bool) or value < 1:
         raise PayloadValidationError(f"{label} must be a positive integer")
@@ -352,9 +362,7 @@ def findings_from_payload(
         )
         fix_scope = _text(item["fix_scope"], label=f"findings[{index}].fix_scope")
         if fix_scope not in {"local", "repeated_pattern", "systemic"}:
-            raise PayloadValidationError(
-                f"findings[{index}].fix_scope is not an allowed value"
-            )
+            raise PayloadValidationError(f"findings[{index}].fix_scope is not an allowed value")
         result.append(
             Finding(
                 title=_text(
@@ -363,7 +371,7 @@ def findings_from_payload(
                     max_length=MAX_FINDING_TITLE_CHARS,
                 ),
                 body=impact,
-                path=_text(
+                path=_path_text(
                     item["path"],
                     label=f"findings[{index}].path",
                     max_length=MAX_FINDING_PATH_CHARS,

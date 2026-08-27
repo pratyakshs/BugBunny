@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import math
 import re
-from collections.abc import Callable, Iterable
+from collections.abc import Callable, Collection, Iterable, Mapping
 from dataclasses import replace
 from pathlib import PurePosixPath
 from typing import Any
@@ -130,7 +130,9 @@ def _evidence_occurs_at_line(source: str, evidence: str, line: int, anchor: str)
 
 
 def _canonical_path(value: str) -> str | None:
-    value = value.strip().replace("\\", "/")
+    # Do not trim: trailing and leading spaces are valid Git filename bytes.
+    # Membership in the immutable diff ledger below prevents a whitespace-only
+    # or otherwise invented model path from becoming publishable.
     path = PurePosixPath(value)
     if not value or not path.parts or path.is_absolute() or ".." in path.parts or "." in path.parts:
         return None
@@ -185,6 +187,7 @@ def validate_findings(
     read_source: Callable[[str], str],
     deleted_lines: dict[str, set[int]] | None = None,
     read_base_source: Callable[[str], str] | None = None,
+    chunk_locations: Mapping[str, tuple[str, Collection[int], Collection[int]]] | None = None,
     config: ReviewConfig,
     base_sha: str,
     head_sha: str,
@@ -310,7 +313,9 @@ def validate_findings(
             continue
         if finding.end_line > len(source_lines):
             rejected.append(
-                RejectedFinding(finding, "validation", f"end_line is beyond the {revision_label} file")
+                RejectedFinding(
+                    finding, "validation", f"end_line is beyond the {revision_label} file"
+                )
             )
             continue
         if finding.end_line not in allowed_lines[path]:
@@ -322,6 +327,27 @@ def validate_findings(
                 )
             )
             continue
+        if chunk_locations is not None:
+            chunk_location = chunk_locations.get(finding.chunk_id)
+            chunk_lines = (
+                (chunk_location[1] if finding.side == "RIGHT" else chunk_location[2])
+                if chunk_location is not None
+                else ()
+            )
+            if (
+                chunk_location is None
+                or chunk_location[0] != path
+                or finding.line not in chunk_lines
+                or finding.end_line not in chunk_lines
+            ):
+                rejected.append(
+                    RejectedFinding(
+                        finding,
+                        "validation",
+                        "location is not attributable to the finding's source chunk",
+                    )
+                )
+                continue
         anchor = _normalized_space(source_lines[finding.line - 1])
         if not anchor or anchor not in normalized_evidence:
             rejected.append(

@@ -39,7 +39,10 @@ def load_calibration_corpus(path: Path) -> tuple[dict[str, Any], str]:
     if value.get("schema_version") != "bugbunny-verifier-calibration-corpus-v1":
         raise CalibrationError("unsupported verifier calibration corpus")
     provenance = value.get("provenance")
-    if not isinstance(provenance, Mapping) or provenance.get("contains_codereviewbench") is not False:
+    if (
+        not isinstance(provenance, Mapping)
+        or provenance.get("contains_codereviewbench") is not False
+    ):
         raise CalibrationError("corpus must attest that it excludes CodeReviewBench cases")
     cases = value.get("cases")
     if not isinstance(cases, list) or len(cases) < 20:
@@ -92,8 +95,7 @@ def select_operating_point(
         for item in observations:
             expected = item.get("valid_candidate") is True
             predicted = (
-                item.get("decision") == "keep"
-                and float(item.get("confidence") or 0.0) >= threshold
+                item.get("decision") == "keep" and float(item.get("confidence") or 0.0) >= threshold
             )
             tp += int(expected and predicted)
             fp += int(not expected and predicted)
@@ -152,9 +154,7 @@ async def calibrate_verifier(
 
     async def evaluate(case: Mapping[str, Any]) -> dict[str, Any]:
         case_id = str(case["case_id"])
-        finding = findings_from_payload(
-            {"findings": [dict(case["finding"])]}, chunk_id=case_id
-        )[0]
+        finding = findings_from_payload({"findings": [dict(case["finding"])]}, chunk_id=case_id)[0]
         prompt = build_verifier_prompt(
             [finding],
             str(case["patch"]),

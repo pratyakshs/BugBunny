@@ -68,11 +68,6 @@ _GENERATED_NAME = re.compile(
     r"\.pb\.(?:cc|h|go|rs)$|_pb2(?:_grpc)?\.py$|(?:^|_)generated\.)",
     re.IGNORECASE,
 )
-_GENERATED_MARKER = re.compile(
-    r"(?:@generated|automatically generated|code generated .* do not edit|"
-    r"generated file.*do not edit)",
-    re.IGNORECASE,
-)
 
 
 def _stable_id(*parts: object, size: int = 12) -> str:
@@ -206,9 +201,6 @@ def _git_header_paths(value: str) -> tuple[str | None, str | None]:
     """
 
     tokens = _scan_git_tokens(value)
-    if len(tokens) == 2:
-        return _strip_side_prefix(tokens[0]), _strip_side_prefix(tokens[1])
-
     candidates: list[tuple[str, str]] = []
     for marker in (" b/", ' "b/'):
         start = 0
@@ -224,6 +216,8 @@ def _git_header_paths(value: str) -> tuple[str | None, str | None]:
                 candidates.append((old_token, new_token))
             start = split_at + 1
 
+    if not candidates and len(tokens) == 2:
+        return _strip_side_prefix(tokens[0]), _strip_side_prefix(tokens[1])
     if not candidates:
         raise DiffParseError(f"invalid diff --git path pair: {value!r}")
     matching = [
@@ -245,7 +239,6 @@ def _strip_side_prefix(path: str | None) -> str | None:
 
 
 def _header_path(value: str) -> str | None:
-    value = value.strip()
     if value.startswith('"'):
         tokens = _scan_git_tokens(value)
         token = tokens[0] if tokens else value
@@ -590,24 +583,15 @@ def _classify_exclusion(file_diff: FileDiff) -> FileExclusion | None:
             file_diff.index,
         )
     generated_part = sorted(lowered_parts & _GENERATED_PARTS)
-    generated_header = "\n".join(
-        line.content
-        for hunk in file_diff.hunks
-        for line in hunk.lines
-        if line.kind == "add"
-        and line.new_line is not None
-        and line.new_line <= 8
-        and line.content.lstrip().startswith(("#", "//", "/*", "*", "<!--", ";"))
-    )[:2_000]
-    if (
-        generated_part
-        or _GENERATED_NAME.search(lowered_name)
-        or _GENERATED_MARKER.search(generated_header)
-    ):
+    # Generated-file exclusions must be derived from repository structure, not
+    # newly added source text. A pull request controls every added comment and
+    # could otherwise opt an arbitrary handwritten file out of review merely
+    # by inserting an ``@generated`` marker near its beginning.
+    if generated_part or _GENERATED_NAME.search(lowered_name):
         detail = (
             f"generated output path component: {generated_part[0]}"
             if generated_part
-            else "generated-code name or marker"
+            else "generated-code filename"
         )
         return FileExclusion(path, "generated", detail, file_diff.index)
     if not file_diff.hunks:

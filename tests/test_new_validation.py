@@ -58,6 +58,39 @@ def test_validation_requires_changed_line_and_verbatim_evidence() -> None:
     }
 
 
+def test_validation_preserves_and_accepts_changed_git_path_with_trailing_space() -> None:
+    path = " src/clean\\up.ts "
+    accepted, rejected = validate_findings(
+        [finding(path=path)],
+        changed_lines={path: {12}},
+        read_source=lambda requested: (
+            source_at_line_12("items.forEach(async (item) => {") if requested == path else ""
+        ),
+        chunk_locations={"chunk-1": (path, {12}, set())},
+        config=config(),
+        base_sha="a" * 40,
+        head_sha="b" * 40,
+    )
+
+    assert not rejected
+    assert [item.path for item in accepted] == [path]
+
+
+def test_validation_rejects_location_outside_claimed_source_chunk() -> None:
+    accepted, rejected = validate_findings(
+        [finding(path="b.ts", line=1, end_line=1, evidence="buggy()", chunk_id="chunk-a")],
+        changed_lines={"a.ts": {1}, "b.ts": {1}},
+        read_source=lambda _path: "buggy()\n",
+        chunk_locations={"chunk-a": ("a.ts", {1}, set())},
+        config=config(),
+        base_sha="a" * 40,
+        head_sha="b" * 40,
+    )
+
+    assert not accepted
+    assert rejected[0].reason == ("location is not attributable to the finding's source chunk")
+
+
 def test_fast_profile_does_not_use_uncalibrated_generator_confidence_as_a_filter() -> None:
     accepted, rejected = validate_findings(
         [finding(confidence=0.2)],

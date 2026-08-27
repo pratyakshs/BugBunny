@@ -412,10 +412,8 @@ def _safe_path(value: str, *, allow_empty: bool) -> str:
         raise ExplorationError("action path must not be empty")
     # Control characters (including newlines and DEL) could forge or corrupt
     # observation header lines, so hostile file names are rejected outright.
-    if (
-        len(value) > _MAX_ACTION_PATH_CHARS
-        or "\\" in value
-        or any(ord(char) < 0x20 or ord(char) == 0x7F for char in value)
+    if len(value) > _MAX_ACTION_PATH_CHARS or any(
+        ord(char) < 0x20 or ord(char) == 0x7F for char in value
     ):
         raise ExplorationError("action path is unsafe")
     path = PurePosixPath(value)
@@ -1019,6 +1017,8 @@ async def explore_repository_context(
                 reasoning_effort=reasoning_effort,
                 system_prompt=EXPLORATION_SYSTEM_PROMPT,
                 max_output_tokens=selector_output_tokens,
+                queue_timeout_seconds=timeout_seconds,
+                operation_timeout_seconds=timeout_seconds,
             )
             calls.append(result.call)
         except GatewayError as exc:
@@ -1075,9 +1075,7 @@ async def explore_repository_context(
         for action in actions:
             if action.hypothesis_id is not None:
                 if action.hypothesis_id not in known_hypotheses:
-                    diagnostics.append(
-                        {"stage": "context_action", "code": "unknown_hypothesis_id"}
-                    )
+                    diagnostics.append({"stage": "context_action", "code": "unknown_hypothesis_id"})
                 else:
                     hypothesis_linked_actions += 1
             if action.key in seen_actions:
@@ -1132,6 +1130,8 @@ async def explore_repository_context(
                 timeout_seconds=timeout_seconds,
             )
             blob_bytes_read += operation_metrics.get("blob_bytes", 0)
+            if operation_metrics.get("blob_budget_exhausted"):
+                blob_read_limit_hit = True
             if status != "ok":
                 metrics.actions_failed += 1
                 # A transient failure ("action_timeout", "read_failed",
@@ -1273,9 +1273,7 @@ async def explore_repository_context(
         "hypotheses_returned": hypotheses_returned,
         "hypotheses_rejected_invalid": hypotheses_rejected,
         "hypotheses_final": len(hypothesis_state),
-        "hypotheses_open_final": sum(
-            item.get("status") == "open" for item in hypothesis_state
-        ),
+        "hypotheses_open_final": sum(item.get("status") == "open" for item in hypothesis_state),
         "hypotheses_resolved_final": sum(
             item.get("status") == "resolved" for item in hypothesis_state
         ),
@@ -1395,20 +1393,37 @@ async def _execute_action(
         # exploration; refuse further reads once it is spent.
         if blob_bytes_read >= blob_read_bytes:
             return "", set(), {}, "blob_limit"
+        remaining_blob_bytes = blob_read_bytes - blob_bytes_read
         try:
             source = await asyncio.wait_for(
                 asyncio.to_thread(
                     snapshot.read_blob,
                     snapshot.head_sha,
                     action.path,
-                    max_bytes=blob_read_bytes,
+                    max_bytes=remaining_blob_bytes,
                 ),
                 timeout=timeout_seconds,
             )
         except TimeoutError:
-            return "", set(), {}, "action_timeout"
+            # The worker/subprocess cannot be cancelled by asyncio.wait_for and
+            # may still consume the full requested stream bound. Conservatively
+            # charge the remaining allowance so repeated timed-out ranges
+            # cannot stack unaccounted reads.
+            return (
+                "",
+                set(),
+                {"blob_bytes": remaining_blob_bytes, "blob_budget_exhausted": 1},
+                "action_timeout",
+            )
         except (RepositoryLimitError, ValueError):
-            return "", set(), {}, "blob_limit"
+            # A bounded cat-file read reaches its output cap before reporting
+            # that the blob is larger. Charge the entire remaining allowance.
+            return (
+                "",
+                set(),
+                {"blob_bytes": remaining_blob_bytes, "blob_budget_exhausted": 1},
+                "blob_limit",
+            )
         except Exception:
             return "", set(), {}, "read_failed"
         read_bytes = len(source.encode("utf-8"))

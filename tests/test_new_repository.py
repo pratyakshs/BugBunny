@@ -47,6 +47,23 @@ def make_repository(root: Path) -> tuple[Path, str, str]:
 
 
 class NewRepositoryTests(unittest.TestCase):
+    def test_git_paths_with_literal_backslashes_are_preserved(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            repo, _initial_base, prior_head = make_repository(root)
+            exact_path = "src/literal\\name.py"
+            (repo / exact_path).write_text("value = 3\n", encoding="utf-8")
+            git(repo, "add", "--", exact_path)
+            git(repo, "commit", "-qm", "add literal backslash path")
+            head = git(repo, "rev-parse", "HEAD")
+
+            with GitRepositoryCache(root / "cache").from_local(
+                repo, base_sha=prior_head, head_sha=head
+            ) as snapshot:
+                self.assertIn(exact_path, snapshot.list_files(head))
+                self.assertEqual("value = 3\n", snapshot.read_blob(head, exact_path))
+                self.assertIn("literal\\\\name.py", snapshot.diff())
+
     def test_prepare_reuses_remote_shard_without_materializing_a_worktree(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -565,15 +565,11 @@ class ContextBuilder:
             # A deletion-only chunk carries old-side numbers, which drift from
             # head numbering once earlier hunks shift lines. The hunks'
             # new_start values are the head coordinates of the deletion sites.
-            starts = [
-                hunk.new_start for hunk in file_diff.hunks if hunk.hunk_id in chunk.hunk_ids
-            ]
+            starts = [hunk.new_start for hunk in file_diff.hunks if hunk.hunk_id in chunk.hunk_ids]
         else:
             if chunk.deleted_lines:
                 return chunk.deleted_lines
-            starts = [
-                hunk.old_start for hunk in file_diff.hunks if hunk.hunk_id in chunk.hunk_ids
-            ]
+            starts = [hunk.old_start for hunk in file_diff.hunks if hunk.hunk_id in chunk.hunk_ids]
         return tuple(starts or [1])
 
     def _extract_symbols(self, chunk: DiffChunk, source_excerpt: str) -> tuple[str, ...]:

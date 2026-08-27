@@ -362,7 +362,7 @@ def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return result
 
 
-def _strict_json_loads(value: str) -> Any:
+def strict_json_loads(value: str) -> Any:
     return json.loads(
         value,
         parse_constant=_reject_json_constant,
@@ -397,7 +397,7 @@ def extract_json_object(value: Any) -> dict[str, Any]:
     errors: list[BaseException] = []
     for candidate in candidates:
         try:
-            parsed = _strict_json_loads(candidate)
+            parsed = strict_json_loads(candidate)
         except (TypeError, ValueError) as exc:
             errors.append(exc)
         else:
@@ -826,6 +826,8 @@ class ModelGateway:
         reasoning_effort: str = "low",
         system_prompt: str | None = None,
         max_output_tokens: int | None = None,
+        queue_timeout_seconds: float | None = None,
+        operation_timeout_seconds: float | None = None,
     ) -> GatewayResult:
         if not isinstance(prompt, str) or not prompt.strip():
             raise ValueError("prompt must be a non-empty string")
@@ -840,6 +842,20 @@ class ModelGateway:
             raise ValueError("reasoning_effort contains unsupported characters")
         if max_output_tokens is not None and max_output_tokens <= 0:
             raise ValueError("max_output_tokens must be positive")
+        if queue_timeout_seconds is not None and (
+            not isinstance(queue_timeout_seconds, (int, float))
+            or isinstance(queue_timeout_seconds, bool)
+            or not math.isfinite(queue_timeout_seconds)
+            or queue_timeout_seconds <= 0
+        ):
+            raise ValueError("queue_timeout_seconds must be finite and positive")
+        if operation_timeout_seconds is not None and (
+            not isinstance(operation_timeout_seconds, (int, float))
+            or isinstance(operation_timeout_seconds, bool)
+            or not math.isfinite(operation_timeout_seconds)
+            or operation_timeout_seconds <= 0
+        ):
+            raise ValueError("operation_timeout_seconds must be finite and positive")
         if provider != "codex" and reasoning_effort not in {"low", "medium", "high"}:
             raise ValueError("Martian reasoning_effort must be low, medium, or high")
         effective_max_output_tokens = max_output_tokens or self.config.max_output_tokens
@@ -864,25 +880,39 @@ class ModelGateway:
         gateway = "codex_cli" if provider == "codex" else "martian_http"
         api_key = None if provider == "codex" else self.config.resolved_api_key()
         backend: _BackendResult | None = None
-        if self._request_semaphore is not None:
-            await self._request_semaphore.acquire()
         started = time.monotonic()
+        semaphore_acquired = False
         try:
-            if provider == "codex":
-                backend = await self._complete_codex(
-                    prompt,
-                    model=resolved_request,
-                    schema=schema,
-                    reasoning_effort=reasoning_effort,
-                    system_prompt=system_prompt,
-                )
-            else:
+            if self._request_semaphore is not None:
+                try:
+                    if queue_timeout_seconds is None:
+                        await self._request_semaphore.acquire()
+                    else:
+                        await asyncio.wait_for(
+                            self._request_semaphore.acquire(),
+                            timeout=queue_timeout_seconds,
+                        )
+                except TimeoutError as exc:
+                    raise TimeoutError(
+                        f"model request queue wait exceeded {queue_timeout_seconds:g}s"
+                    ) from exc
+                semaphore_acquired = True
+
+            async def invoke() -> _BackendResult:
+                if provider == "codex":
+                    return await self._complete_codex(
+                        prompt,
+                        model=resolved_request,
+                        schema=schema,
+                        reasoning_effort=reasoning_effort,
+                        system_prompt=system_prompt,
+                    )
                 if api_key is None:
                     raise RuntimeError(
                         "Martian API key is not configured; set MARTIAN_API_KEY, "
                         "add it to .env, or pass --api-key-env"
                     )
-                backend = await self._complete_martian(
+                return await self._complete_martian(
                     prompt,
                     model=model,
                     schema_name=schema_name,
@@ -892,6 +922,17 @@ class ModelGateway:
                     api_key=api_key,
                     max_output_tokens=effective_max_output_tokens,
                 )
+
+            if operation_timeout_seconds is None:
+                backend = await invoke()
+            else:
+                try:
+                    async with asyncio.timeout(operation_timeout_seconds):
+                        backend = await invoke()
+                except TimeoutError as exc:
+                    raise TimeoutError(
+                        f"model request execution exceeded {operation_timeout_seconds:g}s"
+                    ) from exc
         except Exception as exc:
             if backend is None and isinstance(exc, _BackendFailure):
                 backend = exc.backend
@@ -930,7 +971,7 @@ class ModelGateway:
             )
             raise GatewayError(safe, call) from exc
         finally:
-            if self._request_semaphore is not None:
+            if self._request_semaphore is not None and semaphore_acquired:
                 self._request_semaphore.release()
 
         call = CallRecord(
@@ -1021,9 +1062,7 @@ class ModelGateway:
                     retry_errors.extend(fallback_errors)
                 if response.status_code >= 400:
                     failure = _martian_http_error(response)
-                    raise _BackendFailure(
-                        failure, total_attempts, retry_errors
-                    ) from failure
+                    raise _BackendFailure(failure, total_attempts, retry_errors) from failure
 
             response_data: dict[str, Any] | None = None
             candidate: _BackendResult | None = None
@@ -1299,7 +1338,7 @@ def _codex_events(stdout: bytes) -> list[dict[str, Any]]:
         if not line.strip():
             continue
         try:
-            event = _strict_json_loads(line)
+            event = strict_json_loads(line)
         except ValueError:
             continue
         if isinstance(event, dict):

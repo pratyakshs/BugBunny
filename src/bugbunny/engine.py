@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import math
 import threading
 from collections.abc import Mapping, Sequence
 from dataclasses import asdict, dataclass, is_dataclass, replace
@@ -8,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from bugbunny import __version__
+from bugbunny.build import REVIEW_SCHEMA_VERSION, implementation_identity
 from bugbunny.context import ContextBuilder
 from bugbunny.diff import DiffChunk, ParsedDiff, parse_unified_diff
 from bugbunny.exploration import (
@@ -54,6 +56,7 @@ from bugbunny.util import (
     atomic_write_json,
     atomic_write_text,
     canonical_json,
+    git_lines,
     monotonic_ms,
     sha256_text,
     utc_now,
@@ -85,8 +88,40 @@ class _SemaphoreGateway:
     semaphore: asyncio.Semaphore
 
     async def complete_json(self, prompt: str, **kwargs: Any) -> Any:
-        async with self.semaphore:
+        queue_timeout = kwargs.get("queue_timeout_seconds")
+        if queue_timeout is not None and (
+            not isinstance(queue_timeout, (int, float))
+            or isinstance(queue_timeout, bool)
+            or not math.isfinite(queue_timeout)
+            or queue_timeout <= 0
+        ):
+            raise ValueError("queue_timeout_seconds must be finite and positive")
+        normalized_queue_timeout = float(queue_timeout) if queue_timeout is not None else None
+        loop = asyncio.get_running_loop()
+        queued_at = loop.time()
+        try:
+            if normalized_queue_timeout is None:
+                await self.semaphore.acquire()
+            else:
+                await asyncio.wait_for(self.semaphore.acquire(), timeout=normalized_queue_timeout)
+        except TimeoutError as exc:
+            raise TimeoutError(
+                f"review-local model request queue wait exceeded {normalized_queue_timeout:g}s"
+            ) from exc
+        try:
+            if normalized_queue_timeout is not None:
+                remaining = normalized_queue_timeout - (loop.time() - queued_at)
+                if remaining <= 0:
+                    raise TimeoutError(
+                        "review-local model request queue wait exceeded "
+                        f"{normalized_queue_timeout:g}s"
+                    )
+                # The local and gateway-wide queues share one end-to-end queue
+                # deadline; each layer receives only the remaining budget.
+                kwargs = {**kwargs, "queue_timeout_seconds": remaining}
             return await self.gateway.complete_json(prompt, **kwargs)
+        finally:
+            self.semaphore.release()
 
 
 def _generation_batches(
@@ -143,7 +178,7 @@ def _assign_source_chunk(
     batch: _GenerationBatch,
     *,
     left_path_aliases: Mapping[str, str] | None = None,
-) -> None:
+) -> bool:
     review_path = (
         (left_path_aliases or {}).get(finding.path, finding.path)
         if finding.side == "LEFT"
@@ -162,6 +197,8 @@ def _assign_source_chunk(
         # exact chunk.
         finding.path = matches[0].path
         finding.chunk_id = matches[0].chunk_id
+        return True
+    return False
 
 
 def _runtime_record(
@@ -345,15 +382,19 @@ def _fit_verifier_prompt(
     *,
     max_batch_size: int,
     max_input_chars: int | None,
+    retry_notice: str = "",
 ) -> tuple[str, str, bool]:
     """Fit exact verifier input while retaining its anchor-preserving patch."""
 
     def render(value: str) -> str:
-        return build_verifier_prompt(
-            findings,
-            patch,
-            value,
-            max_batch_size=max_batch_size,
+        return (
+            build_verifier_prompt(
+                findings,
+                patch,
+                value,
+                max_batch_size=max_batch_size,
+            )
+            + retry_notice
         )
 
     prompt = render(context)
@@ -576,7 +617,7 @@ def _line_source(
         if finding.side == "RIGHT"
         else snapshot.read_blob(base_sha, base_path or finding.path)
     )
-    rows = source.splitlines()
+    rows = git_lines(source)
     if not rows:
         return ""
     first = max(1, finding.line - radius)
@@ -642,7 +683,7 @@ def _anchor_patch_excerpt(
     radius: int = 14,
     max_chars: int | None = None,
 ) -> str:
-    rows = chunk.annotated_patch.splitlines()
+    rows = git_lines(chunk.annotated_patch)
     matches = []
     for index, row in enumerate(rows):
         prefix, separator, _rest = row.partition(" | ")
@@ -795,7 +836,7 @@ def _verification_evidence(
         if allocation <= len(header):
             rendered_sources.append(header[:allocation])
             continue
-        excerpt_rows = excerpt.splitlines()
+        excerpt_rows = git_lines(excerpt)
         anchor_prefix = f"{finding.line:>6} | "
         anchor_index = next(
             (index for index, row in enumerate(excerpt_rows) if row.startswith(anchor_prefix)),
@@ -901,27 +942,50 @@ class ReviewEngine:
         self.repository_cache = repository_cache
 
     async def _acquire_snapshot(self, pr: PRInfo) -> RepositorySnapshot:
-        """Acquire the worktree without leaking it on task cancellation.
+        """Acquire without leaking a late snapshot when the event loop exits.
 
-        ``asyncio.to_thread`` keeps running after the awaiting task is
-        cancelled; a snapshot materialized by that orphaned thread would never
-        be closed. The done-callback disposes it on its own thread instead.
+        ``asyncio.to_thread`` cannot stop its worker, and an application event
+        loop may shut down immediately after the outer review is cancelled.
+        Keep the cancellation handoff in state shared with the worker itself so
+        cleanup does not depend on an asyncio callback getting another turn.
         """
 
-        acquire = asyncio.ensure_future(
-            asyncio.to_thread(self.repository_cache.acquire, pr)
-        )
+        state_lock = threading.Lock()
+        cancelled = False
+        materialized: RepositorySnapshot | None = None
+
+        def acquire_snapshot() -> RepositorySnapshot:
+            nonlocal materialized
+            snapshot = self.repository_cache.acquire(pr)
+            with state_lock:
+                dispose_here = cancelled
+                if not dispose_here:
+                    materialized = snapshot
+            if dispose_here:
+                # The event loop may already be gone; close in this worker.
+                snapshot.close()
+            return snapshot
+
+        acquire = asyncio.ensure_future(asyncio.to_thread(acquire_snapshot))
         try:
-            return await acquire
+            return await asyncio.shield(acquire)
         except asyncio.CancelledError:
+            with state_lock:
+                cancelled = True
+                snapshot = materialized
+            if snapshot is not None:
+                # Acquisition won the race but its result was never delivered.
+                # Await cleanup off-loop before acknowledging cancellation; a
+                # daemon cleanup thread could be killed during process exit.
+                await asyncio.to_thread(snapshot.close)
 
-            def _dispose(task: asyncio.Future) -> None:
-                if task.cancelled() or task.exception() is not None:
-                    return
-                snapshot = task.result()
-                threading.Thread(target=snapshot.close, daemon=True).start()
+            # Consume a late failure when the loop remains alive. Worker-side
+            # cleanup above still works if shutdown cancels this inner task.
+            def _consume_result(task: asyncio.Future[RepositorySnapshot]) -> None:
+                if not task.cancelled():
+                    task.exception()
 
-            acquire.add_done_callback(_dispose)
+            acquire.add_done_callback(_consume_result)
             raise
 
     async def review(self, pr: PRInfo) -> ReviewArtifact:
@@ -936,11 +1000,13 @@ class ReviewEngine:
             generation_max_output_tokens=self.config.max_output_tokens,
             verifier_max_output_tokens=self.config.verifier_max_output_tokens,
         )
+        implementation = implementation_identity()
         run_id = sha256_text(
             canonical_json(
                 {
                     "tool": "bugbunny",
                     "version": __version__,
+                    "implementation": implementation,
                     "started_at": started_at,
                     "base": pr.base_sha,
                     "head": pr.head_sha,
@@ -1320,6 +1386,14 @@ class ReviewEngine:
             for chunk in plan.chunks:
                 eligible_changed_lines.setdefault(chunk.path, set()).update(chunk.added_lines)
                 eligible_deleted_lines.setdefault(chunk.path, set()).update(chunk.deleted_lines)
+            chunk_locations = {
+                chunk.chunk_id: (
+                    chunk.path,
+                    frozenset(chunk.added_lines),
+                    frozenset(chunk.deleted_lines),
+                )
+                for chunk in plan.chunks
+            }
             # Deterministic grounding reads sources through git subprocesses;
             # run it off the event loop so concurrent reviews keep flowing.
             validated, validation_rejections = await asyncio.to_thread(
@@ -1331,6 +1405,7 @@ class ReviewEngine:
                 read_base_source=lambda path: snapshot.read_blob(
                     review_base_sha, base_path_for_review_path.get(path, path)
                 ),
+                chunk_locations=chunk_locations,
                 config=self.config,
                 base_sha=review_base_sha,
                 head_sha=pr.head_sha,
@@ -1404,52 +1479,123 @@ class ReviewEngine:
                         )
                         source_files_available = evidence_metrics.get("source_files_available", ())
                         verifier_generation_context = _verifier_generation_context(context)
-                        verification_context_metrics.append(
-                            {
-                                **evidence_metrics,
-                                "candidate_offset": offset,
-                                "candidate_count": len(batch),
-                                "candidate_payload_chars": len(verifier_candidate_payload(batch)),
-                                "patch_chars": len(patch),
-                                "context_chars": len(context),
-                                "context_chars_before_prompt_fit": len(context_before_prompt_fit),
+                        verification_metrics: dict[str, Any] = {
+                            **evidence_metrics,
+                            "candidate_offset": offset,
+                            "candidate_count": len(batch),
+                            "candidate_payload_chars": len(verifier_candidate_payload(batch)),
+                            "patch_chars": len(patch),
+                            "context_chars": len(context),
+                            "context_chars_before_prompt_fit": len(context_before_prompt_fit),
+                            "context_chars_omitted_by_prompt_fit": max(
+                                0, len(context_before_prompt_fit) - len(context)
+                            ),
+                            "generation_context_files_after_prompt_fit": [
+                                path
+                                for path in generation_files_available
+                                if _context_exposes_path(verifier_generation_context, str(path))
+                            ],
+                            "source_files_after_prompt_fit": [
+                                path
+                                for path in source_files_available
+                                if _verifier_source_exposes_path(context, str(path))
+                            ],
+                            "prompt_chars": len(prompt),
+                            "prompt_utf8_bytes": len(prompt.encode("utf-8")),
+                            "input_char_budget": verifier_limit,
+                            "input_char_budget_utilization": (
+                                len(prompt) / verifier_limit if verifier_limit is not None else None
+                            ),
+                            "context_clipped_to_prompt_budget": verifier_context_clipped,
+                            "context_clipped_to_any_budget": bool(
+                                evidence_metrics.get("context_budget_clipped")
+                                or verifier_context_clipped
+                            ),
+                            "evidence_clipped_to_any_budget": bool(
+                                evidence_metrics.get("evidence_budget_clipped")
+                                or verifier_context_clipped
+                            ),
+                            "attempts": [],
+                        }
+                        verification_context_metrics.append(verification_metrics)
+                        decisions: list[dict[str, Any]] | None = None
+                        semantic_attempt_prompt = prompt
+                        semantic_attempt_context = context
+                        semantic_attempt_context_clipped = verifier_context_clipped
+                        semantic_retry_notice = ""
+                        for semantic_attempt in range(
+                            self.config.verification_semantic_retries + 1
+                        ):
+                            attempt_generation_context = _verifier_generation_context(
+                                semantic_attempt_context
+                            )
+                            attempt_metrics = {
+                                "semantic_attempt": semantic_attempt,
+                                "is_retry": semantic_attempt > 0,
+                                "retry_notice_chars": len(semantic_retry_notice),
+                                "prompt_chars": len(semantic_attempt_prompt),
+                                "prompt_utf8_bytes": len(semantic_attempt_prompt.encode("utf-8")),
+                                "input_char_budget": verifier_limit,
+                                "input_char_budget_utilization": (
+                                    len(semantic_attempt_prompt) / verifier_limit
+                                    if verifier_limit is not None
+                                    else None
+                                ),
+                                "context_chars": len(semantic_attempt_context),
                                 "context_chars_omitted_by_prompt_fit": max(
-                                    0, len(context_before_prompt_fit) - len(context)
+                                    0,
+                                    len(context_before_prompt_fit) - len(semantic_attempt_context),
+                                ),
+                                "context_clipped_to_prompt_budget": (
+                                    semantic_attempt_context_clipped
                                 ),
                                 "generation_context_files_after_prompt_fit": [
                                     path
                                     for path in generation_files_available
-                                    if _context_exposes_path(verifier_generation_context, str(path))
+                                    if _context_exposes_path(attempt_generation_context, str(path))
                                 ],
                                 "source_files_after_prompt_fit": [
                                     path
                                     for path in source_files_available
-                                    if _verifier_source_exposes_path(context, str(path))
+                                    if _verifier_source_exposes_path(
+                                        semantic_attempt_context, str(path)
+                                    )
                                 ],
-                                "prompt_chars": len(prompt),
-                                "prompt_utf8_bytes": len(prompt.encode("utf-8")),
-                                "input_char_budget": verifier_limit,
-                                "input_char_budget_utilization": (
-                                    len(prompt) / verifier_limit
-                                    if verifier_limit is not None
-                                    else None
-                                ),
-                                "context_clipped_to_prompt_budget": verifier_context_clipped,
-                                "context_clipped_to_any_budget": bool(
-                                    evidence_metrics.get("context_budget_clipped")
-                                    or verifier_context_clipped
-                                ),
-                                "evidence_clipped_to_any_budget": bool(
-                                    evidence_metrics.get("evidence_budget_clipped")
-                                    or verifier_context_clipped
-                                ),
                             }
-                        )
-                        decisions: list[dict[str, Any]] | None = None
-                        semantic_attempt_prompt = prompt
-                        for semantic_attempt in range(
-                            self.config.verification_semantic_retries + 1
-                        ):
+                            verification_metrics["attempts"].append(attempt_metrics)
+                            # Batch-level evidence fields describe the last
+                            # actual (therefore decisive or terminal) attempt;
+                            # the full history remains under ``attempts``.
+                            verification_metrics.update(
+                                {
+                                    "prompt_chars": attempt_metrics["prompt_chars"],
+                                    "prompt_utf8_bytes": attempt_metrics["prompt_utf8_bytes"],
+                                    "input_char_budget_utilization": attempt_metrics[
+                                        "input_char_budget_utilization"
+                                    ],
+                                    "context_chars": attempt_metrics["context_chars"],
+                                    "context_chars_omitted_by_prompt_fit": attempt_metrics[
+                                        "context_chars_omitted_by_prompt_fit"
+                                    ],
+                                    "generation_context_files_after_prompt_fit": attempt_metrics[
+                                        "generation_context_files_after_prompt_fit"
+                                    ],
+                                    "source_files_after_prompt_fit": attempt_metrics[
+                                        "source_files_after_prompt_fit"
+                                    ],
+                                    "context_clipped_to_prompt_budget": (
+                                        semantic_attempt_context_clipped
+                                    ),
+                                    "context_clipped_to_any_budget": bool(
+                                        evidence_metrics.get("context_budget_clipped")
+                                        or semantic_attempt_context_clipped
+                                    ),
+                                    "evidence_clipped_to_any_budget": bool(
+                                        evidence_metrics.get("evidence_budget_clipped")
+                                        or semantic_attempt_context_clipped
+                                    ),
+                                }
+                            )
                             result = await self.gateway.complete_json(
                                 semantic_attempt_prompt,
                                 model=verifier_model,
@@ -1470,22 +1616,31 @@ class ReviewEngine:
                                 calls[-1] = replace(result.call, error=semantic_error)
                                 semantic_retry_errors.append(semantic_error)
                                 if semantic_attempt < self.config.verification_semantic_retries:
-                                    semantic_attempt_prompt = (
-                                        prompt
-                                        + "\n\nVerifier retry notice\n"
+                                    semantic_retry_notice = (
+                                        "\n\nVerifier retry notice\n"
                                         + "The previous response was rejected by the semantic "
                                         + "contract: "
                                         + semantic_error
                                         + ". Regenerate the complete decisions array and correct "
                                         + "that relationship; do not omit any candidate."
                                     )
+                                    (
+                                        semantic_attempt_prompt,
+                                        semantic_attempt_context,
+                                        semantic_attempt_context_clipped,
+                                    ) = _fit_verifier_prompt(
+                                        batch,
+                                        patch,
+                                        context_before_prompt_fit,
+                                        max_batch_size=self.config.verification_batch_size,
+                                        max_input_chars=verifier_limit,
+                                        retry_notice=semantic_retry_notice,
+                                    )
                                     continue
                                 raise
                             break
                         if decisions is None:
-                            raise ReviewEngineError(
-                                "verifier semantic retry loop did not resolve"
-                            )
+                            raise ReviewEngineError("verifier semantic retry loop did not resolve")
                         kept, dropped = apply_verifier_decisions(
                             batch,
                             {"decisions": decisions},
@@ -1520,9 +1675,7 @@ class ReviewEngine:
                             "error": error,
                             "failure_policy": "fail_closed",
                             "semantic_attempt_count": len(semantic_retry_errors),
-                            "semantic_retry_count": max(
-                                0, len(semantic_retry_errors) - 1
-                            ),
+                            "semantic_retry_count": max(0, len(semantic_retry_errors) - 1),
                         }
                     )
                     rejected.extend(
@@ -1821,9 +1974,10 @@ class ReviewEngine:
             ),
             "largest_verifier_input_char_budget_utilization": max(
                 (
-                    float(metrics["input_char_budget_utilization"])
+                    float(attempt["input_char_budget_utilization"])
                     for metrics in verification_context_metrics
-                    if metrics.get("input_char_budget_utilization") is not None
+                    for attempt in metrics.get("attempts", ())
+                    if attempt.get("input_char_budget_utilization") is not None
                 ),
                 default=0.0,
             ),
@@ -1831,9 +1985,10 @@ class ReviewEngine:
         context_summary["provider_reported_prompt_usage_by_stage"] = _call_token_summary(calls)
         context_summary["pr_metadata"] = generation_metadata_provenance(pr.title, pr.body)
         return ReviewArtifact(
-            schema_version="bugbunny-review-v2",
+            schema_version=REVIEW_SCHEMA_VERSION,
             tool="bugbunny",
             tool_version=__version__,
+            implementation=implementation,
             run_id=run_id,
             status=status,
             started_at=started_at,

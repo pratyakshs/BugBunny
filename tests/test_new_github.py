@@ -1,10 +1,16 @@
 from __future__ import annotations
 
 import json
+import multiprocessing
+import time
+from pathlib import Path
+from typing import Any
 
 import httpx
 import pytest
 
+from bugbunny import __version__
+from bugbunny.build import REVIEW_SCHEMA_VERSION, implementation_identity
 from bugbunny.github import (
     GitHubClient,
     GitHubPermissionError,
@@ -12,6 +18,11 @@ from bugbunny.github import (
     parse_pr_url,
 )
 from bugbunny.models import PRInfo
+
+
+@pytest.fixture(autouse=True)
+def _isolated_publication_coordination(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("BUGBUNNY_PUBLISH_COORDINATION_DIR", str(tmp_path / "publication-locks"))
 
 
 def _pr() -> PRInfo:
@@ -39,9 +50,10 @@ def _artifact(*, findings=None) -> dict:
         target = right_ranges if finding.get("side", "RIGHT") == "RIGHT" else left_ranges
         target.setdefault(finding["path"], []).append([finding.get("line", 0)] * 2)
     return {
-        "schema_version": "bugbunny-review-v2",
+        "schema_version": REVIEW_SCHEMA_VERSION,
         "tool": "bugbunny",
-        "tool_version": "0.3.0",
+        "tool_version": __version__,
+        "implementation": implementation_identity(),
         "status": "completed",
         "pr": _pr().to_dict(),
         "config": {"model": "openai/gpt-5.6-luna"},
@@ -67,6 +79,37 @@ def _finding(line: int = 12, *, finding_id: str = "f-1") -> dict:
         "evidence": "items.forEach(async item => cleanup(item))",
         "suggested_fix": "Await Promise.all over map.",
     }
+
+
+def _run_concurrent_publish_process(
+    coordination_dir: str,
+    start: Any,
+    existing: Any,
+) -> None:
+    class SharedClient:
+        can_write = True
+
+        def get_json(self, _path: str, *, params: Any = None) -> list[dict[str, Any]]:
+            del params
+            return list(existing)
+
+        def post_json(self, _path: str, body: dict[str, Any]) -> dict[str, Any]:
+            # Make the old process-local GET-then-POST race deterministic.
+            time.sleep(0.2)
+            review = {
+                "id": len(existing) + 1,
+                "html_url": "https://github.com/acme/widget/pull/7#review",
+                "body": body["body"],
+            }
+            existing.append(review)
+            return review
+
+    if not start.wait(10):
+        raise RuntimeError("concurrent publisher start was not released")
+    GitHubReviewPublisher(
+        SharedClient(),  # type: ignore[arg-type]
+        coordination_dir=Path(coordination_dir),
+    ).publish(_pr(), _artifact(findings=[_finding()]))
 
 
 def test_resolver_uses_exact_base_and_head_and_retries_get() -> None:
@@ -142,6 +185,48 @@ def test_atomic_publisher_posts_every_final_finding_once_and_is_idempotent() -> 
     assert len(posted[0]["comments"]) == 2
     assert [item["line"] for item in posted[0]["comments"]] == [12, 20]
     assert first.marker in posted[0]["body"]
+
+
+def test_cross_process_publishers_share_one_local_durable_critical_section(
+    tmp_path: Path,
+) -> None:
+    context = multiprocessing.get_context("spawn")
+    coordination_dir = tmp_path / "shared-publication-locks"
+    with context.Manager() as manager:
+        existing = manager.list()
+        start = context.Event()
+        processes = [
+            context.Process(
+                target=_run_concurrent_publish_process,
+                args=(str(coordination_dir), start, existing),
+            )
+            for _ in range(2)
+        ]
+        for process in processes:
+            process.start()
+        start.set()
+        for process in processes:
+            process.join(15)
+        try:
+            assert [process.exitcode for process in processes] == [0, 0]
+            assert len(existing) == 1
+            assert list(coordination_dir.glob("*.lock"))
+        finally:
+            for process in processes:
+                if process.is_alive():
+                    process.terminate()
+                    process.join(5)
+
+
+def test_publication_coordination_contract_discloses_cross_host_limit(tmp_path: Path) -> None:
+    publisher = GitHubReviewPublisher(
+        GitHubClient(token="private-token"), coordination_dir=tmp_path
+    )
+
+    assert publisher.coordination_scope == "shared-local-filesystem"
+    assert publisher.coordination_dir == tmp_path.resolve()
+    documentation = " ".join((GitHubReviewPublisher.__doc__ or "").split())
+    assert "different hosts" in documentation
 
 
 def test_clean_review_is_not_published_by_default_and_writes_require_token() -> None:
@@ -228,7 +313,9 @@ def test_publisher_refuses_borrowed_fixture_even_without_benchmark_metadata() ->
         publisher.publish(pr, artifact)
 
 
-@pytest.mark.parametrize("missing", ["status", "schema_version", "tool_version", "pr"])
+@pytest.mark.parametrize(
+    "missing", ["status", "schema_version", "tool_version", "implementation", "pr"]
+)
 def test_publisher_rejects_incomplete_or_non_native_artifacts(missing: str) -> None:
     artifact = _artifact(findings=[_finding()])
     artifact.pop(missing)
@@ -236,6 +323,17 @@ def test_publisher_rejects_incomplete_or_non_native_artifacts(missing: str) -> N
 
     with pytest.raises(ValueError):
         publisher.publish(_pr(), artifact)
+
+
+def test_publisher_rejects_artifact_from_another_implementation() -> None:
+    artifact = _artifact(findings=[_finding()])
+    artifact["implementation"] = {
+        **implementation_identity(),
+        "source_sha256": "0" * 64,
+    }
+
+    with pytest.raises(ValueError, match="different BugBunny implementation"):
+        GitHubReviewPublisher._validate_target(_pr(), artifact)
 
 
 def test_publisher_rejects_an_untrusted_range_end_outside_the_changed_ledger() -> None:
