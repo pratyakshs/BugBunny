@@ -56,7 +56,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: align the config validation floor with the renderer's marker floor.
 - [ ] **[9] A18** `src/bugbunny/cli.py:1462` (medium) — Review-phase gather is fail-fast; stragglers write after the run-dir lock releases.
   - fix: settle all review jobs (return_exceptions) before closing/raising, mirroring the resolve gather.
-- [ ] **[6] A19** `src/bugbunny/engine.py:106`, `src/bugbunny/gateway.py:890` (medium) — wait_for(semaphore.acquire()) can leak a permit on the Python 3.11 floor.
+- [x] **[6] A19** `src/bugbunny/engine.py:106`, `src/bugbunny/gateway.py:890` (medium) — wait_for(semaphore.acquire()) can leak a permit on the Python 3.11 floor.
   - fix: shared race-safe bounded-acquire helper that releases a late-granted permit.
 - [ ] **[8] A20** `src/bugbunny/prompts.py:312` (medium) — Prompt identity hash is categories-blind; custom include_categories records a hash matching no prompt sent.
   - fix: parameterize the hash by the resolved allowed categories (identical output for the default configuration).

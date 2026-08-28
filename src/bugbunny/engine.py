@@ -53,6 +53,7 @@ from bugbunny.schemas import (
     validate_verifier_payload,
 )
 from bugbunny.util import (
+    acquire_semaphore_bounded,
     atomic_write_json,
     atomic_write_text,
     canonical_json,
@@ -103,7 +104,7 @@ class _SemaphoreGateway:
             if normalized_queue_timeout is None:
                 await self.semaphore.acquire()
             else:
-                await asyncio.wait_for(self.semaphore.acquire(), timeout=normalized_queue_timeout)
+                await acquire_semaphore_bounded(self.semaphore, normalized_queue_timeout)
         except TimeoutError as exc:
             raise TimeoutError(
                 f"review-local model request queue wait exceeded {normalized_queue_timeout:g}s"

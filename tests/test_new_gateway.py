@@ -1049,3 +1049,43 @@ async def test_retry_errors_are_redacted_with_the_full_secret_set(
     assert all(secret not in entry for entry in record.retry_errors)
     assert any("[REDACTED]" in entry for entry in record.retry_errors)
     assert secret not in (record.error or "")
+
+
+@pytest.mark.asyncio
+async def test_bounded_semaphore_acquire_returns_a_permit_granted_during_cancellation() -> None:
+    # asyncio.wait_for(acquire(), t) on Python 3.11 can consume a permit while
+    # raising TimeoutError; the bounded helper must release a late grant so
+    # the LLM concurrency bounds never shrink over a long run.
+    from bugbunny.util import acquire_semaphore_bounded
+
+    class LateGrantSemaphore:
+        """acquire() completes despite cancellation, simulating the race."""
+
+        def __init__(self) -> None:
+            self.released = 0
+
+        async def acquire(self) -> bool:
+            try:
+                await asyncio.sleep(3600)
+            except asyncio.CancelledError:
+                return True
+            return True
+
+        def release(self) -> None:
+            self.released += 1
+
+    late = LateGrantSemaphore()
+    with pytest.raises(TimeoutError):
+        await acquire_semaphore_bounded(late, 0.01)
+    assert late.released == 1
+
+    real = asyncio.Semaphore(1)
+    await acquire_semaphore_bounded(real, 0.5)
+    real.release()
+    await real.acquire()
+    with pytest.raises(TimeoutError):
+        await acquire_semaphore_bounded(real, 0.05)
+    real.release()
+    # Capacity is intact after a timed-out wait.
+    await acquire_semaphore_bounded(real, 0.5)
+    real.release()

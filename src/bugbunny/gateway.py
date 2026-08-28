@@ -20,7 +20,7 @@ import httpx
 
 from bugbunny import __version__
 from bugbunny.models import CallRecord
-from bugbunny.util import is_finite_number
+from bugbunny.util import acquire_semaphore_bounded, is_finite_number
 
 MARTIAN_API_BASE = "https://api.withmartian.com/v1"
 MARTIAN_API_KEY_ENV = "MARTIAN_API_KEY"
@@ -961,9 +961,8 @@ class ModelGateway:
                     if queue_timeout_seconds is None:
                         await self._request_semaphore.acquire()
                     else:
-                        await asyncio.wait_for(
-                            self._request_semaphore.acquire(),
-                            timeout=queue_timeout_seconds,
+                        await acquire_semaphore_bounded(
+                            self._request_semaphore, queue_timeout_seconds
                         )
                 except TimeoutError as exc:
                     raise TimeoutError(

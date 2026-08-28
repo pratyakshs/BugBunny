@@ -58,6 +58,46 @@ def git_lines(text: str) -> list[str]:
     return lines
 
 
+async def acquire_semaphore_bounded(semaphore: Any, timeout_seconds: float) -> None:
+    """Acquire an asyncio semaphore with a timeout without leaking a permit.
+
+    ``asyncio.wait_for(semaphore.acquire(), t)`` on Python 3.11 (this
+    package's floor) can cancel the acquire after the permit was already
+    granted; the grant is then lost and the semaphore's effective capacity
+    shrinks permanently. Waiting on the acquire as a separate task and
+    releasing a late grant is correct on every supported interpreter.
+    """
+
+    import asyncio
+
+    acquire_task = asyncio.ensure_future(semaphore.acquire())
+    try:
+        done, _pending = await asyncio.wait({acquire_task}, timeout=timeout_seconds)
+    except asyncio.CancelledError:
+        await _abandon_semaphore_acquire(semaphore, acquire_task)
+        raise
+    if acquire_task in done:
+        acquire_task.result()
+        return
+    await _abandon_semaphore_acquire(semaphore, acquire_task)
+    raise TimeoutError(f"semaphore acquisition exceeded {timeout_seconds:g}s")
+
+
+async def _abandon_semaphore_acquire(semaphore: Any, acquire_task: Any) -> None:
+    """Cancel a pending acquire, returning a permit granted mid-cancellation."""
+
+    import asyncio
+
+    acquire_task.cancel()
+    try:
+        await acquire_task
+    except asyncio.CancelledError:
+        return
+    except Exception:
+        return
+    semaphore.release()
+
+
 def is_finite_number(value: Any) -> bool:
     """True for a real, finite int/float; bools and huge ints are rejected.
 
