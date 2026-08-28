@@ -1353,3 +1353,33 @@ def test_verify_export_and_analyze_share_the_root_export_lock(
     with pytest.raises((cli.CliError, ValueError, FileNotFoundError)):
         cli._benchmark_analyze(analyze_args)
     assert results_dir.resolve() / ".bugbunny-export.lock" in locked_paths
+
+
+def test_export_reads_run_artifacts_under_the_run_directory_lock(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    # Export used to checksum artifact bytes, then re-read the files twice
+    # more with no run-dir lock; a concurrent run could swap content between
+    # reads so the manifest certified bytes that were never checksummed.
+    locked_roots: list[Path] = []
+    real_lock = cli._run_dir_lock
+
+    from contextlib import contextmanager
+
+    @contextmanager
+    def recording_lock(run_root: Path):
+        locked_roots.append(run_root)
+        with real_lock(run_root):
+            yield
+
+    monkeypatch.setattr(cli, "_run_dir_lock", recording_lock)
+
+    def fake_manifest_paths(args: Any, load_dataset: Any) -> tuple[list[Path], dict]:
+        artifact = tmp_path / "runs" / "a.json"
+        return [artifact], {artifact: {"findings": [], "pr": {"url": "u"}}}
+
+    monkeypatch.setattr(cli, "_run_manifest_artifact_paths", fake_manifest_paths)
+    args = SimpleNamespace(artifacts=None, run_dir=tmp_path / "runs")
+    artifacts = cli._export_artifacts(args, load_dataset=object())
+    assert artifacts == [{"findings": [], "pr": {"url": "u"}}]
+    assert locked_roots == [(tmp_path / "runs").resolve()]

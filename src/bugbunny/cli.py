@@ -1550,13 +1550,19 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
     return 1 if failures else 0
 
 
-def _run_manifest_artifact_paths(args: argparse.Namespace, load_dataset: Any) -> list[Path]:
-    """Return only the complete, checksum-bound artifact population for a run.
+def _run_manifest_artifact_paths(
+    args: argparse.Namespace, load_dataset: Any
+) -> tuple[list[Path], dict[Path, dict[str, Any]]]:
+    """Return the complete, checksum-bound artifact population for a run.
 
     A run manifest is the commit point for a benchmark experiment.  Exporting a
     glob of whatever JSON happens to remain in the directory can otherwise omit
     failed cases, include stale cases, or accept an artifact edited after the
     run.  Validate the full selected case/model matrix before returning paths.
+    Each artifact's bytes are read exactly once — the checksum, the identity
+    validation, and the returned parsed content all describe one snapshot, so
+    a concurrent rewrite can never make the manifest certify bytes that were
+    not checksummed.
     """
 
     root = args.run_dir.expanduser().resolve()
@@ -1670,6 +1676,7 @@ def _run_manifest_artifact_paths(args: argparse.Namespace, load_dataset: Any) ->
     cases_by_model: dict[str, set[str]] = {model: set() for model in models}
     status_counts: dict[str, int] = {}
     paths: list[Path] = []
+    artifacts_by_path: dict[Path, dict[str, Any]] = {}
     for index, record in enumerate(records):
         if not isinstance(record, Mapping):
             raise CliError(f"run manifest record {index} is not an object")
@@ -1712,12 +1719,16 @@ def _run_manifest_artifact_paths(args: argparse.Namespace, load_dataset: Any) ->
             and all(character in "0123456789abcdef" for character in expected_sha256)
         ):
             raise CliError(f"run manifest record {index} has an invalid artifact checksum")
-        if sha256_bytes(path.read_bytes()) != expected_sha256:
+        try:
+            raw_artifact = path.read_bytes()
+        except OSError as exc:
+            raise CliError(f"cannot read artifact {path}: {exc}") from exc
+        if sha256_bytes(raw_artifact) != expected_sha256:
             raise CliError(f"run artifact checksum does not match its manifest: {path}")
 
         try:
-            artifact = load_json(path)
-        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            artifact = json.loads(raw_artifact.decode("utf-8"))
+        except (UnicodeDecodeError, ValueError) as exc:
             raise CliError(f"cannot read artifact {path}: {exc}") from exc
         artifact_config = artifact.get("config") if isinstance(artifact, Mapping) else None
         artifact_benchmark = artifact.get("benchmark") if isinstance(artifact, Mapping) else None
@@ -1738,12 +1749,13 @@ def _run_manifest_artifact_paths(args: argparse.Namespace, load_dataset: Any) ->
         ):
             raise CliError(f"run artifact identity does not match its manifest: {path}")
         paths.append(path)
+        artifacts_by_path[path] = artifact
 
     if any(case_ids != expected_case_ids for case_ids in cases_by_model.values()):
         raise CliError("run manifest has an incomplete selected case/model population")
     if manifest.get("status_counts") != dict(sorted(status_counts.items())):
         raise CliError("run manifest status_counts do not match its records")
-    return paths
+    return paths, artifacts_by_path
 
 
 def _artifact_paths(args: argparse.Namespace, *, load_dataset: Any | None = None) -> list[Path]:
@@ -1752,13 +1764,36 @@ def _artifact_paths(args: argparse.Namespace, *, load_dataset: Any | None = None
     else:
         if load_dataset is None:
             raise CliError("run-directory export requires benchmark dataset validation")
-        paths = _run_manifest_artifact_paths(args, load_dataset)
+        paths, _artifacts = _run_manifest_artifact_paths(args, load_dataset)
     if not paths:
         raise CliError("no review artifacts were found")
     missing = [str(path) for path in paths if not path.is_file()]
     if missing:
         raise CliError(f"artifact does not exist: {missing[0]}")
     return paths
+
+
+def _export_artifacts(args: argparse.Namespace, *, load_dataset: Any) -> list[dict[str, Any]]:
+    """Load export inputs, certifying exactly the bytes that were validated.
+
+    The run-directory path holds the run-dir lock while reading, so a
+    concurrent run/resume cannot swap an artifact between its checksum and
+    the content this export writes into the shared bundle.
+    """
+
+    if args.artifacts:
+        return _load_artifacts(_artifact_paths(args, load_dataset=load_dataset))
+    with _run_dir_lock(args.run_dir.expanduser().resolve()):
+        paths, artifacts_by_path = _run_manifest_artifact_paths(args, load_dataset)
+    if not paths:
+        raise CliError("no review artifacts were found")
+    artifacts: list[dict[str, Any]] = []
+    for path in paths:
+        value = artifacts_by_path[path]
+        if not isinstance(value, dict) or "findings" not in value or "pr" not in value:
+            raise CliError(f"not a BugBunny review artifact: {path}")
+        artifacts.append(value)
+    return artifacts
 
 
 def _load_artifacts(paths: Iterable[Path]) -> list[dict[str, Any]]:
@@ -1880,7 +1915,7 @@ def _require_export_bundle_identity(output_root: Path) -> None:
 
 def _benchmark_export(args: argparse.Namespace) -> int:
     load_dataset, export_results, sanitize_model_name, _artifact_model_directory = _benchmark_api()
-    artifacts = _load_artifacts(_artifact_paths(args, load_dataset=load_dataset))
+    artifacts = _export_artifacts(args, load_dataset=load_dataset)
     by_model: dict[str, list[dict[str, Any]]] = {}
     for artifact in artifacts:
         config = artifact.get("config")

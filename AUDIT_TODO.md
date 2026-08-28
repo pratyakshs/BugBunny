@@ -40,7 +40,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: render control-char paths in escaped form in curated headers/evidence and switch the three engine helpers to LF-only splitting.
 - [x] **[9] A10** `src/bugbunny/cli.py:2016` (medium/security) — benchmark judge builds GatewayConfig inline, bypassing runtime-secret registration; gh auth token never registered.
   - fix: register resolved credentials for the judge path and the gh token.
-- [ ] **[8] A11** `src/bugbunny/cli.py:1671,1839` (medium) — Export hashes artifact bytes then re-reads files twice with no run-dir lock.
+- [x] **[8] A11** `src/bugbunny/cli.py:1671,1839` (medium) — Export hashes artifact bytes then re-reads files twice with no run-dir lock.
   - fix: read once/hash once/parse once; export shares the run-directory lock.
 - [x] **[6] A12** `src/bugbunny/benchmark.py:749-881` (medium) — Pre-write preflight narrower than post-write refresh validation; rejected exports still mutate the shared bundle.
   - fix: run the structural sibling manifest/index validation before the first shared write.
