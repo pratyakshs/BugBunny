@@ -1731,3 +1731,29 @@ def test_generation_batch_headers_are_budgeted_before_chunk_bodies() -> None:
     for index in range(4):
         assert f"### CONTEXT c{index:04d}" in context
         assert f"BODY{index}-" in context
+
+
+@pytest.mark.asyncio
+async def test_generation_calls_carry_a_whole_operation_deadline(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # The transport read timeout is per-socket-read, so a trickle-body
+    # response evades it; every generation call must carry a finite
+    # whole-operation deadline like the selector already does.
+    _patch_context(monkeypatch)
+    config = _fast_config(max_chunk_chars=512)
+    snapshot = FakeSnapshot(
+        TWO_FILE_DIFF,
+        {"a.py": "new_a = 1\n", "b.py": "new_b = 1\n"},
+    )
+    gateway = FakeGateway(generation={"*": {"findings": []}})
+
+    artifact = await ReviewEngine(config, gateway, FakeCache(snapshot)).review(_pr())  # type: ignore[arg-type]
+
+    assert artifact.status == "completed"
+    generation_calls = [call for call in gateway.calls if call.get("stage") == "generation"]
+    assert generation_calls
+    expected = engine_module._operation_deadline_seconds(config.timeout_seconds)
+    for call in generation_calls:
+        assert call["operation_timeout_seconds"] == expected
+        assert call["operation_timeout_seconds"] > 0

@@ -126,6 +126,22 @@ class _SemaphoreGateway:
             self.semaphore.release()
 
 
+def _operation_deadline_seconds(transport_timeout_seconds: float) -> float:
+    """Whole-call execution bound for generation and verification calls.
+
+    The transport read timeout is per-socket-read, so a trickle-body response
+    (one byte per interval) evades it indefinitely and holds a review plus a
+    global-LLM slot forever. The whole-call bound leaves linear headroom for
+    the gateway's bounded retry ladder and backoff sleeps, so a legitimate
+    retried call is never cut short while a hung one always ends. Queue wait
+    is deliberately not covered: with executions bounded, queue drain is
+    already finite, and a queue deadline here would turn a busy sweep into
+    spurious coverage failures.
+    """
+
+    return float(transport_timeout_seconds) * 4
+
+
 def _generation_batches(
     chunks: Sequence[DiffChunk],
     contexts: Mapping[str, str],
@@ -1246,6 +1262,9 @@ class ReviewEngine:
                         chunk_id=final_batch.batch_id,
                         reasoning_effort=self.config.reasoning_effort,
                         max_output_tokens=self.config.max_output_tokens,
+                        operation_timeout_seconds=_operation_deadline_seconds(
+                            self.config.timeout_seconds
+                        ),
                     )
                 except GatewayError as exc:
                     batch_calls.append(exc.call)
@@ -1628,6 +1647,9 @@ class ReviewEngine:
                                 chunk_id=f"candidates-{offset}-{offset + len(batch) - 1}",
                                 reasoning_effort=self.config.verifier_reasoning_effort,
                                 max_output_tokens=self.config.verifier_max_output_tokens,
+                                operation_timeout_seconds=_operation_deadline_seconds(
+                                    self.config.timeout_seconds
+                                ),
                             )
                             calls.append(result.call)
                             try:

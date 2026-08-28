@@ -32,7 +32,7 @@ Items with low scores receive deliberately conservative/additive fixes.
 
 ### Tier 2 — reliability, integrity, security
 
-- [ ] **[6] A7** `src/bugbunny/gateway.py:800`, `src/bugbunny/engine.py:1217,1599` (medium) — No total deadline on generation/verifier calls; trickle-body responses hold semaphore slots forever.
+- [x] **[6] A7** `src/bugbunny/gateway.py:800`, `src/bugbunny/engine.py:1217,1599` (medium) — No total deadline on generation/verifier calls; trickle-body responses hold semaphore slots forever.
   - fix: pass the existing operation-timeout primitive at the generation and verifier call sites.
 - [x] **[9] A8** `src/bugbunny/repository.py:507` (medium) — git_grep -z parsing still breaks on newline inside a filename; silent repeated evidence loss.
   - fix: tokenize on NUL (path, line, then text-to-record-LF) instead of pre-splitting the stream on LF.
