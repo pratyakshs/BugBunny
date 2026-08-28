@@ -138,3 +138,111 @@ def test_archived_operating_point_still_derives_and_loads() -> None:
     assert value["operating_point_id"] == "bugbunny-op-43df334528999a9c"
     assert value["threshold"] == 0.92
     assert len(digest) == 64
+
+
+def _finding_payload() -> dict:
+    return {
+        "title": "Null value is dereferenced",
+        "path": "src/service.py",
+        "side": "RIGHT",
+        "line": 12,
+        "end_line": 12,
+        "severity": "high",
+        "category": "bug",
+        "confidence": 0.9,
+        "evidence": "result = account.name",
+        "root_cause": "The changed code dereferences a nullable lookup result.",
+        "failure_mode": "A missing account causes an AttributeError.",
+        "fix_scope": "local",
+        "trigger": "The account lookup returns None.",
+        "impact": "The request raises AttributeError instead of returning 404.",
+        "suggested_fix": "Handle a missing account before reading name.",
+    }
+
+
+def test_selection_reports_binomial_uncertainty_and_saturation() -> None:
+    from bugbunny.calibration import select_operating_point
+
+    # A perfectly separated 20-case corpus: every eligible threshold scores
+    # precision = recall = 1.0, so the frozen threshold is a tie-break
+    # artifact and the 0.80 floor is not statistically verifiable at n=10.
+    observations = [
+        {
+            "case_id": f"pos-{index}",
+            "valid_candidate": True,
+            "decision": "keep",
+            "confidence": 0.92 + index * 0.005,
+        }
+        for index in range(10)
+    ] + [
+        {
+            "case_id": f"neg-{index}",
+            "valid_candidate": False,
+            "decision": "drop",
+            "confidence": 0.2,
+        }
+        for index in range(10)
+    ]
+    selection = select_operating_point(observations, minimum_precision=0.80)
+    uncertainty = selection["uncertainty"]
+    assert uncertainty["predicted_positives"] == 10
+    # Exact Clopper-Pearson lower limit for 10/10 = 0.025**(1/10).
+    assert abs(uncertainty["precision_95_lower_bound"] - 0.025 ** (1 / 10)) < 1e-6
+    assert uncertainty["precision_floor_statistically_verified"] is False
+    assert uncertainty["corpus_saturated"] is True
+    # The diagnostics never enter the re-derived selection record.
+    assert "uncertainty" not in selection["selected"]
+
+
+def test_corpus_benchmark_disjointness_is_checked_against_real_data(tmp_path: Path) -> None:
+    import json as _json
+
+    from bugbunny.calibration import CalibrationError, verify_corpus_benchmark_disjoint
+
+    golden_url = "https://github.com/acme/widget/pull/7"
+    benchmark = {
+        golden_url: {
+            "golden_comments": [
+                {"comment": "the connection pool is exhausted under concurrent retries"}
+            ],
+            "reviews": [],
+        }
+    }
+    benchmark_path = tmp_path / "benchmark_data.json"
+    benchmark_path.write_text(_json.dumps(benchmark), encoding="utf-8")
+
+    def corpus_with(context: str) -> Path:
+        cases = []
+        for index in range(20):
+            label = index % 2 == 0
+            cases.append(
+                {
+                    "case_id": f"case-{index}",
+                    "valid_candidate": label,
+                    "patch": "+value = compute()\n",
+                    "context": context if index == 0 else "def compute():\n    return 1\n",
+                    "rationale": "synthetic",
+                    "finding": _finding_payload(),
+                }
+            )
+        corpus = {
+            "schema_version": "bugbunny-verifier-calibration-corpus-v1",
+            "provenance": {"contains_codereviewbench": False},
+            "cases": cases,
+        }
+        path = tmp_path / f"corpus-{abs(hash(context))}.json"
+        path.write_text(_json.dumps(corpus), encoding="utf-8")
+        return path
+
+    clean = corpus_with("def compute():\n    return 2\n")
+    report = verify_corpus_benchmark_disjoint(clean, benchmark_path)
+    assert report["overlaps"] == []
+    assert report["checked_corpus_cases"] == 20
+
+    tainted = corpus_with(f"derived from {golden_url} for testing")
+    with pytest.raises(CalibrationError, match="overlaps the CodeReviewBench dataset"):
+        verify_corpus_benchmark_disjoint(tainted, benchmark_path)
+
+    quoting = corpus_with("the connection pool is exhausted under concurrent retries")
+    with pytest.raises(CalibrationError, match="overlaps the CodeReviewBench dataset"):
+        verify_corpus_benchmark_disjoint(quoting, benchmark_path)

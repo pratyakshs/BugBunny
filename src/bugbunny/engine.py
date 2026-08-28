@@ -550,10 +550,15 @@ def _verifier_generation_context(context: str) -> str:
     return "\n".join(lines[:first_source])
 
 
-def _context_summary(bundle: Any, *, review_policy: str = "production") -> dict[str, Any]:
+def _context_summary(
+    bundle: Any,
+    *,
+    review_policy: str = "production",
+    allowed_categories: Sequence[str] | None = None,
+) -> dict[str, Any]:
     summary: dict[str, Any] = {
         "generation_prompt_version": GENERATION_PROMPT_VERSION,
-        "generation_prompt_sha256": generation_prompt_sha256(review_policy),
+        "generation_prompt_sha256": generation_prompt_sha256(review_policy, allowed_categories),
         "verifier_prompt_version": VERIFIER_PROMPT_VERSION,
         "verifier_prompt_sha256": verifier_prompt_sha256(),
         "context_selection_prompt_version": EXPLORATION_PROMPT_VERSION,
@@ -1820,11 +1825,17 @@ class ReviewEngine:
 
         completed_at = utc_now()
         context_summary = (
-            _context_summary(bundle, review_policy=self.config.review_policy)
+            _context_summary(
+                bundle,
+                review_policy=self.config.review_policy,
+                allowed_categories=self.config.include_categories,
+            )
             if bundle is not None
             else {
                 "generation_prompt_version": GENERATION_PROMPT_VERSION,
-                "generation_prompt_sha256": generation_prompt_sha256(self.config.review_policy),
+                "generation_prompt_sha256": generation_prompt_sha256(
+                    self.config.review_policy, self.config.include_categories
+                ),
                 "verifier_prompt_version": VERIFIER_PROMPT_VERSION,
                 "verifier_prompt_sha256": verifier_prompt_sha256(),
                 "context_selection_prompt_version": EXPLORATION_PROMPT_VERSION,

@@ -297,3 +297,17 @@ def test_generation_payload_quarantines_oversized_fields_per_item():
     )
     assert invalid_count == 1
     assert len(findings) == 1
+
+
+def test_generation_prompt_hash_binds_the_allowed_categories():
+    # The prompt interpolates the allowed-category list, so a categories-blind
+    # hash would record an identity matching no prompt ever sent whenever
+    # include_categories narrows the policy set.
+    from bugbunny.policy import get_review_policy
+    from bugbunny.prompts import generation_prompt_sha256
+
+    policy = get_review_policy("codereviewbench")
+    default_hash = generation_prompt_sha256("codereviewbench")
+    assert generation_prompt_sha256("codereviewbench", policy.categories) == default_hash
+    narrowed = generation_prompt_sha256("codereviewbench", policy.categories[:2])
+    assert narrowed != default_hash

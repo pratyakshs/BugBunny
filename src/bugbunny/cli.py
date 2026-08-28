@@ -298,6 +298,13 @@ def build_parser() -> argparse.ArgumentParser:
     calibrate.add_argument("--concurrency", type=_positive_int, default=8)
     calibrate.add_argument("--minimum-precision", type=float, default=0.80)
     calibrate.add_argument("--max-output-tokens", type=_positive_int, default=4_096)
+    calibrate.add_argument(
+        "--benchmark-data",
+        type=Path,
+        default=None,
+        help="cross-check the corpus against this benchmark_data.json instead of "
+        "trusting the corpus's self-declared exclusion attestation",
+    )
     _add_auth_options(calibrate)
 
     review = subparsers.add_parser("review-pr", help="review one GitHub pull request locally")
@@ -1071,7 +1078,7 @@ def _completed_artifact(
             and pr.get("head_sha") == head_sha
             and isinstance(context, Mapping)
             and context.get("generation_prompt_sha256")
-            == generation_prompt_sha256(config.review_policy)
+            == generation_prompt_sha256(config.review_policy, config.include_categories)
             and context.get("verifier_prompt_sha256") == verifier_prompt_sha256()
             and context.get("context_selection_prompt_sha256") == exploration_prompt_sha256()
             and context.get("context_selection_schema_sha256")
@@ -2069,10 +2076,12 @@ def _benchmark_verify_export(args: argparse.Namespace) -> int:
 
 
 async def _calibrate(args: argparse.Namespace) -> int:
-    from bugbunny.calibration import calibrate_verifier
+    from bugbunny.calibration import calibrate_verifier, verify_corpus_benchmark_disjoint
 
     if not 0 <= args.minimum_precision <= 1:
         raise CliError("--minimum-precision must be between 0 and 1")
+    if args.benchmark_data is not None:
+        verify_corpus_benchmark_disjoint(args.corpus, args.benchmark_data)
     gateway_config = _gateway_config(args, max_output_tokens=args.max_output_tokens)
     async with ModelGateway(gateway_config, max_concurrency=args.concurrency) as gateway:
         result = await calibrate_verifier(

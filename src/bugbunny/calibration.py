@@ -126,11 +126,111 @@ def select_operating_point(
     # ties; the highest threshold on an identical observed plateau is the
     # conservative choice for unseen, lower-confidence candidates.
     selected = max(eligible, key=lambda row: (row["recall"], row["f1"], row["threshold"]))
+    # Diagnostics only: the selection itself is unchanged and the fields
+    # below are deliberately kept out of `selected` so archived operating
+    # points still re-derive byte-for-byte. They exist because a small or
+    # perfectly separated corpus makes the frozen threshold a tie-break
+    # artifact and the precision floor statistically unverifiable, and that
+    # must be visible rather than implied by a nominal 1.0.
+    predicted_positives = int(selected["tp"] + selected["fp"])
+    precision_lower_bound = _clopper_pearson_lower(int(selected["tp"]), predicted_positives)
+    plateau = [
+        row["threshold"]
+        for row in eligible
+        if row["recall"] == selected["recall"] and row["f1"] == selected["f1"]
+    ]
     return {
         "objective": "maximize_recall_subject_to_precision_floor_then_f1",
         "minimum_precision": minimum_precision,
         "selected": selected,
         "curve": rows,
+        "uncertainty": {
+            "predicted_positives": predicted_positives,
+            "precision_95_lower_bound": precision_lower_bound,
+            "precision_floor_statistically_verified": precision_lower_bound >= minimum_precision,
+            "selected_plateau_thresholds": sorted(plateau),
+            # Perfect separation at the selected point: every threshold on
+            # the plateau scores identically, so the frozen value is chosen
+            # by tie-break rather than by an observed trade-off.
+            "corpus_saturated": selected["precision"] == 1.0 and selected["recall"] == 1.0,
+        },
+    }
+
+
+def _clopper_pearson_lower(successes: int, trials: int, *, alpha: float = 0.05) -> float:
+    """Lower limit of the exact two-sided 95% Clopper-Pearson interval."""
+
+    if trials <= 0 or successes <= 0:
+        return 0.0
+
+    def tail_at_least(probability: float) -> float:
+        return sum(
+            math.comb(trials, count) * probability**count * (1 - probability) ** (trials - count)
+            for count in range(successes, trials + 1)
+        )
+
+    low, high = 0.0, 1.0
+    for _ in range(60):
+        middle = (low + high) / 2
+        if tail_at_least(middle) < alpha / 2:
+            low = middle
+        else:
+            high = middle
+    return low
+
+
+def verify_corpus_benchmark_disjoint(
+    corpus_path: Path, benchmark_data_path: Path
+) -> dict[str, Any]:
+    """Cross-check the corpus's self-declared attestation against real data.
+
+    ``contains_codereviewbench: false`` is otherwise an honor-system boolean;
+    nothing compared the corpus against the 50 cases available locally. This
+    check fails when any corpus case textually contains a golden PR URL or a
+    golden comment, the direct derivation vectors.
+    """
+
+    corpus, corpus_sha256 = load_calibration_corpus(corpus_path)
+    _, benchmark = _load_object(Path(benchmark_data_path))
+    golden_urls = {str(url).strip().lower() for url in benchmark if str(url).strip()}
+    golden_comments: set[str] = set()
+    for entry in benchmark.values():
+        if isinstance(entry, Mapping):
+            for comment in entry.get("golden_comments", []):
+                if isinstance(comment, Mapping):
+                    text = str(comment.get("comment") or "").strip().lower()
+                    # Very short phrases would match incidentally.
+                    if len(text) >= 24:
+                        golden_comments.add(text)
+    overlaps: list[dict[str, str]] = []
+    for case in corpus["cases"]:
+        parts = [
+            str(case.get(field) or "") for field in ("case_id", "patch", "context", "rationale")
+        ]
+        finding = case.get("finding")
+        if isinstance(finding, Mapping):
+            parts.extend(str(value) for value in finding.values())
+        haystack = "\n".join(parts).lower()
+        for url in golden_urls:
+            if url in haystack:
+                overlaps.append(
+                    {"case_id": str(case["case_id"]), "kind": "golden_url", "value": url}
+                )
+        for text in golden_comments:
+            if text in haystack:
+                overlaps.append(
+                    {"case_id": str(case["case_id"]), "kind": "golden_comment", "value": text}
+                )
+    if overlaps:
+        detail = "; ".join(f"{item['case_id']} contains a {item['kind']}" for item in overlaps[:5])
+        raise CalibrationError(f"calibration corpus overlaps the CodeReviewBench dataset: {detail}")
+    return {
+        "corpus_sha256": corpus_sha256,
+        "benchmark_cases": len(benchmark),
+        "checked_corpus_cases": len(corpus["cases"]),
+        "golden_urls_checked": len(golden_urls),
+        "golden_comments_checked": len(golden_comments),
+        "overlaps": [],
     }
 
 
@@ -312,4 +412,5 @@ __all__ = [
     "load_calibration_corpus",
     "load_operating_point",
     "select_operating_point",
+    "verify_corpus_benchmark_disjoint",
 ]

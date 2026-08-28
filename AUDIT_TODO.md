@@ -48,9 +48,9 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: take the root export lock and hash the exact bytes read.
 - [x] **[8] A14** `src/bugbunny/analysis.py:302-350,855` (medium/statistics) — --allow-judge-errors computes per-pair intersections; docs promise one shared clean-case intersection.
   - fix: compute the global clean-case intersection across all compared tools and report exclusions.
-- [ ] **[4] A15** `src/bugbunny/calibration.py:74-134` (medium/statistics) — Frozen operating point is a tie-break artifact of a saturated corpus; precision floor unverifiable at n=10.
+- [x] **[4] A15** `src/bugbunny/calibration.py:74-134` (medium/statistics) — Frozen operating point is a tie-break artifact of a saturated corpus; precision floor unverifiable at n=10.
   - fix (conservative): report exact binomial uncertainty and saturation diagnostics; selection unchanged; corpus-size policy stays a design decision.
-- [ ] **[5] A16** `src/bugbunny/calibration.py:41,252` (medium) — "Excludes CodeReviewBench" attestation never checked against the 50 cases.
+- [x] **[5] A16** `src/bugbunny/calibration.py:41,252` (medium) — "Excludes CodeReviewBench" attestation never checked against the 50 cases.
   - fix: optional cross-check of corpus observations against a provided benchmark_data.json.
 - [x] **[9] A17** `src/bugbunny/exploration.py:459` vs `src/bugbunny/models.py:199` (medium) — repository_index_chars accepted at >=64 but operational floor is 82; accepted configs fail every agentic batch.
   - fix: align the config validation floor with the renderer's marker floor.
@@ -58,7 +58,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: settle all review jobs (return_exceptions) before closing/raising, mirroring the resolve gather.
 - [x] **[6] A19** `src/bugbunny/engine.py:106`, `src/bugbunny/gateway.py:890` (medium) — wait_for(semaphore.acquire()) can leak a permit on the Python 3.11 floor.
   - fix: shared race-safe bounded-acquire helper that releases a late-granted permit.
-- [ ] **[8] A20** `src/bugbunny/prompts.py:312` (medium) — Prompt identity hash is categories-blind; custom include_categories records a hash matching no prompt sent.
+- [x] **[8] A20** `src/bugbunny/prompts.py:312` (medium) — Prompt identity hash is categories-blind; custom include_categories records a hash matching no prompt sent.
   - fix: parameterize the hash by the resolved allowed categories (identical output for the default configuration).
 
 ### Tier 3 — lower severity
