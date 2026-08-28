@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from typing import Any, Literal
 
+from bugbunny.util import is_finite_number
+
 Severity = Literal["critical", "high", "medium", "low"]
 Category = Literal[
     "bug",
@@ -286,7 +288,11 @@ class Finding:
             end_line=int(value.get("end_line", value.get("line", 0)) or 0),
             severity=str(value.get("severity", "medium")).lower(),  # type: ignore[arg-type]
             category=str(value.get("category", "bug")).lower(),  # type: ignore[arg-type]
-            confidence=float(value.get("confidence", 0.0) or 0.0),
+            confidence=(
+                float(value.get("confidence", 0.0) or 0.0)
+                if is_finite_number(value.get("confidence", 0.0) or 0.0)
+                else 0.0
+            ),
             evidence=str(value.get("evidence", "")).strip(),
             trigger=str(value.get("trigger", "")).strip(),
             impact=str(value.get("impact", "")).strip(),

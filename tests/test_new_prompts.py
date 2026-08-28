@@ -172,11 +172,27 @@ def test_generation_payload_quarantines_only_the_malformed_sibling():
         {"end_line": 11},
         {"category": "not-a-category"},
         {"confidence": float("nan")},
+        {"confidence": 10**400},
+        {"confidence": -(10**400)},
     ],
 )
 def test_generation_payload_rejects_ungrounded_or_out_of_contract_values(change):
     with pytest.raises(PayloadValidationError):
         findings_from_payload({"findings": [_wire_finding(**change)]}, chunk_id="chunk-1")
+
+
+def test_generation_payload_quarantines_overflowing_confidence_without_aborting():
+    # float(10**400) raises OverflowError; that must stay a per-item
+    # PayloadValidationError quarantine, not abort the whole batch.
+    valid = _wire_finding(title="Valid proposal")
+    overflowing = _wire_finding(title="Overflowing proposal", confidence=10**400)
+
+    findings, invalid_count = findings_from_payload_tolerant(
+        {"findings": [valid, overflowing]}, chunk_id="chunk-1"
+    )
+
+    assert [finding.title for finding in findings] == ["Valid proposal"]
+    assert invalid_count == 1
 
 
 def test_verifier_prompt_is_one_bounded_independent_batch():

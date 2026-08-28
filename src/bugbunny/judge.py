@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import asyncio
 import json
-import math
 import re
 from collections.abc import AsyncIterator, Mapping, Sequence
 from contextlib import asynccontextmanager
@@ -31,6 +30,7 @@ from bugbunny.util import (
     atomic_write_text,
     canonical_json,
     file_lock,
+    is_finite_number,
     load_json,
     sha256_bytes,
     sha256_text,
@@ -73,12 +73,7 @@ def _require_positive_int(value: Any, *, label: str) -> None:
 
 
 def _require_positive_finite(value: Any, *, label: str) -> None:
-    if (
-        not isinstance(value, (int, float))
-        or isinstance(value, bool)
-        or not math.isfinite(value)
-        or value <= 0
-    ):
+    if not is_finite_number(value) or value <= 0:
         raise ValueError(f"{label} must be finite and positive")
 
 
@@ -269,12 +264,7 @@ def _validate_judge_result(value: Mapping[str, Any], *, require_exact_keys: bool
         raise _JudgeResponseError("judge result reasoning must be non-empty text")
     if not isinstance(match, bool):
         raise _JudgeResponseError("judge result match must be a boolean")
-    if (
-        not isinstance(confidence, (int, float))
-        or isinstance(confidence, bool)
-        or not math.isfinite(confidence)
-        or not 0 <= confidence <= 1
-    ):
+    if not is_finite_number(confidence) or not 0 <= confidence <= 1:
         raise _JudgeResponseError("judge result confidence must be finite and within [0, 1]")
     return {
         "reasoning": reasoning.strip(),

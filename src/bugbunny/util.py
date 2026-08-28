@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import re
 import tempfile
@@ -55,6 +56,24 @@ def git_lines(text: str) -> list[str]:
     if lines and lines[-1] == "":
         lines.pop()
     return lines
+
+
+def is_finite_number(value: Any) -> bool:
+    """True for a real, finite int/float; bools and huge ints are rejected.
+
+    ``float()`` and ``math.isfinite()`` raise OverflowError for integers
+    beyond float range, so wire and artifact validation must route such
+    values through this check instead of calling either directly; a
+    model-supplied 400-digit integer is an ordinary invalid value, not a
+    crash.
+    """
+
+    if not isinstance(value, (int, float)) or isinstance(value, bool):
+        return False
+    try:
+        return math.isfinite(float(value))
+    except OverflowError:
+        return False
 
 
 def slugify(value: str, *, limit: int = 64) -> str:

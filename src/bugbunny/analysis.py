@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import math
 import random
 from collections import Counter, defaultdict
 from collections.abc import Iterable, Mapping, Sequence
@@ -26,6 +25,7 @@ from bugbunny.judge import (
 from bugbunny.util import (
     atomic_write_json,
     canonical_json,
+    is_finite_number,
     load_json,
     sha256_bytes,
     sha256_text,
@@ -225,9 +225,7 @@ def _bind_judged_candidate_inputs(
         confidence = raw_pair.get("confidence")
         if (
             not isinstance(match, bool)
-            or not isinstance(confidence, (int, float))
-            or isinstance(confidence, bool)
-            or not math.isfinite(confidence)
+            or not is_finite_number(confidence)
             or not 0 <= confidence <= 1
         ):
             raise AnalysisError(f"judge pair decision is malformed for {golden_url} / {tool}")

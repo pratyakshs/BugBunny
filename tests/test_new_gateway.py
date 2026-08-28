@@ -928,3 +928,59 @@ async def test_codex_failure_preserves_usage_model_and_response_hash():
     assert call.attempt_count == 1
     assert call.response_sha256 == hashlib.sha256(invalid_output.encode("utf-8")).hexdigest()
     assert "could not parse model JSON" in (call.error or "")
+
+
+def test_strict_json_rejects_overflowing_float_literals():
+    # parse_constant only intercepts the literal Infinity/NaN tokens; an
+    # overflowing decimal such as 1e999 must not slip through as inf and
+    # later crash canonical response hashing on the success path.
+    from bugbunny.gateway import strict_json_loads
+
+    for literal in ('{"x": 1e999}', '{"x": -1e999}', '{"x": 2.5e308}'):
+        with pytest.raises(ValueError, match="non-finite"):
+            strict_json_loads(literal)
+    assert strict_json_loads('{"x": 1e308}') == {"x": 1e308}
+
+    with pytest.raises(ResponseFormatError):
+        extract_json_object('prose before {"x": 1e999} prose after')
+
+
+def test_json_extraction_rejects_non_utf8_bytes_as_retryable_format_error():
+    with pytest.raises(ResponseFormatError, match="not valid UTF-8"):
+        extract_json_object(b"\xff\xfe{}")
+
+
+def test_json_extraction_rejects_sdk_payloads_canonical_hashing_cannot_represent():
+    # Mapping payloads bypass the strict text parser, so non-finite numbers
+    # must be rejected here instead of surfacing as a bare ValueError from
+    # response hashing after the call already succeeded.
+    with pytest.raises(ResponseFormatError, match="not canonical JSON"):
+        extract_json_object({"findings": [{"confidence": float("inf")}]})
+
+    class Dumpable:
+        def model_dump(self):
+            return {"value": float("nan")}
+
+    with pytest.raises(ResponseFormatError, match="not canonical JSON"):
+        extract_json_object(Dumpable())
+
+
+def test_schema_validation_treats_overflowing_integers_as_invalid_not_crash():
+    schema = {"type": "number", "minimum": 0, "maximum": 1}
+    with pytest.raises(ResponseFormatError, match="must be finite"):
+        _validate_json_schema(10**400, schema)
+    with pytest.raises(ResponseFormatError, match="must be finite"):
+        _validate_json_schema(-(10**400), schema)
+
+
+def test_schema_pattern_uses_ecma_end_anchor_semantics():
+    # Python's '$' also matches before one trailing newline; the Codex CLI
+    # enforces the same schema natively with ECMA semantics, so the local
+    # validator must not be laxer than the transport it mirrors.
+    schema = {"type": "string", "pattern": "^[a-z0-9_]+$"}
+    _validate_json_schema("abc_123", schema)
+    with pytest.raises(ResponseFormatError, match="pattern"):
+        _validate_json_schema("abc\n", schema)
+    # An escaped final dollar stays a literal character.
+    literal = {"type": "string", "pattern": r"^price\$"}
+    _validate_json_schema("price$ tag", literal)

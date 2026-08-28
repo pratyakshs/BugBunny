@@ -20,6 +20,7 @@ import httpx
 
 from bugbunny import __version__
 from bugbunny.models import CallRecord
+from bugbunny.util import is_finite_number
 
 MARTIAN_API_BASE = "https://api.withmartian.com/v1"
 MARTIAN_API_KEY_ENV = "MARTIAN_API_KEY"
@@ -353,6 +354,16 @@ def _reject_json_constant(value: str) -> None:
     raise ValueError(f"non-finite JSON number is not allowed: {value}")
 
 
+def _strict_parse_float(text: str) -> float:
+    # parse_constant only intercepts the literal Infinity/NaN tokens; an
+    # overflowing decimal literal such as 1e999 otherwise parses to inf and
+    # bypasses the non-finite rejection.
+    result = float(text)
+    if not math.isfinite(result):
+        raise ValueError(f"non-finite JSON number is not allowed: {text}")
+    return result
+
+
 def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     for key, value in pairs:
@@ -366,22 +377,41 @@ def strict_json_loads(value: str) -> Any:
     return json.loads(
         value,
         parse_constant=_reject_json_constant,
+        parse_float=_strict_parse_float,
         object_pairs_hook=_reject_duplicate_keys,
     )
+
+
+def _canonical_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    """Reject payloads that canonical hashing cannot represent.
+
+    SDK-object payloads bypass the strict text parser, so non-finite numbers
+    or non-JSON types would otherwise surface only as a bare ValueError from
+    response hashing on the success path, outside the retryable taxonomy.
+    """
+
+    try:
+        json.dumps(payload, ensure_ascii=False, sort_keys=True, allow_nan=False)
+    except (TypeError, ValueError) as exc:
+        raise ResponseFormatError(f"model payload is not canonical JSON: {exc}") from exc
+    return payload
 
 
 def extract_json_object(value: Any) -> dict[str, Any]:
     """Extract one JSON object from SDK objects, text, or fenced fallback text."""
 
     if isinstance(value, Mapping):
-        return dict(value)
+        return _canonical_payload(dict(value))
     model_dump = getattr(value, "model_dump", None)
     if callable(model_dump):
         dumped = model_dump()
         if isinstance(dumped, Mapping):
-            return dict(dumped)
+            return _canonical_payload(dict(dumped))
     if isinstance(value, bytes):
-        value = value.decode("utf-8", errors="strict")
+        try:
+            value = value.decode("utf-8", errors="strict")
+        except UnicodeDecodeError as exc:
+            raise ResponseFormatError(f"model response was not valid UTF-8: {exc}") from exc
     if not isinstance(value, str):
         raise ResponseFormatError("model response did not contain JSON text")
 
@@ -409,6 +439,7 @@ def extract_json_object(value: Any) -> dict[str, Any]:
     # choosing an unrelated incidental object fail closed.
     decoder = json.JSONDecoder(
         parse_constant=_reject_json_constant,
+        parse_float=_strict_parse_float,
         object_pairs_hook=_reject_duplicate_keys,
     )
     for start, character in enumerate(text):
@@ -449,6 +480,22 @@ def _matches_type(value: Any, kind: str) -> bool:
     if kind == "number":
         return isinstance(value, (int, float)) and not isinstance(value, bool)
     return True
+
+
+def _pattern_search(pattern: str, value: str) -> bool:
+    """Pattern search with ECMA end-anchor semantics.
+
+    Python's ``$`` also matches before one trailing newline; ECMA's does not,
+    and the Codex CLI enforces the same schemas natively with ECMA semantics.
+    A final unescaped ``$`` is therefore checked as ``\\Z``.
+    """
+
+    if pattern.endswith("$"):
+        stem = pattern[:-1]
+        trailing_backslashes = len(stem) - len(stem.rstrip("\\"))
+        if trailing_backslashes % 2 == 0:
+            pattern = stem + r"\Z"
+    return re.search(pattern, value) is not None
 
 
 def _validate_json_schema(value: Any, schema: Mapping[str, Any], *, path: str = "$") -> None:
@@ -495,10 +542,10 @@ def _validate_json_schema(value: Any, schema: Mapping[str, Any], *, path: str = 
         pattern = schema.get("pattern")
         # JSON-Schema pattern semantics are a search; schemas that mean a full
         # match anchor themselves.
-        if isinstance(pattern, str) and not re.search(pattern, value):
+        if isinstance(pattern, str) and not _pattern_search(pattern, value):
             raise ResponseFormatError(f"{path} does not match required pattern")
     elif isinstance(value, (int, float)) and not isinstance(value, bool):
-        if not math.isfinite(float(value)):
+        if not is_finite_number(value):
             raise ResponseFormatError(f"{path} must be finite")
         minimum = schema.get("minimum")
         maximum = schema.get("maximum")
@@ -576,7 +623,10 @@ def _integer(value: Any) -> int | None:
 
 def _finite_float(value: Any) -> float | None:
     if isinstance(value, (int, float)) and not isinstance(value, bool):
-        result = float(value)
+        try:
+            result = float(value)
+        except OverflowError:
+            return None
         if math.isfinite(result):
             return result
     return None

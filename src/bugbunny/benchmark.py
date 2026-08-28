@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import math
 import re
 from collections.abc import Iterable, Mapping
 from copy import deepcopy
@@ -28,7 +27,14 @@ from bugbunny.build import (
 )
 from bugbunny.families import group_finding_families
 from bugbunny.schemas import CATEGORIES, SEVERITIES
-from bugbunny.util import atomic_write_json, canonical_json, file_lock, sha256_bytes, sha256_text
+from bugbunny.util import (
+    atomic_write_json,
+    canonical_json,
+    file_lock,
+    is_finite_number,
+    sha256_bytes,
+    sha256_text,
+)
 from bugbunny.validation import artifact_location_is_commentable
 
 STANDARD_CASE_COUNT = 50
@@ -605,12 +611,7 @@ def _direct_outputs_for_findings(
         if finding.get("severity") not in SEVERITIES or finding.get("category") not in CATEGORIES:
             raise ValueError(f"final finding {index} has an invalid severity or category")
         confidence = finding.get("confidence")
-        if (
-            not isinstance(confidence, (int, float))
-            or isinstance(confidence, bool)
-            or not math.isfinite(confidence)
-            or not 0 <= confidence <= 1
-        ):
+        if not is_finite_number(confidence) or not 0 <= confidence <= 1:
             raise ValueError(f"final finding {index} has an invalid confidence")
         text = _render_candidate_text(finding)
         if not text.strip():

@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-import math
 import re
 from collections.abc import Mapping, Sequence
 from typing import Any
 
 from bugbunny.models import Finding
+from bugbunny.util import is_finite_number
 
 SEVERITIES = ("critical", "high", "medium", "low")
 CATEGORIES = (
@@ -275,10 +275,11 @@ def _positive_int(value: Any, *, label: str) -> int:
 def _confidence(value: Any, *, label: str) -> float:
     if not isinstance(value, (int, float)) or isinstance(value, bool):
         raise PayloadValidationError(f"{label} must be a number")
-    result = float(value)
-    if not math.isfinite(result) or not 0 <= result <= 1:
+    # is_finite_number also rejects huge integers whose float() conversion
+    # would raise OverflowError and escape the per-item quarantine.
+    if not is_finite_number(value) or not 0 <= value <= 1:
         raise PayloadValidationError(f"{label} must be finite and between 0 and 1")
-    return result
+    return float(value)
 
 
 def _family_key(value: Any, *, label: str) -> str:

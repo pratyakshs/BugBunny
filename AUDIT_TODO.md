@@ -1,11 +1,95 @@
 # BugBunny audit — fix tracker
 
 Source: full-codebase audit (2026-08-26), 74 verified findings + 4 supplemental
-items, followed by an 18-finding architectural pass and integration review.
-Score = fix confidence (10 = mechanical & non-controversial, <5 = needs design debate; deferred).
+items, followed by an 18-finding architectural pass and integration review,
+followed by an independent second audit (2026-08-27, 41 findings + 3 hygiene items).
+Score = fix confidence (10 = mechanical & non-controversial, <5 = needs design debate).
 Status legend: `[ ]` pending · `[~]` in progress · `[x]` fixed (with regression test) · deferred items listed separately.
 
 Working rules: every fix gets a targeted test; `ruff check .` and full `pytest` must stay green; no behavior change outside the finding's scope.
+
+## Third-pass independent audit (2026-08-27)
+
+Seven parallel adversarial reviewers over the full codebase at `f76b173`;
+every finding verified by code trace or executable repro before inclusion.
+Per the current instruction, every item scoring at least 3 is in scope.
+Items with low scores receive deliberately conservative/additive fixes.
+
+### Tier 1 — fix before the 0.8.0 benchmark rerun
+
+- [ ] **[7] A1** `src/bugbunny/analysis.py:263`, `src/bugbunny/judge.py:945` (high/statistics) — All published metrics micro-pooled; paper describes per-PR macro-averaging; convention undocumented (2.1x divergence on archived data).
+  - fix: record the aggregation convention explicitly in report schemas, add macro-averaged statistics alongside the upstream-faithful micro values, document the difference.
+- [ ] **[6] A2** `src/bugbunny/judge.py:768`, `src/bugbunny/analysis.py:248` (high/statistics) — Stored per-case precision unbounded (22 archived rows > 1.0); persisted unvalidated.
+  - fix: keep upstream-faithful persisted fields but validate them at analysis binding, and report fraction-of-candidates-matched alongside pooled precision.
+- [x] **[9] A3** `src/bugbunny/schemas.py:278`, `src/bugbunny/gateway.py:501,579` (high) — Huge integer literals raise uncaught OverflowError from float(), escaping quarantine/retry taxonomies and failing whole batches.
+  - fix: overflow-safe numeric coercion at every float() boundary in wire validation.
+- [x] **[9] A4** `src/bugbunny/gateway.py:365,988` (high) — `1e999` bypasses strict non-finite rejection via parse_float; success-path canonical hash then crashes outside the error taxonomy, losing CallRecord provenance.
+  - fix: reject non-finite parse_float results in strict_json_loads; guard the success-path hash.
+- [ ] **[6] A5** `src/bugbunny/benchmark.py:1307` (high) — Re-export silently reverts a foreign tool's review row to the pinned base version when the tool exists in both base and bundle.
+  - fix: prefer the committed bundle row for foreign tools (documented "preserved" semantics); surface a conflict diagnostic when content differs.
+- [ ] **[7] A6** `src/bugbunny/families.py:92` (high) — consolidate_semantic_duplicates drops verifier-kept findings on family-key equality alone.
+  - fix: require the same causal corroboration for a destructive drop that group_finding_families already demands.
+
+### Tier 2 — reliability, integrity, security
+
+- [ ] **[6] A7** `src/bugbunny/gateway.py:800`, `src/bugbunny/engine.py:1217,1599` (medium) — No total deadline on generation/verifier calls; trickle-body responses hold semaphore slots forever.
+  - fix: pass the existing operation-timeout primitive at the generation and verifier call sites.
+- [ ] **[9] A8** `src/bugbunny/repository.py:507` (medium) — git_grep -z parsing still breaks on newline inside a filename; silent repeated evidence loss.
+  - fix: tokenize on NUL (path, line, then text-to-record-LF) instead of pre-splitting the stream on LF.
+- [ ] **[5] A9** `src/bugbunny/context.py:908-1153`, `src/bugbunny/engine.py:460,498,507` (medium/security) — Curated packets render control-char filenames unescaped above the untrusted guard; splitlines()-based exposure telemetry mis-reconciles them.
+  - fix: render control-char paths in escaped form in curated headers/evidence and switch the three engine helpers to LF-only splitting.
+- [ ] **[9] A10** `src/bugbunny/cli.py:2016` (medium/security) — benchmark judge builds GatewayConfig inline, bypassing runtime-secret registration; gh auth token never registered.
+  - fix: register resolved credentials for the judge path and the gh token.
+- [ ] **[8] A11** `src/bugbunny/cli.py:1671,1839` (medium) — Export hashes artifact bytes then re-reads files twice with no run-dir lock.
+  - fix: read once/hash once/parse once; export shares the run-directory lock.
+- [ ] **[6] A12** `src/bugbunny/benchmark.py:749-881` (medium) — Pre-write preflight narrower than post-write refresh validation; rejected exports still mutate the shared bundle.
+  - fix: run the structural sibling manifest/index validation before the first shared write.
+- [ ] **[7] A13** `src/bugbunny/benchmark.py:975-1156`, `src/bugbunny/analysis.py:536,911` (medium) — verify-export and analyze read the bundle unlocked and re-read/re-hash after checking/analyzing.
+  - fix: take the root export lock and hash the exact bytes read.
+- [ ] **[8] A14** `src/bugbunny/analysis.py:302-350,855` (medium/statistics) — --allow-judge-errors computes per-pair intersections; docs promise one shared clean-case intersection.
+  - fix: compute the global clean-case intersection across all compared tools and report exclusions.
+- [ ] **[4] A15** `src/bugbunny/calibration.py:74-134` (medium/statistics) — Frozen operating point is a tie-break artifact of a saturated corpus; precision floor unverifiable at n=10.
+  - fix (conservative): report exact binomial uncertainty and saturation diagnostics; selection unchanged; corpus-size policy stays a design decision.
+- [ ] **[5] A16** `src/bugbunny/calibration.py:41,252` (medium) — "Excludes CodeReviewBench" attestation never checked against the 50 cases.
+  - fix: optional cross-check of corpus observations against a provided benchmark_data.json.
+- [ ] **[9] A17** `src/bugbunny/exploration.py:459` vs `src/bugbunny/models.py:199` (medium) — repository_index_chars accepted at >=64 but operational floor is 82; accepted configs fail every agentic batch.
+  - fix: align the config validation floor with the renderer's marker floor.
+- [ ] **[9] A18** `src/bugbunny/cli.py:1462` (medium) — Review-phase gather is fail-fast; stragglers write after the run-dir lock releases.
+  - fix: settle all review jobs (return_exceptions) before closing/raising, mirroring the resolve gather.
+- [ ] **[6] A19** `src/bugbunny/engine.py:106`, `src/bugbunny/gateway.py:890` (medium) — wait_for(semaphore.acquire()) can leak a permit on the Python 3.11 floor.
+  - fix: shared race-safe bounded-acquire helper that releases a late-granted permit.
+- [ ] **[8] A20** `src/bugbunny/prompts.py:312` (medium) — Prompt identity hash is categories-blind; custom include_categories records a hash matching no prompt sent.
+  - fix: parameterize the hash by the resolved allowed categories (identical output for the default configuration).
+
+### Tier 3 — lower severity
+
+- [ ] **[9] A21** `src/bugbunny/util.py:80` (low) — atomic writes never fsync the parent directory; commit points not crash-durable.
+- [ ] **[9] A22** `src/bugbunny/judge.py:1221` (low) — Judge failure-path gather detaches in-flight checkpoint writes past the lease.
+- [ ] **[9] A23** `src/bugbunny/judge.py:59,805` (low) — Phantom-row fallback regex misses custom (non-bugbunny-prefixed) tool IDs.
+- [ ] **[7] A24** `src/bugbunny/benchmark.py:254` (low) — Pinned-dataset hash never enforced; add an opt-in --expect-benchmark-sha256.
+- [ ] **[6] A25** `src/bugbunny/benchmark.py:940`, `src/bugbunny/cli.py:1889` (low) — verify-export ignores the cumulative index; index committed under a re-acquired lock.
+- [ ] **[7] A26** `src/bugbunny/judge.py:634` (low/docs) — Index-keyed duplicate scoring is harsher than upstream text-keyed scoring; comparability cost undocumented.
+- [ ] **[5] A27** `src/bugbunny/judge.py:937` (low) — Judge's printed metrics pool error-degraded rows that analysis refuses; summary carries no degraded flag.
+- [ ] **[6] A28** `src/bugbunny/analysis.py:491,458` (low/statistics) — Threshold curves omit dedup-sibling crediting; no curve==reduction equivalence test.
+- [ ] **[7] A29** `src/bugbunny/gateway.py:1139` (low/security) — Response bodies buffered with no size cap.
+- [ ] **[8] A30** `src/bugbunny/gateway.py:1092,1184` (low/security) — retry_errors redacted with weaker secret sets than the top-level error.
+- [x] **[9] A31** `src/bugbunny/gateway.py:384,1070` (low) — Non-UTF-8 200 body raises UnicodeDecodeError outside the retryable taxonomy.
+- [x] **[6] A32** `src/bugbunny/gateway.py:495` (low) — pattern keyword uses re.search `$` semantics, laxer than ECMA; diverges from codex-native enforcement.
+- [ ] **[7] A33** `src/bugbunny/github.py:444` (low/security) — Publication marker matched as substring of any author's review; spoofable already_published.
+- [ ] **[4] A34** `src/bugbunny/cli.py:2098` (low/security) — argparse's own error channel bypasses redaction.
+  - fix (best-effort): redacting parser error path using environment/dotenv-derived secrets available pre-parse.
+- [ ] **[9] A35** `src/bugbunny/cli.py:1612` vs `src/bugbunny/github.py:280` (low) — SHA length contracts disagree (40-64 vs exactly 40).
+- [ ] **[6] A36** `src/bugbunny/cli.py:2073` (low) — publish exits 0 on clean_not_published.
+- [ ] **[5] A37** `src/bugbunny/exploration.py:876` (low) — Blob-read budget enforced per batch; docs promise per review.
+  - fix: shared per-review cumulative budget across batches, matching the documented contract.
+- [ ] **[7] A38** `src/bugbunny/engine.py:158` (low) — Per-chunk context headers unbudgeted; trailing chunks' seed context clipped.
+- [ ] **[7] A39** `src/bugbunny/exploration.py:1441` (low) — Placeholder observations charged to the context budget; beyond-EOF header renders start > end.
+- [ ] **[9] A40** `src/bugbunny/diff.py:654` (low) — Empty-file addition leaves old_path set instead of None.
+- [ ] **[4] A41** `src/bugbunny/repository.py:165`, `src/bugbunny/diff.py:154` (low) — Non-UTF-8 filenames collapse to U+FFFD and become silently ungroundable.
+  - fix (conservative): detect lossy path decoding and surface an explicit unsupported-encoding signal instead of FileNotFoundError.
+- [ ] **[10] A42** `pyproject.toml` (hygiene) — package-data references nonexistent `schemas/*.json`.
+- [ ] **[10] A43** `.github/workflows/ci.yml` (hygiene) — CI omits `ruff format --check`.
+- [ ] **[8] A44** `tests/test_new_families.py` (hygiene/test-gap) — families.py has 2 tests; expand alongside A6.
 
 ## Second-pass architectural audit (2026-08-26)
 

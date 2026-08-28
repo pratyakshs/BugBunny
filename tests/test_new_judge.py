@@ -852,3 +852,17 @@ def test_concurrent_processes_cannot_overwrite_each_others_evaluation_rows(
             if process.is_alive():
                 process.terminate()
                 process.join(5)
+
+
+def test_judge_result_overflowing_integer_confidence_is_rejected_not_crash():
+    # math.isfinite(10**400) itself raises OverflowError, so a huge integer
+    # confidence must be routed through the overflow-safe check and become a
+    # semantic validation error inside the retry taxonomy.
+    from bugbunny.judge import _validate_judge_result
+
+    for confidence in (10**400, -(10**400)):
+        with pytest.raises(Exception, match="finite"):
+            _validate_judge_result(
+                {"reasoning": "text", "match": True, "confidence": confidence},
+                require_exact_keys=True,
+            )
