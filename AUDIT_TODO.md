@@ -36,7 +36,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: pass the existing operation-timeout primitive at the generation and verifier call sites.
 - [x] **[9] A8** `src/bugbunny/repository.py:507` (medium) — git_grep -z parsing still breaks on newline inside a filename; silent repeated evidence loss.
   - fix: tokenize on NUL (path, line, then text-to-record-LF) instead of pre-splitting the stream on LF.
-- [ ] **[5] A9** `src/bugbunny/context.py:908-1153`, `src/bugbunny/engine.py:460,498,507` (medium/security) — Curated packets render control-char filenames unescaped above the untrusted guard; splitlines()-based exposure telemetry mis-reconciles them.
+- [x] **[5] A9** `src/bugbunny/context.py:908-1153`, `src/bugbunny/engine.py:460,498,507` (medium/security) — Curated packets render control-char filenames unescaped above the untrusted guard; splitlines()-based exposure telemetry mis-reconciles them.
   - fix: render control-char paths in escaped form in curated headers/evidence and switch the three engine helpers to LF-only splitting.
 - [ ] **[9] A10** `src/bugbunny/cli.py:2016` (medium/security) — benchmark judge builds GatewayConfig inline, bypassing runtime-secret registration; gh auth token never registered.
   - fix: register resolved credentials for the judge path and the gh token.
@@ -82,7 +82,7 @@ Items with low scores receive deliberately conservative/additive fixes.
 - [ ] **[6] A36** `src/bugbunny/cli.py:2073` (low) — publish exits 0 on clean_not_published.
 - [x] **[5] A37** `src/bugbunny/exploration.py:876` (low) — Blob-read budget enforced per batch; docs promise per review.
   - fix: shared per-review cumulative budget across batches, matching the documented contract.
-- [ ] **[7] A38** `src/bugbunny/engine.py:158` (low) — Per-chunk context headers unbudgeted; trailing chunks' seed context clipped.
+- [x] **[7] A38** `src/bugbunny/engine.py:158` (low) — Per-chunk context headers unbudgeted; trailing chunks' seed context clipped.
 - [x] **[7] A39** `src/bugbunny/exploration.py:1441` (low) — Placeholder observations charged to the context budget; beyond-EOF header renders start > end.
 - [x] **[9] A40** `src/bugbunny/diff.py:654` (low) — Empty-file addition leaves old_path set instead of None.
 - [x] **[4] A41** `src/bugbunny/repository.py:165`, `src/bugbunny/diff.py:154` (low) — Non-UTF-8 filenames collapse to U+FFFD and become silently ungroundable.

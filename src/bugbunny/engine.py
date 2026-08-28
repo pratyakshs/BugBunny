@@ -10,7 +10,7 @@ from typing import Any
 
 from bugbunny import __version__
 from bugbunny.build import REVIEW_SCHEMA_VERSION, implementation_identity
-from bugbunny.context import ContextBuilder
+from bugbunny.context import ContextBuilder, display_path
 from bugbunny.diff import DiffChunk, ParsedDiff, parse_unified_diff
 from bugbunny.exploration import (
     EXPLORATION_PROMPT_VERSION,
@@ -159,11 +159,19 @@ def _generation_batches(
     batches: list[_GenerationBatch] = []
     for index, group in enumerate(groups):
         patch = separator.join(chunk.annotated_patch for chunk in group)
-        per_chunk = max(1, max_context_chars // len(group))
+        headers = [
+            f"### CONTEXT {chunk.chunk_id} ({display_path(chunk.path)})\n" for chunk in group
+        ]
+        # Headers and separators are part of the rendered context, so they
+        # come out of the budget before it is divided among chunk bodies;
+        # otherwise the final hard slice always blanks the trailing chunks'
+        # seed context in multi-chunk batches.
+        overhead = sum(len(header) for header in headers) + len(separator) * (len(group) - 1)
+        body_budget = max(0, max_context_chars - overhead)
+        per_chunk = max(1, body_budget // len(group)) if body_budget > 0 else 0
         context = separator.join(
-            f"### CONTEXT {chunk.chunk_id} ({chunk.path})\n"
-            f"{contexts.get(chunk.chunk_id, '')[:per_chunk]}"
-            for chunk in group
+            f"{header}{contexts.get(chunk.chunk_id, '')[:per_chunk]}"
+            for header, chunk in zip(headers, group, strict=True)
         )[:max_context_chars]
         member_ids = [chunk.chunk_id for chunk in group]
         batch_id = (
@@ -457,16 +465,23 @@ def _source_block_exposes_path(lines: Sequence[str], header_index: int) -> bool:
 
 
 def _context_exposes_path(context: str, path: str) -> bool:
-    """Recognize only BugBunny's structured file evidence, never substrings."""
+    """Recognize only BugBunny's structured file evidence, never substrings.
 
-    lines = context.splitlines()
-    read_header = f"UNTRUSTED IMMUTABLE HEAD FILE {path} L"
+    Splitting is LF-only and paths are matched in their escaped display form:
+    ``str.splitlines()`` breaks on \\f/\\v/\\x1c-\\x1e/\\x85/U+2028/29 inside
+    source rows, and a raw control-character path would fragment its own
+    marker line — both mis-reporting a genuinely exposed file as omitted.
+    """
+
+    lines = context.split("\n")
+    shown = display_path(path)
+    read_header = f"UNTRUSTED IMMUTABLE HEAD FILE {shown} L"
     source_header_suffixes = (
-        f"### RIGHT source: {path}:",
-        f"### LEFT source: {path}:",
+        f"### RIGHT source: {shown}:",
+        f"### LEFT source: {shown}:",
     )
-    search_prefix = f"{path}:"
-    evidence_marker = f" — {path}:"
+    search_prefix = f"{shown}:"
+    evidence_marker = f" — {shown}:"
     for index, line in enumerate(lines):
         if line.startswith(read_header) and _source_block_exposes_path(lines, index):
             return True
@@ -481,7 +496,7 @@ def _context_exposes_path(context: str, path: str) -> bool:
             if line_number.isdigit():
                 return True
 
-    path_header = f"Path: {path}"
+    path_header = f"Path: {shown}"
     for index, line in enumerate(lines):
         if line != path_header:
             continue
@@ -497,8 +512,9 @@ def _context_exposes_path(context: str, path: str) -> bool:
 
 
 def _verifier_source_exposes_path(context: str, path: str) -> bool:
-    lines = context.splitlines()
-    headers = (f"### RIGHT source: {path}:", f"### LEFT source: {path}:")
+    lines = context.split("\n")
+    shown = display_path(path)
+    headers = (f"### RIGHT source: {shown}:", f"### LEFT source: {shown}:")
     return any(
         line.startswith(headers) and _source_block_exposes_path(lines, index)
         for index, line in enumerate(lines)
@@ -506,7 +522,7 @@ def _verifier_source_exposes_path(context: str, path: str) -> bool:
 
 
 def _verifier_generation_context(context: str) -> str:
-    lines = context.splitlines()
+    lines = context.split("\n")
     first_source = next(
         (
             index
@@ -734,7 +750,7 @@ def _verification_evidence(
         patch_key = (finding.chunk_id, finding.side, finding.line)
         if chunk is not None and patch_key not in seen_patch:
             seen_patch.add(patch_key)
-            header = f"### candidate {index}: {finding.path}:{finding.line}\n"
+            header = f"### candidate {index}: {display_path(finding.path)}:{finding.line}\n"
             full_excerpt = _anchor_patch_excerpt(chunk, finding.line, finding.side)
             patch_specs.append((header, chunk, finding, full_excerpt))
         source_key = (finding.side, finding.path, finding.line)
@@ -752,7 +768,7 @@ def _verification_evidence(
             if full_excerpt:
                 source_specs.append(
                     (
-                        f"### {finding.side} source: {finding.path}:{finding.line}\n",
+                        f"### {finding.side} source: {display_path(finding.path)}:{finding.line}\n",
                         finding,
                         full_excerpt,
                     )
