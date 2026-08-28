@@ -27,8 +27,8 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: reject non-finite parse_float results in strict_json_loads; guard the success-path hash.
 - [ ] **[6] A5** `src/bugbunny/benchmark.py:1307` (high) — Re-export silently reverts a foreign tool's review row to the pinned base version when the tool exists in both base and bundle.
   - fix: prefer the committed bundle row for foreign tools (documented "preserved" semantics); surface a conflict diagnostic when content differs.
-- [ ] **[7] A6** `src/bugbunny/families.py:92` (high) — consolidate_semantic_duplicates drops verifier-kept findings on family-key equality alone.
-  - fix: require the same causal corroboration for a destructive drop that group_finding_families already demands.
+- [x] **[7] A6** `src/bugbunny/families.py:92` (high) — consolidate_semantic_duplicates drops verifier-kept findings on family-key equality alone.
+  - fix: family label now only lowers the textual bar (category match + causal Jaccard >= 0.45); near-certain paraphrases (>= 0.82) still collapse.
 
 ### Tier 2 — reliability, integrity, security
 
@@ -89,7 +89,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix (conservative): detect lossy path decoding and surface an explicit unsupported-encoding signal instead of FileNotFoundError.
 - [ ] **[10] A42** `pyproject.toml` (hygiene) — package-data references nonexistent `schemas/*.json`.
 - [ ] **[10] A43** `.github/workflows/ci.yml` (hygiene) — CI omits `ruff format --check`.
-- [ ] **[8] A44** `tests/test_new_families.py` (hygiene/test-gap) — families.py has 2 tests; expand alongside A6.
+- [x] **[8] A44** `tests/test_new_families.py` (hygiene/test-gap) — families.py has 2 tests; expand alongside A6.
 
 ## Second-pass architectural audit (2026-08-26)
 

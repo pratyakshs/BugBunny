@@ -89,12 +89,21 @@ def consolidate_semantic_duplicates(
         duplicate_of: Finding | None = None
         finding_tokens = _causal_tokens(finding)
         for canonical in kept:
+            if not _same_site(finding, canonical):
+                continue
+            similarity = _jaccard(finding_tokens, _causal_tokens(canonical))
             same_family = bool(
                 finding.verifier_family_key
                 and finding.verifier_family_key == canonical.verifier_family_key
             )
-            if _same_site(finding, canonical) and (
-                same_family or _jaccard(finding_tokens, _causal_tokens(canonical)) >= 0.82
+            # A verifier family label alone must never destroy an atomic
+            # finding: the verifier explicitly kept both, and its prompt
+            # reuses one key across independently fixable instances of one
+            # causal pattern. The label only lowers the textual bar, and only
+            # with the same category/causal corroboration that
+            # group_finding_families demands before merely grouping.
+            if similarity >= 0.82 or (
+                same_family and finding.category == canonical.category and similarity >= 0.45
             ):
                 duplicate_of = canonical
                 break
