@@ -27,9 +27,6 @@ bugbunny = "bugbunny.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.setuptools.package-data]
-bugbunny = ["schemas/*.json"]
-
 [tool.pytest.ini_options]
 addopts = "-q"
 testpaths = ["tests"]

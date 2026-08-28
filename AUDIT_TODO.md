@@ -87,8 +87,8 @@ Items with low scores receive deliberately conservative/additive fixes.
 - [x] **[9] A40** `src/bugbunny/diff.py:654` (low) — Empty-file addition leaves old_path set instead of None.
 - [x] **[4] A41** `src/bugbunny/repository.py:165`, `src/bugbunny/diff.py:154` (low) — Non-UTF-8 filenames collapse to U+FFFD and become silently ungroundable.
   - fix (conservative): detect lossy path decoding and surface an explicit unsupported-encoding signal instead of FileNotFoundError.
-- [ ] **[10] A42** `pyproject.toml` (hygiene) — package-data references nonexistent `schemas/*.json`.
-- [ ] **[10] A43** `.github/workflows/ci.yml` (hygiene) — CI omits `ruff format --check`.
+- [x] **[10] A42** `pyproject.toml` (hygiene) — package-data references nonexistent `schemas/*.json`.
+- [x] **[10] A43** `.github/workflows/ci.yml` (hygiene) — CI omits `ruff format --check`.
 - [x] **[8] A44** `tests/test_new_families.py` (hygiene/test-gap) — families.py has 2 tests; expand alongside A6.
 
 ## Second-pass architectural audit (2026-08-26)

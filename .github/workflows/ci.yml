@@ -28,6 +28,9 @@ jobs:
       - name: Install package and development dependencies
         run: python -m pip install -e ".[dev]"
 
+      - name: Format check
+        run: ruff format --check .
+
       - name: Lint
         run: ruff check .
 

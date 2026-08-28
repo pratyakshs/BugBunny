@@ -318,7 +318,17 @@ misleading cumulative model comparison.
 `verify-export` also scans the shared candidate, dedup, and review rows. A
 BugBunny-shaped tool ID without a committed export manifest is rejected as an
 interrupted/phantom export rather than silently sent to the judge. The export
-index is the final commit point for a completed bundle update.
+index is the final commit point for a completed bundle update, and when it is
+present `verify-export` validates it exactly as the judge does — output
+hashes, every indexed manifest's bytes, and the complete committed manifest
+set — so a crash between the last per-model export and the index commit can
+no longer verify "ok" while the judge refuses the same directory. The CLI
+`verify-export` shares the root export lock and hashes exactly the bytes it
+checked. `benchmark run` accepts `--expect-benchmark-sha256 HEX64` to enforce
+the documented upstream dataset pin in code instead of by convention, and
+`calibrate` accepts `--benchmark-data` to cross-check the calibration corpus
+against the actual benchmark cases instead of trusting the corpus's
+self-declared exclusion attestation.
 
 The output directory is shaped like CodeReviewBench's `offline/results/`:
 

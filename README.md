@@ -530,4 +530,4 @@ pytest
 ```
 
 Tests use fake model transports and local Git fixtures unless a test explicitly
-states otherwise. The current suite contains 358 tests. The project is MIT licensed.
+states otherwise. The current suite contains 401 tests. The project is MIT licensed.

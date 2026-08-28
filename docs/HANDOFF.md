@@ -47,10 +47,13 @@ PR reviews and the fixed 50-case CodeReviewBench offline evaluation. It:
 The 2026-08-26 first audit fixed 70 findings scored at least 5/10 fix
 confidence. A second architectural pass scored 18 more findings; all scored at
 least 5 and are implemented in `0.8.0`. Integration review added regressions for
-cross-module edge cases found while those fixes were combined. The live ranked
-tracker is [`AUDIT_TODO.md`](../AUDIT_TODO.md).
+cross-module edge cases found while those fixes were combined. A 2026-08-27
+independent third-pass audit (seven parallel adversarial reviewers, findings
+verified by repro) produced 44 more items — including seven incomplete
+first-audit fixes — all of which are now implemented with regression tests.
+The live ranked tracker is [`AUDIT_TODO.md`](../AUDIT_TODO.md).
 
-The current suite contains 358 tests and is green with `ruff check .`. The two
+The current suite contains 401 tests and is green with `ruff check .`. The two
 committed full benchmark sweeps remain evidence only for their pinned historical
 source commits. The benchmark has not been rerun for `0.8.0`, so no archived
 score is a current-version claim.
@@ -415,21 +418,21 @@ install the wheel into a clean virtual environment, run `pip check`, confirm
 unexpected files, then repeat the tests against the installed package where
 practical. Do not assume an old local `dist/` wheel matches current source.
 
-Latest local verification snapshot (2026-08-26):
+Latest local verification snapshot (2026-08-27, after the third-pass audit
+fixes):
 
-- `ruff format --check .`: 420 files already formatted;
+- `ruff format --check .`: passed;
 - `ruff check .`: passed;
-- pytest: 358 tests passed;
-- installed implementation identity:
-  `1f1cd6b0d82ea279936f39aa51d9443beae27b31a876d286950563ebff4ec8e0`
-  over 23 package source files;
-- isolated `bugbunny-0.8.0-py3-none-any.whl` build/install: passed;
-- clean-venv `pip check`, `bugbunny --version`, and `bugbunny --help`: passed;
-- smoke wheel SHA-256:
-  `a13ac093e27f25ff50a6f154fa9520ab6909849ece52becf7e6cdf13454a4dfb`.
+- pytest: 401 tests passed.
 
-The smoke wheel was built in an ephemeral `/tmp` verification directory and is
-not a committed release artifact.
+The 2026-08-26 wheel/identity snapshot
+(`1f1cd6b0d82ea279936f39aa51d9443beae27b31a876d286950563ebff4ec8e0` over 23
+source files; smoke wheel
+`a13ac093e27f25ff50a6f154fa9520ab6909849ece52becf7e6cdf13454a4dfb`) predates
+the third-pass fixes: the implementation identity has changed with those
+commits, so repeat the clean wheel/install audit from the final release commit
+before any benchmark rerun. The smoke wheel was built in an ephemeral `/tmp`
+verification directory and is not a committed release artifact.
 
 ## 13. Recommended next work
 
