@@ -56,7 +56,11 @@ Respond with ONLY a JSON object:
 SYSTEM_PROMPT = "You are a precise code review evaluator. Always respond with valid JSON."
 JUDGE_IDENTITY_VERSION = "bugbunny-codereviewbench-judge-v2"
 JUDGED_INPUTS_VERSION = "bugbunny-judged-inputs-v2"
-_BUGBUNNY_TOOL_ID = re.compile(r"bugbunny-.+-[0-9a-f]{12}\Z")
+# The exported tool-ID shape, matching verify_codereviewbench_export_manifest:
+# a custom ``tool=`` prefix must not let an interrupted first export's phantom
+# rows be judged as a committed submission merely because it is not named
+# ``bugbunny-``.
+_EXPORTED_TOOL_SHAPE = re.compile(r".+-[0-9a-f]{12}\Z")
 
 
 class _JudgeResponseError(ValueError):
@@ -553,6 +557,18 @@ def get_candidates(
 def _build_sibling_map(
     candidates: list[str], groups: list[list[int]] | None
 ) -> dict[int, set[int]]:
+    """Sibling crediting over candidate *indexes*, not candidate text.
+
+    Deliberate deviation from the pinned upstream step3 script, which keys
+    reduction state by candidate text: there, two candidates with equal text
+    collapse into one record, so a duplicated text costs at most one FP.
+    Index keying keeps equal strings distinct records, which is stricter —
+    a tool submitting the same text twice pays two FPs here but one
+    upstream. BugBunny's own exports never contain duplicate candidate
+    texts, so its scores are unaffected; re-judging a foreign tool's
+    prose-extracted candidates with this judge can therefore score harsher
+    than upstream's official reduction.
+    """
     if not groups:
         return {}
     sibling_map: dict[int, set[int]] = {}
@@ -796,7 +812,7 @@ def _verify_native_judge_bundle_locked(
         for per_case in (*candidates.values(), *dedup_groups.values()):
             if isinstance(per_case, Mapping):
                 phantom_tools.update(
-                    str(tool) for tool in per_case if _BUGBUNNY_TOOL_ID.fullmatch(str(tool))
+                    str(tool) for tool in per_case if _EXPORTED_TOOL_SHAPE.fullmatch(str(tool))
                 )
         for entry in benchmark_data.values():
             if isinstance(entry, Mapping):
@@ -804,7 +820,7 @@ def _verify_native_judge_bundle_locked(
                     str(review.get("tool"))
                     for review in entry.get("reviews", [])
                     if isinstance(review, Mapping)
-                    and _BUGBUNNY_TOOL_ID.fullmatch(str(review.get("tool") or ""))
+                    and _EXPORTED_TOOL_SHAPE.fullmatch(str(review.get("tool") or ""))
                 )
         if phantom_tools:
             raise JudgeError(
@@ -926,13 +942,48 @@ def aggregate_metrics(
                 continue
             if result.get("skipped"):
                 continue
-            metric = totals.setdefault(tool, {"tp": 0, "fp": 0, "fn": 0, "errors": 0, "reviews": 0})
-            metric["tp"] += result.get("tp", 0)
-            metric["fp"] += result.get("fp", 0)
-            metric["fn"] += result.get("fn", 0)
+            metric = totals.setdefault(
+                tool,
+                {
+                    "tp": 0,
+                    "fp": 0,
+                    "fn": 0,
+                    "errors": 0,
+                    "reviews": 0,
+                    "candidates": 0,
+                    "_macro_precision_sum": 0.0,
+                    "_macro_recall_sum": 0.0,
+                    "_macro_f1_sum": 0.0,
+                },
+            )
+            case_tp = result.get("tp", 0)
+            case_fp = result.get("fp", 0)
+            case_fn = result.get("fn", 0)
+            case_candidates = result.get("total_candidates", 0) or 0
+            metric["tp"] += case_tp
+            metric["fp"] += case_fp
+            metric["fn"] += case_fn
             metric["errors"] += result.get("errors_count", 0)
             metric["reviews"] += 1
+            metric["candidates"] += case_candidates
+            # Paper-convention per-case statistics, each case weighted
+            # equally: precision as the fraction of this case's candidates
+            # matched, recall as the fraction of golden issues matched.
+            case_precision = (
+                (case_candidates - case_fp) / case_candidates if case_candidates else 0.0
+            )
+            case_recall = case_tp / (case_tp + case_fn) if case_tp + case_fn else 0.0
+            case_denominator = case_precision + case_recall
+            metric["_macro_precision_sum"] += case_precision
+            metric["_macro_recall_sum"] += case_recall
+            metric["_macro_f1_sum"] += (
+                2 * case_precision * case_recall / case_denominator if case_denominator else 0.0
+            )
     for metric in totals.values():
+        # precision/recall/f1 are micro-pooled over summed tp/fp/fn exactly as
+        # the pinned upstream step3 script reports them; note tp counts
+        # matched *goldens* while fp counts unmatched *candidates*, so the
+        # pooled ratio is not a proportion of candidates.
         denominator = metric["tp"] + metric["fp"]
         metric["precision"] = metric["tp"] / denominator if denominator else 0.0
         denominator = metric["tp"] + metric["fn"]
@@ -941,6 +992,18 @@ def aggregate_metrics(
         metric["f1"] = (
             2 * metric["precision"] * metric["recall"] / denominator if denominator else 0.0
         )
+        reviews = metric["reviews"]
+        metric["macro_precision"] = metric.pop("_macro_precision_sum") / reviews if reviews else 0.0
+        metric["macro_recall"] = metric.pop("_macro_recall_sum") / reviews if reviews else 0.0
+        metric["macro_f1"] = metric.pop("_macro_f1_sum") / reviews if reviews else 0.0
+        matched_candidates = metric["candidates"] - metric["fp"]
+        metric["candidate_match_rate"] = (
+            matched_candidates / metric["candidates"] if metric["candidates"] else 0.0
+        )
+        # Error rows are scored as non-matches upstream; analysis refuses
+        # them, so the judge's own summary must say when its numbers rest on
+        # degraded rows instead of printing them indistinguishably.
+        metric["error_degraded"] = metric["errors"] > 0
     return {tool: totals[tool] for tool in sorted(totals)}
 
 
@@ -1209,8 +1272,25 @@ async def _run_codereviewbench_judge_locked(
         await persist_state()
 
     try:
-        await asyncio.gather(*(evaluate_item(item) for item in work_items))
-        await persist_state()
+        # Settle every item before leaving this block: a fail-fast gather
+        # would abandon in-flight to_thread checkpoint writes that
+        # cancellation cannot interrupt, letting them replace
+        # evaluations.json after the lease is released.
+        results = await asyncio.gather(
+            *(evaluate_item(item) for item in work_items), return_exceptions=True
+        )
+        failures = [entry for entry in results if isinstance(entry, BaseException)]
+        try:
+            # Attempt one final durable snapshot even after an item failed;
+            # rows that did complete must not be lost to someone else's
+            # exception.
+            await persist_state()
+        except Exception as exc:
+            if not failures:
+                raise
+            failures.append(exc)
+        if failures:
+            raise failures[0]
     finally:
         if owns_judge:
             await judge.aclose()
@@ -1218,6 +1298,16 @@ async def _run_codereviewbench_judge_locked(
     metrics = aggregate_metrics(state, tools=scope_tools, population=scope_population)
     return {
         "evaluations_file": str(output_path),
+        "metrics_aggregation": (
+            "precision/recall/f1 are micro-pooled over summed tp/fp/fn "
+            "(upstream step3-faithful; tp counts matched goldens, fp counts "
+            "unmatched candidates); macro_* weight each judged case equally "
+            "per the CodeReviewBench paper; candidate_match_rate is matched "
+            "candidates over exported candidates"
+        ),
+        "error_degraded_tools": sorted(
+            tool for tool, metric in metrics.items() if metric.get("error_degraded")
+        ),
         "judge_model": judge_model,
         "judge_identity_version": JUDGE_IDENTITY_VERSION,
         "judge_identity": identity_payload,

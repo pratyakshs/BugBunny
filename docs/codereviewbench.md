@@ -365,7 +365,23 @@ bugbunny benchmark judge \
 Omit `--tool` to judge every exported review in the bundle. All golden/candidate
 comparisons across selected tools share one global Martian queue; there is no
 per-PR request-batch barrier. Comparison results are still reduced in the
-benchmark's original order, preserving its TP/FP/FN behavior. The runner
+benchmark's original order, preserving its TP/FP/FN behavior with one
+deliberate, stricter deviation: reduction state is keyed by candidate *index*
+rather than candidate text, so two candidates with equal text remain distinct
+records and each unmatched copy costs its own FP, where the upstream script
+collapses them into one. BugBunny's own exports never contain duplicate
+candidate texts, so its scores are unaffected; re-judging a foreign tool's
+prose-extracted candidates here can score harsher than upstream's official
+reduction.
+
+The judge's printed `precision`/`recall`/`f1` are micro-pooled over summed
+TP/FP/FN exactly as the upstream step3 script reports them; note the upstream
+convention counts matched *goldens* in TP but unmatched *candidates* in FP, so
+the pooled ratio is not a proportion of candidates. The summary additionally
+reports paper-convention `macro_*` values (each judged case weighted equally),
+`candidate_match_rate` (matched candidates over exported candidates), and an
+`error_degraded` flag per tool whenever error rows — which upstream scores as
+non-matches and `analyze` refuses — contributed to the totals. The runner
 coalesces atomic full-state checkpoints as review/tool pairs complete. It
 resumes an error-free record only when its hash of the exact golden comments,
 candidate list, and dedup groups still matches the current export; legacy

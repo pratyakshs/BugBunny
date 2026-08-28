@@ -866,3 +866,121 @@ def test_judge_result_overflowing_integer_confidence_is_rejected_not_crash():
                 {"reasoning": "text", "match": True, "confidence": confidence},
                 require_exact_keys=True,
             )
+
+
+def test_aggregate_metrics_reports_both_conventions_and_degradation() -> None:
+    from bugbunny.judge import EvaluationState, aggregate_metrics
+
+    state = EvaluationState(
+        completed={
+            "https://example.com/pull/1": {
+                "tool-a": {
+                    # 1 candidate matched 4 goldens: upstream micro precision
+                    # exceeds any proportion of candidates.
+                    "tp": 4,
+                    "fp": 0,
+                    "fn": 0,
+                    "errors_count": 0,
+                    "total_candidates": 1,
+                    "total_golden": 4,
+                }
+            },
+            "https://example.com/pull/2": {
+                "tool-a": {
+                    # Zero candidates: macro precision counts this case as 0,
+                    # micro pooling silently drops it from the denominator.
+                    "tp": 0,
+                    "fp": 0,
+                    "fn": 2,
+                    "errors_count": 1,
+                    "total_candidates": 0,
+                    "total_golden": 2,
+                }
+            },
+        }
+    )
+    metrics = aggregate_metrics(state)
+    metric = metrics["tool-a"]
+    # Upstream-faithful micro pooling.
+    assert metric["precision"] == 1.0
+    assert metric["recall"] == 4 / 6
+    # Paper-convention macro averages weight both cases equally.
+    assert metric["macro_precision"] == 0.5
+    assert metric["macro_recall"] == 0.5
+    assert metric["candidate_match_rate"] == 1.0
+    assert metric["error_degraded"] is True
+
+
+def test_judge_phantom_detection_catches_custom_tool_prefixes() -> None:
+    from bugbunny.judge import _EXPORTED_TOOL_SHAPE
+
+    assert _EXPORTED_TOOL_SHAPE.fullmatch("bugbunny-balanced-openai-gpt-a1b2c3d4e5f6")
+    # A crash before the first manifest commit under a custom tool= name must
+    # be flagged as a phantom exactly like the default-prefixed one.
+    assert _EXPORTED_TOOL_SHAPE.fullmatch("mytool-balanced-openai-gpt-a1b2c3d4e5f6")
+    assert not _EXPORTED_TOOL_SHAPE.fullmatch("greptile")
+    assert not _EXPORTED_TOOL_SHAPE.fullmatch("bugbunny-balanced-short-a1b2")
+
+
+@pytest.mark.asyncio
+async def test_runner_settles_all_items_before_raising_a_persist_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # A fail-fast gather abandoned in-flight sibling evaluations whose
+    # to_thread checkpoint writes could land after the evaluations lease was
+    # released. Every item must settle before the failure propagates.
+    import bugbunny.judge as judge_module
+
+    results_dir = tmp_path / "results"
+    model_dir = results_dir / "anthropic_judge"
+    model_dir.mkdir(parents=True)
+    golden_url = "https://github.com/upstream/repo/pull/1"
+    benchmark = {
+        golden_url: {
+            "golden_comments": [
+                {"comment": "the cache is stale", "severity": "High", "category": "bug"}
+            ],
+            "reviews": [
+                {"tool": "tool-a", "repo_name": "repo", "pr_url": "fixture-a"},
+                {"tool": "tool-b", "repo_name": "repo", "pr_url": "fixture-b"},
+            ],
+        }
+    }
+    candidates = {
+        golden_url: {
+            "tool-a": [{"text": "the cache is stale"}],
+            "tool-b": [{"text": "the cache is stale"}],
+        }
+    }
+    groups = {golden_url: {"tool-a": [[0]], "tool-b": [[0]]}}
+    (results_dir / "benchmark_data.json").write_text(json.dumps(benchmark), encoding="utf-8")
+    (model_dir / "candidates.json").write_text(json.dumps(candidates), encoding="utf-8")
+    (model_dir / "dedup_groups.json").write_text(json.dumps(groups), encoding="utf-8")
+
+    class Judge:
+        async def match_comment(self, golden: str, candidate: str) -> dict[str, Any]:
+            return {"match": True, "confidence": 0.9, "reasoning": "exact"}
+
+    real_write = judge_module.atomic_write_text
+    failures = {"remaining": 1}
+
+    def failing_write(path: Path, value: str) -> None:
+        if failures["remaining"] > 0:
+            failures["remaining"] -= 1
+            raise OSError("disk full")
+        real_write(path, value)
+
+    monkeypatch.setattr(judge_module, "atomic_write_text", failing_write)
+
+    with pytest.raises(OSError, match="disk full"):
+        await run_codereviewbench_judge(
+            results_dir=results_dir,
+            judge_model="anthropic/judge",
+            api_key="unused-in-test",
+            judge=Judge(),
+        )
+
+    # Both rows were evaluated and the surviving checkpoint write landed
+    # before the failure propagated out of the runner.
+    evaluations = json.loads((model_dir / "evaluations.json").read_text(encoding="utf-8"))
+    assert set(evaluations.get(golden_url, {})) == {"tool-a", "tool-b"}

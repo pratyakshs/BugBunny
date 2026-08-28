@@ -64,12 +64,12 @@ Items with low scores receive deliberately conservative/additive fixes.
 ### Tier 3 — lower severity
 
 - [x] **[9] A21** `src/bugbunny/util.py:80` (low) — atomic writes never fsync the parent directory; commit points not crash-durable.
-- [ ] **[9] A22** `src/bugbunny/judge.py:1221` (low) — Judge failure-path gather detaches in-flight checkpoint writes past the lease.
-- [ ] **[9] A23** `src/bugbunny/judge.py:59,805` (low) — Phantom-row fallback regex misses custom (non-bugbunny-prefixed) tool IDs.
+- [x] **[9] A22** `src/bugbunny/judge.py:1221` (low) — Judge failure-path gather detaches in-flight checkpoint writes past the lease.
+- [x] **[9] A23** `src/bugbunny/judge.py:59,805` (low) — Phantom-row fallback regex misses custom (non-bugbunny-prefixed) tool IDs.
 - [ ] **[7] A24** `src/bugbunny/benchmark.py:254` (low) — Pinned-dataset hash never enforced; add an opt-in --expect-benchmark-sha256.
 - [ ] **[6] A25** `src/bugbunny/benchmark.py:940`, `src/bugbunny/cli.py:1889` (low) — verify-export ignores the cumulative index; index committed under a re-acquired lock.
-- [ ] **[7] A26** `src/bugbunny/judge.py:634` (low/docs) — Index-keyed duplicate scoring is harsher than upstream text-keyed scoring; comparability cost undocumented.
-- [ ] **[5] A27** `src/bugbunny/judge.py:937` (low) — Judge's printed metrics pool error-degraded rows that analysis refuses; summary carries no degraded flag.
+- [x] **[7] A26** `src/bugbunny/judge.py:634` (low/docs) — Index-keyed duplicate scoring is harsher than upstream text-keyed scoring; comparability cost undocumented.
+- [x] **[5] A27** `src/bugbunny/judge.py:937` (low) — Judge's printed metrics pool error-degraded rows that analysis refuses; summary carries no degraded flag.
 - [ ] **[6] A28** `src/bugbunny/analysis.py:491,458` (low/statistics) — Threshold curves omit dedup-sibling crediting; no curve==reduction equivalence test.
 - [x] **[7] A29** `src/bugbunny/gateway.py:1139` (low/security) — Response bodies buffered with no size cap.
 - [x] **[8] A30** `src/bugbunny/gateway.py:1092,1184` (low/security) — retry_errors redacted with weaker secret sets than the top-level error.
