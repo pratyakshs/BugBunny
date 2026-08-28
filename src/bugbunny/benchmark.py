@@ -263,6 +263,7 @@ def load_codereviewbench_dataset(
     preferred_fixture_tool: str = "auto",
     expected_case_count: int | None = None,
     require_preferred_tool: bool = False,
+    expected_benchmark_sha256: str | None = None,
 ) -> CodeReviewBenchDataset:
     """Load CodeReviewBench's existing ``benchmark_data.json``.
 
@@ -270,11 +271,24 @@ def load_codereviewbench_dataset(
     ``expected_case_count=50`` to require complete standard-suite coverage.
     A requested fixture tool is preferred for every case. The default ``auto``
     policy deterministically selects the first valid fixture for each case.
+    ``expected_benchmark_sha256`` enforces the documented upstream pin in
+    code: any internally consistent file otherwise passes end-to-end, so the
+    pin is a convention unless the caller states the exact expected bytes.
     """
 
     if not preferred_fixture_tool.strip():
         raise ValueError("preferred_fixture_tool must not be empty")
     source, raw, data = _load_json_object(benchmark_data_path)
+    if expected_benchmark_sha256 is not None:
+        normalized_expected = expected_benchmark_sha256.strip().lower()
+        if not re.fullmatch(r"[0-9a-f]{64}", normalized_expected):
+            raise ValueError("expected_benchmark_sha256 must be 64 lowercase hex characters")
+        actual = sha256_bytes(raw)
+        if actual != normalized_expected:
+            raise ValueError(
+                "benchmark_data.json does not match the pinned hash: "
+                f"expected {normalized_expected}, found {actual}"
+            )
     if expected_case_count is not None and len(data) != expected_case_count:
         raise ValueError(f"expected {expected_case_count} benchmark cases, found {len(data)}")
 
@@ -721,6 +735,18 @@ def _read_optional_object(path: Path) -> dict[str, Any]:
     return value
 
 
+def _parse_object_bytes(raw: bytes, *, label: str) -> dict[str, Any]:
+    """Parse already-read bundle bytes, so hash and content are one snapshot."""
+
+    try:
+        value = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"invalid JSON in existing export {label}") from exc
+    if not isinstance(value, dict):
+        raise ValueError(f"existing export is not a JSON object: {label}")
+    return value
+
+
 def _export_output_paths(
     results_root: Path,
     judge_model_directory: str,
@@ -748,11 +774,15 @@ def _hash_export_outputs(paths: Mapping[str, Path]) -> dict[str, str]:
 
 
 def _require_current_bundle_implementation(results_root: Path) -> None:
-    """Reject current-schema bundle metadata from any other implementation.
+    """Reject unusable bundle metadata before the first shared-file write.
 
     This check runs under the bundle lock and before the first shared-file
     write.  Detecting a foreign source build only while refreshing manifests
     would leave a rejected invocation with partially mutated Step 3 inputs.
+    The same holds for the *structural* conditions the post-write refresh
+    functions raise on (a wrong judge directory, a malformed index, an index
+    row escaping the root or referencing a missing manifest): every state
+    that would fail the refresh must fail here, before anything is written.
     Legacy schemas are left untouched and remain unusable by the current
     verifier; only metadata claiming the current schema participates here.
     """
@@ -772,12 +802,30 @@ def _require_current_bundle_implementation(results_root: Path) -> None:
             raise ValueError(f"legacy BugBunny export manifest is unsupported: {path}")
         if value.get("implementation") != expected:
             raise ValueError(f"export manifest belongs to another implementation: {path}")
+        if value.get("judge_model_directory") != path.parent.name:
+            raise ValueError(f"existing export manifest has the wrong judge directory: {path}")
+        if not isinstance(value.get("output_files_sha256"), Mapping):
+            raise ValueError(f"existing export manifest is malformed: {path}")
     for path in sorted(results_root.glob("*/bugbunny_export_index.json")):
         value = _read_optional_object(path)
         if value.get("schema_version") != EXPORT_INDEX_SCHEMA_VERSION:
             raise ValueError(f"legacy BugBunny export index is unsupported: {path}")
         if value.get("implementation") != expected:
             raise ValueError(f"export index belongs to another implementation: {path}")
+        exports = value.get("exports")
+        hashes = value.get("output_files_sha256")
+        if not isinstance(exports, list) or not isinstance(hashes, Mapping):
+            raise ValueError(f"existing export index is malformed: {path}")
+        for raw_export in exports:
+            if not isinstance(raw_export, dict) or not isinstance(raw_export.get("manifest"), str):
+                raise ValueError(f"existing export index has a malformed track: {path}")
+            manifest_path = (results_root / raw_export["manifest"]).resolve()
+            try:
+                manifest_path.relative_to(results_root)
+            except ValueError as exc:
+                raise ValueError(f"existing export index escapes its results root: {path}") from exc
+            if manifest_path.parent != path.parent or not manifest_path.is_file():
+                raise ValueError(f"existing export index references a missing manifest: {path}")
 
 
 def _refresh_prior_export_manifests(
@@ -951,7 +999,11 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
     path = Path(manifest_path).expanduser().resolve()
     if not path.is_file():
         raise FileNotFoundError(f"export manifest does not exist: {path}")
-    manifest = _read_optional_object(path)
+    # Every file is read exactly once; hashes, parsed content, and the
+    # reported manifest hash all describe the same byte snapshot rather than
+    # whatever a concurrent export left behind between separate reads.
+    raw_manifest = path.read_bytes()
+    manifest = _parse_object_bytes(raw_manifest, label=str(path))
     if manifest.get("schema_version") != EXPORT_MANIFEST_SCHEMA_VERSION:
         raise ValueError("unsupported CodeReviewBench export manifest")
     if manifest.get("implementation") != implementation_identity():
@@ -973,13 +1025,28 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
     expected_hashes = manifest.get("output_files_sha256")
     if not isinstance(expected_hashes, Mapping) or set(expected_hashes) != set(output_paths):
         raise ValueError("export manifest does not bind all Step 3 output files")
-    actual_hashes = _hash_export_outputs(output_paths)
+    output_bytes: dict[str, bytes] = {}
+    for relative, output_path in output_paths.items():
+        if not output_path.is_file():
+            raise ValueError(f"export output does not exist: {output_path}")
+        output_bytes[relative] = output_path.read_bytes()
+    actual_hashes = dict(
+        sorted((relative, sha256_bytes(raw)) for relative, raw in output_bytes.items())
+    )
     if dict(expected_hashes) != actual_hashes:
         raise ValueError("one or more Step 3 output files do not match the export manifest")
 
-    benchmark_data = _read_optional_object(output_paths["benchmark_data.json"])
-    candidates = _read_optional_object(output_paths[f"{judge_directory}/candidates.json"])
-    groups = _read_optional_object(output_paths[f"{judge_directory}/dedup_groups.json"])
+    benchmark_data = _parse_object_bytes(
+        output_bytes["benchmark_data.json"], label="benchmark_data.json"
+    )
+    candidates = _parse_object_bytes(
+        output_bytes[f"{judge_directory}/candidates.json"],
+        label=f"{judge_directory}/candidates.json",
+    )
+    groups = _parse_object_bytes(
+        output_bytes[f"{judge_directory}/dedup_groups.json"],
+        label=f"{judge_directory}/dedup_groups.json",
+    )
     golden_hash = _golden_hash(benchmark_data)
     if golden_hash != manifest.get("input_golden_sha256") or golden_hash != manifest.get(
         "output_golden_sha256"
@@ -1064,11 +1131,12 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
     if not isinstance(audit_name, str) or PurePosixPath(audit_name).name != audit_name:
         raise ValueError("export manifest has an invalid candidate audit path")
     audit_path = path.parent / audit_name
-    if not audit_path.is_file() or sha256_bytes(audit_path.read_bytes()) != manifest.get(
-        "candidate_audit_sha256"
-    ):
+    if not audit_path.is_file():
         raise ValueError("candidate audit sidecar does not match the export manifest")
-    audit = _read_optional_object(audit_path)
+    raw_audit = audit_path.read_bytes()
+    if sha256_bytes(raw_audit) != manifest.get("candidate_audit_sha256"):
+        raise ValueError("candidate audit sidecar does not match the export manifest")
+    audit = _parse_object_bytes(raw_audit, label=str(audit_path))
     if (
         audit.get("schema_version") != CANDIDATE_AUDIT_SCHEMA_VERSION
         or audit.get("implementation") != implementation_identity()
@@ -1151,10 +1219,56 @@ def verify_codereviewbench_export_manifest(manifest_path: Path | str) -> dict[st
             f"(interrupted export?): {', '.join(sorted(phantom_tools))}"
         )
 
+    # The cumulative index is the CLI's final commit point, and the judge
+    # refuses a bundle whose index disagrees with the Step 3 files. verify
+    # must reach the same verdict the judge would: a crash between the last
+    # per-model export and the index commit used to verify "ok" here while
+    # the judge rejected the same directory.
+    index_path = path.parent / "bugbunny_export_index.json"
+    if index_path.is_file():
+        raw_index = index_path.read_bytes()
+        index = _parse_object_bytes(raw_index, label=str(index_path))
+        if index.get("schema_version") != EXPORT_INDEX_SCHEMA_VERSION:
+            raise ValueError(f"legacy BugBunny export index is unsupported: {index_path}")
+        if index.get("implementation") != implementation_identity():
+            raise ValueError(f"export index belongs to another implementation: {index_path}")
+        if dict(index.get("output_files_sha256") or {}) != actual_hashes:
+            raise ValueError("cumulative export index does not match the Step 3 files")
+        index_exports = index.get("exports")
+        if not isinstance(index_exports, list):
+            raise ValueError(f"existing export index is malformed: {index_path}")
+        indexed_manifests: set[Path] = set()
+        for raw_export in index_exports:
+            if not isinstance(raw_export, Mapping) or not isinstance(
+                raw_export.get("manifest"), str
+            ):
+                raise ValueError(f"existing export index has a malformed track: {index_path}")
+            track_manifest = (results_root / raw_export["manifest"]).resolve()
+            try:
+                track_manifest.relative_to(results_root)
+            except ValueError as exc:
+                raise ValueError(
+                    f"existing export index escapes its results root: {index_path}"
+                ) from exc
+            if track_manifest.parent != path.parent or not track_manifest.is_file():
+                raise ValueError(
+                    f"existing export index references a missing manifest: {index_path}"
+                )
+            if sha256_bytes(track_manifest.read_bytes()) != raw_export.get("manifest_sha256"):
+                raise ValueError(f"export manifest no longer matches its index: {track_manifest}")
+            indexed_manifests.add(track_manifest)
+        committed_manifests = {
+            manifest.resolve() for manifest in path.parent.glob("*_export_manifest.json")
+        }
+        if indexed_manifests != committed_manifests:
+            raise ValueError(
+                "cumulative export index does not enumerate the committed manifest set"
+            )
+
     return {
         "ok": True,
         "manifest": str(path),
-        "manifest_sha256": sha256_bytes(path.read_bytes()),
+        "manifest_sha256": sha256_bytes(raw_manifest),
         "tool_id": tool_id,
         "review_count": len(review_urls),
         "candidate_count": candidate_count,
@@ -1294,25 +1408,39 @@ def _export_codereviewbench_results_locked(
             target_entry = benchmark_data.get(url)
             if not isinstance(existing_entry, Mapping) or not isinstance(target_entry, dict):
                 continue
-            # Carry over every committed review row the fresh source copy does
-            # not already contain — restricting this to bugbunny-prefixed tools
-            # used to drop other tools' review rows while their candidates
-            # survived, leaving the shared Step 3 bundle inconsistent.
-            prior = [
-                deepcopy(review)
-                for review in existing_entry.get("reviews", [])
-                if isinstance(review, Mapping) and review.get("tool")
-            ]
+            # A foreign tool's committed bundle row is the current state of
+            # that tool's judged input; the pinned base copy may be older.
+            # Preferring the base copy here silently reverted foreign rows
+            # (an operator's upstream Step 1/2 refresh, another tool's
+            # update) every time a BugBunny model was re-exported, changing
+            # foreign judged inputs and desynchronizing them from their
+            # preserved candidates. The bundle row therefore wins for every
+            # tool except the one this invocation is exporting.
+            bundle_rows_by_tool: dict[str, list[dict[str, Any]]] = {}
+            for review in existing_entry.get("reviews", []):
+                if isinstance(review, Mapping) and review.get("tool"):
+                    bundle_rows_by_tool.setdefault(str(review["tool"]), []).append(
+                        deepcopy(dict(review))
+                    )
             target_reviews = target_entry.get("reviews", [])
             if isinstance(target_reviews, list):
-                existing_tools = {
-                    str(review.get("tool"))
-                    for review in target_reviews
-                    if isinstance(review, Mapping)
-                }
-                target_entry["reviews"] = target_reviews + [
-                    review for review in prior if str(review.get("tool")) not in existing_tools
-                ]
+                merged: list[Any] = []
+                merged_tools: set[str] = set()
+                for review in target_reviews:
+                    tool_name = str(review.get("tool") or "") if isinstance(review, Mapping) else ""
+                    if tool_name and tool_name != tool_id and tool_name in bundle_rows_by_tool:
+                        if tool_name not in merged_tools:
+                            merged.extend(bundle_rows_by_tool[tool_name])
+                            merged_tools.add(tool_name)
+                        continue
+                    merged.append(review)
+                    if tool_name:
+                        merged_tools.add(tool_name)
+                for tool_name, rows in bundle_rows_by_tool.items():
+                    if tool_name not in merged_tools and tool_name != tool_id:
+                        merged.extend(rows)
+                        merged_tools.add(tool_name)
+                target_entry["reviews"] = merged
     candidates = _read_optional_object(candidates_output)
     dedup_groups = _read_optional_object(dedup_output)
     # A repeated or subset export for the same evaluation identity replaces

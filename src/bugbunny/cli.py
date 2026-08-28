@@ -322,6 +322,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     run.add_argument("--benchmark-data", type=Path, required=True)
     run.add_argument(
+        "--expect-benchmark-sha256",
+        default=None,
+        metavar="HEX64",
+        help="require benchmark_data.json to match this exact SHA-256 (the documented upstream pin)",
+    )
+    run.add_argument(
         "--fixture-tool",
         default="auto",
         metavar="TOOL|auto",
@@ -1146,6 +1152,7 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
         preferred_fixture_tool=args.fixture_tool,
         require_preferred_tool=True,
         expected_case_count=50,
+        expected_benchmark_sha256=getattr(args, "expect_benchmark_sha256", None),
     )
     cases = [case for case in dataset.cases if _matches_case(case, args.filter)]
     if args.limit is not None:
@@ -2015,7 +2022,14 @@ def _benchmark_export(args: argparse.Namespace) -> int:
 def _benchmark_verify_export(args: argparse.Namespace) -> int:
     from bugbunny.benchmark import verify_codereviewbench_export_manifest
 
-    _print_json(verify_codereviewbench_export_manifest(args.manifest))
+    manifest_path = Path(args.manifest).expanduser().resolve()
+    results_root = manifest_path.parent.parent
+    # Share the root export lock with export and judge: an unlocked verify
+    # racing a concurrent export would report hashes for a bundle state that
+    # never coexisted with the content it checked.
+    with file_lock(results_root / ".bugbunny-export.lock"):
+        report = verify_codereviewbench_export_manifest(manifest_path)
+    _print_json(report)
     return 0
 
 
@@ -2091,21 +2105,26 @@ def _benchmark_analyze(args: argparse.Namespace) -> int:
     from bugbunny.benchmark import sanitize_model_name
     from bugbunny.util import atomic_write_text
 
-    judge_dir = args.results_dir.expanduser().resolve() / sanitize_model_name(args.judge_model)
+    results_root = args.results_dir.expanduser().resolve()
+    judge_dir = results_root / sanitize_model_name(args.judge_model)
     output_json = (
         args.output_json.expanduser().resolve()
         if args.output_json is not None
         else judge_dir / "bugbunny_evaluation_audit.json"
     )
-    report = analyze_evaluation(
-        run_dir=args.run_dir,
-        results_dir=args.results_dir,
-        judge_model=args.judge_model,
-        output_json=output_json,
-        bootstrap_samples=args.bootstrap_samples,
-        bootstrap_seed=args.bootstrap_seed,
-        allow_judge_errors=args.allow_judge_errors,
-    )
+    # Hold the root export lock for the whole analysis: the report claims to
+    # describe one bundle state, so export and judge must not rewrite the
+    # shared Step 3 files while it is being computed.
+    with file_lock(results_root / ".bugbunny-export.lock"):
+        report = analyze_evaluation(
+            run_dir=args.run_dir,
+            results_dir=args.results_dir,
+            judge_model=args.judge_model,
+            output_json=output_json,
+            bootstrap_samples=args.bootstrap_samples,
+            bootstrap_seed=args.bootstrap_seed,
+            allow_judge_errors=args.allow_judge_errors,
+        )
     markdown_path = output_json.with_suffix(".md")
     atomic_write_text(markdown_path, render_analysis_markdown(report))
     _print_json({"audit_json": str(output_json), "audit_markdown": str(markdown_path)})

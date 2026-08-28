@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import random
 from collections import Counter, defaultdict
 from collections.abc import Iterable, Mapping, Sequence
@@ -69,6 +70,22 @@ def _object(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise AnalysisError(f"expected a JSON object: {path}")
     return value
+
+
+def _object_with_bytes(path: Path) -> tuple[bytes, dict[str, Any]]:
+    """Read once: the reported hash must describe the analyzed bytes."""
+
+    try:
+        raw = path.read_bytes()
+    except OSError as exc:
+        raise AnalysisError(f"cannot read {path}: {exc}") from exc
+    try:
+        value = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError) as exc:
+        raise AnalysisError(f"expected a JSON object: {path}") from exc
+    if not isinstance(value, dict):
+        raise AnalysisError(f"expected a JSON object: {path}")
+    return raw, value
 
 
 def _resolved_child(root: Path, relative: Any, *, label: str) -> Path:
@@ -537,9 +554,9 @@ def analyze_evaluation(
     judge_root = results_root / sanitize_model_name(judge_model)
     index_path = judge_root / "bugbunny_export_index.json"
     evaluations_path = judge_root / "evaluations.json"
-    run_manifest = _object(run_manifest_path)
-    index = _object(index_path)
-    evaluations = _object(evaluations_path)
+    raw_run_manifest, run_manifest = _object_with_bytes(run_manifest_path)
+    raw_index, index = _object_with_bytes(index_path)
+    raw_evaluations, evaluations = _object_with_bytes(evaluations_path)
     benchmark_data = _object(results_root / "benchmark_data.json")
     all_candidates = _object(judge_root / "candidates.json")
     all_dedup_groups = _object(judge_root / "dedup_groups.json")
@@ -906,12 +923,15 @@ def analyze_evaluation(
         "implementation": implementation_identity(),
         "created_at": utc_now(),
         "inputs": {
+            # Hashes of the exact bytes analyzed above — re-reading here
+            # would let a concurrent rewrite bind hashes of content the
+            # bootstrap never saw.
             "run_manifest": str(run_manifest_path),
-            "run_manifest_sha256": sha256_bytes(run_manifest_path.read_bytes()),
+            "run_manifest_sha256": sha256_bytes(raw_run_manifest),
             "export_index": str(index_path),
-            "export_index_sha256": sha256_bytes(index_path.read_bytes()),
+            "export_index_sha256": sha256_bytes(raw_index),
             "evaluations": str(evaluations_path),
-            "evaluations_sha256": sha256_bytes(evaluations_path.read_bytes()),
+            "evaluations_sha256": sha256_bytes(raw_evaluations),
             "judge_model": judge_model,
             "judge_identity": common_judge_identity_payload,
             "judge_identity_sha256": common_judge_identity,

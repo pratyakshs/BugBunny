@@ -970,3 +970,177 @@ async def test_judge_verifies_low_level_native_manifest_without_cli_index(tmp_pa
             tools=[exported.tool_id],
             judge=Judge(),
         )
+
+
+def test_reexport_prefers_the_bundles_newer_foreign_rows_over_the_pinned_base(
+    tmp_path: Path,
+) -> None:
+    # The committed bundle row is the current state of a foreign tool's
+    # judged input; re-exporting a BugBunny model from the pinned base must
+    # not silently revert it (an operator's upstream Step 1/2 refresh used to
+    # roll back to the base copy's stale row).
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+
+    shared_path = output_dir / "benchmark_data.json"
+    shared = json.loads(shared_path.read_text(encoding="utf-8"))
+    for review in shared[GOLDEN_ONE]["reviews"]:
+        if review["tool"] == "primarytool":
+            review["review_comments"] = [
+                {"path": "a.py", "line": 3, "body": "refreshed upstream comment"}
+            ]
+    shared_path.write_text(json.dumps(shared), encoding="utf-8")
+
+    export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path, model="openai/gpt-5.6-terra")],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+
+    refreshed = json.loads(shared_path.read_text(encoding="utf-8"))
+    primary_rows = [
+        review for review in refreshed[GOLDEN_ONE]["reviews"] if review["tool"] == "primarytool"
+    ]
+    assert len(primary_rows) == 1
+    assert primary_rows[0]["review_comments"] == [
+        {"path": "a.py", "line": 3, "body": "refreshed upstream comment"}
+    ]
+
+
+def test_structurally_broken_bundle_is_rejected_before_any_shared_write(
+    tmp_path: Path,
+) -> None:
+    # The preflight must be as strict as the post-write refresh validation: a
+    # bundle the export would ultimately reject (here, an index referencing a
+    # deleted manifest) used to be detected only after benchmark_data.json
+    # and the Step 3 files were already rewritten.
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    export = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+
+    # Build a CLI-style index binding the manifest, then delete the manifest.
+    index_path = export.manifest_path.parent / "bugbunny_export_index.json"
+    manifest = json.loads(export.manifest_path.read_text(encoding="utf-8"))
+    index_path.write_text(
+        json.dumps(
+            {
+                "schema_version": EXPORT_INDEX_SCHEMA_VERSION,
+                "implementation": manifest["implementation"],
+                "output_files_sha256": manifest["output_files_sha256"],
+                "exports": [
+                    {
+                        "manifest": str(export.manifest_path.relative_to(output_dir)),
+                        "manifest_sha256": "0" * 64,
+                    }
+                ],
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    export.manifest_path.unlink()
+
+    shared_path = output_dir / "benchmark_data.json"
+    before = shared_path.read_bytes()
+    with pytest.raises(ValueError, match="references a missing manifest"):
+        export_codereviewbench_results(
+            benchmark_path,
+            [_artifact(benchmark_path, model="openai/gpt-5.6-terra")],
+            output_dir=output_dir,
+            judge_model="anthropic/judge",
+        )
+    assert shared_path.read_bytes() == before
+
+
+def test_dataset_loader_enforces_an_explicit_pin_hash(tmp_path: Path) -> None:
+    benchmark_path = tmp_path / "benchmark_data.json"
+    _write_benchmark(benchmark_path)
+    import hashlib as _hashlib
+
+    actual = _hashlib.sha256(benchmark_path.read_bytes()).hexdigest()
+    dataset = load_codereviewbench_dataset(
+        benchmark_path,
+        preferred_fixture_tool="sampletool",
+        expected_benchmark_sha256=actual,
+    )
+    assert dataset.manifest.benchmark_sha256 == actual
+
+    with pytest.raises(ValueError, match="does not match the pinned hash"):
+        load_codereviewbench_dataset(
+            benchmark_path,
+            preferred_fixture_tool="sampletool",
+            expected_benchmark_sha256="0" * 64,
+        )
+    with pytest.raises(ValueError, match="64 lowercase hex"):
+        load_codereviewbench_dataset(
+            benchmark_path,
+            preferred_fixture_tool="sampletool",
+            expected_benchmark_sha256="not-a-hash",
+        )
+
+
+def test_verify_reaches_the_judges_verdict_on_a_stale_cumulative_index(
+    tmp_path: Path,
+) -> None:
+    # A crash between the last per-model export and the CLI index commit
+    # leaves a stale index; verify-export used to say ok while the judge
+    # refused the same directory.
+    benchmark_path = tmp_path / "source" / "benchmark_data.json"
+    benchmark_path.parent.mkdir()
+    _write_benchmark(benchmark_path)
+    output_dir = tmp_path / "results"
+    first = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path)],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    manifest = json.loads(first.manifest_path.read_text(encoding="utf-8"))
+    index_path = first.manifest_path.parent / "bugbunny_export_index.json"
+    index_path.write_text(
+        json.dumps(
+            {
+                "schema_version": EXPORT_INDEX_SCHEMA_VERSION,
+                "implementation": manifest["implementation"],
+                "output_files_sha256": manifest["output_files_sha256"],
+                "exports": [
+                    {
+                        "manifest": str(first.manifest_path.relative_to(output_dir)),
+                        "manifest_sha256": __import__("hashlib")
+                        .sha256(first.manifest_path.read_bytes())
+                        .hexdigest(),
+                    }
+                ],
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    assert verify_codereviewbench_export_manifest(first.manifest_path)["ok"] is True
+
+    # A second low-level export commits new Step 3 bytes and a new manifest;
+    # the CLI index commit never happens (simulated crash).
+    second = export_codereviewbench_results(
+        benchmark_path,
+        [_artifact(benchmark_path, model="openai/gpt-5.6-terra")],
+        output_dir=output_dir,
+        judge_model="anthropic/judge",
+    )
+    with pytest.raises(ValueError, match="cumulative export index"):
+        verify_codereviewbench_export_manifest(second.manifest_path)

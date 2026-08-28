@@ -1305,3 +1305,51 @@ def test_benchmark_judge_registers_resolved_credentials_for_redaction(
     with pytest.raises(RuntimeError):
         asyncio.run(cli._benchmark_judge(args))
     assert secret in cli._RUNTIME_SECRETS
+
+
+def test_verify_export_and_analyze_share_the_root_export_lock(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    # An unlocked verify or analyze racing a concurrent export could report
+    # hashes for a bundle state that never coexisted with the checked bytes.
+    locked_paths: list[Path] = []
+    real_lock = cli.file_lock
+
+    from contextlib import contextmanager
+
+    @contextmanager
+    def recording_lock(path: Path):
+        locked_paths.append(path)
+        with real_lock(path):
+            yield
+
+    monkeypatch.setattr(cli, "file_lock", recording_lock)
+
+    results_dir = tmp_path / "results"
+    judge_dir = results_dir / "openai_judge"
+    judge_dir.mkdir(parents=True)
+    manifest_path = judge_dir / "tool_export_manifest.json"
+    manifest_path.write_text("{}", encoding="utf-8")
+    verify_args = cli.build_parser().parse_args(
+        ["benchmark", "verify-export", "--manifest", str(manifest_path)]
+    )
+    with pytest.raises(ValueError):
+        cli._benchmark_verify_export(verify_args)
+    assert results_dir.resolve() / ".bugbunny-export.lock" in locked_paths
+
+    locked_paths.clear()
+    analyze_args = cli.build_parser().parse_args(
+        [
+            "benchmark",
+            "analyze",
+            "--run-dir",
+            str(tmp_path / "runs"),
+            "--results-dir",
+            str(results_dir),
+            "--judge-model",
+            "openai/judge",
+        ]
+    )
+    with pytest.raises((cli.CliError, ValueError, FileNotFoundError)):
+        cli._benchmark_analyze(analyze_args)
+    assert results_dir.resolve() / ".bugbunny-export.lock" in locked_paths

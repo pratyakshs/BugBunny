@@ -25,7 +25,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: overflow-safe numeric coercion at every float() boundary in wire validation.
 - [x] **[9] A4** `src/bugbunny/gateway.py:365,988` (high) — `1e999` bypasses strict non-finite rejection via parse_float; success-path canonical hash then crashes outside the error taxonomy, losing CallRecord provenance.
   - fix: reject non-finite parse_float results in strict_json_loads; guard the success-path hash.
-- [ ] **[6] A5** `src/bugbunny/benchmark.py:1307` (high) — Re-export silently reverts a foreign tool's review row to the pinned base version when the tool exists in both base and bundle.
+- [x] **[6] A5** `src/bugbunny/benchmark.py:1307` (high) — Re-export silently reverts a foreign tool's review row to the pinned base version when the tool exists in both base and bundle.
   - fix: prefer the committed bundle row for foreign tools (documented "preserved" semantics); surface a conflict diagnostic when content differs.
 - [x] **[7] A6** `src/bugbunny/families.py:92` (high) — consolidate_semantic_duplicates drops verifier-kept findings on family-key equality alone.
   - fix: family label now only lowers the textual bar (category match + causal Jaccard >= 0.45); near-certain paraphrases (>= 0.82) still collapse.
@@ -42,9 +42,9 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: register resolved credentials for the judge path and the gh token.
 - [ ] **[8] A11** `src/bugbunny/cli.py:1671,1839` (medium) — Export hashes artifact bytes then re-reads files twice with no run-dir lock.
   - fix: read once/hash once/parse once; export shares the run-directory lock.
-- [ ] **[6] A12** `src/bugbunny/benchmark.py:749-881` (medium) — Pre-write preflight narrower than post-write refresh validation; rejected exports still mutate the shared bundle.
+- [x] **[6] A12** `src/bugbunny/benchmark.py:749-881` (medium) — Pre-write preflight narrower than post-write refresh validation; rejected exports still mutate the shared bundle.
   - fix: run the structural sibling manifest/index validation before the first shared write.
-- [ ] **[7] A13** `src/bugbunny/benchmark.py:975-1156`, `src/bugbunny/analysis.py:536,911` (medium) — verify-export and analyze read the bundle unlocked and re-read/re-hash after checking/analyzing.
+- [x] **[7] A13** `src/bugbunny/benchmark.py:975-1156`, `src/bugbunny/analysis.py:536,911` (medium) — verify-export and analyze read the bundle unlocked and re-read/re-hash after checking/analyzing.
   - fix: take the root export lock and hash the exact bytes read.
 - [ ] **[8] A14** `src/bugbunny/analysis.py:302-350,855` (medium/statistics) — --allow-judge-errors computes per-pair intersections; docs promise one shared clean-case intersection.
   - fix: compute the global clean-case intersection across all compared tools and report exclusions.
@@ -66,8 +66,8 @@ Items with low scores receive deliberately conservative/additive fixes.
 - [x] **[9] A21** `src/bugbunny/util.py:80` (low) — atomic writes never fsync the parent directory; commit points not crash-durable.
 - [x] **[9] A22** `src/bugbunny/judge.py:1221` (low) — Judge failure-path gather detaches in-flight checkpoint writes past the lease.
 - [x] **[9] A23** `src/bugbunny/judge.py:59,805` (low) — Phantom-row fallback regex misses custom (non-bugbunny-prefixed) tool IDs.
-- [ ] **[7] A24** `src/bugbunny/benchmark.py:254` (low) — Pinned-dataset hash never enforced; add an opt-in --expect-benchmark-sha256.
-- [ ] **[6] A25** `src/bugbunny/benchmark.py:940`, `src/bugbunny/cli.py:1889` (low) — verify-export ignores the cumulative index; index committed under a re-acquired lock.
+- [x] **[7] A24** `src/bugbunny/benchmark.py:254` (low) — Pinned-dataset hash never enforced; add an opt-in --expect-benchmark-sha256.
+- [x] **[6] A25** `src/bugbunny/benchmark.py:940`, `src/bugbunny/cli.py:1889` (low) — verify-export ignores the cumulative index; index committed under a re-acquired lock.
 - [x] **[7] A26** `src/bugbunny/judge.py:634` (low/docs) — Index-keyed duplicate scoring is harsher than upstream text-keyed scoring; comparability cost undocumented.
 - [x] **[5] A27** `src/bugbunny/judge.py:937` (low) — Judge's printed metrics pool error-degraded rows that analysis refuses; summary carries no degraded flag.
 - [ ] **[6] A28** `src/bugbunny/analysis.py:491,458` (low/statistics) — Threshold curves omit dedup-sibling crediting; no curve==reduction equivalence test.
