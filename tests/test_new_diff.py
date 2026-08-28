@@ -491,3 +491,25 @@ rename to new.py
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_empty_file_addition_and_deletion_normalize_the_absent_side() -> None:
+    # Git omits the ---/+++ /dev/null headers for empty additions and
+    # deletions; old_path/new_path must still be None so the deletion side
+    # map never claims a purely added path existed on the base side.
+    patch = (
+        "diff --git a/empty.txt b/empty.txt\n"
+        "new file mode 100644\n"
+        "index 0000000..e69de29\n"
+        "diff --git a/gone.txt b/gone.txt\n"
+        "deleted file mode 100644\n"
+        "index e69de29..0000000\n"
+    )
+    parsed = parse_unified_diff(patch)
+    added = next(item for item in parsed.files if item.status == "added")
+    deleted = next(item for item in parsed.files if item.status == "deleted")
+    assert added.old_path is None
+    assert added.new_path == "empty.txt"
+    assert deleted.new_path is None
+    assert deleted.old_path == "gone.txt"
+    assert "empty.txt" not in parsed.deleted_line_map()

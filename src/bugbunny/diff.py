@@ -638,6 +638,14 @@ def parse_unified_diff(raw: str, *, strict: bool = True) -> ParsedDiff:
         nonlocal current_file, file_raw
         finish_hunk()
         if current_file is not None:
+            # Git omits the ``--- /dev/null``/``+++ /dev/null`` headers for
+            # empty additions and deletions; normalize the absent side to None
+            # exactly as when those headers are present, so the deletion side
+            # map never claims a purely added path existed on the base side.
+            if current_file.status == "added":
+                current_file.old_path = None
+            elif current_file.status == "deleted":
+                current_file.new_path = None
             current_file.raw_text = "".join(file_raw)
             current_file.exclusion = _classify_exclusion(current_file)
         file_raw = []

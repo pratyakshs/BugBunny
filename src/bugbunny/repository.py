@@ -353,6 +353,16 @@ class RepositorySnapshot:
                 f"refusing to read {path}: blob exceeds {max_bytes} bytes"
             ) from exc
         if result.returncode != 0:
+            if "�" in path:
+                # The diff/tree layers decode Git output with errors="replace",
+                # so a non-UTF-8 filename reaches here with U+FFFD and can no
+                # longer name the real object. Say so explicitly instead of a
+                # bare miss.
+                raise FileNotFoundError(
+                    f"{path} cannot be read at {revision}: the path contains U+FFFD "
+                    "from lossy UTF-8 decoding; non-UTF-8 Git filenames are "
+                    "unsupported for content reads"
+                )
             raise FileNotFoundError(f"{path} does not exist at {revision}: {result.stderr.strip()}")
         return result.stdout
 
@@ -500,20 +510,30 @@ class RepositorySnapshot:
             raise RepositoryError(f"git grep failed ({result.returncode}): {result.stderr.strip()}")
         hits: list[GrepHit] = []
         prefix = f"{revision}:"
-        # ``git grep -z -n`` terminates records with LF only. ``splitlines``
-        # would also break on \f, \v, \x1c-\x1e, \x85, U+2028/29, and lone \r,
-        # fragmenting a matched source line that contains one of those bytes
-        # and aborting the whole search on the 3-field parse below.
-        records = result.stdout.split("\n")
-        if records and not records[-1]:
-            records.pop()
-        for record in records:
-            fields = record.split("\0", 2)
-            if len(fields) != 3 or not fields[1].isdigit():
+        # ``git grep -z -n`` emits ``{rev}:{path}\0{line}\0{text}\n`` with the
+        # path field RAW (unquoted): a hostile filename may itself contain the
+        # record-terminating LF, so the stream must not be pre-split on
+        # newlines. Fields are tokenized on NUL instead; the matched text can
+        # contain neither NUL (binary detection excludes such files) nor LF
+        # (one source line per match), so the first LF after the second NUL
+        # always ends the record. Lone \r, \f, \v, \x1c-\x1e, \x85, and
+        # U+2028/29 remain ordinary bytes in both fields.
+        stream = result.stdout
+        position = 0
+        while position < len(stream):
+            first = stream.find("\0", position)
+            second = stream.find("\0", first + 1) if first != -1 else -1
+            newline = stream.find("\n", second + 1) if second != -1 else -1
+            if newline == -1:
                 raise RepositoryError("could not parse NUL-delimited git grep output")
-            path = fields[0].removeprefix(prefix)
-            path = _safe_relative_path(path)
-            hits.append(GrepHit(path=path, line=int(fields[1]), text=fields[2]))
+            path_field = stream[position:first]
+            line_field = stream[first + 1 : second]
+            text = stream[second + 1 : newline]
+            position = newline + 1
+            if not line_field.isdigit():
+                raise RepositoryError("could not parse NUL-delimited git grep output")
+            path = _safe_relative_path(path_field.removeprefix(prefix))
+            hits.append(GrepHit(path=path, line=int(line_field), text=text))
             if len(hits) >= limit:
                 break
         return tuple(hits)

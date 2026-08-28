@@ -356,3 +356,41 @@ class NewRepositoryTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class GrepNewlinePathTests(unittest.TestCase):
+    def test_git_grep_survives_a_newline_inside_a_filename(self) -> None:
+        # Under -z the path field is emitted raw, so a hostile filename
+        # containing LF used to be misread as a record boundary, aborting the
+        # whole search and silently suppressing whole-tree evidence.
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            repo, _, previous_head = make_repository(root)
+            (repo / "src" / "we\nird.txt").write_text("SEARCHME here\n", encoding="utf-8")
+            git(repo, "add", ".")
+            git(repo, "commit", "-qm", "add newline-name fixture")
+            head = git(repo, "rev-parse", "HEAD")
+
+            with GitRepositoryCache(root / "cache").from_local(
+                repo, base_sha=previous_head, head_sha=head
+            ) as snapshot:
+                hits = snapshot.git_grep("SEARCHME")
+
+            self.assertEqual(
+                [("src/we\nird.txt", 1, "SEARCHME here")],
+                [(hit.path, hit.line, hit.text) for hit in hits],
+            )
+
+    def test_read_blob_names_lossy_path_decoding_explicitly(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            repo, base, head = make_repository(root)
+            with (
+                GitRepositoryCache(root / "cache").from_local(
+                    repo, base_sha=base, head_sha=head
+                ) as snapshot,
+                self.assertRaises(FileNotFoundError) as caught,
+            ):
+                snapshot.read_blob(head, "src/caf�.py")
+            self.assertIn("U+FFFD", str(caught.exception))
+            self.assertIn("non-UTF-8", str(caught.exception))

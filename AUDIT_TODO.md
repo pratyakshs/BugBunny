@@ -34,7 +34,7 @@ Items with low scores receive deliberately conservative/additive fixes.
 
 - [ ] **[6] A7** `src/bugbunny/gateway.py:800`, `src/bugbunny/engine.py:1217,1599` (medium) — No total deadline on generation/verifier calls; trickle-body responses hold semaphore slots forever.
   - fix: pass the existing operation-timeout primitive at the generation and verifier call sites.
-- [ ] **[9] A8** `src/bugbunny/repository.py:507` (medium) — git_grep -z parsing still breaks on newline inside a filename; silent repeated evidence loss.
+- [x] **[9] A8** `src/bugbunny/repository.py:507` (medium) — git_grep -z parsing still breaks on newline inside a filename; silent repeated evidence loss.
   - fix: tokenize on NUL (path, line, then text-to-record-LF) instead of pre-splitting the stream on LF.
 - [ ] **[5] A9** `src/bugbunny/context.py:908-1153`, `src/bugbunny/engine.py:460,498,507` (medium/security) — Curated packets render control-char filenames unescaped above the untrusted guard; splitlines()-based exposure telemetry mis-reconciles them.
   - fix: render control-char paths in escaped form in curated headers/evidence and switch the three engine helpers to LF-only splitting.
@@ -63,7 +63,7 @@ Items with low scores receive deliberately conservative/additive fixes.
 
 ### Tier 3 — lower severity
 
-- [ ] **[9] A21** `src/bugbunny/util.py:80` (low) — atomic writes never fsync the parent directory; commit points not crash-durable.
+- [x] **[9] A21** `src/bugbunny/util.py:80` (low) — atomic writes never fsync the parent directory; commit points not crash-durable.
 - [ ] **[9] A22** `src/bugbunny/judge.py:1221` (low) — Judge failure-path gather detaches in-flight checkpoint writes past the lease.
 - [ ] **[9] A23** `src/bugbunny/judge.py:59,805` (low) — Phantom-row fallback regex misses custom (non-bugbunny-prefixed) tool IDs.
 - [ ] **[7] A24** `src/bugbunny/benchmark.py:254` (low) — Pinned-dataset hash never enforced; add an opt-in --expect-benchmark-sha256.
@@ -84,8 +84,8 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: shared per-review cumulative budget across batches, matching the documented contract.
 - [ ] **[7] A38** `src/bugbunny/engine.py:158` (low) — Per-chunk context headers unbudgeted; trailing chunks' seed context clipped.
 - [ ] **[7] A39** `src/bugbunny/exploration.py:1441` (low) — Placeholder observations charged to the context budget; beyond-EOF header renders start > end.
-- [ ] **[9] A40** `src/bugbunny/diff.py:654` (low) — Empty-file addition leaves old_path set instead of None.
-- [ ] **[4] A41** `src/bugbunny/repository.py:165`, `src/bugbunny/diff.py:154` (low) — Non-UTF-8 filenames collapse to U+FFFD and become silently ungroundable.
+- [x] **[9] A40** `src/bugbunny/diff.py:654` (low) — Empty-file addition leaves old_path set instead of None.
+- [x] **[4] A41** `src/bugbunny/repository.py:165`, `src/bugbunny/diff.py:154` (low) — Non-UTF-8 filenames collapse to U+FFFD and become silently ungroundable.
   - fix (conservative): detect lossy path decoding and surface an explicit unsupported-encoding signal instead of FileNotFoundError.
 - [ ] **[10] A42** `pyproject.toml` (hygiene) — package-data references nonexistent `schemas/*.json`.
 - [ ] **[10] A43** `.github/workflows/ci.yml` (hygiene) — CI omits `ruff format --check`.

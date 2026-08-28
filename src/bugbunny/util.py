@@ -146,10 +146,29 @@ def atomic_write_text(path: Path, value: str) -> None:
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temporary, path)
+        # The rename itself is durable only once the containing directory is
+        # synced; without this, a power loss can revert or drop a checkpoint,
+        # manifest, or judge-invalidation commit that was already acknowledged.
+        _fsync_directory(path.parent)
     except BaseException:
         with suppress(FileNotFoundError):
             os.unlink(temporary)
         raise
+
+
+def _fsync_directory(directory: Path) -> None:
+    try:
+        descriptor = os.open(directory, os.O_RDONLY)
+    except OSError:
+        return
+    try:
+        os.fsync(descriptor)
+    except OSError:
+        # Some filesystems refuse directory fsync; the write remains atomic
+        # for concurrent readers even where crash durability is unavailable.
+        pass
+    finally:
+        os.close(descriptor)
 
 
 def atomic_write_json(path: Path, value: Any) -> None:
