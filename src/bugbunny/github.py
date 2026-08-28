@@ -277,9 +277,12 @@ class GitHubClient:
             base_sha = str(base["sha"])
             head_sha = str(head["sha"])
             clone_url = str(base_repo["clone_url"])
-            if not re.fullmatch(r"[0-9a-fA-F]{40,64}", base_sha):
+            # Git object IDs are exactly 40 hex (SHA-1) or 64 hex (SHA-256);
+            # this exact contract is shared with the run-manifest validator so
+            # a resolvable PR can never produce an unexportable run.
+            if not re.fullmatch(r"[0-9a-fA-F]{40}|[0-9a-fA-F]{64}", base_sha):
                 raise ValueError("invalid base SHA")
-            if not re.fullmatch(r"[0-9a-fA-F]{40,64}", head_sha):
+            if not re.fullmatch(r"[0-9a-fA-F]{40}|[0-9a-fA-F]{64}", head_sha):
                 raise ValueError("invalid head SHA")
             if not clone_url.startswith("https://github.com/"):
                 raise ValueError("unexpected clone host")
@@ -432,7 +435,25 @@ class GitHubReviewPublisher:
         digest = hashlib.sha256(marker.encode("utf-8")).hexdigest()
         return self.coordination_dir / f"{digest}.lock"
 
+    def _authenticated_login(self) -> str | None:
+        """Best-effort login of the publishing token; None when unavailable."""
+
+        try:
+            value = self.client.get_json("/user")
+        except Exception:
+            # Installation/app tokens have no /user identity; publication then
+            # keeps the historical any-author marker scan below.
+            return None
+        login = value.get("login") if isinstance(value, Mapping) else None
+        return login if isinstance(login, str) and login else None
+
     def _existing_review(self, pr: PRInfo, marker: str) -> Mapping[str, Any] | None:
+        # Scope the dedup marker to reviews the publishing identity authored:
+        # the marker is deterministic and computable from a shared artifact,
+        # so any third party could otherwise paste it into their own review
+        # and forge an "already_published" outcome that suppresses BugBunny's
+        # actual publication.
+        own_login = self._authenticated_login()
         page = 1
         while page <= 100:
             value = self.client.get_json(
@@ -442,8 +463,14 @@ class GitHubReviewPublisher:
             if not isinstance(value, list):
                 raise GitHubError("GitHub reviews response is not an array")
             for review in value:
-                if isinstance(review, Mapping) and marker in str(review.get("body") or ""):
-                    return review
+                if not isinstance(review, Mapping) or marker not in str(review.get("body") or ""):
+                    continue
+                if own_login is not None:
+                    author = review.get("user")
+                    author_login = author.get("login") if isinstance(author, Mapping) else None
+                    if author_login != own_login:
+                        continue
+                return review
             if len(value) < 100:
                 return None
             page += 1

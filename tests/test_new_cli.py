@@ -373,7 +373,7 @@ def test_resume_requires_exact_dataset_snapshot_config_and_prompt_identity(
         "pr": {
             "url": "https://github.com/fixture/repo/pull/1",
             "base_sha": "b" * 40,
-            "head_sha": "h" * 40,
+            "head_sha": "d" * 40,
         },
         "context": {
             "generation_prompt_sha256": generation_prompt_sha256(),
@@ -404,7 +404,7 @@ def test_resume_requires_exact_dataset_snapshot_config_and_prompt_identity(
         "benchmark_sha256": "d" * 64,
         "dataset_golden_sha256": "e" * 64,
         "base_sha": "b" * 40,
-        "head_sha": "h" * 40,
+        "head_sha": "d" * 40,
         "runtime": {"requested_model": config.model, "transport": "test"},
         "expected_sha256": cli.sha256_bytes(path.read_bytes()),
     }
@@ -479,7 +479,7 @@ def test_run_dir_export_requires_complete_checksum_bound_population(tmp_path: Pa
         "pr": {
             "url": case.review_url,
             "base_sha": "b" * 40,
-            "head_sha": "h" * 40,
+            "head_sha": "d" * 40,
         },
         "findings": [],
     }
@@ -504,7 +504,7 @@ def test_run_dir_export_requires_complete_checksum_bound_population(tmp_path: Pa
             "case-1": {
                 "review_url": case.review_url,
                 "base_sha": "b" * 40,
-                "head_sha": "h" * 40,
+                "head_sha": "d" * 40,
             }
         },
         "status_counts": {"completed": 1},
@@ -852,7 +852,7 @@ def test_benchmark_export_groups_model_sweeps_and_preserves_previous_output(
                     "pr": {
                         "url": "https://github.com/fixture/repo/pull/1",
                         "base_sha": "b" * 40,
-                        "head_sha": "h" * 40,
+                        "head_sha": "d" * 40,
                     },
                     "diff": {"sha256": "d" * 64},
                     "findings": [],
@@ -1216,3 +1216,92 @@ async def test_benchmark_run_failure_path_records_redacted_error_and_exits_nonze
     assert record["status"] == "failed"
     assert secret not in json.dumps(run_manifest)
     assert "[REDACTED]" in record["error"]
+
+
+def test_argparse_error_channel_redacts_environment_credentials(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # argparse prints usage errors and exits before main()'s redaction
+    # boundary exists; a credential mistyped into the wrong flag must not
+    # print verbatim into captured CI logs.
+    secret = "sk-super-secret-argparse-value"
+    monkeypatch.setenv("MARTIAN_API_KEY", secret)
+    parser = cli.build_parser()
+    with pytest.raises(SystemExit) as caught:
+        parser.parse_args(["review-pr", "https://example.com/pull/1", "--profile", secret])
+    assert caught.value.code == 2
+    captured = capsys.readouterr()
+    assert secret not in captured.err
+    assert "[REDACTED]" in captured.err
+
+
+def test_publish_exits_nonzero_when_a_clean_review_was_declined(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    class Result:
+        status = "clean_not_published"
+        marker = "marker"
+        findings = 0
+
+        def to_dict(self) -> dict[str, Any]:
+            return {"status": self.status, "marker": self.marker, "findings": self.findings}
+
+    class Publisher:
+        def __init__(self, client: Any) -> None:
+            self.client = client
+
+        def publish(self, pr: Any, artifact: Any, *, publish_clean: bool) -> Result:
+            assert publish_clean is False
+            return Result()
+
+    class Client:
+        def __init__(self, token: Any = None) -> None:
+            self.token = token
+
+        def __enter__(self) -> Client:
+            return self
+
+        def __exit__(self, *exc: Any) -> None:
+            return None
+
+        def resolve_pr(self, url: str) -> Any:
+            return SimpleNamespace(url=url)
+
+    monkeypatch.setattr(cli, "_github_types", lambda: (Client, Publisher))
+    monkeypatch.setattr(cli, "_load_artifacts", lambda paths: [{"pr": {"url": "https://x/pull/1"}}])
+    args = cli.build_parser().parse_args(["publish", str(tmp_path / "a.json"), "--yes"])
+    assert cli._publish(args) == 1
+
+
+def test_benchmark_judge_registers_resolved_credentials_for_redaction(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    # A dotenv-only key is in neither argv nor the environment; the judge
+    # command must still register it at the main() redaction boundary.
+    secret = "dotenv-only-judge-credential"
+    env_file = tmp_path / ".env"
+    env_file.write_text(f"MARTIAN_API_KEY={secret}\n", encoding="utf-8")
+    monkeypatch.delenv("MARTIAN_API_KEY", raising=False)
+    monkeypatch.setattr(cli, "_RUNTIME_SECRETS", set())
+
+    async def failing_judge(**kwargs: Any) -> Any:
+        raise RuntimeError(f"boom {secret}")
+
+    import bugbunny.judge as judge_module
+
+    monkeypatch.setattr(judge_module, "run_codereviewbench_judge", failing_judge)
+    args = cli.build_parser().parse_args(
+        [
+            "benchmark",
+            "judge",
+            "--results-dir",
+            str(tmp_path),
+            "--judge-model",
+            "openai/judge",
+            "--env-file",
+            str(env_file),
+        ]
+    )
+    with pytest.raises(RuntimeError):
+        asyncio.run(cli._benchmark_judge(args))
+    assert secret in cli._RUNTIME_SECRETS

@@ -38,7 +38,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: tokenize on NUL (path, line, then text-to-record-LF) instead of pre-splitting the stream on LF.
 - [x] **[5] A9** `src/bugbunny/context.py:908-1153`, `src/bugbunny/engine.py:460,498,507` (medium/security) — Curated packets render control-char filenames unescaped above the untrusted guard; splitlines()-based exposure telemetry mis-reconciles them.
   - fix: render control-char paths in escaped form in curated headers/evidence and switch the three engine helpers to LF-only splitting.
-- [ ] **[9] A10** `src/bugbunny/cli.py:2016` (medium/security) — benchmark judge builds GatewayConfig inline, bypassing runtime-secret registration; gh auth token never registered.
+- [x] **[9] A10** `src/bugbunny/cli.py:2016` (medium/security) — benchmark judge builds GatewayConfig inline, bypassing runtime-secret registration; gh auth token never registered.
   - fix: register resolved credentials for the judge path and the gh token.
 - [ ] **[8] A11** `src/bugbunny/cli.py:1671,1839` (medium) — Export hashes artifact bytes then re-reads files twice with no run-dir lock.
   - fix: read once/hash once/parse once; export shares the run-directory lock.
@@ -54,7 +54,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: optional cross-check of corpus observations against a provided benchmark_data.json.
 - [x] **[9] A17** `src/bugbunny/exploration.py:459` vs `src/bugbunny/models.py:199` (medium) — repository_index_chars accepted at >=64 but operational floor is 82; accepted configs fail every agentic batch.
   - fix: align the config validation floor with the renderer's marker floor.
-- [ ] **[9] A18** `src/bugbunny/cli.py:1462` (medium) — Review-phase gather is fail-fast; stragglers write after the run-dir lock releases.
+- [x] **[9] A18** `src/bugbunny/cli.py:1462` (medium) — Review-phase gather is fail-fast; stragglers write after the run-dir lock releases.
   - fix: settle all review jobs (return_exceptions) before closing/raising, mirroring the resolve gather.
 - [x] **[6] A19** `src/bugbunny/engine.py:106`, `src/bugbunny/gateway.py:890` (medium) — wait_for(semaphore.acquire()) can leak a permit on the Python 3.11 floor.
   - fix: shared race-safe bounded-acquire helper that releases a late-granted permit.
@@ -75,11 +75,11 @@ Items with low scores receive deliberately conservative/additive fixes.
 - [x] **[8] A30** `src/bugbunny/gateway.py:1092,1184` (low/security) — retry_errors redacted with weaker secret sets than the top-level error.
 - [x] **[9] A31** `src/bugbunny/gateway.py:384,1070` (low) — Non-UTF-8 200 body raises UnicodeDecodeError outside the retryable taxonomy.
 - [x] **[6] A32** `src/bugbunny/gateway.py:495` (low) — pattern keyword uses re.search `$` semantics, laxer than ECMA; diverges from codex-native enforcement.
-- [ ] **[7] A33** `src/bugbunny/github.py:444` (low/security) — Publication marker matched as substring of any author's review; spoofable already_published.
-- [ ] **[4] A34** `src/bugbunny/cli.py:2098` (low/security) — argparse's own error channel bypasses redaction.
+- [x] **[7] A33** `src/bugbunny/github.py:444` (low/security) — Publication marker matched as substring of any author's review; spoofable already_published.
+- [x] **[4] A34** `src/bugbunny/cli.py:2098` (low/security) — argparse's own error channel bypasses redaction.
   - fix (best-effort): redacting parser error path using environment/dotenv-derived secrets available pre-parse.
-- [ ] **[9] A35** `src/bugbunny/cli.py:1612` vs `src/bugbunny/github.py:280` (low) — SHA length contracts disagree (40-64 vs exactly 40).
-- [ ] **[6] A36** `src/bugbunny/cli.py:2073` (low) — publish exits 0 on clean_not_published.
+- [x] **[9] A35** `src/bugbunny/cli.py:1612` vs `src/bugbunny/github.py:280` (low) — SHA length contracts disagree (40-64 vs exactly 40).
+- [x] **[6] A36** `src/bugbunny/cli.py:2073` (low) — publish exits 0 on clean_not_published.
 - [x] **[5] A37** `src/bugbunny/exploration.py:876` (low) — Blob-read budget enforced per batch; docs promise per review.
   - fix: shared per-review cumulative budget across batches, matching the documented contract.
 - [x] **[7] A38** `src/bugbunny/engine.py:158` (low) — Per-chunk context headers unbudgeted; trailing chunks' seed context clipped.

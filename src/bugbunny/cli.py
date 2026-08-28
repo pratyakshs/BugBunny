@@ -12,6 +12,7 @@ import asyncio
 import importlib.metadata
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -249,8 +250,25 @@ def _add_auth_options(parser: argparse.ArgumentParser) -> None:
     auth.add_argument("--timeout", type=_positive_int, default=300, metavar="SECONDS")
 
 
+class _RedactingArgumentParser(argparse.ArgumentParser):
+    """Redact credentials from argparse's own error channel.
+
+    argparse prints usage errors and exits with SystemExit before main()'s
+    redaction boundary can see them, so a credential mistyped into the wrong
+    flag (for example an API key handed to --profile) would print verbatim
+    into captured CI logs. Only environment- and argv-derived secrets are
+    knowable this early, so this redaction is best-effort by construction.
+    Subparsers inherit this class via argparse's parser_class default.
+    """
+
+    def error(self, message: str) -> Any:
+        secrets = _argument_secrets(sys.argv[1:])
+        self.print_usage(sys.stderr)
+        self.exit(2, f"{self.prog}: error: {_redact_text(message, secrets)}\n")
+
+
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = _RedactingArgumentParser(
         prog="bugbunny",
         description="Fast, reproducible LLM code review and CodeReviewBench evaluation",
     )
@@ -975,7 +993,13 @@ def _github_auth_token() -> str | None:
     except (OSError, subprocess.SubprocessError):
         return None
     token = result.stdout.strip()
-    return token if result.returncode == 0 and token else None
+    if result.returncode == 0 and token:
+        # The gh-login credential exists nowhere in argv or the environment;
+        # without registration the main() redaction boundary cannot cover an
+        # exception that happens to embed it.
+        _register_runtime_secret(token)
+        return token
+    return None
 
 
 def _pr_plan_value(pr: Any) -> dict[str, Any]:
@@ -1462,7 +1486,17 @@ async def _benchmark_run_locked(args: argparse.Namespace, run_root: Path) -> int
         await commit_record(record)
 
     try:
-        await asyncio.gather(*(review_job(model, case) for model, case in jobs))
+        # Settle every job before the gateway closes and the run-dir lock
+        # releases: a fail-fast gather (a commit_record OSError escapes
+        # review_job's inner handler) would abandon in-flight jobs whose
+        # executor-thread checkpoint and artifact writes could land after
+        # another process re-acquires the run directory.
+        outcomes = await asyncio.gather(
+            *(review_job(model, case) for model, case in jobs), return_exceptions=True
+        )
+        failures = [outcome for outcome in outcomes if isinstance(outcome, BaseException)]
+        if failures:
+            raise failures[0]
     finally:
         await gateway.aclose()
 
@@ -1609,10 +1643,13 @@ def _run_manifest_artifact_paths(args: argparse.Namespace, load_dataset: Any) ->
         if not (
             isinstance(resolved, Mapping)
             and resolved.get("review_url") == case.review_url
+            # Match resolve_pr's contract (40-hex SHA-1 or 64-hex SHA-256):
+            # a stricter length here would make a completed paid run
+            # permanently unexportable on a SHA-256 repository.
             and isinstance(resolved.get("base_sha"), str)
-            and len(resolved["base_sha"]) == 40
+            and re.fullmatch(r"[0-9a-fA-F]{40}|[0-9a-fA-F]{64}", resolved["base_sha"])
             and isinstance(resolved.get("head_sha"), str)
-            and len(resolved["head_sha"]) == 40
+            and re.fullmatch(r"[0-9a-fA-F]{40}|[0-9a-fA-F]{64}", resolved["head_sha"])
         ):
             raise CliError(f"run manifest has invalid resolved input for case {case_id}")
 
@@ -2020,6 +2057,11 @@ async def _benchmark_judge(args: argparse.Namespace) -> int:
         dotenv_path=args.env_file,
     )
     api_key = credential.resolved_api_key()
+    # A dotenv-sourced key is in neither argv nor the environment, so the
+    # redaction boundary in main() cannot recover it on its own; register it
+    # like every other credential-resolving command does via _gateway_config.
+    _register_runtime_secret(api_key)
+    _register_runtime_secret(credential.api_base)
     if api_key is None:
         raise CliError(
             "Martian API key is not configured; set MARTIAN_API_KEY, add it to .env, "
@@ -2091,7 +2133,11 @@ def _publish(args: argparse.Namespace) -> int:
             publish_clean=args.publish_clean,
         )
     _print_json(_safe_mapping(result))
-    return 0
+    # ``clean_not_published`` is a declined action, not a success: nothing was
+    # written and the operator did not pass --publish-clean. A script chaining
+    # on exit status must be able to tell it from ``published``/
+    # ``already_published``, which both mean the review exists on GitHub.
+    return 1 if getattr(result, "status", None) == "clean_not_published" else 0
 
 
 async def async_main(argv: Sequence[str] | None = None) -> int:
