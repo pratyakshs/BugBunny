@@ -680,17 +680,40 @@ def _structured_output_unsupported(error: BaseException) -> bool:
     return mentions_feature and rejects_feature
 
 
-def _martian_http_error(response: httpx.Response) -> RuntimeError:
+_MAX_RESPONSE_BODY_BYTES = 64 * 1024 * 1024
+
+
+async def _read_bounded_body(response: httpx.Response) -> bytes:
+    """Read a response body with a hard size cap.
+
+    Full buffering would otherwise hand a hostile or misconfigured endpoint a
+    memory-exhaustion lever: the model-side completion cap bounds tokens, not
+    the bytes an arbitrary HTTP server chooses to stream back.
+    """
+
+    chunks: list[bytes] = []
+    received = 0
+    async for chunk in response.aiter_bytes():
+        received += len(chunk)
+        if received > _MAX_RESPONSE_BODY_BYTES:
+            raise ResponseFormatError(
+                f"model response body exceeded {_MAX_RESPONSE_BODY_BYTES} bytes"
+            )
+        chunks.append(chunk)
+    return b"".join(chunks)
+
+
+def _martian_http_error(status_code: int, body: bytes) -> RuntimeError:
     message = "request failed"
     try:
-        body = extract_json_object(response.content)
-        error = body.get("error")
+        parsed = extract_json_object(body)
+        error = parsed.get("error")
         candidate = _member(error, "message") if error is not None else None
         if isinstance(candidate, str) and candidate.strip():
             message = candidate.strip()[:1000]
     except (ResponseFormatError, UnicodeError, ValueError):
         pass
-    return RuntimeError(f"Martian Gateway returned HTTP {response.status_code}: {message}")
+    return RuntimeError(f"Martian Gateway returned HTTP {status_code}: {message}")
 
 
 def _martian_retry_delay(response: httpx.Response, attempt: int) -> float:
@@ -1093,31 +1116,35 @@ class ModelGateway:
             return (total or 0.0) + value if value is not None else total
 
         for structured_attempt in range(self.config.max_retries + 1):
-            response, attempt_count, transport_errors = await self._post_martian(
+            response, body, attempt_count, transport_errors = await self._post_martian(
                 active_request, api_key=api_key
             )
             total_attempts += attempt_count
             retry_errors.extend(transport_errors)
             if response.status_code >= 400:
-                error = _martian_http_error(response)
+                error = _martian_http_error(response.status_code, body)
                 if _structured_output_unsupported(error):
                     fallback_request = dict(active_request)
                     fallback_request.pop("response_format", None)
-                    fallback, fallback_attempts, fallback_errors = await self._post_martian(
-                        fallback_request, api_key=api_key
-                    )
+                    (
+                        fallback,
+                        fallback_body,
+                        fallback_attempts,
+                        fallback_errors,
+                    ) = await self._post_martian(fallback_request, api_key=api_key)
                     active_request = fallback_request
                     response = fallback
+                    body = fallback_body
                     total_attempts += fallback_attempts
                     retry_errors.extend(fallback_errors)
                 if response.status_code >= 400:
-                    failure = _martian_http_error(response)
+                    failure = _martian_http_error(response.status_code, body)
                     raise _BackendFailure(failure, total_attempts, retry_errors) from failure
 
             response_data: dict[str, Any] | None = None
             candidate: _BackendResult | None = None
             try:
-                response_data = extract_json_object(response.content)
+                response_data = extract_json_object(body)
                 input_tokens, output_tokens, cached_tokens = _usage(response_data)
                 total_input_tokens = add_integer(total_input_tokens, input_tokens)
                 total_output_tokens = add_integer(total_output_tokens, output_tokens)
@@ -1139,7 +1166,7 @@ class ModelGateway:
                 )
                 _validate_json_schema(candidate.payload, schema)
             except ResponseFormatError as exc:
-                safe_error = _safe_error(exc, (api_key, self.config.api_key))
+                safe_error = _safe_error(exc, self._error_secrets(api_key))
                 retry_errors.append(safe_error)
                 if structured_attempt < self.config.max_retries:
                     continue
@@ -1163,19 +1190,34 @@ class ModelGateway:
                     total_attempts,
                     retry_errors,
                     backend=failure_backend,
-                    response_sha256=hashlib.sha256(response.content).hexdigest(),
+                    response_sha256=hashlib.sha256(body).hexdigest(),
                 ) from exc
             assert candidate is not None
             return candidate
 
         raise AssertionError("structured-output retry loop did not resolve")
 
+    def _error_secrets(self, api_key: str | None = None) -> tuple[str | None, ...]:
+        """The complete secret set every persisted error string passes through.
+
+        Retry errors are stored in CallRecords even for eventually successful
+        calls, so they must be redacted with the same strength as the
+        top-level failure path rather than a narrower ad-hoc subset.
+        """
+
+        return (
+            *_credential_environment_values(),
+            api_key,
+            self.config.api_key,
+            self.config.api_base,
+        )
+
     async def _post_martian(
         self,
         request: Mapping[str, Any],
         *,
         api_key: str,
-    ) -> tuple[httpx.Response, int, tuple[str, ...]]:
+    ) -> tuple[httpx.Response, bytes, int, tuple[str, ...]]:
         endpoint = f"{self.config.effective_api_base().rstrip('/')}/chat/completions"
         headers = {
             "Authorization": f"Bearer {api_key}",
@@ -1186,20 +1228,30 @@ class ModelGateway:
         retry_errors: list[str] = []
         for attempt in range(self.config.max_retries + 1):
             try:
-                response = await self._client().post(endpoint, headers=headers, json=dict(request))
+                client = self._client()
+                http_request = client.build_request(
+                    "POST", endpoint, headers=headers, json=dict(request)
+                )
+                response = await client.send(http_request, stream=True)
+                try:
+                    body = await _read_bounded_body(response)
+                finally:
+                    await response.aclose()
             except httpx.TransportError as exc:
                 last_error = exc
-                retry_errors.append(
-                    _safe_error(exc, (api_key, self.config.api_key, self.config.api_base))
-                )
+                retry_errors.append(_safe_error(exc, self._error_secrets(api_key)))
                 if attempt >= self.config.max_retries:
                     raise _BackendFailure(exc, attempt + 1, retry_errors) from exc
                 await asyncio.sleep(min(2**attempt, 8))
                 continue
+            except ResponseFormatError as exc:
+                # An over-cap body is a persistent server pathology; spending
+                # the retry budget re-downloading it would repeat the exposure.
+                raise _BackendFailure(exc, attempt + 1, retry_errors) from exc
             if response.status_code not in {408, 409, 425, 429, 500, 502, 503, 504}:
-                return response, attempt + 1, tuple(retry_errors)
+                return response, body, attempt + 1, tuple(retry_errors)
             if attempt >= self.config.max_retries:
-                return response, attempt + 1, tuple(retry_errors)
+                return response, body, attempt + 1, tuple(retry_errors)
             retry_errors.append(f"HTTP {response.status_code}")
             await asyncio.sleep(_martian_retry_delay(response, attempt))
         assert last_error is not None
@@ -1231,13 +1283,13 @@ class ModelGateway:
                 last_error = exc.error
                 failure_backend = exc.backend
                 failure_sha256 = exc.response_sha256
-                retry_errors.append(_safe_error(exc.error, ()))
+                retry_errors.append(_safe_error(exc.error, self._error_secrets()))
                 continue
             except (OSError, TimeoutError, ResponseFormatError, RuntimeError) as exc:
                 last_error = exc
                 failure_backend = None
                 failure_sha256 = None
-                retry_errors.append(_safe_error(exc, ()))
+                retry_errors.append(_safe_error(exc, self._error_secrets()))
                 continue
             try:
                 _validate_json_schema(result.payload, schema)
@@ -1245,7 +1297,7 @@ class ModelGateway:
                 last_error = exc
                 failure_backend = replace(result, payload={})
                 failure_sha256 = response_sha256
-                retry_errors.append(_safe_error(exc, ()))
+                retry_errors.append(_safe_error(exc, self._error_secrets()))
                 continue
             return _BackendResult(
                 payload=result.payload,

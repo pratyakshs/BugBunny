@@ -71,8 +71,8 @@ Items with low scores receive deliberately conservative/additive fixes.
 - [ ] **[7] A26** `src/bugbunny/judge.py:634` (low/docs) — Index-keyed duplicate scoring is harsher than upstream text-keyed scoring; comparability cost undocumented.
 - [ ] **[5] A27** `src/bugbunny/judge.py:937` (low) — Judge's printed metrics pool error-degraded rows that analysis refuses; summary carries no degraded flag.
 - [ ] **[6] A28** `src/bugbunny/analysis.py:491,458` (low/statistics) — Threshold curves omit dedup-sibling crediting; no curve==reduction equivalence test.
-- [ ] **[7] A29** `src/bugbunny/gateway.py:1139` (low/security) — Response bodies buffered with no size cap.
-- [ ] **[8] A30** `src/bugbunny/gateway.py:1092,1184` (low/security) — retry_errors redacted with weaker secret sets than the top-level error.
+- [x] **[7] A29** `src/bugbunny/gateway.py:1139` (low/security) — Response bodies buffered with no size cap.
+- [x] **[8] A30** `src/bugbunny/gateway.py:1092,1184` (low/security) — retry_errors redacted with weaker secret sets than the top-level error.
 - [x] **[9] A31** `src/bugbunny/gateway.py:384,1070` (low) — Non-UTF-8 200 body raises UnicodeDecodeError outside the retryable taxonomy.
 - [x] **[6] A32** `src/bugbunny/gateway.py:495` (low) — pattern keyword uses re.search `$` semantics, laxer than ECMA; diverges from codex-native enforcement.
 - [ ] **[7] A33** `src/bugbunny/github.py:444` (low/security) — Publication marker matched as substring of any author's review; spoofable already_published.

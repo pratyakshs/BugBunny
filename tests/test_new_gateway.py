@@ -984,3 +984,68 @@ def test_schema_pattern_uses_ecma_end_anchor_semantics():
     # An escaped final dollar stays a literal character.
     literal = {"type": "string", "pattern": r"^price\$"}
     _validate_json_schema("price$ tag", literal)
+
+
+@pytest.mark.asyncio
+async def test_oversized_response_body_fails_bounded_without_buffering_it_all(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import bugbunny.gateway as gateway_module
+
+    monkeypatch.setattr(gateway_module, "_MAX_RESPONSE_BODY_BYTES", 1024)
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, content=b"x" * 4096)
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        gateway = ModelGateway(GatewayConfig(api_key="test-key", max_retries=3), http_client=client)
+        with pytest.raises(GatewayError) as caught:
+            await gateway.complete_json(
+                "review",
+                model="openai/gpt-test",
+                stage="generation",
+                schema_name="findings",
+                schema=SCHEMA,
+            )
+
+    assert "exceeded 1024 bytes" in str(caught.value)
+    # A pathological body is not retried: re-downloading it would repeat the
+    # exposure without any chance of a different outcome.
+    assert caught.value.call.attempt_count == 1
+
+
+@pytest.mark.asyncio
+async def test_retry_errors_are_redacted_with_the_full_secret_set(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Retry errors persist in CallRecords even for later-successful calls, so
+    # dotenv/environment credentials must be redacted there too, not only in
+    # the top-level failure message.
+    secret = "env-credential-super-secret-value"
+    monkeypatch.setenv("BUGBUNNY_TEST_API_KEY", secret)
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={
+                "model": "resolved-model",
+                "choices": [{"message": {}, "finish_reason": secret}],
+            },
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        gateway = ModelGateway(GatewayConfig(api_key="test-key", max_retries=1), http_client=client)
+        with pytest.raises(GatewayError) as caught:
+            await gateway.complete_json(
+                "review",
+                model="openai/gpt-test",
+                stage="generation",
+                schema_name="findings",
+                schema=SCHEMA,
+            )
+
+    record = caught.value.call
+    assert record.retry_errors
+    assert all(secret not in entry for entry in record.retry_errors)
+    assert any("[REDACTED]" in entry for entry in record.retry_errors)
+    assert secret not in (record.error or "")
