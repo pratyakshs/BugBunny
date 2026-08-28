@@ -67,6 +67,34 @@ _PERMANENT_ACTION_FAILURES = frozenset(
 ActionName = Literal["list", "read", "search"]
 
 
+# The operational floor for ``repository_index_chars``: below this length the
+# index renderer cannot disclose truncation on any repository whose complete
+# inventory exceeds the bound, and every agentic batch fails. The config
+# validator in models.py enforces the same floor.
+INDEX_TRUNCATION_MARKER = (
+    "...[repository index truncated to a hierarchical summary; use list for any prefix]"
+)
+
+
+class SharedBlobBudget:
+    """Review-wide cumulative blob-read accounting.
+
+    The documented ``context_blob_read_bytes`` contract is a total for the
+    review; generation batches explore concurrently, so enforcement must go
+    through one shared, lock-serialized ledger rather than a per-batch
+    counter that would multiply the cap by the batch count.
+    """
+
+    def __init__(self, limit_bytes: int) -> None:
+        self.limit = int(limit_bytes)
+        self.used = 0
+        self.lock = asyncio.Lock()
+
+    @property
+    def remaining(self) -> int:
+        return max(0, self.limit - self.used)
+
+
 class ExplorationError(ValueError):
     """The exploration configuration or selector payload is invalid."""
 
@@ -456,7 +484,7 @@ def _render_index(files: tuple[str, ...], limit: int) -> tuple[str, bool, str]:
     if len(complete) <= limit:
         return complete, False, "complete_path_inventory_v1"
 
-    marker = "...[repository index truncated to a hierarchical summary; use list for any prefix]"
+    marker = INDEX_TRUNCATION_MARKER
     if files and limit < len(marker):
         raise ExplorationError(
             f"repository_index_chars must be at least {len(marker)} to disclose truncation"
@@ -737,6 +765,7 @@ async def explore_repository_context(
     seed_context: str,
     file_inventory: Sequence[str],
     batch_id: str | None = None,
+    blob_budget: SharedBlobBudget | None = None,
 ) -> ExplorationResult:
     """Let a model choose bounded context from an immutable snapshot.
 
@@ -812,6 +841,10 @@ async def explore_repository_context(
     blob_read_bytes = _positive_config_int(config, "context_blob_read_bytes")
     if blob_read_bytes > _MAX_BLOB_READ_BYTES:
         raise ExplorationError(f"context_blob_read_bytes cannot exceed {_MAX_BLOB_READ_BYTES}")
+    if blob_budget is None:
+        blob_budget = SharedBlobBudget(blob_read_bytes)
+    elif blob_budget.limit != blob_read_bytes:
+        raise ExplorationError("shared blob budget limit differs from context_blob_read_bytes")
     search_hits = _positive_config_int(config, "context_search_hits")
     search_max_offset = _positive_config_int(config, "context_search_max_offset")
     if search_max_offset > 1_000_000:
@@ -1123,8 +1156,7 @@ async def explore_repository_context(
                 remaining_file_slots=max_context_files - len(selected_files),
                 read_lines=read_lines,
                 read_chars=min(read_chars, remaining_chars),
-                blob_read_bytes=blob_read_bytes,
-                blob_bytes_read=blob_bytes_read,
+                blob_budget=blob_budget,
                 search_hits=search_hits,
                 search_max_offset=search_max_offset,
                 timeout_seconds=timeout_seconds,
@@ -1213,7 +1245,14 @@ async def explore_repository_context(
                 selected_files.update(files)
             if selector_observation:
                 observations.append(selector_observation)
-            if evidence and action.action != "list":
+            # Placeholder-only observations (a read entirely beyond EOF, a
+            # search matching no inventory paths) stay visible to the selector
+            # above but add no repository content; charging them against the
+            # review context budget would displace real evidence with filler.
+            zero_value_observation = bool(
+                operation_metrics.get("beyond_eof") or operation_metrics.get("no_matching_paths")
+            )
+            if evidence and action.action != "list" and not zero_value_observation:
                 selected_evidence.append(evidence)
                 selected_chars += len(evidence) + (2 if len(selected_evidence) > 1 else 0)
             if evidence_clipped and action.action != "list":
@@ -1335,8 +1374,7 @@ async def _execute_action(
     remaining_file_slots: int,
     read_lines: int,
     read_chars: int,
-    blob_read_bytes: int,
-    blob_bytes_read: int,
+    blob_budget: SharedBlobBudget,
     search_hits: int,
     search_max_offset: int,
     timeout_seconds: int,
@@ -1389,45 +1427,52 @@ async def _execute_action(
         assert action.start_line is not None and action.end_line is not None
         if action.end_line - action.start_line + 1 > read_lines:
             return "", set(), {}, "line_limit"
-        # context_blob_read_bytes is a cumulative budget for the whole
-        # exploration; refuse further reads once it is spent.
-        if blob_bytes_read >= blob_read_bytes:
-            return "", set(), {}, "blob_limit"
-        remaining_blob_bytes = blob_read_bytes - blob_bytes_read
-        try:
-            source = await asyncio.wait_for(
-                asyncio.to_thread(
-                    snapshot.read_blob,
-                    snapshot.head_sha,
-                    action.path,
-                    max_bytes=remaining_blob_bytes,
-                ),
-                timeout=timeout_seconds,
-            )
-        except TimeoutError:
-            # The worker/subprocess cannot be cancelled by asyncio.wait_for and
-            # may still consume the full requested stream bound. Conservatively
-            # charge the remaining allowance so repeated timed-out ranges
-            # cannot stack unaccounted reads.
-            return (
-                "",
-                set(),
-                {"blob_bytes": remaining_blob_bytes, "blob_budget_exhausted": 1},
-                "action_timeout",
-            )
-        except (RepositoryLimitError, ValueError):
-            # A bounded cat-file read reaches its output cap before reporting
-            # that the blob is larger. Charge the entire remaining allowance.
-            return (
-                "",
-                set(),
-                {"blob_bytes": remaining_blob_bytes, "blob_budget_exhausted": 1},
-                "blob_limit",
-            )
-        except Exception:
-            return "", set(), {}, "read_failed"
-        read_bytes = len(source.encode("utf-8"))
-        if blob_bytes_read + read_bytes > blob_read_bytes:
+        # context_blob_read_bytes is a cumulative budget for the whole review;
+        # the check, capped read, and charge form one critical section so
+        # concurrent batches sharing the ledger cannot interleave between
+        # observing the remaining allowance and consuming it.
+        async with blob_budget.lock:
+            if blob_budget.remaining <= 0:
+                return "", set(), {}, "blob_limit"
+            remaining_blob_bytes = blob_budget.remaining
+            try:
+                source = await asyncio.wait_for(
+                    asyncio.to_thread(
+                        snapshot.read_blob,
+                        snapshot.head_sha,
+                        action.path,
+                        max_bytes=remaining_blob_bytes,
+                    ),
+                    timeout=timeout_seconds,
+                )
+            except TimeoutError:
+                # The worker/subprocess cannot be cancelled by asyncio.wait_for
+                # and may still consume the full requested stream bound.
+                # Conservatively charge the remaining allowance so repeated
+                # timed-out ranges cannot stack unaccounted reads.
+                blob_budget.used += remaining_blob_bytes
+                return (
+                    "",
+                    set(),
+                    {"blob_bytes": remaining_blob_bytes, "blob_budget_exhausted": 1},
+                    "action_timeout",
+                )
+            except (RepositoryLimitError, ValueError):
+                # A bounded cat-file read reaches its output cap before
+                # reporting that the blob is larger. Charge the entire
+                # remaining allowance.
+                blob_budget.used += remaining_blob_bytes
+                return (
+                    "",
+                    set(),
+                    {"blob_bytes": remaining_blob_bytes, "blob_budget_exhausted": 1},
+                    "blob_limit",
+                )
+            except Exception:
+                return "", set(), {}, "read_failed"
+            read_bytes = len(source.encode("utf-8"))
+            blob_budget.used += read_bytes
+        if read_bytes > remaining_blob_bytes:
             return "", set(), {"blob_bytes": read_bytes}, "blob_limit"
         if "\x00" in source:
             return "", set(), {"blob_bytes": read_bytes}, "binary_content"
@@ -1436,26 +1481,38 @@ async def _execute_action(
         end = min(action.end_line, len(rows))
         if start > len(rows):
             rendered_rows: list[str] = []
+            header = (
+                f"UNTRUSTED IMMUTABLE HEAD FILE {action.path} "
+                f"[requested start L{start} is beyond end of file ({len(rows)} lines)]"
+            )
         else:
             rendered_rows = [f"{line:>7} | {rows[line - 1]}" for line in range(start, end + 1)]
-        header = f"UNTRUSTED IMMUTABLE HEAD FILE {action.path} L{start}-L{end}"
+            header = f"UNTRUSTED IMMUTABLE HEAD FILE {action.path} L{start}-L{end}"
         display_rows = rendered_rows or ["[requested range is beyond end of file]"]
         rendered, included_count, truncated = _bounded_rows(header, display_rows, read_chars)
         included_source_lines = min(included_count, len(rendered_rows))
+        read_metrics: dict[str, Any] = {
+            "read_lines": included_source_lines,
+            "truncated": int(truncated),
+            "blob_bytes": read_bytes,
+        }
+        if not rendered_rows:
+            read_metrics["beyond_eof"] = 1
         return (
             rendered,
             {action.path} if included_source_lines else set(),
-            {
-                "read_lines": included_source_lines,
-                "truncated": int(truncated),
-                "blob_bytes": read_bytes,
-            },
+            read_metrics,
             "ok",
         )
 
     matching_paths = _matching_files(action.path, inventory)
     if not matching_paths:
-        return "UNTRUSTED LITERAL SEARCH\n[no matching paths]", set(), {"search_hits": 0}, "ok"
+        return (
+            "UNTRUSTED LITERAL SEARCH\n[no matching paths]",
+            set(),
+            {"search_hits": 0, "no_matching_paths": 1},
+            "ok",
+        )
     grep_paths: tuple[str, ...] | None = (action.path,) if action.path else None
     result_start = action.start_line or 1
     result_offset = result_start - 1

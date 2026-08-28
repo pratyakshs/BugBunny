@@ -52,7 +52,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix (conservative): report exact binomial uncertainty and saturation diagnostics; selection unchanged; corpus-size policy stays a design decision.
 - [ ] **[5] A16** `src/bugbunny/calibration.py:41,252` (medium) — "Excludes CodeReviewBench" attestation never checked against the 50 cases.
   - fix: optional cross-check of corpus observations against a provided benchmark_data.json.
-- [ ] **[9] A17** `src/bugbunny/exploration.py:459` vs `src/bugbunny/models.py:199` (medium) — repository_index_chars accepted at >=64 but operational floor is 82; accepted configs fail every agentic batch.
+- [x] **[9] A17** `src/bugbunny/exploration.py:459` vs `src/bugbunny/models.py:199` (medium) — repository_index_chars accepted at >=64 but operational floor is 82; accepted configs fail every agentic batch.
   - fix: align the config validation floor with the renderer's marker floor.
 - [ ] **[9] A18** `src/bugbunny/cli.py:1462` (medium) — Review-phase gather is fail-fast; stragglers write after the run-dir lock releases.
   - fix: settle all review jobs (return_exceptions) before closing/raising, mirroring the resolve gather.
@@ -80,10 +80,10 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix (best-effort): redacting parser error path using environment/dotenv-derived secrets available pre-parse.
 - [ ] **[9] A35** `src/bugbunny/cli.py:1612` vs `src/bugbunny/github.py:280` (low) — SHA length contracts disagree (40-64 vs exactly 40).
 - [ ] **[6] A36** `src/bugbunny/cli.py:2073` (low) — publish exits 0 on clean_not_published.
-- [ ] **[5] A37** `src/bugbunny/exploration.py:876` (low) — Blob-read budget enforced per batch; docs promise per review.
+- [x] **[5] A37** `src/bugbunny/exploration.py:876` (low) — Blob-read budget enforced per batch; docs promise per review.
   - fix: shared per-review cumulative budget across batches, matching the documented contract.
 - [ ] **[7] A38** `src/bugbunny/engine.py:158` (low) — Per-chunk context headers unbudgeted; trailing chunks' seed context clipped.
-- [ ] **[7] A39** `src/bugbunny/exploration.py:1441` (low) — Placeholder observations charged to the context budget; beyond-EOF header renders start > end.
+- [x] **[7] A39** `src/bugbunny/exploration.py:1441` (low) — Placeholder observations charged to the context budget; beyond-EOF header renders start > end.
 - [x] **[9] A40** `src/bugbunny/diff.py:654` (low) — Empty-file addition leaves old_path set instead of None.
 - [x] **[4] A41** `src/bugbunny/repository.py:165`, `src/bugbunny/diff.py:154` (low) — Non-UTF-8 filenames collapse to U+FFFD and become silently ungroundable.
   - fix (conservative): detect lossy path decoding and surface an explicit unsupported-encoding signal instead of FileNotFoundError.

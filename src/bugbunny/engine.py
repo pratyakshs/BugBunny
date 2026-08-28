@@ -15,6 +15,7 @@ from bugbunny.diff import DiffChunk, ParsedDiff, parse_unified_diff
 from bugbunny.exploration import (
     EXPLORATION_PROMPT_VERSION,
     EXPLORATION_SCHEMA_VERSION,
+    SharedBlobBudget,
     exploration_prompt_sha256,
     exploration_schema_sha256,
     explore_repository_context,
@@ -1087,6 +1088,10 @@ class ReviewEngine:
             )
             semaphore = asyncio.Semaphore(self.config.llm_concurrency)
             bounded_gateway = _SemaphoreGateway(self.gateway, semaphore)
+            # One ledger for the whole review: context_blob_read_bytes is
+            # documented as cumulative across agentic reads for the review,
+            # not per generation batch.
+            shared_blob_budget = SharedBlobBudget(self.config.context_blob_read_bytes)
             file_inventory = (
                 tuple(sorted(await asyncio.to_thread(snapshot.list_files, snapshot.head_sha)))
                 if self.config.context_mode == "agentic"
@@ -1130,6 +1135,7 @@ class ReviewEngine:
                             seed_context=batch.context,
                             file_inventory=file_inventory,
                             batch_id=batch.batch_id,
+                            blob_budget=shared_blob_budget,
                         )
                     except Exception as exc:
                         return (

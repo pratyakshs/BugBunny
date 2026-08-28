@@ -25,6 +25,10 @@ ReviewSide = Literal["RIGHT", "LEFT"]
 
 DECLARED_WINDOW_PROTOCOL_RESERVE_TOKENS = 4_096
 DECLARED_WINDOW_CHARS_PER_TOKEN = 2
+# Length of exploration.INDEX_TRUNCATION_MARKER, the smallest repository index
+# the agentic renderer can produce while disclosing truncation. A test pins
+# the two values together (models must stay import-leaf, so no direct import).
+MIN_REPOSITORY_INDEX_CHARS = 82
 DECLARED_GENERATION_FRAMING_CHARS = 12_000
 
 
@@ -198,8 +202,13 @@ class ReviewConfig:
             raise ValueError("context_blob_read_bytes cannot exceed 256000000")
         if self.context_search_max_offset > 1_000_000:
             raise ValueError("context_search_max_offset cannot exceed 1000000")
-        if self.repository_index_chars < 64:
-            raise ValueError("repository_index_chars must be at least 64")
+        if self.repository_index_chars < MIN_REPOSITORY_INDEX_CHARS:
+            # Below the index renderer's truncation-marker length, every
+            # agentic batch on a real repository fails before selection; a
+            # validate()-accepted config must not be operationally unusable.
+            raise ValueError(
+                f"repository_index_chars must be at least {MIN_REPOSITORY_INDEX_CHARS}"
+            )
         if self.context_window_tokens is not None:
             reserved_tokens = self.max_output_tokens + DECLARED_WINDOW_PROTOCOL_RESERVE_TOKENS
             if reserved_tokens >= self.context_window_tokens:

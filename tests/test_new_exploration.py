@@ -1473,3 +1473,88 @@ async def test_failed_bounded_read_exhausts_budget_and_prevents_repeated_io(
     assert result.trace["actions_failed"] == 2
     assert {"stage": "context_action", "code": expected_code} in result.diagnostics
     assert {"stage": "context_action", "code": "blob_limit"} in result.diagnostics
+
+
+def test_repository_index_floor_matches_the_truncation_marker() -> None:
+    # A validate()-accepted repository_index_chars must never be below the
+    # renderer's operational floor, or every agentic batch on a real
+    # repository fails before selection.
+    from bugbunny.exploration import INDEX_TRUNCATION_MARKER
+    from bugbunny.models import MIN_REPOSITORY_INDEX_CHARS
+
+    assert len(INDEX_TRUNCATION_MARKER) == MIN_REPOSITORY_INDEX_CHARS
+
+
+@pytest.mark.asyncio
+async def test_blob_budget_is_shared_across_exploration_calls() -> None:
+    # context_blob_read_bytes is documented as cumulative for the review;
+    # concurrent generation batches must drain one shared ledger instead of
+    # multiplying the cap by the batch count.
+    from bugbunny.exploration import SharedBlobBudget
+
+    config = Config()
+    budget = SharedBlobBudget(config.context_blob_read_bytes)
+    snapshot = FakeSnapshot()
+
+    first = await explore_repository_context(
+        config=config,
+        model="openai/test-model",
+        gateway=FakeGateway(
+            [{"requests": [_action("read", path="src/core.py", start=1, end=2)], "done": True}]
+        ),
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+        blob_budget=budget,
+    )
+    assert first.failed is False
+    consumed = budget.used
+    assert consumed == len(snapshot.files["src/core.py"].encode())
+
+    # A second batch sharing the ledger sees the prior batch's consumption:
+    # with the ledger exhausted, its read is refused as blob_limit.
+    budget.used = budget.limit
+    second = await explore_repository_context(
+        config=config,
+        model="openai/test-model",
+        gateway=FakeGateway(
+            [{"requests": [_action("read", path="src/helper.py", start=1, end=1)], "done": True}]
+        ),
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="seed",
+        file_inventory=tuple(snapshot.files),
+        blob_budget=budget,
+    )
+    assert second.failed is False
+    assert second.context == "seed"
+    assert second.trace["actions_failed"] == 1
+
+
+@pytest.mark.asyncio
+async def test_beyond_eof_read_informs_the_selector_without_charging_the_review() -> None:
+    snapshot = FakeSnapshot()
+    gateway = FakeGateway(
+        [
+            {"requests": [_action("read", path="src/core.py", start=50, end=55)], "done": False},
+            {"requests": [], "done": True},
+        ]
+    )
+    result = await explore_repository_context(
+        config=Config(context_selection_rounds=2),
+        model="openai/test-model",
+        gateway=gateway,
+        snapshot=snapshot,
+        batch_patch="patch",
+        seed_context="safe seed",
+        file_inventory=tuple(snapshot.files),
+    )
+
+    assert result.failed is False
+    # The selector sees the corrected beyond-EOF header (no start > end
+    # coordinate pair) so it can adjust, but the placeholder never displaces
+    # budget from the review context.
+    assert "beyond end of file" in gateway.requests[1]["prompt"]
+    assert "L50-L" not in gateway.requests[1]["prompt"]
+    assert result.context == "safe seed"
