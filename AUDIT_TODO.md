@@ -17,9 +17,9 @@ Items with low scores receive deliberately conservative/additive fixes.
 
 ### Tier 1 — fix before the 0.8.0 benchmark rerun
 
-- [ ] **[7] A1** `src/bugbunny/analysis.py:263`, `src/bugbunny/judge.py:945` (high/statistics) — All published metrics micro-pooled; paper describes per-PR macro-averaging; convention undocumented (2.1x divergence on archived data).
+- [x] **[7] A1** `src/bugbunny/analysis.py:263`, `src/bugbunny/judge.py:945` (high/statistics) — All published metrics micro-pooled; paper describes per-PR macro-averaging; convention undocumented (2.1x divergence on archived data).
   - fix: record the aggregation convention explicitly in report schemas, add macro-averaged statistics alongside the upstream-faithful micro values, document the difference.
-- [ ] **[6] A2** `src/bugbunny/judge.py:768`, `src/bugbunny/analysis.py:248` (high/statistics) — Stored per-case precision unbounded (22 archived rows > 1.0); persisted unvalidated.
+- [x] **[6] A2** `src/bugbunny/judge.py:768`, `src/bugbunny/analysis.py:248` (high/statistics) — Stored per-case precision unbounded (22 archived rows > 1.0); persisted unvalidated.
   - fix: keep upstream-faithful persisted fields but validate them at analysis binding, and report fraction-of-candidates-matched alongside pooled precision.
 - [x] **[9] A3** `src/bugbunny/schemas.py:278`, `src/bugbunny/gateway.py:501,579` (high) — Huge integer literals raise uncaught OverflowError from float(), escaping quarantine/retry taxonomies and failing whole batches.
   - fix: overflow-safe numeric coercion at every float() boundary in wire validation.
@@ -46,7 +46,7 @@ Items with low scores receive deliberately conservative/additive fixes.
   - fix: run the structural sibling manifest/index validation before the first shared write.
 - [x] **[7] A13** `src/bugbunny/benchmark.py:975-1156`, `src/bugbunny/analysis.py:536,911` (medium) — verify-export and analyze read the bundle unlocked and re-read/re-hash after checking/analyzing.
   - fix: take the root export lock and hash the exact bytes read.
-- [ ] **[8] A14** `src/bugbunny/analysis.py:302-350,855` (medium/statistics) — --allow-judge-errors computes per-pair intersections; docs promise one shared clean-case intersection.
+- [x] **[8] A14** `src/bugbunny/analysis.py:302-350,855` (medium/statistics) — --allow-judge-errors computes per-pair intersections; docs promise one shared clean-case intersection.
   - fix: compute the global clean-case intersection across all compared tools and report exclusions.
 - [ ] **[4] A15** `src/bugbunny/calibration.py:74-134` (medium/statistics) — Frozen operating point is a tie-break artifact of a saturated corpus; precision floor unverifiable at n=10.
   - fix (conservative): report exact binomial uncertainty and saturation diagnostics; selection unchanged; corpus-size policy stays a design decision.
@@ -70,7 +70,7 @@ Items with low scores receive deliberately conservative/additive fixes.
 - [x] **[6] A25** `src/bugbunny/benchmark.py:940`, `src/bugbunny/cli.py:1889` (low) — verify-export ignores the cumulative index; index committed under a re-acquired lock.
 - [x] **[7] A26** `src/bugbunny/judge.py:634` (low/docs) — Index-keyed duplicate scoring is harsher than upstream text-keyed scoring; comparability cost undocumented.
 - [x] **[5] A27** `src/bugbunny/judge.py:937` (low) — Judge's printed metrics pool error-degraded rows that analysis refuses; summary carries no degraded flag.
-- [ ] **[6] A28** `src/bugbunny/analysis.py:491,458` (low/statistics) — Threshold curves omit dedup-sibling crediting; no curve==reduction equivalence test.
+- [x] **[6] A28** `src/bugbunny/analysis.py:491,458` (low/statistics) — Threshold curves omit dedup-sibling crediting; no curve==reduction equivalence test.
 - [x] **[7] A29** `src/bugbunny/gateway.py:1139` (low/security) — Response bodies buffered with no size cap.
 - [x] **[8] A30** `src/bugbunny/gateway.py:1092,1184` (low/security) — retry_errors redacted with weaker secret sets than the top-level error.
 - [x] **[9] A31** `src/bugbunny/gateway.py:384,1070` (low) — Non-UTF-8 200 body raises UnicodeDecodeError outside the retryable taxonomy.

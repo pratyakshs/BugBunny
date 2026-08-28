@@ -272,7 +272,32 @@ def _bind_judged_candidate_inputs(
             raise AnalysisError(
                 f"stored judge reduction differs from its pair matrix for {golden_url} / {tool}"
             )
+    # The persisted per-row precision/recall are upstream-faithful derived
+    # fields (tp counts matched goldens over candidate/golden denominators, so
+    # precision legitimately exceeds 1.0 when one candidate claims several
+    # goldens). They flow into the published evaluations.json, so they must be
+    # provably derived from the validated reduction rather than trusted.
+    expected_tp = expected_reduction["tp"]
+    derived = {
+        "precision": expected_tp / total_candidates if total_candidates else 0.0,
+        "recall": expected_tp / total_golden if total_golden else 0.0,
+    }
+    for key, expected_value in derived.items():
+        actual = evaluation.get(key)
+        if not is_finite_number(actual) or float(actual) != expected_value:
+            raise AnalysisError(
+                f"stored judge {key} differs from its pair matrix for {golden_url} / {tool}"
+            )
     return tuple(golden_matched)
+
+
+METRICS_AGGREGATION_NOTE = (
+    "precision/recall/f1 are micro-pooled over summed tp/fp/fn (upstream "
+    "step3-faithful; tp counts matched goldens, fp counts unmatched "
+    "candidates, so pooled precision is not a proportion of candidates); "
+    "macro_* weight each judged case equally per the CodeReviewBench paper; "
+    "candidate_match_rate is matched candidates over exported candidates"
+)
 
 
 def _metrics(rows: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
@@ -280,10 +305,42 @@ def _metrics(rows: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
     tp = sum(int(row.get("tp", 0)) for row in values)
     fp = sum(int(row.get("fp", 0)) for row in values)
     fn = sum(int(row.get("fn", 0)) for row in values)
+    candidates = sum(int(row.get("total_candidates", 0) or 0) for row in values)
     precision = tp / (tp + fp) if tp + fp else 0.0
     recall = tp / (tp + fn) if tp + fn else 0.0
     f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
-    return {"tp": tp, "fp": fp, "fn": fn, "precision": precision, "recall": recall, "f1": f1}
+    # Paper-convention per-case statistics with each case weighted equally;
+    # a zero-candidate case counts as zero precision instead of silently
+    # leaving the pooled denominator.
+    macro_precision_sum = 0.0
+    macro_recall_sum = 0.0
+    macro_f1_sum = 0.0
+    for row in values:
+        case_tp = int(row.get("tp", 0))
+        case_fp = int(row.get("fp", 0))
+        case_fn = int(row.get("fn", 0))
+        case_candidates = int(row.get("total_candidates", 0) or 0)
+        case_precision = (case_candidates - case_fp) / case_candidates if case_candidates else 0.0
+        case_recall = case_tp / (case_tp + case_fn) if case_tp + case_fn else 0.0
+        case_denominator = case_precision + case_recall
+        macro_precision_sum += case_precision
+        macro_recall_sum += case_recall
+        macro_f1_sum += (
+            2 * case_precision * case_recall / case_denominator if case_denominator else 0.0
+        )
+    count = len(values)
+    return {
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "macro_precision": macro_precision_sum / count if count else 0.0,
+        "macro_recall": macro_recall_sum / count if count else 0.0,
+        "macro_f1": macro_f1_sum / count if count else 0.0,
+        "candidate_match_rate": (candidates - fp) / candidates if candidates else 0.0,
+    }
 
 
 def _percentile(values: Sequence[float], proportion: float) -> float:
@@ -301,12 +358,29 @@ def _bootstrap_metrics(
     rows: Sequence[Mapping[str, Any]], *, samples: int, seed: int
 ) -> dict[str, list[float]]:
     if not rows:
-        return {"precision": [0.0, 0.0], "recall": [0.0, 0.0], "f1": [0.0, 0.0]}
+        return {
+            "precision": [0.0, 0.0],
+            "recall": [0.0, 0.0],
+            "f1": [0.0, 0.0],
+            "macro_precision": [0.0, 0.0],
+            "macro_recall": [0.0, 0.0],
+            "macro_f1": [0.0, 0.0],
+            "candidate_match_rate": [0.0, 0.0],
+        }
     rng = random.Random(seed)
     draws: dict[str, list[float]] = defaultdict(list)
+    interval_names = (
+        "precision",
+        "recall",
+        "f1",
+        "macro_precision",
+        "macro_recall",
+        "macro_f1",
+        "candidate_match_rate",
+    )
     for _ in range(samples):
         metric = _metrics(rows[rng.randrange(len(rows))] for _ in rows)
-        for name in ("precision", "recall", "f1"):
+        for name in interval_names:
             draws[name].append(float(metric[name]))
     return {
         name: [_percentile(values, 0.025), _percentile(values, 0.975)]
@@ -361,6 +435,10 @@ def _paired_bootstrap(
         "f1_delta": point,
         "f1_delta_95_ci": [_percentile(deltas, 0.025), _percentile(deltas, 0.975)],
         "probability_left_gt_right": sum(value > 0 for value in deltas) / len(deltas),
+        # Ties are reported separately: two near-identical tools produce many
+        # zero deltas, and folding those into "not greater" reads as evidence
+        # for the right-hand tool.
+        "probability_delta_zero": sum(value == 0 for value in deltas) / len(deltas),
         "paired_case_exclusions": case_exclusions,
     }
 
@@ -487,13 +565,16 @@ def _threshold_case(
     audit: Sequence[Mapping[str, Any]],
     decisions: Mapping[str, tuple[str, float]],
     threshold: float,
+    dedup_groups: Sequence[Sequence[int]] | None = None,
 ) -> dict[str, int]:
     """Re-reduce one judged case at a hypothetical verifier threshold.
 
     This mirrors the judge's greedy reduction exactly: a pair credits its
     candidate index only when it strictly improves that golden index's best
-    confidence. Counting every judged match or keying by repeated text would
-    systematically distort false positives relative to the stored reduction.
+    confidence, and a matched candidate credits its still-selected dedup
+    siblings exactly as the stored reduction does. Counting every judged
+    match or keying by repeated text would systematically distort false
+    positives relative to the stored reduction.
     """
 
     selected = {
@@ -503,6 +584,15 @@ def _threshold_case(
         and decisions.get(str(item.get("finding_id") or ""), ("drop", 0.0))[0] == "keep"
         and decisions.get(str(item.get("finding_id") or ""), ("drop", 0.0))[1] >= threshold
     }
+    sibling_map: dict[int, set[int]] = {}
+    for group in dedup_groups or ():
+        if not isinstance(group, Sequence) or isinstance(group, (str, bytes)):
+            continue
+        indexes = {
+            int(index) for index in group if isinstance(index, int) and not isinstance(index, bool)
+        }
+        for index in indexes:
+            sibling_map[index] = indexes - {index}
     best_by_golden: dict[int, float] = {}
     matched_candidates: set[int] = set()
     matched_golden: set[int] = set()
@@ -522,11 +612,17 @@ def _threshold_case(
             best_by_golden[golden_index] = float(confidence)
             matched_golden.add(golden_index)
             matched_candidates.add(int(candidate_index))
+            for sibling in sibling_map.get(int(candidate_index), set()):
+                if sibling in selected:
+                    matched_candidates.add(sibling)
     total_golden = int(evaluation.get("total_golden", 0))
     return {
         "tp": len(matched_golden),
         "fp": len(selected - matched_candidates),
         "fn": total_golden - len(matched_golden),
+        # The curve's exported-candidate population at this threshold, so
+        # downstream macro and match-rate statistics stay well-defined.
+        "total_candidates": len(selected),
     }
 
 
@@ -863,6 +959,31 @@ def analyze_evaluation(
     common_judge_identity = next(iter(judge_identities))
     common_judge_identity_payload = judge_identity_payloads[common_judge_identity]
 
+    # Under allow_judge_errors, every comparison uses ONE clean-case
+    # intersection shared by all compared tools (the documented contract):
+    # per-pair intersections would compare tools over mutually different
+    # populations, making the deltas incomparable with one another.
+    shared_clean_cases: set[str] | None = None
+    all_clean_cases: set[str] = set()
+    if allow_judge_errors:
+        for rows in case_rows_by_tool.values():
+            all_clean_cases.update(rows)
+            shared_clean_cases = (
+                set(rows) if shared_clean_cases is None else shared_clean_cases & set(rows)
+            )
+        shared_clean_cases = shared_clean_cases if shared_clean_cases is not None else set()
+    comparison_population = {
+        "mode": ("shared_clean_case_intersection" if allow_judge_errors else "all_selected_cases"),
+        "case_count": (
+            len(shared_clean_cases)
+            if shared_clean_cases is not None
+            else len(next(iter(case_rows_by_tool.values()), {}))
+        ),
+        "excluded_cases": (
+            sorted(all_clean_cases - shared_clean_cases) if shared_clean_cases is not None else []
+        ),
+    }
+
     pairwise: dict[str, Any] = {}
     by_stage: dict[str, list[str]] = defaultdict(list)
     for tool, track in tracks.items():
@@ -871,14 +992,22 @@ def analyze_evaluation(
         for left_index, left in enumerate(sorted(tools)):
             for right in sorted(tools)[left_index + 1 :]:
                 key = f"{left}__minus__{right}"
+                left_rows = case_rows_by_tool[left]
+                right_rows = case_rows_by_tool[right]
+                if shared_clean_cases is not None:
+                    left_rows = {
+                        url: row for url, row in left_rows.items() if url in shared_clean_cases
+                    }
+                    right_rows = {
+                        url: row for url, row in right_rows.items() if url in shared_clean_cases
+                    }
                 pairwise[key] = {
                     "finding_stage": stage,
                     **_paired_bootstrap(
-                        case_rows_by_tool[left],
-                        case_rows_by_tool[right],
+                        left_rows,
+                        right_rows,
                         samples=bootstrap_samples,
                         seed=bootstrap_seed,
-                        allow_case_intersection=allow_judge_errors,
                     ),
                 }
 
@@ -907,12 +1036,17 @@ def analyze_evaluation(
         for threshold in sorted(thresholds):
             rows = []
             for golden_url, evaluation in case_rows_by_tool[generator_tool].items():
+                case_groups = all_dedup_groups.get(golden_url)
+                tool_groups = (
+                    case_groups.get(generator_tool) if isinstance(case_groups, Mapping) else None
+                )
                 rows.append(
                     _threshold_case(
                         evaluation,
                         audit_by_tool[generator_tool].get(golden_url, []),
                         _decision_by_finding(case_artifacts[golden_url]),
                         threshold,
+                        dedup_groups=tool_groups if isinstance(tool_groups, list) else None,
                     )
                 )
             curve.append({"threshold": threshold, **_metrics(rows)})
@@ -937,6 +1071,8 @@ def analyze_evaluation(
             "judge_identity_sha256": common_judge_identity,
         },
         "bootstrap": {"samples": bootstrap_samples, "seed": bootstrap_seed, "unit": "pull_request"},
+        "metrics_aggregation": METRICS_AGGREGATION_NOTE,
+        "paired_comparison_population": comparison_population,
         "judge_row_hygiene": dict(sorted(row_hygiene.items())),
         "stage_counts": stage_counts,
         "tracks": dict(sorted(tracks.items())),
@@ -948,6 +1084,8 @@ def analyze_evaluation(
             "Threshold curves reuse the fixed judge pair matrix; they do not make additional judge calls.",
             "Confidence intervals resample pull requests and do not model judge-model uncertainty.",
             "Hierarchical repository-index summarization is reported separately from prompt and discovery bounds because the full inventory remains pageable.",
+            "Headline precision/recall/f1 are micro-pooled exactly as the pinned upstream step3 script reports them; the paper describes macro-averaging, reported here as macro_*. The two can differ substantially when many cases produce zero candidates.",
+            "Threshold curves cannot model dedup-sibling crediting or the different semantic-duplicate survivor set a hypothetical threshold would produce; both effects are absent for BugBunny's singleton-group exports.",
         ],
     }
     atomic_write_json(output_json, report)
@@ -956,15 +1094,33 @@ def analyze_evaluation(
 
 def render_analysis_markdown(report: Mapping[str, Any]) -> str:
     lines = ["# BugBunny evaluation audit", "", "## Tracks", ""]
-    lines.append("| Model | Stage | Candidates | Precision | Recall | F1 | F1 95% CI |")
-    lines.append("|---|---:|---:|---:|---:|---:|---:|")
+    aggregation = report.get("metrics_aggregation")
+    if aggregation:
+        lines.extend([f"Aggregation: {aggregation}", ""])
+    lines.append(
+        "| Model | Stage | Cases | Candidates | Precision | Recall | F1 | F1 95% CI "
+        "| Macro F1 | Match rate |"
+    )
+    lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
     for track in report.get("tracks", {}).values():
         metric = track["metrics"]
         interval = metric["bootstrap_95_ci"]["f1"]
         lines.append(
-            f"| {track['model']} | {track['finding_stage']} | {metric['exported_candidates']} "
+            f"| {track['model']} | {track['finding_stage']} | {metric.get('reviews', 0)} "
+            f"| {metric['exported_candidates']} "
             f"| {metric['precision']:.3f} | {metric['recall']:.3f} | {metric['f1']:.3f} "
-            f"| [{interval[0]:.3f}, {interval[1]:.3f}] |"
+            f"| [{interval[0]:.3f}, {interval[1]:.3f}] "
+            f"| {metric.get('macro_f1', 0.0):.3f} | {metric.get('candidate_match_rate', 0.0):.3f} |"
+        )
+    population = report.get("paired_comparison_population")
+    if isinstance(population, Mapping) and population.get("excluded_cases"):
+        lines.extend(
+            [
+                "",
+                f"Paired comparisons use the {population['mode']} of "
+                f"{population['case_count']} cases; excluded: "
+                + ", ".join(population["excluded_cases"]),
+            ]
         )
     lines.extend(["", "## Pipeline counts", ""])
     lines.append(

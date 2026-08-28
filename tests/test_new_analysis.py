@@ -108,7 +108,7 @@ def test_threshold_case_mirrors_the_judges_greedy_reduction() -> None:
     ]
     decisions = {"bb-a": ("keep", 0.95), "bb-b": ("keep", 0.95)}
     counts = _threshold_case(evaluation, audit, decisions, 0.92)
-    assert counts == {"tp": 1, "fp": 1, "fn": 0}
+    assert counts == {"tp": 1, "fp": 1, "fn": 0, "total_candidates": 2}
 
 
 def test_threshold_case_ignores_matches_from_unselected_candidates() -> None:
@@ -120,7 +120,7 @@ def test_threshold_case_ignores_matches_from_unselected_candidates() -> None:
     }
     audit = [{"candidate_index": 0, "finding_id": "bb-a"}]
     counts = _threshold_case(evaluation, audit, {"bb-a": ("keep", 0.5)}, 0.92)
-    assert counts == {"tp": 0, "fp": 0, "fn": 1}
+    assert counts == {"tp": 0, "fp": 0, "fn": 1, "total_candidates": 0}
 
 
 def test_threshold_case_keeps_duplicate_texts_distinct_by_index() -> None:
@@ -145,6 +145,7 @@ def test_threshold_case_keeps_duplicate_texts_distinct_by_index() -> None:
         "tp": 2,
         "fp": 1,
         "fn": 0,
+        "total_candidates": 2,
     }
 
 
@@ -395,6 +396,8 @@ def _evaluation_row(bundle, *, tool, golden_url, match=True, errors_count=0):
         "errors_count": errors_count,
         "total_golden": 1,
         "total_candidates": 1,
+        "precision": float(int(match)),
+        "recall": float(int(match)),
         "pair_matches": [
             {
                 **_pair(golden, candidate, 0, 0, match, 0.95 if match else 0.0),
@@ -420,6 +423,8 @@ def test_analyze_evaluation_end_to_end_and_error_row_hygiene(tmp_path) -> None:
         "errors_count": 0,
         "total_golden": 1,
         "total_candidates": 1,
+        "precision": 1.0,
+        "recall": 1.0,
         "pair_matches": [_pair("golden text", "candidate A", 0, 0, True, 0.95)],
         "true_positives": [],
         "false_negatives": [],
@@ -452,7 +457,9 @@ def test_analyze_evaluation_end_to_end_and_error_row_hygiene(tmp_path) -> None:
     assert at_zero["tp"] == 1 and at_zero["fp"] == 0
 
     error_row = deepcopy(clean_row)
-    error_row.update({"tp": 0, "fp": 1, "fn": 1, "errors_count": 1})
+    error_row.update(
+        {"tp": 0, "fp": 1, "fn": 1, "errors_count": 1, "precision": 0.0, "recall": 0.0}
+    )
     error_row["pair_matches"][0].update(
         {"match": False, "confidence": 0.0, "error": "judge failed"}
     )
@@ -494,6 +501,8 @@ def test_analyze_evaluation_rejects_audit_artifact_mismatch(tmp_path) -> None:
         "errors_count": 0,
         "total_golden": 1,
         "total_candidates": 1,
+        "precision": 1.0,
+        "recall": 1.0,
         "pair_matches": [_pair("golden text", "candidate A", 0, 0, True, 0.95)],
         "true_positives": [],
         "false_negatives": [],
@@ -846,9 +855,111 @@ def test_allow_judge_errors_uses_reported_paired_case_intersection(tmp_path) -> 
     comparison = next(iter(report["paired_model_comparisons"].values()))
     assert comparison["case_count"] == 1
     assert comparison["f1_delta"] == 0.0
-    assert comparison["paired_case_exclusions"] == {
-        "count": 1,
-        "cases": [first_url],
-        "missing_from_left": [first_url] if tool_m < tool_n else [],
-        "missing_from_right": [] if tool_m < tool_n else [first_url],
+    # Every comparison now runs on ONE clean-case intersection shared by all
+    # compared tools, so per-pair exclusions are empty and the excluded case
+    # is reported once at the top level.
+    assert comparison["paired_case_exclusions"]["count"] == 0
+    assert report["paired_comparison_population"] == {
+        "mode": "shared_clean_case_intersection",
+        "case_count": 1,
+        "excluded_cases": [first_url],
     }
+
+
+def test_threshold_curve_reproduces_the_stored_reduction_with_dedup_siblings() -> None:
+    # The load-bearing equivalence property: at a threshold that selects every
+    # exported candidate, the curve's re-reduction must equal the judge's
+    # stored reduction — including dedup-sibling crediting, which only
+    # matters for non-singleton groups.
+    import asyncio
+
+    from bugbunny.analysis import _threshold_case
+    from bugbunny.judge import evaluate_review
+
+    golden_comments = [{"comment": "the cache is stale", "severity": "High", "category": "bug"}]
+    candidates = ["the cache is stale", "cache staleness duplicate", "unrelated comment"]
+    dedup_groups = [[0, 1], [2]]
+
+    class Judge:
+        async def match_comment(self, golden: str, candidate: str) -> dict[str, object]:
+            return {
+                "match": candidate == "the cache is stale",
+                "confidence": 0.9 if candidate == "the cache is stale" else 0.0,
+                "reasoning": "deterministic",
+            }
+
+    stored = asyncio.run(evaluate_review(Judge(), golden_comments, candidates, dedup_groups))
+    # Candidate 0 matches; sibling crediting marks candidate 1 as covered, so
+    # only the unrelated candidate 2 is a false positive.
+    assert (stored["tp"], stored["fp"], stored["fn"]) == (1, 1, 0)
+
+    audit = [
+        {"candidate_index": 0, "finding_id": "bb-a"},
+        {"candidate_index": 1, "finding_id": "bb-b"},
+        {"candidate_index": 2, "finding_id": "bb-c"},
+    ]
+    decisions = {
+        "bb-a": ("keep", 0.9),
+        "bb-b": ("keep", 0.9),
+        "bb-c": ("keep", 0.9),
+    }
+    reproduced = _threshold_case(stored, audit, decisions, 0.0, dedup_groups=dedup_groups)
+    assert (reproduced["tp"], reproduced["fp"], reproduced["fn"]) == (
+        stored["tp"],
+        stored["fp"],
+        stored["fn"],
+    )
+
+
+def test_metrics_report_both_aggregation_conventions() -> None:
+    from bugbunny.analysis import _metrics
+
+    rows = [
+        {"tp": 4, "fp": 0, "fn": 0, "total_candidates": 1},
+        {"tp": 0, "fp": 0, "fn": 2, "total_candidates": 0},
+    ]
+    metric = _metrics(rows)
+    # Upstream-faithful micro pooling: the zero-candidate case vanishes from
+    # the precision denominator entirely.
+    assert metric["precision"] == 1.0
+    assert metric["recall"] == 4 / 6
+    # Paper-convention macro weights both cases equally.
+    assert metric["macro_precision"] == 0.5
+    assert metric["macro_recall"] == 0.5
+    assert metric["candidate_match_rate"] == 1.0
+
+
+def test_stored_derived_precision_recall_must_match_the_pair_matrix(tmp_path) -> None:
+    import pytest
+
+    from bugbunny.analysis import AnalysisError, analyze_evaluation
+
+    clean_row = {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "errors_count": 0,
+        "total_golden": 1,
+        "total_candidates": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "pair_matches": [_pair("golden text", "candidate A", 0, 0, True, 0.95)],
+        "true_positives": [],
+        "false_negatives": [],
+    }
+    bundle = _analysis_fixture(tmp_path / "tampered", evaluation_row=clean_row)
+    evaluations_path = bundle["judge_dir"] / "evaluations.json"
+    stored = json.loads(evaluations_path.read_text(encoding="utf-8"))
+    golden_url = bundle["golden_urls"][0]
+    tool = bundle["tools"]["m"]
+    stored[golden_url][tool]["precision"] = 0.25
+    evaluations_path.write_text(json.dumps(stored), encoding="utf-8")
+
+    with pytest.raises(AnalysisError, match="stored judge precision differs"):
+        analyze_evaluation(
+            run_dir=bundle["run_dir"],
+            results_dir=bundle["results_dir"],
+            judge_model="judge_model",
+            output_json=tmp_path / "audit.json",
+            bootstrap_samples=10,
+        )
